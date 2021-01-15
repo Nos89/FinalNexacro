@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pro_info" width="1090" height="650" titletext="New Form">
+  <Form id="pro_info" width="1090" height="650" titletext="New Form" onload="pro_info_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="0" text="교수기본정보" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
@@ -33,6 +33,53 @@
         <Edit id="Edit01" taborder="22" left="831" top="46" width="161" height="29"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[
+this.pro_info_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+			"loadProfessorInfo", //1.스트링형태로 아이디를 줘야함
+			"/load_ProfessorInfo.nex",		//2.스트링형태의 url 값
+			"ds_proInfo=out_ds", //4.stOutDataset  - select  화면으로 넘어오는 dataset
+			"",  //5.화면에서 서버로 넘겨주는 변수값, nexacro.wrapqueto함수로 ""안에있는것들을 인식하게함
+			"fn_callback" //6.콜백함수
+		);
+};
+
+this.fn_callback=function(Id,errCode,errMsg){
+
+};]]></Script>
+    <Objects>
+      <Dataset id="ds_proInfo">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="birth" type="DATE" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="country" type="STRING" size="256"/>
+          <Column id="indate" type="DATE" size="256"/>
+          <Column id="outdate" type="DATE" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="zipcode" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="bank" type="STRING" size="256"/>
+          <Column id="accountnum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Edit00" propid="value" datasetid="ds_proInfo" columnid="id"/>
+      <BindItem id="item1" compid="Edit00_00" propid="value" datasetid="ds_proInfo" columnid="name"/>
+      <BindItem id="item2" compid="Edit00_01" propid="value" datasetid="ds_proInfo" columnid="birth"/>
+      <BindItem id="item3" compid="Edit00_02" propid="value" datasetid="ds_proInfo" columnid="gender"/>
+      <BindItem id="item4" compid="Edit00_03" propid="value" datasetid="ds_proInfo" columnid="country"/>
+      <BindItem id="item5" compid="Edit00_00_00" propid="value" datasetid="ds_proInfo" columnid="colcode"/>
+      <BindItem id="item6" compid="Edit00_01_00" propid="value" datasetid="ds_proInfo" columnid="deptcode"/>
+      <BindItem id="item7" compid="Edit00_02_00" propid="value" datasetid="ds_proInfo" columnid=""/>
+    </Bind>
   </Form>
 </FDL>
