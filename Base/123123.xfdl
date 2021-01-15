@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="work03" width="1090" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="1090">
+        <Button id="Button00" taborder="0" text="조회" top="39" width="60" height="25" cssclass="btn_WF_search01" right="130" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="1" text="저장" top="39" width="55" height="25" cssclass="btn_WF_save01" right="70" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="2" text="엑셀" top="39" width="55" height="25" cssclass="btn_WF_excel01" right="10" onclick="Button02_onclick"/>
+        <Static id="Static17" taborder="3" text="386건이 검색되었습니다." left="0" top="520" height="30" cssclass="sta_WF_notice01" right="10"/>
+        <Static id="Static20" taborder="4" text="· Home &gt; Middle title &gt; navi" top="0" width="263" height="34" right="10" cssclass="sta_WF_navi"/>
+        <Button id="Button04" taborder="5" top="109" width="70" height="70" cssclass="btn_WF_search03" right="10"/>
+        <Button id="Button05" taborder="6" text="삭제" top="39" width="55" height="25" cssclass="btn_WF_delete01" right="195" onclick="Button05_onclick"/>
+        <Button id="Button06" taborder="7" text="추가" top="39" width="55" height="25" cssclass="btn_WF_add01" right="255" onclick="Button06_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+          <Column id="Column6" type="STRING" size="256"/>
+          <Column id="Column7" type="STRING" size="256"/>
+          <Column id="Column8" type="STRING" size="256"/>
+          <Column id="Column9" type="STRING" size="256"/>
+          <Column id="Column10" type="STRING" size="256"/>
+          <Column id="Column11" type="STRING" size="256"/>
+          <Column id="Column12" type="STRING" size="256"/>
+          <Column id="Column13" type="STRING" size="256"/>
+          <Column id="Column14" type="STRING" size="256"/>
+          <Column id="Column15" type="STRING" size="256"/>
+          <Column id="Column16" type="STRING" size="256"/>
+          <Column id="Column17" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.Button06_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("추가");
+};
+
+this.Button05_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("삭제");
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("조회");
+};
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("저장");
+};
+
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("엑셀");
+};
+]]></Script>
+  </Form>
+</FDL>
