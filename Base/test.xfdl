@@ -3,7 +3,8 @@
   <Form id="test" width="800" height="600" titletext="New Form">
     <Layouts>
       <Layout height="600" width="800">
-        <Button id="Button00" taborder="0" text="HI" left="198" top="100" width="92" height="40"/>
+        <Button id="Button00" taborder="0" text="HI" left="324" top="150" width="92" height="40"/>
+        <Static id="Static00" taborder="1" text="Static00" left="226" top="251" width="388" height="50"/>
       </Layout>
     </Layouts>
   </Form>
