@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pro_basic" width="1060" height="370" titletext="New Form">
+    <Layouts>
+      <Layout height="370" mobileorientation="landscape" width="1060">
+        <Static id="Static00" taborder="0" text="입사년도" left="10" top="42" width="80" height="33"/>
+        <Edit id="Edit00" taborder="1" left="83" top="42" width="159" height="29"/>
+        <Static id="Static00_00" taborder="2" text="소속대학" left="10" top="92" width="80" height="33"/>
+        <Edit id="Edit00_00" taborder="3" left="83" top="95" width="159" height="29"/>
+        <Static id="Static00_00_00" taborder="4" text="소속학부(과)" left="270" top="92" width="80" height="33"/>
+        <Edit id="Edit00_00_00" taborder="5" left="363" top="95" width="159" height="29"/>
+        <Static id="Static00_00_00_00" taborder="6" text="소속학부(전공)" left="550" top="94" width="80" height="33"/>
+        <Edit id="Edit00_00_00_00" taborder="7" left="640" top="97" width="159" height="29"/>
+        <Static id="Static00_00_00_00_00" taborder="8" text="입사일자" left="547" top="42" width="80" height="33"/>
+        <Edit id="Edit00_00_00_00_00" taborder="9" left="640" top="42" width="159" height="29"/>
+        <Static id="Static01" taborder="10" text="기본정보" left="10" top="6" width="225" height="29" cssclass="sta_WF_title02"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

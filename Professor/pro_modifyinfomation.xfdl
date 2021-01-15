@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pro_modifyinfomation" width="1060" height="370" titletext="New Form">
+    <Layouts>
+      <Layout height="370" width="1060">
+        <Static id="Static00" taborder="0" text="교수정보" left="10" top="91" width="1040" height="22" cssclass="sta_WF_title02" border="0px none,0px none,1px solid black"/>
+        <Edit id="Edit00_02" taborder="1" left="70" top="122" width="121" height="25"/>
+        <Static id="Static01_02" taborder="2" text="생년월일" left="-9" top="121" width="69" height="25" textAlign="right"/>
+        <Static id="Static00_00" taborder="3" text="현거주지 주소" left="15" top="307" width="225" height="23" cssclass="sta_WF_title02"/>
+        <Static id="Static02" taborder="4" text="우편번호" left="11" top="336" width="60" height="23"/>
+        <Edit id="Edit01" taborder="5" left="69" top="335" width="127" height="25"/>
+        <Static id="Static02_00" taborder="6" text="주소" left="241" top="336" width="60" height="23"/>
+        <Edit id="Edit01_00" taborder="7" left="299" top="335" width="241" height="25"/>
+        <Edit id="Edit01_00_00" taborder="8" left="550" top="335" width="270" height="25"/>
+        <Edit id="Edit00_02_00" taborder="9" left="70" top="152" width="121" height="25"/>
+        <Static id="Static01_02_00" taborder="10" text="예금주" left="-9" top="151" width="69" height="25" textAlign="right"/>
+        <Edit id="Edit00_02_00_00" taborder="11" left="70" top="182" width="121" height="25"/>
+        <Static id="Static01_02_00_00" taborder="12" text="전화번호" left="-9" top="181" width="69" height="25" textAlign="right"/>
+        <Static id="Static01_02_00_00_00" taborder="13" text="이메일" left="-9" top="211" width="69" height="25" textAlign="right"/>
+        <Edit id="Edit00_02_00_00_00" taborder="14" left="70" top="212" width="220" height="25"/>
+        <Static id="Static01_02_00_00_00_00" taborder="15" text="입대일자" left="-9" top="241" width="69" height="25" textAlign="right"/>
+        <Edit id="Edit00_02_00_00_00_00" taborder="16" left="70" top="242" width="121" height="25"/>
+        <Static id="Static01_02_00_00_00_00_00" taborder="17" text="병역" left="-9" top="271" width="69" height="25" textAlign="right"/>
+        <Edit id="Edit00_02_00_00_00_00_00" taborder="18" left="70" top="272" width="121" height="25"/>
+        <Static id="Static01_02_01" taborder="19" text="은행" left="241" top="149" width="69" height="25" textAlign="right"/>
+        <Edit id="Edit00_02_01" taborder="20" left="320" top="152" width="121" height="25"/>
+        <Static id="Static01_02_01_00" taborder="21" text="핸드폰" left="241" top="179" width="69" height="25" textAlign="right"/>
+        <Edit id="Edit00_02_01_00" taborder="22" left="320" top="182" width="121" height="25"/>
+        <Static id="Static01_02_01_01" taborder="23" text="계좌번호" left="461" top="149" width="69" height="25" textAlign="right"/>
+        <Edit id="Edit00_02_01_01" taborder="24" left="540" top="152" width="121" height="25"/>
+        <Static id="Static01" taborder="25" text="" left="10" top="9" width="1042" height="81" onclick="Static01_onclick"/>
+        <Static id="Static01_00" taborder="26" text="성명" left="21" top="6" width="69" height="34"/>
+        <Edit id="Edit00" taborder="27" left="70" top="9" width="121" height="29"/>
+        <Edit id="Edit00_00" taborder="28" left="320" top="9" width="121" height="29"/>
+        <Static id="Static01_00_00" taborder="29" text="성명(영어)" left="251" top="6" width="69" height="34"/>
+        <Edit id="Edit00_01" taborder="30" left="70" top="46" width="121" height="29"/>
+        <Edit id="Edit00_01_00" taborder="31" left="320" top="46" width="121" height="29"/>
+        <Static id="Static01_01" taborder="32" text="성별" left="21" top="43" width="69" height="34"/>
+        <Static id="Static01_01_00" taborder="33" text="국적" left="271" top="43" width="69" height="34"/>
+        <Button id="Button00" taborder="34" text="수정" left="973" top="85" width="77" height="21"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
+  </Form>
+</FDL>

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<FDL version="2.0">
+<FDL version="2.1">
   <Form id="fm_left" width="190" height="700" titletext="New Form" onload="fm_left_onload">
     <Layouts>
       <Layout height="700" mobileorientation="landscape" width="190">
-        <Grid id="grdLeft" taborder="0" left="0" top="40" width="190" binddataset="gdsLeftMenu" autofittype="col" treeusecheckbox="false" cssclass="grd_LF_treeMenu" bottom="75" treeinitstatus="expand,all" oncellclick="divLeft_grdLeft_oncellclick" border="0px solid #c7c7c7,1px solid #c7c7c7">
+        <Grid id="grdLeft" taborder="0" left="0" top="40" width="190" binddataset="grd_professor" autofittype="col" treeusecheckbox="false" cssclass="grd_LF_treeMenu" bottom="75" treeinitstatus="expand,all" oncellclick="divLeft_grdLeft_oncellclick" border="0px solid #c7c7c7,1px solid #c7c7c7">
           <Formats>
             <Format id="default">
               <Columns>
@@ -21,7 +21,50 @@
         <Static id="Static00" taborder="1" text="Main Title Menu" left="0" top="0" height="40" width="190" cssclass="sta_LF_title01"/>
       </Layout>
     </Layouts>
-    <Objects/>
+    <Objects>
+      <Dataset id="grd_professor">
+        <ColumnInfo>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="UP_MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_LVL" type="STRING" size="256"/>
+          <Column id="PGM_PATH" type="STRING" size="256"/>
+          <Column id="PGM_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_CD">0000</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="MENU_NM">교수서비스</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">0001</Col>
+            <Col id="UP_MENU_CD">0000</Col>
+            <Col id="MENU_NM">개인정보관리</Col>
+            <Col id="PGM_PATH">Professor</Col>
+            <Col id="PGM_ID">pro_info.xfdl</Col>
+            <Col id="MENU_LVL">1</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">0002</Col>
+            <Col id="UP_MENU_CD">0000</Col>
+            <Col id="MENU_NM">강의정보</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work01.xfdl</Col>
+            <Col id="MENU_LVL">1</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">0003</Col>
+            <Col id="UP_MENU_CD">0000</Col>
+            <Col id="MENU_NM">학과정보</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work03.xfdl</Col>
+            <Col id="MENU_LVL">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
     <Script type="xscript5.1"><![CDATA[this.application = null;
 
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -50,7 +93,7 @@ this.fn_openMenu = function(sMenuId)
 	var sMenuNm;
 	var sMenuNavi;
 	
-	var objMenuDs = this.application.gdsLeftMenu;
+	var objMenuDs = this.grd_professor;
 	var objOpenMenuDs = this.application.gdsOpenMenu;
 	
 	nFRow 		= objMenuDs.findRow("MENU_CD", sMenuId);
