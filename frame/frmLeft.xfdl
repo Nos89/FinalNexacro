@@ -80,7 +80,7 @@ this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 };
 
 this.fn_openMenu = function(sMenuId)
-{
+{	
 	var objMdiFrame = this.application.MdiFrame;
 	var objWorkFrame = this.application.WorkFrame;
 	
