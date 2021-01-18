@@ -63,5 +63,7 @@
       </ColumnInfo>
     </Dataset>
   </Datasets>
-  <Variables/>
+  <Variables>
+    <Variable id="gvID" initval="p-1001"/>
+  </Variables>
 </AppVariables>
