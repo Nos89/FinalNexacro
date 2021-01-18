@@ -64,6 +64,6 @@
     </Dataset>
   </Datasets>
   <Variables>
-    <Variable id="gvID" initval="p-1001"/>
+    <Variable id="gvID" initval="P-1001"/>
   </Variables>
 </AppVariables>
