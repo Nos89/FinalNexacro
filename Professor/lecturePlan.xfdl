@@ -43,7 +43,7 @@
         <Static id="Static03" taborder="10" text="" left="502" top="78" width="580" height="564" background="#ffffff" border="1px solid black"/>
         <Static id="Static04" taborder="11" text="" left="502" top="117" width="577" height="527" border="1px solid black,0px none,0px none"/>
         <Static id="Static05" taborder="12" text="미리보기" left="510" top="84" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
-        <Button id="btn_write" taborder="13" text="작성 / 수정" left="963" top="86" width="113" height="25" onclick="btn_write_onclick"/>
+        <Button id="btn_write" taborder="13" text="수정" left="963" top="86" width="113" height="25" onclick="btn_write_onclick"/>
         <Static id="Static06" taborder="14" text="교과목명" left="514" top="124" width="87" height="24"/>
         <Static id="Static06_00" taborder="15" text="교수명" left="578" top="163" width="87" height="25"/>
         <Static id="Static06_00_00" taborder="16" text="연구실" left="578" top="192" width="87" height="25"/>
@@ -73,7 +73,8 @@
         <Static id="Static08_00_00" taborder="40" text="강의방법" left="515" top="540" width="188" height="23"/>
         <Grid id="Grid02" taborder="41" left="515" top="570" width="277" height="61"/>
         <Static id="Static08_00_00_00" taborder="42" text="교재" left="802" top="540" width="188" height="23"/>
-        <TextArea id="TextArea01" taborder="43" left="800" top="570" width="275" height="61"/>
+        <TextArea id="TextArea01" taborder="43" left="800" top="570" width="275" height="61" onchanged="TextArea01_onchanged"/>
+        <Button id="btn_write00" taborder="44" text="작성" left="834" top="86" width="113" height="25" onclick="btn_write_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -91,7 +92,7 @@
           <Column id="pro_deptcode" type="STRING" size="256"/>
           <Column id="pro_office" type="STRING" size="256"/>
           <Column id="pro_phone" type="STRING" size="256"/>
-          <Column id="lec_year" type="STRING" size="256"/>
+          <Column id="lec_year" type="DATE" size="256"/>
           <Column id="lec_semester" type="STRING" size="256"/>
           <Column id="lec_targetlevel" type="STRING" size="256"/>
           <Column id="lec_classroom" type="STRING" size="256"/>
@@ -156,6 +157,7 @@
     <Script type="xscript5.1"><![CDATA[
 this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+		var pDataSet ="123";
 
 		var objApp = nexacro.getApplication();
 
@@ -175,7 +177,7 @@ this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		objCF.set_overlaycolor("rgba(0,0,0,0.3)");
 		objCF.showModal(
 		this.getOwnerFrame()
-		,{}  
+		,{lecture:''+pDataSet+''}  
 		,this
 		,"fn_callback_pop"
 	);

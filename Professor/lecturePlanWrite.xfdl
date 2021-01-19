@@ -1,39 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="lecturePlanWrite" width="600" height="700" titletext="New Form">
+  <Form id="lecturePlanWrite" width="600" height="700" titletext="New Form" onload="lecturePlanWrite_onload">
     <Layouts>
       <Layout height="700" width="600">
         <Static id="Static00" taborder="0" text="강의계획서 작성 / 수정" left="10" top="10" width="180" height="37" cssclass="sta_WF_title02"/>
-        <Static id="Static01" taborder="1" text="교과목명" left="62" top="41" width="68" height="28"/>
-        <Edit id="Edit00" taborder="2" left="126" top="43" width="410" height="29"/>
-        <Static id="Static02" taborder="3" text="교수명" left="93" top="77" width="87" height="26"/>
-        <Static id="Static03" taborder="4" text="연구실" left="90" top="110" width="87" height="26"/>
-        <Static id="Static04" taborder="5" text="과목코드" left="90" top="141" width="87" height="26"/>
-        <Static id="Static05" taborder="6" text="수강대상" left="90" top="172" width="87" height="26"/>
-        <Static id="Static06" taborder="7" text="요일" left="90" top="202" width="87" height="26"/>
-        <Static id="Static11" taborder="8" text="이수학점" left="313" top="202" width="87" height="26"/>
-        <Static id="Static10" taborder="9" text="개설학기" left="313" top="172" width="87" height="26"/>
-        <Static id="Static09" taborder="10" text="개설년도" left="313" top="140" width="87" height="26"/>
-        <Static id="Static08" taborder="11" text="연락처" left="313" top="109" width="87" height="26"/>
-        <Static id="Static07" taborder="12" text="소속학과" left="315" top="77" width="87" height="26"/>
-        <Static id="Static12" taborder="13" text="Static12" left="155" top="79" width="127" height="26" cssclass="sta_cm_box01C"/>
-        <Static id="Static13" taborder="14" text="Static13" left="155" top="110" width="127" height="26" cssclass="sta_cm_box01C"/>
-        <Static id="Static14" taborder="15" text="Static14" left="376" top="109" width="127" height="26" cssclass="sta_cm_box01C"/>
-        <Static id="Static15" taborder="16" text="Static15" left="376" top="78" width="127" height="26" cssclass="sta_cm_box01C"/>
-        <MaskEdit id="edt_lecCode" taborder="17" left="155" top="141" width="127" height="26"/>
-        <Combo id="Combo00" taborder="18" text="Combo00" left="155" top="172" width="127" height="26"/>
-        <Combo id="Combo01" taborder="19" text="Combo01" left="155" top="203" width="127" height="26"/>
-        <Static id="Static16" taborder="20" text="교시" left="90" top="233" width="77" height="26"/>
-        <Combo id="Combo02" taborder="21" text="Combo02" left="155" top="238" width="127" height="26"/>
-        <Combo id="Combo03" taborder="22" text="Combo03" left="376" top="202" width="127" height="26"/>
-        <Combo id="Combo04" taborder="23" text="Combo04" left="376" top="171" width="127" height="26"/>
-        <Combo id="Combo05" taborder="24" text="Combo05" left="376" top="140" width="127" height="26"/>
-        <Static id="Static17" taborder="25" text="강의 개요 및 목표" left="23" top="270" width="176" height="29" font="normal bold 10pt/normal &quot;Arial&quot;"/>
-        <TextArea id="TextArea00" taborder="26" left="30" top="300" width="560" height="86" onchanged="TextArea00_onchanged"/>
+        <Static id="Static01" taborder="1" text="교과목명" left="62" top="71" width="68" height="28"/>
+        <Edit id="Edit00" taborder="2" left="126" top="73" width="410" height="29" onchanged="Edit00_onchanged"/>
+        <Static id="Static02" taborder="3" text="교수명" left="93" top="107" width="87" height="26"/>
+        <Static id="Static03" taborder="4" text="연구실" left="90" top="140" width="87" height="26"/>
+        <Static id="Static04" taborder="5" text="과목코드" left="90" top="171" width="87" height="26"/>
+        <Static id="Static05" taborder="6" text="수강대상" left="90" top="202" width="87" height="26"/>
+        <Static id="Static06" taborder="7" text="요일" left="90" top="232" width="87" height="26"/>
+        <Static id="Static11" taborder="8" text="이수학점" left="313" top="232" width="87" height="26"/>
+        <Static id="Static10" taborder="9" text="개설학기" left="313" top="202" width="87" height="26"/>
+        <Static id="Static09" taborder="10" text="개설년도" left="313" top="170" width="87" height="26"/>
+        <Static id="Static08" taborder="11" text="연락처" left="313" top="139" width="87" height="26"/>
+        <Static id="Static07" taborder="12" text="소속학과" left="315" top="107" width="87" height="26"/>
+        <Static id="Static12" taborder="13" text="Static12" left="155" top="109" width="127" height="26" cssclass="sta_cm_box01C"/>
+        <Static id="Static13" taborder="14" text="Static13" left="155" top="140" width="127" height="26" cssclass="sta_cm_box01C"/>
+        <Static id="Static14" taborder="15" text="Static14" left="376" top="139" width="127" height="26" cssclass="sta_cm_box01C"/>
+        <Static id="Static15" taborder="16" text="Static15" left="376" top="108" width="127" height="26" cssclass="sta_cm_box01C"/>
+        <MaskEdit id="edt_lecCode" taborder="17" left="155" top="171" width="127" height="26"/>
+        <Combo id="Combo00" taborder="18" text="Combo00" left="155" top="202" width="127" height="26"/>
+        <Combo id="Combo01" taborder="19" text="Combo01" left="155" top="233" width="127" height="26"/>
+        <Static id="Static16" taborder="20" text="교시" left="90" top="263" width="77" height="26"/>
+        <Combo id="Combo02" taborder="21" text="Combo02" left="155" top="268" width="127" height="26"/>
+        <Combo id="Combo03" taborder="22" text="Combo03" left="376" top="232" width="127" height="26"/>
+        <Combo id="Combo04" taborder="23" text="Combo04" left="376" top="201" width="127" height="26"/>
+        <Combo id="Combo05" taborder="24" text="Combo05" left="376" top="170" width="127" height="26"/>
+        <Static id="Static17" taborder="25" text="강의 개요 및 목표" left="13" top="300" width="176" height="29" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <TextArea id="TextArea00" taborder="26" left="10" top="330" width="580" height="86" onchanged="TextArea00_onchanged"/>
         <Button id="Button00" taborder="27" text="취소" left="96" top="668" width="152" height="27"/>
         <Button id="Button01" taborder="28" text="완료" left="290" top="670" width="169" height="27"/>
+        <Static id="Static18" taborder="29" text="Static18" left="7" top="46" width="590" height="4" border="1px solid black,0px none,0px none"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[
+this.lecturePlanWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.Edit00.set_value(this.parent.lecture);
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_lecture">
+        <ColumnInfo>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="lec_title" type="STRING" size="256"/>
+          <Column id="pro_id" type="STRING" size="256"/>
+          <Column id="lec_divideclass" type="STRING" size="256"/>
+          <Column id="lec_totalnum" type="INT" size="256"/>
+          <Column id="lec_approval" type="INT" size="256"/>
+          <Column id="lec_close" type="STRING" size="256"/>
+          <Column id="lec_divideway" type="STRING" size="256"/>
+          <Column id="pro_name" type="STRING" size="256"/>
+          <Column id="pro_deptcode" type="STRING" size="256"/>
+          <Column id="pro_office" type="STRING" size="256"/>
+          <Column id="pro_phone" type="STRING" size="256"/>
+          <Column id="lec_year" type="DATE" size="256"/>
+          <Column id="lec_semester" type="STRING" size="256"/>
+          <Column id="lec_targetlevel" type="STRING" size="256"/>
+          <Column id="lec_classroom" type="STRING" size="256"/>
+          <Column id="lec_time" type="STRING" size="256"/>
+          <Column id="build_code" type="STRING" size="256"/>
+          <Column id="lec_day" type="STRING" size="256"/>
+          <Column id="lec_credit" type="STRING" size="256"/>
+          <Column id="lec_isuname" type="STRING" size="256"/>
+          <Column id="lec_summary" type="STRING" size="256"/>
+          <Column id="lec_way" type="STRING" size="256"/>
+          <Column id="lec_book" type="STRING" size="256"/>
+          <Column id="lec_eval" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>
