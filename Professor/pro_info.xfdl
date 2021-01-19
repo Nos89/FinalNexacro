@@ -177,6 +177,12 @@ this.Upload_VirtualFile_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.
 		
 		var sFileName = obj.filename;
 		var nFileSize = e.filesize;
+		
+		var result = this.fn_checkImg(sFileName);
+		if(!result){
+			alert("이미지 파일이 아닙니다. [png, gif, jpg, jpeg, bmp, anigif, tiff, icon]")		
+			return;
+			}
 		if(nFileSize > this.nMaxFileSize){
 			alert("첨부파일 최대용량은 2 MByte 입니다.");
 			return;
@@ -215,7 +221,6 @@ this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.
 };
 
 //파일전송 중
-
 this.FileUpTransfer00_onprogress = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferProgressEventInfo)
 {
 	trace(e.loaded +" / "+e.total +" Byte Uploading...");
@@ -232,6 +237,28 @@ this.FileUpTransfer00_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.Fi
 	
 	
 };
+
+//파일 확장자 체크
+this.fn_checkImg = function(fileTxt){
+	
+	var imageExt = ["png", "gif", "jpg", "jpeg", "bmp", "anigif", "tiff", "icon"];
+	
+	var extNm  = fileTxt.substr(fileTxt.lastIndexOf(".") + 1); // 맨 뒤 확장자만 자르기
+	
+	extNm = extNm.toLowerCase();
+	
+	var result = false;
+	
+	for(var i = 0; i <imageExt.length; i++){
+		if(imageExt[i].replace(".","") == extNm){
+			result = true;
+			break;
+			
+		}
+	}
+	
+	return result;
+};	
 
 //파일정보 초기화
 this.fn_FileClear = function (){

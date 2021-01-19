@@ -65,8 +65,8 @@
           <Row>
             <Col id="MENU_CD">1111</Col>
             <Col id="UP_MENU_CD">1</Col>
-            <Col id="PGM_PATH"></Col>
-            <Col id="PGM_ID"></Col>
+            <Col id="PGM_PATH"/>
+            <Col id="PGM_ID"/>
             <Col id="MENU_LVL">0</Col>
             <Col id="MENU_NM">강의</Col>
           </Row>
@@ -83,8 +83,8 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">강의계획서</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work03.xfdl</Col>
+            <Col id="PGM_PATH">Professor</Col>
+            <Col id="PGM_ID">lecturePlan.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">1003</Col>
