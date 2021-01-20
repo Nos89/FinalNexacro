@@ -95,16 +95,14 @@ this.nMaxFileSize = 2000000;  //각 파일 최대사이즈 (2 Mbyte)
 //폼로드시
 this.pro_info_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	
 	this.transaction(
-			"proInfoOnLoad",
-			"/proInfoOnLoad.nex",
-			"",
-			"ds_proInfo=out_proInfo ds_proMil=out_proMil ds_proFile=out_proFile",
-			"id="+this.id+"",  
-			"fn_callback"
-		);
-		
+		"proInfoOnLoad",
+		"/proInfoOnLoad.nex",
+		"",
+		"ds_proInfo=out_proInfo ds_proMil=out_proMil ds_proFile=out_proFile",
+		"id="+this.id+"",  
+		"fn_callback"
+	);
 };
 
 
@@ -112,23 +110,23 @@ this.pro_info_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.Tab00_Tabpage2_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.transaction(
-			"proInfoSave",
-			"/proInfoSave.nex",	
-			"in_proInfo=ds_proInfo", 
-			"", 
-			"", 
-			"fn_callback" 
-		);
+		"proInfoSave",
+		"/proInfoSave.nex",	
+		"in_proInfo=ds_proInfo", 
+		"", 
+		"", 
+		"fn_callback" 
+	);
 };
 
 
 this.fn_callback=function(id,errCode,errMsg){
- if (id=="proInfoSave")
- {
- 	alert("수정완료");
- }else if(id=="proInfoOnLoad"){
-	this.ImageViewer00.set_image("/resources/ProFile/"+this.ds_proFile.getColumn(0,"savedName")+"");
- }
+	if (id=="proInfoSave")
+	{
+		alert("수정완료");
+	}else if(id=="proInfoOnLoad"){
+		this.ImageViewer00.set_image("/resources/ProFile/"+this.ds_proFile.getColumn(0,"savedName")+"");
+	}
 };
 
 //이미지업로드
@@ -158,7 +156,7 @@ this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialog
 			//File 사이즈 체크를 위해
 			vFile.open(null,VirtualFile.openRead);
 		}
-			this.FileUpTransfer00.upload("/proFile/uploadImg.nex?id="+this.id+"&name="+this.multiFileName+"");	
+		this.FileUpTransfer00.upload("/proFile/uploadImg.nex?id="+this.id+"&name="+this.multiFileName+"");	
 	}
 };
 
@@ -180,9 +178,9 @@ this.Upload_VirtualFile_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.
 		
 		var result = this.fn_checkImg(sFileName);
 		if(!result){
-			alert("이미지 파일이 아닙니다. [png, gif, jpg, jpeg, bmp, anigif, tiff, icon]")		
+			alert("이미지 파일이 아닙니다. [png, gif, jpg, jpeg, bmp, anigif, tiff, icon] 형식의 파일을 올려주세요")		
 			return;
-			}
+		}
 		if(nFileSize > this.nMaxFileSize){
 			alert("첨부파일 최대용량은 2 MByte 입니다.");
 			return;
@@ -190,7 +188,7 @@ this.Upload_VirtualFile_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.
 		this.multiFileName = sFileName;
 		//FileUpTransfer 해당 파일추가
 		this.FileUpTransfer00.addFile(sFileName,obj);
-
+		
 	}
 }
 
@@ -213,11 +211,11 @@ this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.
 	msg += "message :"+e.message+"\n";
 	msg += "url :"+e.url+"\n";
 	this.alert("등록성공");
- 
+	
 	//파일정보 초기화
 	this.fn_FileClear();
 	this.reload();
-
+	
 };
 
 //파일전송 중
@@ -264,7 +262,7 @@ this.fn_checkImg = function(fileTxt){
 this.fn_FileClear = function (){
 	//FileUpTransfer 파일 모두삭제
 	this.FileUpTransfer00.clearFileList();
-	 
+	
 };]]></Script>
     <Objects>
       <Dataset id="ds_proInfo">
@@ -319,7 +317,6 @@ this.fn_FileClear = function (){
           <Column id="mil_code" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <FileUpTransfer id="FileUpTransfer00" onerror="FileUpTransfer00_onerror" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess"/>
       <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
       <Dataset id="ds_proFile">
         <ColumnInfo>
@@ -330,6 +327,7 @@ this.fn_FileClear = function (){
           <Column id="reg_date" type="DATE" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <FileUpTransfer id="FileUpTransfer00" onerror="FileUpTransfer00_onerror" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess"/>
     </Objects>
     <Bind>
       <BindItem id="item0" compid="Edit00" propid="value" datasetid="ds_proInfo" columnid="id"/>
@@ -359,6 +357,7 @@ this.fn_FileClear = function (){
       <BindItem id="item23" compid="Tab00.Tabpage1.form.MaskEdit00" propid="value" datasetid="ds_proInfo" columnid="inDate"/>
       <BindItem id="item2" compid="MaskEdit00" propid="value" datasetid="ds_proInfo" columnid="birth"/>
       <BindItem id="item6" compid="MaskEdit01" propid="value" datasetid="ds_proInfo" columnid="inDate"/>
+      <BindItem id="item27" compid="Edit00_01_00" propid="value" datasetid="ds_proInfo" columnid="dept_title"/>
     </Bind>
   </Form>
 </FDL>
