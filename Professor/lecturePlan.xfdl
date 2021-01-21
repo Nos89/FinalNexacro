@@ -7,7 +7,7 @@
         <Static id="Static00_00" taborder="1" text="강의계획서작성" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
         <Combo id="cbo_year" taborder="2" text="Combo00" left="45" top="49" width="70" height="25" innerdataset="ds_year" codecolumn="code" datacolumn="name"/>
         <Combo id="cbo_stdYear" taborder="3" text="Combo00" left="170" top="49" width="70" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name"/>
-        <Combo id="cbo_semester" taborder="4" text="Combo00" left="285" top="49" width="70" height="25" innerdataset="ds_semester" codecolumn="code" datacolumn="name"/>
+        <Combo id="cbo_semester" taborder="4" text="Combo00" left="285" top="49" width="70" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_semester"/>
         <Button id="Button00" taborder="5" text="조회" left="380" top="49" width="98" height="23"/>
         <Static id="Static00" taborder="6" text="년도" left="10" top="49" width="40" height="23"/>
         <Static id="Static00_01" taborder="7" text="학년" left="139" top="49" width="40" height="23"/>
@@ -299,6 +299,9 @@ this.btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 this.fn_makeChildFrame = function(id){
 	var year = this.ds_openClass.getColumn(this.row,"oc_year");
+	var proName = nexacro.Application.gvProName;
+	var lecCode = this.ds_openClass.getColumn(this.row,"oc_code");
+	var semester = this.ds_openClass.getColumn(this.row,"oc_semester");
 	var pDataSet =this.ds_lecChild;
 	
 	//alert(this.ds_lecChild.getColumn(0,"lec_code"));	
@@ -313,14 +316,14 @@ this.fn_makeChildFrame = function(id){
 	if(id == "modify"){
 		objCF.showModal(
 			this.getOwnerFrame()
-			,{lecture:this.ds_lecChild,year:year}  
+			,{lecture:this.ds_lecChild,year:year,proName:proName}  
 			,this
 			,"fn_callback_pop"
 		);
 	}else{
 		objCF.showModal(
 			this.getOwnerFrame()
-			,{lecture:'555',year:year}  
+			,{lecture:'1',year:year,proName:proName,lecCode:lecCode}  
 			,this
 			,"fn_callback_pop"
 		);

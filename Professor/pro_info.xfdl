@@ -103,6 +103,7 @@ this.pro_info_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"id="+this.id+"",  
 		"fn_callback"
 	);
+	
 };
 
 
