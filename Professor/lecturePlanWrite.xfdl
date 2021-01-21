@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="lecturePlanWrite" width="1590" height="700" titletext="New Form" onload="lecturePlanWrite_onload">
+    <Layouts>
+      <Layout height="700" width="1590">
+        <Static id="Static00" taborder="0" text="강의계획서 작성 / 수정" left="10" top="10" width="180" height="37" cssclass="sta_WF_title02"/>
+        <Static id="Static01" taborder="1" text="교과목명" left="68" top="71" width="68" height="28"/>
+        <Edit id="Edit00" taborder="2" left="132" top="73" width="410" height="29" onchanged="Edit00_onchanged"/>
+        <Static id="Static17" taborder="3" text="강의 개요 및 목표" left="13" top="240" width="176" height="29" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <TextArea id="TextArea00" taborder="4" left="11" top="270" width="609" height="86" onchanged="TextArea00_onchanged"/>
+        <Button id="btn_close" taborder="5" text="취소" left="330" top="610" width="152" height="27" onclick="btn_close_onclick"/>
+        <Button id="btn_ok" taborder="6" text="완료" left="125" top="610" width="169" height="27" onclick="btn_ok_onclick"/>
+        <Static id="Static18" taborder="7" text="Static18" left="7" top="47" width="613" height="3" border="1px solid black,0px none,0px none"/>
+        <Static id="Static08_00" taborder="8" text="평가기준" left="21" top="375" width="188" height="23"/>
+        <Static id="Static08_00_00" taborder="9" text="강의방법" left="25" top="460" width="188" height="23"/>
+        <Static id="Static08_00_00_00" taborder="10" text="교재" left="342" top="460" width="188" height="23"/>
+        <TextArea id="TextArea01" taborder="11" left="340" top="490" width="275" height="90" onchanged="TextArea01_onchanged"/>
+        <Static id="Static07_06" taborder="12" text="강의" left="12" top="398" width="88" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_07" taborder="13" text="토론" left="Static07_06:-1" top="398" width="88" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_08" taborder="14" text="실습" left="Static07_07:-1" top="398" width="88" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_09" taborder="15" text="시청각" left="Static07_08:-1" top="398" width="88" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_09_00" taborder="16" text="기타" left="Static07_09:-1" top="398" width="88" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00" taborder="17" text="출석" left="18" top="490" width="80" height="20" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00_00" taborder="18" text="중간고사" left="97" top="490" width="80" height="20" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00_00_00" taborder="19" text="기말고사" left="176" top="490" width="80" height="20" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00_00_00_00" taborder="20" text="수시평가" left="255" top="490" width="80" height="20" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00_01" taborder="21" text="과제물" left="18" top="534" width="80" height="20" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00_00_01" taborder="22" text="발표" left="97" top="534" width="80" height="20" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00_00_00_02" taborder="23" text="수업태도" left="176" top="534" width="80" height="20" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00_00_00_00_00" taborder="24" text="기타" left="255" top="534" width="80" height="20" cssclass="sta_cm_box01C"/>
+        <Grid id="Grid00" taborder="25" left="680" top="322" width="580" height="270" binddataset="ds_lecture">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="lec_code"/>
+                <Cell col="1" text="lec_title"/>
+                <Cell col="2" text="lec_approval"/>
+                <Cell col="3" text="lec_deny_reason"/>
+                <Cell col="4" text="pro_name"/>
+                <Cell col="5" text="lec_semester"/>
+                <Cell col="6" text="lec_targetLevel"/>
+                <Cell col="7" text="lec_classroom"/>
+                <Cell col="8" text="lec_schedule"/>
+                <Cell col="9" text="lec_score"/>
+                <Cell col="10" text="lec_isu"/>
+                <Cell col="11" text="lec_summary"/>
+                <Cell col="12" text="lec_way"/>
+                <Cell col="13" text="lec_book"/>
+                <Cell col="14" text="lec_eval"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:lec_code"/>
+                <Cell col="1" text="bind:lec_title"/>
+                <Cell col="2" text="bind:lec_approval"/>
+                <Cell col="3" text="bind:lec_deny_reason"/>
+                <Cell col="4" text="bind:pro_name"/>
+                <Cell col="5" text="bind:lec_semester"/>
+                <Cell col="6" text="bind:lec_targetLevel"/>
+                <Cell col="7" text="bind:lec_classroom"/>
+                <Cell col="8" text="bind:lec_schedule"/>
+                <Cell col="9" text="bind:lec_score"/>
+                <Cell col="10" text="bind:lec_isu"/>
+                <Cell col="11" text="bind:lec_summary"/>
+                <Cell col="12" text="bind:lec_way"/>
+                <Cell col="13" text="bind:lec_book"/>
+                <Cell col="14" text="bind:lec_eval"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <MaskEdit id="mask_lecture" taborder="26" left="12" top="422" width="88" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_debate" taborder="27" left="mask_lecture:-1" top="422" width="88" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_practice" taborder="28" left="mask_debate:-1" top="422" width="88" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_watching" taborder="29" left="mask_practice:-1" top="422" width="88" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_other" taborder="30" left="mask_watching:-1" top="422" width="88" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_attend" taborder="31" left="18" top="509" width="80" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_middleTest" taborder="32" left="97" top="509" width="80" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_finalTest" taborder="33" left="176" top="509" width="80" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_test" taborder="34" left="255" top="509" width="80" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_assingment" taborder="35" left="18" top="553" width="80" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_presentation" taborder="36" left="97" top="553" width="80" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_attitude" taborder="37" left="176" top="553" width="80" height="25" onchanged="mask_onchanged"/>
+        <MaskEdit id="mask_other1" taborder="38" left="255" top="553" width="80" height="25" onchanged="mask_onchanged"/>
+        <Static id="Static06_00" taborder="39" text="교수명" left="18" top="113" width="87" height="25"/>
+        <Static id="Static06_00_00_00" taborder="40" text="과목코드" left="335" top="112" width="87" height="25"/>
+        <Static id="Static06_00_00_00_00" taborder="41" text="수강대상" left="18" top="140" width="87" height="25"/>
+        <Static id="Static06_00_00_00_00_00_00_00" taborder="42" text="개설년도" left="335" top="141" width="87" height="25"/>
+        <Static id="Static06_00_00_00_00_00_00_00_00" taborder="43" text="개설학기" left="335" top="170" width="87" height="25"/>
+        <Static id="Static06_00_00_00_00_00_00_00_00_00" taborder="44" text="이수학점" left="335" top="199" width="87" height="25"/>
+        <Static id="Static06_00_00_00_00_01" taborder="45" text="요일/교시" left="18" top="169" width="87" height="25"/>
+        <Static id="Static07" taborder="46" text="Static07" left="83" top="112" width="138" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_01" taborder="47" text="Static07" left="400" top="113" width="138" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_04_00_00_00_00" taborder="48" text="Static07" left="400" top="203" width="138" height="25" cssclass="sta_cm_box01C"/>
+        <MaskEdit id="MaskEdit00" taborder="49" left="83" top="142" width="138" height="25" cssclass="mask_cm_box01C" format="#학년" type="string" enable="false"/>
+        <MaskEdit id="mask_year" taborder="50" left="400" top="143" width="138" height="25" cssclass="mask_cm_box01C" format="####년" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
+        <MaskEdit id="MaskEdit00_00_00" taborder="51" left="400" top="173" width="138" height="25" cssclass="mask_cm_box01C" format="#학기" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
+        <Static id="Static06_00_00_00_00_01_00" taborder="52" text="강의실" left="19" top="198" width="87" height="25"/>
+        <Static id="Static07_03_00" taborder="53" text="Static07" left="83" top="201" width="138" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_09_00_00" taborder="54" text="총합" left="Static07_09_00:-1" top="398" width="88" height="25" cssclass="sta_cm_box01C"/>
+        <MaskEdit id="mask_wayTotal" taborder="55" left="mask_other:-1" top="422" width="88" height="25" onchanged="mask_onchanged"/>
+        <Button id="btn_openSchduler" taborder="56" left="226" top="172" width="28" height="26" icon="url('imagerc::img_WF_search01.png')" text="" onclick="btn_openSchduler_onclick"/>
+        <Edit id="edt_schedule" taborder="57" left="84" top="172" width="138" height="27" enable="false" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.way;
+this.eval;
+
+this.lecturePlanWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ds_lecture.copyData(this.parent.lecture);
+	this.way = this.fn_split(0,"way");
+	this.eval = this.fn_split(0,"eval");
+	this.mask_year.set_value(this.parent.year);
+	this.fn_setText("way",this.way);
+	this.fn_setText("eval",this.eval);
+	this.mask_wayTotal.set_value(this.fn_sum());
+};
+
+
+this.mask_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
+{
+	if(this.fn_sum() > 100){
+		alert("평가기준은 100을 넘을 수 없습니다.");
+		obj.set_value("0");
+		return;
+	}
+	this.mask_wayTotal.set_value(this.fn_sum());
+};
+
+this.btn_openSchduler_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objCF = new ChildFrame();
+	objCF.init("Scheduler", '', '', '', ''); 
+	objCF.set_formurl("Professor::timeScheduler.xfdl"); 
+	objCF.set_openalign("center middle");
+	objCF.set_dragmovetype("all");
+	objCF.set_overlaycolor("rgba(0,0,0,0.3)");
+	
+		objCF.showModal(
+			this.getOwnerFrame()
+			,{}  
+			,this
+			,"fn_callback_pop"
+		);
+};
+
+this.fn_callback_pop = function(id,sReturn){
+	var arrRtn = sReturn.split("|");
+	var str="";
+	for(var i=0; i<arrRtn.length-1; i++){
+		str += arrRtn[i].replace(",","")+" / ";
+	}
+	this.edt_schedule.set_value(str.slice(0,-2));
+};
+
+this.fn_split = function(index,id){
+	
+	var way;
+	var arrWay;
+	if(id=="way"){
+	way = this.ds_lecture.getColumn(index,"lec_way");
+	}else{
+	way = this.ds_lecture.getColumn(index,"lec_eval");
+	}
+	arrWay = way.split("/");	
+	return arrWay;
+}
+
+this.fn_setText = function(id,sArr){
+	if(id == "way"){
+		this.mask_lecture.set_value(sArr[0]);
+		this.mask_debate.set_value(sArr[1]);
+		this.mask_practice.set_value(sArr[2]);
+		this.mask_watching.set_value(sArr[3]);
+		this.mask_other.set_value(sArr[4]);
+	}else{
+		this.mask_attend.set_value(sArr[0]);
+		this.mask_middleTest.set_value(sArr[1]);
+		this.mask_finalTest.set_value(sArr[2]);
+		this.mask_test.set_value(sArr[3]);
+		this.mask_assingment.set_value(sArr[4]);
+		this.mask_presentation.set_value(sArr[5]);
+		this.mask_attitude.set_value(sArr[6]);
+		this.mask_other1.set_value(sArr[7]);
+	}
+}
+
+this.fn_sum = function(){
+	var lecture =parseInt(this.mask_lecture.value);
+	var debate = parseInt(this.mask_debate.value);
+	var practice =parseInt( this.mask_practice.value);
+	var watching = parseInt(this.mask_watching.value);
+	var other = parseInt(this.mask_other.value);
+	var sum = lecture + debate + practice + watching + other;
+	return sum;
+};
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+
+]]></Script>
+    <Objects>
+      <Dataset id="ds_lecture">
+        <ColumnInfo>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="lec_title" type="STRING" size="256"/>
+          <Column id="lec_approval" type="INT" size="256"/>
+          <Column id="lec_deny_reason" type="STRING" size="256"/>
+          <Column id="pro_name" type="STRING" size="256"/>
+          <Column id="lec_semester" type="STRING" size="256"/>
+          <Column id="lec_targetLevel" type="STRING" size="256"/>
+          <Column id="lec_classroom" type="STRING" size="256"/>
+          <Column id="lec_schedule" type="STRING" size="256"/>
+          <Column id="lec_score" type="INT" size="256"/>
+          <Column id="lec_isu" type="STRING" size="256"/>
+          <Column id="lec_summary" type="STRING" size="256"/>
+          <Column id="lec_way" type="STRING" size="256"/>
+          <Column id="lec_book" type="STRING" size="256"/>
+          <Column id="lec_eval" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Edit00" propid="value" datasetid="ds_lecture" columnid="lec_title"/>
+      <BindItem id="item5" compid="TextArea00" propid="value" datasetid="ds_lecture" columnid="lec_summary"/>
+      <BindItem id="item1" compid="Static07_05" propid="text" datasetid="ds_lecture" columnid="lec_title"/>
+      <BindItem id="item2" compid="Static07" propid="text" datasetid="ds_lecture" columnid="pro_name"/>
+      <BindItem id="item3" compid="Static07_01" propid="text" datasetid="ds_lecture" columnid="lec_code"/>
+      <BindItem id="item6" compid="Static07_03_00" propid="text" datasetid="ds_lecture" columnid="lec_classroom"/>
+      <BindItem id="item7" compid="Static07_04_00_00_00_00" propid="text" datasetid="ds_lecture" columnid="lec_score"/>
+      <BindItem id="item8" compid="MaskEdit00" propid="value" datasetid="ds_lecture" columnid="lec_targetLevel"/>
+      <BindItem id="item9" compid="mask_year" propid="value" datasetid="ds_openClass" columnid="oc_year"/>
+      <BindItem id="item10" compid="MaskEdit00_00_00" propid="value" datasetid="ds_lecture" columnid="lec_semester"/>
+      <BindItem id="item11" compid="TextArea01" propid="value" datasetid="ds_lecture" columnid="lec_book"/>
+      <BindItem id="item4" compid="edt_schedule" propid="value" datasetid="ds_lecture" columnid="lec_schedule"/>
+    </Bind>
+  </Form>
+</FDL>

@@ -3233,4 +3233,10 @@
 
 
 
+.MaskEdit.mask_cm_box01C
+{
+	background : #f7f7f7;
+	-nexa-border : 1px solid #c7c7c7;
+	-nexa-text-align : center;
+}
 ]]></XCSS>

@@ -36,12 +36,12 @@
             <Col id="MENU_CD">0000</Col>
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="MENU_NM">교수서비스</Col>
+            <Col id="MENU_NM">개인정보관리</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0001</Col>
             <Col id="UP_MENU_CD">0000</Col>
-            <Col id="MENU_NM">개인정보관리</Col>
+            <Col id="MENU_NM">개인정보조회</Col>
             <Col id="PGM_PATH">Professor</Col>
             <Col id="PGM_ID">pro_info.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
@@ -62,6 +62,106 @@
             <Col id="PGM_ID">work03.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
           </Row>
+          <Row>
+            <Col id="MENU_CD">1111</Col>
+            <Col id="UP_MENU_CD">1</Col>
+            <Col id="PGM_PATH"/>
+            <Col id="PGM_ID"/>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="MENU_NM">강의</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">1001</Col>
+            <Col id="UP_MENU_CD">0000</Col>
+            <Col id="MENU_NM">강의정보</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work01.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">1002</Col>
+            <Col id="UP_MENU_CD">0000</Col>
+            <Col id="MENU_NM">강의계획서</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Professor</Col>
+            <Col id="PGM_ID">lecturePlan.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">1003</Col>
+            <Col id="UP_MENU_CD">0000</Col>
+            <Col id="MENU_NM">강의별 학생정보</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work03.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">2000</Col>
+            <Col id="UP_MENU_CD">2</Col>
+            <Col id="MENU_NM">성적</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">2001</Col>
+            <Col id="UP_MENU_CD">0002</Col>
+            <Col id="MENU_NM">성적관리</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work01.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">2002</Col>
+            <Col id="UP_MENU_CD">0002</Col>
+            <Col id="MENU_NM">출결관리</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work03.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3000</Col>
+            <Col id="UP_MENU_CD">3</Col>
+            <Col id="MENU_NM">학과</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3001</Col>
+            <Col id="UP_MENU_CD">0003</Col>
+            <Col id="MENU_NM">학과정보</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work01.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3002</Col>
+            <Col id="UP_MENU_CD">0003</Col>
+            <Col id="MENU_NM">학과/교수스케쥴</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work02.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3003</Col>
+            <Col id="UP_MENU_CD">0003</Col>
+            <Col id="MENU_NM">학과 업무일지</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work03.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">4000</Col>
+            <Col id="UP_MENU_CD">4</Col>
+            <Col id="MENU_NM">메일함</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work01.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5000</Col>
+            <Col id="UP_MENU_CD">5</Col>
+            <Col id="MENU_NM">웹하드</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">Base</Col>
+            <Col id="PGM_ID">work03.xfdl</Col>
+          </Row>
         </Rows>
       </Dataset>
     </Objects>
@@ -74,8 +174,8 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	var sMenuId = this.application.gdsLeftMenu.getColumn(e.row, "MENU_CD");
-	
+	//var sMenuId = this.application.gdsLeftMenu.getColumn(e.row, "MENU_CD");
+	var sMenuId = this.grd_professor.getColumn(e.row, "MENU_CD"); 
 	this.fn_openMenu(sMenuId);
 };
 
