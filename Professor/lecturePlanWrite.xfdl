@@ -111,15 +111,16 @@
         <Static id="Static06_00_00_00_00_01" taborder="45" text="요일/교시" left="18" top="169" width="87" height="25"/>
         <Static id="Static07" taborder="46" text="Static07" left="83" top="112" width="138" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static07_01" taborder="47" text="Static07" left="400" top="113" width="138" height="25" cssclass="sta_cm_box01C"/>
-        <Static id="Static07_03" taborder="48" text="Static07" left="83" top="172" width="138" height="25" cssclass="sta_cm_box01C"/>
-        <Static id="Static07_04_00_00_00_00" taborder="49" text="Static07" left="400" top="203" width="138" height="25" cssclass="sta_cm_box01C"/>
-        <MaskEdit id="MaskEdit00" taborder="50" left="83" top="142" width="138" height="25" cssclass="mask_cm_box01C" format="#학년" type="string" enable="false"/>
-        <MaskEdit id="mask_year" taborder="51" left="400" top="143" width="138" height="25" cssclass="mask_cm_box01C" format="####년" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
-        <MaskEdit id="MaskEdit00_00_00" taborder="52" left="400" top="173" width="138" height="25" cssclass="mask_cm_box01C" format="#학기" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
-        <Static id="Static06_00_00_00_00_01_00" taborder="53" text="강의실" left="19" top="198" width="87" height="25"/>
-        <Static id="Static07_03_00" taborder="54" text="Static07" left="83" top="201" width="138" height="25" cssclass="sta_cm_box01C"/>
-        <Static id="Static07_09_00_00" taborder="55" text="총합" left="Static07_09_00:-1" top="398" width="88" height="25" cssclass="sta_cm_box01C"/>
-        <MaskEdit id="mask_wayTotal" taborder="56" left="mask_other:-1" top="422" width="88" height="25" onchanged="mask_onchanged"/>
+        <Static id="Static07_04_00_00_00_00" taborder="48" text="Static07" left="400" top="203" width="138" height="25" cssclass="sta_cm_box01C"/>
+        <MaskEdit id="MaskEdit00" taborder="49" left="83" top="142" width="138" height="25" cssclass="mask_cm_box01C" format="#학년" type="string" enable="false"/>
+        <MaskEdit id="mask_year" taborder="50" left="400" top="143" width="138" height="25" cssclass="mask_cm_box01C" format="####년" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
+        <MaskEdit id="MaskEdit00_00_00" taborder="51" left="400" top="173" width="138" height="25" cssclass="mask_cm_box01C" format="#학기" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
+        <Static id="Static06_00_00_00_00_01_00" taborder="52" text="강의실" left="19" top="198" width="87" height="25"/>
+        <Static id="Static07_03_00" taborder="53" text="Static07" left="83" top="201" width="138" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_09_00_00" taborder="54" text="총합" left="Static07_09_00:-1" top="398" width="88" height="25" cssclass="sta_cm_box01C"/>
+        <MaskEdit id="mask_wayTotal" taborder="55" left="mask_other:-1" top="422" width="88" height="25" onchanged="mask_onchanged"/>
+        <Button id="btn_openSchduler" taborder="56" left="226" top="172" width="28" height="26" icon="url('imagerc::img_WF_search01.png')" text="" onclick="btn_openSchduler_onclick"/>
+        <Edit id="edt_schedule" taborder="57" left="84" top="172" width="138" height="27" enable="false" textAlign="center"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.way;
@@ -134,6 +135,43 @@ this.lecturePlanWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo
 	this.fn_setText("way",this.way);
 	this.fn_setText("eval",this.eval);
 	this.mask_wayTotal.set_value(this.fn_sum());
+};
+
+
+this.mask_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
+{
+	if(this.fn_sum() > 100){
+		alert("평가기준은 100을 넘을 수 없습니다.");
+		obj.set_value("0");
+		return;
+	}
+	this.mask_wayTotal.set_value(this.fn_sum());
+};
+
+this.btn_openSchduler_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objCF = new ChildFrame();
+	objCF.init("Scheduler", '', '', '', ''); 
+	objCF.set_formurl("Professor::timeScheduler.xfdl"); 
+	objCF.set_openalign("center middle");
+	objCF.set_dragmovetype("all");
+	objCF.set_overlaycolor("rgba(0,0,0,0.3)");
+	
+		objCF.showModal(
+			this.getOwnerFrame()
+			,{}  
+			,this
+			,"fn_callback_pop"
+		);
+};
+
+this.fn_callback_pop = function(id,sReturn){
+	var arrRtn = sReturn.split("|");
+	var str="";
+	for(var i=0; i<arrRtn.length-1; i++){
+		str += arrRtn[i].replace(",","")+" / ";
+	}
+	this.edt_schedule.set_value(str.slice(0,-2));
 };
 
 this.fn_split = function(index,id){
@@ -187,15 +225,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 };
 
-this.mask_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
-{
-	if(this.fn_sum() > 100){
-		alert("평가기준은 100을 넘을 수 없습니다.");
-		obj.set_value("0");
-		return;
-	}
-	this.mask_wayTotal.set_value(this.fn_sum());
-};
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_lecture">
@@ -227,13 +257,13 @@ this.mask_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
       <BindItem id="item1" compid="Static07_05" propid="text" datasetid="ds_lecture" columnid="lec_title"/>
       <BindItem id="item2" compid="Static07" propid="text" datasetid="ds_lecture" columnid="pro_name"/>
       <BindItem id="item3" compid="Static07_01" propid="text" datasetid="ds_lecture" columnid="lec_code"/>
-      <BindItem id="item4" compid="Static07_03" propid="text" datasetid="ds_lecture" columnid="lec_schedule"/>
       <BindItem id="item6" compid="Static07_03_00" propid="text" datasetid="ds_lecture" columnid="lec_classroom"/>
       <BindItem id="item7" compid="Static07_04_00_00_00_00" propid="text" datasetid="ds_lecture" columnid="lec_score"/>
       <BindItem id="item8" compid="MaskEdit00" propid="value" datasetid="ds_lecture" columnid="lec_targetLevel"/>
       <BindItem id="item9" compid="mask_year" propid="value" datasetid="ds_openClass" columnid="oc_year"/>
       <BindItem id="item10" compid="MaskEdit00_00_00" propid="value" datasetid="ds_lecture" columnid="lec_semester"/>
       <BindItem id="item11" compid="TextArea01" propid="value" datasetid="ds_lecture" columnid="lec_book"/>
+      <BindItem id="item4" compid="edt_schedule" propid="value" datasetid="ds_lecture" columnid="lec_schedule"/>
     </Bind>
   </Form>
 </FDL>
