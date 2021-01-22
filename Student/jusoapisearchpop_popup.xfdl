@@ -49,7 +49,7 @@ this.fn_transaction = function()
 	var sText = "'"+this.edtSearch.value+"'";
 		
 	var strSvcID = "selectJuso";
-	var strURL = "http://localhost:8080/playnexacro_nana/service/juso/jusoopenapisearch.jsp"
+	var strURL = "/jusoSearch.nex"
 	var strInDatasets = "";
 	var strOutDatasets = "dsJuso=dsjuso";
 	var strCallbackFunc = "fn_callback";

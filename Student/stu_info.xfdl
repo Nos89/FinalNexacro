@@ -15,9 +15,9 @@
         <Static id="Static02_00" taborder="9" text="성명" left="136" top="113" width="50" height="30" textAlign="right"/>
         <Static id="Static02_01" taborder="10" text="생년월일" left="136" top="148" width="50" height="30" textAlign="right"/>
         <Static id="Static02_02" taborder="11" text="성별" left="136" top="183" width="50" height="30" textAlign="right"/>
-        <Edit id="Edit00_03" taborder="12" left="351" top="78" width="120" height="30" enable="false" value="대한민국" text="대한민국" font="12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Edit id="Edit00_03" taborder="12" left="356" top="78" width="115" height="30" enable="false" value="대한민국" text="대한민국" font="12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Static id="Static02_03" taborder="13" text="국적" left="300" top="78" width="50" height="30" textAlign="right"/>
-        <Edit id="Edit00_00_00" taborder="14" left="351" top="113" width="120" height="30" enable="false"/>
+        <Edit id="Edit00_00_00" taborder="14" left="356" top="113" width="115" height="30" enable="false"/>
         <Static id="Static02_00_00" taborder="15" text="학적상태" left="300" top="113" width="50" height="30" textAlign="right"/>
         <Static id="Static02_01_00" taborder="16" text="학년" left="300" top="148" width="50" height="30" textAlign="right"/>
         <Static id="Static02_02_00" taborder="17" text="수강학년" left="300" top="183" width="50" height="30" textAlign="right"/>
@@ -29,13 +29,13 @@
         <Static id="Static02_01_01" taborder="23" text="학부(과)" left="482" top="148" width="50" height="30" textAlign="right"/>
         <Edit id="Edit00_02_01" taborder="24" left="536" top="183" width="154" height="30" enable="false"/>
         <Static id="Static02_02_01" taborder="25" text="학과(전공)" left="472" top="183" width="60" height="30" textAlign="right"/>
-        <Edit id="Edit00_05" taborder="26" left="762" top="78" width="138" height="30" enable="false"/>
-        <Static id="Static02_05" taborder="27" text="학적변동" left="712" top="78" width="50" height="30" textAlign="right"/>
-        <Edit id="Edit00_00_02" taborder="28" left="762" top="113" width="138" height="30" enable="false"/>
-        <Static id="Static02_00_02" taborder="29" text="변동사유" left="712" top="113" width="50" height="30" textAlign="right"/>
-        <Edit id="Edit00_01_02" taborder="30" left="762" top="148" width="138" height="30" enable="false"/>
-        <Static id="Static02_01_02" taborder="31" text="변동세부사유" left="687" top="148" width="75" height="30" textAlign="right"/>
-        <Static id="Static02_02_02" taborder="32" text="변동일자" left="712" top="183" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_05" taborder="26" left="772" top="80" width="128" height="30" enable="false"/>
+        <Static id="Static02_05" taborder="27" text="학적변동" left="717" top="80" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_00_02" taborder="28" left="772" top="115" width="128" height="30" enable="false"/>
+        <Static id="Static02_00_02" taborder="29" text="변동사유" left="717" top="115" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_01_02" taborder="30" left="772" top="150" width="128" height="30" enable="false"/>
+        <Static id="Static02_01_02" taborder="31" text="변동세부사유" left="695" top="150" width="72" height="30" textAlign="right"/>
+        <Static id="Static02_02_02" taborder="32" text="변동일자" left="717" top="183" width="50" height="30" textAlign="right"/>
         <Tab id="Tab00" taborder="33" tabindex="0" left="5" top="242" width="1080" height="398">
           <Tabpages>
             <Tabpage id="Tabpage1" text="기본">
@@ -153,15 +153,15 @@
                   <Static id="Static02_00_01_00_01_01_00_00_00_01_00" taborder="30" text="군번" left="670" top="315" width="50" height="30" textAlign="right"/>
                   <Static id="Static00_00_00" taborder="31" text="현거주지주소" left="-1" top="360" height="34" cssclass="sta_WF_title01" right="-1"/>
                   <Static id="Static02_00_01_00_01_01_00_00_01" taborder="32" text="우편번호" left="-1" top="404" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00_01_01_00_00_01" taborder="33" left="54" top="404" width="150" height="30" enable="false"/>
+                  <Edit id="edtPostcode" taborder="33" left="54" top="404" width="150" height="30" enable="false"/>
                   <Button id="btn_adrress" taborder="34" text="Button00" left="216" top="404" width="29" height="30" onclick="Tab00_Tabpage3_btn_adrress_onclick"/>
-                  <Edit id="Edit00_00_01_00_01_01_00_00_01_00" taborder="35" left="345" top="404" width="306" height="30" enable="false"/>
+                  <Edit id="edtAddress1" taborder="35" left="345" top="404" width="306" height="30" enable="false"/>
                   <Static id="Static02_00_01_00_01_01_00_00_01_00" taborder="36" text="주소" left="290" top="404" width="50" height="30" textAlign="right"/>
                   <Edit id="Edit00_00_01_00_01_01_00_00_01_00_00" taborder="37" left="657" top="404" width="306" height="30"/>
                   <Calendar id="Calendar00" taborder="38" left="55" top="139" width="150" height="30" enable="false"/>
                   <Calendar id="Calendar00_00" taborder="39" left="54" top="280" width="150" height="30" enable="false"/>
                   <Calendar id="Calendar00_00_00" taborder="40" left="285" top="280" width="150" height="30" enable="false"/>
-                  <Button id="btn_save" taborder="41" text="저장" left="985" top="11" width="58" height="28" onclick="Tab00_Tabpage3_btn_save_onclick"/>
+                  <Button id="btn_save" taborder="41" text="저장(개발중)" left="969" top="11" width="74" height="28" onclick="Tab00_Tabpage3_btn_save_onclick"/>
                   <Edit id="Edit00_00_01" taborder="42" left="54" top="69" width="150" height="30" enable="false"/>
                   <Edit id="Edit00_00_01_01" taborder="43" left="54" top="315" width="150" height="30" enable="false"/>
                   <Edit id="Edit00_00_01_01_00" taborder="44" left="285" top="315" width="150" height="30" enable="false"/>
@@ -602,9 +602,9 @@
         <Edit id="Edit00_01_02_00" taborder="40" left="971" top="148" width="114" height="30" enable="false"/>
         <Edit id="Edit00_02_02_00" taborder="41" left="971" top="183" width="114" height="30" enable="false"/>
         <MaskEdit id="MaskEdit00" taborder="42" left="189" top="148" width="111" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
-        <MaskEdit id="MaskEdit00_00" taborder="43" left="762" top="183" width="138" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
-        <MaskEdit id="MaskEdit00_01" taborder="44" left="351" top="148" width="120" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
-        <MaskEdit id="MaskEdit00_01_00" taborder="45" left="351" top="183" width="120" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
+        <MaskEdit id="MaskEdit00_00" taborder="43" left="772" top="185" width="128" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
+        <MaskEdit id="MaskEdit00_01" taborder="44" left="356" top="148" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
+        <MaskEdit id="MaskEdit00_01_00" taborder="45" left="356" top="183" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.multiFileName = "";
@@ -784,7 +784,7 @@ this.Tab00_Tabpage3_btn_adrress_onclick = function(obj:nexacro.Button,e:nexacro.
 		sPopupUrl = "Student::jusoapisearchpop_popup.xfdl";
 	
 	//modal popup open call
-	this.gfn_showModal(sPopupId, oArg, sPopupUrl, "popupCallBack", this, 10, 100, 570, 450);
+	this.gfn_showModal(sPopupId, oArg, sPopupUrl, "popupCallBack", this, 300, 100, 570, 450);
 };
 
 //popup call back
@@ -795,8 +795,8 @@ this.popupCallBack = function(sFormId, sArg)
 		if(!this.gfn_isNull(sArg))
 		{
 			var addData = sArg.split(",");
-			this.edtPostcode.set_value(addData[0]);
-			this.edtAddress1.set_value(addData[1]);
+			this.Tab00.Tabpage3.form.edtPostcode.set_value(addData[0]);
+			this.Tab00.Tabpage3.form.edtAddress1.set_value(addData[1]);
 			this.edtAddress2.set_value(addData[2]);
 			
 			this.edtAddressDetail.setFocus();
@@ -880,7 +880,7 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
       <BindItem id="item57" compid="Edit00_05_00" propid="value" datasetid="ds_proInfo" columnid="id"/>
       <BindItem id="item58" compid="Edit00_00_02_00" propid="value" datasetid="ds_proInfo" columnid="name"/>
       <BindItem id="item61" compid="Tab00.Tabpage1.form.Calendar00" propid="value" datasetid="ds_stuInfo" columnid="inDate"/>
-      <BindItem id="item62" compid="Tab00.Tabpage3.form.Edit00_00_01_00_01_01_00_00_01_00" propid="value" datasetid="ds_stuInfo" columnid="addr1"/>
+      <BindItem id="item62" compid="Tab00.Tabpage3.form.edtAddress1" propid="value" datasetid="ds_stuInfo" columnid="addr1"/>
       <BindItem id="item63" compid="Tab00.Tabpage3.form.Edit00_00_01_00_01_01_00_00_01_00_00" propid="value" datasetid="ds_stuInfo" columnid="addr2"/>
       <BindItem id="item6" compid="MaskEdit00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
       <BindItem id="item7" compid="MaskEdit00_00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
