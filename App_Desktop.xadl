@@ -3,7 +3,7 @@
   <Application id="App_Desktop" screenid="Desktop_screen" onload="Application_onload">
     <Layout>
       <MainFrame id="mainframe" showtitlebar="true" showstatusbar="false" width="1280" height="720" titletext="MDI (Frameset)">
-        <VFrameSet id="VFSet01" separatesize="65,*,30">
+        <VFrameSet id="VFSet01" separatesize="65,*">
           <Frames>
             <ChildFrame id="TopFrame" formurl="frame::frmTop.xfdl" dragmovetype="none" showstatusbar="false" showtitlebar="false"/>
             <HFrameSet id="HFSet01" separatesize="190,*">
@@ -12,12 +12,13 @@
                 <VFrameSet id="VFSet02" separatesize="30,*">
                   <Frames>
                     <ChildFrame id="MdiFrame" formurl="frame::frmMdi.xfdl" showtitlebar="false" dragmovetype="none"/>
-                    <FrameSet id="WorkFrame"/>
+                    <FrameSet id="WorkFrame">
+                      <Frames/>
+                    </FrameSet>
                   </Frames>
                 </VFrameSet>
               </Frames>
             </HFrameSet>
-            <ChildFrame id="BottomFrame" formurl="frame::frmBottom.xfdl" showtitlebar="false" dragmovetype="none"/>
           </Frames>
         </VFrameSet>
       </MainFrame>

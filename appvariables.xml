@@ -62,6 +62,1094 @@
         <Column id="WINID" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
+    <Dataset id="gdsLeftMenu_Admin">
+      <ColumnInfo>
+        <Column id="MENU_CD" type="STRING" size="256"/>
+        <Column id="UP_MENU_CD" type="STRING" size="256"/>
+        <Column id="MENU_NM" type="STRING" size="256"/>
+        <Column id="MENU_LVL" type="STRING" size="256"/>
+        <Column id="PGM_PATH" type="STRING" size="256"/>
+        <Column id="PGM_ID" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="MENU_CD">0000</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="MENU_NM">게시판 관리</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">공지사항 관리</Col>
+          <Col id="MENU_CD">0001</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="UP_MENU_CD">0000</Col>
+          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_ID">Notice.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">홍보게시판 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_CD">0002</Col>
+          <Col id="UP_MENU_CD">0000</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">행사게시판 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_CD">0003</Col>
+          <Col id="UP_MENU_CD">0000</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">자유게시판 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_CD">0004</Col>
+          <Col id="UP_MENU_CD">0000</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">대나무숲 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_CD">0005</Col>
+          <Col id="UP_MENU_CD">0000</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">건의게시판 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_CD">0006</Col>
+          <Col id="UP_MENU_CD">0000</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">게시글 등록</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="MENU_CD">0010</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="PGM_PATH"/>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">0011</Col>
+          <Col id="UP_MENU_CD">0010</Col>
+          <Col id="MENU_NM">공지사항 등록</Col>
+          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_ID">work01.xfdl</Col>
+          <Col id="MENU_LVL">1</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">0012</Col>
+          <Col id="UP_MENU_CD">0010</Col>
+          <Col id="MENU_NM">홍보게시판 등록</Col>
+          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_ID">work02.xfdl</Col>
+          <Col id="MENU_LVL">1</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">0013</Col>
+          <Col id="UP_MENU_CD">0010</Col>
+          <Col id="MENU_NM">행사게시판 등록</Col>
+          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_ID">work03.xfdl</Col>
+          <Col id="MENU_LVL">1</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">0020</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="MENU_NM">학생/교수</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">학생</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="UP_MENU_CD">0020</Col>
+          <Col id="MENU_CD">0021</Col>
+          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_ID">Students.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">교수</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="UP_MENU_CD">0020</Col>
+          <Col id="MENU_CD">0022</Col>
+          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_ID">Professor.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">학사</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_CD">0030</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_NM">학사 일정 관리</Col>
+          <Col id="UP_MENU_CD">0030</Col>
+          <Col id="MENU_CD">0031</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_NM">강의계획서 관리</Col>
+          <Col id="MENU_CD">0032</Col>
+          <Col id="UP_MENU_CD">0030</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">학사 자료실 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_CD">0033</Col>
+          <Col id="UP_MENU_CD">0030</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="MENU_NM">신청사항</Col>
+          <Col id="MENU_CD">0040</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">신청사항 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_CD">0041</Col>
+          <Col id="UP_MENU_CD">0040</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">웹하드</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="MENU_CD">0050</Col>
+          <Col id="UP_MENU_CD">0</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">웹하드 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="MENU_CD">0051</Col>
+          <Col id="UP_MENU_CD">0050</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_NM">페이지 관리</Col>
+          <Col id="MENU_LVL">0</Col>
+          <Col id="UP_MENU_CD">0</Col>
+          <Col id="MENU_CD">0060</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="UP_MENU_CD">0060</Col>
+          <Col id="MENU_CD">0061</Col>
+          <Col id="MENU_NM">메인 페이지 관리</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="UP_MENU_CD">0060</Col>
+          <Col id="MENU_CD">0062</Col>
+          <Col id="MENU_NM">종합 정보 페이지 관리</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="UP_MENU_CD">0060</Col>
+          <Col id="MENU_CD">0063</Col>
+          <Col id="MENU_NM">종합 정보 시스템 페이지 관리</Col>
+          <Col id="PGM_PATH">Base</Col>
+        </Row>
+      </Rows>
+    </Dataset>
+    <Dataset id="gds_Countries">
+      <ColumnInfo>
+        <Column id="name" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="name">대한민국</Col>
+        </Row>
+        <Row>
+          <Col id="name">가나</Col>
+        </Row>
+        <Row>
+          <Col id="name">가봉</Col>
+        </Row>
+        <Row>
+          <Col id="name">가이아나</Col>
+        </Row>
+        <Row>
+          <Col id="name">감비아</Col>
+        </Row>
+        <Row>
+          <Col id="name">건지섬</Col>
+        </Row>
+        <Row>
+          <Col id="name">과들루프</Col>
+        </Row>
+        <Row>
+          <Col id="name">과테말라</Col>
+        </Row>
+        <Row>
+          <Col id="name">괌</Col>
+        </Row>
+        <Row>
+          <Col id="name">그레나다</Col>
+        </Row>
+        <Row>
+          <Col id="name">그리스</Col>
+        </Row>
+        <Row>
+          <Col id="name">그린란드</Col>
+        </Row>
+        <Row>
+          <Col id="name">기니</Col>
+        </Row>
+        <Row>
+          <Col id="name">기니비사우</Col>
+        </Row>
+        <Row>
+          <Col id="name">나미비아</Col>
+        </Row>
+        <Row>
+          <Col id="name">나우루</Col>
+        </Row>
+        <Row>
+          <Col id="name">나이지리아</Col>
+        </Row>
+        <Row>
+          <Col id="name">남극</Col>
+        </Row>
+        <Row>
+          <Col id="name">남아프리카 공화국</Col>
+        </Row>
+        <Row>
+          <Col id="name">네덜란드</Col>
+        </Row>
+        <Row>
+          <Col id="name">네덜란드령 안틸레스</Col>
+        </Row>
+        <Row>
+          <Col id="name">네팔</Col>
+        </Row>
+        <Row>
+          <Col id="name">노르웨이</Col>
+        </Row>
+        <Row>
+          <Col id="name">노퍽 섬</Col>
+        </Row>
+        <Row>
+          <Col id="name">누벨칼레도니</Col>
+        </Row>
+        <Row>
+          <Col id="name">뉴질랜드</Col>
+        </Row>
+        <Row>
+          <Col id="name">니우에</Col>
+        </Row>
+        <Row>
+          <Col id="name">니제르</Col>
+        </Row>
+        <Row>
+          <Col id="name">니카라과</Col>
+        </Row>
+        <Row>
+          <Col id="name">덴마크</Col>
+        </Row>
+        <Row>
+          <Col id="name">도미니카공화국</Col>
+        </Row>
+        <Row>
+          <Col id="name">도미니카 연방</Col>
+        </Row>
+        <Row>
+          <Col id="name">독일</Col>
+        </Row>
+        <Row>
+          <Col id="name">동티모르</Col>
+        </Row>
+        <Row>
+          <Col id="name">라오스</Col>
+        </Row>
+        <Row>
+          <Col id="name">라이베리아</Col>
+        </Row>
+        <Row>
+          <Col id="name">라트비아</Col>
+        </Row>
+        <Row>
+          <Col id="name">러시아</Col>
+        </Row>
+        <Row>
+          <Col id="name">레바논</Col>
+        </Row>
+        <Row>
+          <Col id="name">레소토</Col>
+        </Row>
+        <Row>
+          <Col id="name">레위니옹</Col>
+        </Row>
+        <Row>
+          <Col id="name">루마니아</Col>
+        </Row>
+        <Row>
+          <Col id="name">룩셈부르크</Col>
+        </Row>
+        <Row>
+          <Col id="name">르완다</Col>
+        </Row>
+        <Row>
+          <Col id="name">리비아</Col>
+        </Row>
+        <Row>
+          <Col id="name">리투아니아</Col>
+        </Row>
+        <Row>
+          <Col id="name">리히텐슈타인</Col>
+        </Row>
+        <Row>
+          <Col id="name">마다가스카르</Col>
+        </Row>
+        <Row>
+          <Col id="name">마르티니크</Col>
+        </Row>
+        <Row>
+          <Col id="name">마셜 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">마요트</Col>
+        </Row>
+        <Row>
+          <Col id="name">마카오</Col>
+        </Row>
+        <Row>
+          <Col id="name">북마케도니아</Col>
+        </Row>
+        <Row>
+          <Col id="name">말라위</Col>
+        </Row>
+        <Row>
+          <Col id="name">말레이시아</Col>
+        </Row>
+        <Row>
+          <Col id="name">말리</Col>
+        </Row>
+        <Row>
+          <Col id="name">맨섬</Col>
+        </Row>
+        <Row>
+          <Col id="name">멕시코</Col>
+        </Row>
+        <Row>
+          <Col id="name">모나코</Col>
+        </Row>
+        <Row>
+          <Col id="name">모로코</Col>
+        </Row>
+        <Row>
+          <Col id="name">모리셔스</Col>
+        </Row>
+        <Row>
+          <Col id="name">모리타니</Col>
+        </Row>
+        <Row>
+          <Col id="name">모잠비크</Col>
+        </Row>
+        <Row>
+          <Col id="name">몬테네그로</Col>
+        </Row>
+        <Row>
+          <Col id="name">몬트세랫</Col>
+        </Row>
+        <Row>
+          <Col id="name">몰도바</Col>
+        </Row>
+        <Row>
+          <Col id="name">몰디브</Col>
+        </Row>
+        <Row>
+          <Col id="name">몰타</Col>
+        </Row>
+        <Row>
+          <Col id="name">몽골</Col>
+        </Row>
+        <Row>
+          <Col id="name">미국</Col>
+        </Row>
+        <Row>
+          <Col id="name">미국령 군소 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">미국령 버진아일랜드</Col>
+        </Row>
+        <Row>
+          <Col id="name">미얀마</Col>
+        </Row>
+        <Row>
+          <Col id="name">미크로네시아 연방</Col>
+        </Row>
+        <Row>
+          <Col id="name">바누아투</Col>
+        </Row>
+        <Row>
+          <Col id="name">바레인</Col>
+        </Row>
+        <Row>
+          <Col id="name">바베이도스</Col>
+        </Row>
+        <Row>
+          <Col id="name">바티칸 시국</Col>
+        </Row>
+        <Row>
+          <Col id="name">바하마</Col>
+        </Row>
+        <Row>
+          <Col id="name">방글라데시</Col>
+        </Row>
+        <Row>
+          <Col id="name">버뮤다</Col>
+        </Row>
+        <Row>
+          <Col id="name">베냉</Col>
+        </Row>
+        <Row>
+          <Col id="name">베네수엘라</Col>
+        </Row>
+        <Row>
+          <Col id="name">베트남</Col>
+        </Row>
+        <Row>
+          <Col id="name">벨기에</Col>
+        </Row>
+        <Row>
+          <Col id="name">벨라루스</Col>
+        </Row>
+        <Row>
+          <Col id="name">벨리즈</Col>
+        </Row>
+        <Row>
+          <Col id="name">보스니아 헤르체고비나</Col>
+        </Row>
+        <Row>
+          <Col id="name">보츠와나</Col>
+        </Row>
+        <Row>
+          <Col id="name">볼리비아</Col>
+        </Row>
+        <Row>
+          <Col id="name">부룬디</Col>
+        </Row>
+        <Row>
+          <Col id="name">부르키나파소</Col>
+        </Row>
+        <Row>
+          <Col id="name">부베섬</Col>
+        </Row>
+        <Row>
+          <Col id="name">부탄</Col>
+        </Row>
+        <Row>
+          <Col id="name">북마리아나 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">불가리아</Col>
+        </Row>
+        <Row>
+          <Col id="name">브라질</Col>
+        </Row>
+        <Row>
+          <Col id="name">브루나이</Col>
+        </Row>
+        <Row>
+          <Col id="name">사모아</Col>
+        </Row>
+        <Row>
+          <Col id="name">사우디아라비아</Col>
+        </Row>
+        <Row>
+          <Col id="name">사우스조지아 사우스샌드위치 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">산마리노</Col>
+        </Row>
+        <Row>
+          <Col id="name">상투메 프린시페</Col>
+        </Row>
+        <Row>
+          <Col id="name">생피에르 미클롱</Col>
+        </Row>
+        <Row>
+          <Col id="name">서사하라</Col>
+        </Row>
+        <Row>
+          <Col id="name">세네갈</Col>
+        </Row>
+        <Row>
+          <Col id="name">세르비아</Col>
+        </Row>
+        <Row>
+          <Col id="name">세이셸</Col>
+        </Row>
+        <Row>
+          <Col id="name">세인트루시아</Col>
+        </Row>
+        <Row>
+          <Col id="name">세인트빈센트 그레나딘</Col>
+        </Row>
+        <Row>
+          <Col id="name">세인트키츠 네비스</Col>
+        </Row>
+        <Row>
+          <Col id="name">세인트헬레나</Col>
+        </Row>
+        <Row>
+          <Col id="name">소말리아</Col>
+        </Row>
+        <Row>
+          <Col id="name">솔로몬 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">수단</Col>
+        </Row>
+        <Row>
+          <Col id="name">수리남</Col>
+        </Row>
+        <Row>
+          <Col id="name">스리랑카</Col>
+        </Row>
+        <Row>
+          <Col id="name">스발바르 얀마옌</Col>
+        </Row>
+        <Row>
+          <Col id="name">스웨덴</Col>
+        </Row>
+        <Row>
+          <Col id="name">스위스</Col>
+        </Row>
+        <Row>
+          <Col id="name">스페인</Col>
+        </Row>
+        <Row>
+          <Col id="name">슬로바키아</Col>
+        </Row>
+        <Row>
+          <Col id="name">슬로베니아</Col>
+        </Row>
+        <Row>
+          <Col id="name">시리아</Col>
+        </Row>
+        <Row>
+          <Col id="name">시에라리온</Col>
+        </Row>
+        <Row>
+          <Col id="name">신트마르턴</Col>
+        </Row>
+        <Row>
+          <Col id="name">싱가포르</Col>
+        </Row>
+        <Row>
+          <Col id="name">아랍에미리트</Col>
+        </Row>
+        <Row>
+          <Col id="name">아루바</Col>
+        </Row>
+        <Row>
+          <Col id="name">아르메니아</Col>
+        </Row>
+        <Row>
+          <Col id="name">아르헨티나</Col>
+        </Row>
+        <Row>
+          <Col id="name">아메리칸사모아</Col>
+        </Row>
+        <Row>
+          <Col id="name">아이슬란드</Col>
+        </Row>
+        <Row>
+          <Col id="name">아이티</Col>
+        </Row>
+        <Row>
+          <Col id="name">아일랜드</Col>
+        </Row>
+        <Row>
+          <Col id="name">아제르바이잔</Col>
+        </Row>
+        <Row>
+          <Col id="name">아프가니스탄</Col>
+        </Row>
+        <Row>
+          <Col id="name">안도라</Col>
+        </Row>
+        <Row>
+          <Col id="name">알바니아</Col>
+        </Row>
+        <Row>
+          <Col id="name">알제리</Col>
+        </Row>
+        <Row>
+          <Col id="name">앙골라</Col>
+        </Row>
+        <Row>
+          <Col id="name">앤티가 바부다</Col>
+        </Row>
+        <Row>
+          <Col id="name">앵귈라</Col>
+        </Row>
+        <Row>
+          <Col id="name">에리트레아</Col>
+        </Row>
+        <Row>
+          <Col id="name">에스와티니</Col>
+        </Row>
+        <Row>
+          <Col id="name">에스토니아</Col>
+        </Row>
+        <Row>
+          <Col id="name">에콰도르</Col>
+        </Row>
+        <Row>
+          <Col id="name">에티오피아</Col>
+        </Row>
+        <Row>
+          <Col id="name">엘살바도르</Col>
+        </Row>
+        <Row>
+          <Col id="name">영국</Col>
+        </Row>
+        <Row>
+          <Col id="name">영국령 버진아일랜드</Col>
+        </Row>
+        <Row>
+          <Col id="name">영국령 인도양 지역</Col>
+        </Row>
+        <Row>
+          <Col id="name">예멘</Col>
+        </Row>
+        <Row>
+          <Col id="name">오만</Col>
+        </Row>
+        <Row>
+          <Col id="name">오스트레일리아</Col>
+        </Row>
+        <Row>
+          <Col id="name">오스트리아</Col>
+        </Row>
+        <Row>
+          <Col id="name">온두라스</Col>
+        </Row>
+        <Row>
+          <Col id="name">올란드 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">요르단</Col>
+        </Row>
+        <Row>
+          <Col id="name">우간다</Col>
+        </Row>
+        <Row>
+          <Col id="name">우르과이</Col>
+        </Row>
+        <Row>
+          <Col id="name">우즈베키스탄</Col>
+        </Row>
+        <Row>
+          <Col id="name">우크라이나</Col>
+        </Row>
+        <Row>
+          <Col id="name">왈리스 퓌튀나</Col>
+        </Row>
+        <Row>
+          <Col id="name">이라크</Col>
+        </Row>
+        <Row>
+          <Col id="name">이란</Col>
+        </Row>
+        <Row>
+          <Col id="name">이스라엘</Col>
+        </Row>
+        <Row>
+          <Col id="name">이집트</Col>
+        </Row>
+        <Row>
+          <Col id="name">이탈리아</Col>
+        </Row>
+        <Row>
+          <Col id="name">인도</Col>
+        </Row>
+        <Row>
+          <Col id="name">인도네시아</Col>
+        </Row>
+        <Row>
+          <Col id="name">일본</Col>
+        </Row>
+        <Row>
+          <Col id="name">자메이카</Col>
+        </Row>
+        <Row>
+          <Col id="name">잠비아</Col>
+        </Row>
+        <Row>
+          <Col id="name">저지섬</Col>
+        </Row>
+        <Row>
+          <Col id="name">적도 기니</Col>
+        </Row>
+        <Row>
+          <Col id="name">조선민주주의인민공화국</Col>
+        </Row>
+        <Row>
+          <Col id="name">조지아</Col>
+        </Row>
+        <Row>
+          <Col id="name">중국</Col>
+        </Row>
+        <Row>
+          <Col id="name">중앙아프리카 공화국</Col>
+        </Row>
+        <Row>
+          <Col id="name">지부티</Col>
+        </Row>
+        <Row>
+          <Col id="name">지브롤터</Col>
+        </Row>
+        <Row>
+          <Col id="name">짐바브웨</Col>
+        </Row>
+        <Row>
+          <Col id="name">차드</Col>
+        </Row>
+        <Row>
+          <Col id="name">체코</Col>
+        </Row>
+        <Row>
+          <Col id="name">칠레</Col>
+        </Row>
+        <Row>
+          <Col id="name">카메룬</Col>
+        </Row>
+        <Row>
+          <Col id="name">카보베르데</Col>
+        </Row>
+        <Row>
+          <Col id="name">카자흐스탄</Col>
+        </Row>
+        <Row>
+          <Col id="name">카타르</Col>
+        </Row>
+        <Row>
+          <Col id="name">캄보디아</Col>
+        </Row>
+        <Row>
+          <Col id="name">캐나다</Col>
+        </Row>
+        <Row>
+          <Col id="name">케냐</Col>
+        </Row>
+        <Row>
+          <Col id="name">케이맨 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">코모로</Col>
+        </Row>
+        <Row>
+          <Col id="name">코스타리카</Col>
+        </Row>
+        <Row>
+          <Col id="name">코코스 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">코트디부아르</Col>
+        </Row>
+        <Row>
+          <Col id="name">콜롬비아</Col>
+        </Row>
+        <Row>
+          <Col id="name">콩고 공화국</Col>
+        </Row>
+        <Row>
+          <Col id="name">콩고 민주 공화국</Col>
+        </Row>
+        <Row>
+          <Col id="name">쿠바</Col>
+        </Row>
+        <Row>
+          <Col id="name">쿠웨이트</Col>
+        </Row>
+        <Row>
+          <Col id="name">쿡 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">크로아티아</Col>
+        </Row>
+        <Row>
+          <Col id="name">크리스마스 섬</Col>
+        </Row>
+        <Row>
+          <Col id="name">키르기스스탄</Col>
+        </Row>
+        <Row>
+          <Col id="name">키리바시</Col>
+        </Row>
+        <Row>
+          <Col id="name">키프로스</Col>
+        </Row>
+        <Row>
+          <Col id="name">타이완</Col>
+        </Row>
+        <Row>
+          <Col id="name">타지키스탄</Col>
+        </Row>
+        <Row>
+          <Col id="name">탄자니아</Col>
+        </Row>
+        <Row>
+          <Col id="name">태국</Col>
+        </Row>
+        <Row>
+          <Col id="name">터크스 케이커스 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">터키</Col>
+        </Row>
+        <Row>
+          <Col id="name">토고</Col>
+        </Row>
+        <Row>
+          <Col id="name">토켈라우</Col>
+        </Row>
+        <Row>
+          <Col id="name">통가</Col>
+        </Row>
+        <Row>
+          <Col id="name">투르크메니스탄</Col>
+        </Row>
+        <Row>
+          <Col id="name">투발루</Col>
+        </Row>
+        <Row>
+          <Col id="name">튀니지</Col>
+        </Row>
+        <Row>
+          <Col id="name">트리니다드 토바고</Col>
+        </Row>
+        <Row>
+          <Col id="name">파나마</Col>
+        </Row>
+        <Row>
+          <Col id="name">파라과이</Col>
+        </Row>
+        <Row>
+          <Col id="name">파키스탄</Col>
+        </Row>
+        <Row>
+          <Col id="name">파푸아뉴기니</Col>
+        </Row>
+        <Row>
+          <Col id="name">팔라우</Col>
+        </Row>
+        <Row>
+          <Col id="name">팔레스타인</Col>
+        </Row>
+        <Row>
+          <Col id="name">페로 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">페루</Col>
+        </Row>
+        <Row>
+          <Col id="name">포르투갈</Col>
+        </Row>
+        <Row>
+          <Col id="name">포클랜드 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">폴란드</Col>
+        </Row>
+        <Row>
+          <Col id="name">푸에르토리코</Col>
+        </Row>
+        <Row>
+          <Col id="name">프랑스</Col>
+        </Row>
+        <Row>
+          <Col id="name">프랑스령 기아나</Col>
+        </Row>
+        <Row>
+          <Col id="name">프랑스령 남방 및 남극</Col>
+        </Row>
+        <Row>
+          <Col id="name">프랑스령 폴리네시아</Col>
+        </Row>
+        <Row>
+          <Col id="name">피지</Col>
+        </Row>
+        <Row>
+          <Col id="name">핀란드</Col>
+        </Row>
+        <Row>
+          <Col id="name">필리핀</Col>
+        </Row>
+        <Row>
+          <Col id="name">핏케언 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">허드 맥도널드 제도</Col>
+        </Row>
+        <Row>
+          <Col id="name">헝가리</Col>
+        </Row>
+        <Row>
+          <Col id="name">홍콩</Col>
+        </Row>
+      </Rows>
+    </Dataset>
+    <Dataset id="gds_College">
+      <ColumnInfo>
+        <Column id="id" type="STRING" size="256"/>
+        <Column id="title" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="id">c1</Col>
+          <Col id="title">공과대학</Col>
+        </Row>
+        <Row>
+          <Col id="id">c2</Col>
+          <Col id="title">보건의료과학대학</Col>
+        </Row>
+        <Row>
+          <Col id="id">c3</Col>
+          <Col id="title">비즈니스대학</Col>
+        </Row>
+        <Row>
+          <Col id="id">c4</Col>
+          <Col id="title">사범대학</Col>
+        </Row>
+        <Row>
+          <Col id="id">c5</Col>
+          <Col id="title">예술대학</Col>
+        </Row>
+        <Row>
+          <Col id="id">c6</Col>
+          <Col id="title">인문사회대학</Col>
+        </Row>
+      </Rows>
+    </Dataset>
+    <Dataset id="gds_Department">
+      <ColumnInfo>
+        <Column id="id" type="STRING" size="256"/>
+        <Column id="title" type="STRING" size="256"/>
+        <Column id="col_code" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="id">d01</Col>
+          <Col id="title">소프트웨어융합학</Col>
+          <Col id="col_code">c1</Col>
+        </Row>
+        <Row>
+          <Col id="id">d02</Col>
+          <Col id="title">에너지광기술융합학</Col>
+          <Col id="col_code">c1</Col>
+        </Row>
+        <Row>
+          <Col id="id">d03</Col>
+          <Col id="title">융합전자공학</Col>
+          <Col id="col_code">c1</Col>
+        </Row>
+        <Row>
+          <Col id="id">d04</Col>
+          <Col id="title">휴면환경디자인학</Col>
+          <Col id="col_code">c1</Col>
+        </Row>
+        <Row>
+          <Col id="id">d05</Col>
+          <Col id="title">BT융합학</Col>
+          <Col id="col_code">c1</Col>
+        </Row>
+        <Row>
+          <Col id="id">d06</Col>
+          <Col id="title">간호학</Col>
+          <Col id="col_code">c2</Col>
+        </Row>
+        <Row>
+          <Col id="id">d07</Col>
+          <Col id="title">치위생학</Col>
+          <Col id="col_code">c2</Col>
+        </Row>
+        <Row>
+          <Col id="id">d08</Col>
+          <Col id="title">방사선학</Col>
+          <Col id="col_code">c2</Col>
+        </Row>
+        <Row>
+          <Col id="id">d09</Col>
+          <Col id="title">물리치료학</Col>
+          <Col id="col_code">c2</Col>
+        </Row>
+        <Row>
+          <Col id="id">d10</Col>
+          <Col id="title">작업치료학</Col>
+          <Col id="col_code">c2</Col>
+        </Row>
+        <Row>
+          <Col id="id">d11</Col>
+          <Col id="title">임상병리학</Col>
+          <Col id="col_code">c2</Col>
+        </Row>
+        <Row>
+          <Col id="id">d12</Col>
+          <Col id="title">경영학</Col>
+          <Col id="col_code">c3</Col>
+        </Row>
+        <Row>
+          <Col id="id">d13</Col>
+          <Col id="title">글로벌경제통상학</Col>
+          <Col id="col_code">c3</Col>
+        </Row>
+        <Row>
+          <Col id="id">d14</Col>
+          <Col id="title">관광호텔경영학</Col>
+          <Col id="col_code">c3</Col>
+        </Row>
+        <Row>
+          <Col id="id">d15</Col>
+          <Col id="title">국어교육과</Col>
+          <Col id="col_code">c4</Col>
+        </Row>
+        <Row>
+          <Col id="id">d16</Col>
+          <Col id="title">수학교육과</Col>
+          <Col id="col_code">c4</Col>
+        </Row>
+        <Row>
+          <Col id="id">d17</Col>
+          <Col id="title">교직과</Col>
+          <Col id="col_code">c4</Col>
+        </Row>
+        <Row>
+          <Col id="id">d18</Col>
+          <Col id="title">디자인조형학</Col>
+          <Col id="col_code">c5</Col>
+        </Row>
+        <Row>
+          <Col id="id">d19</Col>
+          <Col id="title">연극영화학</Col>
+          <Col id="col_code">c5</Col>
+        </Row>
+        <Row>
+          <Col id="id">d20</Col>
+          <Col id="title">미디어콘텐츠학</Col>
+          <Col id="col_code">c6</Col>
+        </Row>
+        <Row>
+          <Col id="id">d21</Col>
+          <Col id="title">사회과학</Col>
+          <Col id="col_code">c6</Col>
+        </Row>
+        <Row>
+          <Col id="id">d22</Col>
+          <Col id="title">인문학</Col>
+          <Col id="col_code">c6</Col>
+        </Row>
+        <Row/>
+      </Rows>
+    </Dataset>
   </Datasets>
   <Variables/>
 </AppVariables>
