@@ -116,7 +116,7 @@ this.Tab00_Tabpage2_Button00_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 		"in_proInfo=ds_proInfo", 
 		"", 
 		"", 
-		"fn_callback" 
+		"fn_callback"
 	);
 };
 
