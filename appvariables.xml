@@ -65,5 +65,6 @@
   </Datasets>
   <Variables>
     <Variable id="gvID" initval="P-1001"/>
+    <Variable id="gvProName" initval="김교수"/>
   </Variables>
 </AppVariables>
