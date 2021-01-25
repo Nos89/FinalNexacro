@@ -6,12 +6,12 @@
         <Static id="Static01" taborder="0" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
         <Static id="Static00_00" taborder="1" text="강의계획서작성" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
         <Combo id="cbo_year" taborder="2" text="Combo00" left="45" top="49" width="70" height="25" innerdataset="ds_year" codecolumn="code" datacolumn="name"/>
-        <Combo id="cbo_stdYear" taborder="3" text="Combo00" left="170" top="49" width="70" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name"/>
-        <Combo id="cbo_semester" taborder="4" text="Combo00" left="285" top="49" width="70" height="25" innerdataset="ds_semester" codecolumn="code" datacolumn="name"/>
-        <Button id="Button00" taborder="5" text="조회" left="380" top="49" width="98" height="23"/>
+        <Combo id="cbo_stdYear" taborder="3" text="Combo00" left="165" top="48" width="70" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name"/>
+        <Combo id="cbo_semester" taborder="4" text="Combo00" left="285" top="49" width="70" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_semester"/>
+        <Button id="Button00" taborder="5" text="조회" left="380" top="49" width="98" height="23" onclick="Button00_onclick"/>
         <Static id="Static00" taborder="6" text="년도" left="10" top="49" width="40" height="23"/>
-        <Static id="Static00_01" taborder="7" text="학년" left="139" top="49" width="40" height="23"/>
-        <Static id="Static02" taborder="8" text="학기" left="257" top="49" width="43" height="25"/>
+        <Static id="Static00_01" taborder="7" text="학년" left="130" top="49" width="40" height="23"/>
+        <Static id="Static02" taborder="8" text="학기" left="249" top="49" width="43" height="25"/>
         <Grid id="Grid00" taborder="9" left="20" top="104" width="430" height="256" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
@@ -33,7 +33,7 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:oc_code"/>
-                <Cell col="1" text="bind:oc_year"/>
+                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년"/>
                 <Cell col="2" text="bind:oc_semester"/>
                 <Cell col="3" text="bind:oc_pro_code"/>
               </Band>
@@ -46,8 +46,8 @@
         <Button id="btn_modify" taborder="13" text="수정" left="933" top="86" width="113" height="25" onclick="btn_modify_onclick"/>
         <Static id="Static06" taborder="14" text="교과목명" left="484" top="124" width="87" height="24"/>
         <Static id="Static06_00" taborder="15" text="교수명" left="548" top="163" width="87" height="25"/>
-        <Static id="Static06_00_00_00" taborder="16" text="과목코드" left="762" top="162" width="87" height="25"/>
-        <Static id="Static06_00_00_00_00" taborder="17" text="수강대상" left="548" top="190" width="87" height="25"/>
+        <Static id="Static06_00_00_00" taborder="16" text="과목코드" left="765" top="162" width="87" height="25"/>
+        <Static id="Static06_00_00_00_00" taborder="17" text="수강학년" left="548" top="190" width="87" height="25"/>
         <Static id="Static06_00_00_00_00_00_00_00" taborder="18" text="개설년도" left="767" top="191" width="87" height="25"/>
         <Static id="Static06_00_00_00_00_00_00_00_00" taborder="19" text="개설학기" left="767" top="220" width="87" height="25"/>
         <Static id="Static06_00_00_00_00_00_00_00_00_00" taborder="20" text="이수학점" left="767" top="249" width="87" height="25"/>
@@ -58,12 +58,12 @@
         <Static id="Static07_04_00_00_00_00" taborder="25" text="Static07" left="830" top="253" width="138" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static08" taborder="26" text="강의계획 및 목표" left="481" top="330" width="188" height="20"/>
         <Static id="sta_title" taborder="27" left="540" top="124" width="490" height="26" cssclass="sta_cm_box01C"/>
-        <TextArea id="TextArea00" taborder="28" left="478" top="350" width="596" height="70"/>
+        <TextArea id="TextArea00" taborder="28" left="478" top="350" width="596" height="70" readonly="true"/>
         <Static id="Static08_00" taborder="29" text="평가기준" left="481" top="425" width="188" height="23"/>
         <Static id="Static08_00_00" taborder="30" text="강의방법" left="485" top="510" width="188" height="23"/>
         <Static id="Static08_00_00_00" taborder="31" text="교재" left="802" top="510" width="188" height="23"/>
-        <TextArea id="TextArea01" taborder="32" left="800" top="540" width="275" height="90" onchanged="TextArea01_onchanged"/>
-        <Button id="btn_write" taborder="33" text="작성" left="804" top="86" width="113" height="25" onclick="btn_write_onclick"/>
+        <TextArea id="TextArea01" taborder="32" left="800" top="540" width="275" height="90" onchanged="TextArea01_onchanged" readonly="true"/>
+        <Button id="btn_write" taborder="33" text="새로 작성" left="804" top="86" width="113" height="25" onclick="btn_write_onclick"/>
         <Static id="Static07_06" taborder="34" text="강의" left="478" top="448" width="120" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static07_07" taborder="35" text="토론" left="597" top="448" width="120" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static07_08" taborder="36" text="실습" left="716" top="448" width="120" height="25" cssclass="sta_cm_box01C"/>
@@ -90,22 +90,19 @@
         <Static id="sta_presentation" taborder="57" left="557" top="604" width="80" height="25" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
         <Static id="sta_attitude" taborder="58" left="636" top="604" width="80" height="25" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
         <Static id="sta_other1" taborder="59" left="715" top="604" width="80" height="25" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
-        <MaskEdit id="MaskEdit00" taborder="60" left="613" top="192" width="138" height="25" cssclass="mask_cm_box01C" format="#학년" type="string" enable="false"/>
-        <MaskEdit id="MaskEdit00_00" taborder="61" left="830" top="193" width="138" height="25" cssclass="mask_cm_box01C" format="####년" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
-        <MaskEdit id="MaskEdit00_00_00" taborder="62" left="830" top="223" width="138" height="25" cssclass="mask_cm_box01C" format="#학기" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
-        <Button id="Button01" taborder="63" text="Button01" left="157" top="14" width="116" height="19" onclick="Button01_onclick"/>
-        <Button id="Button02" taborder="64" text="Button02" left="285" top="13" width="120" height="22" onclick="Button02_onclick"/>
-        <Static id="Static06_00_00_00_00_01_00" taborder="65" text="강의실" left="549" top="248" width="87" height="25"/>
-        <Static id="Static07_03_00" taborder="66" text="Static07" left="613" top="251" width="138" height="25" cssclass="sta_cm_box01C"/>
-        <Grid id="grd_Lecture" taborder="67" left="20" top="411" width="430" height="229" binddataset="ds_lecture" autofittype="col" oncellclick="grd_Lecture_oncellclick">
+        <MaskEdit id="MaskEdit00_00" taborder="60" left="830" top="193" width="138" height="25" cssclass="mask_cm_box01C" format="####년" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
+        <MaskEdit id="MaskEdit00_00_00" taborder="61" left="830" top="223" width="138" height="25" cssclass="mask_cm_box01C" format="#학기" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
+        <Static id="Static06_00_00_00_00_01_00" taborder="62" text="강의실" left="549" top="248" width="87" height="25"/>
+        <Static id="Static07_03_00" taborder="63" text="Static07" left="613" top="251" width="138" height="25" cssclass="sta_cm_box01C"/>
+        <Grid id="grd_Lecture" taborder="64" left="20" top="411" width="430" height="229" binddataset="ds_lecture" autofittype="col" oncellclick="grd_Lecture_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="48"/>
-                <Column size="97"/>
-                <Column size="158"/>
-                <Column size="62"/>
-                <Column size="48"/>
+                <Column size="30"/>
+                <Column size="68"/>
+                <Column size="114"/>
+                <Column size="52"/>
+                <Column size="165"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -122,14 +119,17 @@
                 <Cell text="expr:currow+1"/>
                 <Cell col="1" text="bind:lec_code"/>
                 <Cell col="2" text="bind:lec_title"/>
-                <Cell col="3" text="bind:lec_approval" displaytype="text"/>
-                <Cell col="4"/>
+                <Cell col="3" text="bind:lec_approval" displaytype="checkboxcontrol"/>
+                <Cell col="4" text="bind:lec_deny_reason"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static05_00" taborder="68" text="개설강의" left="20" top="78" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
-        <Static id="Static05_00_00" taborder="69" text="강의계획서" left="20" top="375" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Static id="Static05_00" taborder="65" text="개설강의" left="20" top="78" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Static id="Static05_00_00" taborder="66" text="강의계획서" left="20" top="375" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Edit id="Edit00" taborder="67" left="613" top="191" width="138" height="25" onchanged="Edit00_onchanged" enable="false" textAlign="center"/>
+        <Static id="Static07_03_00_00" taborder="68" text="Static07" left="831" top="281" width="138" height="25" cssclass="sta_cm_box01C"/>
+        <Static id="Static06_00_00_00_00_01_00_00" taborder="69" text="이수구분" left="767" top="278" width="87" height="25"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -142,13 +142,17 @@
           <Column id="oc_max" type="INT" size="256"/>
           <Column id="oc_part" type="INT" size="256"/>
           <Column id="oc_is_close" type="STRING" size="256"/>
-          <Column id="oc_is_close_reason" type="STRING" size="256"/>
+          <Column id="oc_close_reason" type="STRING" size="256"/>
           <Column id="oc_pro_code" type="STRING" size="256"/>
           <Column id="oc_class_room" type="STRING" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="oc_code">L-1002</Col>
+            <Col id="oc_code">123</Col>
             <Col id="oc_year">2021-01-08</Col>
             <Col id="oc_semester">1</Col>
             <Col id="oc_schedule">월(1,4)/수(4,5)</Col>
@@ -157,9 +161,13 @@
             <Col id="oc_is_close">N</Col>
             <Col id="oc_pro_code">P-1001</Col>
             <Col id="oc_class_room">07-202</Col>
+            <Col id="name">양자역학의 이해</Col>
+            <Col id="reco_score">3</Col>
+            <Col id="oc_targetlevel">3</Col>
+            <Col id="isu">전공선택</Col>
           </Row>
           <Row>
-            <Col id="oc_code">L-1003</Col>
+            <Col id="oc_code">125</Col>
             <Col id="oc_year">2021-01-05</Col>
             <Col id="oc_semester">4</Col>
             <Col id="oc_schedule">금(1,2,3)</Col>
@@ -168,6 +176,10 @@
             <Col id="oc_is_close">N</Col>
             <Col id="oc_pro_code">P-1001</Col>
             <Col id="oc_class_room">07-404</Col>
+            <Col id="name">물리학의 이해</Col>
+            <Col id="reco_score">3</Col>
+            <Col id="oc_targetlevel">1</Col>
+            <Col id="isu">전공필수</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -246,7 +258,7 @@
           <Column id="lec_approval" type="INT" size="256"/>
           <Column id="lec_deny_reason" type="STRING" size="256"/>
           <Column id="pro_name" type="STRING" size="256"/>
-          <Column id="lec_semester" type="STRING" size="256"/>
+          <Column id="lec_semester" type="INT" size="256"/>
           <Column id="lec_targetLevel" type="STRING" size="256"/>
           <Column id="lec_classroom" type="STRING" size="256"/>
           <Column id="lec_schedule" type="STRING" size="256"/>
@@ -259,12 +271,44 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="lec_code">L-1002</Col>
+            <Col id="lec_code">125</Col>
             <Col id="lec_title">양자역학의이해</Col>
-            <Col id="lec_approval">0</Col>
+            <Col id="lec_approval">1</Col>
             <Col id="pro_name">김교수</Col>
             <Col id="lec_semester">1</Col>
-            <Col id="lec_targetLevel">1</Col>
+            <Col id="lec_targetLevel">전체</Col>
+            <Col id="lec_classroom">07-202</Col>
+            <Col id="lec_schedule">월(1,4)/수(4,5)</Col>
+            <Col id="lec_score">3</Col>
+            <Col id="lec_isu">전공필수</Col>
+            <Col id="lec_summary">양자역학을 이해한다</Col>
+            <Col id="lec_way">100/0/0/0/0</Col>
+            <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
+            <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">126</Col>
+            <Col id="lec_title">양자역학의이해</Col>
+            <Col id="lec_approval">1</Col>
+            <Col id="pro_name">김교수</Col>
+            <Col id="lec_semester">1</Col>
+            <Col id="lec_targetLevel">전체</Col>
+            <Col id="lec_classroom">07-202</Col>
+            <Col id="lec_schedule">월(1,4)/수(4,5)</Col>
+            <Col id="lec_score">3</Col>
+            <Col id="lec_isu">전공필수</Col>
+            <Col id="lec_summary">양자역학을 이해한다</Col>
+            <Col id="lec_way">100/0/0/0/0</Col>
+            <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
+            <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">127</Col>
+            <Col id="lec_title">양자역학의이해</Col>
+            <Col id="lec_approval">1</Col>
+            <Col id="pro_name">김교수</Col>
+            <Col id="lec_semester">1</Col>
+            <Col id="lec_targetLevel">전체</Col>
             <Col id="lec_classroom">07-202</Col>
             <Col id="lec_schedule">월(1,4)/수(4,5)</Col>
             <Col id="lec_score">3</Col>
@@ -278,15 +322,31 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.row =0;
+this.id = nexacro.Application.gvID;
 
 this.lecturePlan_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-  this.ds_lecture.filter("lec_code=='-1'");
+  this.transaction(
+		"lecturePlanOnLoad",
+		"/lecture/lecturePlanOnLoad.nex",
+		"",
+		"ds_openClass=out_openClass ds_lecture=out_lecture",
+		"id="+this.id+"",  
+		"fn_callback"
+	);
 };
 
+this.fn_callback =function(id,errCode,errMsg){
+	this.ds_lecture.set_rowposition("-1");
+}
 this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.fn_makeChildFrame("write");
+	if(this.ds_lecture.getRowCount() >=1){
+		alert("작성된 강의 계획서가 있습니다. 강의서를 확인해주세요.");
+		return;
+	}else{
+		this.fn_makeChildFrame("write");
+	}
 };
 
 this.btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -299,6 +359,15 @@ this.btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 this.fn_makeChildFrame = function(id){
 	var year = this.ds_openClass.getColumn(this.row,"oc_year");
+	var proName = nexacro.Application.gvProName;
+	var lecCode = this.ds_openClass.getColumn(this.row,"oc_code");
+	var semester = this.ds_openClass.getColumn(this.row,"oc_semester");
+	var name = this.ds_openClass.getColumn(this.row,"name");
+	var classRoom = this.ds_openClass.getColumn(this.row,"oc_class_room");
+	var score = this.ds_openClass.getColumn(this.row,"reco_score");
+	var schedule = this.ds_openClass.getColumn(this.row,"oc_schedule");
+	var target = this.ds_openClass.getColumn(this.row,"oc_targetlevel");
+	var isu = this.ds_openClass.getColumn(this.row,"isu");
 	var pDataSet =this.ds_lecChild;
 	
 	//alert(this.ds_lecChild.getColumn(0,"lec_code"));	
@@ -313,14 +382,16 @@ this.fn_makeChildFrame = function(id){
 	if(id == "modify"){
 		objCF.showModal(
 			this.getOwnerFrame()
-			,{lecture:this.ds_lecChild,year:year}  
+			,{lecture:this.ds_lecChild,year:year,proName:proName}  
 			,this
 			,"fn_callback_pop"
 		);
 	}else{
 		objCF.showModal(
 			this.getOwnerFrame()
-			,{lecture:'555',year:year}  
+			,{lecture:'1',year:year,proName:proName,lecCode:lecCode,name:name,
+			semester:semester,classRoom:classRoom,score:score,schedule:schedule,
+			target:target,isu:isu}  
 			,this
 			,"fn_callback_pop"
 		);
@@ -330,14 +401,11 @@ this.fn_makeChildFrame = function(id){
 };
 
 this.fn_callback_pop = function(id,sReturn){
-	var arrRtn = sReturn.split("|");	
-	var sCode = arrRtn[0];
-	var sName = arrRtn[1];
-	this.alert(sCode + "/" + sName);
-	this.Div02.form.edt_code.set_value(sCode);
-	this.Div02.form.edt_name.set_value(sName);
-	
-	this.ds_student.filter("code =='"+sCode+"'");
+	if(sReturn=="cancle"){
+		return;
+	}else{
+	this.reload();
+	}
 };
 
 
@@ -408,18 +476,21 @@ this.grd_Lecture_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEven
 	//this.ds_lecChild.copyRow(0,this.ds_lecture,e.row);
 	this.ds_lecChild.copyData(this.ds_lecture, true);
 };
+
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="sta_title" propid="text" datasetid="ds_lecture" columnid="lec_title"/>
       <BindItem id="item1" compid="Static07" propid="text" datasetid="ds_lecture" columnid="pro_name"/>
       <BindItem id="item3" compid="Static07_01" propid="text" datasetid="ds_lecture" columnid="lec_code"/>
-      <BindItem id="item4" compid="MaskEdit00" propid="value" datasetid="ds_lecture" columnid="lec_targetlevel"/>
       <BindItem id="item5" compid="Static07_03" propid="text" datasetid="ds_lecture" columnid="lec_schedule"/>
-      <BindItem id="item8" compid="MaskEdit00_00" propid="value" datasetid="ds_openClass" columnid="oc_year"/>
-      <BindItem id="item9" compid="MaskEdit00_00_00" propid="value" datasetid="ds_lecture" columnid="lec_semester"/>
       <BindItem id="item11" compid="TextArea00" propid="value" datasetid="ds_lecture" columnid="lec_summary"/>
       <BindItem id="item12" compid="Static07_03_00" propid="text" datasetid="ds_lecture" columnid="lec_classroom"/>
       <BindItem id="item2" compid="Static07_04_00_00_00_00" propid="text" datasetid="ds_lecture" columnid="lec_score"/>
+      <BindItem id="item4" compid="Edit00" propid="value" datasetid="ds_lecture" columnid="lec_targetLevel"/>
+      <BindItem id="item6" compid="MaskEdit00_00" propid="value" datasetid="ds_openClass" columnid="oc_year"/>
+      <BindItem id="item7" compid="MaskEdit00_00_00" propid="value" datasetid="ds_lecture" columnid="lec_semester"/>
+      <BindItem id="item8" compid="Static07_03_00_00" propid="text" datasetid="ds_lecture" columnid="lec_isu"/>
+      <BindItem id="item9" compid="TextArea01" propid="value" datasetid="ds_lecture" columnid="lec_book"/>
     </Bind>
   </Form>
 </FDL>

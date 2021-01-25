@@ -97,12 +97,13 @@ this.pro_info_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.transaction(
 		"proInfoOnLoad",
-		"/proInfoOnLoad.nex",
+		"/professor/proInfoOnLoad.nex",
 		"",
 		"ds_proInfo=out_proInfo ds_proMil=out_proMil ds_proFile=out_proFile",
 		"id="+this.id+"",  
 		"fn_callback"
 	);
+	
 };
 
 
@@ -111,11 +112,11 @@ this.Tab00_Tabpage2_Button00_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 {
 	this.transaction(
 		"proInfoSave",
-		"/proInfoSave.nex",	
+		"/professor/proInfoSave.nex",	
 		"in_proInfo=ds_proInfo", 
 		"", 
 		"", 
-		"fn_callback" 
+		"fn_callback"
 	);
 };
 

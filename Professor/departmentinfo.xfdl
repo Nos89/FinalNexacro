@@ -30,11 +30,6 @@
         <Static id="Static01_00" taborder="24" text="Static01" left="10" top="219" width="1060" height="1" border="1px solid black,0px none,0px none"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
-this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
-};
-]]></Script>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
   </Form>
 </FDL>
