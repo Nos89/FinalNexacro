@@ -473,8 +473,8 @@ this.grd_Lecture_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEven
  	var eval = this.fn_split(e.row,"eval");
 	this.fn_setText("way",way);
  	this.fn_setText("eval",eval);
-	//this.ds_lecChild.copyRow(0,this.ds_lecture,e.row);
-	this.ds_lecChild.copyData(this.ds_lecture, true);
+	this.ds_lecChild.copyRow(0,this.ds_lecture,e.row);
+	//this.ds_lecChild.copyData(this.ds_lecture, true);
 };
 
 ]]></Script>

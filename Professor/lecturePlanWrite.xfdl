@@ -177,7 +177,7 @@ this.fn_sum = function(id){
 	var watching = parseInt(this.mask_watching.value);
 	var other = parseInt(this.mask_other.value);
 	sum = lecture + debate + practice + watching + other;
-	}else{
+	}else if(id=="eval"){
 	var attend = parseInt(this.mask_attend.value);
 	var middle = parseInt(this.mask_middleTest.value);
 	var finaltest = parseInt(this.mask_finalTest.value);
