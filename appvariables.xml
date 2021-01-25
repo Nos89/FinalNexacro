@@ -83,7 +83,7 @@
           <Col id="MENU_CD">0001</Col>
           <Col id="MENU_LVL">1</Col>
           <Col id="UP_MENU_CD">0000</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
           <Col id="PGM_ID">Notice.xfdl</Col>
         </Row>
         <Row>
@@ -91,35 +91,35 @@
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_CD">0002</Col>
           <Col id="UP_MENU_CD">0000</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">행사게시판 관리</Col>
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_CD">0003</Col>
           <Col id="UP_MENU_CD">0000</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">자유게시판 관리</Col>
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_CD">0004</Col>
           <Col id="UP_MENU_CD">0000</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">대나무숲 관리</Col>
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_CD">0005</Col>
           <Col id="UP_MENU_CD">0000</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">건의게시판 관리</Col>
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_CD">0006</Col>
           <Col id="UP_MENU_CD">0000</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">게시글 등록</Col>
@@ -132,7 +132,7 @@
           <Col id="MENU_CD">0011</Col>
           <Col id="UP_MENU_CD">0010</Col>
           <Col id="MENU_NM">공지사항 등록</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
           <Col id="PGM_ID">work01.xfdl</Col>
           <Col id="MENU_LVL">1</Col>
         </Row>
@@ -140,7 +140,7 @@
           <Col id="MENU_CD">0012</Col>
           <Col id="UP_MENU_CD">0010</Col>
           <Col id="MENU_NM">홍보게시판 등록</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
           <Col id="PGM_ID">work02.xfdl</Col>
           <Col id="MENU_LVL">1</Col>
         </Row>
@@ -148,7 +148,7 @@
           <Col id="MENU_CD">0013</Col>
           <Col id="UP_MENU_CD">0010</Col>
           <Col id="MENU_NM">행사게시판 등록</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
           <Col id="PGM_ID">work03.xfdl</Col>
           <Col id="MENU_LVL">1</Col>
         </Row>
@@ -163,7 +163,7 @@
           <Col id="MENU_LVL">1</Col>
           <Col id="UP_MENU_CD">0020</Col>
           <Col id="MENU_CD">0021</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
           <Col id="PGM_ID">Students.xfdl</Col>
         </Row>
         <Row>
@@ -171,7 +171,7 @@
           <Col id="MENU_LVL">1</Col>
           <Col id="UP_MENU_CD">0020</Col>
           <Col id="MENU_CD">0022</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
           <Col id="PGM_ID">Professor.xfdl</Col>
         </Row>
         <Row>
@@ -185,21 +185,21 @@
           <Col id="MENU_NM">학사 일정 관리</Col>
           <Col id="UP_MENU_CD">0030</Col>
           <Col id="MENU_CD">0031</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_NM">강의계획서 관리</Col>
           <Col id="MENU_CD">0032</Col>
           <Col id="UP_MENU_CD">0030</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">학사 자료실 관리</Col>
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_CD">0033</Col>
           <Col id="UP_MENU_CD">0030</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="UP_MENU_CD">0</Col>
@@ -212,7 +212,7 @@
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_CD">0041</Col>
           <Col id="UP_MENU_CD">0040</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">웹하드</Col>
@@ -225,7 +225,7 @@
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_CD">0051</Col>
           <Col id="UP_MENU_CD">0050</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">페이지 관리</Col>
@@ -238,14 +238,14 @@
           <Col id="UP_MENU_CD">0060</Col>
           <Col id="MENU_CD">0061</Col>
           <Col id="MENU_NM">메인 페이지 관리</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_LVL">1</Col>
           <Col id="UP_MENU_CD">0060</Col>
           <Col id="MENU_CD">0062</Col>
           <Col id="MENU_NM">종합 정보 페이지 관리</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH">Admin</Col>
         </Row>
         <Row>
           <Col id="MENU_LVL">1</Col>
@@ -1151,5 +1151,8 @@
       </Rows>
     </Dataset>
   </Datasets>
-  <Variables/>
+  <Variables>
+    <Variable id="gvID" initval="P-1001"/>
+    <Variable id="gvProName" initval="김교수"/>
+  </Variables>
 </AppVariables>

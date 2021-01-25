@@ -422,6 +422,8 @@ this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 정보 불러오기
 this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
 {
+	let date = new Date();
+	
 	this.edt_name.set_value(this.ds_professor.getColumn(e.row,"name"));
 	this.edt_id.set_value(this.ds_professor.getColumn(e.row,"id"));
 	this.com_pro_status.set_value(this.ds_professor.getColumn(e.row,"pro_status"));
@@ -451,6 +453,9 @@ this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEve
 	this.edt_email.set_value(this.ds_professor.getColumn(e.row,"email"));
 	this.com_bank.set_value(this.ds_professor.getColumn(e.row,"bank"));
 	this.edt_accountNum.set_value(this.ds_professor.getColumn(e.row,"accountnum"));
+	
+	let objColInfo = this.ds_professor.getColumnInfo("birth");
+	this.alert(objColInfo);
 };
 
 
