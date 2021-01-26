@@ -58,16 +58,16 @@
             <Col id="MENU_CD">0003</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">주전공배정신청</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work01.xfdl</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_majorApply.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0004</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">부/복수전공신청</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work03.xfdl</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_minorApply.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
           </Row>
           <Row>
@@ -75,24 +75,32 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">부/복수포기신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_minorWithdraw.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0006</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">휴학신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_takeOffApply.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0007</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">복학신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_returnApply.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">전부(과)/전공변경신청</Col>
             <Col id="MENU_CD">0008</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_ID">stu_changeDepartment.xfdl</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">증명서발급</Col>
@@ -208,7 +216,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	var sMenuId = this.application.gdsLeftMenu.getColumn(e.row, "MENU_CD");
+	var sMenuId = this.grd_student.getColumn(e.row, "MENU_CD");
 	
 	this.fn_openMenu(sMenuId);
 };

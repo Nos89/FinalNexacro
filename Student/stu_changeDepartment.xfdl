@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="stu_changeMajor" width="1090" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="전부(과)/전공변경신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01" taborder="1" text="" left="5" top="34" height="36" right="5" background="#c8ddee"/>
+        <Edit id="Edit00_00" taborder="2" left="180" top="40" width="92" height="26" enable="false"/>
+        <Edit id="Edit00" taborder="3" left="80" top="40" width="92" height="26" enable="false"/>
+        <Static id="Static02" taborder="4" text="학번/성명" left="10" top="37" width="60" height="30"/>
+        <Static id="Static00_00" taborder="5" text="전부(과)/전공변경 신청 정보" left="0" top="76" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01_00" taborder="6" text="" left="4" top="110" height="120" right="6" background="#c8ddee"/>
+        <Button id="Button00" taborder="7" text="신청" left="924" top="4" width="56" height="26"/>
+        <Button id="Button00_00" taborder="8" text="신청취소" left="990" top="4" width="70" height="26"/>
+        <Static id="Static02_00_00_00" taborder="9" text="전과년도" left="19" top="120" width="60" height="30"/>
+        <Combo id="Combo00_00" taborder="10" text="Combo00" left="79" top="120" width="79" height="30"/>
+        <Static id="Static02_00_00_00_00" taborder="11" text="전과학기" left="168" top="120" width="60" height="30"/>
+        <Combo id="Combo00_00_00" taborder="12" text="Combo00" left="228" top="120" width="79" height="30"/>
+        <Static id="Static02_00_00_00_00_00" taborder="13" text="복학예정년도" left="320" top="120" width="76" height="30"/>
+        <Combo id="Combo00_00_00_00" taborder="14" text="Combo00" left="396" top="120" width="79" height="30"/>
+        <Static id="Static02_00_00_00_01" taborder="15" text="전과사유" left="19" top="160" width="60" height="30"/>
+        <Combo id="Combo00_01" taborder="16" text="Combo00" left="79" top="160" width="146" height="30"/>
+        <Static id="Static02_00_00_00_00_01" taborder="17" text="전과대학" left="238" top="160" width="60" height="30"/>
+        <Combo id="Combo00_00_00_01" taborder="18" text="Combo00" left="298" top="160" width="79" height="30"/>
+        <Combo id="Combo00_00_00_01_00" taborder="19" text="Combo00" left="485" top="160" width="79" height="30"/>
+        <Static id="Static02_00_00_00_00_01_00" taborder="20" text="전과학부(학과)" left="396" top="160" width="79" height="30"/>
+        <Combo id="Combo00_00_00_01_00_00" taborder="21" text="Combo00" left="659" top="160" width="79" height="30"/>
+        <Static id="Static02_00_00_00_00_01_00_00" taborder="22" text="전과학부(전공)" left="570" top="160" width="79" height="30"/>
+        <Static id="Static02_00_00_00_01_00" taborder="23" text="작성일자" left="19" top="195" width="60" height="30"/>
+        <Calendar id="Calendar00" taborder="24" left="79" top="195" width="146" height="30"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Edit00_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
+      <BindItem id="item1" compid="Edit00" propid="value" datasetid="ds_stuInfo" columnid="id"/>
+    </Bind>
+  </Form>
+</FDL>

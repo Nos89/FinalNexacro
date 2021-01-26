@@ -2,7 +2,32 @@
 <FDL version="2.1">
   <Form id="stu_majorApply" width="1090" height="650" titletext="New Form">
     <Layouts>
-      <Layout height="650" mobileorientation="landscape" width="1090"/>
+      <Layout height="650" mobileorientation="landscape" width="1090">
+        <Static id="Static00" taborder="0" text="주전공배정신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01" taborder="1" text="" left="5" top="34" height="86" right="5" background="#c8ddee"/>
+        <Static id="Static02" taborder="2" text="신청일자" left="20" top="44" width="60" height="30"/>
+        <Calendar id="Calendar00" taborder="3" left="88" top="42" width="146" height="30"/>
+        <Static id="Static02_00" taborder="4" text="제1지망" left="20" top="82" width="60" height="30"/>
+        <Combo id="Combo00" taborder="5" text="Combo00" left="88" top="82" width="146" height="30"/>
+        <Button id="Button00" taborder="6" text="신청" left="874" top="4" width="56" height="26"/>
+        <Button id="Button00_00" taborder="7" text="신청취소" left="940" top="4" width="70" height="26"/>
+        <Static id="Static00_00" taborder="8" text="승인정보" left="0" top="130" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01_00" taborder="9" text="" left="5" top="167" height="86" right="5" background="#c8ddee"/>
+        <Static id="Static02_01" taborder="10" text="승인구분" left="20" top="175" width="60" height="30"/>
+        <Combo id="Combo00_00" taborder="11" text="Combo00" left="88" top="175" width="146" height="30"/>
+        <Static id="Static02_01_00" taborder="12" text="배정전공" left="20" top="210" width="60" height="30"/>
+        <Static id="Static02_01_00_00" taborder="13" text="신청일자" left="260" top="175" width="60" height="30"/>
+        <Calendar id="Calendar00_00" taborder="14" left="327" top="175" width="146" height="30"/>
+        <Static id="Static02_01_00_00_00" taborder="15" text="반려사유" left="500" top="175" width="60" height="30"/>
+        <Edit id="Edit00" taborder="16" left="560" top="175" width="450" height="30"/>
+        <Edit id="Edit00_00" taborder="17" left="88" top="210" width="232" height="30"/>
+      </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
   </Form>
 </FDL>
