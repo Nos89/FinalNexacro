@@ -75,8 +75,8 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">강의별 학생정보</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work03.xfdl</Col>
+            <Col id="PGM_PATH">Professor</Col>
+            <Col id="PGM_ID">StudentInfo.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">2000</Col>
