@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="lectureInfo" width="1090" height="650" titletext="New Form" onclick="lectureInfo_onclick" onload="lectureInfo_onload">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00_00" taborder="0" text="강의정보" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
+        <Static id="Static01" taborder="1" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
+        <Grid id="Grid00" taborder="2" left="21" top="90" width="1069" height="500" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="37"/>
+                <Column size="80"/>
+                <Column size="152"/>
+                <Column size="94"/>
+                <Column size="70"/>
+                <Column size="63"/>
+                <Column size="80"/>
+                <Column size="61"/>
+                <Column size="57"/>
+                <Column size="143"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO"/>
+                <Cell col="1" text="교과목코드"/>
+                <Cell col="2" text="강의명"/>
+                <Cell col="3" text="수강학년"/>
+                <Cell col="4" text="개설년도"/>
+                <Cell col="5" text="개설학기"/>
+                <Cell col="6" text="수강인원"/>
+                <Cell col="7" text="개설구분"/>
+                <Cell col="8" text="강의계획서"/>
+                <Cell col="9" text="시간표"/>
+                <Cell col="10" text="강의구분"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow+1"/>
+                <Cell col="1" text="bind:oc_code"/>
+                <Cell col="2" text="bind:name"/>
+                <Cell col="3" text="bind:oc_targetlevel" displaytype="normal" maskedittype="string" textAlign="center"/>
+                <Cell col="4" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년"/>
+                <Cell col="5" text="bind:oc_semester" displaytype="mask" maskedittype="string" maskeditformat="#학기"/>
+                <Cell col="6" text="bind:oc_part"/>
+                <Cell col="7" text="bind:oc_is_close"/>
+                <Cell col="8" displaytype="buttoncontrol" edittype="button" text="미리보기"/>
+                <Cell col="9" text="bind:oc_schedule"/>
+                <Cell col="10" text="bind:isu"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="cbo_year" taborder="3" text="Combo00" left="64" top="45" width="86" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Combo id="cbo_target" taborder="4" text="Combo01" left="217" top="46" width="93" height="31" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Combo id="cbo_semester" taborder="5" text="Combo02" left="369" top="47" width="83" height="30" innerdataset="ds_semester" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00" taborder="6" text="학기" left="337" top="44" width="74" height="35"/>
+        <Static id="Static00_01" taborder="7" text="학년" left="180" top="45" width="67" height="35"/>
+        <Static id="Static00_01_00" taborder="8" text="년도" left="20" top="43" width="54" height="35"/>
+        <Button id="btn_search" taborder="9" text="조회" left="512" top="52" width="85" height="24" onclick="btn_search_onclick"/>
+        <Button id="btn_reset" taborder="10" text="초기화" left="616" top="52" width="85" height="25" onclick="btn_reset_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.id = nexacro.Application.gvID;
+this.lectureInfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"lectureInfoOnLoad",
+		"/lecture/lectureInfoOnLoad.nex",
+		"",
+		"ds_openClass=out_openClass ds_lecture=out_lecture",
+		"id="+this.id+"",  
+		"fn_callback"
+	);
+};
+
+this.fn_callback = function(id, errCode, errMsg){
+	this.fn_setYear();
+};
+
+this.fn_setYear = function(){
+	var min =0;
+	var max =0;
+	var check = 0;
+	for(var i =0; i<this.ds_openClass.getRowCount(); i++){
+		var year = this.ds_openClass.getColumn(i,"oc_year").slice(0,4);
+		this.ds_openClass.setColumn(i,"oc_year",year);
+		if(i==0){
+			min = year;
+			max = year;
+		}else if(year >= max){
+			max=year;
+		}else if(year < min){
+			min=year;
+		}
+		
+	}
+	for(var i=min; i<=max; i++){
+		this.ds_year.addRow();
+		this.ds_year.setColumn(check,"code",i);
+		this.ds_year.setColumn(check,"name",i+"년");
+		check++;
+	}
+}
+this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(this.Grid00.getCellPos()==8){
+		var code = this.Grid00.getCellText(e.row,1);
+		var search = this.ds_lecture.extractRows( "lec_code == '"+code+"'" );
+		if(search == ""){
+			this.alert("강의 계획서가 존재하지 않습니다.");
+			return;
+		}
+		this.ds_lecChild.copyRow(0,this.ds_lecture,search);
+		var year = this.ds_openClass.getColumn(e.row,"oc_year");
+		this.fn_viewlecturePlan(year);
+	}
+};
+
+this.fn_viewlecturePlan = function(year){
+	var objCF = new ChildFrame();
+	objCF.init("viewPlan", '', '', '', ''); 
+	objCF.set_formurl("Professor::lecturePlanView.xfdl"); 
+	objCF.set_openalign("center middle");
+	objCF.set_dragmovetype("all");
+	objCF.set_overlaycolor("rgba(0,0,0,0.3)");
+	objCF.showModal(
+		this.getOwnerFrame()
+		,{lecture:this.ds_lecChild,year:year}  
+		,this
+		,"fn_callback_pop"
+	);
+	
+}
+
+
+
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var semester = this.cbo_semester.value;
+	var year = this.cbo_year.value;
+	var target = this.cbo_target.value;
+	trace("semester:"+semester+" year:"+ year+" target:"+target);
+	if(year==null&&semester==null&&target==null){
+		this.ds_openClass.filter("");
+		return;
+	}
+	
+	if(year==null){
+		if(semester==null){
+			this.ds_openClass.filter("oc_targetlevel=='"+target+"'"); 
+		}else if(target==null){
+			this.ds_openClass.filter("oc_semester=='"+semester+"'"); 
+		}else{
+			this.ds_openClass.filter("oc_semester=='"+semester+"'&&oc_targetlevel=='"+target+"'");
+		}
+	}else if(semester==null){
+		if(year==null){
+			this.ds_openClass.filter("oc_targetlevel=='"+target+"'");
+		}else if(target==null){
+			this.ds_openClass.filter("oc_year=='"+year+"'");
+		}else{
+		this.ds_openClass.filter("oc_year=="+year+"&&oc_targetlevel=="+target+"");
+		}
+	}else if(target ==null){
+		if(semester == null){
+			this.ds_openClass.filter("oc_year=='"+year+"'");
+		}else if(year==null){
+			this.ds_openClass.filter("oc_semester=='"+semester+"'");
+		}else{
+		this.ds_openClass.filter("oc_semester=="+semester+"&&oc_year=="+year+"");
+		}
+	}else{ 
+	this.ds_openClass.filter("oc_semester=="+semester+"&&oc_year=='"+year+"'&&oc_targetlevel=='"+target+"'");
+	}
+};
+
+this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_openClass.filter("");
+	this.cbo_semester.set_value(null);
+	this.cbo_target.set_value(null);
+	this.cbo_year.set_value(null);
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_openClass">
+        <ColumnInfo>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_year" type="STRING" size="256"/>
+          <Column id="oc_semester" type="STRING" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="oc_max" type="INT" size="256"/>
+          <Column id="oc_part" type="INT" size="256"/>
+          <Column id="oc_is_close" type="STRING" size="256"/>
+          <Column id="oc_close_reason" type="STRING" size="256"/>
+          <Column id="oc_pro_code" type="STRING" size="256"/>
+          <Column id="oc_class_room" type="STRING" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="oc_targetlevel">전체</Col>
+          </Row>
+          <Row>
+            <Col id="oc_targetlevel">3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lecture">
+        <ColumnInfo>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="lec_title" type="STRING" size="256"/>
+          <Column id="lec_approval" type="INT" size="256"/>
+          <Column id="lec_deny_reason" type="STRING" size="256"/>
+          <Column id="pro_name" type="STRING" size="256"/>
+          <Column id="lec_semester" type="INT" size="256"/>
+          <Column id="lec_targetLevel" type="STRING" size="256"/>
+          <Column id="lec_classroom" type="STRING" size="256"/>
+          <Column id="lec_schedule" type="STRING" size="256"/>
+          <Column id="lec_score" type="INT" size="256"/>
+          <Column id="lec_isu" type="STRING" size="256"/>
+          <Column id="lec_summary" type="STRING" size="256"/>
+          <Column id="lec_way" type="STRING" size="256"/>
+          <Column id="lec_book" type="STRING" size="256"/>
+          <Column id="lec_eval" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="lec_code">L-1002</Col>
+            <Col id="lec_title">양자역학의 이해</Col>
+            <Col id="lec_approval">0</Col>
+            <Col id="lec_deny_reason">0</Col>
+            <Col id="pro_name">김교수</Col>
+            <Col id="lec_semester">1</Col>
+            <Col id="lec_targetLevel">전체</Col>
+            <Col id="lec_classroom">07-406</Col>
+            <Col id="lec_schedule">수(4,5,6)</Col>
+            <Col id="lec_score">3</Col>
+            <Col id="lec_isu">교양선택</Col>
+            <Col id="lec_summary">무조건자습</Col>
+            <Col id="lec_way">80/20/0/0/0</Col>
+            <Col id="lec_book">양자역학의이해-김교수</Col>
+            <Col id="lec_eval">10/30/30/20/0/0/5/5</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lecChild">
+        <ColumnInfo>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="lec_title" type="STRING" size="256"/>
+          <Column id="lec_approval" type="INT" size="256"/>
+          <Column id="lec_deny_reason" type="STRING" size="256"/>
+          <Column id="pro_name" type="STRING" size="256"/>
+          <Column id="lec_semester" type="STRING" size="256"/>
+          <Column id="lec_targetLevel" type="STRING" size="256"/>
+          <Column id="lec_classroom" type="STRING" size="256"/>
+          <Column id="lec_schedule" type="STRING" size="256"/>
+          <Column id="lec_score" type="INT" size="256"/>
+          <Column id="lec_isu" type="STRING" size="256"/>
+          <Column id="lec_summary" type="STRING" size="256"/>
+          <Column id="lec_way" type="STRING" size="256"/>
+          <Column id="lec_book" type="STRING" size="256"/>
+          <Column id="lec_eval" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_year">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stdYear">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">1학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">2학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="name">3학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="name">4학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">전체</Col>
+            <Col id="name">전체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_semester" progressload="true">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">1학기</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">2학기</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
