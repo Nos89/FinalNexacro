@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="stu_majorApply" width="1090" height="650" titletext="New Form">
+  <Form id="stu_majorApply" width="1090" height="650" titletext="New Form" onload="stu_majorApply_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="0" text="주전공배정신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
@@ -8,13 +8,51 @@
         <Static id="Static02" taborder="2" text="신청일자" left="20" top="44" width="60" height="30"/>
         <Calendar id="Calendar00" taborder="3" left="88" top="42" width="146" height="30"/>
         <Static id="Static02_00" taborder="4" text="제1지망" left="20" top="82" width="60" height="30"/>
-        <Combo id="Combo00" taborder="5" text="Combo00" left="88" top="82" width="146" height="30"/>
-        <Button id="Button00" taborder="6" text="신청" left="874" top="4" width="56" height="26"/>
-        <Button id="Button00_00" taborder="7" text="신청취소" left="940" top="4" width="70" height="26"/>
+        <Combo id="Combo00" taborder="5" text="" left="88" top="82" width="146" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">01</Col>
+                <Col id="datacolumn">간호학</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">02</Col>
+                <Col id="datacolumn">수학교육과</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">03</Col>
+                <Col id="datacolumn">국어교육과</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Button id="btn_apply" taborder="6" text="신청" left="874" top="4" width="56" height="26" onclick="btn_apply_onclick"/>
+        <Button id="btn_applyCancel" taborder="7" text="신청취소" left="940" top="4" width="70" height="26"/>
         <Static id="Static00_00" taborder="8" text="승인정보" left="0" top="130" height="34" cssclass="sta_WF_title01" right="10"/>
         <Static id="Static01_00" taborder="9" text="" left="5" top="167" height="86" right="5" background="#c8ddee"/>
         <Static id="Static02_01" taborder="10" text="승인구분" left="20" top="175" width="60" height="30"/>
-        <Combo id="Combo00_00" taborder="11" text="Combo00" left="88" top="175" width="146" height="30"/>
+        <Combo id="Combo00_00" taborder="11" text="Combo00" left="88" top="175" width="146" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">01</Col>
+                <Col id="datacolumn">예비</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">02</Col>
+                <Col id="datacolumn">정기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
         <Static id="Static02_01_00" taborder="12" text="배정전공" left="20" top="210" width="60" height="30"/>
         <Static id="Static02_01_00_00" taborder="13" text="신청일자" left="260" top="175" width="60" height="30"/>
         <Calendar id="Calendar00_00" taborder="14" left="327" top="175" width="146" height="30"/>
@@ -24,10 +62,104 @@
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
-this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+this.stu_majorApply_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	
+	this.transaction(
+		"stuInfoOnLoad",
+		"/stuInfoOnLoad.nex",
+		"",
+		"ds_stuInfo=out_stuInfo ds_stuArmy=out_stuArmy ds_proFile=out_proFile ds_stuDetail=out_stuDetail",
+		"",  
+		"fn_callback"
+	);
 };
-]]></Script>
+
+this.fn_callback=function(id,errCode,errMsg)
+{
+	this.ds_majorApply.getColumn(0,"id") = this.ds_stuInfo.getColumn(0,"id");
+};
+
+
+this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.transaction(
+		"stuMajorApply",
+		"/stuMajorApply.nex",
+		"in_majorApply=ds_majorApply:U",
+		"",
+		"",  
+		"fn_Applycallback"
+	);
+};
+
+this.fn_Applycallback=function(id,errCode,errMsg)
+{
+	alert("신청이 완료되었습니다.");
+};]]></Script>
+    <Objects>
+      <Dataset id="ds_stuInfo">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="birth" type="DATE" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="country" type="STRING" size="256"/>
+          <Column id="inDate" type="DATE" size="256"/>
+          <Column id="outDate" type="DATE" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="zipcode" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="bank" type="STRING" size="256"/>
+          <Column id="accountnum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stuArmy">
+        <ColumnInfo>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="mil_inDate" type="DATE" size="256"/>
+          <Column id="mil_outDate" type="DATE" size="256"/>
+          <Column id="mil_title" type="STRING" size="256"/>
+          <Column id="mil_rank" type="STRING" size="256"/>
+          <Column id="mil_code" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stuDetail">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="std_status" type="STRING" size="256"/>
+          <Column id="std_year" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_proFile">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="oriName" type="STRING" size="256"/>
+          <Column id="savedName" type="STRING" size="256"/>
+          <Column id="reg_date" type="DATE" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_majorApply">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="cr_divide" type="STRING" size="256"/>
+          <Column id="cr_completeDiv" type="STRING" size="256"/>
+          <Column id="cr_date" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Combo00" propid="value" datasetid="ds_majorApply" columnid="lec_code"/>
+      <BindItem id="item1" compid="Calendar00" propid="value" datasetid="ds_majorApply" columnid="cr_date"/>
+    </Bind>
   </Form>
 </FDL>
