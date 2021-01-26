@@ -75,7 +75,7 @@ this.lecturePlanWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo
 		this.eval = this.fn_split(0,"eval");
 		this.fn_setText("way",this.way);
 		this.fn_setText("eval",this.eval);
-		this.mask_wayTotal.set_value(this.fn_sum());
+		this.mask_wayTotal.set_value(this.fn_sum("way"));
 	}else{
 		this.edt_lecCode.set_value(this.parent.lecCode);
 		this.edt_title.set_value(this.parent.name);
@@ -177,7 +177,7 @@ this.fn_sum = function(id){
 	var watching = parseInt(this.mask_watching.value);
 	var other = parseInt(this.mask_other.value);
 	sum = lecture + debate + practice + watching + other;
-	}else{
+	}else if(id=="eval"){
 	var attend = parseInt(this.mask_attend.value);
 	var middle = parseInt(this.mask_middleTest.value);
 	var finaltest = parseInt(this.mask_finalTest.value);
@@ -212,7 +212,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fn_insertPercentage();
 	if(this.parent.lecture ==1){
-		this.confirm("작성을 끝내시겠습니까?","경고");
+		if(this.confirm("작성을 끝내시겠습니까?","경고")){
 		this.transaction(
 			"insertLecturePlan",
 			"/lecture/insertLecturePlan",	
@@ -221,8 +221,9 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			"",
 			"fn_callback" 
 		);
+		}
 	}else{
-	this.confirm("수정을 끝내시겠습니까?","경고");
+	if(this.confirm("수정을 끝내시겠습니까?","경고")){
 	this.transaction(
 			"updateLecturePlan",
 			"/lecture/updateLecturePlan",	
@@ -231,6 +232,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			"",
 			"fn_callback" 
 		);
+	}
 	}
 };
 this.fn_callback = function(id,errCode,errMsg){
