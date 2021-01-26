@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="StudentInfo" width="1090" height="650" titletext="New Form" onload="StudentInfo_onload">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static01" taborder="0" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
+        <Static id="Static00_00" taborder="1" text="학생정보 조회" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
+        <Static id="Static00" taborder="2" text="년도" left="10" top="49" width="40" height="23"/>
+        <Combo id="cbo_year" taborder="3" text="Combo00" left="45" top="49" width="85" height="25" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Combo id="cbo_stdYear" taborder="4" text="Combo00" left="175" top="48" width="75" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00_01" taborder="5" text="학년" left="140" top="49" width="40" height="23"/>
+        <Static id="Static02" taborder="6" text="학기" left="289" top="49" width="43" height="25"/>
+        <Combo id="cbo_semester" taborder="7" text="Combo00" left="325" top="49" width="94" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_semester" displaynulltext="--선택--"/>
+        <Static id="Static02_00" taborder="8" text="강의명" left="429" top="49" width="43" height="25"/>
+        <Combo id="cbo_lecTitle" taborder="9" text="Combo00" left="475" top="49" width="85" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_lecTitle" displaynulltext="--선택--"/>
+        <Button id="btn_search" taborder="10" text="조회" left="983" top="47" width="99" height="29" onclick="btn_search_onclick"/>
+        <Grid id="Grid00" taborder="11" left="11" top="90" width="1073" height="543" binddataset="ds_proAttendMng" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="34"/>
+                <Column size="65"/>
+                <Column size="142"/>
+                <Column size="80"/>
+                <Column size="106"/>
+                <Column size="110"/>
+                <Column size="65"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO"/>
+                <Cell col="1" text="강의코드"/>
+                <Cell col="2" text="강의명"/>
+                <Cell col="3" text="학번"/>
+                <Cell col="4" text="학과"/>
+                <Cell col="5" text="이름"/>
+                <Cell col="6" text="학년"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow+1"/>
+                <Cell col="1" text="bind:att_lecCode"/>
+                <Cell col="2" text="bind:att_lecTitle"/>
+                <Cell col="3" text="bind:att_stdId"/>
+                <Cell col="4" text="bind:att_deptName"/>
+                <Cell col="5" text="bind:att_stdName"/>
+                <Cell col="6" text="bind:att_stdLevel"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_reset" taborder="12" text="초기화" left="871" top="45" width="99" height="29" onclick="btn_reset_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_proAttendMng">
+        <ColumnInfo>
+          <Column id="att_lecCode" type="STRING" size="256"/>
+          <Column id="att_year" type="STRING" size="256"/>
+          <Column id="att_targetLevel" type="STRING" size="256"/>
+          <Column id="att_semester" type="STRING" size="256"/>
+          <Column id="att_lecTitle" type="STRING" size="256"/>
+          <Column id="att_date" type="STRING" size="256"/>
+          <Column id="att_attend" type="STRING" size="256"/>
+          <Column id="att_stdId" type="STRING" size="256"/>
+          <Column id="att_deptName" type="STRING" size="256"/>
+          <Column id="att_stdName" type="STRING" size="256"/>
+          <Column id="att_stdLevel" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="att_lecCode">L-1002</Col>
+            <Col id="att_year">20120202</Col>
+            <Col id="att_targetLevel">3</Col>
+            <Col id="att_semester">1</Col>
+            <Col id="att_lecTitle">양자역학ㅇ</Col>
+            <Col id="att_date">20210106</Col>
+            <Col id="att_attend">X</Col>
+            <Col id="att_stdId">S-1002</Col>
+            <Col id="att_deptName">미디어콘텐츠학</Col>
+            <Col id="att_stdName">이학생</Col>
+            <Col id="att_stdLevel">3</Col>
+          </Row>
+          <Row>
+            <Col id="att_lecCode">L-1002</Col>
+            <Col id="att_year">20120202</Col>
+            <Col id="att_targetLevel">3</Col>
+            <Col id="att_semester">1</Col>
+            <Col id="att_lecTitle">양자역학ㅇ</Col>
+            <Col id="att_date">20120113</Col>
+            <Col id="att_attend">X</Col>
+            <Col id="att_stdId">S-1003</Col>
+            <Col id="att_deptName">사회과학</Col>
+            <Col id="att_stdName">김학생</Col>
+            <Col id="att_stdLevel">3</Col>
+          </Row>
+          <Row>
+            <Col id="att_lecCode">L-1003</Col>
+            <Col id="att_year">20200203</Col>
+            <Col id="att_targetLevel">3</Col>
+            <Col id="att_semester">2</Col>
+            <Col id="att_lecTitle">gg</Col>
+            <Col id="att_date">20200505</Col>
+            <Col id="att_attend">X</Col>
+            <Col id="att_stdId">S-1010</Col>
+            <Col id="att_deptName">aaaa</Col>
+            <Col id="att_stdName">sudd</Col>
+            <Col id="att_stdLevel">3</Col>
+          </Row>
+          <Row>
+            <Col id="att_lecCode">L-1004</Col>
+            <Col id="att_year">20210203</Col>
+            <Col id="att_targetLevel">3</Col>
+            <Col id="att_semester">2</Col>
+            <Col id="att_lecTitle">gg</Col>
+            <Col id="att_date">2020606</Col>
+            <Col id="att_attend">X</Col>
+            <Col id="att_stdId">S-1012</Col>
+            <Col id="att_deptName">ddd</Col>
+            <Col id="att_stdName">ss</Col>
+            <Col id="att_stdLevel">3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_year">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stdYear">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">1학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">2학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="name">3학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="name">4학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">전체</Col>
+            <Col id="name">전체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_semester" progressload="true">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">1학기</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">2학기</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lecTitle">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.application =null;
+this.StudentInfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	this.transaction(
+			"pro_studentInfo", 
+			"/professor/proStudentInfo.nex",		
+			"", 
+			"ds_proAttendMng=out_proAttendMng ",
+			"id="+this.application.gvID+"",
+			"fn_callback"
+		);
+};
+
+this.fn_callback = function(id, errMsg, errCode){
+	this.fn_setYear();
+	this.fn_setTitle();
+}
+this.fn_setTitle = function(){
+	var arrtitle = new Array();
+	for(var i =0; i<this.ds_proAttendMng.getRowCount(); i++){
+		arrtitle.push(this.ds_proAttendMng.getColumn(i,"att_lecTitle"));
+	}
+	var uniqueArr = Array.from(new Set(arrtitle));
+	for(var i=0; i<uniqueArr.length; i++){
+		this.ds_lecTitle.addRow();
+		this.ds_lecTitle.setColumn(i,"code",uniqueArr[i]);
+		this.ds_lecTitle.setColumn(i,"name",uniqueArr[i]);
+	}
+	
+}
+this.fn_setYear = function(){
+	var min =0;
+	var max =0;
+	var check = 0;
+	for(var i =0; i<this.ds_proAttendMng.getRowCount(); i++){
+		var year = this.ds_proAttendMng.getColumn(i,"att_year").slice(0,4);
+		this.ds_proAttendMng.setColumn(i,"att_year",year);
+		if(i==0){
+			min = year;
+			max = year;
+		}else if(year >= max){
+			max=year;
+		}else if(year < min){
+			min=year;
+		}
+		
+	}
+	for(var i=min; i<=max; i++){
+		this.ds_year.addRow();
+		this.ds_year.setColumn(check,"code",i);
+		this.ds_year.setColumn(check,"name",i+"년");
+		check++;
+	}
+}
+
+
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var semester = this.cbo_semester.value;
+	var year = this.cbo_year.value;
+	var target = this.cbo_stdYear.value;
+	var title = this.cbo_lecTitle.value;
+	if(year==null&&semester==null&&target==null&&title==null){
+		this.ds_proAttendMng.filter("");
+		return;
+	}
+	
+	if(year!=null&&semester!=null){
+		this.ds_proAttendMng.filter("att_year=='"+year+"'&&att_semester=='"+semester+"'"); 
+	}else if(year!=null&&target!=null){
+		this.ds_proAttendMng.filter("att_year=='"+year+"'&&att_targetLevel=='"+target+"'"); 
+	}else if(year!=null&&title!=null){
+		this.ds_proAttendMng.filter("att_year=='"+year+"'&&att_lecTitle=='"+title+"'");
+	}else if(year!=null){
+		this.ds_proAttendMng.filter("att_year=='"+year+"'");
+	}else if(semester!=null&&target!=null){
+		this.ds_proAttendMng.filter("att_semester=='"+semester+"'&&att_targetLevel=='"+target+"'");
+	}else if(semester!=null&&title!=null){
+		this.ds_proAttendMng.filter("att_semester=='"+semester+"'&&att_lecTitle=='"+title+"'");
+	}else if(semester!=null){
+		this.ds_proAttendMng.filter("att_semester=='"+semester+"'");
+	}else if(target!=null&&title!=null){
+		this.ds_proAttendMng.filter("att_targetLevel=='"+target+"'&&att_lecTitle=='"+title+"'");
+	}else if(target!=null){
+		this.ds_proAttendMng.filter("att_targetLevel=='"+target+"'");
+	}else if(title!=null){
+		this.ds_proAttendMng.filter("att_lecTitle=='"+title+"'");
+	}else{
+		this.ds_proAttendMng.filter("att_semester=="+semester+"&&att_year=='"+year+"'&&att_targetLevel=='"+target+"'&&att_lecTitle=='"+title+"'");
+	}
+	
+	
+};
+
+this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_proAttendMng.filter("");
+	this.cbo_semester.set_value(null);
+	this.cbo_stdYear.set_value(null);
+	this.cbo_year.set_value(null);
+	this.cbo_lecTitle.set_value(null);
+};
+]]></Script>
+  </Form>
+</FDL>
