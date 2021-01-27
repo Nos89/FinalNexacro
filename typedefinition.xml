@@ -5,6 +5,7 @@
     <Module url="ComComp.json"/>
     <Module url="Grid.json"/>
     <Module url="DeviceAPI.json"/>
+    <Module url="Graphics.json"/>
   </Modules>
   <Components>
     <Component type="JavaScript" id="Button" classname="nexacro.Button"/>
@@ -32,6 +33,7 @@
     <Component type="JavaScript" id="FileUpTransfer" classname="nexacro.FileUpTransfer"/>
     <Component type="JavaScript" id="FileDownTransfer" classname="nexacro.FileDownTransfer"/>
     <Component type="JavaScript" id="FileDialog" classname="nexacro.FileDialog"/>
+    <Component type="JavaScript" id="Graphics" classname="nexacro.Graphics"/>
   </Components>
   <Services>
     <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" communicationversion="0" cachelevel="session" include_subdir="true"/>
@@ -44,6 +46,7 @@
     <Service prefixid="Professor" type="form" url="./Professor/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="Student" type="form" url="./Student/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="ClassRegistraion" type="form" url="./ClassRegistraion/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="Lib" type="js" url="./Lib/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>
   <Protocols/>
   <Update/>

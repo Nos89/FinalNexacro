@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="proScheduler_popup" width="490" height="360" titletext="New Form" onload="proScheduler_popup_onload">
+    <Layouts>
+      <Layout height="360" mobileorientation="landscape" width="490">
+        <Grid id="Grid00" taborder="0" left="7" top="10" width="473" height="281" binddataset="ds_sheduler" autofittype="col" onheadclick="Grid00_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="34"/>
+                <Column size="80"/>
+                <Column size="211"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="제목"/>
+                <Cell col="2" text="내용"/>
+                <Cell col="3" text="날짜"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:check"/>
+                <Cell col="1" text="bind:sche_title"/>
+                <Cell col="2" text="bind:sche_contents"/>
+                <Cell col="3" text="bind:sche_date"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_del" taborder="1" text="삭제" left="87" top="305" width="118" height="38" onclick="btn_del_onclick"/>
+        <Button id="btn_cancle" taborder="2" text="취소" left="260" top="305" width="118" height="38" onclick="btn_cancle_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_sheduler">
+        <ColumnInfo>
+          <Column id="sche_seq" type="STRING" size="256"/>
+          <Column id="sche_date" type="STRING" size="256"/>
+          <Column id="sche_title" type="STRING" size="256"/>
+          <Column id="sche_contents" type="STRING" size="256"/>
+          <Column id="sche_type" type="STRING" size="256"/>
+          <Column id="sche_proId" type="STRING" size="256"/>
+          <Column id="sche_proName" type="STRING" size="256"/>
+          <Column id="check" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="sche_seq">12</Col>
+            <Col id="sche_date">3</Col>
+            <Col id="sche_title">5</Col>
+            <Col id="sche_contents">6</Col>
+            <Col id="sche_type">8</Col>
+            <Col id="sche_proId">7</Col>
+            <Col id="sche_proName">88</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="sche_seq">2</Col>
+            <Col id="sche_date">3</Col>
+            <Col id="sche_title">5</Col>
+            <Col id="sche_contents">7</Col>
+            <Col id="sche_type">8</Col>
+            <Col id="sche_proId">7</Col>
+            <Col id="sche_proName">8</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="sche_seq">2</Col>
+            <Col id="sche_date">4</Col>
+            <Col id="sche_title">6</Col>
+            <Col id="sche_contents">7</Col>
+            <Col id="sche_type">8</Col>
+            <Col id="sche_proId">77</Col>
+            <Col id="sche_proName">8</Col>
+            <Col id="check">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="delScheduler">
+        <ColumnInfo>
+          <Column id="sche_seq" type="STRING" size="256"/>
+          <Column id="sche_date" type="STRING" size="256"/>
+          <Column id="sche_title" type="STRING" size="256"/>
+          <Column id="sche_contents" type="STRING" size="256"/>
+          <Column id="sche_type" type="STRING" size="256"/>
+          <Column id="sche_proId" type="STRING" size="256"/>
+          <Column id="sche_proName" type="STRING" size="256"/>
+          <Column id="check" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.proScheduler_popup_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ds_sheduler.copyData(this.parent.dataSet);
+};
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var objDs = this.Grid00.getBindDataset();
+        if(objDs.getRowCount() < 1){ return;}
+        
+        sText = obj.getCellProperty("head", e.cell, "text");
+        sText = (sText == "1" ? "0" : "1");	
+        
+		for(var i=0; i < objDs.rowcount; i++){
+			objDs.setColumn(i, "check", sText);
+		}
+		obj.setCellProperty("Head", e.cell, "text", sText);	
+};
+
+this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(!this.confirm("삭제하시겠습니까?")){ 
+		return 0;	
+	}
+	var arr = this.ds_sheduler.extractRows("check=='1'");
+	for(var i=0; i<arr.length; i++){
+		this.delScheduler.addRow();
+		this.delScheduler.copyRow(i,this.ds_sheduler,arr[i]);
+	}
+	this.transaction(
+			"delProSchedule",
+			"/professor/delProSchedule.nex",		
+			"in_ds=delScheduler", 
+			"",
+			"", 
+			"fn_callback"
+		);
+};
+this.fn_callback = function(id, errCode, errMsg){
+	if(errCode != 1){
+		alert("삭제하지 못했습니다 잠시 후 다시 시도해 주세요");
+		
+	}else {
+		this.close("1");
+	}
+};
+
+]]></Script>
+  </Form>
+</FDL>
