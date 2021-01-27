@@ -7,11 +7,10 @@
         <Button id="btnPrev" taborder="1" text="&lt;" left="391" top="60" width="60" height="40" onclick="btnPrev_onclick"/>
         <Button id="btnNext" taborder="2" text="&gt;" left="661" top="60" width="60" height="40" onclick="btnNext_onclick"/>
         <Static id="stYearMonth" taborder="3" left="467" top="61" width="178" height="39" textAlign="center" font="bold 24px/normal &quot;Gulim&quot;"/>
-        <Button id="btnNew" taborder="4" text="신규일정" left="870" top="61" width="60" height="40" onclick="btnNew_onclick"/>
+        <Button id="btnNew" taborder="4" text="신규일정" left="940" top="61" width="60" height="40" onclick="btnNew_onclick"/>
         <Static id="Static00" taborder="5" text="교수/학과스케줄" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
         <Static id="Static01" taborder="6" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
-        <Button id="btn_save" taborder="7" text="저장" left="940" top="61" width="60" height="40" onclick="btn_save_onclick"/>
-        <Button id="btn_del" taborder="8" text="삭제" left="1010" top="61" width="60" height="40" onclick="btn_del_onclick"/>
+        <Button id="btn_del" taborder="7" text="삭제" left="1010" top="61" width="60" height="40" onclick="btn_del_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
