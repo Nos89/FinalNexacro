@@ -130,6 +130,7 @@
         <Edit id="Edit00" taborder="67" left="613" top="191" width="138" height="25" onchanged="Edit00_onchanged" enable="false" textAlign="center"/>
         <Static id="Static07_03_00_00" taborder="68" text="Static07" left="831" top="281" width="138" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static06_00_00_00_00_01_00_00" taborder="69" text="이수구분" left="767" top="278" width="87" height="25"/>
+        <Button id="Button01" taborder="70" text="add" left="493" top="48" width="110" height="23" onclick="Button01_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -476,6 +477,7 @@ this.grd_Lecture_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEven
 	this.ds_lecChild.copyRow(0,this.ds_lecture,e.row);
 	//this.ds_lecChild.copyData(this.ds_lecture, true);
 };
+
 
 ]]></Script>
     <Bind>
