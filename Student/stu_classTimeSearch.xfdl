@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="stu_classTimeSearch" width="1090" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="수업시간조회" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01" taborder="1" text="" left="5" top="34" height="99" right="5" background="#c8ddee"/>
+        <Static id="Static00_00" taborder="2" text="강의알람리스트" left="0" top="143" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Grid id="Grid00" taborder="3" left="5" top="180" right="5" bottom="190" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="63"/>
+                <Column size="78"/>
+                <Column size="91"/>
+                <Column size="48"/>
+                <Column size="75"/>
+                <Column size="69"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="신청년도"/>
+                <Cell col="2" text="신청학기"/>
+                <Cell col="3" text="승인구분"/>
+                <Cell col="4" text="전공구분"/>
+                <Cell col="5" text="교직복수여부"/>
+                <Cell col="6" text="신청대학"/>
+                <Cell col="7" text="신청학부(과)"/>
+                <Cell col="8" text="신청학과(전공)"/>
+                <Cell col="9" text="신청일자"/>
+                <Cell col="10" text="신청"/>
+                <Cell col="11" text="처리일자"/>
+                <Cell col="12" text="반려사유"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow + 1"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>
