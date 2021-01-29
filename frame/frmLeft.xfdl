@@ -16,17 +16,6 @@
                 <Cell text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL"/>
               </Band>
             </Format>
-            <Format id="default_00">
-              <Columns>
-                <Column size="180"/>
-              </Columns>
-              <Rows>
-                <Row size="32"/>
-              </Rows>
-              <Band id="body">
-                <Cell text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL"/>
-              </Band>
-            </Format>
           </Formats>
         </Grid>
         <Static id="Static00" taborder="1" text="Main Title Menu" left="0" top="0" height="40" width="190" cssclass="sta_LF_title01"/>
@@ -130,8 +119,8 @@
             <Col id="UP_MENU_CD">0003</Col>
             <Col id="MENU_NM">학과/교수스케쥴</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work02.xfdl</Col>
+            <Col id="PGM_PATH">Professor</Col>
+            <Col id="PGM_ID">scheduler.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">3003</Col>
@@ -337,17 +326,35 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.application = null;
+this.loginID = "";
+this.userType = "";
 
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
-	this.alert(this.application.userType);
+	this.transaction(
+		"whichUser", // 1. strSVCID
+		"/whichUser.nex", // 2. strURL
+		"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+		"", // 4. strOutDatasets -select Fds=Sds
+		"", // 5. strArgument View에서 Server로 넘겨줄 변수
+		"fn_loginCallback" // 6. strCallbackFunc
+	);
+
 };
+
+this.fn_loginCallback = function( pID, pErr, pMsg ){
+	if( this.userType == "학생" ){
+		this.grdLeft.set_binddataset(this.grd_student);
+	} else if ( this.userType == "교수" ){
+		this.grdLeft.set_binddataset(this.grd_professor);
+	}
+}
 
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	//var sMenuId = this.application.gdsLeftMenu.getColumn(e.row, "MENU_CD");
-	var sMenuId = this.grd_professor.getColumn(e.row, "MENU_CD"); 
+	var sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"); 
 	this.fn_openMenu(sMenuId);
 };
 
@@ -365,7 +372,7 @@ this.fn_openMenu = function(sMenuId)
 	var sMenuNm;
 	var sMenuNavi;
 	
-	var objMenuDs = this.grd_professor;
+	var objMenuDs = this.grdLeft.getBindDataset();
 	var objOpenMenuDs = this.application.gdsOpenMenu;
 	
 	nFRow 		= objMenuDs.findRow("MENU_CD", sMenuId);
