@@ -6,7 +6,7 @@
         <Static id="Static00" taborder="0" text="주전공배정신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
         <Static id="Static01" taborder="1" text="" left="5" top="34" height="86" right="5" background="#c8ddee"/>
         <Static id="Static02" taborder="2" text="신청일자" left="20" top="44" width="60" height="30"/>
-        <Calendar id="Calendar00" taborder="3" left="88" top="42" width="146" height="30"/>
+        <Calendar id="cal_applyDay" taborder="3" left="88" top="42" width="146" height="30"/>
         <Static id="Static02_00" taborder="4" text="제1지망" left="20" top="82" width="60" height="30"/>
         <Combo id="Combo00" taborder="5" text="" left="88" top="82" width="146" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="">
           <Dataset id="innerdataset">
@@ -76,18 +76,19 @@ this.stu_majorApply_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.fn_callback=function(id,errCode,errMsg)
 {
-	this.ds_majorApply.getColumn(0,"id") = this.ds_stuInfo.getColumn(0,"id");
+	this.ds_majorApply.setColumn(0,"id",this.ds_stuInfo.getColumn(0,"id"));
 };
 
 
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	var sDate = this.cal_applyDay.value;
 	this.transaction(
 		"stuMajorApply",
 		"/stuMajorApply.nex",
-		"in_majorApply=ds_majorApply:U",
+		"in_majorApply=ds_majorApply:A",
 		"",
-		"",  
+		"date="+ nexacro.wrapQuote(sDate),  
 		"fn_Applycallback"
 	);
 };
@@ -150,7 +151,6 @@ this.fn_Applycallback=function(id,errCode,errMsg)
           <Column id="lec_code" type="STRING" size="256"/>
           <Column id="cr_divide" type="STRING" size="256"/>
           <Column id="cr_completeDiv" type="STRING" size="256"/>
-          <Column id="cr_date" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row/>
@@ -159,7 +159,6 @@ this.fn_Applycallback=function(id,errCode,errMsg)
     </Objects>
     <Bind>
       <BindItem id="item0" compid="Combo00" propid="value" datasetid="ds_majorApply" columnid="lec_code"/>
-      <BindItem id="item1" compid="Calendar00" propid="value" datasetid="ds_majorApply" columnid="cr_date"/>
     </Bind>
   </Form>
 </FDL>
