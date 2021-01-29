@@ -44,6 +44,7 @@
     <Service prefixid="Professor" type="form" url="./Professor/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="Student" type="form" url="./Student/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="ClassRegistraion" type="form" url="./ClassRegistraion/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="Webhard" type="form" url="./Webhard/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>
   <Protocols/>
   <Update/>
