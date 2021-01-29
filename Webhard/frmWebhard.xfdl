@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmLeftMenu" width="1090" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Div id="div_dir" taborder="0" left="0" top="0" width="190" height="650" background="#f3f4b2">
+          <Layouts>
+            <Layout>
+              <Grid id="Grid00" taborder="0" left="0" top="0" width="192" height="650" binddataset="ds_directory" treeusecheckbox="false" autofittype="col" oncelldblclick="div_dir_Grid00_oncelldblclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="bind:dirName" displaytype="treeitemcontrol" treelevel="bind:level" edittype="tree"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_file" taborder="1" left="190" top="0" width="900" height="650" text="">
+          <Layouts>
+            <Layout>
+              <Grid id="Grid00" taborder="0" left="19" top="80" width="861" height="300" binddataset="ds_indir">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row band="head" size="24"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="userID"/>
+                      <Cell col="1" text="name"/>
+                      <Cell col="2" text="isFolder"/>
+                      <Cell col="3" text="dir"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:userID"/>
+                      <Cell col="1" text="bind:name"/>
+                      <Cell col="2" text="bind:isFolder"/>
+                      <Cell col="3" text="bind:dir"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_directory">
+        <ColumnInfo>
+          <Column id="userID" type="STRING" size="256"/>
+          <Column id="dirName" type="STRING" size="256"/>
+          <Column id="parentDir" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="userID">userA</Col>
+            <Col id="dirName">userA</Col>
+            <Col id="parentDir">root</Col>
+            <Col id="level">0</Col>
+          </Row>
+          <Row>
+            <Col id="userID">userA</Col>
+            <Col id="dirName">A</Col>
+            <Col id="parentDir">userA</Col>
+            <Col id="level">1</Col>
+          </Row>
+          <Row>
+            <Col id="userID">userA</Col>
+            <Col id="dirName">B</Col>
+            <Col id="level">2</Col>
+            <Col id="parentDir">A</Col>
+          </Row>
+          <Row>
+            <Col id="userID">userA</Col>
+            <Col id="dirName">C</Col>
+            <Col id="level">2</Col>
+            <Col id="parentDir">A</Col>
+          </Row>
+          <Row>
+            <Col id="userID">userA</Col>
+            <Col id="dirName">D</Col>
+            <Col id="level">3</Col>
+            <Col id="parentDir">C</Col>
+          </Row>
+          <Row>
+            <Col id="userID">userA</Col>
+            <Col id="dirName">F</Col>
+            <Col id="level">4</Col>
+            <Col id="parentDir">D</Col>
+          </Row>
+          <Row>
+            <Col id="dirName">E</Col>
+            <Col id="userID">userA</Col>
+            <Col id="level">3</Col>
+            <Col id="parentDir">C</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_indir">
+        <ColumnInfo>
+          <Column id="userID" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="isFolder" type="STRING" size="256"/>
+          <Column id="dir" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.div_dir_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.ds_indir.deleteAll();
+	let addedRow = this.ds_indir.addRow();
+	// userID, name, isFolder, dir
+	this.ds_indir.setColumn(addedRow, 0, "userA");
+	this.ds_indir.setColumn(addedRow, 1, "...");
+	this.ds_indir.setColumn(addedRow, 2, "true");
+	this.ds_indir.setColumn(addedRow, 3, this.ds_directory.getColumn(e.row, "dirName"));
+	
+	addedRow = this.ds_indir.addRow();
+	this.ds_indir.setColumn(addedRow, 0, "userA");
+	this.ds_indir.setColumn(addedRow, 1, "file1");
+	this.ds_indir.setColumn(addedRow, 2, "false");
+	this.ds_indir.setColumn(addedRow, 3, this.ds_directory.getColumn(e.row, "dirName"));
+};
+]]></Script>
+  </Form>
+</FDL>
