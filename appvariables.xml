@@ -84,7 +84,7 @@
           <Col id="MENU_LVL">1</Col>
           <Col id="UP_MENU_CD">0000</Col>
           <Col id="PGM_PATH">Admin</Col>
-          <Col id="PGM_ID">Notice.xfdl</Col>
+          <Col id="PGM_ID">Board_Notice.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">홍보게시판 관리</Col>
@@ -92,6 +92,7 @@
           <Col id="MENU_CD">0002</Col>
           <Col id="UP_MENU_CD">0000</Col>
           <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_ID">Board_Promote.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">행사게시판 관리</Col>
@@ -99,6 +100,7 @@
           <Col id="MENU_CD">0003</Col>
           <Col id="UP_MENU_CD">0000</Col>
           <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_ID">Board_Event.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">자유게시판 관리</Col>
@@ -106,6 +108,7 @@
           <Col id="MENU_CD">0004</Col>
           <Col id="UP_MENU_CD">0000</Col>
           <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_ID">Board_Free.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">대나무숲 관리</Col>
@@ -113,6 +116,7 @@
           <Col id="MENU_CD">0005</Col>
           <Col id="UP_MENU_CD">0000</Col>
           <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_ID">Board_Anonym.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">건의게시판 관리</Col>
@@ -120,6 +124,7 @@
           <Col id="MENU_CD">0006</Col>
           <Col id="UP_MENU_CD">0000</Col>
           <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_ID">Board_Report.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">게시글 등록</Col>
@@ -238,21 +243,24 @@
           <Col id="UP_MENU_CD">0060</Col>
           <Col id="MENU_CD">0061</Col>
           <Col id="MENU_NM">메인 페이지 관리</Col>
-          <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_PATH"/>
+          <Col id="PGM_ID"/>
         </Row>
         <Row>
           <Col id="MENU_LVL">1</Col>
           <Col id="UP_MENU_CD">0060</Col>
           <Col id="MENU_CD">0062</Col>
           <Col id="MENU_NM">종합 정보 페이지 관리</Col>
-          <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_PATH"/>
+          <Col id="PGM_ID"/>
         </Row>
         <Row>
           <Col id="MENU_LVL">1</Col>
           <Col id="UP_MENU_CD">0060</Col>
           <Col id="MENU_CD">0063</Col>
           <Col id="MENU_NM">종합 정보 시스템 페이지 관리</Col>
-          <Col id="PGM_PATH">Base</Col>
+          <Col id="PGM_PATH"/>
+          <Col id="PGM_ID"/>
         </Row>
       </Rows>
     </Dataset>
@@ -1054,7 +1062,7 @@
         </Row>
         <Row>
           <Col id="id">d04</Col>
-          <Col id="title">휴면환경디자인학</Col>
+          <Col id="title">휴먼환경디자인학</Col>
           <Col id="col_code">c1</Col>
         </Row>
         <Row>

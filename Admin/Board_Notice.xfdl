@@ -2,43 +2,25 @@
 <FDL version="2.1">
   <Form id="Notice" width="1090" height="650" titletext="New Form" onload="Notice_onload">
     <Layouts>
-      <Layout height="650" width="1090">
-        <Div id="div_page" taborder="8" left="10" top="499" width="1070" height="40" border="1px solid #c7c7c7" text="">
-          <Layouts>
-            <Layout>
-              <Static id="sta_prev" taborder="0" text="◀" left="305" width="30" height="24" textAlign="left" top="8" onclick="div_page_sta_prev_onclick"/>
-              <Static id="sta_0" taborder="1" text="1" left="350" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_1" taborder="2" text="2" left="385" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_2" taborder="3" text="3" left="420" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_3" taborder="4" text="4" left="455" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_4" taborder="5" text="5" left="490" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_5" taborder="6" text="6" left="525" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_6" taborder="7" text="7" left="560" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_7" taborder="8" text="8" left="595" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_8" taborder="9" text="9" left="630" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_9" taborder="10" text="10" left="665" top="8" width="20" height="24" textAlign="center" onclick="div_page_sta_onclick"/>
-              <Static id="sta_next" taborder="11" text="▶" left="710" top="8" width="30" height="24" textAlign="right" onclick="div_page_sta_next_onclick"/>
-            </Layout>
-          </Layouts>
-        </Div>
+      <Layout height="650" width="1090" stepcount="0">
         <Static id="Static00" taborder="0" text="공지사항 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Tab id="tab_Notice" taborder="1" tabindex="0" left="10" top="50" width="1070" height="450" onchanged="tab_Notice_onchanged">
+        <Tab id="tab_Notice" taborder="1" tabindex="0" left="10" top="50" width="1070" height="500" onchanged="tab_Notice_onchanged">
           <Tabpages>
             <Tabpage id="Tabpage1" text="학사">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="400" binddataset="ds_Notice" autofittype="col" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick">
+                  <Grid id="Grid00" taborder="0" left="9" top="10" width="1050" height="450" binddataset="ds_Notice" autofittype="col" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" fillareatype="linerow">
                     <Formats>
                       <Format id="default">
                         <Columns>
                           <Column size="10"/>
                           <Column size="25"/>
-                          <Column size="200"/>
-                          <Column size="40"/>
+                          <Column size="220"/>
+                          <Column size="30"/>
                         </Columns>
                         <Rows>
-                          <Row size="24" band="head"/>
-                          <Row size="24"/>
+                          <Row size="28" band="head"/>
+                          <Row size="28"/>
                         </Rows>
                         <Band id="head">
                           <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -50,7 +32,7 @@
                           <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
                           <Cell col="1" text="bind:noti_seq"/>
                           <Cell col="2" text="bind:noti_title"/>
-                          <Cell col="3" text="bind:noti_writeDate"/>
+                          <Cell col="3" text="bind:noti_writeDate" calendardateformat="yyyy.MM.dd" displaytype="date"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -61,7 +43,7 @@
             <Tabpage id="Tabpage2" text="장학">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="400" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick">
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -71,8 +53,8 @@
                           <Column size="40"/>
                         </Columns>
                         <Rows>
-                          <Row size="24" band="head"/>
-                          <Row size="24"/>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
                         </Rows>
                         <Band id="head">
                           <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -84,7 +66,7 @@
                           <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
                           <Cell col="1" text="bind:noti_seq"/>
                           <Cell col="2" text="bind:noti_title"/>
-                          <Cell col="3" text="bind:noti_writeDate"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -95,7 +77,7 @@
             <Tabpage id="Tabpage3" text="입학">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="400" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick">
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -105,8 +87,8 @@
                           <Column size="40"/>
                         </Columns>
                         <Rows>
-                          <Row size="24" band="head"/>
-                          <Row size="24"/>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
                         </Rows>
                         <Band id="head">
                           <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -118,7 +100,7 @@
                           <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
                           <Cell col="1" text="bind:noti_seq"/>
                           <Cell col="2" text="bind:noti_title"/>
-                          <Cell col="3" text="bind:noti_writeDate"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -129,7 +111,7 @@
             <Tabpage id="Tabpage4" text="채용">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="400" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick">
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -139,8 +121,8 @@
                           <Column size="40"/>
                         </Columns>
                         <Rows>
-                          <Row size="24" band="head"/>
-                          <Row size="24"/>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
                         </Rows>
                         <Band id="head">
                           <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -152,7 +134,7 @@
                           <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
                           <Cell col="1" text="bind:noti_seq"/>
                           <Cell col="2" text="bind:noti_title"/>
-                          <Cell col="3" text="bind:noti_writeDate"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -163,7 +145,7 @@
             <Tabpage id="Tabpage5" text="입찰">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="400" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick">
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -173,8 +155,8 @@
                           <Column size="40"/>
                         </Columns>
                         <Rows>
-                          <Row size="24" band="head"/>
-                          <Row size="24"/>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
                         </Rows>
                         <Band id="head">
                           <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -186,7 +168,7 @@
                           <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
                           <Cell col="1" text="bind:noti_seq"/>
                           <Cell col="2" text="bind:noti_title"/>
-                          <Cell col="3" text="bind:noti_writeDate"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -197,7 +179,7 @@
             <Tabpage id="Tabpage6" text="일반">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="400" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick">
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -207,8 +189,8 @@
                           <Column size="40"/>
                         </Columns>
                         <Rows>
-                          <Row size="24" band="head"/>
-                          <Row size="24"/>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
                         </Rows>
                         <Band id="head">
                           <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -220,7 +202,7 @@
                           <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
                           <Cell col="1" text="bind:noti_seq"/>
                           <Cell col="2" text="bind:noti_title"/>
-                          <Cell col="3" text="bind:noti_writeDate"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -231,7 +213,7 @@
             <Tabpage id="Tabpage7" text="전체">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="400" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick">
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -241,8 +223,8 @@
                           <Column size="40"/>
                         </Columns>
                         <Rows>
-                          <Row size="24" band="head"/>
-                          <Row size="24"/>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
                         </Rows>
                         <Band id="head">
                           <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
@@ -254,7 +236,7 @@
                           <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
                           <Cell col="1" text="bind:noti_seq"/>
                           <Cell col="2" text="bind:noti_title"/>
-                          <Cell col="3" text="bind:noti_writeDate"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -264,7 +246,7 @@
             </Tabpage>
           </Tabpages>
         </Tab>
-        <Combo id="com_searchTarget" taborder="2" left="10" top="560" width="90" height="24" innerdataset="innerdataset" datacolumn="datacolumn" codecolumn="codecolumn" text="제목" index="0" value="noti_title">
+        <Combo id="com_searchTarget" taborder="2" left="789" top="46" width="90" height="24" innerdataset="innerdataset" datacolumn="datacolumn" codecolumn="codecolumn" text="제목" index="0" value="noti_title">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -286,19 +268,212 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_searchKeyword" taborder="3" left="103" top="560" width="166" height="24"/>
-        <Button id="btn_search" taborder="4" left="279" top="560" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
-        <Button id="btn_delete" taborder="5" text="삭제" left="910" top="560" width="80" height="24" onclick="btn_delete_onclick"/>
-        <Button id="btn_update" taborder="6" text="수정" left="1000" top="560" width="80" height="24" onclick="btn_update_onclick"/>
-        <Button id="btn_write" taborder="7" text="작성" left="820" top="560" width="80" height="24" onclick="btn_write_onclick"/>
+        <Edit id="edt_searchKeyword" taborder="3" left="882" top="46" width="166" height="24"/>
+        <Button id="btn_search" taborder="4" left="1058" top="46" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
+        <Button id="btn_delete" taborder="5" text="삭제" left="910" top="576" width="80" height="24" onclick="btn_delete_onclick"/>
+        <Button id="btn_update" taborder="6" text="수정" left="1000" top="576" width="80" height="24" onclick="btn_update_onclick"/>
+        <Button id="btn_write" taborder="7" text="작성" left="820" top="576" width="80" height="24" onclick="btn_write_onclick"/>
+        <Div id="div_page" taborder="8" left="289" top="568" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="ds_Notice" keystring="S:rank">
+        <ColumnInfo>
+          <Column id="chk" type="INT" size="256"/>
+          <Column id="rank" type="INT" size="256"/>
+          <Column id="noti_seq" type="INT" size="256"/>
+          <Column id="noti_title" type="STRING" size="256"/>
+          <Column id="noti_contents" type="STRING" size="256"/>
+          <Column id="noti_writeDate" type="DATE" size="256"/>
+          <Column id="category" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="noti_seq">1</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="category">장학</Col>
+            <Col id="noti_contents">내용</Col>
+            <Col id="noti_title">제목</Col>
+            <Col id="rank">20</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="noti_seq">2</Col>
+            <Col id="noti_title">제목2</Col>
+            <Col id="noti_contents">내용2</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="category">채용</Col>
+            <Col id="rank">19</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="noti_seq">3</Col>
+            <Col id="noti_title">제목3</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="category">입학</Col>
+            <Col id="noti_contents">아 내용도 써야해</Col>
+            <Col id="rank">18</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">4</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">제목4</Col>
+            <Col id="noti_contents">이다음에 해야할 것</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="category">장학</Col>
+            <Col id="rank">17</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">5</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">쓰기 힘들다</Col>
+            <Col id="noti_contents">1. 팝업창에 내용 가운데부터 적히는거 고치기... 왜지 왜일까 align left 줬는데</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="category">학사</Col>
+            <Col id="rank">16</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">6</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">귀찮</Col>
+            <Col id="noti_contents">2. 삭제 기능 마저 만들기... 이럴줄 알았으면 그냥 모달로 만들걸</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="category">학사</Col>
+            <Col id="rank">15</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">7</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">ㅇㅇㅇ</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">3. 이거 하고 나면 이제 에디터 적용해야함</Col>
+            <Col id="category">일반</Col>
+            <Col id="rank">14</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">8</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">아아아아아아아ㅏ</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">4. 근데 글 썼을 때 줄바꿈 제대로 적용되나??</Col>
+            <Col id="category">학사</Col>
+            <Col id="rank">13</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">9</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">제에에에에에모오오오오옥</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">5. 생각해보니까 지금 게시글 그냥 글만 받아오게 만들어놨는데 이거 첨부파일도 보이도록 만들어야하지...?</Col>
+            <Col id="category">학사</Col>
+            <Col id="rank">12</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">10</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">제목 열</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">6. 데이터셋에 첨부파일 넣고 html 효과 적용해서 만들기</Col>
+            <Col id="category">학사</Col>
+            <Col id="rank">11</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">11</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">제목 열하나</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">7. 이래서 어느 세월에 끝나지</Col>
+            <Col id="category">채용</Col>
+            <Col id="rank">10</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">12</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">제목 열둘</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">그래도 이거 하나 해놓으면 다른 게시판 등록은 쉽게 할 수 있을 것 같았는데 이러다가 이번주 내내 붙잡고 있겠네 어흐흑</Col>
+            <Col id="category">입학</Col>
+            <Col id="rank">9</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">13</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">으아아아아아</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">일단 네비를 마저 만들자</Col>
+            <Col id="category">입찰</Col>
+            <Col id="rank">8</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">14</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">열넷</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">내용 열넷</Col>
+            <Col id="category">채용</Col>
+            <Col id="rank">7</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">15</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">열다섯</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">내용 열다섯</Col>
+            <Col id="category">장학</Col>
+            <Col id="rank">6</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">16</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">열여섯</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">내용 열여섯</Col>
+            <Col id="category">일반</Col>
+            <Col id="rank">5</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">17</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">세개 남았다</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">내용 열일곱</Col>
+            <Col id="category">일반</Col>
+            <Col id="rank">4</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">18</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">이제 둘</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">내용 열여덟</Col>
+            <Col id="category">입학</Col>
+            <Col id="rank">3</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">19</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">하나</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">내용 열아홉</Col>
+            <Col id="category">채용</Col>
+            <Col id="rank">2</Col>
+          </Row>
+          <Row>
+            <Col id="noti_seq">20</Col>
+            <Col id="chk">0</Col>
+            <Col id="noti_title">끝!</Col>
+            <Col id="noti_writeDate">20210119</Col>
+            <Col id="noti_contents">내용 스물</Col>
+            <Col id="category">입학</Col>
+            <Col id="rank">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
     <Script type="xscript5.1"><![CDATA[
-this.gv_startPageNo    = 0;		/* 페이지 숫자 */
-this.gv_unitRowNo   = 100;   	/* 서버에서 한번에 불러올 데이터셋의 Row 개수 */
-this.gv_startRowNo  = 1;        /* 시작할 Row 숫자 */
-this.gv_maxRowNum     = 10;    /* 화면에 표시할 최대 데이터의 개수 */
-this.gv_totalRowCount = 0;		/* 서버에서 받아온 데이터의 Row 개수 */
+this.fv_pageRowCount = 15;	// 한 페이지에 불러올 Row 개수
+this.totalRowCount = "";	// 전체 Row 수
 
 
 // 페이지 로드
@@ -309,51 +484,45 @@ this.Notice_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		, "/NoticeOnLoad.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, "ds_Notice=out_notice"	// 4. strOutDatasets -select Fds=Sds
-		, "" // 5. strArgument
+		, "category='학사'" // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
-	this.ds_Notice.filter("category=='학사'");
+};
+
+
+// 트랜잭션 후 콜백함수
+this.fn_callback = function()
+{
+	// 페이징 초기화
+	this.div_page.form.initPages(this.totalRowCount, this.fv_pageRowCount);
+	this.div_page.form.setPage(1);
+}
+
+
+// 페이지 이동 후 호출될 콜백함수
+this.setPageAfter = function(startRowNum, endRowNum)
+{
+	let nTabIdx = this.tab_Notice.tabindex;
+	let sTabName = this.tab_Notice.tabpages[nTabIdx].text;
+	
+	this.ds_Notice.filter("rank>="+startRowNum+"&&rank<="+endRowNum);
 };
 
 
 // 탭 변경시 페이지 로드
 this.tab_Notice_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
-{	
-	let nIdx = this.tab_Notice.tabindex;
-	let sName = this.tab_Notice.tabpages[nIdx].text;
-	
-	if(sName=="전체"){
-		this.ds_Notice.filter("");
-	}else {
-		this.ds_Notice.filter("category=='"+sName+"'");
-	}
-};
-
-
-// 페이징 처리
-// 네비
-this.div_page_sta_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
 {
-	let iNo = new Number(obj.text);
-	let firstNum = (iNo-1) * this.gv_maxRowNum + 1;
-	let lastNum = firstNum + this.gv_maxRowNum;
-
-    this.fn_SetStyle();
-    obj.set_color("red");
-    
-    this.ds_Notice.filter("ROWNO >= " + firstNum+" && ROWNO < " + lastNum);
-};
-
-// 이전 버튼
-this.div_page_sta_prev_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
+	let nTabIdx = this.tab_Notice.tabindex;
+	let sTabName = this.tab_Notice.tabpages[nTabIdx].text;
 	
-};
-
-// 다음 버튼
-this.div_page_sta_next_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
+	this.transaction(
+		"noticeTabChanged"	// 1. strSvcID(string 형태의 id)
+		, "/NoticeTabChanged.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_Notice=out_notice"	// 4. strOutDatasets -select Fds=Sds
+		, "category="+sTabName // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
 };
 
 
@@ -361,24 +530,19 @@ this.div_page_sta_next_onclick = function(obj:nexacro.Static,e:nexacro.ClickEven
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let nIdx = this.tab_Notice.tabindex;
-	let sName = this.tab_Notice.tabpages[nIdx].text;
+	let sTabName = this.tab_Notice.tabpages[nIdx].text;
 	
 	let sTarget = this.com_searchTarget.value;
 	let sKeyword = this.edt_searchKeyword.value;
 	
-	if(sName=="전체"){
-		if(sTarget=="title_contents") {
-			this.ds_Notice.filter("String(noti_title).indexOf('"+sKeyword+"')>=0||String(noti_contents).indexOf('"+sKeyword+"')>=0");
-		}else {
-			this.ds_Notice.filter("String("+sTarget+").indexOf('"+sKeyword+"')>=0");
-		}
-	}else {	
-		if(sTarget=="title_contents") {
-			this.ds_Notice.filter("(String(noti_title).indexOf('"+sKeyword+"')>=0||String(noti_contents).indexOf('"+sKeyword+"')>=0)&&category=='"+sName+"'");
-		}else {
-			this.ds_Notice.filter("(String("+sTarget+").indexOf('"+sKeyword+"')>=0)&&category=='"+sName+"'");
-		}
-	}
+	this.transaction(
+		"searchNotice"	// 1. strSvcID(string 형태의 id)
+		, "/SearchNotice.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_Notice=out_notice"	// 4. strOutDatasets -select Fds=Sds
+		, "sTarget="+sTarget+" sKeyword="+sKeyword+" category="+sTabName // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
 };
 
 
@@ -386,11 +550,23 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let check = this.confirm("정말로 삭제하시겠습니까?");
+	let nRows = this.ds_Notice.extractRows("chk==1");
+	
 	if(check){
-		let nRow = this.tab_Notice_Tabpage_Grid00_onheadclick();
-		for(let i=0; i<nRow.length; i++){
-			this.ds_Notice.deleteRow(nRow[i]);
+		if(nRows==''||nRows==null){
+			this.ds_Notice.deleteRow(this.ds_Notice.rowposition);
+		}else{
+			this.ds_Notice.deleteMultiRows(nRows);
 		}
+		this.transaction(
+			"deleteNotice"	// 1. strSvcID(string 형태의 id)
+			, "/DeleteNotice.nex"	// 2. strURL(string 형태의 url)
+			, "in_notice=ds_Notice:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+			, ""	// 4. strOutDatasets -select Fds=Sds
+			, "" // 5. strArgument
+			, ""	// 6. strCallbackFunc
+		);
+		this.Notice_onload();
 	}else {return;}
 };
 
@@ -417,211 +593,25 @@ this.tab_Notice_Tabpage_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro
 // 게시글 팝업(모달리스)
 this.tab_Notice_Tabpage_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
+	let sCol = obj.getCellProperty("body",e.cell,"text").replace("bind:","");
 	let nSeq = this.ds_Notice.getColumn(e.row, "noti_seq");
-	let sCategory = this.ds_Notice.getColumn(e.row, "category");
-	let sTitle = this.ds_Notice.getColumn(e.row, "noti_title");
-	let sContents = this.ds_Notice.getColumn(e.row, "noti_contents");
-	let sDate = this.ds_Notice.getColumn(e.row, "noti_writeDate");
-
-	nexacro.open(
-		"post"+nSeq
-		, "Base::Notice_post.xfdl"
-		, this.getOwnerFrame()
-		, {seq:nSeq
-			, category:sCategory
-			, title:sTitle
-			, contents:sContents
-			, date:sDate
-		}
-	);
-};
-
-this.fn_popupReturn = function(checkFn, nSeq)
-{
-	this.alert(checkFn +" | "+ nSeq);
-};
-
-
-// 수정
-this.btn_update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
 	
+	if(sCol=="noti_title"){
+		nexacro.open(
+			"bdNotice"+nSeq
+			, "Admin::Board_post.xfdl"
+			, this.getOwnerFrame()
+			, {seq:nSeq, div:"notice"}
+		);
+	}
 };
 
+
+// 작성
+this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("Admin::Board_Notice_write.xfdl");
+};
 ]]></Script>
-    <Objects>
-      <Dataset id="ds_Notice">
-        <ColumnInfo>
-          <Column id="chk" type="INT" size="256"/>
-          <Column id="noti_seq" type="INT" size="256"/>
-          <Column id="noti_title" type="STRING" size="256"/>
-          <Column id="noti_contents" type="STRING" size="256"/>
-          <Column id="noti_writeDate" type="STRING" size="256"/>
-          <Column id="category" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="chk">0</Col>
-            <Col id="noti_seq">1</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="category">장학</Col>
-            <Col id="noti_contents">내용</Col>
-            <Col id="noti_title">제목</Col>
-          </Row>
-          <Row>
-            <Col id="chk">0</Col>
-            <Col id="noti_seq">2</Col>
-            <Col id="noti_title">제목2</Col>
-            <Col id="noti_contents">내용2</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="category">채용</Col>
-          </Row>
-          <Row>
-            <Col id="chk">0</Col>
-            <Col id="noti_seq">3</Col>
-            <Col id="noti_title">제목3</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="category">입학</Col>
-            <Col id="noti_contents">아 내용도 써야해</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">4</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">제목4</Col>
-            <Col id="noti_contents">이다음에 해야할 것</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="category">장학</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">5</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">쓰기 힘들다</Col>
-            <Col id="noti_contents">1. 팝업창에 내용 가운데부터 적히는거 고치기... 왜지 왜일까 align left 줬는데</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="category">학사</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">6</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">귀찮</Col>
-            <Col id="noti_contents">2. 삭제 기능 마저 만들기... 이럴줄 알았으면 그냥 모달로 만들걸</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="category">학사</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">7</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">ㅇㅇㅇ</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">3. 이거 하고 나면 이제 에디터 적용해야함</Col>
-            <Col id="category">일반</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">8</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">아아아아아아아ㅏ</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">4. 근데 글 썼을 때 줄바꿈 제대로 적용되나??</Col>
-            <Col id="category">학사</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">9</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">제에에에에에모오오오오옥</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">5. 생각해보니까 지금 게시글 그냥 글만 받아오게 만들어놨는데 이거 첨부파일도 보이도록 만들어야하지...?</Col>
-            <Col id="category">학사</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">10</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">제목 열</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">6. 데이터셋에 첨부파일 넣고 html 효과 적용해서 만들기</Col>
-            <Col id="category">학사</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">11</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">제목 열하나</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">7. 이래서 어느 세월에 끝나지</Col>
-            <Col id="category">채용</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">12</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">제목 열둘</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">그래도 이거 하나 해놓으면 다른 게시판 등록은 쉽게 할 수 있을 것 같았는데 이러다가 이번주 내내 붙잡고 있겠네 어흐흑</Col>
-            <Col id="category">입학</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">13</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">으아아아아아</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">일단 네비를 마저 만들자</Col>
-            <Col id="category">입찰</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">14</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">열넷</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">내용 열넷</Col>
-            <Col id="category">채용</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">15</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">열다섯</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">내용 열다섯</Col>
-            <Col id="category">장학</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">16</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">열여섯</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">내용 열여섯</Col>
-            <Col id="category">일반</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">17</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">세개 남았다</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">내용 열일곱</Col>
-            <Col id="category">일반</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">18</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">이제 둘</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">내용 열여덟</Col>
-            <Col id="category">입학</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">19</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">하나</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">내용 열아홉</Col>
-            <Col id="category">채용</Col>
-          </Row>
-          <Row>
-            <Col id="noti_seq">20</Col>
-            <Col id="chk">0</Col>
-            <Col id="noti_title">끝!</Col>
-            <Col id="noti_writeDate">20210119</Col>
-            <Col id="noti_contents">내용 스물</Col>
-            <Col id="category">입학</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-    </Objects>
   </Form>
 </FDL>
