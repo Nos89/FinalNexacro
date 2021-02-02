@@ -247,6 +247,9 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	if(year==null&&semester==null&&target==null&&title==null){
 		this.ds_proAttendMng.filter("");
 		return;
+	}else{
+		this.ds_proAttendMng.filter("att_semester=="+semester+"&&att_year=='"+year+"'&&att_targetLevel=='"+target+"'&&att_lecTitle=='"+title+"'");
+		return;
 	}
 	
 	if(year!=null&&semester!=null){
@@ -269,9 +272,8 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.ds_proAttendMng.filter("att_targetLevel=='"+target+"'");
 	}else if(title!=null){
 		this.ds_proAttendMng.filter("att_lecTitle=='"+title+"'");
-	}else{
-		this.ds_proAttendMng.filter("att_semester=="+semester+"&&att_year=='"+year+"'&&att_targetLevel=='"+target+"'&&att_lecTitle=='"+title+"'");
 	}
+
 	
 	
 };

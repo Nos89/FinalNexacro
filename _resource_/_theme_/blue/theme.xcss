@@ -3239,4 +3239,9 @@
 	-nexa-border : 1px solid #c7c7c7;
 	-nexa-text-align : center;
 }
+.CheckBoxControl.chk_disabled
+{
+	color : #999999;
+	-nexa-icon : URL('theme://images/chk_WF_Box_DS.png');
+}
 ]]></XCSS>

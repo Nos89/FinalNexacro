@@ -66,5 +66,6 @@
   <Variables>
     <Variable id="gvID" initval="P-1001"/>
     <Variable id="gvProName" initval="김교수"/>
+    <Variable id="gvStdID" initval="S-1002"/>
   </Variables>
 </AppVariables>

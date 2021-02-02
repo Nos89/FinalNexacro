@@ -146,6 +146,14 @@
             <Col id="PGM_PATH">Base</Col>
             <Col id="PGM_ID">work03.xfdl</Col>
           </Row>
+          <Row>
+            <Col id="MENU_CD">6000</Col>
+            <Col id="UP_MENU_CD">6</Col>
+            <Col id="MENU_NM">수강신청</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">ClassRegistration</Col>
+            <Col id="PGM_ID">ClassRegistration.xfdl</Col>
+          </Row>
         </Rows>
       </Dataset>
     </Objects>

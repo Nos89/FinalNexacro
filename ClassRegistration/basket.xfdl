@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="basket" width="860" height="430" titletext="New Form" onload="basket_onload">
+    <Layouts>
+      <Layout height="430" mobileorientation="landscape" width="860">
+        <Grid id="Grid00" taborder="2" left="9" top="40" width="841" height="330" binddataset="ds_stdClass" autofittype="col" onsummaryclick="Grid00_onsummaryclick" onheadclick="Grid00_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="57"/>
+                <Column size="34"/>
+                <Column size="84"/>
+                <Column size="145"/>
+                <Column size="47"/>
+                <Column size="67"/>
+                <Column size="105"/>
+                <Column size="67"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="이수구분"/>
+                <Cell col="2" text="학년"/>
+                <Cell col="3" text="과목코드"/>
+                <Cell col="4" text="과목명"/>
+                <Cell col="5" text="학점"/>
+                <Cell col="6" text="담당교수"/>
+                <Cell col="7" text="강의시간"/>
+                <Cell col="8" text="강의실"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkboxcontrol" edittype="expr:dataset.getColumn(currow,&quot;status&quot;)==&quot;신청완료&quot;?&quot;none&quot;:&quot;checkbox&quot;" text="bind:check" cssclass="chk_disabled"/>
+                <Cell col="1" text="bind:isu"/>
+                <Cell col="2" text="bind:oc_targetlevel"/>
+                <Cell col="3" text="bind:oc_code"/>
+                <Cell col="4" text="bind:name"/>
+                <Cell col="5" text="bind:reco_score"/>
+                <Cell col="6" text="bind:oc_pro_code"/>
+                <Cell col="7" text="bind:oc_schedule"/>
+                <Cell col="8" text="bind:oc_class_room"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="3" text="신청과목"/>
+                <Cell col="3" text="expr:dataset.getRowCount()"/>
+                <Cell col="4" colspan="2" text="신청학점계"/>
+                <Cell col="6" text="expr:dataset.getSum(&quot;reco_score&quot;)"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01_00" taborder="0" text="장바구니" left="11" top="10" width="225" height="29" cssclass="sta_WF_title02"/>
+        <Button id="Button01" taborder="1" text="일괄신청" left="760" top="345" width="89" height="25" onclick="Button01_onclick"/>
+        <Button id="Button00" taborder="3" text="닫기" left="386" top="379" width="124" height="33"/>
+        <Grid id="Grid01" taborder="4" left="10" top="196" width="280" height="143" binddataset="ds_basket">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="shop_seq"/>
+                <Cell col="1" text="id"/>
+                <Cell col="2" text="lec_code"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:shop_seq"/>
+                <Cell col="1" text="bind:id"/>
+                <Cell col="2" text="bind:lec_code"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid02" taborder="5" left="290" top="150" width="441" height="110" binddataset="ds_transaction">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="cr_seq"/>
+                <Cell col="1" text="id"/>
+                <Cell col="2" text="lec_code"/>
+                <Cell col="3" text="cr_divide"/>
+                <Cell col="4" text="cr_completediv"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:cr_seq"/>
+                <Cell col="1" text="bind:id"/>
+                <Cell col="2" text="bind:lec_code"/>
+                <Cell col="3" text="bind:cr_divide"/>
+                <Cell col="4" text="bind:cr_completediv"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid03" taborder="6" left="289" top="259" width="444" height="82" binddataset="ds_crList">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="cr_seq"/>
+                <Cell col="1" text="id"/>
+                <Cell col="2" text="lec_code"/>
+                <Cell col="3" text="cr_divide"/>
+                <Cell col="4" text="cr_completediv"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:cr_seq"/>
+                <Cell col="1" text="bind:id"/>
+                <Cell col="2" text="bind:lec_code"/>
+                <Cell col="3" text="bind:cr_divide"/>
+                <Cell col="4" text="bind:cr_completediv"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="7" text="ds_transaction" left="737" top="171" width="105" height="66"/>
+        <Static id="Static00_00" taborder="8" text="ds_crList" left="738" top="270" width="105" height="66"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_basket">
+        <ColumnInfo>
+          <Column id="shop_seq" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="lec_code" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="shop_seq">1</Col>
+            <Col id="id">S-1001</Col>
+            <Col id="lec_code">L-1001</Col>
+          </Row>
+          <Row>
+            <Col id="shop_seq">2</Col>
+            <Col id="id">S-1001</Col>
+            <Col id="lec_code">L-1002</Col>
+          </Row>
+          <Row>
+            <Col id="shop_seq">3</Col>
+            <Col id="id">S-1001</Col>
+            <Col id="lec_code">L-1003</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_openClass">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_year" type="DATE" size="256"/>
+          <Column id="oc_semester" type="STRING" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="oc_max" type="INT" size="256"/>
+          <Column id="oc_part" type="INT" size="256"/>
+          <Column id="oc_is_close" type="STRING" size="256"/>
+          <Column id="oc_close_reason" type="STRING" size="256"/>
+          <Column id="oc_pro_code" type="STRING" size="256"/>
+          <Column id="oc_class_room" type="STRING" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="dept_code" type="STRING" size="256"/>
+          <Column id="col_code" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="oc_code">L-1001</Col>
+            <Col id="oc_year">2021-01-08</Col>
+            <Col id="oc_semester">1</Col>
+            <Col id="oc_schedule">월(1,4)/수(4,5)</Col>
+            <Col id="oc_max">25</Col>
+            <Col id="oc_part">25</Col>
+            <Col id="oc_is_close">N</Col>
+            <Col id="oc_pro_code">P-1001</Col>
+            <Col id="oc_class_room">07-202</Col>
+            <Col id="name">양자역학의 이해</Col>
+            <Col id="reco_score">3</Col>
+            <Col id="oc_targetlevel">3</Col>
+            <Col id="isu">전공선택</Col>
+            <Col id="dept_code">d1</Col>
+            <Col id="col_code">c1</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="oc_code">L-1002</Col>
+            <Col id="oc_year">2021-01-05</Col>
+            <Col id="oc_semester">4</Col>
+            <Col id="oc_schedule">금(1,2,3)</Col>
+            <Col id="oc_max">30</Col>
+            <Col id="oc_part">0</Col>
+            <Col id="oc_is_close">N</Col>
+            <Col id="oc_pro_code">P-1001</Col>
+            <Col id="oc_class_room">07-404</Col>
+            <Col id="name">물리학의 이해</Col>
+            <Col id="reco_score">3</Col>
+            <Col id="oc_targetlevel">1</Col>
+            <Col id="isu">전공필수</Col>
+            <Col id="dept_code">d02</Col>
+            <Col id="col_code">c2</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="oc_code">L-1003</Col>
+            <Col id="oc_year">2021-05-06</Col>
+            <Col id="oc_semester">3</Col>
+            <Col id="oc_schedule">목(3,4,5)</Col>
+            <Col id="oc_max">30</Col>
+            <Col id="oc_part">1</Col>
+            <Col id="oc_is_close">N</Col>
+            <Col id="oc_pro_code">P-1001</Col>
+            <Col id="oc_class_room">07-333</Col>
+            <Col id="oc_targetlevel">3</Col>
+            <Col id="name">이걸듣니?</Col>
+            <Col id="reco_score">3</Col>
+            <Col id="isu">교양선택</Col>
+            <Col id="dept_code">d02</Col>
+            <Col id="col_code">c2</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="oc_code">L-1004</Col>
+            <Col id="oc_year">2021-03-08</Col>
+            <Col id="oc_semester">3</Col>
+            <Col id="oc_schedule">월(2,3,4)</Col>
+            <Col id="oc_max">1</Col>
+            <Col id="oc_part">0</Col>
+            <Col id="oc_is_close">N</Col>
+            <Col id="oc_pro_code">P-1001</Col>
+            <Col id="oc_class_room">07-332</Col>
+            <Col id="oc_targetlevel">1</Col>
+            <Col id="name">이것도들어?</Col>
+            <Col id="reco_score">3</Col>
+            <Col id="isu">교양필수</Col>
+            <Col id="dept_code">d03</Col>
+            <Col id="col_code">c3</Col>
+            <Col id="check">0</Col>
+          </Row>
+          <Row>
+            <Col id="oc_code">L-1005</Col>
+            <Col id="oc_year">2021-05-050</Col>
+            <Col id="oc_semester">1</Col>
+            <Col id="oc_schedule">월(2,5)</Col>
+            <Col id="oc_max">3</Col>
+            <Col id="oc_part">0</Col>
+            <Col id="oc_is_close">N</Col>
+            <Col id="oc_pro_code">P-1001</Col>
+            <Col id="oc_class_room">07-4440</Col>
+            <Col id="oc_targetlevel">3</Col>
+            <Col id="name">이것마저도?</Col>
+            <Col id="reco_score">3</Col>
+            <Col id="isu">교양필수</Col>
+            <Col id="dept_code">d04</Col>
+            <Col id="col_code">c4</Col>
+            <Col id="check">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_stdClass">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_year" type="DATE" size="256"/>
+          <Column id="oc_semester" type="STRING" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="oc_max" type="INT" size="256"/>
+          <Column id="oc_part" type="INT" size="256"/>
+          <Column id="oc_is_close" type="STRING" size="256"/>
+          <Column id="oc_close_reason" type="STRING" size="256"/>
+          <Column id="oc_pro_code" type="STRING" size="256"/>
+          <Column id="oc_class_room" type="STRING" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="dept_code" type="STRING" size="256"/>
+          <Column id="col_code" type="STRING" size="256"/>
+          <Column id="status" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_transaction">
+        <ColumnInfo>
+          <Column id="cr_seq" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="cr_divide" type="STRING" size="256"/>
+          <Column id="cr_completediv" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_crList">
+        <ColumnInfo>
+          <Column id="cr_seq" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="cr_divide" type="STRING" size="256"/>
+          <Column id="cr_completediv" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cr_seq">1</Col>
+            <Col id="id">S-1001</Col>
+            <Col id="lec_code">L-1001</Col>
+            <Col id="cr_divide">asdf</Col>
+            <Col id="cr_completediv">sdf</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.id = this.parent.id;
+
+this.basket_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ds_openClass.copyData(this.parent.ds_openClass);
+	//this.ds_crList.copyData(this.parent.ds_crList);
+	this.fn_setStdClass();
+	this.fn_disableCheck();
+};
+this.fn_setStdClass = function(){
+	for(var i=0; i<this.ds_basket.getRowCount(); i++){
+		var lec_code =this.ds_basket.getColumn(i,"lec_code")
+		for(var j=0; j<this.ds_openClass.getRowCountNF(); j++){
+			var oc_code= this.ds_openClass.getColumnNF(j,"oc_code");			
+			if(lec_code==oc_code){
+				var nRow = this.ds_stdClass.addRow();
+				this.ds_stdClass.copyRow(nRow,this.ds_openClass,j); 			
+			}
+		}
+	}
+};
+
+this.fn_disableCheck = function(){
+	for(var i=0; i<this.ds_stdClass.getRowCount(); i++){
+		var oc_code = this.ds_stdClass.getColumn(i,"oc_code");
+		for(var j=0; j<this.ds_crList.getRowCount(); j++){
+			if(oc_code == this.ds_crList.getColumn(j,"lec_code")){
+				this.ds_stdClass.setColumn(i,"status","신청완료");
+			}
+		}
+	}
+}
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+};
+
+
+
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var objDs = this.Grid00.getBindDataset();
+        if(objDs.getRowCount() < 1){ return;}
+        
+        sText = obj.getCellProperty("head", e.cell, "text");
+        sText = (sText == "1" ? "0" : "1");	
+        
+		for(var i=0; i < objDs.rowcount; i++){
+			if(this.ds_stdClass.getColumn(i,"status")!="신청완료"){
+			objDs.setColumn(i, "check", sText);
+			}
+		}
+		obj.setCellProperty("Head", e.cell, "text", sText);	
+};
+
+this.fn_checkClass =function(row){
+	
+}
+]]></Script>
+  </Form>
+</FDL>

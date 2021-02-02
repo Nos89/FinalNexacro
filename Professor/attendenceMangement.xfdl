@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="attendenceMangement" width="1090" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="1090">
+        <Static id="Static00" taborder="0" text="출결관리" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
+        <Static id="Static01" taborder="1" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
+        <Grid id="Grid00" taborder="2" left="9" top="92" width="1071" height="548" binddataset="ds_proAttendMng" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="130"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="att_lecCode"/>
+                <Cell col="1" text="att_year"/>
+                <Cell col="2" text="att_targetLevel"/>
+                <Cell col="3" text="att_semester"/>
+                <Cell col="4" text="att_lecTitle"/>
+                <Cell col="5" text="att_date"/>
+                <Cell col="6" text="att_attend"/>
+                <Cell col="7" text="att_stdId"/>
+                <Cell col="8" text="att_deptName"/>
+                <Cell col="9" text="att_stdName"/>
+                <Cell col="10" text="att_stdLevel"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:att_lecCode"/>
+                <Cell col="1" text="bind:att_year"/>
+                <Cell col="2" text="bind:att_targetLevel"/>
+                <Cell col="3" text="bind:att_semester"/>
+                <Cell col="4" text="bind:att_lecTitle"/>
+                <Cell col="5" text="bind:att_date" displaytype="calendarcontrol" edittype="date"/>
+                <Cell col="6" text="bind:att_attend" displaytype="combocontrol" edittype="combo" combodataset="ds_attend" combocodecol="code" combodatacol="name"/>
+                <Cell col="7" text="bind:att_stdId"/>
+                <Cell col="8" text="bind:att_deptName"/>
+                <Cell col="9" text="bind:att_stdName"/>
+                <Cell col="10" text="bind:att_stdLevel"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="cbo_year" taborder="3" text="Combo00" left="64" top="45" width="86" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Combo id="cbo_target" taborder="4" text="Combo01" left="217" top="46" width="93" height="31" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Combo id="cbo_semester" taborder="5" text="Combo02" left="369" top="47" width="83" height="30" innerdataset="ds_semester" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00_00" taborder="6" text="학기" left="337" top="44" width="74" height="35"/>
+        <Static id="Static00_01" taborder="7" text="학년" left="180" top="45" width="67" height="35"/>
+        <Static id="Static00_01_00" taborder="8" text="년도" left="20" top="43" width="54" height="35"/>
+        <Button id="btn_search" taborder="9" text="조회" left="592" top="52" width="85" height="24" onclick="btn_search_onclick"/>
+        <Button id="btn_reset" taborder="10" text="초기화" left="696" top="52" width="85" height="25" onclick="btn_reset_onclick"/>
+        <Calendar id="Calendar00" taborder="11" left="465" top="49" width="116" height="28"/>
+        <Button id="Button00" taborder="12" text="추가" left="979" top="56" width="101" height="28"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_proAttendMng">
+        <ColumnInfo>
+          <Column id="att_lecCode" type="STRING" size="256"/>
+          <Column id="att_year" type="STRING" size="256"/>
+          <Column id="att_targetLevel" type="STRING" size="256"/>
+          <Column id="att_semester" type="STRING" size="256"/>
+          <Column id="att_lecTitle" type="STRING" size="256"/>
+          <Column id="att_date" type="STRING" size="256"/>
+          <Column id="att_attend" type="STRING" size="256"/>
+          <Column id="att_stdId" type="STRING" size="256"/>
+          <Column id="att_deptName" type="STRING" size="256"/>
+          <Column id="att_stdName" type="STRING" size="256"/>
+          <Column id="att_stdLevel" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="att_lecCode">L-1002</Col>
+            <Col id="att_year">20120202</Col>
+            <Col id="att_targetLevel">3</Col>
+            <Col id="att_semester">1</Col>
+            <Col id="att_lecTitle">양자역학ㅇ</Col>
+            <Col id="att_date">20210106</Col>
+            <Col id="att_attend">X</Col>
+            <Col id="att_stdId">S-1002</Col>
+            <Col id="att_deptName">미디어콘텐츠학</Col>
+            <Col id="att_stdName">이학생</Col>
+            <Col id="att_stdLevel">3</Col>
+          </Row>
+          <Row>
+            <Col id="att_lecCode">L-1002</Col>
+            <Col id="att_year">20120202</Col>
+            <Col id="att_targetLevel">3</Col>
+            <Col id="att_semester">1</Col>
+            <Col id="att_lecTitle">양자역학ㅇ</Col>
+            <Col id="att_date">20120113</Col>
+            <Col id="att_attend">X</Col>
+            <Col id="att_stdId">S-1003</Col>
+            <Col id="att_deptName">사회과학</Col>
+            <Col id="att_stdName">김학생</Col>
+            <Col id="att_stdLevel">3</Col>
+          </Row>
+          <Row>
+            <Col id="att_lecCode">L-1003</Col>
+            <Col id="att_year">20200203</Col>
+            <Col id="att_targetLevel">3</Col>
+            <Col id="att_semester">2</Col>
+            <Col id="att_lecTitle">gg</Col>
+            <Col id="att_date">20200505</Col>
+            <Col id="att_attend">X</Col>
+            <Col id="att_stdId">S-1010</Col>
+            <Col id="att_deptName">aaaa</Col>
+            <Col id="att_stdName">sudd</Col>
+            <Col id="att_stdLevel">3</Col>
+          </Row>
+          <Row>
+            <Col id="att_lecCode">L-1004</Col>
+            <Col id="att_year">20210203</Col>
+            <Col id="att_targetLevel">3</Col>
+            <Col id="att_semester">2</Col>
+            <Col id="att_lecTitle">gg</Col>
+            <Col id="att_date">2020606</Col>
+            <Col id="att_attend">X</Col>
+            <Col id="att_stdId">S-1012</Col>
+            <Col id="att_deptName">ddd</Col>
+            <Col id="att_stdName">ss</Col>
+            <Col id="att_stdLevel">3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_attend">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="name">X(결석)</Col>
+            <Col id="code">X</Col>
+          </Row>
+          <Row>
+            <Col id="name">O(출석)</Col>
+            <Col id="code">O</Col>
+          </Row>
+          <Row>
+            <Col id="name">/(지각)</Col>
+            <Col id="code">/</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
