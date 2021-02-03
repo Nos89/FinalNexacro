@@ -154,6 +154,14 @@
             <Col id="PGM_PATH">ClassRegistration</Col>
             <Col id="PGM_ID">ClassRegistration.xfdl</Col>
           </Row>
+          <Row>
+            <Col id="MENU_CD">7000</Col>
+            <Col id="UP_MENU_CD">7</Col>
+            <Col id="MENU_NM">장바구니수강신청</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">ClassRegistration</Col>
+            <Col id="PGM_ID">ClassRegistrationBasket.xfdl</Col>
+          </Row>
         </Rows>
       </Dataset>
     </Objects>

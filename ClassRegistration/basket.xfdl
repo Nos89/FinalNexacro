@@ -14,8 +14,9 @@
                 <Column size="145"/>
                 <Column size="47"/>
                 <Column size="67"/>
-                <Column size="105"/>
+                <Column size="129"/>
                 <Column size="67"/>
+                <Column size="72"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -32,9 +33,10 @@
                 <Cell col="6" text="담당교수"/>
                 <Cell col="7" text="강의시간"/>
                 <Cell col="8" text="강의실"/>
+                <Cell col="9" text="신청현황"/>
               </Band>
               <Band id="body">
-                <Cell displaytype="checkboxcontrol" edittype="expr:dataset.getColumn(currow,&quot;status&quot;)==&quot;신청완료&quot;?&quot;none&quot;:&quot;checkbox&quot;" text="bind:check" cssclass="chk_disabled"/>
+                <Cell displaytype="expr:dataset.getColumn(currow,&quot;status&quot;)==&quot;신청완료&quot;?&quot;none&quot;:&quot;checkboxcontrol&quot;" edittype="expr:dataset.getColumn(currow,&quot;status&quot;)==&quot;신청완료&quot;?&quot;none&quot;:&quot;checkbox&quot;" text="bind:check"/>
                 <Cell col="1" text="bind:isu"/>
                 <Cell col="2" text="bind:oc_targetlevel"/>
                 <Cell col="3" text="bind:oc_code"/>
@@ -43,6 +45,7 @@
                 <Cell col="6" text="bind:oc_pro_code"/>
                 <Cell col="7" text="bind:oc_schedule"/>
                 <Cell col="8" text="bind:oc_class_room"/>
+                <Cell col="9" text="bind:status"/>
               </Band>
               <Band id="summary">
                 <Cell colspan="3" text="신청과목"/>
@@ -51,13 +54,14 @@
                 <Cell col="6" text="expr:dataset.getSum(&quot;reco_score&quot;)"/>
                 <Cell col="7"/>
                 <Cell col="8"/>
+                <Cell col="9"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Static id="Static01_00" taborder="0" text="장바구니" left="11" top="10" width="225" height="29" cssclass="sta_WF_title02"/>
-        <Button id="Button01" taborder="1" text="일괄신청" left="760" top="345" width="89" height="25" onclick="Button01_onclick"/>
-        <Button id="Button00" taborder="3" text="닫기" left="386" top="379" width="124" height="33"/>
+        <Button id="btn_apply" taborder="1" text="일괄신청" left="760" top="345" width="89" height="25" onclick="btn_apply_onclick"/>
+        <Button id="btn_close" taborder="3" text="닫기" left="386" top="379" width="124" height="33" onclick="btn_close_onclick"/>
         <Grid id="Grid01" taborder="4" left="10" top="196" width="280" height="143" binddataset="ds_basket">
           <Formats>
             <Format id="default">
@@ -83,7 +87,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid02" taborder="5" left="290" top="150" width="441" height="110" binddataset="ds_transaction">
+        <Grid id="Grid02" taborder="5" left="290" top="150" width="440" height="110" binddataset="ds_transaction">
           <Formats>
             <Format id="default">
               <Columns>
@@ -114,7 +118,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid03" taborder="6" left="289" top="259" width="444" height="82" binddataset="ds_crList">
+        <Grid id="Grid03" taborder="6" left="289" top="259" width="441" height="82" binddataset="ds_crList">
           <Formats>
             <Format id="default">
               <Columns>
@@ -146,7 +150,7 @@
           </Formats>
         </Grid>
         <Static id="Static00" taborder="7" text="ds_transaction" left="737" top="171" width="105" height="66"/>
-        <Static id="Static00_00" taborder="8" text="ds_crList" left="738" top="270" width="105" height="66"/>
+        <Static id="Static00_00" taborder="8" text="ds_crList" left="738" top="270" width="105" height="66" onclick="Static00_00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -327,30 +331,58 @@
           <Column id="cr_completediv" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
-          <Row>
-            <Col id="cr_seq">1</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="lec_code">L-1001</Col>
-            <Col id="cr_divide">asdf</Col>
-            <Col id="cr_completediv">sdf</Col>
-          </Row>
+          <Row/>
+          <Row/>
         </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.id = this.parent.id;
 
+this.fn_callback = function(id, errCode, errMsg){
+
+	if(id=="basketOnLoad"){
+		this.fn_setStdClass();
+		this.fn_disableCheck();
+	
+	}else if(id=="basketToCrList"){
+		if(errCode==1){
+		alert(errMsg);
+		}
+		this.fn_reload();
+	}else if(id=="basketReLoad"){
+		this.fn_setStdClass();
+		this.fn_disableCheck();
+	}
+};
+this.fn_reload = function(){
+	this.transaction(
+			"basketReLoad",
+			"/classRegistration/basketReLoad.nex",	
+			"",
+			"ds_crList=out_crList",
+			"id="+this.id+"", 
+			"fn_callback"
+		);
+}
+
 this.basket_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.ds_openClass.copyData(this.parent.ds_openClass);
-	//this.ds_crList.copyData(this.parent.ds_crList);
-	this.fn_setStdClass();
-	this.fn_disableCheck();
+	this.transaction(
+			"basketOnLoad",
+			"/classRegistration/basketOnLoad.nex",	
+			"",
+			"ds_basket=out_basket ds_crList=out_crList",
+			"id="+this.id+"", 
+			"fn_callback"
+		);
 };
 this.fn_setStdClass = function(){
+	this.ds_stdClass.deleteAll();
 	for(var i=0; i<this.ds_basket.getRowCount(); i++){
 		var lec_code =this.ds_basket.getColumn(i,"lec_code")
-		for(var j=0; j<this.ds_openClass.getRowCountNF(); j++){
-			var oc_code= this.ds_openClass.getColumnNF(j,"oc_code");			
+		for(var j=0; j<this.ds_openClass.getRowCount(); j++){
+			var oc_code= this.ds_openClass.getColumn(j,"oc_code");			
 			if(lec_code==oc_code){
 				var nRow = this.ds_stdClass.addRow();
 				this.ds_stdClass.copyRow(nRow,this.ds_openClass,j); 			
@@ -368,14 +400,7 @@ this.fn_disableCheck = function(){
 			}
 		}
 	}
-}
-
-this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-
 };
-
-
 
 this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
@@ -393,9 +418,36 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		obj.setCellProperty("Head", e.cell, "text", sText);	
 };
 
-this.fn_checkClass =function(row){
-	
-}
+
+
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	 this.ds_transaction.deleteAll();
+	 var arr = this.ds_stdClass.extractRows("check=='1'");
+	 for(var i=0; i<arr.length; i++){
+		var code = this.ds_stdClass.getColumn(arr[i],"oc_code");
+		var nRow  = this.ds_transaction.addRow();
+		this.ds_transaction.setColumn(nRow,"cr_seq",0);
+		this.ds_transaction.setColumn(nRow,"id",this.id);
+		this.ds_transaction.setColumn(nRow,"lec_code",code);
+		this.ds_transaction.setColumn(nRow,"cr_divide","정기");
+		this.ds_transaction.setColumn(nRow,"cr_completediv","신청상태");
+	 }
+	 
+	 this.transaction(
+	 		"basketToCrList",
+	 		"/classRegistration/basketToCrList.nex",	
+	 		"in_ds = ds_transaction",  
+	 		"",
+	 		"",  
+	 		"fn_callback"
+	 	);
+};
 ]]></Script>
   </Form>
 </FDL>
