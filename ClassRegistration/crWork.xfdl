@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="crWork" width="1280" height="758" titletext="New Form">
+    <Layouts>
+      <Layout height="758" width="1280">
+        <Tab id="Tab00" taborder="0" tabindex="0" left="20" top="30" width="1260" height="728">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="수강신청" url="ClassRegistration::ClassRegistration.xfdl"/>
+            <Tabpage id="Tabpage2" text="장바구니 신청" url="ClassRegistration::ClassRegistrationBasket.xfdl"/>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

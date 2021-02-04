@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="ClassRegistration" width="1090" height="650" titletext="New Form" onload="ClassRegistration_onload">
+  <Form id="ClassRegistration" width="1280" height="650" titletext="New Form" onload="ClassRegistration_onload">
     <Layouts>
-      <Layout height="650" mobileorientation="landscape" width="1090">
+      <Layout height="650" mobileorientation="landscape" width="1280">
         <Static id="Static00" taborder="1" text="" left="0" top="10" width="230" height="640" border="1px solid black"/>
-        <Button id="Button00" taborder="0" text="로그아웃" left="143" top="20" width="75" height="17"/>
+        <Button id="btn_logOut" taborder="0" text="로그아웃" left="149" top="18" width="75" height="17" onclick="btn_logOut_onclick"/>
         <Div id="Div00" taborder="2" text="\" left="7" top="40" width="217" height="170" border="1px solid black">
           <Layouts>
             <Layout>
@@ -40,7 +40,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="5" left="240" top="50" width="841" height="292" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
+        <Grid id="Grid00" taborder="5" left="240" top="50" width="1010" height="292" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -89,7 +89,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01" taborder="6" left="240" top="400" width="843" height="250" binddataset="ds_stdClass" autofittype="col" oncellclick="Grid01_oncellclick">
+        <Grid id="Grid01" taborder="6" left="240" top="400" width="1010" height="250" binddataset="ds_stdClass" autofittype="col" oncellclick="Grid01_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -143,6 +143,7 @@
         <Button id="btn_basket" taborder="10" text="조회" left="145" top="477" width="80" height="27" onclick="btn_basket_onclick"/>
         <Static id="Static01_00" taborder="11" text="개설강의" left="245" top="10" width="225" height="29" cssclass="sta_WF_title02"/>
         <Static id="Static01_00_00" taborder="12" text="수강신청 내역 리스트" left="240" top="366" width="225" height="29" cssclass="sta_WF_title02"/>
+        <Button id="btn_retrive" taborder="13" text="새로고침" left="1080" top="8" width="162" height="33" onclick="btn_retrive_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.id = nexacro.Application.gvStdID;
@@ -162,6 +163,7 @@ this.fn_callback = function(id,errCode,errMsg){
 
 	if(id=="onload"){
 		this.fn_setStdClass();
+		return;
 	}else if(id=="addClass"){
 		if(errCode==1){
 			alert("신청완료");
@@ -194,6 +196,7 @@ this.ClassRegistration_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInf
 		"id="+this.id+"",
 		"fn_callback"
 	);
+	
 };
 
 //수강신청 버튼 클릭 시
@@ -470,6 +473,20 @@ this.btn_basket_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		,"fn_callback_basket"
 	);
 };
+
+
+
+this.btn_retrive_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
+
+this.btn_logOut_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.confirm("로그아웃 하시겠습니까?")){
+		location.href="/info";
+	}
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_openClass">
@@ -491,93 +508,6 @@ this.btn_basket_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="dept_code" type="STRING" size="256"/>
           <Column id="col_code" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="oc_code">L-1001</Col>
-            <Col id="oc_year">2021-01-08</Col>
-            <Col id="oc_semester">1</Col>
-            <Col id="oc_schedule">월(1,4)/수(4,5)</Col>
-            <Col id="oc_max">25</Col>
-            <Col id="oc_part">25</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-202</Col>
-            <Col id="name">양자역학의 이해</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="oc_targetlevel">3</Col>
-            <Col id="isu">전공선택</Col>
-            <Col id="dept_code">d1</Col>
-            <Col id="col_code">c1</Col>
-          </Row>
-          <Row>
-            <Col id="oc_code">L-1002</Col>
-            <Col id="oc_year">2021-01-05</Col>
-            <Col id="oc_semester">4</Col>
-            <Col id="oc_schedule">금(1,2,3)</Col>
-            <Col id="oc_max">30</Col>
-            <Col id="oc_part">0</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-404</Col>
-            <Col id="name">물리학의 이해</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="oc_targetlevel">1</Col>
-            <Col id="isu">전공필수</Col>
-            <Col id="dept_code">d02</Col>
-            <Col id="col_code">c2</Col>
-          </Row>
-          <Row>
-            <Col id="oc_code">L-1003</Col>
-            <Col id="oc_year">2021-05-06</Col>
-            <Col id="oc_semester">3</Col>
-            <Col id="oc_schedule">목(3,4,5)</Col>
-            <Col id="oc_max">30</Col>
-            <Col id="oc_part">1</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-333</Col>
-            <Col id="oc_targetlevel">3</Col>
-            <Col id="name">이걸듣니?</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="isu">교양선택</Col>
-            <Col id="dept_code">d02</Col>
-            <Col id="col_code">c2</Col>
-          </Row>
-          <Row>
-            <Col id="oc_code">L-1004</Col>
-            <Col id="oc_year">2021-03-08</Col>
-            <Col id="oc_semester">3</Col>
-            <Col id="oc_schedule">월(2,3,4)</Col>
-            <Col id="oc_max">1</Col>
-            <Col id="oc_part">0</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-332</Col>
-            <Col id="oc_targetlevel">1</Col>
-            <Col id="name">이것도들어?</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="isu">교양필수</Col>
-            <Col id="dept_code">d03</Col>
-            <Col id="col_code">c3</Col>
-          </Row>
-          <Row>
-            <Col id="oc_code">L-1005</Col>
-            <Col id="oc_year">2021-05-050</Col>
-            <Col id="oc_semester">1</Col>
-            <Col id="oc_schedule">월(2,5)</Col>
-            <Col id="oc_max">3</Col>
-            <Col id="oc_part">0</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-4440</Col>
-            <Col id="oc_targetlevel">3</Col>
-            <Col id="name">이것마저도?</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="isu">교양필수</Col>
-            <Col id="dept_code">d04</Col>
-            <Col id="col_code">c4</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_stdClass">
         <ColumnInfo>
@@ -604,64 +534,18 @@ this.btn_basket_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="col_code" type="STRING" size="256"/>
           <Column id="col_title" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="col_code">c1</Col>
-            <Col id="col_title">공과대학</Col>
-          </Row>
-          <Row>
-            <Col id="col_code">c2</Col>
-            <Col id="col_title">보건의료과학대학</Col>
-          </Row>
-          <Row>
-            <Col id="col_code">c3</Col>
-            <Col id="col_title">비즈니스대학</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_department">
         <ColumnInfo>
           <Column id="dept_code" type="STRING" size="256"/>
           <Column id="dept_title" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="dept_code">d1</Col>
-            <Col id="dept_title">소프트웨어 융합</Col>
-          </Row>
-          <Row>
-            <Col id="dept_code">d02</Col>
-            <Col id="dept_title">에너지광기술융합</Col>
-          </Row>
-          <Row>
-            <Col id="dept_code">d03</Col>
-            <Col id="dept_title">융합전자공학</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_isu">
         <ColumnInfo>
           <Column id="isu_code" type="STRING" size="256"/>
           <Column id="isu_name" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="isu_code">i1</Col>
-            <Col id="isu_name">교양선택</Col>
-          </Row>
-          <Row>
-            <Col id="isu_code">i2</Col>
-            <Col id="isu_name">교양필수</Col>
-          </Row>
-          <Row>
-            <Col id="isu_code">i3</Col>
-            <Col id="isu_name">전공선택</Col>
-          </Row>
-          <Row>
-            <Col id="isu_code">i4</Col>
-            <Col id="isu_name">전공필수</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_student">
         <ColumnInfo>
@@ -711,25 +595,6 @@ this.btn_basket_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="cr_divide" type="STRING" size="256"/>
           <Column id="cr_completediv" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="cr_seq">1</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="lec_code">L-1003</Col>
-            <Col id="cr_divide">정기</Col>
-            <Col id="cr_completediv">신청상태</Col>
-          </Row>
-          <Row>
-            <Col id="cr_seq">2</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="lec_code">L-1001</Col>
-          </Row>
-          <Row>
-            <Col id="cr_seq">3</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="lec_code">L-1002</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_dummy">
         <ColumnInfo>
@@ -750,59 +615,6 @@ this.btn_basket_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="dept_code" type="STRING" size="256"/>
           <Column id="col_code" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="oc_code">L-1001</Col>
-            <Col id="oc_year">2021-01-08</Col>
-            <Col id="oc_semester">1</Col>
-            <Col id="oc_schedule">월(1,4)/수(4,5)</Col>
-            <Col id="oc_max">25</Col>
-            <Col id="oc_part">25</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-202</Col>
-            <Col id="name">양자역학의 이해</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="oc_targetlevel">3</Col>
-            <Col id="isu">전공선택</Col>
-            <Col id="dept_code">d1</Col>
-            <Col id="col_code">c1</Col>
-          </Row>
-          <Row>
-            <Col id="oc_code">L-1002</Col>
-            <Col id="oc_year">2021-01-05</Col>
-            <Col id="oc_semester">4</Col>
-            <Col id="oc_schedule">금(1,2,3)</Col>
-            <Col id="oc_max">30</Col>
-            <Col id="oc_part">0</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-404</Col>
-            <Col id="name">물리학의 이해</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="oc_targetlevel">1</Col>
-            <Col id="isu">전공필수</Col>
-            <Col id="dept_code">d02</Col>
-            <Col id="col_code">c2</Col>
-          </Row>
-          <Row>
-            <Col id="oc_code">L-1003</Col>
-            <Col id="oc_year">2021-05-06</Col>
-            <Col id="oc_semester">3</Col>
-            <Col id="oc_schedule">목(3,4,5)</Col>
-            <Col id="oc_max">30</Col>
-            <Col id="oc_part">1</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-333</Col>
-            <Col id="oc_targetlevel">3</Col>
-            <Col id="name">이걸듣니?</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="isu">교양선택</Col>
-            <Col id="dept_code">d02</Col>
-            <Col id="col_code">c2</Col>
-          </Row>
-        </Rows>
       </Dataset>
     </Objects>
     <Bind>

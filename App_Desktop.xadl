@@ -6,8 +6,9 @@
         <VFrameSet id="VFSet01" separatesize="65,*,30">
           <Frames>
             <ChildFrame id="TopFrame" formurl="frame::frmTop.xfdl" dragmovetype="none" showstatusbar="false" showtitlebar="false"/>
-            <HFrameSet id="HFSet01" separatesize="190,*">
+            <HFrameSet id="HFSet01" separatesize="0,190,*">
               <Frames>
+                <ChildFrame id="LoginFrame" formurl="ClassRegistration::crLogin.xfdl" dragmovetype="none" showtitlebar="false"/>
                 <ChildFrame id="LeftFrame" formurl="frame::frmLeft.xfdl" dragmovetype="none" showtitlebar="false"/>
                 <VFrameSet id="VFSet02" separatesize="30,*">
                   <Frames>
@@ -33,8 +34,12 @@ this.MdiFrame;
 this.BottomFrame;
 this.WorkFrame;
 
+
+
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
 {
+
+		
 	this.VFSet01 = this.mainframe.VFSet01;
 	this.VFSet02 = this.mainframe.VFSet01.HFSet01.VFSet02;
 	this.HFSet01 = this.mainframe.VFSet01.HFSet01;
@@ -43,6 +48,10 @@ this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventIn
 	this.MdiFrame = this.mainframe.VFSet01.HFSet01.VFSet02.MdiFrame;
 	this.BottomFrame = this.mainframe.VFSet01.BottomFrame;
 	this.WorkFrame = this.mainframe.VFSet01.HFSet01.VFSet02.WorkFrame;
+	
+
 };
+
+
 ]]></Script>
 </ADL>
