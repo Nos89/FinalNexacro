@@ -330,8 +330,20 @@ this.loginID = "";
 this.userType = "";
 
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{
-	this.application = nexacro.getApplication();
+{	
+	 this.application = nexacro.getApplication();
+
+	 var address = unescape(location.href);
+	 var param = "";
+	if(address.indexOf("name", 0) != -1) {  
+		param = address.substring(address.indexOf("name", 0) + 5);
+	} 
+	if(param=="sugang"){
+		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
+		return;
+	}
+
+	
 	this.transaction(
 		"whichUser", // 1. strSVCID
 		"/whichUser.nex", // 2. strURL
@@ -340,6 +352,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"", // 5. strArgument View에서 Server로 넘겨줄 변수
 		"fn_loginCallback" // 6. strCallbackFunc
 	);
+
 
 };
 
