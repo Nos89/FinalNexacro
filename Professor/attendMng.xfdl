@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="attendMng" width="1090" height="650" titletext="New Form" onload="attendMng_onload">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="1090">
+        <Static id="Static00" taborder="0" text="출결관리" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
+        <Static id="Static01" taborder="1" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
+        <Combo id="cbo_title" taborder="2" left="64" top="45" width="116" height="32" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="0" value="all" onitemclick="cbo_title_onitemclick" onitemchanged="cbo_title_onitemchanged" text="전체"/>
+        <Combo id="cbo_week" taborder="3" text="1" left="237" top="46" width="63" height="31" innerdataset="ds_week" codecolumn="code" datacolumn="name" index="0" value="1" onitemchanged="cbo_week_onitemchanged"/>
+        <Static id="Static00_01" taborder="4" text="주차" left="200" top="45" width="40" height="35"/>
+        <Static id="Static00_01_00" taborder="5" text="과목명" left="20" top="43" width="54" height="35"/>
+        <Button id="btn_search" taborder="6" text="조회" left="320" top="46" width="85" height="32" onclick="btn_search_onclick"/>
+        <Grid id="grd_lecture" taborder="7" left="9" top="95" width="1065" height="179" binddataset="ds_openClass" autofittype="col" oncellclick="Grid01_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="강의코드"/>
+                <Cell col="1" text="개설년도"/>
+                <Cell col="2" text="개설학기"/>
+                <Cell col="3" text="강의시간"/>
+                <Cell col="4" text="수강생 총원"/>
+                <Cell col="5" text="수강학년"/>
+                <Cell col="6" text="강의명"/>
+                <Cell col="7" text="이수학점"/>
+                <Cell col="8" text="이수구분"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:oc_code"/>
+                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년"/>
+                <Cell col="2" text="bind:oc_semester"/>
+                <Cell col="3" text="bind:oc_schedule"/>
+                <Cell col="4" text="bind:oc_part"/>
+                <Cell col="5" text="bind:oc_targetlevel"/>
+                <Cell col="6" text="bind:name"/>
+                <Cell col="7" text="bind:reco_score"/>
+                <Cell col="8" text="bind:isu"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static05_00_00" taborder="8" text="학생출결관리" left="7" top="274" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Button id="btn_save" taborder="9" text="저장" left="939" top="314" width="109" height="26" onclick="btn_save_onclick"/>
+        <Grid id="grd_student" taborder="10" left="9" top="350" width="361" height="290" binddataset="ds_crDetail" autofittype="col" oncellclick="grd_student_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="98"/>
+                <Column size="151"/>
+                <Column size="102"/>
+                <Column size="88"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="강의코드"/>
+                <Cell col="1" text="강의명"/>
+                <Cell col="2" text="학번"/>
+                <Cell col="3" text="name"/>
+                <Cell col="4" text="학년"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:lec_code"/>
+                <Cell col="1" text="bind:title" textAlign="center"/>
+                <Cell col="2" text="bind:id"/>
+                <Cell col="3" text="bind:name"/>
+                <Cell col="4" text="bind:std_year"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grd_attend" taborder="11" left="390" top="350" width="682" height="290" binddataset="ds_proAttendMng" autofittype="col" onheadclick="grd_attend_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="69"/>
+                <Column size="37"/>
+                <Column size="117"/>
+                <Column size="80"/>
+                <Column size="127"/>
+                <Column size="86"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="27"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="학번"/>
+                <Cell col="1" text="학년"/>
+                <Cell col="2" text="학과"/>
+                <Cell col="3" text="이름"/>
+                <Cell col="4" text="수업날짜"/>
+                <Cell col="5" text="출석"/>
+                <Cell col="6" text="주차"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:att_stdId"/>
+                <Cell col="1" text="bind:att_targetLevel"/>
+                <Cell col="2" text="bind:att_deptName"/>
+                <Cell col="3" text="bind:att_stdName"/>
+                <Cell col="4" displaytype="calendarcontrol" edittype="date" text="bind:att_date"/>
+                <Cell col="5" text="bind:att_attend" edittype="combo" combodataset="ds_attend" combocodecol="code" combodatacol="name" displaytype="combocontrol"/>
+                <Cell col="6" text="bind:att_week"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_add" taborder="12" text="추가" left="825" top="314" width="109" height="27" onclick="btn_add_onclick"/>
+        <Button id="btn_attRetrive" taborder="13" text="전체출결조회" left="711" top="314" width="109" height="27" onclick="btn_attRetrive_onclick"/>
+        <Static id="Static05_00_00_00" taborder="14" text="수강학생 목록" left="10" top="317" width="128" height="26" font="normal  10pt/normal &quot;Arial&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_proAttendMng">
+        <ColumnInfo>
+          <Column id="att_seq" type="STRING" size="256"/>
+          <Column id="att_lecCode" type="STRING" size="256"/>
+          <Column id="att_year" type="STRING" size="256"/>
+          <Column id="att_targetLevel" type="STRING" size="256"/>
+          <Column id="att_semester" type="STRING" size="256"/>
+          <Column id="att_lecTitle" type="STRING" size="256"/>
+          <Column id="att_date" type="STRING" size="256"/>
+          <Column id="att_attend" type="STRING" size="256"/>
+          <Column id="att_stdId" type="STRING" size="256"/>
+          <Column id="att_deptName" type="STRING" size="256"/>
+          <Column id="att_stdName" type="STRING" size="256"/>
+          <Column id="att_stdLevel" type="INT" size="256"/>
+          <Column id="att_week" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_attend">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="name">X(결석)</Col>
+            <Col id="code">X</Col>
+          </Row>
+          <Row>
+            <Col id="name">O(출석)</Col>
+            <Col id="code">O</Col>
+          </Row>
+          <Row>
+            <Col id="name">/(지각)</Col>
+            <Col id="code">/</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_week">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">1</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">2</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="name">3</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="name">4</Col>
+          </Row>
+          <Row>
+            <Col id="code">5</Col>
+            <Col id="name">5</Col>
+          </Row>
+          <Row>
+            <Col id="code">6</Col>
+            <Col id="name">6</Col>
+          </Row>
+          <Row>
+            <Col id="code">7</Col>
+            <Col id="name">7</Col>
+          </Row>
+          <Row>
+            <Col id="code">8</Col>
+            <Col id="name">8</Col>
+          </Row>
+          <Row>
+            <Col id="code">9</Col>
+            <Col id="name">9</Col>
+          </Row>
+          <Row>
+            <Col id="code">10</Col>
+            <Col id="name">10</Col>
+          </Row>
+          <Row>
+            <Col id="code">11</Col>
+            <Col id="name">11</Col>
+          </Row>
+          <Row>
+            <Col id="code">12</Col>
+            <Col id="name">12</Col>
+          </Row>
+          <Row>
+            <Col id="code">13</Col>
+            <Col id="name">13</Col>
+          </Row>
+          <Row>
+            <Col id="code">14</Col>
+            <Col id="name">14</Col>
+          </Row>
+          <Row>
+            <Col id="code">15</Col>
+            <Col id="name">15</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_crDetail" useclientlayout="false">
+        <ColumnInfo>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="std_year" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_openClass">
+        <ColumnInfo>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_year" type="DATE" size="256"/>
+          <Column id="oc_semester" type="STRING" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="oc_max" type="INT" size="256"/>
+          <Column id="oc_part" type="INT" size="256"/>
+          <Column id="oc_is_close" type="STRING" size="256"/>
+          <Column id="oc_close_reason" type="STRING" size="256"/>
+          <Column id="oc_pro_code" type="STRING" size="256"/>
+          <Column id="oc_class_room" type="STRING" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="dept_code" type="STRING" size="256"/>
+          <Column id="col_code" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cboTitle">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">all</Col>
+            <Col id="name">전체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_transaction">
+        <ColumnInfo>
+          <Column id="att_seq" type="STRING" size="256"/>
+          <Column id="att_lecCode" type="STRING" size="256"/>
+          <Column id="att_year" type="STRING" size="256"/>
+          <Column id="att_targetLevel" type="STRING" size="256"/>
+          <Column id="att_semester" type="STRING" size="256"/>
+          <Column id="att_lecTitle" type="STRING" size="256"/>
+          <Column id="att_date" type="STRING" size="256"/>
+          <Column id="att_attend" type="STRING" size="256"/>
+          <Column id="att_stdId" type="STRING" size="256"/>
+          <Column id="att_deptName" type="STRING" size="256"/>
+          <Column id="att_stdName" type="STRING" size="256"/>
+          <Column id="att_stdLevel" type="INT" size="256"/>
+          <Column id="att_week" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[//===============================
+include "Lib::lib_grid.xjs";
+//================================
+this.id = nexacro.Application.gvID;
+this.week;
+this.lec_code;
+this.schedule;
+this.selectId;
+this.insertds;
+
+this.fn_callback = function(id, errCode, errMsg){
+	if(errCode==-1){
+		this.alert("잠시후 다시 시도해 주세요");
+		return;
+	}
+	
+	if(id=="attendMngOnLoad"){
+	this.fn_setTitle();
+	this.selectId = null;
+	this.week = this.cbo_week.value;
+	this.ds_crDetail.filter("lec_code=='xxxxxxx'");
+	this.ds_proAttendMng.filter("lec_code=='xxxxxxxxx'");
+		
+	}else if(id=="insertAttend"){
+		this.fn_reAttend();
+	}else if(id=="saveAttend"){
+		this.fn_reAttend();
+	}
+
+};
+this.fn_reAttend = function(){
+	this.transaction(
+			"reAttend",
+			"/professor/reAttend.nex",		
+			"", 
+			"ds_proAttendMng=out_proAttendMng",
+			"id="+this.id+"",
+			"fn_callback"
+		);
+};
+
+this.attendMng_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{	
+
+	this.transaction(
+			"attendMngOnLoad",
+			"/professor/attendMngOnLoad.nex",	
+			"",        
+			"ds_proAttendMng=out_proAttendMng ds_openClass=out_openClass ds_crDetail=out_crDetail", 
+			"id="+ this.id+"", 
+			"fn_callback" 
+		);
+
+};
+
+this.fn_setTitle = function(){
+	//title 집어넣어주기
+	for(var i=0; i<this.ds_openClass.getRowCount(); i++){
+		var code = this.ds_openClass.getColumn(i,"oc_code");
+		var title = this.ds_openClass.getColumn(i,"name");
+		this.fn_setCombo(title, code);
+		/*
+		for(var j=0; j<this.ds_crDetail.getRowCount(); j++){
+			if(code==this.ds_crDetail.getColumn(j,"lec_code")){
+				this.ds_crDetail.setColumn(j,"title",title);
+				trace(title);
+				trace(this.ds_crDetail.getColumn(j,"title"));
+			}
+		}*/
+	}
+
+}
+
+this.fn_setCombo = function(title, code){
+	var check = 0;
+	for(var i=0; i<this.ds_cboTitle.getRowCount(); i++){
+		var code2 = this.ds_cboTitle.getColumn(i,"code");
+		if(code==code2){
+			check = 1;
+		}
+	
+	}
+	
+	if(check==0){
+		var nRow = this.ds_cboTitle.addRow();
+		this.ds_cboTitle.setColumn(nRow,"code",code);
+		this.ds_cboTitle.setColumn(nRow,"name",title);
+		}else {
+			check = 0;
+		}
+	
+}
+
+this.Grid01_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.lec_code = this.ds_openClass.getColumn(e.row,"oc_code");
+	var time = this.ds_openClass.getColumn(e.row,"oc_schedule");
+	this.ds_proAttendMng.filter("att_lecCode=='"+this.lec_code+"'&&att_week=='"+this.week+"'");
+	this.ds_crDetail.filter("lec_code=='"+this.lec_code+"'");
+	this.schedule = time.split("/");
+};
+
+this.cbo_week_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	this.week = obj.value;
+	if(this.ds_crDetail.getRowCount()==0){
+		return;
+	};
+	this.selectId = null;
+	this.ds_proAttendMng.filter("att_lecCode=='"+this.lec_code+"'&&att_week=='"+this.week+"'")
+};
+
+this.cbo_title_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	this.lec_code = this.cbo_title.value;
+	if(this.lec_code=="all")
+	{
+		this.ds_openClass.filter("");
+	}else{
+	this.ds_openClass.filter("oc_code=='"+this.lec_code+"'");
+	}
+	this.ds_crDetail.filter("lec_code=='xxxxxxx'");
+	this.ds_proAttendMng.filter("lec_code=='xxxxxxxx'");
+
+};
+
+this.grd_student_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.lec_code = this.ds_crDetail.getColumn(e.row,"lec_code");
+	this.selectId = this.ds_crDetail.getColumn(e.row,"id");
+	trace(this.lec_code+ this.week+ this.selecId);
+	this.ds_proAttendMng.filter("att_lecCode=='"+this.lec_code+"'&&att_week=='"+this.week+"'&&att_stdId=='"+this.selectId+"'");
+};
+
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var row = null; 
+	row = this.ds_proAttendMng.extractRows("att_lecCode=='"+this.lec_code+"'&&att_week=='"+this.week+"'&&att_stdId=='"+this.selectId+"'");
+	if(this.selectId ==null){
+		alert("추가할 학생을 클릭해주세요");
+		return;
+	}
+	if(row.length == this.schedule.length){
+		alert("해당 학생은 더이상 생성할 수 없습니다.");
+	}else if(row==-1||row.length<this.schedule.length){
+		this.fn_addAttendMng();
+	}
+};
+this.fn_addAttendMng = function(){
+	var ocRow = this.ds_openClass.extractRows("oc_code=='"+this.lec_code+"'");
+	var crRow = this.ds_crDetail.extractRows("lec_code=='"+this.lec_code+"'&&id=='"+this.selectId+"'");
+	alert("id==:"+this.selectId);
+	alert("crRow ="+crRow);
+	trace(ocRow);
+	var nRow = this.ds_transaction.addRow();
+	this.ds_transaction.setColumn(nRow,"att_seq","0");
+	this.ds_transaction.setColumn(nRow,"att_lecCode",this.lec_code);
+	this.ds_transaction.setColumn(nRow,"att_year",this.ds_openClass.getColumn(ocRow,"oc_year"));
+	this.ds_transaction.setColumn(nRow,"att_targetLevel",this.ds_openClass.getColumn(ocRow,"oc_targetlevel"));
+	this.ds_transaction.setColumn(nRow,"att_semester",this.ds_openClass.getColumn(ocRow,"oc_semester"));
+	this.ds_transaction.setColumn(nRow,"att_lecTitle",this.ds_openClass.getColumn(ocRow,"name"));
+	this.ds_transaction.setColumn(nRow,"att_stdId",this.ds_crDetail.getColumn(crRow,"id"));
+	this.ds_transaction.setColumn(nRow,"att_deptName",this.ds_crDetail.getColumn(crRow,"dept_title"));
+	this.ds_transaction.setColumn(nRow,"att_stdName",this.ds_crDetail.getColumn(crRow,"name"));
+	this.ds_transaction.setColumn(nRow,"att_stdLevel",this.ds_crDetail.getColumn(crRow,"std_year"));
+	this.ds_transaction.setColumn(nRow,"att_week",this.week);
+	
+	this.transaction(
+			"insertAttend", 
+			"/professor/insertAttend.nex",		
+			"in_ds = ds_transaction", 
+			"",
+			"", 
+			"fn_callback" 
+		);
+	this.ds_transaction.deleteAll();	
+};
+this.btn_attRetrive_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	if(this.ds_crDetail.getRowCount()==0){
+		alert("강의를 선택해주세요");
+		return;
+	};
+	this.selectId = null;
+	this.ds_proAttendMng.filter("att_lecCode=='"+this.lec_code+"'&&att_week=='"+this.week+"'")
+};
+
+
+this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	if(this.confirm("지금까지의 변경사항을 저장하시겠습니까?")){
+	
+		this.transaction(
+			"saveAttend", 
+			"/professor/saveAttend.nex",		
+			"in_ds = ds_proAttendMng:U", 
+			"",
+			"", 
+			"fn_callback" 
+		);
+	}
+
+};
+
+this.grd_attend_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.gfn_gridSort(obj, e);
+};
+]]></Script>
+  </Form>
+</FDL>

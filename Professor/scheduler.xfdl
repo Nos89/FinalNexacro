@@ -81,7 +81,7 @@ this.fn_callback = function(id, errCode, errMsg){
 									"graphicsrect" : {
 												"x" : 0, "y" : 0, "width" : 0, "height" : 0,
 												"fillstyle" : "#ffffff",
-												"strokepen" : "1px solid #000000"
+												"strokepen" : "1px solid #c7c7c7"
 											 },
 											 
 									//요일 텍스트 속성
@@ -115,7 +115,7 @@ this.fn_callback = function(id, errCode, errMsg){
 									"graphicsrect" : {
 												"x" : 0, "y" : 0, "width" : 0, "height" : 0,
 												"fillstyle" : "#ffffff",
-												"strokepen" : "1px solid #000000"
+												"strokepen" : "1px solid #c7c7c7"
 											 },
 											 
 									//일자 텍스트 속성
@@ -612,7 +612,7 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
 	
 	/* ===== Statusbar 옵션 추가 - End   ===== */
 	childFrame.set_openalign(sOpenAlignType);
-	childFrame.set_overlaycolor("RGBA(30, 144, 255, 0.75)");
+	childFrame.set_overlaycolor("RGBA(0, 0, 0, 0.3)");
 	childFrame.set_autosize(false);	
 	childFrame.set_dragmovetype("normal");
 
