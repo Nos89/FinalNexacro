@@ -343,7 +343,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		return;
 	}
 
-	/*
+	
 	this.transaction(
 		"whichUser", // 1. strSVCID
 		"/whichUser.nex", // 2. strURL
@@ -353,7 +353,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"fn_loginCallback" // 6. strCallbackFunc
 	);
 
-*/
+
 };
 
 this.fn_loginCallback = function( pID, pErr, pMsg ){
