@@ -138,7 +138,7 @@
           <Col id="UP_MENU_CD">0010</Col>
           <Col id="MENU_NM">공지사항 등록</Col>
           <Col id="PGM_PATH">Admin</Col>
-          <Col id="PGM_ID">work01.xfdl</Col>
+          <Col id="PGM_ID">Board_Notice_write.xfdl</Col>
           <Col id="MENU_LVL">1</Col>
         </Row>
         <Row>
@@ -146,7 +146,7 @@
           <Col id="UP_MENU_CD">0010</Col>
           <Col id="MENU_NM">홍보게시판 등록</Col>
           <Col id="PGM_PATH">Admin</Col>
-          <Col id="PGM_ID">work02.xfdl</Col>
+          <Col id="PGM_ID">Board_Promote_write.xfdl</Col>
           <Col id="MENU_LVL">1</Col>
         </Row>
         <Row>
@@ -154,7 +154,7 @@
           <Col id="UP_MENU_CD">0010</Col>
           <Col id="MENU_NM">행사게시판 등록</Col>
           <Col id="PGM_PATH">Admin</Col>
-          <Col id="PGM_ID">work03.xfdl</Col>
+          <Col id="PGM_ID">Board_Event_write.xfdl</Col>
           <Col id="MENU_LVL">1</Col>
         </Row>
         <Row>
@@ -198,6 +198,7 @@
           <Col id="MENU_CD">0032</Col>
           <Col id="UP_MENU_CD">0030</Col>
           <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_ID">Syllabus.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_NM">학사 자료실 관리</Col>
