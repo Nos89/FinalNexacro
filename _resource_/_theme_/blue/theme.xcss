@@ -3326,6 +3326,30 @@
 	-nexa-border : 1px solid #c7c7c7;
 	-nexa-text-align : center;
 }
+
+.Div.folder
+{
+	-nexa-edge : url('theme://images/a_folder.png') 0px 0px;	
+}
+.Button.btnIconView
+{
+	-nexa-edge : url('theme://images/btn_iconView.png') 10px 10px;
+}
+.Button.btnListView
+{
+	-nexa-edge : url('theme://images/btn_listView.png') 10px 0px;
+}
+.Button.btnIconView[userstatus=selected]
+{
+	-nexa-edge : url('theme://images/btn_iconViewActivate.png') 10px 10px;
+	-nexa-border : 1px solid #478ffd;
+}
+.Button.btnListView[userstatus=selected]
+{
+	-nexa-edge : url('theme://images/btn_listViewActivate.png') 10px 0px;
+	-nexa-border : 1px solid #4f8ded;
+}
+
 .CheckBoxControl.chk_disabled
 {
 	color : #999999;

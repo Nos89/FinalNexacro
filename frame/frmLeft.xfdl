@@ -327,11 +327,36 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[
+this.application = null;
+this.loginID = "";
+this.userType = "";
 
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
+
+	 var address = unescape(location.href);
+	 var param = "";
+	if(address.indexOf("name", 0) != -1) {  
+		param = address.substring(address.indexOf("name", 0) + 5);
+	} 
+	if(param=="sugang"){
+		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
+		return;
+	}
+
+	
+	this.transaction(
+		"whichUser", // 1. strSVCID
+		"/whichUser.nex", // 2. strURL
+		"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+		"", // 4. strOutDatasets -select Fds=Sds
+		"", // 5. strArgument View에서 Server로 넘겨줄 변수
+		"fn_loginCallback" // 6. strCallbackFunc
+	);
+
+
 };
 
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
