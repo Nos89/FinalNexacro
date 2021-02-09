@@ -356,14 +356,6 @@ this.userType = "";
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
-	this.transaction(
-		"whichUser", // 1. strSVCID
-		"/whichUser.nex", // 2. strURL
-		"", // 3. strInDatasets, Sds-Fds:U, :A, :N
-		"", // 4. strOutDatasets -select Fds=Sds
-		"", // 5. strArgument View에서 Server로 넘겨줄 변수
-		"fn_loginCallback" // 6. strCallbackFunc
-	);
 	 var address = unescape(location.href);
 	 var param = "";
 	if(address.indexOf("name", 0) != -1) {  
@@ -373,12 +365,35 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
 		return;
 	}
+	this.transaction(
+		"whichUser", // 1. strSVCID
+		"/whichUser.nex", // 2. strURL
+		"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+		"", // 4. strOutDatasets -select Fds=Sds
+		"", // 5. strArgument View에서 Server로 넘겨줄 변수
+		"fn_loginCallback" // 6. strCallbackFunc
+	);
 
 };
 
+this.fn_loginCallback = function( pID, pErr, pMsg ){
+	this.application=nexacro.getApplication()
+	if( this.userType == "학생" ){
+		this.grdLeft.set_binddataset(this.grd_student);
+	} else if ( this.userType == "교수" ){	
+		this.application.gvID = id;
+		this.grdLeft.set_binddataset(this.grd_professor);
+	} else if ( this.userType == "관리자" ){
+		this.grdLeft.set_binddataset(this.application.gdsLeftMenu_admin);
+	}
+}
+
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	var sMenuId = this.application.gdsLeftMenu_Admin.getColumn(e.row, "MENU_CD");
+	//this.alert(this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"));
+	var sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"); 
+	//let sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD");
+	//this.alert(sMenuId);
 	this.fn_openMenu(sMenuId);
 };
 
@@ -396,7 +411,7 @@ this.fn_openMenu = function(sMenuId)
 	var sMenuNm;
 	var sMenuNavi;
 	
-	var objMenuDs = this.application.gdsLeftMenu_Admin;	// 메뉴 DB
+	var objMenuDs = this.grdLeft.getBindDataset();
 	var objOpenMenuDs = this.application.gdsOpenMenu;
 	
 	nFRow 		= objMenuDs.findRow("MENU_CD", sMenuId);
@@ -452,6 +467,7 @@ this.fn_openMenu = function(sMenuId)
 	this.fn_AddOpenMenu(sWinId, sMenuId, sMenuNm);
 	
 	objMdiFrame.form.fn_ActiveTabPage(sWinId);
+	
 }
 
 /*****************************************************************************
