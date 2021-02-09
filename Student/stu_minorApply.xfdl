@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="stu_minorApply" width="1090" height="650" titletext="New Form" onload="stu_minorApply_onload">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="부/복수전공신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01_00" taborder="1" left="5" top="34" width="1080" height="152" border="0px none,0px none,1px solid black"/>
+        <ImageViewer id="ImageViewer00" taborder="2" left="20" top="44" width="110" height="132" stretch="fit"/>
+        <Edit id="Edit00" taborder="3" left="189" top="44" width="111" height="30" enable="false"/>
+        <Edit id="Edit00_00" taborder="4" left="189" top="79" width="111" height="30" enable="false"/>
+        <Edit id="Edit00_02" taborder="5" left="189" top="149" width="111" height="30" enable="false"/>
+        <Static id="Static02" taborder="6" text="학번" left="136" top="44" width="50" height="30" textAlign="right"/>
+        <Static id="Static02_00" taborder="7" text="성명" left="136" top="79" width="50" height="30" textAlign="right"/>
+        <Static id="Static02_01" taborder="8" text="생년월일" left="136" top="114" width="50" height="30" textAlign="right"/>
+        <Static id="Static02_02" taborder="9" text="성별" left="136" top="149" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_03" taborder="10" left="356" top="44" width="115" height="30" enable="false" value="대한민국" text="대한민국" font="12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="Static02_03" taborder="11" text="국적" left="300" top="44" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_00_00" taborder="12" left="356" top="79" width="115" height="30" enable="false"/>
+        <Static id="Static02_00_00" taborder="13" text="학적상태" left="300" top="79" width="50" height="30" textAlign="right"/>
+        <Static id="Static02_01_00" taborder="14" text="학년" left="300" top="114" width="50" height="30" textAlign="right"/>
+        <Static id="Static02_02_00" taborder="15" text="수강학년" left="300" top="149" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_04" taborder="16" left="536" top="44" width="154" height="30" enable="false" value="일반" text="일반"/>
+        <Static id="Static02_04" taborder="17" text="과정구분" left="482" top="44" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_00_01" taborder="18" left="536" top="79" width="154" height="30" enable="false"/>
+        <Static id="Static02_00_01" taborder="19" text="대학" left="482" top="79" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_01_01" taborder="20" left="536" top="114" width="154" height="30" enable="false"/>
+        <Static id="Static02_01_01" taborder="21" text="학부(과)" left="482" top="114" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_02_01" taborder="22" left="536" top="149" width="154" height="30" enable="false"/>
+        <Static id="Static02_02_01" taborder="23" text="학과(전공)" left="472" top="149" width="60" height="30" textAlign="right"/>
+        <Edit id="Edit00_05" taborder="24" left="772" top="46" width="128" height="30" enable="false"/>
+        <Static id="Static02_05" taborder="25" text="학적변동" left="717" top="46" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_00_02" taborder="26" left="772" top="81" width="128" height="30" enable="false"/>
+        <Static id="Static02_00_02" taborder="27" text="변동사유" left="717" top="81" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_01_02" taborder="28" left="772" top="116" width="128" height="30" enable="false"/>
+        <Static id="Static02_01_02" taborder="29" text="변동세부사유" left="695" top="116" width="72" height="30" textAlign="right"/>
+        <Static id="Static02_02_02" taborder="30" text="변동일자" left="717" top="149" width="50" height="30" textAlign="right"/>
+        <Static id="Static02_05_00" taborder="31" text="이수학기" left="915" top="44" width="50" height="30" textAlign="right"/>
+        <Static id="Static02_00_02_00" taborder="32" text="등록학기" left="915" top="79" width="50" height="30" textAlign="right"/>
+        <Static id="Static02_01_02_00" taborder="33" text="휴학학기수" left="890" top="114" width="75" height="30" textAlign="right"/>
+        <Static id="Static02_02_02_00" taborder="34" text="담당교수" left="915" top="149" width="50" height="30" textAlign="right"/>
+        <Edit id="Edit00_05_00" taborder="35" left="971" top="44" width="114" height="30" enable="false"/>
+        <Edit id="Edit00_00_02_00" taborder="36" left="971" top="79" width="114" height="30" enable="false"/>
+        <Edit id="Edit00_01_02_00" taborder="37" left="971" top="114" width="114" height="30" enable="false"/>
+        <Edit id="Edit00_02_02_00" taborder="38" left="971" top="149" width="114" height="30" enable="false"/>
+        <MaskEdit id="MaskEdit00" taborder="39" left="189" top="114" width="111" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
+        <MaskEdit id="MaskEdit00_00" taborder="40" left="772" top="151" width="128" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
+        <MaskEdit id="MaskEdit00_01" taborder="41" left="356" top="114" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
+        <MaskEdit id="MaskEdit00_01_00" taborder="42" left="356" top="149" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
+        <Grid id="Grid00" taborder="43" left="5" top="200" right="5" bottom="210" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="63"/>
+                <Column size="78"/>
+                <Column size="91"/>
+                <Column size="48"/>
+                <Column size="75"/>
+                <Column size="69"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상태"/>
+                <Cell col="1" text="신청년도"/>
+                <Cell col="2" text="신청학기"/>
+                <Cell col="3" text="승인구분"/>
+                <Cell col="4" text="전공구분"/>
+                <Cell col="5" text="교직복수여부"/>
+                <Cell col="6" text="신청대학"/>
+                <Cell col="7" text="신청학부(과)"/>
+                <Cell col="8" text="신청학과(전공)"/>
+                <Cell col="9" text="신청일자"/>
+                <Cell col="10" text="신청"/>
+                <Cell col="11" text="처리일자"/>
+                <Cell col="12" text="반려사유"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow + 1"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Edit00" propid="value" datasetid="ds_stuInfo" columnid="id"/>
+      <BindItem id="item1" compid="Edit00_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
+      <BindItem id="item2" compid="Edit00_02" propid="value" datasetid="ds_stuInfo" columnid="gender"/>
+      <BindItem id="item3" compid="Edit00_03" propid="value" datasetid="ds_proInfo" columnid="country"/>
+      <BindItem id="item4" compid="Edit00_00_00" propid="value" datasetid="ds_stuDetail" columnid="std_status"/>
+      <BindItem id="item5" compid="Edit00_04" propid="value" datasetid="ds_proInfo" columnid="id"/>
+      <BindItem id="item6" compid="Edit00_00_01" propid="value" datasetid="ds_stuInfo" columnid="col_title"/>
+      <BindItem id="item7" compid="Edit00_02_01" propid="value" datasetid="ds_stuInfo" columnid="dept_title"/>
+      <BindItem id="item8" compid="Edit00_05" propid="value" datasetid="ds_proInfo" columnid="id"/>
+      <BindItem id="item9" compid="Edit00_00_02" propid="value" datasetid="ds_proInfo" columnid="name"/>
+      <BindItem id="item10" compid="Edit00_05_00" propid="value" datasetid="ds_proInfo" columnid="id"/>
+      <BindItem id="item11" compid="Edit00_00_02_00" propid="value" datasetid="ds_proInfo" columnid="name"/>
+      <BindItem id="item12" compid="Edit00_01_01" propid="value" datasetid="ds_stuInfo" columnid="dept_title"/>
+      <BindItem id="item13" compid="MaskEdit00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
+      <BindItem id="item14" compid="MaskEdit00_00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
+      <BindItem id="item15" compid="MaskEdit00_01" propid="value" datasetid="ds_stuDetail" columnid="std_year"/>
+      <BindItem id="item16" compid="MaskEdit00_01_00" propid="value" datasetid="ds_stuDetail" columnid="std_year"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+this.stu_minorApply_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"stuInfoOnLoad",
+		"/stuInfoOnLoad.nex",
+		"",
+		"ds_stuInfo=out_stuInfo ds_stuArmy=out_stuArmy ds_proFile=out_proFile ds_stuDetail=out_stuDetail",
+		"",  
+		"fn_callback"
+	);
+};
+
+this.fn_callback=function(id,errCode,errMsg)
+{
+	this.ImageViewer00.set_image("/resources/ProFile/"+this.ds_proFile.getColumn(0,"savedName")+"");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_stuInfo">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="birth" type="DATE" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="country" type="STRING" size="256"/>
+          <Column id="inDate" type="DATE" size="256"/>
+          <Column id="outDate" type="DATE" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="zipcode" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="bank" type="STRING" size="256"/>
+          <Column id="accountnum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stuArmy">
+        <ColumnInfo>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="mil_inDate" type="DATE" size="256"/>
+          <Column id="mil_outDate" type="DATE" size="256"/>
+          <Column id="mil_title" type="STRING" size="256"/>
+          <Column id="mil_rank" type="STRING" size="256"/>
+          <Column id="mil_code" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stuDetail">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="std_status" type="STRING" size="256"/>
+          <Column id="std_year" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_proFile">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="oriName" type="STRING" size="256"/>
+          <Column id="savedName" type="STRING" size="256"/>
+          <Column id="reg_date" type="DATE" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

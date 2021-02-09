@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="stu_minorWithdraw" width="1090" height="650" titletext="New Form" onload="stu_minorWithdraw_onload">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="부/복수포기신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01" taborder="1" text="" left="5" top="34" height="36" right="5" background="#c8ddee"/>
+        <Static id="Static02" taborder="2" text="학번/성명" left="10" top="37" width="60" height="30"/>
+        <Button id="Button00" taborder="3" text="포기신청" left="870" top="4" width="60" height="26"/>
+        <Button id="Button00_00" taborder="4" text="포기신청취소" left="940" top="4" width="80" height="26"/>
+        <Edit id="Edit00" taborder="5" left="80" top="40" width="92" height="26" enable="false"/>
+        <Edit id="Edit00_00" taborder="6" left="180" top="40" width="92" height="26" enable="false"/>
+        <Static id="Static00_00" taborder="7" text="부/복수포기신청 리스트" left="0" top="76" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Grid id="Grid00" taborder="8" left="5" top="110" right="5" bottom="300" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="48"/>
+                <Column size="73"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="63"/>
+                <Column size="78"/>
+                <Column size="91"/>
+                <Column size="158"/>
+                <Column size="48"/>
+                <Column size="69"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상태"/>
+                <Cell col="1" text="전공구분"/>
+                <Cell col="2" text="교직복수여부"/>
+                <Cell col="3" text="승인구분"/>
+                <Cell col="4" text="신청년도"/>
+                <Cell col="5" text="신청학기"/>
+                <Cell col="6" text="신청대학"/>
+                <Cell col="7" text="신청학부(과)"/>
+                <Cell col="8" text="신청학과(전공)"/>
+                <Cell col="9" text="포기사유"/>
+                <Cell col="10" text="신청일자"/>
+                <Cell col="11" text="처리일자"/>
+                <Cell col="12" text="반려사유"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow + 1"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_stuInfo">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="birth" type="DATE" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="country" type="STRING" size="256"/>
+          <Column id="inDate" type="DATE" size="256"/>
+          <Column id="outDate" type="DATE" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="zipcode" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="bank" type="STRING" size="256"/>
+          <Column id="accountnum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stuArmy">
+        <ColumnInfo>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="mil_inDate" type="DATE" size="256"/>
+          <Column id="mil_outDate" type="DATE" size="256"/>
+          <Column id="mil_title" type="STRING" size="256"/>
+          <Column id="mil_rank" type="STRING" size="256"/>
+          <Column id="mil_code" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stuDetail">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="std_status" type="STRING" size="256"/>
+          <Column id="std_year" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_proFile">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="oriName" type="STRING" size="256"/>
+          <Column id="savedName" type="STRING" size="256"/>
+          <Column id="reg_date" type="DATE" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.stu_minorWithdraw_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"stuInfoOnLoad",
+		"/stuInfoOnLoad.nex",
+		"",
+		"ds_stuInfo=out_stuInfo ds_stuArmy=out_stuArmy ds_proFile=out_proFile ds_stuDetail=out_stuDetail",
+		"",  
+		"fn_callback"
+	);
+};
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="Edit00" propid="value" datasetid="ds_stuInfo" columnid="id"/>
+      <BindItem id="item1" compid="Edit00_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
+    </Bind>
+  </Form>
+</FDL>
