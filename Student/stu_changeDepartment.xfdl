@@ -262,7 +262,7 @@ this.cmbMultiCombo_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEvent
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_cpde02">
+      <Dataset id="ds_code02">
         <ColumnInfo>
           <Column id="Code" type="STRING" size="256"/>
           <Column id="Value" type="STRING" size="256"/>

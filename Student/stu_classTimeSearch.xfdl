@@ -1,67 +1,381 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="stu_classTimeSearch" width="1090" height="650" titletext="New Form">
+  <Form id="stu_classTimeSearch" width="1090" height="650" titletext="New Form" onload="stu_classTimeSearch_onload">
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="수업시간조회" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Static id="Static01" taborder="1" text="" left="5" top="34" height="99" right="5" background="#c8ddee"/>
-        <Static id="Static00_00" taborder="2" text="강의알람리스트" left="0" top="143" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Grid id="Grid00" taborder="3" left="5" top="180" right="5" bottom="190" autofittype="col">
+        <Static id="Static01" taborder="1" text="" left="5" top="34" height="76" right="5" background="#c8ddee"/>
+        <Static id="Static00_00" taborder="2" text="강의알람리스트" left="0" top="120" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Grid id="Grid00" taborder="3" left="5" top="164" right="5" bottom="10" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="40"/>
-                <Column size="48"/>
-                <Column size="48"/>
-                <Column size="48"/>
-                <Column size="48"/>
-                <Column size="48"/>
-                <Column size="63"/>
-                <Column size="78"/>
                 <Column size="91"/>
-                <Column size="48"/>
+                <Column size="94"/>
                 <Column size="75"/>
                 <Column size="69"/>
+                <Column size="31"/>
+                <Column size="22"/>
+                <Column size="57"/>
+                <Column size="128"/>
                 <Column size="48"/>
               </Columns>
               <Rows>
-                <Row size="24" band="head"/>
+                <Row size="61" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
                 <Cell text="No"/>
-                <Cell col="1" text="신청년도"/>
-                <Cell col="2" text="신청학기"/>
-                <Cell col="3" text="승인구분"/>
-                <Cell col="4" text="전공구분"/>
-                <Cell col="5" text="교직복수여부"/>
-                <Cell col="6" text="신청대학"/>
-                <Cell col="7" text="신청학부(과)"/>
-                <Cell col="8" text="신청학과(전공)"/>
-                <Cell col="9" text="신청일자"/>
-                <Cell col="10" text="신청"/>
-                <Cell col="11" text="처리일자"/>
-                <Cell col="12" text="반려사유"/>
+                <Cell col="1" text="교과목코드"/>
+                <Cell col="2" text="과목명"/>
+                <Cell col="3" text="이수구분"/>
+                <Cell col="4" text="교수명"/>
+                <Cell col="5" text="expr:'수강\n제한\n인원'"/>
+                <Cell col="6" text="expr:'수강\n인원'"/>
+                <Cell col="7" text="수강학년"/>
+                <Cell col="8" text="시간표"/>
+                <Cell col="9" text="학점"/>
               </Band>
               <Band id="body">
                 <Cell text="expr:currow + 1"/>
-                <Cell col="1"/>
-                <Cell col="2"/>
-                <Cell col="3"/>
-                <Cell col="4"/>
-                <Cell col="5"/>
-                <Cell col="6"/>
-                <Cell col="7"/>
-                <Cell col="8"/>
-                <Cell col="9"/>
-                <Cell col="10"/>
-                <Cell col="11"/>
-                <Cell col="12"/>
+                <Cell col="1" text="bind:oc_code"/>
+                <Cell col="2" text="bind:oc_name"/>
+                <Cell col="3" text="bind:isu"/>
+                <Cell col="4" text="bind:pro_name" textAlign="center"/>
+                <Cell col="5" text="bind:oc_max" textAlign="center"/>
+                <Cell col="6" text="bind:oc_part" textAlign="center"/>
+                <Cell col="7" text="bind:oc_targetlevel"/>
+                <Cell col="8" text="bind:oc_schedule"/>
+                <Cell col="9" text="bind:reco_score"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
+        <Static id="Static02_00_00_00" taborder="4" text="개설년도" left="15" top="40" width="50" height="30"/>
+        <Combo id="cmb_year" taborder="5" text="2021" left="71" top="40" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">2021</Col>
+                <Col id="datacolumn">2021</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2022</Col>
+                <Col id="datacolumn">2022</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2023</Col>
+                <Col id="datacolumn">2023</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2024</Col>
+                <Col id="datacolumn">2024</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static02_00_00_00_00" taborder="6" text="개설학기" left="161" top="40" width="60" height="30"/>
+        <Combo id="cmb_semester" taborder="7" text="1학기" left="221" top="40" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static02_00_00_00_00_00" taborder="8" text="교과목코드" left="311" top="40" width="60" height="30"/>
+        <Static id="Static02_00_00_00_00_00_00" taborder="9" text="대학" left="11" top="75" width="49" height="30" textAlign="right"/>
+        <Combo id="cmbCode01" taborder="10" text="--선택--" left="71" top="75" width="129" height="30" innerdataset="ds_code01" codecolumn="Code" datacolumn="Value" index="0" value="-1"/>
+        <Static id="Static02_00_00_00_00_00_00_00" taborder="11" text="학부(과)" left="220" top="75" width="50" height="30"/>
+        <Combo id="cmbCode02" taborder="12" text="2021" left="280" top="75" width="129" height="30" innerdataset="ds_code02" codecolumn="Code" datacolumn="Value" index="0" value="2021"/>
+        <Button id="btn_search" taborder="13" text="조회" left="880" top="2" width="54" height="30" onclick="btn_search_onclick"/>
+        <Edit id="edt_code" taborder="14" left="377" top="40" width="103" height="30"/>
+        <Button id="Button00" taborder="15" left="486" top="40" width="29" height="30" onclick="Div00_Button00_onclick" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center #ffffff"/>
       </Layout>
     </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="cmb_year" propid="value" datasetid="ds_changeDept" columnid="changeYear"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_classList">
+        <ColumnInfo>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_name" type="STRING" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="pro_name" type="STRING" size="256"/>
+          <Column id="oc_max" type="INT" size="256"/>
+          <Column id="oc_part" type="INT" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="oc_year" type="STRING" size="256"/>
+          <Column id="oc_semester" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stuInfo">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="birth" type="DATE" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="country" type="STRING" size="256"/>
+          <Column id="inDate" type="DATE" size="256"/>
+          <Column id="outDate" type="DATE" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="zipcode" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="bank" type="STRING" size="256"/>
+          <Column id="accountnum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_code01">
+        <ColumnInfo>
+          <Column id="Code" type="STRING" size="256"/>
+          <Column id="Value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Code">-1</Col>
+            <Col id="Value">--선택--</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c1</Col>
+            <Col id="Value">공과대학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c2</Col>
+            <Col id="Value">보건의료과학대학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c3</Col>
+            <Col id="Value">비즈니스대학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c4</Col>
+            <Col id="Value">사범대학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c5</Col>
+            <Col id="Value">예술대학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c6</Col>
+            <Col id="Value">인문사회대학</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_code02">
+        <ColumnInfo>
+          <Column id="Code" type="STRING" size="256"/>
+          <Column id="Value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Code">-1</Col>
+            <Col id="Value">--선택--</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c1d01</Col>
+            <Col id="Value">소프트웨어융합</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c1d02</Col>
+            <Col id="Value">에너지광기술융합학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c1d03</Col>
+            <Col id="Value">융합전자공학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c1d04</Col>
+            <Col id="Value">휴먼환경디자인학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c1d05</Col>
+            <Col id="Value">BT융합학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c2d06</Col>
+            <Col id="Value">간호학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c2d07</Col>
+            <Col id="Value">치위생학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c2d08</Col>
+            <Col id="Value">방사선학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c2d09</Col>
+            <Col id="Value">물리치료학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c2d10</Col>
+            <Col id="Value">작업치료학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c2d11</Col>
+            <Col id="Value">임상병리학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c3d12</Col>
+            <Col id="Value">경영학</Col>
+          </Row>
+          <Row>
+            <Col id="Value">글로벌경제통상학</Col>
+            <Col id="Code">c3d13</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c3d14</Col>
+            <Col id="Value">관광호텔경영학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c4d15</Col>
+            <Col id="Value">국어교육과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c4d16</Col>
+            <Col id="Value">수학교육과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c4d17</Col>
+            <Col id="Value">교직과</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c5d18</Col>
+            <Col id="Value">디자인조형학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c5d19</Col>
+            <Col id="Value">연극영화학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c6d20</Col>
+            <Col id="Value">미디어콘텐츠학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c6d21</Col>
+            <Col id="Value">사회과학</Col>
+          </Row>
+          <Row>
+            <Col id="Code">c6d22</Col>
+            <Col id="Value">인문과학</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <InitValue>
+      <Grid id="Grid00" binddataset="ds_classList"/>
+    </InitValue>
+    <Script type="xscript5.1"><![CDATA[
+this.stu_classTimeSearch_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"stuInfoOnLoad",
+		"/stuInfoOnLoad.nex",
+		"",
+		"ds_stuInfo=out_stuInfo",
+		"",  
+		"fn_callback"
+	);
+	
+	this.transaction(
+		"classTimeSearch",
+		"/classTimeSearch.nex",
+		"",
+		"ds_classList=out_classList",
+		"",  
+		"fn_callback"
+	);
+	
+	var arrComboList = [this.cmbCode01, this.cmbCode02];
+	this.gfnInitMultiCombo(arrComboList);
+};
+
+this.fn_callback=function(id,errCode,errMsg)
+{
+	this.cmbCode01.set_datacolumn(this.ds_stuInfo.getColumn(0,"col_title"));
+	this.cmbCode02.set_datacolumn(this.ds_stuInfo.getColumn(0,"dept_title"));
+};
+
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_classList.filter("oc_year == '" + this.cmb_year.text.substr(2,2) + "' && oc_semester == '" + this.cmb_semester.text + "' && oc_code == '" + this.edt_code.value + "' && dept_title == '" + this.cmbCode02.text + "'");
+};
+
+this.gfnInitMultiCombo = function(arrComboList)
+{
+	var i;
+	var nCount = arrComboList.length;
+	var objCombo;
+	var objChildCombo;
+	
+	for(i=0;i<nCount;i++)
+	{
+		objCombo = arrComboList[i];
+				
+		if(i!=nCount-1)
+		{
+			objChildCombo = arrComboList[i+1];
+			objCombo.childcombo = objChildCombo;
+			objCombo.addEventHandler("onitemchanged", this.cmbMultiCombo_onitemchanged, this);
+		}
+	}
+	
+	this.gfnItemChangedMultiCombo(arrComboList[0], "-1");
+}
+
+this.gfnItemChangedMultiCombo = function(objCombo, sValue)
+{
+	//하위 콤보 컴포넌트 가져오기
+	var objChildCombo = objCombo.childcombo;
+	
+	//현재 컴포넌트 값 변경
+	objCombo.set_value(sValue);
+	
+	//하위 콤보가 있을 경우
+	if(objChildCombo!=null)
+	{
+		//하위 콤보의 InnerDataset 가져오기
+		var objDs = objChildCombo.getInnerDataset();
+		
+		//상위콤보 값을 기준으로 하위콤보 필터링
+		objDs.filter("Code.toString().indexOf('"+sValue+"')==0||Code=='-1'");
+		
+		//콤보 아이템 변경 처리 함수 호출
+		this.gfnItemChangedMultiCombo(objChildCombo, "-1");
+	}
+}
+
+this.cmbMultiCombo_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	//콤보 아이템 변경 처리 함수 호출
+	this.gfnItemChangedMultiCombo(obj, e.postvalue);
+}
+
+]]></Script>
   </Form>
 </FDL>

@@ -177,23 +177,23 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">주전공희망배정신청</Col>
             <Col id="PGM_PATH">Student</Col>
-            <Col id="PGM_ID">stu_info.xfdl</Col>
+            <Col id="PGM_ID">stu_majorApply.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0003</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">주전공배정신청</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work01.xfdl</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_majorApply.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0004</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">부/복수전공신청</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work03.xfdl</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_minorApply.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
           </Row>
           <Row>
@@ -201,24 +201,31 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">부/복수포기신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0006</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">휴학신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_takeOffApply.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0007</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">복학신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_returnApply.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">전부(과)/전공변경신청</Col>
             <Col id="MENU_CD">0008</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_changeDepartment.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">증명서발급</Col>
@@ -249,54 +256,68 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">수업시간조회</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classTimeSearch.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0014</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">강의실시간표조회</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classTimeByRoom.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0015</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">학생시간표조회</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_myClassTime.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0016</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">수강신청조회</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classRegistration.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0017</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">수강취소신청</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classRegistration.Withdraw.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0018</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">휴강조회</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0019</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">강의평가/금학기성적조회</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0020</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">학점포기신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0021</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">강의평가결과조회</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0022</Col>
