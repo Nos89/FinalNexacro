@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Classroom_Schedule" width="800" height="600" titletext="New Form" onload="Classroom_Schedule_onload">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="800">
+        <Static id="Static00" taborder="0" text="강의실 시간표" left="11" top="22" width="120" height="16" cssclass="sta_WF_title02"/>
+        <Combo id="com_building" taborder="1" left="570" top="26" width="90" height="24" innerdataset="ds_build" codecolumn="build_code" datacolumn="build_code" onitemchanged="com_building_onitemchanged"/>
+        <Combo id="com_classroom" taborder="2" left="663" top="26" width="94" height="24" text="" innerdataset="ds_classroom" codecolumn="room_num" datacolumn="room_num"/>
+        <Div id="divTimetable" taborder="4" left="16" top="60" width="768" height="450" border="1px solid gray" text="">
+          <Layouts>
+            <Layout>
+              <Static id="day_table" taborder="0" left="0" top="0" width="107" height="50" cssclass="sta_WF_box02L" text="시간표"/>
+              <Static id="day_mon" taborder="1" left="107" top="0" width="107" height="50" cssclass="sta_WF_box02L" text="월"/>
+              <Static id="day_tue" taborder="2" left="214" top="0" width="107" height="50" cssclass="sta_WF_box02L" text="화"/>
+              <Static id="day_tue00" taborder="3" left="321" top="0" width="107" height="50" cssclass="sta_WF_box02L" text="수"/>
+              <Static id="day_tue00_00" taborder="4" left="428" top="0" width="107" height="50" cssclass="sta_WF_box02L" text="목"/>
+              <Static id="day_tue00_00_00" taborder="5" left="535" top="0" width="107" height="50" cssclass="sta_WF_box02L" text="금"/>
+              <Static id="day_tue00_00_00_00" taborder="6" left="642" top="0" width="107" height="50" cssclass="sta_WF_box02L" text="토"/>
+              <Static id="time_1" taborder="7" left="0" top="50" width="107" height="50" cssclass="sta_WF_box02L" text="1"/>
+              <Static id="time_2" taborder="8" left="0" top="100" width="107" height="50" cssclass="sta_WF_box02L" text="2"/>
+              <Static id="time_3" taborder="9" left="0" top="150" width="107" height="50" cssclass="sta_WF_box02L" text="3"/>
+              <Static id="time_4" taborder="10" left="0" top="200" width="107" height="50" cssclass="sta_WF_box02L" text="4"/>
+              <Static id="time_5" taborder="11" left="0" top="250" width="107" height="50" cssclass="sta_WF_box02L" text="5"/>
+              <Static id="time_6" taborder="12" left="0" top="300" width="107" height="50" cssclass="sta_WF_box02L" text="6"/>
+              <Static id="time_7" taborder="13" left="0" top="350" width="107" height="50" cssclass="sta_WF_box02L" text="7"/>
+              <Static id="time_8" taborder="14" left="0" top="400" width="107" height="50" cssclass="sta_WF_box02L" text="8"/>
+              <Static id="time_9" taborder="15" left="0" top="450" width="107" height="50" cssclass="sta_WF_box02L" text="9"/>
+              <Static id="mon1" taborder="16" left="107" top="50" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="tue1" taborder="17" left="214" top="50" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="wed1" taborder="18" left="321" top="50" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="thu1" taborder="19" left="428" top="50" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="fri1" taborder="20" left="535" top="50" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="sat1" taborder="21" left="642" top="50" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="mon2" taborder="22" left="107" top="100" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="mon3" taborder="23" left="107" top="150" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="mon4" taborder="24" left="107" top="200" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="mon5" taborder="25" left="107" top="250" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="mon6" taborder="26" left="107" top="300" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="mon7" taborder="27" left="107" top="350" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="mon8" taborder="28" left="107" top="400" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="mon9" taborder="29" left="107" top="450" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="tue2" taborder="30" left="214" top="100" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="tue3" taborder="31" left="214" top="150" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="tue4" taborder="32" left="214" top="200" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="tue5" taborder="33" left="214" top="250" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="tue6" taborder="34" left="214" top="300" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="tue7" taborder="35" left="214" top="350" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="wed2" taborder="36" left="321" top="100" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="wed3" taborder="37" left="321" top="150" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="wed4" taborder="38" left="321" top="200" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="wed5" taborder="39" left="321" top="250" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="wed6" taborder="40" left="321" top="300" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="wed7" taborder="41" left="321" top="350" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="wed8" taborder="42" left="321" top="400" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="thu2" taborder="43" left="428" top="100" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="thu3" taborder="44" left="428" top="150" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="thu4" taborder="45" left="428" top="200" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="thu5" taborder="46" left="428" top="250" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="thu6" taborder="47" left="428" top="300" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="thu7" taborder="48" left="428" top="350" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="thu8" taborder="49" left="428" top="400" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="fri2" taborder="50" left="535" top="100" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="fri3" taborder="51" left="535" top="150" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="fri4" taborder="52" left="535" top="200" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="fri5" taborder="53" left="535" top="250" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="fri6" taborder="54" left="535" top="300" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="fri7" taborder="55" left="535" top="350" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="fri8" taborder="56" left="535" top="400" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="sat2" taborder="57" left="642" top="100" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="sat3" taborder="58" left="642" top="150" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="sat4" taborder="59" left="642" top="200" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="sat5" taborder="60" left="642" top="250" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="sat6" taborder="61" left="642" top="300" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="sat7" taborder="62" left="642" top="350" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="sat8" taborder="63" left="642" top="400" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="sat9" taborder="64" left="642" top="450" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="fri9" taborder="65" left="535" top="450" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="thu9" taborder="66" left="428" top="450" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="wed9" taborder="67" left="321" top="450" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="tue9" taborder="68" left="214" top="450" width="107" height="50" cssclass="sta_WF_box03L"/>
+              <Static id="tue8" taborder="69" left="214" top="400" width="107" height="50" cssclass="sta_WF_box03L"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_close" taborder="3" text="닫기" left="351" top="530" width="100" height="40" onclick="btn_close_onclick"/>
+        <Button id="btn_search" taborder="5" text="Button00" left="760" top="26" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_classroom">
+        <ColumnInfo>
+          <Column id="build_code" type="STRING" size="256"/>
+          <Column id="room_num" type="STRING" size="256"/>
+          <Column id="room_max" type="INT" size="256"/>
+          <Column id="room_use" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_timetable">
+        <ColumnInfo>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="lec_title" type="STRING" size="256"/>
+          <Column id="lec_schedule" type="STRING" size="256"/>
+          <Column id="pro_name" type="STRING" size="256"/>
+          <Column id="lec_classroom" type="STRING" size="256"/>
+          <Column id="lec_semester" type="STRING" size="256"/>
+          <Column id="oc_year" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ds_build">
+        <ColumnInfo>
+          <Column id="build_code" type="STRING" size="256"/>
+          <Column id="build_name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+
+// 시간표에 사용할 Static 컴포넌트 정보
+this.staWidth	= 107;
+this.staHeight	= 50;
+this.staLeft	= 0;
+this.staTop		= 0;
+this.setTime 	= 1;	// 교시
+
+this.Classroom_Schedule_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"classroomOnLoad"	// 1. strSvcID(string 형태의 id)
+		, "/ClassroomOnLoad.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_build=out_build ds_classroom=out_classroom"	// 4. strOutDatasets -select Fds=Sds
+		, "" // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+	// 콤보에 강의실 자동 설정
+	let nCls = this.parent.lec_classroom;
+	let arrCls = nCls.split("-");
+	this.com_building.set_value(arrCls[0]);
+	this.com_classroom.set_value(arrCls[1]);
+};
+
+
+// 조회 버튼 클릭
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let classroom = this.com_building.value+"-"+this.com_classroom.value;
+	this.transaction(
+		"searchTimetable"	// 1. strSvcID(string 형태의 id)
+		, "/SearchTimetable.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_timetable=out_timetable"	// 4. strOutDatasets -select Fds=Sds
+		, "classroom="+classroom+" year="+this.parent.oc_year+" semester="+this.parent.lec_semester // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+
+	this.set_Schedules();
+};
+
+
+// 강의실 시간표 조회
+this.set_Schedules = function()
+{	
+	this.resetTimetable();	// 시간표 초기화
+	for(let i=0; i<this.ds_timetable.rowcount; i++){
+		let title = this.ds_timetable.getColumn(i,"lec_title");
+		let proName = this.ds_timetable.getColumn(i,"pro_name");
+		
+		// 요일+교시
+		let arrDay = this.ds_timetable.getColumn(i,"lec_schedule").split("/");	// 월(1,2) 수(3)
+		
+		// 요일
+		let arrWeek = [];
+		let arrTime = [];	
+		let arrTemp1 = [];	
+		let arrTemp2 = [];
+		let arrSche = [];	
+		let arrTimetable = [];
+		
+		for(let i=0; i<arrDay.length; i++){
+			arrWeek[i] = arrDay[i].substr(0,1);		// 요일만 추출
+			if(arrWeek[i]=="월"){
+				arrWeek[i] = 'mon';
+			}else if (arrWeek[i]=="화"){
+				arrWeek[i]='tue';
+			}else if(arrWeek[i]=="수"){
+				arrWeek[i]='wed';
+			}else if(arrWeek[i]=="목"){
+				arrWeek[i]='thu';
+			}else if(arrWeek[i]=="금"){
+				arrWeek[i]='fri';
+			}else {
+				arrWeek[i]='sat';
+			}
+			arrTime[i] = arrWeek[i]+arrDay[i].substr(1).replace("(","").replace(")",""); // mon1,2   wed3,4
+			arrTemp1[i] = nexacro.replaceAll(arrTime[i],",",","+arrWeek[i]);	// temp1[0]=mon1,mon2   temp1[1]=wed3,wed4
+			arrTemp2 = arrTemp1[i].split(",");
+			arrSche[i] = new Array();
+			for(let j=0; j<arrTemp2.length; j++){
+				arrSche[i][j] = arrTemp2[j];
+			}
+		}
+		for(let i=0; i<arrSche.length; i++){
+			arrTimetable = arrTimetable.concat(arrSche[i]);
+		}
+		
+		// 시간표 띄우기
+		for(let j=0; j<arrTimetable.length; j++){
+			let strStaticName = arrTimetable[j];
+			let objStatic = this.divTimetable.form.components[strStaticName];
+			objStatic.set_text(title+"\n"+proName);
+		}
+	}
+};
+
+
+// 시간표 초기화
+this.resetTimetable = function()
+{
+	let arrDay = new Array("mon","tue","wed","thu","fri","sat");		// 요일
+	let arrTime = new Array("1","2","3","4","5","6","7","8","9");		// 교시
+	for(let i=0; i<arrDay.length; i++){
+		for(let j=0; j<arrTime.length; j++){
+			let staticName = arrDay[i]+arrTime[j];
+			let objStatic = this.divTimetable.form.components[staticName];
+			objStatic.set_text("");
+		}
+	}
+}
+
+
+// 콤보 범위 설정
+this.com_building_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	let build = this.com_building.value;
+	this.com_classroom.set_enable("true");
+	this.com_classroom.set_value('');
+	this.ds_classroom.filter("build_code=='"+build+"'");
+};
+
+
+// 창 닫기
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+]]></Script>
+  </Form>
+</FDL>

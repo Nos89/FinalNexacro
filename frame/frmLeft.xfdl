@@ -348,7 +348,8 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[
+this.application = null;
 this.loginID = "";
 this.userType = "";
 
@@ -375,25 +376,16 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 };
 
-this.fn_loginCallback = function( pID, pErr, pMsg ){
-	if( this.userType == "학생" ){
-		this.grdLeft.set_binddataset(this.grd_student);
-	} else if ( this.userType == "교수" ){
-		this.grdLeft.set_binddataset(this.grd_professor);
-	}
-}
-
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	//var sMenuId = this.application.gdsLeftMenu.getColumn(e.row, "MENU_CD");
-	var sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"); 
+	var sMenuId = this.application.gdsLeftMenu_Admin.getColumn(e.row, "MENU_CD");
 	this.fn_openMenu(sMenuId);
 };
 
 this.fn_openMenu = function(sMenuId)
-{	
-	var objMdiFrame = this.application.MdiFrame;
-	var objWorkFrame = this.application.WorkFrame;
+{
+	var objMdiFrame = this.application.MdiFrame;	// 상단 탭
+	var objWorkFrame = this.application.WorkFrame;	// 화면
 	
 	var nFRow;
 	var sPGMPATH;
@@ -404,7 +396,7 @@ this.fn_openMenu = function(sMenuId)
 	var sMenuNm;
 	var sMenuNavi;
 	
-	var objMenuDs = this.grdLeft.getBindDataset();
+	var objMenuDs = this.application.gdsLeftMenu_Admin;	// 메뉴 DB
 	var objOpenMenuDs = this.application.gdsOpenMenu;
 	
 	nFRow 		= objMenuDs.findRow("MENU_CD", sMenuId);

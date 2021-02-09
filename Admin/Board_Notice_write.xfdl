@@ -12,7 +12,7 @@
 // 페이지 로드
 this.Notice_write_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	
+
 };
 
 this.WebBrowser00_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
