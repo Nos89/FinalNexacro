@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Notice" width="1090" height="650" titletext="New Form" onload="Notice_onload">
+    <Layouts>
+      <Layout height="650" width="1090" stepcount="0">
+        <Static id="Static00" taborder="0" text="공지사항 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
+        <Tab id="tab_Notice" taborder="1" tabindex="0" left="10" top="50" width="1070" height="500" onchanged="tab_Notice_onchanged">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="학사">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="9" top="10" width="1050" height="450" binddataset="ds_Notice" autofittype="col" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" fillareatype="linerow">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="10"/>
+                          <Column size="25"/>
+                          <Column size="220"/>
+                          <Column size="30"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="28" band="head"/>
+                          <Row size="28"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="번호"/>
+                          <Cell col="2" text="제목"/>
+                          <Cell col="3" text="날짜"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
+                          <Cell col="1" text="bind:noti_seq"/>
+                          <Cell col="2" text="bind:noti_title"/>
+                          <Cell col="3" text="bind:noti_writeDate" calendardateformat="yyyy.MM.dd" displaytype="date"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage2" text="장학">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="10"/>
+                          <Column size="25"/>
+                          <Column size="200"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="번호"/>
+                          <Cell col="2" text="제목"/>
+                          <Cell col="3" text="날짜"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
+                          <Cell col="1" text="bind:noti_seq"/>
+                          <Cell col="2" text="bind:noti_title"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage3" text="입학">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="10"/>
+                          <Column size="25"/>
+                          <Column size="200"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="번호"/>
+                          <Cell col="2" text="제목"/>
+                          <Cell col="3" text="날짜"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
+                          <Cell col="1" text="bind:noti_seq"/>
+                          <Cell col="2" text="bind:noti_title"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage4" text="채용">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="10"/>
+                          <Column size="25"/>
+                          <Column size="200"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="번호"/>
+                          <Cell col="2" text="제목"/>
+                          <Cell col="3" text="날짜"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
+                          <Cell col="1" text="bind:noti_seq"/>
+                          <Cell col="2" text="bind:noti_title"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage5" text="입찰">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="10"/>
+                          <Column size="25"/>
+                          <Column size="200"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="번호"/>
+                          <Cell col="2" text="제목"/>
+                          <Cell col="3" text="날짜"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
+                          <Cell col="1" text="bind:noti_seq"/>
+                          <Cell col="2" text="bind:noti_title"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage6" text="일반">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="10"/>
+                          <Column size="25"/>
+                          <Column size="200"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="번호"/>
+                          <Cell col="2" text="제목"/>
+                          <Cell col="3" text="날짜"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
+                          <Cell col="1" text="bind:noti_seq"/>
+                          <Cell col="2" text="bind:noti_title"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage7" text="전체">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="9" top="11" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" fillareatype="linerow">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="10"/>
+                          <Column size="25"/>
+                          <Column size="200"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="28" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                          <Cell col="1" text="번호"/>
+                          <Cell col="2" text="제목"/>
+                          <Cell col="3" text="날짜"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:chk"/>
+                          <Cell col="1" text="bind:noti_seq"/>
+                          <Cell col="2" text="bind:noti_title"/>
+                          <Cell col="3" text="bind:noti_writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Combo id="com_searchTarget" taborder="2" left="789" top="46" width="90" height="24" innerdataset="innerdataset" datacolumn="datacolumn" codecolumn="codecolumn" text="제목" index="0" value="noti_title">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">noti_title</Col>
+                <Col id="datacolumn">제목</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">noti_contents</Col>
+                <Col id="datacolumn">내용</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">title_contents</Col>
+                <Col id="datacolumn">제목+내용</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="edt_searchKeyword" taborder="3" left="882" top="46" width="166" height="24"/>
+        <Button id="btn_search" taborder="4" left="1058" top="46" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
+        <Button id="btn_delete" taborder="5" text="삭제" left="910" top="576" width="80" height="24" onclick="btn_delete_onclick"/>
+        <Button id="btn_update" taborder="6" text="수정" left="1000" top="576" width="80" height="24" onclick="btn_update_onclick"/>
+        <Button id="btn_write" taborder="7" text="작성" left="820" top="576" width="80" height="24" onclick="btn_write_onclick"/>
+        <Div id="div_page" taborder="8" left="289" top="568" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_Notice" keystring="S:rank">
+        <ColumnInfo>
+          <Column id="chk" type="INT" size="256"/>
+          <Column id="rank" type="INT" size="256"/>
+          <Column id="noti_seq" type="INT" size="256"/>
+          <Column id="noti_title" type="STRING" size="256"/>
+          <Column id="noti_contents" type="STRING" size="256"/>
+          <Column id="noti_writeDate" type="DATE" size="256"/>
+          <Column id="category" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.fv_pageRowCount = 15;	// 한 페이지에 불러올 Row 개수
+this.totalRowCount = "";	// 전체 Row 수
+
+
+// 페이지 로드
+this.Notice_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"noticeOnLoad"	// 1. strSvcID(string 형태의 id)
+		, "/NoticeOnLoad.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_Notice=out_notice"	// 4. strOutDatasets -select Fds=Sds
+		, "category='학사'" // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+};
+
+
+// 트랜잭션 후 콜백함수
+this.fn_callback = function()
+{
+	// 페이징 초기화
+	this.div_page.form.initPages(this.totalRowCount, this.fv_pageRowCount);
+	this.div_page.form.setPage(1);
+}
+
+
+// 페이지 이동 후 호출될 콜백함수
+this.setPageAfter = function(startRowNum, endRowNum)
+{
+	let nTabIdx = this.tab_Notice.tabindex;
+	let sTabName = this.tab_Notice.tabpages[nTabIdx].text;
+	
+	this.ds_Notice.filter("rank>="+startRowNum+"&&rank<="+endRowNum);
+};
+
+
+// 탭 변경시 페이지 로드
+this.tab_Notice_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	let nTabIdx = this.tab_Notice.tabindex;
+	let sTabName = this.tab_Notice.tabpages[nTabIdx].text;
+	
+	this.transaction(
+		"noticeTabChanged"	// 1. strSvcID(string 형태의 id)
+		, "/NoticeTabChanged.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_Notice=out_notice"	// 4. strOutDatasets -select Fds=Sds
+		, "category="+sTabName // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+};
+
+
+// 검색(탭페이지별로 검색)
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let nIdx = this.tab_Notice.tabindex;
+	let sTabName = this.tab_Notice.tabpages[nIdx].text;
+	
+	let sTarget = this.com_searchTarget.value;
+	let sKeyword = this.edt_searchKeyword.value;
+	
+	this.transaction(
+		"searchNotice"	// 1. strSvcID(string 형태의 id)
+		, "/SearchNotice.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_Notice=out_notice"	// 4. strOutDatasets -select Fds=Sds
+		, "sTarget="+sTarget+" sKeyword="+sKeyword+" category="+sTabName // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+};
+
+
+// 삭제
+this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let check = this.confirm("정말로 삭제하시겠습니까?");
+	let nRows = this.ds_Notice.extractRows("chk==1");
+	
+	if(check){
+		if(nRows==''||nRows==null){
+			this.ds_Notice.deleteRow(this.ds_Notice.rowposition);
+		}else{
+			this.ds_Notice.deleteMultiRows(nRows);
+		}
+		this.transaction(
+			"deleteNotice"	// 1. strSvcID(string 형태의 id)
+			, "/DeleteNotice.nex"	// 2. strURL(string 형태의 url)
+			, "in_notice=ds_Notice:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+			, ""	// 4. strOutDatasets -select Fds=Sds
+			, "" // 5. strArgument
+			, ""	// 6. strCallbackFunc
+		);
+		this.Notice_onload();
+	}else {return;}
+};
+
+
+// 일괄 선택/해제
+this.tab_Notice_Tabpage_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let bodyColId = obj.getCellProperty("body",e.cell,"text").replace("bind:","");
+	let objDs = obj.getBindDataset();
+	
+	if(bodyColId=="chk"){
+		let headVal = obj.getCellProperty("head",e.cell,"text");
+		headVal = (headVal == "1" ? "0" : "1");
+		objDs.set_enableevent(false);
+		for(let i=0; i<this.ds_Notice.getRowCount(); i++){
+			this.ds_Notice.setColumn(i,"chk",headVal);
+		}
+		objDs.set_enableevent(true);
+		obj.setCellProperty("head",e.cell,"text",headVal);
+	}
+};
+
+
+// 게시글 팝업(모달리스)
+this.tab_Notice_Tabpage_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let sCol = obj.getCellProperty("body",e.cell,"text").replace("bind:","");
+	let nSeq = this.ds_Notice.getColumn(e.row, "noti_seq");
+	
+	if(sCol=="noti_title"){
+		nexacro.open(
+			"bdNotice"+nSeq
+			, "Admin::Board_post.xfdl"
+			, this.getOwnerFrame()
+			, {seq:nSeq, div:"notice"}
+		);
+	}
+};
+
+
+// 작성
+this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("Admin::Board_Notice_write.xfdl");
+};
+]]></Script>
+  </Form>
+</FDL>

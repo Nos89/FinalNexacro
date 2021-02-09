@@ -6,8 +6,9 @@
         <VFrameSet id="VFSet01" separatesize="65,*,30">
           <Frames>
             <ChildFrame id="TopFrame" formurl="frame::frmTop.xfdl" dragmovetype="none" showstatusbar="false" showtitlebar="false"/>
-            <HFrameSet id="HFSet01" separatesize="190,*">
+            <HFrameSet id="HFSet01" separatesize="0,190,*">
               <Frames>
+                <ChildFrame id="LoginFrame" formurl="ClassRegistration::crLogin.xfdl" dragmovetype="none" showtitlebar="false"/>
                 <ChildFrame id="LeftFrame" formurl="frame::frmLeft.xfdl" dragmovetype="none" showtitlebar="false"/>
                 <VFrameSet id="VFSet02" separatesize="30,*">
                   <Frames>

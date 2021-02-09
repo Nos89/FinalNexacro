@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Board_Free_post" width="800" height="600" titletext="New Form" onload="Board_Free_post_onload">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="800">
+        <WebBrowser id="web_bdFree" taborder="0" left="0" top="0" right="0" bottom="0"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Board_Free_post_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	let seq = this.parent.seq;
+	let div = this.parent.div;
+	this.web_bdFree.set_url("http://localhost/main/board.view?pageGroup=community&type="+div+"&seq="+seq+"&page=1&purp=view");
+};
+]]></Script>
+  </Form>
+</FDL>

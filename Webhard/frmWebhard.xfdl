@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmLeftMenu" width="1090" height="650" titletext="New Form">
+  <Form id="frmLeftMenu" width="1090" height="650" titletext="New Form" onload="frmLeftMenu_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Div id="div_dir" taborder="0" left="0" top="0" width="190" height="650" background="#f3f4b2">
+        <Div id="div_left" taborder="0" left="0" top="5" width="190" bottom="5">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="0" top="0" width="192" height="650" binddataset="ds_directory" treeusecheckbox="false" autofittype="col" oncelldblclick="div_dir_Grid00_oncelldblclick">
+              <Grid id="gd_left" taborder="0" left="0" width="190" binddataset="ds_directory" treeusecheckbox="false" autofittype="col" oncelldblclick="div_dir_Grid00_oncelldblclick" top="75" bottom="0">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -16,129 +16,410 @@
                       <Row size="24"/>
                     </Rows>
                     <Band id="body">
-                      <Cell text="bind:dirName" displaytype="treeitemcontrol" treelevel="bind:level" edittype="tree"/>
+                      <Cell text="bind:directoryName" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:lv"/>
                     </Band>
                   </Format>
                 </Formats>
               </Grid>
+              <Static id="Static00" taborder="1" text="사용용량   " left="0" top="5" width="100.00%" height="20" textAlign="right"/>
+              <ProgressBar id="ProgressBar00" taborder="2" max="100" text="xx / 50mb" left="0" top="35" width="100.00%" height="20" blockgap="0" pos="60" background="" smooth="true" borderRadius="3px"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="div_file" taborder="1" left="190" top="0" width="900" height="650" text="">
+        <Div id="div_file" taborder="1" left="190" top="0" width="900" text="" bottom="0">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="19" top="80" width="861" height="300" binddataset="ds_indir">
-                <Formats>
-                  <Format id="default">
-                    <Columns>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                    </Columns>
-                    <Rows>
-                      <Row band="head" size="24"/>
-                      <Row size="24"/>
-                    </Rows>
-                    <Band id="head">
-                      <Cell text="userID"/>
-                      <Cell col="1" text="name"/>
-                      <Cell col="2" text="isFolder"/>
-                      <Cell col="3" text="dir"/>
-                    </Band>
-                    <Band id="body">
-                      <Cell text="bind:userID"/>
-                      <Cell col="1" text="bind:name"/>
-                      <Cell col="2" text="bind:isFolder"/>
-                      <Cell col="3" text="bind:dir"/>
-                    </Band>
-                  </Format>
-                </Formats>
-              </Grid>
+              <Static id="st_dirName" taborder="0" left="20" top="11" width="170" height="29"/>
+              <Static id="st_dirID" taborder="1" left="207" top="9" width="42" height="23" visible="false"/>
+              <Button id="btn_crtFolder" taborder="2" text="폴더 생성" left="125" top="49" width="99" height="27" onclick="div_file_btn_crtFolder_onclick"/>
+              <Button id="btnUpload" taborder="3" text="업로드" left="11" top="49" width="104" height="27" onclick="div_file_btnUpload_onclick"/>
+              <Div id="div_inDir" taborder="4" left="11" top="80" width="878" border="1px solid black" bottom="5">
+                <Layouts>
+                  <Layout/>
+                </Layouts>
+              </Div>
+              <Button id="btnListView" taborder="5" left="863" top="50" width="26" height="25" cssclass="btnListView" onclick="div_file_btnListView_onclick"/>
+              <Button id="btnIconView" taborder="6" left="837" top="50" width="26" height="25" cssclass="btnIconView" onclick="div_file_btnIconView_onclick"/>
             </Layout>
           </Layouts>
         </Div>
+        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="218" top="95" width="345" height="30">
+          <Layouts>
+            <Layout>
+              <Edit id="Edit00" taborder="0" left="5" top="0" width="272" height="30" displaynulltext="폴더명을 입력해주세요." text="qwfqwf"/>
+              <Button id="btn_createFolder" taborder="1" text="생성" left="277" top="0" width="68" height="30" onclick="PopupDiv00_btn_createFolder_onclick"/>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+        <PopupMenu id="pm_context" left="750" top="410" width="120" height="170" innerdataset="ds_context" captioncolumn="captioncolumn" checkboxcolumn="checkboxcolumn" enablecolumn="enablecolumn" hotkeycolumn="hotkeycolumn" iconcolumn="iconcolumn" idcolumn="idcolumn" levelcolumn="levelcolumn" userdatacolumn="userdatacolumn" onlbuttondown="pm_context_onlbuttondown"/>
       </Layout>
     </Layouts>
     <Objects>
       <Dataset id="ds_directory">
         <ColumnInfo>
+          <Column id="dirID" type="STRING" size="256"/>
           <Column id="userID" type="STRING" size="256"/>
-          <Column id="dirName" type="STRING" size="256"/>
-          <Column id="parentDir" type="STRING" size="256"/>
-          <Column id="level" type="STRING" size="256"/>
+          <Column id="directoryName" type="STRING" size="256"/>
+          <Column id="parentID" type="STRING" size="256"/>
+          <Column id="lv" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="userID">userA</Col>
-            <Col id="dirName">userA</Col>
-            <Col id="parentDir">root</Col>
-            <Col id="level">0</Col>
+            <Col id="dirID">1</Col>
+            <Col id="userID">P-1001</Col>
+            <Col id="directoryName">P-1001</Col>
+            <Col id="parentID">root</Col>
+            <Col id="lv">0</Col>
           </Row>
           <Row>
-            <Col id="userID">userA</Col>
-            <Col id="dirName">A</Col>
-            <Col id="parentDir">userA</Col>
-            <Col id="level">1</Col>
+            <Col id="dirID">2</Col>
+            <Col id="userID">P-1001</Col>
+            <Col id="directoryName">A</Col>
+            <Col id="parentID">P-1001</Col>
+            <Col id="lv">1</Col>
           </Row>
           <Row>
-            <Col id="userID">userA</Col>
-            <Col id="dirName">B</Col>
-            <Col id="level">2</Col>
-            <Col id="parentDir">A</Col>
-          </Row>
-          <Row>
-            <Col id="userID">userA</Col>
-            <Col id="dirName">C</Col>
-            <Col id="level">2</Col>
-            <Col id="parentDir">A</Col>
-          </Row>
-          <Row>
-            <Col id="userID">userA</Col>
-            <Col id="dirName">D</Col>
-            <Col id="level">3</Col>
-            <Col id="parentDir">C</Col>
-          </Row>
-          <Row>
-            <Col id="userID">userA</Col>
-            <Col id="dirName">F</Col>
-            <Col id="level">4</Col>
-            <Col id="parentDir">D</Col>
-          </Row>
-          <Row>
-            <Col id="dirName">E</Col>
-            <Col id="userID">userA</Col>
-            <Col id="level">3</Col>
-            <Col id="parentDir">C</Col>
+            <Col id="dirID">3</Col>
+            <Col id="userID">P-1001</Col>
+            <Col id="directoryName">B</Col>
+            <Col id="parentID">P-1001</Col>
+            <Col id="lv">1</Col>
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_fileList">
+        <ColumnInfo>
+          <Column id="CloudID" type="STRING" size="256"/>
+          <Column id="file_location" type="STRING" size="256"/>
+          <Column id="file_oriName" type="STRING" size="256"/>
+          <Column id="file_savedName" type="STRING" size="256"/>
+          <Column id="file_date" type="STRING" size="256"/>
+          <Column id="file_size" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileUpTransfer id="FileUpTransfer00"/>
+      <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="size" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
       <Dataset id="ds_indir">
         <ColumnInfo>
-          <Column id="userID" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="isFolder" type="STRING" size="256"/>
-          <Column id="dir" type="STRING" size="256"/>
+          <Column id="size" type="STRING" size="256"/>
+          <Column id="date" type="STRING" size="256"/>
+          <Column id="savedName" type="STRING" size="256"/>
+          <Column id="file_location" type="STRING" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="name">A</Col>
+            <Col id="isFolder">true</Col>
+          </Row>
+          <Row>
+            <Col id="name">B</Col>
+            <Col id="isFolder">true</Col>
+          </Row>
+          <Row>
+            <Col id="name">fileA</Col>
+            <Col id="isFolder">false</Col>
+            <Col id="size">3</Col>
+            <Col id="date">20210205</Col>
+            <Col id="savedName">asdfasdf</Col>
+            <Col id="file_location">P-1001</Col>
+          </Row>
+          <Row>
+            <Col id="name">fileB</Col>
+            <Col id="isFolder">false</Col>
+            <Col id="size">4</Col>
+            <Col id="date">20210205</Col>
+            <Col id="savedName">ffdsa</Col>
+            <Col id="file_location">P-1001</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_context">
+        <ColumnInfo>
+          <Column id="captioncolumn" size="256"/>
+          <Column id="checkboxcolumn" size="256"/>
+          <Column id="enablecolumn" size="256"/>
+          <Column id="hotkeycolumn" size="256"/>
+          <Column id="iconcolumn" size="256"/>
+          <Column id="idcolumn" size="256"/>
+          <Column id="levelcolumn" size="256"/>
+          <Column id="userdatacolumn" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="captioncolumn">다운로드</Col>
+            <Col id="levelcolumn">0</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">업로드</Col>
+            <Col id="levelcolumn">0</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">폴더생성</Col>
+            <Col id="levelcolumn">0</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">다중선택</Col>
+            <Col id="levelcolumn">0</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">삭제</Col>
+            <Col id="levelcolumn">0</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">속성</Col>
+            <Col id="levelcolumn">0</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
+this.cnt = 0;
+
 this.div_dir_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	this.ds_indir.deleteAll();
-	let addedRow = this.ds_indir.addRow();
-	// userID, name, isFolder, dir
-	this.ds_indir.setColumn(addedRow, 0, "userA");
-	this.ds_indir.setColumn(addedRow, 1, "...");
-	this.ds_indir.setColumn(addedRow, 2, "true");
-	this.ds_indir.setColumn(addedRow, 3, this.ds_directory.getColumn(e.row, "dirName"));
+	this.div_left.form.gd_left.setTreeStatus(e.row, "expand");
+	let dirName = this.div_left.form.gd_left.getBindDataset().getColumn(e.row, "directoryName");
+	this.div_file.form.st_dirName.set_text(dirName);
 	
-	addedRow = this.ds_indir.addRow();
-	this.ds_indir.setColumn(addedRow, 0, "userA");
-	this.ds_indir.setColumn(addedRow, 1, "file1");
-	this.ds_indir.setColumn(addedRow, 2, "false");
-	this.ds_indir.setColumn(addedRow, 3, this.ds_directory.getColumn(e.row, "dirName"));
+	let dirID = this.div_left.form.gd_left.getBindDataset().getColumn(e.row, "dirID");
+	this.div_file.form.st_dirID.set_text(dirID);
+	
+	this.fn_indirTran(dirID);
 };
+
+this.frmLeftMenu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.div_file.form.btnIconView.setSelectStatus(true);
+	this.transaction(
+			"webhardOnload", // 1. strSVCID
+			"/webhard/onload", // 2. strURL
+			"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+			"ds_directory=outds_dirList ds_indir=out_indir", // 4. strOutDatasets -select Fds=Sds
+			"", // 5. strArgument View에서 Server로 넘겨줄 변수
+			"fn_onloadCallback" // 6. strCallbackFunc
+		);
+};
+
+this.fn_onloadCallback = function( pId, pErrCode, pMsg ){
+	this.div_left.form.gd_left.setTreeStatus( 0, "expand");
+	let dirName = this.div_left.form.gd_left.getBindDataset().getColumn(0, "directoryName");
+	this.div_file.form.st_dirName.set_text(dirName);
+	let dirID = this.div_left.form.gd_left.getBindDataset().getColumn(0, "dirID");
+	this.div_file.form.st_dirID.set_text(dirID);
+	this.fn_indirTran(this.div_file.form.st_dirID.text);
+	this.cnt = this.ds_indir.getRowCount();
+}
+
+this.fn_indirTran = function( parentID ){
+	this.transaction(
+			"getInDir", // 1. strSVCID
+			"/webhard/getIndir", // 2. strURL
+			"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+			"ds_indir=out_indir", // 4. strOutDatasets -select Fds=Sds
+			"parentID="+parentID, // 5. strArgument View에서 Server로 넘겨줄 변수
+			"fn_indir" // 6. strCallbackFunc
+		);
+}
+
+// 폴더 내 하위 폴더 및 파일 뿌려주기
+this.fn_indir = function(){
+	// Div.init( strName, vLeft, vTop , vWidth, vHeight [, vRight, vBottom, [vMinWidth, [vMaxWidth, [vMinHeight, [vMaxHeight]]]]] ) 
+	// width 878 height 252
+	//this.alert(this.cnt);
+	for( let i = 0; i < this.cnt; i++ ){
+		let d = "Div"+i;
+		let objDel = this.div_file.form.div_inDir.removeChild(d);
+		//this.alert(objDel.destroy());
+	}
+	objDel = "";
+	let dsIndir = this.ds_indir;
+	this.cnt = dsIndir.getRowCount();
+	for( let i = 0; i < this.cnt; i++ ){
+		let objDiv = new Div();
+		let nWidth = 80;
+		let nHeight = 100;
+		let nX = i * (nWidth + 1);
+		let nY = parseInt(i/parseInt(858/nWidth)) * (nHeight + 3);
+		
+		objDiv.init( "Div"+i, nX , nY , nWidth, nHeight );
+		
+		//objDiv.set_background("pink");
+		
+		// 아이콘
+		let objDivIcon = new Div();
+		nWidth = 70;
+		nHeight = 70;
+		objDivIcon.init("iconDiv"+i, 5, 5, nWidth, nHeight );
+		//objDivIcon.set_background("green");
+		objDiv.addChild("iconDiv"+i, objDivIcon);
+		if( dsIndir.getColumn(i, "isFolder") == "true" ){
+			objDivIcon.set_cssclass("folder");
+		} else {
+			objDivIcon.set_border("1px solid black");
+		}
+		
+		// 이름
+ 		let objStatic = new Static();
+ 		nWidth = 75;
+ 		nHeight = 15;
+ 		objStatic.init("Static"+i, 5, 75, nWidth, nHeight);
+ 		objStatic.set_text(dsIndir.getColumn(i, "name"));
+ 		objDiv.addChild("Static"+i, objStatic);
+		
+		let objIdentify = new Static();
+		objIdentify.init("savedName:fileLocation"+i, 0, 0, 0, 0);
+		objIdentify.set_text( dsIndir.getColumn(i, "savedName") + ":" + dsIndir.getColumn(i, "file_location") );
+		objIdentify.set_visible(false);
+		objDiv.addChild("identify"+i, objIdentify);
+		
+		this.div_file.form.div_inDir.form.addChild("Div"+i, objDiv);
+		objDiv.show();
+		//objDivIcon.addEventHandler("oncontextmenu", this.div_file_div_inDir_oncontextmenu, this);
+		objDivIcon.addEventHandler("onrbuttondown", this.rClick, this);
+	}
+	
+	
+}
+
+// Context Menu 보이기
+this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
+{
+	let targetX = e.clientx;
+	let targetY = e.clienty;
+	this.pm_context.trackPopupByComponent( obj, targetX, targetY );
+};
+
+// Context Menu Event
+this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMouseEventInfo)
+{
+	let index = e.bindindex;
+	
+};
+
+
+// 폴더 생성
+this.div_file_btn_crtFolder_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.PopupDiv00.trackPopupByComponent(obj, 100, 0, 400, 100, "fn_crtFolderTr");
+};
+
+this.PopupDiv00_btn_createFolder_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let nFolder = this.PopupDiv00.form.Edit00.value;
+	
+	if( nFolder == null || nFolder == "" ){
+		this.alert("폴더명을 입력해주세요.");
+		return;
+	}
+	let parentID = this.div_file.form.st_dirID.text;
+	this.ds_directory.filter("parentID=='" + parentID + "'&&directoryName=='" + nFolder + "'");
+	let isDup = this.ds_directory.getRowCount();
+	
+	this.ds_directory.filter("");
+	
+	if( isDup > 0 ){
+		this.alert("중복된 폴더명입니다.");
+		return;
+	}
+
+	this.PopupDiv00.closePopup(nFolder);
+};
+
+this.fn_crtFolderTr = function(pId, nFolder){
+	let folderID = this.div_file.form.st_dirID.text;
+
+	if( nFolder.length == 0 ){
+		return;
+	}
+	
+	this.alert( folderID + " : " + nFolder );
+	this.transaction(
+		"createFolder", // 1. strSVCID
+		"/webhard/createFolder", // 2. strURL
+		"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+		"ds_directory=outds_dirList ds_indir=out_indir", // 4. strOutDatasets -select Fds=Sds
+		"parentID="+folderID+" nFolder="+nFolder, // 5. strArgument View에서 Server로 넘겨줄 변수
+		"fn_crtFolderCallback" // 6. strCallbackFunc
+	);
+	
+}
+
+this.fn_crtFolderCallback = function ( pId, pErrCode, pMsg ){
+	if( pErrCode >= 1 ){
+		this.alert("폴더가 생성됐습니다.");
+	}
+	this.alert(pErrCode);
+}
+
+this.fn_isNull=function(val){
+	if(new String(val).valueOf() == "undefined"){
+		return true;
+	}
+	if( val == null ){
+		return true;
+	}
+	if( ("x" + val == "xNaN") && (new String(val.length).valueOf() == "undefined")){
+		return true;
+	}
+	return false;
+}
+
+this.div_file_btnUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let objCF = new ChildFrame();
+	objCF.init("popUpload", 0, 0, 300, 400);
+	objCF.set_formurl("Webhard::frmUpload.xfdl");
+	objCF.showModal(
+		this.getOwnerFrame(),
+		{ parentID : this.div_file.form.st_dirID.text },
+		this,
+		"fn_uploadCallback"
+	);
+};
+
+
+
+
+
+
+
+
+// ListView Icon Click Event
+this.div_file_btnListView_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.div_file.form.btnIconView.setSelectStatus(false);
+	this.div_file.form.btnListView.setSelectStatus(true);
+	
+	for( let i = 0; i < this.cnt; i++ ){
+		let d = "Div"+i;
+		let objDel = this.div_file.form.div_inDir.removeChild(d);
+		//this.alert(objDel.destroy());
+	}
+	
+	this.div_file.form.div_inDir.set_url("Webhard::frmListView.xfdl");
+	
+	
+};
+
+// IconView Icon Click Event
+this.div_file_btnIconView_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.div_file.form.btnIconView.setSelectStatus(true);
+	this.div_file.form.btnListView.setSelectStatus(false);
+	this.div_file.form.div_inDir.set_url("");
+	
+	this.fn_indir();
+};
+
+
 ]]></Script>
   </Form>
 </FDL>
