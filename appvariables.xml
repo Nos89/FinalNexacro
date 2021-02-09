@@ -191,6 +191,7 @@
           <Col id="UP_MENU_CD">0030</Col>
           <Col id="MENU_CD">0031</Col>
           <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_ID">Calander.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_LVL">1</Col>
@@ -205,7 +206,8 @@
           <Col id="MENU_LVL">1</Col>
           <Col id="MENU_CD">0033</Col>
           <Col id="UP_MENU_CD">0030</Col>
-          <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_PATH">schedulerv2</Col>
+          <Col id="PGM_ID">schedulerv2.xfdl</Col>
         </Row>
         <Row>
           <Col id="UP_MENU_CD">0</Col>
