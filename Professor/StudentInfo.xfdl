@@ -62,7 +62,7 @@
           <Column id="att_targetLevel" type="STRING" size="256"/>
           <Column id="att_semester" type="STRING" size="256"/>
           <Column id="att_lecTitle" type="STRING" size="256"/>
-          <Column id="att_date" type="STRING" size="256"/>
+          <Column id="att_date" type="DATE" size="256"/>
           <Column id="att_attend" type="STRING" size="256"/>
           <Column id="att_stdId" type="STRING" size="256"/>
           <Column id="att_deptName" type="STRING" size="256"/>
@@ -180,6 +180,44 @@
           <Column id="name" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_crDetail">
+        <ColumnInfo>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="std_year" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="lec_code">L-1001</Col>
+            <Col id="id">S-1001</Col>
+            <Col id="dept_title">에너지광기술융합학</Col>
+            <Col id="name">박학생</Col>
+            <Col id="std_year">4</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">L-1001</Col>
+            <Col id="id">S-1002</Col>
+            <Col id="dept_title">미디어콘텐츠학</Col>
+            <Col id="name">이학생</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">L-1002</Col>
+            <Col id="id">S-1001</Col>
+            <Col id="dept_title">에너지광기술융합학</Col>
+            <Col id="name">박학생</Col>
+            <Col id="std_year">4</Col>
+          </Row>
+          <Row>
+            <Col id="std_year">3</Col>
+            <Col id="name">이학생</Col>
+            <Col id="dept_title">미디어콘텐츠학</Col>
+            <Col id="id">S-1002</Col>
+            <Col id="lec_code">L-1002</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.application =null;
 this.StudentInfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -247,6 +285,9 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	if(year==null&&semester==null&&target==null&&title==null){
 		this.ds_proAttendMng.filter("");
 		return;
+	}else{
+		this.ds_proAttendMng.filter("att_semester=="+semester+"&&att_year=='"+year+"'&&att_targetLevel=='"+target+"'&&att_lecTitle=='"+title+"'");
+		return;
 	}
 	
 	if(year!=null&&semester!=null){
@@ -269,9 +310,8 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.ds_proAttendMng.filter("att_targetLevel=='"+target+"'");
 	}else if(title!=null){
 		this.ds_proAttendMng.filter("att_lecTitle=='"+title+"'");
-	}else{
-		this.ds_proAttendMng.filter("att_semester=="+semester+"&&att_year=='"+year+"'&&att_targetLevel=='"+target+"'&&att_lecTitle=='"+title+"'");
 	}
+
 	
 	
 };

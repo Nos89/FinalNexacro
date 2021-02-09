@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="classRegistrationTimeScheduler" width="680" height="640" titletext="New Form" onload="classRegistrationTimeScheduler_onload">
+    <Layouts>
+      <Layout height="640" width="680">
+        <Grid id="Grid00" taborder="0" left="0" top="0" width="680" height="593" binddataset="ds_scheduler" autofittype="col" cellclickbound="cell" autosizingtype="row">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="110"/>
+                <Column size="95"/>
+                <Column size="97"/>
+                <Column size="102"/>
+                <Column size="99"/>
+                <Column size="109"/>
+                <Column size="96"/>
+                <Column size="97"/>
+              </Columns>
+              <Rows>
+                <Row size="35" band="head"/>
+                <Row size="35"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="구분"/>
+                <Cell col="1" text="월요일"/>
+                <Cell col="2" text="화요일"/>
+                <Cell col="3" text="수요일"/>
+                <Cell col="4" text="목요일"/>
+                <Cell col="5" text="금요일"/>
+                <Cell col="6" text="토요일"/>
+                <Cell col="7" text="일요일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:division" wordWrap="char" textAlign="center"/>
+                <Cell col="1" text="bind:mon" displaytype="text" edittype="none" checkboxfalsevalue="     " wordWrap="char"/>
+                <Cell col="2" text="bind:tue" displaytype="normal" edittype="none" wordWrap="char"/>
+                <Cell col="3" text="bind:wen" displaytype="normal" edittype="none" wordWrap="char"/>
+                <Cell col="4" text="bind:tur" displaytype="normal" edittype="none" wordWrap="char"/>
+                <Cell col="5" text="bind:fri" displaytype="normal" edittype="none" wordWrap="char"/>
+                <Cell col="6" text="bind:sat" displaytype="normal" edittype="none" wordWrap="char"/>
+                <Cell col="7" text="bind:sun" displaytype="normal" edittype="none" wordWrap="char"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_close" taborder="1" text="닫기" left="253" top="601" width="192" height="34" onclick="btn_close_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_scheduler">
+        <ColumnInfo>
+          <Column id="division" type="STRING" size="256"/>
+          <Column id="mon" type="STRING" size="256"/>
+          <Column id="tue" type="STRING" size="256"/>
+          <Column id="wen" type="STRING" size="256"/>
+          <Column id="tur" type="STRING" size="256"/>
+          <Column id="fri" type="STRING" size="256"/>
+          <Column id="sat" type="STRING" size="256"/>
+          <Column id="sun" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="division">1교시&#13;
+(09:00)</Col>
+            <Col id="mon"></Col>
+            <Col id="tue"></Col>
+            <Col id="wen"></Col>
+            <Col id="tur"></Col>
+            <Col id="fri"></Col>
+            <Col id="sat"></Col>
+            <Col id="sun"></Col>
+          </Row>
+          <Row>
+            <Col id="division">2교시&#13;
+(10:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">3교시&#13;
+(11:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">4교시&#13;
+(12:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">5교시&#13;
+(13:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">6교시&#13;
+(14:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">7교시&#13;
+(15:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">8교시&#13;
+(16:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">9교시&#13;
+(17:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">10교시&#13;
+(18:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">11교시&#13;
+(19:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">12교시&#13;
+(20:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">13교시&#13;
+(21:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">14교시&#13;
+(22:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+          <Row>
+            <Col id="division">15교시&#13;
+(23:00)</Col>
+            <Col id="sun"></Col>
+            <Col id="sat"></Col>
+            <Col id="fri"></Col>
+            <Col id="tur"></Col>
+            <Col id="wen"></Col>
+            <Col id="tue"></Col>
+            <Col id="mon"></Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.classRegistrationTimeScheduler_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_setSchedule(this.parent.mon, "mon");
+	this.fn_setSchedule(this.parent.tue, "tue");
+	this.fn_setSchedule(this.parent.wen, "wen");
+	this.fn_setSchedule(this.parent.tur, "tur");
+	this.fn_setSchedule(this.parent.fri, "fri");
+	this.fn_setSchedule(this.parent.sat, "sat");
+	this.fn_setSchedule(this.parent.sun, "sun");
+};
+
+this.fn_setSchedule =function(arr, day){
+	if(arr.length <1){
+		return;
+	}
+	var str = arr.join(',');
+	var nArr = str.split(":");
+	var nArr2 = new Array();
+	var title;
+	for(var i=0; i<nArr.length; i++){
+		nArr2 = nArr[i].split(",");
+		if(i==0){
+			title = nArr2[0];
+			for(var j=1; j<nArr2.length; j++){
+				if(nArr2[j]==""){
+					continue;
+				}
+				var time =parseInt(nArr2[j]);
+				this.ds_scheduler.setColumn(time-1,day,title);
+				
+			}
+		}else{
+			title = nArr2[1];
+			for(var j=2; j<nArr2.length; j++){
+				if(nArr2[j]==""){
+					continue;
+				}
+				var time =parseInt(nArr2[j]);
+				this.ds_scheduler.setColumn(time-1,day,title);		
+			}
+		}
+	}
+	
+};
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>
