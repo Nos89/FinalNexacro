@@ -143,8 +143,8 @@
             <Col id="UP_MENU_CD">5</Col>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work03.xfdl</Col>
+            <Col id="PGM_PATH">Webhard</Col>
+            <Col id="PGM_ID">frmWebhard.xfdl</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -321,6 +321,8 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">Webhard</Col>
+            <Col id="PGM_ID">frmWebhard.xfdl</Col>
           </Row>
         </Rows>
       </Dataset>
