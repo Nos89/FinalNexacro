@@ -292,7 +292,8 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 	var oArg;
 	var nRow;
 	var sId;
-	var sDate;
+	var sSDate;
+	var sEDate;
 	var sType;
 	var sTitle;
 	var sContent;
@@ -331,8 +332,11 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 		//일정 내용 가져오기
 		sContent = objDs.getColumn(nRow, "contents");
 		
+		//일정 타입 가져오기
+		sType = objDs.getColumn(nRow, "sche_type");
+		
 		//팝업오픈 함수 호출
-		this.fnOpenSchedulePop("modify", sId, sSDate, sEDate, sTitle, sContent);
+		this.fnOpenSchedulePop("modify", sId, sSDate, sEDate, sTitle, sContent, sType);
 		
 		return;
 	}
@@ -373,15 +377,16 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 * @param sContent    	: 일정 내용
 * @return             	: 없음
 */
-this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sTitle, sContent)
+this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sTitle, sContent, sType)
 {
-	var oArg = { "popuptype" : sPopupType, "scheduleid" : "", "sdate" : "", "edate" : "", "title" : "", "content" : "" };
+	var oArg = { "popuptype" : sPopupType, "scheduleid" : "", "sdate" : "", "edate" : "", "title" : "", "content" : "", "type" : ""};
 	
 	if(sId)oArg.scheduleid = sId;
 	if(sSDate)oArg.sdate = sSDate;
 	if(sEDate)oArg.edate = sEDate;
 	if(sTitle)oArg.title = sTitle;
 	if(sContent)oArg.content = sContent;
+	if(sType)oArg.type = sType;
 	
 	this.gfnShowModal("popupModal", oArg, "Admin::Calander_popup.xfdl", "fnPopupCallBack", this, 400, 300, true, true, null);
 }
@@ -417,6 +422,7 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				this.ds_colSchedule.setColumn(nRow, "sche_startDate", objRtn.sdate);
 				this.ds_colSchedule.setColumn(nRow, "sche_endDate", objRtn.edate);
 				this.ds_colSchedule.setColumn(nRow, "contents", objRtn.content);
+				this.ds_colSchedule.setColumn(nRow, "color_type", objRtn.type);
 				
 				code = "modify";
 			}
@@ -432,7 +438,8 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				this.ds_colSchedule.setColumn(nRow, "contents", objRtn.content);
 				this.ds_colSchedule.setColumn(nRow, "sche_startDate", objRtn.sdate);
 				this.ds_colSchedule.setColumn(nRow, "sche_endDate", objRtn.edate);
-
+				this.ds_colSchedule.setColumn(nRow, "color_type", objRtn.type);
+			
 				this.ds_temp.copyRow(0,this.ds_colSchedule,nRow);
 
 				code = "new";
@@ -448,7 +455,7 @@ this.fnPopupCallBack = function(sFormId, sArg)
 			);
 			
 			//스케줄 조회 함수 호출
-			//this.gfnLoadScheduler(this.grpScheduler);
+			this.gfnLoadScheduler(this.grpScheduler);
 		}
 	}
 }
@@ -556,6 +563,7 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
           <Column id="contents" type="STRING" size="256"/>
           <Column id="sche_startDate" type="DATE" size="256"/>
           <Column id="sche_endDate" type="DATE" size="256"/>
+          <Column id="color_type" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -575,6 +583,7 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
           <Column id="contents" type="STRING" size="256"/>
           <Column id="sche_startDate" type="DATE" size="256"/>
           <Column id="sche_endDate" type="DATE" size="256"/>
+          <Column id="color_type" type="INT" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
