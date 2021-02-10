@@ -143,8 +143,8 @@
             <Col id="UP_MENU_CD">5</Col>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work03.xfdl</Col>
+            <Col id="PGM_PATH">Webhard</Col>
+            <Col id="PGM_ID">frmWebhard.xfdl</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -177,23 +177,23 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">주전공희망배정신청</Col>
             <Col id="PGM_PATH">Student</Col>
-            <Col id="PGM_ID">stu_info.xfdl</Col>
+            <Col id="PGM_ID">stu_majorApply.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0003</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">주전공배정신청</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work01.xfdl</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_majorApply.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0004</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">부/복수전공신청</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work03.xfdl</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_minorApply.xfdl</Col>
             <Col id="MENU_LVL">1</Col>
           </Row>
           <Row>
@@ -201,24 +201,31 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">부/복수포기신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0006</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">휴학신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_takeOffApply.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0007</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">복학신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_returnApply.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">전부(과)/전공변경신청</Col>
             <Col id="MENU_CD">0008</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_changeDepartment.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">증명서발급</Col>
@@ -249,54 +256,68 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">수업시간조회</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classTimeSearch.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0014</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">강의실시간표조회</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classTimeByRoom.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0015</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">학생시간표조회</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_myClassTime.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0016</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">수강신청조회</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classRegistration.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0017</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">수강취소신청</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classRegistrationWithdraw.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0018</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">휴강조회</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0019</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">강의평가/금학기성적조회</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0020</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">학점포기신청</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0021</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">강의평가결과조회</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0022</Col>
@@ -321,18 +342,20 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH">Webhard</Col>
+            <Col id="PGM_ID">frmWebhard.xfdl</Col>
           </Row>
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[
+this.application = null;
 this.loginID = "";
 this.userType = "";
 
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{	
-	 this.application = nexacro.getApplication();
-
+{
+	this.application = nexacro.getApplication();
 	 var address = unescape(location.href);
 	 var param = "";
 	if(address.indexOf("name", 0) != -1) {  
@@ -341,10 +364,8 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	if(param=="sugang"){
 		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
 		return;
+
 	}
-	this.application=nexacro.getApplication()
-	this.application.gvStdID = id;
-	
 	this.transaction(
 		"whichUser", // 1. strSVCID
 		"/whichUser.nex", // 2. strURL
@@ -352,30 +373,36 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"", // 4. strOutDatasets -select Fds=Sds
 		"", // 5. strArgument View에서 Server로 넘겨줄 변수
 		"fn_loginCallback" // 6. strCallbackFunc
-	);
 
+	);
 
 };
 
 this.fn_loginCallback = function( pID, pErr, pMsg ){
+	this.application=nexacro.getApplication()
 	if( this.userType == "학생" ){
 		this.grdLeft.set_binddataset(this.grd_student);
-	} else if ( this.userType == "교수" ){
+	} else if ( this.userType == "교수" ){	
+		this.application.gvID = this.loginID;
 		this.grdLeft.set_binddataset(this.grd_professor);
+	} else if ( this.userType == "관리자" ){
+		this.grdLeft.set_binddataset(this.application.gdsLeftMenu_admin);
 	}
 }
 
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	//var sMenuId = this.application.gdsLeftMenu.getColumn(e.row, "MENU_CD");
+	//this.alert(this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"));
 	var sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"); 
+	//let sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD");
+	//this.alert(sMenuId);
 	this.fn_openMenu(sMenuId);
 };
 
 this.fn_openMenu = function(sMenuId)
-{	
-	var objMdiFrame = this.application.MdiFrame;
-	var objWorkFrame = this.application.WorkFrame;
+{
+	var objMdiFrame = this.application.MdiFrame;	// 상단 탭
+	var objWorkFrame = this.application.WorkFrame;	// 화면
 	
 	var nFRow;
 	var sPGMPATH;
@@ -442,6 +469,7 @@ this.fn_openMenu = function(sMenuId)
 	this.fn_AddOpenMenu(sWinId, sMenuId, sMenuNm);
 	
 	objMdiFrame.form.fn_ActiveTabPage(sWinId);
+	
 }
 
 /*****************************************************************************

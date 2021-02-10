@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmListView" width="878" height="600" titletext="New Form" onload="frmListView_onload">
+    <Layouts>
+      <Layout height="600" width="878">
+        <Grid id="Grid00" taborder="0" left="0" top="0" width="100%" bottom="0" binddataset="ds_indir_test" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="41"/>
+                <Column size="48"/>
+                <Column size="269"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="종류"/>
+                <Cell col="2" text="name"/>
+                <Cell col="3" text="size"/>
+                <Cell col="4" text="date"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1" text="expr:isFolder==&quot;true&quot;? &quot;theme://images/a_folder.png&quot;: &quot;no&quot;" displaytype="imagecontrol" imagestretch="fixaspectratio"/>
+                <Cell col="2" text="bind:name"/>
+                <Cell col="3" text="bind:size"/>
+                <Cell col="4" text="bind:date" displaytype="date"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_indir_test">
+        <ColumnInfo>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="isFolder" type="STRING" size="256"/>
+          <Column id="size" type="STRING" size="256"/>
+          <Column id="date" type="STRING" size="256"/>
+          <Column id="savedName" type="STRING" size="256"/>
+          <Column id="file_location" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="name">A</Col>
+            <Col id="isFolder">true</Col>
+          </Row>
+          <Row>
+            <Col id="name">B</Col>
+            <Col id="isFolder">true</Col>
+          </Row>
+          <Row>
+            <Col id="name">fileA</Col>
+            <Col id="isFolder">false</Col>
+            <Col id="size">3</Col>
+            <Col id="date">20210205</Col>
+            <Col id="savedName">asdfasdf</Col>
+            <Col id="file_location">P-1001</Col>
+          </Row>
+          <Row>
+            <Col id="name">fileB</Col>
+            <Col id="isFolder">false</Col>
+            <Col id="size">4</Col>
+            <Col id="date">20210205</Col>
+            <Col id="savedName">ffdsa</Col>
+            <Col id="file_location">P-1001</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.frmListView_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	let indir = this.parent.parent.parent.parent.ds_indir;
+	this.Grid00.setBindDataset(indir);
+};
+]]></Script>
+  </Form>
+</FDL>
