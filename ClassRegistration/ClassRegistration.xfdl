@@ -205,11 +205,18 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 	var nRow;
 	if(this.Grid00.getCellPos()==10){
 		this.score += this.ds_openClass.getColumn(e.row,"reco_score");
+		var targetlevel = this.ds_openClass.getColumn(e.row,"oc_targetlevel");
+		var myYear = this.ds_stdDetail.getColumn(0,"std_year");
 		if(this.score >20){
-			alert("20학점 이상은 채울 수 없습니다.");
+			this.alert("20학점 이상은 채울 수 없습니다.");
 			return;
 		}
-		this.fn_addClass(e.row);
+		if(targetlevel==myYear || targetlevel=="전체"){
+			this.fn_addClass(e.row);
+		}else{
+			this.alert("신청대상 학년이 아닙니다");
+		}
+	
 	}
 };
 
