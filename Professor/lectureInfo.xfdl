@@ -81,6 +81,7 @@ this.fn_callback = function(id, errCode, errMsg){
 	this.fn_setYear();
 };
 
+//combo에 연도 집어넣기
 this.fn_setYear = function(){
 	var min =0;
 	var max =0;

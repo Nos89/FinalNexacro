@@ -73,7 +73,7 @@
                 <Cell text="강의코드"/>
                 <Cell col="1" text="강의명"/>
                 <Cell col="2" text="학번"/>
-                <Cell col="3" text="name"/>
+                <Cell col="3" text="이름"/>
                 <Cell col="4" text="학년"/>
               </Band>
               <Band id="body">
@@ -124,8 +124,9 @@
           </Formats>
         </Grid>
         <Button id="btn_add" taborder="12" text="추가" left="825" top="314" width="109" height="27" onclick="btn_add_onclick"/>
-        <Button id="btn_attRetrive" taborder="13" text="전체출결조회" left="711" top="314" width="109" height="27" onclick="btn_attRetrive_onclick"/>
+        <Button id="btn_attRetrive" taborder="13" text="현재출결조회" left="711" top="314" width="109" height="27" onclick="btn_attRetrive_onclick"/>
         <Static id="Static05_00_00_00" taborder="14" text="수강학생 목록" left="10" top="317" width="128" height="26" font="normal  10pt/normal &quot;Arial&quot;"/>
+        <Button id="Button00" taborder="15" text="전체출결조회" left="935" top="54" width="139" height="31" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -324,6 +325,10 @@ this.fn_callback = function(id, errCode, errMsg){
 	}
 
 };
+
+this.fn_callback_pop= function(){
+
+};
 this.fn_reAttend = function(){
 	this.transaction(
 			"reAttend",
@@ -503,6 +508,17 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.grd_attend_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	this.gfn_gridSort(obj, e);
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var parentFrame = this.getOwnerFrame();
+	var proId = {
+				objArguments : this.id
+				};
+
+	nexacro.open("popupOpen","Professor::allAttendCheck.xfdl",parentFrame,proId,"",100,100);
+
 };
 ]]></Script>
   </Form>

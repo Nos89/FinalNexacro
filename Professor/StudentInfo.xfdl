@@ -250,6 +250,7 @@ this.fn_setTitle = function(){
 	}
 	
 }
+
 this.fn_setYear = function(){
 	var min =0;
 	var max =0;
