@@ -3,7 +3,7 @@
   <Form id="frmListView" width="878" height="600" titletext="New Form" onload="frmListView_onload">
     <Layouts>
       <Layout height="600" width="878">
-        <Grid id="Grid00" taborder="0" left="0" top="0" width="100%" bottom="0" binddataset="ds_indir_test" autofittype="col">
+        <Grid id="grid_listView" taborder="0" left="0" top="0" width="100%" bottom="0" binddataset="ds_indir_test" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -78,7 +78,7 @@
 this.frmListView_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	let indir = this.parent.parent.parent.parent.ds_indir;
-	this.Grid00.setBindDataset(indir);
+	this.grid_listView.setBindDataset(indir);
 };
 ]]></Script>
   </Form>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frmLeftMenu" width="1090" height="650" titletext="New Form" onload="frmLeftMenu_onload">
+  <Form id="frmLeftMenu" width="1090" height="650" titletext="New Form" onload="frmLeftMenu_onload" onclose="frmLeftMenu_onclose">
     <Layouts>
       <Layout height="650" width="1090">
         <Div id="div_left" taborder="0" left="0" top="5" width="190" bottom="5">
@@ -26,20 +26,16 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="div_file" taborder="1" left="190" top="0" width="900" text="" bottom="0">
+        <Div id="div_file" taborder="1" left="190" top="0" text="" right="0" bottom="0">
           <Layouts>
             <Layout>
               <Static id="st_dirName" taborder="0" left="20" top="11" width="170" height="29"/>
               <Static id="st_dirID" taborder="1" left="207" top="9" width="42" height="23" visible="false"/>
               <Button id="btn_crtFolder" taborder="2" text="폴더 생성" left="125" top="49" width="99" height="27" onclick="div_file_btn_crtFolder_onclick"/>
               <Button id="btnUpload" taborder="3" text="업로드" left="11" top="49" width="104" height="27" onclick="div_file_btnUpload_onclick"/>
-              <Div id="div_inDir" taborder="4" left="11" top="80" width="878" border="1px solid black" bottom="5">
-                <Layouts>
-                  <Layout/>
-                </Layouts>
-              </Div>
-              <Button id="btnListView" taborder="5" left="863" top="50" width="26" height="25" cssclass="btnListView" onclick="div_file_btnListView_onclick"/>
-              <Button id="btnIconView" taborder="6" left="837" top="50" width="26" height="25" cssclass="btnIconView" onclick="div_file_btnIconView_onclick"/>
+              <Div id="div_inDir" taborder="4" left="11" top="80" border="1px solid black" bottom="5" right="5" url="Webhard::frmIconView.xfdl"/>
+              <Button id="btnListView" taborder="5" top="50" width="26" height="25" cssclass="btnListView" onclick="div_file_btnListView_onclick" right="11"/>
+              <Button id="btnIconView" taborder="6" top="50" height="25" cssclass="btnIconView" onclick="div_file_btnIconView_onclick" width="26" right="37"/>
             </Layout>
           </Layouts>
         </Div>
@@ -162,7 +158,11 @@
             <Col id="levelcolumn">0</Col>
           </Row>
           <Row>
-            <Col id="captioncolumn">폴더생성</Col>
+            <Col id="captioncolumn">이동</Col>
+            <Col id="levelcolumn">0</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">복사</Col>
             <Col id="levelcolumn">0</Col>
           </Row>
           <Row>
@@ -182,22 +182,10 @@
     </Objects>
     <Script type="xscript5.1"><![CDATA[
 this.cnt = 0;
-
-this.div_dir_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
-{
-	this.div_left.form.gd_left.setTreeStatus(e.row, "expand");
-	let dirName = this.div_left.form.gd_left.getBindDataset().getColumn(e.row, "directoryName");
-	this.div_file.form.st_dirName.set_text(dirName);
-	
-	let dirID = this.div_left.form.gd_left.getBindDataset().getColumn(e.row, "dirID");
-	this.div_file.form.st_dirID.set_text(dirID);
-	
-	this.fn_indirTran(dirID);
-};
+this.parentID = 0;
 
 this.frmLeftMenu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.div_file.form.btnIconView.setSelectStatus(true);
 	this.transaction(
 			"webhardOnload", // 1. strSVCID
 			"/webhard/onload", // 2. strURL
@@ -210,10 +198,8 @@ this.frmLeftMenu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.fn_onloadCallback = function( pId, pErrCode, pMsg ){
 	this.div_left.form.gd_left.setTreeStatus( 0, "expand");
-	let dirName = this.div_left.form.gd_left.getBindDataset().getColumn(0, "directoryName");
-	this.div_file.form.st_dirName.set_text(dirName);
-	let dirID = this.div_left.form.gd_left.getBindDataset().getColumn(0, "dirID");
-	this.div_file.form.st_dirID.set_text(dirID);
+	this.div_file.form.st_dirName.set_text(this.div_left.form.gd_left.getBindDataset().getColumn(0, "directoryName"));
+	this.div_file.form.st_dirID.set_text(this.div_left.form.gd_left.getBindDataset().getColumn(0, "dirID"));
 	this.fn_indirTran(this.div_file.form.st_dirID.text);
 	this.cnt = this.ds_indir.getRowCount();
 }
@@ -225,8 +211,17 @@ this.fn_indirTran = function( parentID ){
 			"", // 3. strInDatasets, Sds-Fds:U, :A, :N
 			"ds_indir=out_indir", // 4. strOutDatasets -select Fds=Sds
 			"parentID="+parentID, // 5. strArgument View에서 Server로 넘겨줄 변수
-			"fn_indir" // 6. strCallbackFunc
+			"fn_indirCallback" // 6. strCallbackFunc
 		);
+}
+
+this.fn_indirCallback = function( pID, pErrCode, pMsg ){
+	
+	if( this.div_file.form.btnListView.getSelectStatus() ){
+		this.div_file_btnListView_onclick();
+	} else {
+		this.div_file_btnIconView_onclick();
+	}
 }
 
 // 폴더 내 하위 폴더 및 파일 뿌려주기
@@ -234,12 +229,7 @@ this.fn_indir = function(){
 	// Div.init( strName, vLeft, vTop , vWidth, vHeight [, vRight, vBottom, [vMinWidth, [vMaxWidth, [vMinHeight, [vMaxHeight]]]]] ) 
 	// width 878 height 252
 	//this.alert(this.cnt);
-	for( let i = 0; i < this.cnt; i++ ){
-		let d = "Div"+i;
-		let objDel = this.div_file.form.div_inDir.removeChild(d);
-		//this.alert(objDel.destroy());
-	}
-	objDel = "";
+	
 	let dsIndir = this.ds_indir;
 	this.cnt = dsIndir.getRowCount();
 	for( let i = 0; i < this.cnt; i++ ){
@@ -285,9 +275,31 @@ this.fn_indir = function(){
 		//objDivIcon.addEventHandler("oncontextmenu", this.div_file_div_inDir_oncontextmenu, this);
 		objDivIcon.addEventHandler("onrbuttondown", this.rClick, this);
 	}
-	
-	
 }
+
+// 동적 생성된 Div 지우기
+this.fn_delDiv = function(){
+	for( let i = 0; i < this.cnt; i++ ){
+		let d = "Div"+i;
+		let objDel = this.div_file.form.div_inDir.removeChild(d);
+		//this.alert(objDel.destroy());
+	}
+	objDel = "";
+}
+
+// Tree dbClick event
+this.div_dir_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let rowpos = e.row;
+	this.div_left.form.gd_left.setTreeStatus(rowpos, "expand");
+	let dirName = this.div_left.form.gd_left.getBindDataset().getColumn(rowpos, "directoryName");
+	this.div_file.form.st_dirName.set_text(dirName);
+	
+	let dirID = this.div_left.form.gd_left.getBindDataset().getColumn(rowpos, "dirID");
+	this.div_file.form.st_dirID.set_text(dirID);
+	
+	this.fn_indirTran(dirID);
+};
 
 // Context Menu 보이기
 this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
@@ -301,7 +313,7 @@ this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMouseEventInfo)
 {
 	let index = e.bindindex;
-	
+	this.alert(index);
 };
 
 
@@ -340,7 +352,7 @@ this.fn_crtFolderTr = function(pId, nFolder){
 		return;
 	}
 	
-	this.alert( folderID + " : " + nFolder );
+	//this.alert( folderID + " : " + nFolder );
 	this.transaction(
 		"createFolder", // 1. strSVCID
 		"/webhard/createFolder", // 2. strURL
@@ -355,8 +367,9 @@ this.fn_crtFolderTr = function(pId, nFolder){
 this.fn_crtFolderCallback = function ( pId, pErrCode, pMsg ){
 	if( pErrCode >= 1 ){
 		this.alert("폴더가 생성됐습니다.");
+	} else {
+		this.alert(pErrCode);
 	}
-	this.alert(pErrCode);
 }
 
 this.fn_isNull=function(val){
@@ -398,11 +411,7 @@ this.div_file_btnListView_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 	this.div_file.form.btnIconView.setSelectStatus(false);
 	this.div_file.form.btnListView.setSelectStatus(true);
 	
-	for( let i = 0; i < this.cnt; i++ ){
-		let d = "Div"+i;
-		let objDel = this.div_file.form.div_inDir.removeChild(d);
-		//this.alert(objDel.destroy());
-	}
+	this.fn_delDiv();
 	
 	this.div_file.form.div_inDir.set_url("Webhard::frmListView.xfdl");
 	
@@ -414,12 +423,19 @@ this.div_file_btnIconView_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 {
 	this.div_file.form.btnIconView.setSelectStatus(true);
 	this.div_file.form.btnListView.setSelectStatus(false);
-	this.div_file.form.div_inDir.set_url("");
+	this.div_file.form.div_inDir.set_url("Webhard::frmIconView.xfdl");
+	
+	this.fn_delDiv();
 	
 	this.fn_indir();
 };
 
 
+
+this.frmLeftMenu_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
+{
+	e.stopPropagation();
+};
 ]]></Script>
   </Form>
 </FDL>

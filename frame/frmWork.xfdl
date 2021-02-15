@@ -34,6 +34,7 @@ this.frmWork_onactivate = function(obj:nexacro.Form,e:nexacro.ActivateEventInfo)
 
 this.frmWork_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 {
+	//e.stopPropagation()
 	this.application.MdiFrame.form.fn_DeleteTabpage(this.fvWinId);
 };
 ]]></Script>
