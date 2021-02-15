@@ -2,7 +2,192 @@
 <FDL version="2.1">
   <Form id="stu_classTimeByRoom" width="1090" height="650" titletext="New Form">
     <Layouts>
-      <Layout height="650" width="1090"/>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="강의실시간표조회" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01" taborder="1" left="0" top="34" width="1090" height="46" background="#c8ddee" text="" cssclass="sta_WF_title01"/>
+        <Static id="Static02_00_00_00" taborder="2" text="개설년도" left="15" top="42" width="50" height="30"/>
+        <Combo id="cmb_year" taborder="3" text="2021" left="71" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">2021</Col>
+                <Col id="datacolumn">2021</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2022</Col>
+                <Col id="datacolumn">2022</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2023</Col>
+                <Col id="datacolumn">2023</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2024</Col>
+                <Col id="datacolumn">2024</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static02_00_00_00_00" taborder="4" text="개설학기" left="161" top="42" width="60" height="30"/>
+        <Combo id="cmb_semester" taborder="5" text="1학기" left="216" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1학기</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2학기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static02_00_00_00_00_00" taborder="6" text="강의실" left="305" top="42" width="40" height="30"/>
+        <Edit id="Edit00" taborder="7" left="345" top="42" width="95" height="30"/>
+        <Button id="btn_search" taborder="8" left="446" top="42" width="29" height="30" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center #ffffff" onclick="btn_search_onclick"/>
+        <Edit id="Edit00_00" taborder="9" left="480" top="42" width="95" height="30" enable="false"/>
+        <Grid id="Grid00" taborder="10" left="0" top="102" right="10" bottom="72" autofittype="col" binddataset="ds_classTimebyRoom" selecttype="cell">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="63"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="40"/>
+              </Rows>
+              <Band id="head">
+                <Cell textAlign="center" text="60분교시"/>
+                <Cell col="1" textAlign="center" text="일"/>
+                <Cell col="2" textAlign="center" text="월"/>
+                <Cell col="3" textAlign="center" text="화"/>
+                <Cell col="4" textAlign="center" text="수"/>
+                <Cell col="5" textAlign="center" text="목"/>
+                <Cell col="6" textAlign="center" text="금"/>
+                <Cell col="7" textAlign="center" text="토"/>
+              </Band>
+              <Band id="body">
+                <Cell textAlign="center" text="expr:time.split(&quot;/&quot;)[0] + &quot;\n&quot; + time.split(&quot;/&quot;)[1]" background="#f2d9b4" cssclass="expr:time + &quot;asd&quot;"/>
+                <Cell col="1" textAlign="center" text="bind:sun" cssclass="expr:sun==null ? '':'classCss'"/>
+                <Cell col="2" textAlign="center" text="bind:mon"/>
+                <Cell col="3" textAlign="center" text="bind:tue"/>
+                <Cell col="4" textAlign="center" text="bind:wen"/>
+                <Cell col="5" textAlign="center" text="bind:thu"/>
+                <Cell col="6" textAlign="center" text="bind:fri"/>
+                <Cell col="7" textAlign="center" text="bind:sat"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
     </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="cmb_year" propid="value" datasetid="ds_changeDept" columnid="changeYear"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_classTimebyRoom">
+        <ColumnInfo>
+          <Column id="time" type="STRING" size="256"/>
+          <Column id="sun" type="STRING" size="256"/>
+          <Column id="mon" type="STRING" size="256"/>
+          <Column id="tue" type="STRING" size="256"/>
+          <Column id="wen" type="STRING" size="256"/>
+          <Column id="thu" type="STRING" size="256"/>
+          <Column id="fri" type="STRING" size="256"/>
+          <Column id="sat" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="time">08:00/</Col>
+          </Row>
+          <Row>
+            <Col id="time">1교시/09:00</Col>
+            <Col id="sun"></Col>
+          </Row>
+          <Row>
+            <Col id="time">2교시/10:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">3교시/11:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">4교시/12:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">5교시/13:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">6교시/14:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">7교시/15:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">8교시/16:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">9교시/17:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">10교시/18:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">11교시/19:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">12교시/20:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">13교시/21:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">14교시/22:00</Col>
+          </Row>
+          <Row>
+            <Col id="time">23:00/</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <InitValue>
+      <Grid id="Grid00" binddataset="ds_classList"/>
+    </InitValue>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nW = 500;	
+	var nH = 400;
+	var objApp = nexacro.getApplication();
+	var nLeft = (objApp.mainframe.width  / 2) - Math.round(nW / 2);
+	var nTop  = (objApp.mainframe.height / 2) - Math.round(nH / 2);
+	
+	var objCF = new ChildFrame();
+	objCF.init("popDept", nLeft, nTop, 480, 370);
+	objCF.set_formurl("Student::stu_classTimeByRoomPopup.xfdl");
+	
+	objCF.showModal(
+		this.getOwnerFrame()
+		,{}
+		,this
+		,"fn_callback_pop"
+	);
+};
+]]></Script>
   </Form>
 </FDL>
