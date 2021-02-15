@@ -89,8 +89,8 @@
             <Col id="UP_MENU_CD">0002</Col>
             <Col id="MENU_NM">성적관리</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work01.xfdl</Col>
+            <Col id="PGM_PATH">Professor</Col>
+            <Col id="PGM_ID">gradMng.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">2002</Col>
@@ -364,6 +364,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	if(param=="sugang"){
 		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
 		return;
+
 	}
 	this.transaction(
 		"whichUser", // 1. strSVCID
@@ -372,6 +373,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"", // 4. strOutDatasets -select Fds=Sds
 		"", // 5. strArgument View에서 Server로 넘겨줄 변수
 		"fn_loginCallback" // 6. strCallbackFunc
+
 	);
 
 };
@@ -381,7 +383,7 @@ this.fn_loginCallback = function( pID, pErr, pMsg ){
 	if( this.userType == "학생" ){
 		this.grdLeft.set_binddataset(this.grd_student);
 	} else if ( this.userType == "교수" ){	
-		this.application.gvID = id;
+		this.application.gvID = this.loginID;
 		this.grdLeft.set_binddataset(this.grd_professor);
 	} else if ( this.userType == "관리자" ){
 		this.grdLeft.set_binddataset(this.application.gdsLeftMenu_admin);

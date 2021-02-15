@@ -119,7 +119,7 @@
                 <Cell text="expr:currow+1"/>
                 <Cell col="1" text="bind:lec_code"/>
                 <Cell col="2" text="bind:lec_title"/>
-                <Cell col="3" text="bind:lec_approval" displaytype="checkboxcontrol"/>
+                <Cell col="3" text="expr:dataset.getColumn(currow,&quot;lec_approval&quot;)==1?&quot;승인&quot;:dataset.getColumn(currow,&quot;lec_approval&quot;)==0?&quot;미승인&quot;:&quot;반려&quot;" displaytype="normal" textAlign="center"/>
                 <Cell col="4" text="bind:lec_deny_reason"/>
               </Band>
             </Format>
@@ -291,7 +291,7 @@
           <Row>
             <Col id="lec_code">126</Col>
             <Col id="lec_title">양자역학의이해</Col>
-            <Col id="lec_approval">1</Col>
+            <Col id="lec_approval">0</Col>
             <Col id="pro_name">김교수</Col>
             <Col id="lec_semester">1</Col>
             <Col id="lec_targetLevel">전체</Col>
@@ -307,7 +307,7 @@
           <Row>
             <Col id="lec_code">127</Col>
             <Col id="lec_title">양자역학의이해</Col>
-            <Col id="lec_approval">1</Col>
+            <Col id="lec_approval">-1</Col>
             <Col id="pro_name">김교수</Col>
             <Col id="lec_semester">1</Col>
             <Col id="lec_targetLevel">전체</Col>

@@ -1,0 +1,985 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="gradMng" width="1090" height="650" titletext="New Form" onload="gradMng_onload">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="1090">
+        <Combo id="cbo_title" taborder="0" left="585" top="49" width="116" height="25" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="-1" value="all" onitemclick="cbo_title_onitemclick" onitemchanged="cbo_title_onitemchanged" text="전체" displaynulltext="--선택--"/>
+        <Static id="Static00_01_00" taborder="1" text="과목명" left="535" top="45" width="54" height="35"/>
+        <Static id="Static00" taborder="2" text="년도" left="9" top="50" width="40" height="23"/>
+        <Combo id="cbo_year" taborder="3" text="" left="45" top="50" width="85" height="25" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--" onitemchanged="cbo_year_onitemchanged"/>
+        <Combo id="cbo_stdYear" taborder="4" text="Combo00" left="173" top="50" width="75" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00_01" taborder="5" text="학년" left="140" top="50" width="40" height="23"/>
+        <Static id="Static02" taborder="6" text="학기" left="257" top="50" width="43" height="25"/>
+        <Combo id="cbo_semester" taborder="7" text="" left="293" top="50" width="87" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_semester" displaynulltext="--선택--"/>
+        <Grid id="grd_student" taborder="8" left="9" top="120" width="540" height="207" binddataset="ds_crDetail" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="111"/>
+                <Column size="80"/>
+                <Column size="87"/>
+                <Column size="62"/>
+                <Column size="47"/>
+                <Column size="53"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="강의코드"/>
+                <Cell col="1" text="강의명"/>
+                <Cell col="2" text="학번"/>
+                <Cell col="3" text="학과"/>
+                <Cell col="4" text="이름"/>
+                <Cell col="5" text="학년"/>
+                <Cell col="6" text="입력여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:lec_code"/>
+                <Cell col="1" text="bind:title"/>
+                <Cell col="2" text="bind:id"/>
+                <Cell col="3" text="bind:dept_title"/>
+                <Cell col="4" text="bind:name"/>
+                <Cell col="5" text="bind:std_year"/>
+                <Cell col="6" text="bind:check" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="9" text="" left="565" top="101" width="510" height="540" border="1px solid black" onclick="Static01_onclick"/>
+        <Button id="btn_search" taborder="10" text="조회" left="746" top="48" width="66" height="24" onclick="btn_search_onclick"/>
+        <Static id="Static04" taborder="11" text="학번" left="579" top="157" width="81" height="30"/>
+        <Static id="sta_stdId" taborder="12" text="" left="649" top="156" width="119" height="30" border="0px none,0px none,1px solid black"/>
+        <Static id="sta_stdDeptTitle" taborder="13" text="" left="930" top="156" width="119" height="30" border="0px none,0px none,1px solid black"/>
+        <Static id="sta_stdYear" taborder="14" text="" left="930" top="199" width="119" height="30" border="0px none,0px none,1px solid black"/>
+        <Static id="sta_stdName" taborder="15" text="" left="649" top="199" width="119" height="30" border="0px none,0px none,1px solid black"/>
+        <Static id="Static04_00" taborder="16" text="이름" left="579" top="197" width="81" height="30"/>
+        <Static id="Static04_00_00" taborder="17" text="학년" left="860" top="197" width="81" height="30"/>
+        <Static id="Static04_00_00_00" taborder="18" text="학과" left="860" top="157" width="81" height="30"/>
+        <Static id="Static06" taborder="19" text="평가기준" left="581" top="242" width="116" height="26"/>
+        <Static id="Static07_06_00" taborder="20" text="출석" left="579" top="276" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_attend" taborder="21" left="579" top="297" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center" text=""/>
+        <Static id="Static07_06_00_01" taborder="22" text="과제물" left="579" top="322" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_assignment" taborder="23" left="579" top="340" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="sta_presentation" taborder="24" left="700" top="340" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00_01" taborder="25" text="발표" left="700" top="322" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_middleTest" taborder="26" left="700" top="297" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00" taborder="27" text="중간고사" left="700" top="276" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00_00_00" taborder="28" text="기말고사" left="821" top="276" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_finalTest" taborder="29" left="821" top="297" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00_00_02" taborder="30" text="수업태도" left="821" top="322" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_attitude" taborder="31" left="821" top="340" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="sta_other1" taborder="32" left="942" top="340" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00_00_00_00" taborder="33" text="기타" left="942" top="322" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_test" taborder="34" left="942" top="297" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00_00_00" taborder="35" text="수시평가" left="942" top="276" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="Static07" taborder="36" text="" left="565" top="378" width="510" height="172" border="1px solid #c7c7c7,0px none"/>
+        <Static id="Static08" taborder="37" text="출석" left="628" top="390" width="73" height="30"/>
+        <Static id="Static08_00" taborder="38" text="중간고사" left="630" top="430" width="73" height="30"/>
+        <Static id="Static08_00_00" taborder="39" text="기말고사" left="629" top="470" width="73" height="30"/>
+        <Static id="Static08_00_00_00" taborder="40" text="수시평가" left="629" top="510" width="73" height="30"/>
+        <MaskEdit id="mask_attend" taborder="41" left="685" top="390" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_middleTest" taborder="42" left="685" top="430" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_finalTest" taborder="43" left="685" top="470" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_test" taborder="44" left="685" top="510" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <Static id="Static08_01" taborder="45" text="과제물" left="858" top="390" width="73" height="30"/>
+        <Static id="Static08_00_01" taborder="46" text="발표" left="860" top="430" width="73" height="30"/>
+        <MaskEdit id="mask_presentation" taborder="47" left="915" top="430" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_assignment" taborder="48" left="915" top="390" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_attitude" taborder="49" left="915" top="470" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <Static id="Static08_00_00_01" taborder="50" text="수업태도" left="859" top="470" width="73" height="30"/>
+        <Static id="Static08_00_00_00_00" taborder="51" text="기타" left="859" top="510" width="73" height="30"/>
+        <MaskEdit id="mask_other1" taborder="52" left="915" top="510" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <Static id="Static09" taborder="53" text="총점" left="615" top="557" width="67" height="28"/>
+        <MaskEdit id="mask_total" taborder="54" left="685" top="558" width="95" height="30" enable="false"/>
+        <Static id="Static09_00" taborder="55" text="학점" left="813" top="558" width="67" height="28"/>
+        <Grid id="grd_grade" taborder="56" left="10" top="375" width="540" height="270" binddataset="ds_grade" autofittype="col" oncellclick="grd_grade_oncellclick" onheadclick="grd_grade_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="35"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO"/>
+                <Cell col="1" text="강의코드"/>
+                <Cell col="2" text="학번"/>
+                <Cell col="3" text="총점"/>
+                <Cell col="4" text="등급"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow+1"/>
+                <Cell col="1" text="bind:lec_code"/>
+                <Cell col="2" text="bind:std_id"/>
+                <Cell col="3" text="bind:grade_total"/>
+                <Cell col="4" text="expr:dataset.getColumn(currow,&quot;grade_code&quot;)==&quot;0&quot;?&quot;미입력&quot;:dataset.getColumn(currow,&quot;grade_code&quot;)" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_cancle" taborder="57" text="취소" left="679" top="605" width="127" height="29" onclick="btn_cancle_onclick"/>
+        <Button id="btn_ok" taborder="58" text="완료" left="840" top="605" width="127" height="29" onclick="btn_ok_onclick"/>
+        <Button id="btn_attend" taborder="59" text="출결조회" left="959" top="49" width="116" height="23" onclick="btn_attend_onclick"/>
+        <Static id="Static00_00" taborder="60" text="성적관리" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
+        <Static id="Static01_00" taborder="61" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
+        <Static id="Static04_01" taborder="62" text="성적입력/수정" left="575" top="108" width="171" height="42" cssclass="sta_WF_title02"/>
+        <Button id="btn_add" taborder="63" left="495" top="341" width="25" height="25" cssclass="btn_WF_add01" text="" onclick="btn_add_onclick"/>
+        <Button id="btn_delete" taborder="64" left="523" top="341" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick"/>
+        <Button id="btn_reset" taborder="65" text="초기화" left="828" top="48" width="69" height="24" onclick="btn_reset_onclick"/>
+        <Static id="Static00_01_00_00" taborder="66" text="과목코드" left="383" top="45" width="54" height="35"/>
+        <Combo id="cbo_lecCode" taborder="67" text="Combo00" left="441" top="51" width="86" height="24" innerdataset="ds_lecCode" codecolumn="code" datacolumn="name" displaynulltext="--선택--" onitemchanged="cbo_lecCode_onitemchanged"/>
+        <Combo id="cbo_gradeCode" taborder="68" left="962" top="558" width="83" height="25" innerdataset="ds_gradeCard" codecolumn="grade_code" datacolumn="grade_code" index="-1" value="all" text="전체" displaynulltext="--선택--" onitemchanged="cbo_gradeCode_onitemchanged"/>
+        <Static id="Static05" taborder="69" text="총점은 평가기준 비율에 따라 자동 계산됩니다." left="822" top="107" width="248" height="38" background="bisque"/>
+        <Edit id="edt_gradeCode" taborder="70" left="858" top="558" width="95" height="30" readonly="true" textAlign="center"/>
+        <Static id="Static03" taborder="71" text="성적정보" left="12" top="344" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="Static03_00" taborder="72" text="학생목록" left="10" top="90" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_openClass">
+        <ColumnInfo>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_year" type="STRING" size="256"/>
+          <Column id="oc_semester" type="STRING" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="oc_max" type="INT" size="256"/>
+          <Column id="oc_part" type="INT" size="256"/>
+          <Column id="oc_is_close" type="STRING" size="256"/>
+          <Column id="oc_close_reason" type="STRING" size="256"/>
+          <Column id="oc_pro_code" type="STRING" size="256"/>
+          <Column id="oc_class_room" type="STRING" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="dept_code" type="STRING" size="256"/>
+          <Column id="col_code" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="oc_code">123</Col>
+            <Col id="oc_year">20210108</Col>
+            <Col id="oc_semester">1</Col>
+            <Col id="oc_schedule">월(1,4)/수(4,5)</Col>
+            <Col id="oc_max">25</Col>
+            <Col id="oc_part">0</Col>
+            <Col id="oc_is_close">N</Col>
+            <Col id="oc_pro_code">P-1001</Col>
+            <Col id="oc_class_room">07-202</Col>
+            <Col id="name">양자역학의 이해</Col>
+            <Col id="reco_score">3</Col>
+            <Col id="oc_targetlevel">3</Col>
+            <Col id="isu">전공선택</Col>
+          </Row>
+          <Row>
+            <Col id="oc_code">125</Col>
+            <Col id="oc_year">20210105</Col>
+            <Col id="oc_semester">4</Col>
+            <Col id="oc_schedule">금(1,2,3)</Col>
+            <Col id="oc_max">30</Col>
+            <Col id="oc_part">0</Col>
+            <Col id="oc_is_close">N</Col>
+            <Col id="oc_pro_code">P-1001</Col>
+            <Col id="oc_class_room">07-404</Col>
+            <Col id="name">물리학의 이해</Col>
+            <Col id="reco_score">3</Col>
+            <Col id="oc_targetlevel">1</Col>
+            <Col id="isu">전공필수</Col>
+          </Row>
+          <Row>
+            <Col id="oc_code">1236</Col>
+            <Col id="oc_year">20210506</Col>
+            <Col id="oc_semester">1</Col>
+            <Col id="name">양자역학의 이해</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_crDetail">
+        <ColumnInfo>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="std_year" type="INT" size="256"/>
+          <Column id="check" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="lec_code">123</Col>
+            <Col id="title">양자역학의 이해</Col>
+            <Col id="id">S-1001</Col>
+            <Col id="dept_title">정보통신</Col>
+            <Col id="name">박학생</Col>
+            <Col id="std_year">3</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">125</Col>
+            <Col id="title">물리학의 이해</Col>
+            <Col id="id">S-1001</Col>
+            <Col id="dept_title">정보통신</Col>
+            <Col id="name">박학생</Col>
+            <Col id="std_year">3</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">123</Col>
+            <Col id="title">양자역학의 이해</Col>
+            <Col id="id">S-1002</Col>
+            <Col id="dept_title">소프트웨어 </Col>
+            <Col id="name">이학생</Col>
+            <Col id="std_year">3</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">125</Col>
+            <Col id="title">물리학의 이해</Col>
+            <Col id="id">S-1002</Col>
+            <Col id="dept_title">소프트웨어</Col>
+            <Col id="name">이학생</Col>
+            <Col id="std_year">3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lecture">
+        <ColumnInfo>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="lec_title" type="STRING" size="256"/>
+          <Column id="lec_approval" type="INT" size="256"/>
+          <Column id="lec_deny_reason" type="STRING" size="256"/>
+          <Column id="pro_name" type="STRING" size="256"/>
+          <Column id="lec_semester" type="INT" size="256"/>
+          <Column id="lec_targetLevel" type="STRING" size="256"/>
+          <Column id="lec_classroom" type="STRING" size="256"/>
+          <Column id="lec_schedule" type="STRING" size="256"/>
+          <Column id="lec_score" type="INT" size="256"/>
+          <Column id="lec_isu" type="STRING" size="256"/>
+          <Column id="lec_summary" type="STRING" size="256"/>
+          <Column id="lec_way" type="STRING" size="256"/>
+          <Column id="lec_book" type="STRING" size="256"/>
+          <Column id="lec_eval" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="lec_code">125</Col>
+            <Col id="lec_title">양자역학의이해</Col>
+            <Col id="lec_approval">1</Col>
+            <Col id="pro_name">김교수</Col>
+            <Col id="lec_semester">1</Col>
+            <Col id="lec_targetLevel">전체</Col>
+            <Col id="lec_classroom">07-202</Col>
+            <Col id="lec_schedule">월(1,4)/수(4,5)</Col>
+            <Col id="lec_score">3</Col>
+            <Col id="lec_isu">전공필수</Col>
+            <Col id="lec_summary">양자역학을 이해한다</Col>
+            <Col id="lec_way">100/0/0/0/0</Col>
+            <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
+            <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">126</Col>
+            <Col id="lec_title">양자역학의이해</Col>
+            <Col id="lec_approval">0</Col>
+            <Col id="pro_name">김교수</Col>
+            <Col id="lec_semester">1</Col>
+            <Col id="lec_targetLevel">전체</Col>
+            <Col id="lec_classroom">07-202</Col>
+            <Col id="lec_schedule">월(1,4)/수(4,5)</Col>
+            <Col id="lec_score">3</Col>
+            <Col id="lec_isu">전공필수</Col>
+            <Col id="lec_summary">양자역학을 이해한다</Col>
+            <Col id="lec_way">100/0/0/0/0</Col>
+            <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
+            <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">127</Col>
+            <Col id="lec_title">양자역학의이해</Col>
+            <Col id="lec_approval">-1</Col>
+            <Col id="pro_name">김교수</Col>
+            <Col id="lec_semester">1</Col>
+            <Col id="lec_targetLevel">전체</Col>
+            <Col id="lec_classroom">07-202</Col>
+            <Col id="lec_schedule">월(1,4)/수(4,5)</Col>
+            <Col id="lec_score">3</Col>
+            <Col id="lec_isu">전공필수</Col>
+            <Col id="lec_summary">양자역학을 이해한다</Col>
+            <Col id="lec_way">100/0/0/0/0</Col>
+            <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
+            <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_stdYear">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">all</Col>
+            <Col id="name">전체</Col>
+          </Row>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">1학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">2학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="name">3학년</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="name">4학년</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_semester">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">1학기</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">2학기</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_year">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cboTitle">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_grade">
+        <ColumnInfo>
+          <Column id="grade_seq" type="INT" size="256"/>
+          <Column id="std_id" type="STRING" size="256"/>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="grade_code" type="STRING" size="256"/>
+          <Column id="grade_attend" type="INT" size="256"/>
+          <Column id="grade_repo" type="INT" size="256"/>
+          <Column id="grade_mid" type="INT" size="256"/>
+          <Column id="grade_pre" type="INT" size="256"/>
+          <Column id="grade_final" type="INT" size="256"/>
+          <Column id="grade_atti" type="INT" size="256"/>
+          <Column id="grade_quiz" type="INT" size="256"/>
+          <Column id="grade_etc" type="INT" size="256"/>
+          <Column id="grade_total" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="std_id">S-1001</Col>
+            <Col id="lec_code">123</Col>
+            <Col id="grade_code">0</Col>
+            <Col id="grade_attend">0</Col>
+            <Col id="grade_repo">0</Col>
+            <Col id="grade_mid">0</Col>
+            <Col id="grade_pre">0</Col>
+            <Col id="grade_final">0</Col>
+            <Col id="grade_atti">0</Col>
+            <Col id="grade_quiz">0</Col>
+            <Col id="grade_etc">0</Col>
+            <Col id="grade_total">0</Col>
+          </Row>
+          <Row>
+            <Col id="std_id">S-1002</Col>
+            <Col id="lec_code">123</Col>
+            <Col id="grade_code">A0</Col>
+            <Col id="grade_attend">100</Col>
+            <Col id="grade_repo">100</Col>
+            <Col id="grade_mid">100</Col>
+            <Col id="grade_pre">100</Col>
+            <Col id="grade_final">100</Col>
+            <Col id="grade_atti">100</Col>
+            <Col id="grade_quiz">100</Col>
+            <Col id="grade_etc">100</Col>
+            <Col id="grade_total">100</Col>
+          </Row>
+          <Row>
+            <Col id="std_id">S-1002</Col>
+            <Col id="lec_code">125</Col>
+            <Col id="grade_total">0</Col>
+            <Col id="grade_code">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_lecCode">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_transaction">
+        <ColumnInfo>
+          <Column id="grade_seq" type="INT" size="256"/>
+          <Column id="std_id" type="STRING" size="256"/>
+          <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="grade_code" type="STRING" size="256"/>
+          <Column id="grade_attend" type="INT" size="256"/>
+          <Column id="grade_repo" type="INT" size="256"/>
+          <Column id="grade_mid" type="INT" size="256"/>
+          <Column id="grade_pre" type="INT" size="256"/>
+          <Column id="grade_final" type="INT" size="256"/>
+          <Column id="grade_atti" type="INT" size="256"/>
+          <Column id="grade_quiz" type="INT" size="256"/>
+          <Column id="grade_etc" type="INT" size="256"/>
+          <Column id="grade_total" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_gradeCard">
+        <ColumnInfo>
+          <Column id="grade_code" type="STRING" size="256"/>
+          <Column id="grade_number" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="grade_code">A+</Col>
+            <Col id="grade_number">4.5</Col>
+          </Row>
+          <Row>
+            <Col id="grade_code">A</Col>
+            <Col id="grade_number">4.0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[//===============================
+include "Lib::lib_grid.xjs";
+//================================
+this.id = nexacro.Application.gvID;
+
+//================= 점수저장용 변수
+this.attend;
+this.middleTest;
+this.finalTest;
+this.test;
+this.assignment;
+this.presentation;
+this.attitude;
+this.other1;
+
+//================
+this.fn_callback = function(id, errCode, errMsg){
+	if(errCode==-1){
+		alert("잠시후 다시 시도해주세요");
+	}
+	if(id=="gradeMngOnLoad"){
+		this.fn_setCombo();
+		this.ds_crDetail.filter("lec_code=='xxxxxx'");
+		this.ds_grade.filter("lec_code=='xxxxxx'");
+	}else if(id=="gradeAdd" || id=="deleteGrade"){
+		if(errCode==0){
+			alert("잠시후 다시 시도해 주세요");
+			return;
+		}
+		this.ds_transaction.deleteAll();
+		this.fn_reload();
+	}else if(id=="selectGrade"){
+		this.fn_gradeCheck();
+	}else if(id=="updateGrade"){
+		this.fn_reload();
+	}
+	
+}
+
+this.fn_reload = function(){
+	this.transaction(
+		"selectGrade",
+		"/professor/selectGrade.nex",		
+		"", 
+		"ds_grade=out_grade",
+		"id="+this.id+"",
+		"fn_callback"
+	);
+}
+
+this.gradMng_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"gradeMngOnLoad", 
+		"/professor/gradeMngOnLoad.nex",		
+		"in_emp = ds_emp:U",   
+		"ds_openClass=out_openClass ds_crDetail=out_crDetail ds_lecture=out_lecture ds_grade=out_grade ds_gradeCard=out_gradeCard",
+		"id="+this.id+"",
+		"fn_callback"
+	);
+	
+	
+	
+	
+	
+};
+
+
+this.fn_gradeCheck = function(){
+	var check = 1;
+	
+	if(this.ds_grade.getRowCount()==0){
+		check =0;
+	}
+	for(var i=0; i<this.ds_crDetail.getRowCount(); i++){
+		if(check==0){this.ds_crDetail.setColumn(i,"check","X"); }
+		var stdId = this.ds_crDetail.getColumn(i,"id");
+		var lecCode = this.ds_crDetail.getColumn(i,"lec_code");
+		for(var j=0; j<this.ds_grade.getRowCount(); j++){
+			
+			var checkId = this.ds_grade.getColumn(j,"std_id");
+			var checklecCode =  this.ds_grade.getColumn(j,"lec_code");
+			var checkGrade = this.ds_grade.getColumn(j,"grade_code");
+			
+			if(stdId == checkId && lecCode==checklecCode){
+				if(checkGrade==0){
+					this.ds_crDetail.setColumn(i,"check","입력중");
+					break;
+				}else{
+					this.ds_crDetail.setColumn(i,"check","O");
+					break;
+				}
+			}else if(stdId != checkId){
+				this.ds_crDetail.setColumn(i,"check","X");
+			}
+		}
+	}
+};
+
+this.fn_setCombo = function(){
+	//title 집어넣어주기
+	for(var i=0; i<this.ds_openClass.getRowCount(); i++){
+		var code = this.ds_openClass.getColumn(i,"oc_code");
+		var title = this.ds_openClass.getColumn(i,"name");
+		var year = this.ds_openClass.getColumn(i,"oc_year");
+		this.fn_setTitle(title, code);
+		this.fn_setYear(year);
+		
+	}
+	
+}
+this.fn_setYear = function(year){
+	var check = 0;
+	var nYear = year.slice(0,4);;
+	for(var i =0; i<this.ds_year.getRowCount(); i++){
+		var year2 = this.ds_year.getColumn(i,"code");
+		if(nYear==year2){
+			check = 1;
+		}
+		
+	}
+	if(check==0){
+		var nRow = this.ds_year.addRow();
+		this.ds_year.setColumn(nRow,"code",nYear);
+		this.ds_year.setColumn(nRow,"name",nYear+"년");
+	}else{
+		check = 0;
+	}
+	
+}
+
+this.fn_setTitle = function(title, code){
+	var check = 0;
+	for(var i=0; i<this.ds_cboTitle.getRowCount(); i++){
+		var code2 = this.ds_cboTitle.getColumn(i,"code");
+		var title2 = this.ds_cboTitle.getColumn(i,"name");
+		if(code==code2 ){
+			check = 1;
+		}else if(title==title2){
+			check = 2;
+		}
+		
+	}
+	
+	if(check==0){
+		var nRow = this.ds_cboTitle.addRow();
+		this.ds_cboTitle.setColumn(nRow,"code",title);
+		this.ds_cboTitle.setColumn(nRow,"name",title);
+		
+		var nRow2 = this.ds_lecCode.addRow();
+		this.ds_lecCode.setColumn(nRow2,"code",code);
+		this.ds_lecCode.setColumn(nRow2,"name",code);
+	}else if(check==2) {
+		var nRow2 = this.ds_lecCode.addRow();
+		this.ds_lecCode.setColumn(nRow2,"code",code);
+		this.ds_lecCode.setColumn(nRow2,"name",code);
+	}else{
+		check = 0;
+	}
+	
+}
+
+this.btn_attend_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var parentFrame = this.getOwnerFrame();
+	var proId = {
+		objArguments : this.id
+	};
+	
+	nexacro.open("popupOpen","Professor::allAttendCheck.xfdl",parentFrame,proId,"",100,100);
+};
+
+
+
+
+
+this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.cbo_semester.set_value(null);
+	this.cbo_stdYear.set_value(null);
+	this.cbo_title.set_value(null);
+	this.cbo_year.set_value(null);
+	this.cbo_lecCode.set_value(null);
+};
+
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fn_search();
+	if(this.ds_openClass.getRowCount()>1){
+		var arr = new Array();
+		for(var i=0; i<this.ds_openClass.getRowCount(); i++){
+			var code = this.ds_openClass.getColumn(i,"oc_code");
+			var title = this.ds_openClass.getColumn(i,"name");
+			arr.push(title+"("+code+")");
+		}
+		alert("과목이 두 개 이상 존재합니다.\n검색된 강의 : "+arr+"");
+	}else{
+		var lecCode = this.ds_openClass.getColumn(0,"oc_code");
+		this.ds_crDetail.filter("lec_code=='"+lecCode+"'");
+		this.ds_grade.filter("lec_code=='"+lecCode+"'");
+		this.fn_gradeCheck();
+	}
+};
+this.fn_search = function(){
+	var str = "";
+	var arr = new Array();
+	var arr2 = new Array();
+	var year = this.cbo_year.value;
+	var stdYear = this.cbo_stdYear.value;
+	var semester = this.cbo_semester.value;
+	var lecCode = this.cbo_lecCode.value;
+	var title = this.cbo_title.value;
+	
+	arr.push(year,stdYear,semester,lecCode,title);
+	for(var i=0; i<arr.length; i++){
+		if(arr[i]!=null){
+ 			if(i==0){arr2.push("String(oc_year).indexOf('"+arr[i]+"')>=0");
+ 			}else if(i==1){arr2.push("oc_targetlevel=='"+arr[i]+"'");
+			}else if(i==2){arr2.push("oc_semester=='"+arr[i]+"'");
+ 			}else if(i==3){arr2.push("oc_code=='"+arr[i]+"'");
+			}else if(i==4){arr2.push("String(name).indexOf('"+arr[i]+"')>=0");
+			}
+		}
+	}
+	for(var i=0; i<arr2.length; i++){
+		
+		if(i==0){
+			str = arr2[i];
+		}else{
+			str += "&&"+arr2[i];
+		}
+	}
+	this.ds_openClass.filter(str);
+};
+
+
+
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var row = this.ds_crDetail.rowposition;
+	var stdId = this.ds_crDetail.getColumn(row,"id");
+	var lecCode = this.ds_crDetail.getColumn(row,"lec_code");
+	if(stdId==null){
+		alert("성적을 입력할 학생을 클릭해주세요");
+		return;
+	}
+	if(this.fn_gradsIsExist(stdId)){
+		alert("이미 입력된 성적이 존재합니다.");
+	}else{
+		this.fn_addGrade(stdId,lecCode);
+	}
+	
+};
+//grade 데이터셋에 학생 성적 정보가 있는지 확인
+this.fn_gradsIsExist = function(id){
+	var result;
+	for(var i = 0; i<this.ds_grade.getRowCount(); i++){
+		if(id==this.ds_grade.getColumn(i,"std_id")){
+			result = true;
+			break;
+		}else{
+			result = false;
+		}
+	}
+	return result;
+};
+
+this.fn_addGrade = function(stdId,lecCode){
+	var nRow = this.ds_transaction.addRow();
+	
+	this.ds_transaction.setColumn(nRow,"grade_seq",0);
+	this.ds_transaction.setColumn(nRow,"std_id",stdId);
+	this.ds_transaction.setColumn(nRow,"lec_code",lecCode);
+	this.ds_transaction.setColumn(nRow,"grade_code",0);
+	this.ds_transaction.setColumn(nRow,"grade_attend",0);
+	this.ds_transaction.setColumn(nRow,"grade_repo",0);
+	this.ds_transaction.setColumn(nRow,"grade_mid",0);
+	this.ds_transaction.setColumn(nRow,"grade_pre",0);
+	this.ds_transaction.setColumn(nRow,"grade_final",0);
+	this.ds_transaction.setColumn(nRow,"grade_atti",0);
+	this.ds_transaction.setColumn(nRow,"grade_quiz",0);
+	this.ds_transaction.setColumn(nRow,"grade_etc",0);
+	this.ds_transaction.setColumn(nRow,"grade_total",0);
+	
+	this.transaction(
+		"gradeAdd",
+		"/professor/gradeAdd.nex",	
+		"in_ds = ds_transaction",  
+		"", 
+		"",  
+		"fn_callback" 
+	);
+	
+}
+
+//성적입력할 학생 클릭 시 실행
+this.grd_grade_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var lecCode = this.ds_grade.getColumn(e.row,"lec_code");
+	var std_id = this.ds_grade.getColumn(e.row,"std_id");
+	
+	
+	
+	//학번,이름, 학과이름 static에 입력
+	var nRow  = this.ds_crDetail.extractRows("lec_code=='"+lecCode+"'&&id=='"+std_id+"'");
+	var deptTitle = this.ds_crDetail.getColumn(nRow,"dept_title");
+	var name = this.ds_crDetail.getColumn(nRow,"name");
+	var std_year =this.ds_crDetail.getColumn(nRow,"std_year");
+	
+	this.sta_stdId.set_text(std_id);
+	this.sta_stdDeptTitle.set_text(deptTitle);
+	this.sta_stdName.set_text(name);
+	this.sta_stdYear.set_text(std_year);
+	
+	//평가기준 입력
+	var lc = this.ds_lecture;
+	var nRow2 = lc.extractRows("lec_code=='"+lecCode+"'");
+	var arr = this.fn_split(nRow2);
+	this.fn_setText(arr);
+	
+	this.fn_setScore(lecCode,std_id);
+	this.fn_plusScore();
+	
+};
+
+this.fn_setScore = function(lecCode,stdId){
+	
+	var grade = this.ds_grade;
+	var nRow  = grade.extractRows("lec_code=='"+lecCode+"'&&std_id=='"+stdId+"'");
+	this.fn_getStaText("attend",grade.getColumn(nRow,"grade_attend"));
+	this.fn_getStaText("assignment", grade.getColumn(nRow,"grade_repo"));
+	this.fn_getStaText("middleTest",grade.getColumn(nRow,"grade_mid"));
+	this.fn_getStaText("presentation",grade.getColumn(nRow,"grade_pre"));
+	this.fn_getStaText("finalTest",grade.getColumn(nRow,"grade_final"));
+	this.fn_getStaText("attitude",grade.getColumn(nRow,"grade_atti"));
+	this.fn_getStaText("test",grade.getColumn(nRow,"grade_quiz"));
+	this.fn_getStaText("other1",grade.getColumn(nRow,"grade_etc"));
+	
+}
+this.fn_split = function(index){
+	
+	var way;
+	var arrWay;
+	way = this.ds_lecture.getColumn(index,"lec_eval");
+	arrWay = way.split("/");	
+	return arrWay;
+}
+
+this.fn_setText = function(sArr){
+	this.sta_attend.set_text(sArr[0]);
+	this.sta_middleTest.set_text(sArr[1]);
+	this.sta_finalTest.set_text(sArr[2]);
+	this.sta_test.set_text(sArr[3]);
+	this.sta_assignment.set_text(sArr[4]);
+	this.sta_presentation.set_text(sArr[5]);
+	this.sta_attitude.set_text(sArr[6]);
+	this.sta_other1.set_text(sArr[7]);
+};
+
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var lecCode = this.ds_grade.getColumn(this.ds_grade.rowposition,"lec_code");
+	var stdName = this.sta_stdName.text;
+	var stdId = this.sta_stdId.text;
+	if(stdName==null || lecCode==null|| stdId==null){
+		alert("성적정보를 클릭해주세요");
+		return;
+	}
+	if(this.confirm("현재성적으로 입력 하시겠습니까?")){
+		this.transaction(
+			"updateGrade",
+			"/professor/updateGrade.nex",		
+			"in_ds = ds_grade:U",
+			"", 
+			"", 
+			"fn_callback" 
+		);
+	}
+};
+
+this.mask_edit_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
+{
+	var staId = obj.id.slice(5);
+	var num = obj.value;
+	if(num<0 ||num>100){
+		this.alert("0~100 까지의 점수를 입력해주세요.");
+		obj.set_value(0);
+		return;
+	}
+	this.fn_getStaText(staId, num);
+	this.fn_plusScore();
+};
+this.fn_getStaText = function(id, num){
+	
+	switch(id) {
+	case "attend" :
+		this.attend =parseFloat(num*(this.sta_attend.getDisplayText()/100)).toFixed(2);
+		break;
+	case "middleTest" :
+		this.middleTest = parseFloat(num*(this.sta_middleTest.getDisplayText()/100)).toFixed(2);
+		break;
+	case "finalTest" :
+		this.finalTest =parseFloat(num*(this.sta_finalTest.getDisplayText()/100)).toFixed(2);
+		break;
+	case "test" :
+		this.test = parseFloat(num*(this.sta_test.getDisplayText()/100)).toFixed(2);
+		break;
+	case "assignment" :
+		this.assignment = parseFloat(num*(this.sta_assignment.getDisplayText()/100)).toFixed(2);
+		break;
+	case "presentation" :
+		this.presentation = parseFloat(num*(this.sta_presentation.getDisplayText()/100)).toFixed(2);
+		break;
+	case "attitude" :
+		this.attitude = parseFloat(num*(this.sta_attitude.getDisplayText()/100)).toFixed(2);
+		break;
+	case "other1" : 
+		this.other1 =parseFloat(num*(this.sta_other1.getDisplayText()/100)).toFixed(2);
+		break;
+	}
+}
+
+this.fn_plusScore = function(){
+	var arr = new Array(this.attend,this.middleTest,this.finalTest,this.test,this.assignment,this.presentation,this.attitude,this.other1);
+	var total = 0;
+	for(var i=0; i<arr.length; i++){
+		total += parseFloat(arr[i]);
+	}
+	this.mask_total.set_value(total);
+};
+
+this.MaskEdit_oninput = function(obj:nexacro.MaskEdit,e:nexacro.InputEventInfo)
+{	
+	
+	if(this.sta_stdId.getDisplayText()==""){
+		alert("학생 정보가 없습니다.");
+		return;
+	}
+};
+
+
+this.cbo_gradeCode_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	this.edt_gradeCode.set_value(obj.value);
+};
+
+this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var lecCode = this.ds_grade.getColumn(this.ds_grade.rowposition,"lec_code");
+	var stdName = this.sta_stdName.text;
+	var stdId = this.sta_stdId.text;
+	if(stdName==null || lecCode==null|| stdId==null){
+		alert("성적정보를 클릭해주세요");
+		return;
+	}
+	if(this.confirm("강의번호 : "+lecCode+"  학생 : "+stdName+"("+stdId+") 성적 정보를 삭제하시겠습니까?")){
+		this.fn_deleteGrade(lecCode, stdId);
+	}
+};
+
+this.fn_deleteGrade = function(lecCode, stdId){
+	var row  = this.ds_grade.extractRows("lec_code=='"+lecCode+"'&&std_id=='"+stdId+"'");
+	var nRow = this.ds_transaction.addRow();
+	
+	this.ds_transaction.copyRow(nRow,this.ds_grade,row);
+	this.transaction(
+		"deleteGrade",
+		"/professor/deleteGrade.nex",	
+		"in_ds = ds_transaction",  
+		"",
+		"", 
+		"fn_callback"
+	);
+}
+
+this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.sta_stdId.set_text(null);
+	this.sta_stdDeptTitle.set_text(null);
+	this.sta_stdName.set_text(null);
+	this.sta_stdYear.set_text(null);
+	this.sta_attend.set_text(null);
+	this.sta_middleTest.set_text(null);
+	this.sta_finalTest.set_text(null);
+	this.sta_test.set_text(null);
+	this.sta_assignment.set_text(null);
+	this.sta_presentation.set_text(null);
+	this.sta_attitude.set_text(null);
+	this.sta_other1.set_text(null);
+	
+	this.ds_grade.set_rowposition(-1);
+};
+
+this.grd_grade_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{	
+	var str = obj.getCellProperty("head", e.cell, "text");
+	if(str=="등급" || str=="NO" ){
+		return;
+	}
+	this.gfn_gridSort(obj, e);
+};
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="mask_attend" propid="value" datasetid="ds_grade" columnid="grade_attend"/>
+      <BindItem id="item1" compid="mask_assignment" propid="value" datasetid="ds_grade" columnid="grade_repo"/>
+      <BindItem id="item2" compid="mask_middleTest" propid="value" datasetid="ds_grade" columnid="grade_mid"/>
+      <BindItem id="item3" compid="mask_presentation" propid="value" datasetid="ds_grade" columnid="grade_pre"/>
+      <BindItem id="item4" compid="mask_finalTest" propid="value" datasetid="ds_grade" columnid="grade_final"/>
+      <BindItem id="item5" compid="mask_attitude" propid="value" datasetid="ds_grade" columnid="grade_atti"/>
+      <BindItem id="item6" compid="mask_test" propid="value" datasetid="ds_grade" columnid="grade_quiz"/>
+      <BindItem id="item7" compid="mask_other1" propid="value" datasetid="ds_grade" columnid="grade_etc"/>
+      <BindItem id="item8" compid="mask_total" propid="value" datasetid="ds_grade" columnid="grade_total"/>
+      <BindItem id="item9" compid="edt_gradeCode" propid="value" datasetid="ds_grade" columnid="grade_code"/>
+    </Bind>
+  </Form>
+</FDL>
