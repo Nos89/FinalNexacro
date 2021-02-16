@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="stu_classTimeByRoom" width="1090" height="650" titletext="New Form">
+  <Form id="stu_classTimeByRoom" width="1090" height="650" titletext="New Form" onload="stu_classTimeByRoom_onload">
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="강의실시간표조회" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
         <Static id="Static01" taborder="1" left="0" top="34" width="1090" height="46" background="#c8ddee" text="" cssclass="sta_WF_title01"/>
         <Static id="Static02_00_00_00" taborder="2" text="개설년도" left="15" top="42" width="50" height="30"/>
-        <Combo id="cmb_year" taborder="3" text="2021" left="71" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
+        <Combo id="cmb_year" taborder="3" text="2021" left="71" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="21">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -14,26 +14,26 @@
             </ColumnInfo>
             <Rows>
               <Row>
-                <Col id="codecolumn">2021</Col>
+                <Col id="codecolumn">21</Col>
                 <Col id="datacolumn">2021</Col>
               </Row>
               <Row>
-                <Col id="codecolumn">2022</Col>
+                <Col id="codecolumn">22</Col>
                 <Col id="datacolumn">2022</Col>
               </Row>
               <Row>
-                <Col id="codecolumn">2023</Col>
+                <Col id="codecolumn">23</Col>
                 <Col id="datacolumn">2023</Col>
               </Row>
               <Row>
-                <Col id="codecolumn">2024</Col>
+                <Col id="codecolumn">24</Col>
                 <Col id="datacolumn">2024</Col>
               </Row>
             </Rows>
           </Dataset>
         </Combo>
         <Static id="Static02_00_00_00_00" taborder="4" text="개설학기" left="161" top="42" width="60" height="30"/>
-        <Combo id="cmb_semester" taborder="5" text="1학기" left="216" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
+        <Combo id="cmb_semester" taborder="5" text="1학기" left="216" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -52,10 +52,10 @@
           </Dataset>
         </Combo>
         <Static id="Static02_00_00_00_00_00" taborder="6" text="강의실" left="305" top="42" width="40" height="30"/>
-        <Edit id="Edit00" taborder="7" left="345" top="42" width="95" height="30"/>
-        <Button id="btn_search" taborder="8" left="446" top="42" width="29" height="30" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center #ffffff" onclick="btn_search_onclick"/>
-        <Edit id="Edit00_00" taborder="9" left="480" top="42" width="95" height="30" enable="false"/>
-        <Grid id="Grid00" taborder="10" left="0" top="102" right="10" bottom="72" autofittype="col" binddataset="ds_classTimebyRoom" selecttype="cell">
+        <Edit id="edt_num" taborder="7" left="345" top="42" width="95" height="30"/>
+        <Button id="btn_search" taborder="8" left="446" top="42" width="29" height="30" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff" onclick="btn_search_onclick"/>
+        <Edit id="edt_name" taborder="9" left="480" top="42" width="95" height="30" enable="false"/>
+        <Grid id="Grid00" taborder="10" left="0" top="102" right="10" bottom="10" autofittype="col" binddataset="ds_classTimebyRoom" selecttype="cell">
           <Formats>
             <Format id="default">
               <Columns>
@@ -83,14 +83,14 @@
                 <Cell col="7" textAlign="center" text="토"/>
               </Band>
               <Band id="body">
-                <Cell textAlign="center" text="expr:time.split(&quot;/&quot;)[0] + &quot;\n&quot; + time.split(&quot;/&quot;)[1]" background="#f2d9b4" cssclass="expr:time + &quot;asd&quot;"/>
-                <Cell col="1" textAlign="center" text="bind:sun" cssclass="expr:sun==null ? '':'classCss'"/>
-                <Cell col="2" textAlign="center" text="bind:mon"/>
-                <Cell col="3" textAlign="center" text="bind:tue"/>
-                <Cell col="4" textAlign="center" text="bind:wen"/>
-                <Cell col="5" textAlign="center" text="bind:thu"/>
-                <Cell col="6" textAlign="center" text="bind:fri"/>
-                <Cell col="7" textAlign="center" text="bind:sat"/>
+                <Cell textAlign="center" text="expr:time.split(&quot;/&quot;)[0] + &quot;\n&quot; + time.split(&quot;/&quot;)[1]" background="#f2d9b4"/>
+                <Cell col="1" textAlign="center" text="expr:일==null ? null : 일.split(&quot;|&quot;)[0] + &quot;\n&quot; + 일.split(&quot;|&quot;)[1]" cssclass="expr:일==null ? '':'classCss'"/>
+                <Cell col="2" textAlign="center" text="expr:월.split(&quot;|&quot;)[0] + &quot;\n&quot; + 월.split(&quot;|&quot;)[1]" cssclass="expr:월==null ? '':'classCss'"/>
+                <Cell col="3" textAlign="center" text="expr:화.split(&quot;|&quot;)[0] + &quot;\n&quot; + 화.split(&quot;|&quot;)[1]" cssclass="expr:화==null ? '':'classCss'"/>
+                <Cell col="4" textAlign="center" text="expr:수.split(&quot;|&quot;)[0] + &quot;\n&quot; + 수.split(&quot;|&quot;)[1]" cssclass="expr:수==null ? '':'classCss'"/>
+                <Cell col="5" textAlign="center" text="expr:목.split(&quot;|&quot;)[0] + &quot;\n&quot; + 목.split(&quot;|&quot;)[1]" cssclass="expr:목==null ? '':'classCss'"/>
+                <Cell col="6" textAlign="center" text="expr:금.split(&quot;|&quot;)[0] + &quot;\n&quot; + 금.split(&quot;|&quot;)[1]" cssclass="expr:금==null ? '':'classCss'"/>
+                <Cell col="7" textAlign="center" text="expr:토.split(&quot;|&quot;)[0] + &quot;\n&quot; + 토.split(&quot;|&quot;)[1]" cssclass="expr:토==null ? '':'classCss'"/>
               </Band>
             </Format>
           </Formats>
@@ -104,13 +104,13 @@
       <Dataset id="ds_classTimebyRoom">
         <ColumnInfo>
           <Column id="time" type="STRING" size="256"/>
-          <Column id="sun" type="STRING" size="256"/>
-          <Column id="mon" type="STRING" size="256"/>
-          <Column id="tue" type="STRING" size="256"/>
-          <Column id="wen" type="STRING" size="256"/>
-          <Column id="thu" type="STRING" size="256"/>
-          <Column id="fri" type="STRING" size="256"/>
-          <Column id="sat" type="STRING" size="256"/>
+          <Column id="일" type="STRING" size="256"/>
+          <Column id="월" type="STRING" size="256"/>
+          <Column id="화" type="STRING" size="256"/>
+          <Column id="수" type="STRING" size="256"/>
+          <Column id="목" type="STRING" size="256"/>
+          <Column id="금" type="STRING" size="256"/>
+          <Column id="토" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -118,7 +118,6 @@
           </Row>
           <Row>
             <Col id="time">1교시/09:00</Col>
-            <Col id="sun"></Col>
           </Row>
           <Row>
             <Col id="time">2교시/10:00</Col>
@@ -164,11 +163,30 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_classTime">
+        <ColumnInfo>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="s_name" type="STRING" size="256"/>
+          <Column id="p_name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_condition">
+        <ColumnInfo>
+          <Column id="year" type="INT" size="256"/>
+          <Column id="semester" type="INT" size="256"/>
+          <Column id="classroom" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
     </Objects>
     <InitValue>
       <Grid id="Grid00" binddataset="ds_classList"/>
     </InitValue>
     <Script type="xscript5.1"><![CDATA[
+
+
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var nW = 500;	
@@ -178,7 +196,7 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var nTop  = (objApp.mainframe.height / 2) - Math.round(nH / 2);
 	
 	var objCF = new ChildFrame();
-	objCF.init("popDept", nLeft, nTop, 480, 370);
+	objCF.init("popRoom", 295, 140, 800, 600);
 	objCF.set_formurl("Student::stu_classTimeByRoomPopup.xfdl");
 	
 	objCF.showModal(
@@ -187,6 +205,67 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		,this
 		,"fn_callback_pop"
 	);
+};
+
+this.fn_callback_pop = function(id, sReturn)
+{
+	var year = this.cmb_year.value;
+	var semester = this.cmb_semester.value;
+	this.ds_condition.setColumn(0,"year",year);
+	this.ds_condition.setColumn(0,"semester",semester);
+	
+	var arrRtn = sReturn.split("|");
+	var sName = arrRtn[0];
+	var sNum = arrRtn[1];
+	
+	this.ds_condition.setColumn(0,"classroom",sNum);
+	this.edt_name.set_value(sName);
+	this.edt_num.set_value(sNum);
+	
+	this.transaction(
+		"getClassTime",
+		"/getClassTime.nex",
+		"in_condition=ds_condition:A",
+		"ds_classTime=out_classTime",
+		"",  
+		"fn_callback"
+	);
+}
+
+this.fn_callback=function(id,errCode,errMsg)
+{	
+	
+	for(var i = 0; i<16; i++){
+		this.ds_classTimebyRoom.setColumn(i,"일",null);
+		this.ds_classTimebyRoom.setColumn(i,"월",null);
+		this.ds_classTimebyRoom.setColumn(i,"화",null);
+		this.ds_classTimebyRoom.setColumn(i,"수",null);
+		this.ds_classTimebyRoom.setColumn(i,"목",null);
+		this.ds_classTimebyRoom.setColumn(i,"금",null);
+		this.ds_classTimebyRoom.setColumn(i,"토",null);
+	}
+	
+	for(var i = 0; i<this.ds_classTime.getRowCount(); i++)
+	{
+		let sc = this.ds_classTime.getColumn(i,"oc_schedule");
+		let day = sc.split("/")[0].substr(0,1);
+		
+		for(var k = 1; k<15; k++){
+			if(sc.split("/")[0].indexOf(k) >=0){
+				this.ds_classTimebyRoom.setColumn(k,day,this.ds_classTime.getColumn(i,"s_name") + "|" + this.edt_num.value + " " + this.ds_classTime.getColumn(i,"p_name"));
+			};
+		};
+		
+		if(sc.split("/")[1] != null){
+			let day2 = sc.split("/")[1].substr(0,1);
+			for(var j = 1; j<15; j++){
+				if(sc.split("/")[1].indexOf(j) >=0){
+					this.ds_classTimebyRoom.setColumn(j,day2,this.ds_classTime.getColumn(i,"s_name") + "|" + this.edt_num.value + " " + this.ds_classTime.getColumn(i,"p_name"));
+				};
+			};
+		};
+		
+	}
 };
 ]]></Script>
   </Form>
