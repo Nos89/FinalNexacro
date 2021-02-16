@@ -5,53 +5,53 @@
       <Layout height="650" width="1090">
         <Static id="Static01" taborder="0" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
         <Static id="Static00_00" taborder="1" text="학생정보 조회" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
-        <Static id="Static00" taborder="2" text="년도" left="10" top="49" width="40" height="23"/>
-        <Combo id="cbo_year" taborder="3" text="Combo00" left="45" top="49" width="85" height="25" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Combo id="cbo_stdYear" taborder="4" text="Combo00" left="175" top="48" width="75" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00_01" taborder="5" text="학년" left="140" top="49" width="40" height="23"/>
-        <Static id="Static02" taborder="6" text="학기" left="289" top="49" width="43" height="25"/>
-        <Combo id="cbo_semester" taborder="7" text="Combo00" left="325" top="49" width="94" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_semester" displaynulltext="--선택--"/>
-        <Static id="Static02_00" taborder="8" text="강의명" left="429" top="49" width="43" height="25"/>
-        <Combo id="cbo_lecTitle" taborder="9" text="Combo00" left="475" top="49" width="85" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_lecTitle" displaynulltext="--선택--"/>
-        <Button id="btn_search" taborder="10" text="조회" left="983" top="47" width="99" height="29" onclick="btn_search_onclick"/>
-        <Grid id="Grid00" taborder="11" left="11" top="90" width="1073" height="543" binddataset="ds_proAttendMng" autofittype="col">
+        <Combo id="cbo_stdYear" taborder="2" text="Combo00" left="51" top="50" width="75" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00_01" taborder="3" text="학년" left="11" top="50" width="40" height="23"/>
+        <Static id="Static02" taborder="4" text="학과" left="150" top="50" width="43" height="25"/>
+        <Combo id="cbo_department" taborder="5" text="Combo00" left="190" top="50" width="94" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_department" displaynulltext="--선택--"/>
+        <Static id="Static02_00" taborder="6" text="강의명" left="310" top="50" width="43" height="25"/>
+        <Combo id="cbo_lecTitle" taborder="7" text="Combo00" left="360" top="50" width="85" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_lecTitle" displaynulltext="--선택--"/>
+        <Button id="btn_search" taborder="8" text="조회" left="983" top="45" width="99" height="29" onclick="btn_search_onclick"/>
+        <Grid id="Grid00" taborder="9" left="11" top="90" width="1073" height="543" binddataset="ds_crDetail" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="34"/>
-                <Column size="65"/>
-                <Column size="142"/>
                 <Column size="80"/>
-                <Column size="106"/>
-                <Column size="110"/>
-                <Column size="65"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="24" band="head"/>
+                <Row band="head" size="24"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="NO"/>
-                <Cell col="1" text="강의코드"/>
-                <Cell col="2" text="강의명"/>
-                <Cell col="3" text="학번"/>
-                <Cell col="4" text="학과"/>
-                <Cell col="5" text="이름"/>
-                <Cell col="6" text="학년"/>
+                <Cell text="lec_code"/>
+                <Cell col="1" text="title"/>
+                <Cell col="2" text="id"/>
+                <Cell col="3" text="dept_title"/>
+                <Cell col="4" text="name"/>
+                <Cell col="5" text="std_year"/>
+                <Cell col="6" text="check"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:currow+1"/>
-                <Cell col="1" text="bind:att_lecCode"/>
-                <Cell col="2" text="bind:att_lecTitle"/>
-                <Cell col="3" text="bind:att_stdId"/>
-                <Cell col="4" text="bind:att_deptName"/>
-                <Cell col="5" text="bind:att_stdName"/>
-                <Cell col="6" text="bind:att_stdLevel"/>
+                <Cell text="bind:lec_code"/>
+                <Cell col="1" text="bind:title"/>
+                <Cell col="2" text="bind:id"/>
+                <Cell col="3" text="bind:dept_title"/>
+                <Cell col="4" text="bind:name"/>
+                <Cell col="5" text="bind:std_year"/>
+                <Cell col="6" text="bind:check"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_reset" taborder="12" text="초기화" left="871" top="45" width="99" height="29" onclick="btn_reset_onclick"/>
+        <Button id="btn_reset" taborder="10" text="초기화" left="871" top="45" width="99" height="29" onclick="btn_reset_onclick"/>
+        <Static id="Static00" taborder="11" text="이름" left="461" top="50" width="49" height="27"/>
+        <Edit id="edt_name" taborder="12" left="499" top="50" width="142" height="26"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -152,27 +152,13 @@
             <Col id="code">4</Col>
             <Col id="name">4학년</Col>
           </Row>
-          <Row>
-            <Col id="code">전체</Col>
-            <Col id="name">전체</Col>
-          </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_semester" progressload="true">
+      <Dataset id="ds_department" progressload="true">
         <ColumnInfo>
           <Column id="code" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="code">1</Col>
-            <Col id="name">1학기</Col>
-          </Row>
-          <Row>
-            <Col id="code">2</Col>
-            <Col id="name">2학기</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_lecTitle">
         <ColumnInfo>
@@ -183,40 +169,67 @@
       <Dataset id="ds_crDetail">
         <ColumnInfo>
           <Column id="lec_code" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
           <Column id="id" type="STRING" size="256"/>
           <Column id="dept_title" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="std_year" type="INT" size="256"/>
+          <Column id="check" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="lec_code">L-1001</Col>
+            <Col id="lec_code">123</Col>
+            <Col id="title">양자역학의 이해</Col>
             <Col id="id">S-1001</Col>
-            <Col id="dept_title">에너지광기술융합학</Col>
+            <Col id="dept_title">정보통신</Col>
             <Col id="name">박학생</Col>
-            <Col id="std_year">4</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">L-1001</Col>
-            <Col id="id">S-1002</Col>
-            <Col id="dept_title">미디어콘텐츠학</Col>
-            <Col id="name">이학생</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">L-1002</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="dept_title">에너지광기술융합학</Col>
-            <Col id="name">박학생</Col>
-            <Col id="std_year">4</Col>
-          </Row>
-          <Row>
             <Col id="std_year">3</Col>
-            <Col id="name">이학생</Col>
-            <Col id="dept_title">미디어콘텐츠학</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">125</Col>
+            <Col id="title">물리학의 이해</Col>
+            <Col id="id">S-1001</Col>
+            <Col id="dept_title">정보통신</Col>
+            <Col id="name">박학생</Col>
+            <Col id="std_year">3</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">123</Col>
+            <Col id="title">양자역학의 이해</Col>
             <Col id="id">S-1002</Col>
-            <Col id="lec_code">L-1002</Col>
+            <Col id="dept_title">소프트웨어 </Col>
+            <Col id="name">이학생</Col>
+            <Col id="std_year">3</Col>
+          </Row>
+          <Row>
+            <Col id="lec_code">125</Col>
+            <Col id="title">물리학의 이해</Col>
+            <Col id="id">S-1002</Col>
+            <Col id="dept_title">소프트웨어</Col>
+            <Col id="name">이학생</Col>
+            <Col id="std_year">3</Col>
           </Row>
         </Rows>
+      </Dataset>
+      <Dataset id="ds_openClass">
+        <ColumnInfo>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_year" type="DATE" size="256"/>
+          <Column id="oc_semester" type="STRING" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="oc_max" type="INT" size="256"/>
+          <Column id="oc_part" type="INT" size="256"/>
+          <Column id="oc_is_close" type="STRING" size="256"/>
+          <Column id="oc_close_reason" type="STRING" size="256"/>
+          <Column id="oc_pro_code" type="STRING" size="256"/>
+          <Column id="oc_class_room" type="STRING" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="dept_code" type="STRING" size="256"/>
+          <Column id="col_code" type="STRING" size="256"/>
+        </ColumnInfo>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.application =null;
@@ -227,20 +240,27 @@ this.StudentInfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			"pro_studentInfo", 
 			"/professor/proStudentInfo.nex",		
 			"", 
-			"ds_proAttendMng=out_proAttendMng ",
+			"ds_crDetail=out_crDetail ds_openClass=out_openClass",
 			"id="+this.application.gvID+"",
 			"fn_callback"
 		);
 };
 
 this.fn_callback = function(id, errMsg, errCode){
-	this.fn_setYear();
+	for(var i=0; i<this.ds_openClass.getRowCount(); i++){
+		var year = this.ds_openClass.getColumn(i,"oc_year");
+		this.fn_setYear(year);
+	}
+	for(var i=0; i<this.ds_crDetail.getRowCount(); i++){
+		var dept = this.ds_crDetail.getColumn(i,"dept_title");
+		this.fn_setDepartment(dept);
+	}
 	this.fn_setTitle();
 }
 this.fn_setTitle = function(){
 	var arrtitle = new Array();
-	for(var i =0; i<this.ds_proAttendMng.getRowCount(); i++){
-		arrtitle.push(this.ds_proAttendMng.getColumn(i,"att_lecTitle"));
+	for(var i =0; i<this.ds_openClass.getRowCount(); i++){
+		arrtitle.push(this.ds_openClass.getColumn(i,"name"));
 	}
 	var uniqueArr = Array.from(new Set(arrtitle));
 	for(var i=0; i<uniqueArr.length; i++){
@@ -250,79 +270,82 @@ this.fn_setTitle = function(){
 	}
 	
 }
-
-this.fn_setYear = function(){
-	var min =0;
-	var max =0;
+this.fn_setDepartment = function(dept){
 	var check = 0;
-	for(var i =0; i<this.ds_proAttendMng.getRowCount(); i++){
-		var year = this.ds_proAttendMng.getColumn(i,"att_year").slice(0,4);
-		this.ds_proAttendMng.setColumn(i,"att_year",year);
-		if(i==0){
-			min = year;
-			max = year;
-		}else if(year >= max){
-			max=year;
-		}else if(year < min){
-			min=year;
+	for(var i =0; i<this.ds_department.getRowCount(); i++){
+		var dept2 = this.ds_department.getColumn(i,"code");
+		if(dept==dept2){
+			check = 1;
 		}
 		
 	}
-	for(var i=min; i<=max; i++){
-		this.ds_year.addRow();
-		this.ds_year.setColumn(check,"code",i);
-		this.ds_year.setColumn(check,"name",i+"년");
-		check++;
+	if(check==0){
+		var nRow = this.ds_department.addRow();
+		this.ds_department.setColumn(nRow,"code",dept);
+		this.ds_department.setColumn(nRow,"name",dept);
+	}else{
+		check = 0;
+	}
+
+}
+this.fn_setYear = function(year){
+	var check = 0;
+	var nYear = year.slice(0,4);
+	for(var i =0; i<this.ds_year.getRowCount(); i++){
+		var year2 = this.ds_year.getColumn(i,"code");
+		if(nYear==year2){
+			check = 1;
+		}
+		
+	}
+	if(check==0){
+		var nRow = this.ds_year.addRow();
+		this.ds_year.setColumn(nRow,"code",nYear);
+		this.ds_year.setColumn(nRow,"name",nYear+"년");
+	}else{
+		check = 0;
 	}
 }
 
 
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var semester = this.cbo_semester.value;
-	var year = this.cbo_year.value;
+	
+	var str = "";
+	var arr = new Array();
+	var arr2 = new Array();
+	var department = this.cbo_department.value;
+	var name = this.edt_name.value;
 	var target = this.cbo_stdYear.value;
 	var title = this.cbo_lecTitle.value;
-	if(year==null&&semester==null&&target==null&&title==null){
-		this.ds_proAttendMng.filter("");
-		return;
-	}else{
-		this.ds_proAttendMng.filter("att_semester=="+semester+"&&att_year=='"+year+"'&&att_targetLevel=='"+target+"'&&att_lecTitle=='"+title+"'");
-		return;
+	arr.push(department,target,title,name);
+	for(var i=0; i<arr.length; i++){
+		if(arr[i]!=null){
+ 			if(i==0){arr2.push("dept_title=='"+arr[i]+"'");
+ 			}else if(i==1){arr2.push("std_year=='"+arr[i]+"'");
+			}else if(i==2){arr2.push("title=='"+arr[i]+"'");
+ 			}else if(i==3){arr2.push("String(name).indexOf('"+arr[i]+"')>=0");
+			}
+		}
 	}
-	
-	if(year!=null&&semester!=null){
-		this.ds_proAttendMng.filter("att_year=='"+year+"'&&att_semester=='"+semester+"'"); 
-	}else if(year!=null&&target!=null){
-		this.ds_proAttendMng.filter("att_year=='"+year+"'&&att_targetLevel=='"+target+"'"); 
-	}else if(year!=null&&title!=null){
-		this.ds_proAttendMng.filter("att_year=='"+year+"'&&att_lecTitle=='"+title+"'");
-	}else if(year!=null){
-		this.ds_proAttendMng.filter("att_year=='"+year+"'");
-	}else if(semester!=null&&target!=null){
-		this.ds_proAttendMng.filter("att_semester=='"+semester+"'&&att_targetLevel=='"+target+"'");
-	}else if(semester!=null&&title!=null){
-		this.ds_proAttendMng.filter("att_semester=='"+semester+"'&&att_lecTitle=='"+title+"'");
-	}else if(semester!=null){
-		this.ds_proAttendMng.filter("att_semester=='"+semester+"'");
-	}else if(target!=null&&title!=null){
-		this.ds_proAttendMng.filter("att_targetLevel=='"+target+"'&&att_lecTitle=='"+title+"'");
-	}else if(target!=null){
-		this.ds_proAttendMng.filter("att_targetLevel=='"+target+"'");
-	}else if(title!=null){
-		this.ds_proAttendMng.filter("att_lecTitle=='"+title+"'");
+	for(var i=0; i<arr2.length; i++){
+		
+		if(i==0){
+			str = arr2[i];
+		}else{
+			str += "&&"+arr2[i];
+		}
 	}
-
-	
+	this.ds_crDetail.filter(str);
 	
 };
 
 this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_proAttendMng.filter("");
-	this.cbo_semester.set_value(null);
+	this.ds_crDetail.filter("");
+	this.cbo_department.set_value(null);
 	this.cbo_stdYear.set_value(null);
-	this.cbo_year.set_value(null);
+	this.edt_name.set_value(null);
 	this.cbo_lecTitle.set_value(null);
 };
 ]]></Script>
