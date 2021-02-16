@@ -6,7 +6,7 @@
         <Static id="Static00" taborder="0" left="0" top="0" height="24" right="0" cssclass="sta_top_bg01"/>
         <Static id="Static01" taborder="1" left="0" top="24" height="41" right="0" cssclass="sta_top_bg02" onclick="Static01_onclick"/>
         <Static id="Static02" taborder="2" left="0" top="24" width="160" height="41" cssclass="sta_top_logo"/>
-        <Button id="Button00" taborder="3" text="대표 홈페이지로" left="1140" top="25" width="120" height="40" cssclass="btn_top_menu" onclick="Button00_onclick"/>
+        <Button id="Button00" taborder="3" text="대표 홈페이지로" top="25" width="120" height="40" cssclass="btn_top_menu" onclick="Button00_onclick" right="0"/>
         <Static id="Static03" taborder="4" text="Hello! Hong Gil Dong" left="10" top="0" width="210" height="24" cssclass="sta_top_textWht"/>
       </Layout>
     </Layouts>

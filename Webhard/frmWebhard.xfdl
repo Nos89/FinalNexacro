@@ -47,7 +47,7 @@
             </Layout>
           </Layouts>
         </PopupDiv>
-        <PopupMenu id="pm_context" left="750" top="410" width="120" height="170" innerdataset="ds_context" captioncolumn="captioncolumn" checkboxcolumn="checkboxcolumn" enablecolumn="enablecolumn" hotkeycolumn="hotkeycolumn" iconcolumn="iconcolumn" idcolumn="idcolumn" levelcolumn="levelcolumn" userdatacolumn="userdatacolumn" onlbuttondown="pm_context_onlbuttondown"/>
+        <PopupMenu id="pm_context" left="750" top="410" width="120" height="170" innerdataset="ds_context" captioncolumn="captioncolumn" checkboxcolumn="" enablecolumn="" hotkeycolumn="" iconcolumn="iconcolumn" idcolumn="idcolumn" levelcolumn="levelcolumn" userdatacolumn="userdatacolumn" onlbuttondown="pm_context_onlbuttondown"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -140,9 +140,6 @@
       <Dataset id="ds_context">
         <ColumnInfo>
           <Column id="captioncolumn" size="256"/>
-          <Column id="checkboxcolumn" size="256"/>
-          <Column id="enablecolumn" size="256"/>
-          <Column id="hotkeycolumn" size="256"/>
           <Column id="iconcolumn" size="256"/>
           <Column id="idcolumn" size="256"/>
           <Column id="levelcolumn" size="256"/>
@@ -152,30 +149,37 @@
           <Row>
             <Col id="captioncolumn">다운로드</Col>
             <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">download</Col>
           </Row>
           <Row>
             <Col id="captioncolumn">업로드</Col>
             <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">upload</Col>
           </Row>
           <Row>
             <Col id="captioncolumn">이동</Col>
             <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">move</Col>
           </Row>
           <Row>
             <Col id="captioncolumn">복사</Col>
             <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">copy</Col>
           </Row>
           <Row>
             <Col id="captioncolumn">다중선택</Col>
             <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">multiselect</Col>
           </Row>
           <Row>
             <Col id="captioncolumn">삭제</Col>
             <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">delete</Col>
           </Row>
           <Row>
             <Col id="captioncolumn">속성</Col>
             <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">status</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -247,7 +251,7 @@ this.fn_indir = function(){
 		let objDivIcon = new Div();
 		nWidth = 70;
 		nHeight = 70;
-		objDivIcon.init("iconDiv"+i, 5, 5, nWidth, nHeight );
+		objDivIcon.init("iconDiv", 5, 5, nWidth, nHeight );
 		//objDivIcon.set_background("green");
 		objDiv.addChild("iconDiv"+i, objDivIcon);
 		if( dsIndir.getColumn(i, "isFolder") == "true" ){
@@ -262,13 +266,20 @@ this.fn_indir = function(){
  		nHeight = 15;
  		objStatic.init("Static"+i, 5, 75, nWidth, nHeight);
  		objStatic.set_text(dsIndir.getColumn(i, "name"));
- 		objDiv.addChild("Static"+i, objStatic);
+ 		objDiv.addChild("Static", objStatic);
 		
 		let objIdentify = new Static();
 		objIdentify.init("savedName:fileLocation"+i, 0, 0, 0, 0);
-		objIdentify.set_text( dsIndir.getColumn(i, "savedName") + ":" + dsIndir.getColumn(i, "file_location") );
+		let savedName = dsIndir.getColumn(i, "savedName");
+		let fileLocation = dsIndir.getColumn(i, "file_location");
+		if( savedName !== undefined ){
+			objIdentify.set_text( savedName + ":" + fileLocation );
+		} else {
+			objIdentify.set_text( "null:null" );
+		}
+		
 		objIdentify.set_visible(false);
-		objDiv.addChild("identify"+i, objIdentify);
+		objDiv.addChild("identify", objIdentify);
 		
 		this.div_file.form.div_inDir.form.addChild("Div"+i, objDiv);
 		objDiv.show();
@@ -302,10 +313,16 @@ this.div_dir_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridCli
 };
 
 // Context Menu 보이기
+
+this.nameLoc = ""; // 디렉토리 내 폴더, 파일 이름 & 저장 위치
+
 this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 {
 	let targetX = e.clientx;
 	let targetY = e.clienty;
+	let index = obj.parent.parent.id.substring(3, obj.parent.parent.id.length);
+		
+	this.nameLoc = obj.parent.identify.text;
 	this.pm_context.trackPopupByComponent( obj, targetX, targetY );
 };
 
@@ -313,7 +330,40 @@ this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMouseEventInfo)
 {
 	let index = e.bindindex;
-	this.alert(index);
+	
+	let name = this.nameLoc.split(":")[0];
+	let location = this.nameLoc.split(":")[1];
+	
+	let contextID = this.ds_context.getColumn(index, "idcolumn");
+	if( contextID == "download" ){
+	// 다운로드
+	
+	} else if ( contextID == "upload" ){
+	// 업로드
+		this.div_file_btnUpload_onclick();
+	} else if ( contextID == "move" ){
+	// 이동
+	
+	} else if ( contextID == "copy" ){
+	// 복사
+	
+	} else if ( contextID == "multiselect" ){
+	// 다중 선택
+	
+	} else if ( contextID == "delete" ){
+	// 파일 삭제
+		this.transaction(
+				"delFile", // 1. strSVCID
+				"", // 2. strURL
+				"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+				"", // 4. strOutDatasets -select Fds=Sds
+				"", // 5. strArgument View에서 Server로 넘겨줄 변수
+				"" // 6. strCallbackFunc
+			);
+	} else if ( contextID == "status" ){
+	// 속성
+	
+	}
 };
 
 
@@ -385,6 +435,7 @@ this.fn_isNull=function(val){
 	return false;
 }
 
+// 파일 업로드
 this.div_file_btnUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let objCF = new ChildFrame();
