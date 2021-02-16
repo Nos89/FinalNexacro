@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="stu_classTimeByRoomPopup" width="480" height="370" onload="stu_classTimeByRoomPopup_onload" titletext="호실 검색 팝업">
+    <Layouts>
+      <Layout height="370" width="480">
+        <Static id="Static00" taborder="0" text="호실 리스트" left="0" top="50" height="20" cssclass="sta_WF_title01" right="0"/>
+        <Static id="Static01" taborder="1" text="" left="0" top="0" width="480" height="40" background="#5892e8"/>
+        <Grid id="Grid00" taborder="2" left="0" top="80" width="480" height="230" autofittype="col" binddataset="ds_room" oncelldblclick="Grid00_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="111"/>
+                <Column size="57"/>
+                <Column size="59"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="건물명"/>
+                <Cell col="1" text="호실 번호"/>
+                <Cell col="2" text="호실 용도"/>
+                <Cell col="3" text="수용인원"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:build_name"/>
+                <Cell col="1" text="bind:room_num"/>
+                <Cell col="2" text="bind:room_use"/>
+                <Cell col="3" text="bind:room_max"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_ok" taborder="3" text="선택" left="143" top="325" width="74" height="32" onclick="btn_ok_onclick"/>
+        <Button id="btn_cancel" taborder="4" text="닫기" left="249" top="324" width="74" height="32" onclick="btn_cancel_onclick"/>
+        <Static id="Static02_00_00_00" taborder="5" text="건물" left="10" top="5" width="30" height="30" color="white"/>
+        <Combo id="cmb_roomName" taborder="6" text="1학기" left="40" top="5" width="103" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021" canitemchange="cmb_roomName_canitemchange">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">-1</Col>
+                <Col id="datacolumn">--선택--</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">01</Col>
+                <Col id="datacolumn">공과대학</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">02</Col>
+                <Col id="datacolumn">보건의료과학대학</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">03</Col>
+                <Col id="datacolumn">비즈니스대학</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">04</Col>
+                <Col id="datacolumn">사범대학</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">05</Col>
+                <Col id="datacolumn">예술대학</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">06</Col>
+                <Col id="datacolumn">인문사회대학</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">07</Col>
+                <Col id="datacolumn">양자관</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static02_00_00_00_00" taborder="7" text="호실 번호" left="150" top="5" width="60" height="30" color="white"/>
+        <Edit id="edt_roomNum" taborder="8" left="208" top="5" width="105" height="30"/>
+        <Button id="btn_search" taborder="9" text="검색" left="402" top="5" width="57" height="30" onclick="btn_search_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.stu_classTimeByRoomPopup_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{	
+
+	this.transaction(
+		"roomInfoOnload",
+		"/roomInfoOnload.nex",
+		"in_condition=ds_condition:U",
+		"ds_room=out_room",
+		"",  
+		"fn_callback"
+	);
+};
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sName = this.ds_room.getColumn(this.ds_room.rowposition, "build_name");
+	var sNum = this.ds_room.getColumn(this.ds_room.rowposition, "room_num");
+	
+	var sRtn = sName + "|" + sNum;
+	
+	this.close(sRtn);
+};
+
+this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var sName = this.ds_room.getColumn(this.ds_room.rowposition, "build_name");
+	var sNum = this.ds_room.getColumn(this.ds_room.rowposition, "room_num");
+	
+	var sRtn = sName + "|" + sNum;
+	
+	this.close(sRtn);
+};
+
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.edt_roomNum == null){
+		if(this.cmb_roomName.index == 0){
+			this.ds_room.filter("");
+		}else {
+			this.ds_room.filter("build_name =='"+this.cmb_roomName.text+"'");
+		}
+	}else{
+		if(this.cmb_roomName.index == 0){
+			this.ds_room.filter("room_num.indexOf('" + this.edt_roomNum.value + "') >=0");
+		}else {
+			this.ds_room.filter("room_num.indexOf('" + this.edt_roomNum.value + "') >=0 && build_name =='"+this.cmb_roomName.text+"'");
+		}
+	}
+};
+
+this.cmb_roomName_canitemchange = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	if(e.postindex == 0) {
+		if(this.edt_roomNum.value == null){
+			this.ds_room.filter("");
+		}else{
+			this.ds_room.filter("room_num.indexOf('" + this.edt_roomNum.value + "') >=0");
+		}
+	} else { 
+		if(this.edt_roomNum.value == null){
+			this.ds_room.filter("build_name =='"+e.posttext+"'");
+		}else{
+			this.ds_room.filter("room_num.indexOf('" + this.edt_roomNum.value + "') >=0 && build_name =='"+e.posttext+"'");
+		}
+	}
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_room">
+        <ColumnInfo>
+          <Column id="build_name" type="STRING" size="256"/>
+          <Column id="room_num" type="STRING" size="256"/>
+          <Column id="room_use" type="STRING" size="256"/>
+          <Column id="room_max" type="INT" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

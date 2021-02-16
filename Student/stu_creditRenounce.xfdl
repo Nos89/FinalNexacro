@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="stu_classRegistrationWithdraw" width="1090" height="650" titletext="New Form" onload="stu_classRegistrationWithdraw_onload">
+  <Form id="stu_creditRenounce" width="1090" height="650" titletext="New Form" onload="stu_creditRenounce_onload">
     <Layouts>
-      <Layout height="650" width="1090">
+      <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static01" taborder="0" left="0" top="34" width="1090" height="46" background="#c8ddee" text="" cssclass="sta_WF_title01"/>
         <Edit id="edt_name" taborder="1" left="498" top="42" width="95" height="30" enable="false"/>
         <Button id="btn_search" taborder="2" left="464" top="42" width="29" height="30" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff" onclick="btn_search_onclick"/>
         <Edit id="edt_num" taborder="3" left="363" top="42" width="95" height="30" enable="false"/>
         <Static id="Static02_00_00_00_00_00" taborder="4" text="학번/성명" left="305" top="42" width="55" height="30"/>
-        <Combo id="cmb_semester" taborder="5" text="1학기" left="216" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1" enable="false">
+        <Combo id="cmb_semester" taborder="5" text="1학기" left="216" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -26,8 +26,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static02_00_00_00_00" taborder="6" text="수강학기" left="161" top="42" width="60" height="30"/>
-        <Combo id="cmb_year" taborder="7" text="2021" left="71" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="21" enable="false">
+        <Static id="Static02_00_00_00_00" taborder="6" text="신청학기" left="161" top="42" width="60" height="30"/>
+        <Combo id="cmb_year" taborder="7" text="2021" left="71" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="21">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -53,57 +53,61 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static02_00_00_00" taborder="8" text="수강년도" left="15" top="42" width="50" height="30"/>
-        <Static id="Static00" taborder="9" text="수강신청취소" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Grid id="Grid00" taborder="10" left="0" top="134" right="10" bottom="40" autofittype="col" binddataset="ds_classList" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick">
+        <Static id="Static02_00_00_00" taborder="8" text="신청년도" left="15" top="42" width="50" height="30"/>
+        <Static id="Static00" taborder="9" text="학점포기신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static00_00" taborder="10" text="성적리스트" left="0" top="84" height="36" cssclass="sta_WF_title01" right="10"/>
+        <Grid id="Grid00" taborder="11" left="0" top="120" right="5" bottom="10" autofittype="col" binddataset="ds_gradeList" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="91"/>
-                <Column size="86"/>
+                <Column size="79"/>
                 <Column size="87"/>
-                <Column size="94"/>
+                <Column size="115"/>
+                <Column size="83"/>
+                <Column size="48"/>
+                <Column size="75"/>
                 <Column size="48"/>
                 <Column size="48"/>
-                <Column size="75"/>
-                <Column size="128"/>
-                <Column size="75"/>
-                <Column size="75"/>
+                <Column size="68"/>
+                <Column size="69"/>
               </Columns>
               <Rows>
-                <Row size="28" band="head"/>
+                <Row size="24" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="구분"/>
-                <Cell col="1" text="이수구분"/>
-                <Cell col="2" text="교과목 코드"/>
+                <Cell text="성적년도"/>
+                <Cell col="1" text="성적학기"/>
+                <Cell col="2" text="교과목코드"/>
                 <Cell col="3" text="과목명"/>
                 <Cell col="4" text="학년"/>
-                <Cell col="5" text="학점"/>
-                <Cell col="6" text="담당교수"/>
-                <Cell col="7" text="강의시간"/>
-                <Cell col="8" text="수강인원"/>
-                <Cell col="9" text="수강취소신청"/>
+                <Cell col="5" text="이수구분"/>
+                <Cell col="6" text="학점"/>
+                <Cell col="7" text="등급"/>
+                <Cell col="8" text="포기신청"/>
+                <Cell col="9" text="신청취소"/>
               </Band>
               <Band id="body">
-                <Cell text="취소 가능" textAlign="center"/>
-                <Cell col="1" textAlign="center" text="bind:isu"/>
-                <Cell col="2" textAlign="center" text="bind:oc_code"/>
-                <Cell col="3" text="bind:oc_name" textAlign="center"/>
+                <Cell textAlign="center" text="expr:comp.parent.cmb_year.text"/>
+                <Cell col="1" textAlign="center" text="expr:comp.parent.cmb_semester.text"/>
+                <Cell col="2" text="bind:oc_code" textAlign="center"/>
+                <Cell col="3" textAlign="center" text="bind:oc_name"/>
                 <Cell col="4" textAlign="center" text="bind:oc_targetlevel"/>
-                <Cell col="5" textAlign="center" text="bind:reco_score"/>
-                <Cell col="6" text="bind:pro_name" textAlign="center"/>
-                <Cell col="7" text="bind:oc_schedule" textAlign="center"/>
-                <Cell col="8" text="bind:oc_part" textAlign="center"/>
-                <Cell col="9" text="취소신청" textAlign="center" displaytype="buttoncontrol" edittype="button"/>
+                <Cell col="5" text="bind:isu" textAlign="center"/>
+                <Cell col="6" textAlign="center" text="bind:reco_score"/>
+                <Cell col="7" textAlign="center" text="bind:grade_code"/>
+                <Cell col="8" text="신청" textAlign="center" displaytype="buttoncontrol" edittype="button"/>
+                <Cell col="9" displaytype="buttoncontrol" edittype="button" text="취소" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00_00" taborder="11" text="수강과목리스트" left="-5" top="90" height="34" cssclass="sta_WF_title01" right="15"/>
+        <Button id="btn_search2" taborder="12" text="조회" left="983" top="42" width="57" height="30" onclick="btn_search2_onclick"/>
       </Layout>
     </Layouts>
+    <InitValue>
+      <Grid id="Grid00" binddataset="ds_classList"/>
+    </InitValue>
     <Objects>
       <Dataset id="ds_stuInfo">
         <ColumnInfo>
@@ -135,24 +139,19 @@
           <Row/>
         </Rows>
       </Dataset>
-      <Dataset id="ds_classList">
+      <Dataset id="ds_gradeList">
         <ColumnInfo>
-          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="oc_code" type="STRING" size="256"/>
           <Column id="oc_name" type="STRING" size="256"/>
           <Column id="oc_targetlevel" type="STRING" size="256"/>
-          <Column id="pro_name" type="STRING" size="256"/>
-          <Column id="oc_schedule" type="STRING" size="256"/>
-          <Column id="reason" type="INT" size="256"/>
-          <Column id="cancel_date" type="INT" size="256"/>
-          <Column id="extra_date" type="STRING" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="grade_code" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row/>
-        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
-this.stu_classRegistrationWithdraw_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+this.stu_creditRenounce_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.transaction(
 		"stuInfoOnLoad",
@@ -167,12 +166,12 @@ this.stu_classRegistrationWithdraw_onload = function(obj:nexacro.Form,e:nexacro.
 	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
 	
 	this.transaction(
-		"getMyClass",
-		"/getMyClass.nex",
+		"getMyGrade",
+		"/getMyGrade.nex",
 		"in_condition=ds_condition:A",
-		"ds_classList=out_myClassList",
+		"ds_gradeList=out_gradeList",
 		"",  
-		"fn_callback"
+		""
 	);
 };
 
@@ -184,41 +183,52 @@ this.fn_callback=function(id,errCode,errMsg)
 
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	if(e.cell == "9"){
-		if(this.confirm("취소하면 되돌릴 수 없습니다. \n 진행 하시겠습니까?")){
-			let target = this.ds_classList.rowposition;
-			let oc_code = this.ds_classList.getColumn(target,"oc_code");
+	if(e.cell == "8"){
+		if(this.confirm("포기신청하시겠습니까?")){
+			let target = this.ds_gradeList.rowposition;
+			let code = this.ds_gradeList.getColumn(target,"oc_code");
+			
 			this.transaction(
-				"withdrawMyClass",
-				"/withdrawMyClass.nex",
-				"in_condition=ds_condition:A",
+				"creditRenounceApply",
+				"/creditRenounceApply.nex",
 				"",
-				"oc_code="+ nexacro.wrapQuote(oc_code),  
-				"fn_callback_withdraw"
+				"",
+				"code="+ nexacro.wrapQuote(code),  
+				"fn_callback_apply"
 			);
 		}
-		
-	}else if(e.cell == "10"){
-		let target = this.ds_classList.rowposition;
-	};
-	
-	
+	}else if(e.cell == "9"){
+		if(this.confirm("신청을 취소 하시겠습니까?")){
+			let target = this.ds_gradeList.rowposition;
+			let code = this.ds_gradeList.getColumn(target,"oc_code");
+			
+			this.transaction(
+				"creditRenounceCancel",
+				"/creditRenounceCancel.nex",
+				"",
+				"",
+				"code="+ nexacro.wrapQuote(code),  
+				"fn_callback_cancel"
+			);
+		}
+	}
 };
 
-this.fn_callback_withdraw=function(id,errCode,errMsg)
+this.fn_callback_apply=function(id,errCode,errMsg)
 {
-	this.transaction(
-		"getMyClass",
-		"/getMyClass.nex",
-		"in_condition=ds_condition:A",
-		"ds_classList=out_myClassList",
-		"",  
-		"fn_callback"
-	);
+	if(errCode == 0){
+		alert("이미 신청했습니다.");
+	}else{
+		alert("신청되었습니다.");
+	}
+};
+
+this.fn_callback_cancel=function(id,errCode,errMsg)
+{
+	if(errCode == 1){
+		alert("취소 되었습니다.");
+	}
 };
 ]]></Script>
-    <InitValue>
-      <Grid id="Grid00" binddataset="ds_classList"/>
-    </InitValue>
   </Form>
 </FDL>

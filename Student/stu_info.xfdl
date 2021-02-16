@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="0" text="개인정보관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Static id="Static01" taborder="1" left="0" top="34" width="1090" height="34" background="#dae6db" text="학생기본정보" cssclass="sta_WF_title01"/>
+        <Static id="Static01" taborder="1" left="0" top="34" width="1090" height="34" background="#c8ddee" text="학생기본정보" cssclass="sta_WF_title01"/>
         <Static id="Static01_00" taborder="2" left="5" top="68" width="1080" height="152" border="0px none,0px none,1px solid black"/>
         <ImageViewer id="ImageViewer00" taborder="3" left="20" top="78" width="110" height="102" stretch="fit"/>
         <Button id="btn_imgUpload" taborder="4" text="사진업로드" left="20" top="179" width="110" height="26" onclick="btn_imgUpload_onclick"/>

@@ -1,8 +1,194 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="stu_classRegistration" width="1090" height="650" titletext="New Form">
+  <Form id="stu_classRegistration" width="1090" height="650" titletext="New Form" onload="stu_classRegistration_onload">
     <Layouts>
-      <Layout height="650" width="1090"/>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="수강신청조회" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static01" taborder="1" left="0" top="34" width="1090" height="46" background="#c8ddee" text="" cssclass="sta_WF_title01"/>
+        <Edit id="edt_name" taborder="2" left="498" top="42" width="95" height="30" enable="false"/>
+        <Button id="btn_search" taborder="3" left="464" top="42" width="29" height="30" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff" onclick="btn_search_onclick"/>
+        <Edit id="edt_num" taborder="4" left="363" top="42" width="95" height="30" enable="false"/>
+        <Static id="Static02_00_00_00_00_00" taborder="5" text="학번/성명" left="305" top="42" width="55" height="30"/>
+        <Combo id="cmb_semester" taborder="6" text="1학기" left="216" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1학기</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2학기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static02_00_00_00_00" taborder="7" text="수강학기" left="161" top="42" width="60" height="30"/>
+        <Combo id="cmb_year" taborder="8" text="2021" left="71" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="21">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">21</Col>
+                <Col id="datacolumn">2021</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">22</Col>
+                <Col id="datacolumn">2022</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">23</Col>
+                <Col id="datacolumn">2023</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">24</Col>
+                <Col id="datacolumn">2024</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static02_00_00_00" taborder="9" text="수강년도" left="15" top="42" width="50" height="30"/>
+        <Grid id="Grid00" taborder="10" left="0" top="134" right="10" bottom="40" autofittype="col" binddataset="ds_classList" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="91"/>
+                <Column size="94"/>
+                <Column size="75"/>
+                <Column size="69"/>
+                <Column size="57"/>
+                <Column size="128"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="교과목코드"/>
+                <Cell col="1" rowspan="2" text="과목명"/>
+                <Cell col="2" colspan="2" text="대표교수"/>
+                <Cell col="4" rowspan="2" text="이수구분"/>
+                <Cell col="5" rowspan="2" text="강의시간"/>
+                <Cell col="6" rowspan="2" text="학점"/>
+                <Cell row="1" col="2" text="교수명"/>
+                <Cell row="1" col="3" text="전화번호"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:oc_code" textAlign="center"/>
+                <Cell col="1" text="bind:oc_name" textAlign="center"/>
+                <Cell col="2" text="bind:pro_name" textAlign="center"/>
+                <Cell col="3" text="bind:pro_number" textAlign="center"/>
+                <Cell col="4" text="bind:isu" textAlign="center"/>
+                <Cell col="5" text="bind:oc_schedule" textAlign="center"/>
+                <Cell col="6" text="bind:reco_score" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00_00" taborder="11" text="수강과목리스트" left="-5" top="90" height="34" cssclass="sta_WF_title01" right="15"/>
+        <Button id="btn_search2" taborder="12" text="조회" left="983" top="42" width="57" height="30" onclick="btn_search2_onclick"/>
+      </Layout>
     </Layouts>
+    <InitValue>
+      <Grid id="Grid00" binddataset="ds_classList"/>
+    </InitValue>
+    <Script type="xscript5.1"><![CDATA[
+this.stu_classRegistration_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"stuInfoOnLoad",
+		"/stuInfoOnLoad.nex",
+		"",
+		"ds_stuInfo=out_stuInfo",
+		"",  
+		"fn_callback"
+	);
+	
+	this.ds_condition.setColumn(0,"year",this.cmb_year.value);
+	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
+	
+	this.transaction(
+		"getMyClass",
+		"/getMyClass.nex",
+		"in_condition=ds_condition:A",
+		"ds_classList=out_classList",
+		"",  
+		"fn_callback"
+	);
+};
+
+this.fn_callback=function(id,errCode,errMsg)
+{
+	this.edt_num.set_value(this.ds_stuInfo.getColumn(0,"id"));
+	this.edt_name.set_value(this.ds_stuInfo.getColumn(0,"name"));
+};
+
+this.btn_search2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_condition.setColumn(0,"year",this.cmb_year.value);
+	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
+	
+	this.transaction(
+		"getMyClass",
+		"/getMyClass.nex",
+		"in_condition=ds_condition:A",
+		"ds_classList=out_classList",
+		"",  
+		"fn_callback"
+	);
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_classList">
+        <ColumnInfo>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_name" type="STRING" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="pro_name" type="STRING" size="256"/>
+          <Column id="pro_number" type="STRING" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stuInfo">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="birth" type="DATE" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="country" type="STRING" size="256"/>
+          <Column id="inDate" type="DATE" size="256"/>
+          <Column id="outDate" type="DATE" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="zipcode" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="bank" type="STRING" size="256"/>
+          <Column id="accountnum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_condition">
+        <ColumnInfo>
+          <Column id="year" type="INT" size="256"/>
+          <Column id="semester" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

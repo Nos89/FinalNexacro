@@ -295,8 +295,9 @@
             <Col id="MENU_CD">0018</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="MENU_NM">휴강조회</Col>
+            <Col id="MENU_NM">휴강조회(개발중)</Col>
             <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classCancelled.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0019</Col>
@@ -304,6 +305,7 @@
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">강의평가/금학기성적조회</Col>
             <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_myGrade.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0020</Col>
@@ -311,6 +313,7 @@
             <Col id="MENU_NM">학점포기신청</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_creditRenounce.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0021</Col>
@@ -318,6 +321,7 @@
             <Col id="MENU_NM">강의평가결과조회</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0022</Col>
