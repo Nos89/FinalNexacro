@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="diary_pop" width="720" height="680" titletext="New Form" onload="diary_pop_onload">
+    <Layouts>
+      <Layout height="680" width="720">
+        <Static id="Static00" taborder="0" text="업무일지" left="20" top="10" width="680" height="70" textAlign="center" font="normal 25pt/normal &quot;맑은 고딕&quot;" border="1px solid black"/>
+        <Div id="Div00" taborder="1" text="Div00" left="20" top="79" width="680" height="551" border="1px solid black">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="작업일자" left="-1" top="-1" width="142" height="34" textAlign="center" border="0px,1px solid black,0px,0px"/>
+              <Calendar id="calDate" taborder="1" left="140" top="-2" width="198" height="35"/>
+              <Static id="Static00_00" taborder="2" text="작성자" left="337" top="-1" width="142" height="34" textAlign="center" border="1px solid black"/>
+              <Static id="sta_proId" taborder="3" text="교수 이름" left="478" top="-2" width="200" height="35" textAlign="center" border="1px solid black,0px,1px solid black,1px solid black"/>
+              <Static id="Static01" taborder="4" text="금일 업무" left="-1" top="32" width="78" height="517" font="normal 10pt/normal &quot;맑은 고딕&quot;" border="1px solid black" textAlign="center"/>
+              <Static id="Static02" taborder="5" text="업   무   내   용" left="76" top="32" width="602" height="32" textAlign="center" border="1px solid black,0px,1px solid black,1px solid black"/>
+              <TextArea id="ta_contents" taborder="6" left="77" top="64" width="601" height="485" border="1px solid #c7c7c7"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_ok" taborder="2" text="작성" left="389" top="638" width="162" height="34" onclick="btn_ok_onclick"/>
+        <Button id="btn_cancle" taborder="3" text="취소" left="170" top="640" width="148" height="30" onclick="btn_cancle_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.diary_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var objFrame = this.getOwnerFrame();
+	
+	this.popuptype = objFrame.popuptype;
+	if(this.popuptype=="modify")
+	{
+		this.scheduleId = objFrame.scheduleid;
+		this.Div00.form.sta_proId.set_text(objFrame.title);
+		this.Div00.form.calDate.set_value(objFrame.date);
+		this.Div00.form.ta_contents.set_value(objFrame.content);
+	}else if(this.popuptype=="new")
+	{
+		if(objFrame.title)this.Div00.form.sta_proId.set_text(objFrame.title);
+		if(objFrame.date)this.Div00.form.calDate.set_value(objFrame.date);
+	}
+};
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.Div00.form.ta_contents.value==null||this.Div00.form.calDate.value==null){
+		alert("내용을 전부 입력해 주세요");
+		return 0;
+	}
+	var objReturn;
+	objReturn = {
+			"popuptype" : this.popuptype,
+			"id" : this.scheduleId,
+			"date" : this.Div00.form.calDate.value,
+			"type" : "01",
+			"title" : this.Div00.form.sta_proId.text,
+			"content" : this.Div00.form.ta_contents.value
+			};
+			
+	this.close(JSON.stringify(objReturn, null, "\t"));
+};
+
+
+this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+
+]]></Script>
+  </Form>
+</FDL>

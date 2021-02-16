@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Script version="1.0" type="xscript5.1"><![CDATA[
-0/**
+/**
 * @description 	    	: 스케줄러 초기화 함수
 * @param objGraphics  	: 스케줄러 설정할 Graphics Component
 * @param objConfig   	: 초기화 설정 값

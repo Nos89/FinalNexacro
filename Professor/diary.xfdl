@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="scheduler" width="1090" height="650" titletext="New Form" onload="scheduler_onload">
+  <Form id="diary" width="1090" height="650" titletext="New Form" onload="diary_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Graphics id="grpScheduler" taborder="0" left="10" top="130" ondblclick="grpScheduler_ondblclick" right="10" bottom="10" onclick="grpScheduler_onclick" onsize="grpScheduler_onsize" minwidth="100" maxwidth="" minheight="100" maxheight=""/>
         <Button id="btnPrev" taborder="1" text="&lt;" left="35.87%" top="9.23%" width="5.5%" height="6.15%" onclick="btnPrev_onclick"/>
         <Button id="btnNext" taborder="2" text="&gt;" left="60.64%" top="9.23%" width="5.5%" height="6.15%" onclick="btnNext_onclick"/>
-        <Static id="stYearMonth" taborder="3" left="42.75%" top="9.38%" width="16.33%" height="6%" textAlign="center" font="bold 24px/normal &quot;Gulim&quot;"/>
-        <Button id="btnNew" taborder="4" text="신규일정" left="86.24%" top="9.38%" onclick="btnNew_onclick" right="8.26%" bottom="84.62%"/>
-        <Static id="Static00" taborder="5" text="교수/학과스케줄" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
-        <Static id="Static01" taborder="6" text="Static01" left="0.83%" top="5.85%" width="97.34%" height="0.15%" border="1px solid black,0px none,0px none"/>
-        <Button id="btn_del" taborder="7" text="삭제" left="92.66%" top="9.38%" onclick="btn_del_onclick" right="1.83%" bottom="84.62%"/>
+        <Static id="stYearMonth" taborder="3" left="42.84%" top="9.38%" width="16.33%" height="6%" textAlign="center" font="bold 24px/normal &quot;Gulim&quot;"/>
+        <Static id="Static00" taborder="4" text="업무일지 작성" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
+        <Static id="Static01" taborder="5" text="Static01" left="0.83%" top="5.85%" width="97.34%" height="0.15%" border="1px solid black,0px none,0px none"/>
+        <Button id="btn_del" taborder="6" text="삭제" left="92.66%" top="9.38%" width="5.5%" height="6.15%" onclick="btn_del_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -23,168 +22,167 @@
 */
 
 /**************************************************************************
- * include 영역 
+* include 영역 
 **************************************************************************/
 include "Lib::lib_base.xjs";
 include "Lib::lib_date.xjs";
-include "Lib::lib_scheduler.xjs";
+include "Lib::lib_schedulerv2.xjs";
 
 /**************************************************************************
- * FORM 변수 선언 영역
+* FORM 변수 선언 영역
 **************************************************************************/
 this.id = nexacro.Application.gvID;
 this.name = nexacro.Application.gvProName;
 /**************************************************************************
- * FORM EVENT 영역(onload)
+* FORM EVENT 영역(onload)
 **************************************************************************/
-this.scheduler_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+this.diary_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	
 	this.transaction(
-			"pro_scheduleOnload", 
-			"/professor/proScheduleOnload.nex",
-			"", 
-			"dsSchedule=out_proSchedule", 
-			"id="+this.id+"", 
-			"fn_callback"
-		);
+		"diaryOnLoad", 
+		"/professor/diaryOnLoad.nex",
+		"", 
+		"dsSchedule=out_diary", 
+		"id="+this.id+"", 
+		"fn_callback"
+	);
 	
 };
 
 this.fn_callback = function(id, errCode, errMsg){
-
-		for(var i=0; i<this.dsSchedule.getRowCount(); i++){
-			var date = this.dsSchedule.getColumn(i,"sche_date");
-			this.dsSchedule.setColumn(i,"sche_date",date.slice(0,8));
-		}
 	
+	for(var i=0; i<this.dsSchedule.getRowCount(); i++){
+		var date = this.dsSchedule.getColumn(i,"busi_date");
+		this.dsSchedule.setColumn(i,"busi_date",date.slice(0,8));
+	}
 	//스케줄러 설정정보 만들기
 	var objConfig = {
-						//오늘일자
-						"todate" : null,
-						
-						//현재 표현일자
-						"date" : null,
-						
-						//스케줄 정보를 가지고 있는 데이터셋
-						"binddataset" : this.dsSchedule,
-						
-						//요일 영역
-						"week" : {
-									//요일 표현 텍스트 리스트
-									"weekformat" : ["일", "월", "화", "수", "목", "금", "토"],
-									
-									//요일 영역 높이
-									"height" : 20,
-									
-									//요일 배경 속성
-									"graphicsrect" : {
-												"x" : 0, "y" : 0, "width" : 0, "height" : 0,
-												"fillstyle" : "#ffffff",
-												"strokepen" : "1px solid #c7c7c7"
-											 },
-											 
-									//요일 텍스트 속성
-									"graphicstext" : {
-												"x" : 0, "y" : 0,
-												"text" : "",
-												"textAlign" : "center",
-												"verticalAlign" : "middle",
-												"font" : 'bold 9pt arial',
-												"color" : "#000000"
-											 }
-									
-									
-								 },
-						
-						//일자 영역
-						"day" : {
-									//기본일자 텍스트 색상
-									"textcolor" : "#000000",
-									
-									//일요일 텍스트 색상
-									"textcolor_sun" : "#ff0000",
-									
-									//토요일 텍스트 색상
-									"textcolor_sat" : "#0000ff",
-									
-									//이전 or 이후 월 텍스트 색상
-									"textcolor_disable" : "#888888",
-									
-									//일자 배경 속성
-									"graphicsrect" : {
-												"x" : 0, "y" : 0, "width" : 0, "height" : 0,
-												"fillstyle" : "#ffffff",
-												"strokepen" : "1px solid #c7c7c7"
-											 },
-											 
-									//일자 텍스트 속성
-									"graphicstext" : {
-												"x" : 0, "y" : 0,
-												"text" : "",
-												"textAlign" : "right",
-												"verticalAlign" : "top",
-												"font" : 'bold 9pt arial',
-												"color" : ""
-											 }
-								},
-						//일정 영역		
-						"schedule" : {
-										//일정 타입별 배경색
-										"type" : {
-													"01" : "#ff0000",
-													"02" : "#00ff00",
-													"03" : "#0000ff",
-													"04" : "#000000"
-												 },
-												 
-										//일정 영역 높이
-										"height" : 20,
-										
-										//일정 간 간격
-										"gap" : 5,
-										
-										//일정 배경 속성
-										"graphicsrect" : {
-															"x" : 0, "y" : 0, "width" : 0, "height" : 0,
-															"fillstyle" : "#ffffff",
-															"strokepen" : "1px solid #000000"
-														 },
-														 
-										//일정 텍스트 속성
-										"graphicstext" : {
-													"x" : 0, "y" : 0,
-													"text" : "",
-													"textAlign" : "left",
-													"verticalAlign" : "middle",
-													"font" : 'bold 9pt arial',
-													"color" : "#ffffff"
-												 }
-									 },
-						//더보기 영역		
-						"more" : {
-									//더보기 높이
-									"height" : 20,
-									
-									//더보기 배경 속성
-									"graphicsrect" : {
-														"x" : 0, "y" : 0, "width" : 0, "height" : 0,
-														"fillstyle" : "#888888",
-														"strokepen" : "1px solid #000000"
-													 },
-									
-									//더보기 텍스트 속성
-									"graphicstext" : {
-														"x" : 0, "y" : 0,
-														"text" : "More",
-														"textAlign" : "left",
-														"verticalAlign" : "middle",
-														"font" : 'bold 9pt arial',
-														"color" : "#000000"
-													 }
-								}
-					}
-					
+		//오늘일자
+		"todate" : null,
+		
+		//현재 표현일자
+		"date" : null,
+		
+		//스케줄 정보를 가지고 있는 데이터셋
+		"binddataset" : this.dsSchedule,
+		
+		//요일 영역
+		"week" : {
+			//요일 표현 텍스트 리스트
+			"weekformat" : ["일", "월", "화", "수", "목", "금", "토"],
+			
+			//요일 영역 높이
+			"height" : 20,
+			
+			//요일 배경 속성
+			"graphicsrect" : {
+				"x" : 0, "y" : 0, "width" : 0, "height" : 0,
+				"fillstyle" : "#ffffff",
+				"strokepen" : "1px solid #c7c7c7"
+			},
+			
+			//요일 텍스트 속성
+			"graphicstext" : {
+				"x" : 0, "y" : 0,
+				"text" : "",
+				"textAlign" : "center",
+				"verticalAlign" : "middle",
+				"font" : 'bold 9pt arial',
+				"color" : "#000000"
+			}
+			
+			
+		},
+		
+		//일자 영역
+		"day" : {
+			//기본일자 텍스트 색상
+			"textcolor" : "#000000",
+			
+			//일요일 텍스트 색상
+			"textcolor_sun" : "#ff0000",
+			
+			//토요일 텍스트 색상
+			"textcolor_sat" : "#0000ff",
+			
+			//이전 or 이후 월 텍스트 색상
+			"textcolor_disable" : "#888888",
+			
+			//일자 배경 속성
+			"graphicsrect" : {
+				"x" : 0, "y" : 0, "width" : 0, "height" : 0,
+				"fillstyle" : "#ffffff",
+				"strokepen" : "1px solid #c7c7c7"
+			},
+			
+			//일자 텍스트 속성
+			"graphicstext" : {
+				"x" : 0, "y" : 0,
+				"text" : "",
+				"textAlign" : "right",
+				"verticalAlign" : "top",
+				"font" : 'bold 9pt arial',
+				"color" : ""
+			}
+		},
+		//일정 영역		
+		"schedule" : {
+			//일정 타입별 배경색
+			"type" : {
+				"01" : "#ffffff",
+				"02" : "#ffffff",
+				"03" : "#ffffff",
+				"04" : "#ffffff"
+			},
+			
+			//일정 영역 높이
+			"height" : 70,
+			
+			//일정 간 간격
+			"gap" : 5,
+			
+			//일정 배경 속성
+			"graphicsrect" : {
+				"x" : 0, "y" : 0, "width" : 0, "height" : 0,
+				"fillstyle" : "#ffffff",
+				"strokepen" : "1px solid transparent"
+			},
+			
+			//일정 텍스트 속성
+			"graphicstext" : {
+				"x" : 0, "y" : 0,
+				"text" : "",
+				"textAlign" : "left",
+				"verticalAlign" : "middle",
+				"font" : 'bold 10pt arial',
+				"color" : "#000000"
+			}
+		},
+		//더보기 영역		
+		"more" : {
+			//더보기 높이
+			"height" : 20,
+			
+			//더보기 배경 속성
+			"graphicsrect" : {
+				"x" : 0, "y" : 0, "width" : 0, "height" : 0,
+				"fillstyle" : "#888888",
+				"strokepen" : "1px solid #000000"
+			},
+			
+			//더보기 텍스트 속성
+			"graphicstext" : {
+				"x" : 0, "y" : 0,
+				"text" : "More",
+				"textAlign" : "left",
+				"verticalAlign" : "middle",
+				"font" : 'bold 9pt arial',
+				"color" : "#000000"
+			}
+		}
+	}
+	
 	//스케줄러 초기화 함수 호출
 	this.gfnInitScheduler(this.grpScheduler, objConfig);
 	
@@ -193,10 +191,11 @@ this.fn_callback = function(id, errCode, errMsg){
 	
 	//현재월 텍스트 설정
 	this.stYearMonth.set_text(sYearMonth);
+	
 }
 
 this.fn_callback_update = function(id, errCode, errMsg){
-	if(id=="updateProSchedule"){
+	if(id=="updateDiary"){
 		if(errCode=="1"){
 			alert("입력완료");
 		}else{
@@ -206,33 +205,30 @@ this.fn_callback_update = function(id, errCode, errMsg){
 	this.reload();
 };
 /**************************************************************************
- * CALLBACK 콜백 처리부분(Transaction)
- **************************************************************************/
+* CALLBACK 콜백 처리부분(Transaction)
+**************************************************************************/
 
 /**************************************************************************
- * CRUD 및 TRANSACTION 서비스 호출 처리
- **************************************************************************/
- 
- /**************************************************************************
- * 각 COMPONENT 별 EVENT 영역
- **************************************************************************/
+* CRUD 및 TRANSACTION 서비스 호출 처리
+**************************************************************************/
+
+/**************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+**************************************************************************/
 /**
- * @description 신규일정 버튼 onclick 시 처리내역
+* @description 신규일정 버튼 onclick 시 처리내역
 */
 this.btnNew_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	//팝업오픈 함수 호출
 	this.fnOpenSchedulePop("new");
 };
-this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
 
-}; 
 this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var objCF = new ChildFrame();
-	objCF.init("delSchedule", '', '', '', ''); 
-	objCF.set_formurl("Professor::proScheduler_popup.xfdl"); 
+	objCF.init("delDiary", '', '', '', ''); 
+	objCF.set_formurl("Professor::diary_del_pop.xfdl"); 
 	objCF.set_openalign("center middle");
 	objCF.set_dragmovetype("all");
 	objCF.set_overlaycolor("rgba(0,0,0,0.3)");
@@ -244,16 +240,16 @@ this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	);
 };
 this.fn_callback_pop = function(id,code){
-	if(id=="delSchedule"){
+	if(id=="delDiary"){
 		if(code=="1"){
+			alert("삭제완료");
 			this.reload();
 		}
 	}
 	
-	
 };
 /**
- * @description 이전 버튼 onclick 시 처리내역
+* @description 이전 버튼 onclick 시 처리내역
 */
 this.btnPrev_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -274,7 +270,7 @@ this.btnPrev_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 /**
- * @description 다음 버튼 onclick 시 처리내역
+* @description 다음 버튼 onclick 시 처리내역
 */
 this.btnNext_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -295,7 +291,7 @@ this.btnNext_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 /**
- * @description Graphics Component onsize 시 처리내역
+* @description Graphics Component onsize 시 처리내역
 */
 this.grpScheduler_onsize = function(obj:nexacro.Graphics,e:nexacro.SizeEventInfo)
 {
@@ -305,7 +301,7 @@ this.grpScheduler_onsize = function(obj:nexacro.Graphics,e:nexacro.SizeEventInfo
 };
 
 /**
- * @description Graphics Component onclick 시 처리내역
+* @description Graphics Component onclick 시 처리내역
 */
 this.grpScheduler_onclick = function(obj:nexacro.Graphics,e:nexacro.ClickEventInfo)
 {
@@ -348,7 +344,7 @@ this.grpScheduler_onclick = function(obj:nexacro.Graphics,e:nexacro.ClickEventIn
 			
 			//더보기 텍스트를 Less로 변경
 			objMoreText.set_text("Less");
-					
+			
 			//더보기 영역이 스케줄 최하단에 위치하도록 변경
 			objMore.set_y(objDay.getRect().height + 5);
 			
@@ -387,7 +383,7 @@ this.grpScheduler_onclick = function(obj:nexacro.Graphics,e:nexacro.ClickEventIn
 };
 
 /**
- * @description Graphics Component ondblclick 시 처리내역
+* @description Graphics Component ondblclick 시 처리내역
 */
 this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEventInfo)
 {
@@ -419,19 +415,19 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 		sId = objSchedule.id;
 		
 		//데이터셋에서 ID에 해당하는 일정 찾기
-		nRow = objDs.findRow("sche_seq", sId);
+		nRow = objDs.findRow("busi_seq", sId);
 		
 		//일정 일자 가져오기
-		sDate = objDs.getColumn(nRow, "sche_date");
+		sDate = objDs.getColumn(nRow, "busi_date");
 		
 		//일정 타입 가져오기
-		sType = objDs.getColumn(nRow, "sche_type");
+		sType = "01";
 		
 		//일정 제목 가져오기
-		sTitle = objDs.getColumn(nRow, "sche_title");
+		sTitle = objDs.getColumn(nRow, "busi_proName");
 		
 		//일정 내용 가져오기
-		sContent = objDs.getColumn(nRow, "sche_contents");
+		sContent = objDs.getColumn(nRow, "busi_contents");
 		
 		//팝업오픈 함수 호출
 		this.fnOpenSchedulePop("modify", sId, sDate, sType, sTitle, sContent);
@@ -445,13 +441,23 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 		//일자 정보 가져오기(ex) day_20200612 --> 20200612)
 		sDate = objDay.id.split("_")[1];
 		
+		//작성자 이름 가져오기
+		sTitle = this.name;
+
+		for(var i = 0; i<this.dsSchedule.getRowCount(); i++){
+			if(sDate==this.dsSchedule.getColumn(i,"busi_date")){
+				alert("해당 업무일지가 존재합니다");
+				return 0;
+			}
+		}
+		
 		//팝업오픈 함수 호출
-		this.fnOpenSchedulePop("new", null, sDate);
+		this.fnOpenSchedulePop("new", null, sDate, null, sTitle);
 	}
 };
 
 /**************************************************************************
- * 사용자 FUNCTION 영역
+* 사용자 FUNCTION 영역
 **************************************************************************/
 /**
 * @description 	      	: 팝업 호출 함수
@@ -472,8 +478,7 @@ this.fnOpenSchedulePop = function(sPopupType, sId, sDate, sType, sTitle, sConten
 	if(sType)oArg.type = sType;
 	if(sTitle)oArg.title = sTitle;
 	if(sContent)oArg.content = sContent;
-	
-	this.gfnShowModal("popupModal", oArg, "Professor::scheduler_popup.xfdl", "fnPopupCallBack", this, 400, 300, true, true, null);
+	this.gfnShowModal("popupModal", oArg, "Professor::diary_pop.xfdl", "fnPopupCallBack", this, 720, 680, true, true, null);
 }
 
 /**
@@ -498,47 +503,39 @@ this.fnPopupCallBack = function(sFormId, sArg)
 			if(objRtn.popuptype=="modify")
 			{
 				//데이터셋에서 ID에 해당하는 일정 찾기
-				nRow = this.dsSchedule.findRow("sche_seq", objRtn.id);
-				
+				nRow = this.dsSchedule.findRow("busi_seq", objRtn.id);
 				//일정 정보 변경
-				this.dsSchedule.setColumn(nRow, "sche_title", objRtn.title);
-				this.dsSchedule.setColumn(nRow, "sche_date", objRtn.date);
-				this.dsSchedule.setColumn(nRow, "sche_type", objRtn.type);
-				this.dsSchedule.setColumn(nRow, "sche_contents", objRtn.content);
+				this.dsSchedule.setColumn(nRow, "busi_date", objRtn.date);
+				this.dsSchedule.setColumn(nRow, "busi_contents", objRtn.content);
+				this.dsSchedule.setColumn(nRow, "busi_proId", this.id);
+				this.dsSchedule.setColumn(nRow, "busi_proName", this.name);
 				code ="update";
 				this.ds_transaction.copyRow(0,this.dsSchedule,nRow);
+				trace("여기임");
 			}
 			//신규일 경우
 			else if(objRtn.popuptype=="new")
 			{
 				//신규 Row 추가
-				nRow = this.dsSchedule.addRow();
-
 				//일정 정보 등록
-				this.dsSchedule.setColumn(nRow, "sche_seq", nexacro.round(Math.random()*1000, 0));
-				this.dsSchedule.setColumn(nRow, "sche_title", objRtn.title);
-				this.dsSchedule.setColumn(nRow, "sche_date", objRtn.date);
-				this.dsSchedule.setColumn(nRow, "sche_type", objRtn.type);
-				this.dsSchedule.setColumn(nRow, "sche_contents", objRtn.content);
-				this.dsSchedule.setColumn(nRow, "sche_proId", this.id);
-				this.dsSchedule.setColumn(nRow, "sche_proName", this.name);
-				this.dsSchedule.setColumn(nRow, "check",0);
 				code ="insert";
 				
-				this.ds_transaction.copyRow(0,this.dsSchedule,nRow);
+				this.ds_transaction.setColumn(0,"busi_seq",nexacro.round(Math.random()*1000, 0));
+				this.ds_transaction.setColumn(0,"busi_date",objRtn.date);
+				this.ds_transaction.setColumn(0,"busi_contents",objRtn.content);
+				this.ds_transaction.setColumn(0,"busi_proId",this.id);
+				this.ds_transaction.setColumn(0,"busi_proName",this.name);
+				this.ds_transaction.setColumn(0,"check",0);
 				
 			}
-				this.transaction(
-					"updateProSchedule", 
-					"/professor/updateProSchedule.nex",
-					"in_ds=ds_transaction", 
-					"", 
-					"id="+code+"", 
-					"fn_callback_update"
-					);
-			//스케줄 조회 함수 호출
-			//this.gfnLoadScheduler(this.grpScheduler);
-
+			this.transaction(
+				"updateDiary", 
+				"/professor/updateDiary.nex",
+				"in_ds=ds_transaction",
+				"", 
+				"id="+code+"", 
+				"fn_callback_update"
+			);
 		}
 	}
 }
@@ -564,18 +561,18 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
 	var parentFrame = obj.getOwnerFrame();
 	
 	var sOpenAlignType = "center middle";
-
+	
 	// TO-DO 팝업사이즈 미지정 시 디폴트 값 적용
 	if (this.gfnIsNull(nPopupWidth)) 
 	{
 		nPopupWidth = obj.confing.popupWidth;
 	}
-
+	
 	if (this.gfnIsNull(nPopupHeight)) 
 	{
 		nPopupHeight = obj.confing.popupHeight;
 	}
-
+	
 	var sShowStatus;
 	if (this.gfnIsNull(bShowFrameStatus) || bShowFrameStatus == false) 
 	{
@@ -590,10 +587,10 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
 	{
 		sOpenAlignType = sAlignType;
 	}
-
+	
 	var nPopupLeft = "";
 	var nPopupTop = "";
-
+	
 	// 팝업 포지션 값 위치 설정
 	nPopupLeft = 0;
 	nPopupTop = 0;
@@ -615,7 +612,7 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
 	childFrame.set_overlaycolor("RGBA(0, 0, 0, 0.3)");
 	childFrame.set_autosize(false);	
 	childFrame.set_dragmovetype("normal");
-
+	
 	if (this.gfnIsNull(bShowFrameTitle) || bShowFrameTitle == true) 
 	{
 		childFrame.set_showtitlebar(true);
@@ -628,104 +625,44 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
 	// 동적으로 생성한 ChildFrame을 Modal Dialog로 보여줌.
 	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);
 };
+
+
 ]]></Script>
     <Objects>
       <Dataset id="dsSchedule">
         <ColumnInfo>
-          <Column id="sche_seq" type="STRING" size="256"/>
-          <Column id="sche_date" type="STRING" size="256"/>
-          <Column id="sche_title" type="STRING" size="256"/>
-          <Column id="sche_contents" type="STRING" size="256"/>
-          <Column id="sche_type" type="STRING" size="256"/>
-          <Column id="sche_proId" type="STRING" size="256"/>
-          <Column id="sche_proName" type="STRING" size="256"/>
           <Column id="check" type="STRING" size="256"/>
+          <Column id="busi_seq" type="INT" size="256"/>
+          <Column id="busi_proId" type="STRING" size="256"/>
+          <Column id="busi_proName" type="STRING" size="256"/>
+          <Column id="busi_contents" type="STRING" size="256"/>
+          <Column id="busi_date" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="sche_seq">2</Col>
-            <Col id="sche_date">20200603</Col>
-            <Col id="sche_title">공지사항</Col>
-            <Col id="sche_contents">공지사항 내용</Col>
-            <Col id="sche_type">01</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
+            <Col id="busi_seq">12</Col>
+            <Col id="busi_proId">P-1001</Col>
+            <Col id="busi_proName">김교수</Col>
+            <Col id="busi_contents">ㅁㄴㅇㅁㄴㅇㅁ</Col>
+            <Col id="busi_date">20210216</Col>
           </Row>
           <Row>
-            <Col id="sche_seq">3</Col>
-            <Col id="sche_date">20200603</Col>
-            <Col id="sche_title">공지사항</Col>
-            <Col id="sche_contents">공지사항 내용</Col>
-            <Col id="sche_type">01</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">4</Col>
-            <Col id="sche_date">20200603</Col>
-            <Col id="sche_title">공지사항</Col>
-            <Col id="sche_contents">공지사항 내용</Col>
-            <Col id="sche_type">01</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">5</Col>
-            <Col id="sche_date">20200610</Col>
-            <Col id="sche_title">주간보고</Col>
-            <Col id="sche_contents">주간보고 내용</Col>
-            <Col id="sche_type">03</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">6</Col>
-            <Col id="sche_date">20200615</Col>
-            <Col id="sche_title">외부일정</Col>
-            <Col id="sche_contents">외부일정 내용</Col>
-            <Col id="sche_type">02</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">7</Col>
-            <Col id="sche_date">20200618</Col>
-            <Col id="sche_title">팀 내부 회의</Col>
-            <Col id="sche_contents">팀 내부 회의 내용</Col>
-            <Col id="sche_type">04</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">8</Col>
-            <Col id="sche_date">20200622</Col>
-            <Col id="sche_title">개인 스케줄</Col>
-            <Col id="sche_contents">개인 스케줄 내용</Col>
-            <Col id="sche_type">04</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">9</Col>
-            <Col id="sche_date">20210126</Col>
-            <Col id="sche_title">ㅎㅎ</Col>
-            <Col id="sche_contents">ㄴㅇㄹㄴㅇ</Col>
-            <Col id="sche_type">04</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
+            <Col id="busi_seq">13</Col>
+            <Col id="busi_proId">P-1001</Col>
+            <Col id="busi_proName">김교수</Col>
+            <Col id="busi_contents">33213</Col>
+            <Col id="busi_date">20210205</Col>
           </Row>
         </Rows>
       </Dataset>
       <Dataset id="ds_transaction">
         <ColumnInfo>
-          <Column id="sche_seq" type="STRING" size="256"/>
-          <Column id="sche_date" type="STRING" size="256"/>
-          <Column id="sche_title" type="STRING" size="256"/>
-          <Column id="sche_contents" type="STRING" size="256"/>
-          <Column id="sche_type" type="STRING" size="256"/>
-          <Column id="sche_proId" type="STRING" size="256"/>
-          <Column id="sche_proName" type="STRING" size="256"/>
           <Column id="check" type="STRING" size="256"/>
+          <Column id="busi_seq" type="INT" size="256"/>
+          <Column id="busi_proId" type="STRING" size="256"/>
+          <Column id="busi_proName" type="STRING" size="256"/>
+          <Column id="busi_contents" type="STRING" size="256"/>
+          <Column id="busi_date" type="DATE" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row/>
