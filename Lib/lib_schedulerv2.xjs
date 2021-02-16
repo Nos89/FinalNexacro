@@ -518,48 +518,6 @@ this.gfnLoadScheduler = function(objGraphics)
 			nTop = objSchedule.y+objScheduleRectProp.height;
 		}
 		
-		//생성된 일정이 일자영역을 벗어나는 경우 더보기 오브젝트 생성
-		/*if(nTop > nDayHeight - nMoreHeight&&!objDay.getObjectByID("more_"+sTargetDate))
-		{
-			//더보기 배경 속성 정보 가져오기
-			objMoreRectProp = objMoreConfig.graphicsrect;
-			
-			//더보기 텍스트 속성 정보 가져오기
-			objMoreTextProp = objMoreConfig.graphicstext;
-			
-			//더보기 GraphicsGroup 오브젝트 만들기
-			objProperties = {
-								"x" : 0, "y" : nDayHeight - nMoreHeight
-							};
-			objMore = this.gfnSetGraphicProperties("GraphicsGroup", objProperties);
-			
-			//더보기 배경 Width 값 설정
-			objMoreRectProp.width = nWidth;
-			
-			//더보기 배경 Height 값 설정
-			objMoreRectProp.height = nMoreHeight;
-			
-			//더보기 배경 오브젝트 만들기
-			objScheduleBg = this.gfnSetGraphicProperties("GraphicsRect", objMoreRectProp);
-			
-			//더보기에 더보기 배경 오브젝트 추가
-			objMore.addChild("more_bg", objScheduleBg);
-			
-			//더보기 텍스트 Left 좌표 설정
-			objMoreTextProp.x = 5;
-			
-			//더보기 텍스트 Top 좌표 설정
-			objMoreTextProp.y = nHeight/2;
-			
-			//더보기 텍스트 오브젝트 만들기
-			objScheduleText = this.gfnSetGraphicProperties("GraphicsText", objMoreTextProp);
-			
-			//더보기에 더보기 텍스트 오브젝트 추가
-			objMore.addChild("more_text", objScheduleText);
-			
-			//일자에 더보기 오브젝트 추가
-			objDay.addChild("more_"+sTargetDate, objMore);
-		}*/
 	}
 	
 	//Graphics 컴포넌트 다시그리기

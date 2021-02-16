@@ -3,7 +3,7 @@
   <Form id="StudentInfo" width="1090" height="650" titletext="New Form" onload="StudentInfo_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static01" taborder="0" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
+        <Static id="Static01" taborder="0" left="0.92%" top="5.69%" width="98.35%" height="0%" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
         <Static id="Static00_00" taborder="1" text="학생정보 조회" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
         <Combo id="cbo_stdYear" taborder="2" text="Combo00" left="51" top="50" width="75" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
         <Static id="Static00_01" taborder="3" text="학년" left="11" top="50" width="40" height="23"/>
@@ -22,20 +22,18 @@
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
-                <Column size="80"/>
               </Columns>
               <Rows>
-                <Row band="head" size="24"/>
+                <Row size="24" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="lec_code"/>
-                <Cell col="1" text="title"/>
-                <Cell col="2" text="id"/>
-                <Cell col="3" text="dept_title"/>
-                <Cell col="4" text="name"/>
-                <Cell col="5" text="std_year"/>
-                <Cell col="6" text="check"/>
+                <Cell text="강의코드"/>
+                <Cell col="1" text="강의명"/>
+                <Cell col="2" text="학번"/>
+                <Cell col="3" text="학과"/>
+                <Cell col="4" text="이름"/>
+                <Cell col="5" text="학년"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:lec_code"/>
@@ -44,7 +42,6 @@
                 <Cell col="3" text="bind:dept_title"/>
                 <Cell col="4" text="bind:name"/>
                 <Cell col="5" text="bind:std_year"/>
-                <Cell col="6" text="bind:check"/>
               </Band>
             </Format>
           </Formats>

@@ -32,11 +32,10 @@ this.diary_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		this.scheduleId = objFrame.scheduleid;
 		this.Div00.form.sta_proId.set_text(objFrame.title);
 		this.Div00.form.calDate.set_value(objFrame.date);
-		//this.cmbType.set_value(objFrame.type);
 		this.Div00.form.ta_contents.set_value(objFrame.content);
 	}else if(this.popuptype=="new")
 	{
-		trace(objFrame.date);
+		if(objFrame.title)this.Div00.form.sta_proId.set_text(objFrame.title);
 		if(objFrame.date)this.Div00.form.calDate.set_value(objFrame.date);
 	}
 };
@@ -48,7 +47,6 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		return 0;
 	}
 	var objReturn;
-	trace("아이디는" + this.scheduleId);
 	objReturn = {
 			"popuptype" : this.popuptype,
 			"id" : this.scheduleId,

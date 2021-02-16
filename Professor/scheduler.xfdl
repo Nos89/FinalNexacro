@@ -4,13 +4,13 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Graphics id="grpScheduler" taborder="0" left="10" top="130" ondblclick="grpScheduler_ondblclick" right="10" bottom="10" onclick="grpScheduler_onclick" onsize="grpScheduler_onsize" minwidth="100" maxwidth="" minheight="100" maxheight=""/>
-        <Button id="btnPrev" taborder="1" text="&lt;" left="391" top="60" width="60" height="40" onclick="btnPrev_onclick"/>
-        <Button id="btnNext" taborder="2" text="&gt;" left="661" top="60" width="60" height="40" onclick="btnNext_onclick"/>
-        <Static id="stYearMonth" taborder="3" left="467" top="61" width="178" height="39" textAlign="center" font="bold 24px/normal &quot;Gulim&quot;"/>
-        <Button id="btnNew" taborder="4" text="신규일정" left="940" top="61" width="60" height="40" onclick="btnNew_onclick"/>
+        <Button id="btnPrev" taborder="1" text="&lt;" left="35.87%" top="9.23%" width="5.5%" height="6.15%" onclick="btnPrev_onclick"/>
+        <Button id="btnNext" taborder="2" text="&gt;" left="60.64%" top="9.23%" width="5.5%" height="6.15%" onclick="btnNext_onclick"/>
+        <Static id="stYearMonth" taborder="3" left="42.75%" top="9.38%" width="16.33%" height="6%" textAlign="center" font="bold 24px/normal &quot;Gulim&quot;"/>
+        <Button id="btnNew" taborder="4" text="신규일정" left="86.24%" top="9.38%" onclick="btnNew_onclick" right="8.26%" bottom="84.62%"/>
         <Static id="Static00" taborder="5" text="교수/학과스케줄" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
-        <Static id="Static01" taborder="6" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
-        <Button id="btn_del" taborder="7" text="삭제" left="1010" top="61" width="60" height="40" onclick="btn_del_onclick"/>
+        <Static id="Static01" taborder="6" text="Static01" left="0.83%" top="5.85%" width="97.34%" height="0.15%" border="1px solid black,0px none,0px none"/>
+        <Button id="btn_del" taborder="7" text="삭제" left="92.66%" top="9.38%" onclick="btn_del_onclick" right="1.83%" bottom="84.62%"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**

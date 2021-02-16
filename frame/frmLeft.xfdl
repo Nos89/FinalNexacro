@@ -352,6 +352,7 @@
 this.application = null;
 this.loginID = "";
 this.userType = "";
+this.userName ="";
 
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -381,11 +382,15 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fn_loginCallback = function( pID, pErr, pMsg ){
 	this.application=nexacro.getApplication()
 	if( this.userType == "학생" ){
+		this.Static00.set_text("학생종합정보");
 		this.grdLeft.set_binddataset(this.grd_student);
 	} else if ( this.userType == "교수" ){	
+		this.Static00.set_text("교수종합정보");
+		this.application.gvProName = this.userName;
 		this.application.gvID = this.loginID;
 		this.grdLeft.set_binddataset(this.grd_professor);
 	} else if ( this.userType == "관리자" ){
+		this.Static00.set_text("관리자종합정보");
 		this.grdLeft.set_binddataset(this.application.gdsLeftMenu_admin);
 	}
 }
