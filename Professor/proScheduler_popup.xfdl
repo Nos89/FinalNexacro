@@ -47,38 +47,6 @@
           <Column id="sche_proName" type="STRING" size="256"/>
           <Column id="check" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="sche_seq">12</Col>
-            <Col id="sche_date">3</Col>
-            <Col id="sche_title">5</Col>
-            <Col id="sche_contents">6</Col>
-            <Col id="sche_type">8</Col>
-            <Col id="sche_proId">7</Col>
-            <Col id="sche_proName">88</Col>
-            <Col id="check">0</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">2</Col>
-            <Col id="sche_date">3</Col>
-            <Col id="sche_title">5</Col>
-            <Col id="sche_contents">7</Col>
-            <Col id="sche_type">8</Col>
-            <Col id="sche_proId">7</Col>
-            <Col id="sche_proName">8</Col>
-            <Col id="check">0</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">2</Col>
-            <Col id="sche_date">4</Col>
-            <Col id="sche_title">6</Col>
-            <Col id="sche_contents">7</Col>
-            <Col id="sche_type">8</Col>
-            <Col id="sche_proId">77</Col>
-            <Col id="sche_proName">8</Col>
-            <Col id="check">0</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="delScheduler">
         <ColumnInfo>

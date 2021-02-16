@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="diary_del_pop" width="490" height="360" titletext="New Form" onload="diary_del_pop_onload">
+    <Layouts>
+      <Layout height="360" width="490">
+        <Button id="btn_del" taborder="0" text="삭제" left="262" top="301" width="118" height="38" onclick="btn_del_onclick"/>
+        <Button id="btn_cancle" taborder="1" text="취소" left="110" top="300" width="118" height="38" onclick="btn_cancle_onclick"/>
+        <Grid id="Grid00" taborder="2" left="7" top="10" width="473" height="281" binddataset="dsSchedule" autofittype="col" onheadclick="Grid00_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="교수번호"/>
+                <Cell col="2" text="이름"/>
+                <Cell col="3" text="내용"/>
+                <Cell col="4" text="작성날짜"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:check" edittype="checkbox" displaytype="checkboxcontrol"/>
+                <Cell col="1" text="bind:busi_proId"/>
+                <Cell col="2" text="bind:busi_proName"/>
+                <Cell col="3" text="bind:busi_contents"/>
+                <Cell col="4" text="bind:busi_date"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsSchedule">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="busi_seq" type="INT" size="256"/>
+          <Column id="busi_proId" type="STRING" size="256"/>
+          <Column id="busi_proName" type="STRING" size="256"/>
+          <Column id="busi_contents" type="STRING" size="256"/>
+          <Column id="busi_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="delScheduler">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="busi_seq" type="INT" size="256"/>
+          <Column id="busi_proId" type="STRING" size="256"/>
+          <Column id="busi_proName" type="STRING" size="256"/>
+          <Column id="busi_contents" type="STRING" size="256"/>
+          <Column id="busi_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.diary_del_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.dsSchedule.copyData(this.parent.dataSet);
+};
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var objDs = this.Grid00.getBindDataset();
+        if(objDs.getRowCount() < 1){ return;}
+        
+        sText = obj.getCellProperty("head", e.cell, "text");
+        sText = (sText == "1" ? "0" : "1");	
+        
+		for(var i=0; i < objDs.rowcount; i++){
+			objDs.setColumn(i, "check", sText);
+		}
+		obj.setCellProperty("Head", e.cell, "text", sText);	
+};
+
+this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(!this.confirm("삭제하시겠습니까?")){ 
+		return 0;	
+	}
+	var arr = this.dsSchedule.extractRows("check=='1'");
+	for(var i=0; i<arr.length; i++){
+		this.delScheduler.addRow();
+		this.delScheduler.copyRow(i,this.dsSchedule,arr[i]);
+	}
+	this.transaction(
+			"delProDiary",
+			"/professor/delProDiary.nex",		
+			"in_ds=delScheduler", 
+			"",
+			"", 
+			"fn_callback"
+		);
+};
+this.fn_callback = function(id, errCode, errMsg){
+	if(errCode != 1){
+		alert("삭제하지 못했습니다 잠시 후 다시 시도해 주세요");
+		
+	}else {
+		this.close("1");
+	}
+};]]></Script>
+  </Form>
+</FDL>
