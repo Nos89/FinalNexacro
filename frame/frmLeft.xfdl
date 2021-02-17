@@ -539,7 +539,7 @@ this.fn_loginCallback = function( pID, pErr, pMsg ){
 		this.grdLeft.set_binddataset(this.grd_professor);
 	} else if ( this.userType == "관리자" ){
 		this.Static00.set_text("관리자종합정보");
-		this.grdLeft.set_binddataset(this.application.gdsLeftMenu_admin);
+		this.grdLeft.set_binddataset(this.grd_admin);
 	}
 }
 
