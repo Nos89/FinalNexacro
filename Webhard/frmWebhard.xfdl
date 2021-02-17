@@ -26,20 +26,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="div_file" taborder="1" left="190" top="0" text="" right="0" bottom="0">
-          <Layouts>
-            <Layout>
-              <Static id="st_dirName" taborder="0" left="20" top="11" width="170" height="29"/>
-              <Static id="st_dirID" taborder="1" left="207" top="9" width="42" height="23" visible="false"/>
-              <Button id="btn_crtFolder" taborder="2" text="폴더 생성" left="125" top="49" width="99" height="27" onclick="div_file_btn_crtFolder_onclick"/>
-              <Button id="btnUpload" taborder="3" text="업로드" left="11" top="49" width="104" height="27" onclick="div_file_btnUpload_onclick"/>
-              <Div id="div_inDir" taborder="4" left="11" top="80" border="1px solid black" bottom="5" right="5" url="Webhard::frmIconView.xfdl"/>
-              <Button id="btnListView" taborder="5" top="50" width="26" height="25" cssclass="btnListView" onclick="div_file_btnListView_onclick" right="11"/>
-              <Button id="btnIconView" taborder="6" top="50" height="25" cssclass="btnIconView" onclick="div_file_btnIconView_onclick" width="26" right="37"/>
-            </Layout>
-          </Layouts>
-        </Div>
-        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="218" top="95" width="345" height="30">
+        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="550" top="49" width="345" height="30">
           <Layouts>
             <Layout>
               <Edit id="Edit00" taborder="0" left="5" top="0" width="272" height="30" displaynulltext="폴더명을 입력해주세요." text="qwfqwf"/>
@@ -48,6 +35,19 @@
           </Layouts>
         </PopupDiv>
         <PopupMenu id="pm_context" left="750" top="410" width="120" height="170" innerdataset="ds_context" captioncolumn="captioncolumn" checkboxcolumn="" enablecolumn="" hotkeycolumn="" iconcolumn="iconcolumn" idcolumn="idcolumn" levelcolumn="levelcolumn" userdatacolumn="userdatacolumn" onlbuttondown="pm_context_onlbuttondown"/>
+        <Div id="div_file" taborder="2" left="190" top="0" text="" right="0" bottom="0">
+          <Layouts>
+            <Layout>
+              <Static id="st_dirName" taborder="0" left="20" top="11" width="170" height="29"/>
+              <Static id="st_dirID" taborder="1" left="207" top="9" width="42" height="23" visible="false"/>
+              <Button id="btn_crtFolder" taborder="2" text="폴더 생성" left="125" top="49" width="99" height="27" onclick="div_file_btn_crtFolder_onclick"/>
+              <Button id="btnUpload" taborder="3" text="업로드" left="11" top="49" width="104" height="27" onclick="div_file_btnUpload_onclick"/>
+              <Div id="div_inDir" taborder="4" left="11" top="80" border="1px solid black" bottom="5" right="5" url="Webhard::frmIconView.xfdl" text="" onsize="div_file_div_inDir_onsize"/>
+              <Button id="btnListView" taborder="5" top="50" width="26" height="25" cssclass="btnListView" onclick="div_file_btnListView_onclick" right="11"/>
+              <Button id="btnIconView" taborder="6" top="50" height="25" cssclass="btnIconView" onclick="div_file_btnIconView_onclick" width="26" right="37"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Objects>
@@ -101,23 +101,24 @@
           <Column id="size" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_indir">
+      <Dataset id="ds_indir" onrowsetchanged="ds_indir_onrowsetchanged">
         <ColumnInfo>
           <Column id="name" type="STRING" size="256"/>
           <Column id="isFolder" type="STRING" size="256"/>
           <Column id="size" type="STRING" size="256"/>
           <Column id="date" type="STRING" size="256"/>
           <Column id="savedName" type="STRING" size="256"/>
-          <Column id="file_location" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
             <Col id="name">A</Col>
             <Col id="isFolder">true</Col>
+            <Col id="savedName">A</Col>
           </Row>
           <Row>
             <Col id="name">B</Col>
             <Col id="isFolder">true</Col>
+            <Col id="savedName">B</Col>
           </Row>
           <Row>
             <Col id="name">fileA</Col>
@@ -125,7 +126,6 @@
             <Col id="size">3</Col>
             <Col id="date">20210205</Col>
             <Col id="savedName">asdfasdf</Col>
-            <Col id="file_location">P-1001</Col>
           </Row>
           <Row>
             <Col id="name">fileB</Col>
@@ -133,7 +133,6 @@
             <Col id="size">4</Col>
             <Col id="date">20210205</Col>
             <Col id="savedName">ffdsa</Col>
-            <Col id="file_location">P-1001</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -183,10 +182,12 @@
           </Row>
         </Rows>
       </Dataset>
+      <FileDownTransfer id="fileDownTrans"/>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
 this.cnt = 0;
 this.parentID = 0;
+this.nameLoc = ""; // 디렉토리 내 폴더, 파일 이름 & 저장 위치
 
 this.frmLeftMenu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -229,32 +230,46 @@ this.fn_indirCallback = function( pID, pErrCode, pMsg ){
 }
 
 // 폴더 내 하위 폴더 및 파일 뿌려주기
+this.maxItem = "";
+this.div_fileWidth = "";
+this.div_fileHeight = "";
+
 this.fn_indir = function(){
-	// Div.init( strName, vLeft, vTop , vWidth, vHeight [, vRight, vBottom, [vMinWidth, [vMaxWidth, [vMinHeight, [vMaxHeight]]]]] ) 
-	// width 878 height 252
-	//this.alert(this.cnt);
+	this.div_fileWidth = this.div_file.getOffsetWidth();
+	this.div_fileHeight = this.div_file.getOffsetHeight();
 	
 	let dsIndir = this.ds_indir;
 	this.cnt = dsIndir.getRowCount();
-	for( let i = 0; i < this.cnt; i++ ){
-		let objDiv = new Div();
-		let nWidth = 80;
-		let nHeight = 100;
-		let nX = i * (nWidth + 1);
-		let nY = parseInt(i/parseInt(858/nWidth)) * (nHeight + 3);
-		
-		objDiv.init( "Div"+i, nX , nY , nWidth, nHeight );
+	
+	let divWidth = 80;
+	let divHeight = 100;
+	this.maxItem = parseInt(this.div_fileWidth / (divWidth + 1));
+	let itemPerRow = this.maxItem;
+	let maxRow = parseInt(this.cnt / this.maxItem) +1;
+	let index = 0;
+	//this.alert( this.cnt + " : " + maxItem + " : " + maxRow );
+	for( let i = 0; i < maxRow; i++ ){
+		let nY = (divHeight + 3) * i;
+		if( itemPerRow > this.cnt - ( this.maxItem * i ) ){
+			itemPerRow = this.cnt - ( this.maxItem * i );
+		}
+		for( let j = 0; j < itemPerRow; j++ ){
+			let nX = (divWidth + 1) * j;
+			
+			let objDiv = new Div();
+			
+			objDiv.init( "Div"+index, nX , nY , divWidth, divHeight );
 		
 		//objDiv.set_background("pink");
 		
 		// 아이콘
 		let objDivIcon = new Div();
-		nWidth = 70;
-		nHeight = 70;
+		let nWidth = 70;
+		let nHeight = 70;
 		objDivIcon.init("iconDiv", 5, 5, nWidth, nHeight );
 		//objDivIcon.set_background("green");
-		objDiv.addChild("iconDiv"+i, objDivIcon);
-		if( dsIndir.getColumn(i, "isFolder") == "true" ){
+		objDiv.addChild("iconDiv", objDivIcon);
+		if( dsIndir.getColumn(index, "isFolder") == "true" ){
 			objDivIcon.set_cssclass("folder");
 		} else {
 			objDivIcon.set_border("1px solid black");
@@ -264,29 +279,83 @@ this.fn_indir = function(){
  		let objStatic = new Static();
  		nWidth = 75;
  		nHeight = 15;
- 		objStatic.init("Static"+i, 5, 75, nWidth, nHeight);
- 		objStatic.set_text(dsIndir.getColumn(i, "name"));
+ 		objStatic.init("Static", 5, 75, nWidth, nHeight);
+ 		objStatic.set_text(dsIndir.getColumn(index, "name"));
  		objDiv.addChild("Static", objStatic);
 		
 		let objIdentify = new Static();
-		objIdentify.init("savedName:fileLocation"+i, 0, 0, 0, 0);
-		let savedName = dsIndir.getColumn(i, "savedName");
-		let fileLocation = dsIndir.getColumn(i, "file_location");
-		if( savedName !== undefined ){
-			objIdentify.set_text( savedName + ":" + fileLocation );
-		} else {
-			objIdentify.set_text( "null:null" );
-		}
+		objIdentify.init("savedName:fileLocation", 0, 0, 0, 0);
+		let savedName = dsIndir.getColumn(index, "savedName");
+		let fileLocation = this.div_file.form.st_dirID.text;
+		objIdentify.set_text( savedName + ":" + fileLocation );
 		
 		objIdentify.set_visible(false);
 		objDiv.addChild("identify", objIdentify);
 		
-		this.div_file.form.div_inDir.form.addChild("Div"+i, objDiv);
+		this.div_file.form.div_inDir.form.addChild("Div"+index, objDiv);
 		objDiv.show();
-		//objDivIcon.addEventHandler("oncontextmenu", this.div_file_div_inDir_oncontextmenu, this);
 		objDivIcon.addEventHandler("onrbuttondown", this.rClick, this);
+		index++;
+		}
 	}
+	
+// 	for( let i = 0; i < this.cnt; i++ ){
+// 		let objDiv = new Div();
+// 		let nWidth = 80;
+// 		let nHeight = 100;
+// 		let nX = i * (nWidth + 1);
+// 		let nY = parseInt(i/parseInt(in_width/nWidth)) * (nHeight + 3);
+// 		
+// 		objDiv.init( "Div"+i, nX , nY , nWidth, nHeight );
+// 		
+// 		//objDiv.set_background("pink");
+// 		
+// 		// 아이콘
+// 		let objDivIcon = new Div();
+// 		nWidth = 70;
+// 		nHeight = 70;
+// 		objDivIcon.init("iconDiv", 5, 5, nWidth, nHeight );
+// 		//objDivIcon.set_background("green");
+// 		objDiv.addChild("iconDiv"+i, objDivIcon);
+// 		if( dsIndir.getColumn(i, "isFolder") == "true" ){
+// 			objDivIcon.set_cssclass("folder");
+// 		} else {
+// 			objDivIcon.set_border("1px solid black");
+// 		}
+// 		
+// 		// 이름
+//  		let objStatic = new Static();
+//  		nWidth = 75;
+//  		nHeight = 15;
+//  		objStatic.init("Static"+i, 5, 75, nWidth, nHeight);
+//  		objStatic.set_text(dsIndir.getColumn(i, "name"));
+//  		objDiv.addChild("Static", objStatic);
+// 		
+// 		let objIdentify = new Static();
+// 		objIdentify.init("savedName:fileLocation"+i, 0, 0, 0, 0);
+// 		let savedName = dsIndir.getColumn(i, "savedName");
+// 		let fileLocation = this.div_file.form.st_dirID.text;
+// 		objIdentify.set_text( savedName + ":" + fileLocation );
+// 		
+// 		objIdentify.set_visible(false);
+// 		objDiv.addChild("identify", objIdentify);
+// 		
+// 		this.div_file.form.div_inDir.form.addChild("Div"+i, objDiv);
+// 		objDiv.show();
+// 		//objDivIcon.addEventHandler("oncontextmenu", this.div_file_div_inDir_oncontextmenu, this);
+// 		objDivIcon.addEventHandler("onrbuttondown", this.rClick, this);
+// 	}
 }
+
+this.div_file_div_inDir_onsize = function(obj:nexacro.Div,e:nexacro.SizeEventInfo)
+{
+	let a_maxItem = parseInt(e.cx / (80 + 1));
+	if( this.maxItem != a_maxItem && this.div_file.form.btnIconView.getSelectStatus() == true ){
+		this.fn_delDiv();
+		this.fn_indir();
+	}
+	
+};
 
 // 동적 생성된 Div 지우기
 this.fn_delDiv = function(){
@@ -314,15 +383,17 @@ this.div_dir_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridCli
 
 // Context Menu 보이기
 
-this.nameLoc = ""; // 디렉토리 내 폴더, 파일 이름 & 저장 위치
+
+this.indirIndex = "";
 
 this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 {
 	let targetX = e.clientx;
 	let targetY = e.clienty;
-	let index = obj.parent.parent.id.substring(3, obj.parent.parent.id.length);
-		
+	this.indirIndex = obj.parent.parent.id.substring(3, obj.parent.parent.id.length);
 	this.nameLoc = obj.parent.identify.text;
+	
+	
 	this.pm_context.trackPopupByComponent( obj, targetX, targetY );
 };
 
@@ -333,11 +404,29 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 	
 	let name = this.nameLoc.split(":")[0];
 	let location = this.nameLoc.split(":")[1];
-	
+	//this.alert(this.nameLoc);
 	let contextID = this.ds_context.getColumn(index, "idcolumn");
 	if( contextID == "download" ){
 	// 다운로드
-	
+		if( this.ds_indir.getColumn( this.indirIndex, 1 ) == "false" ){
+			this.fileDownTrans.clearPostDataList();
+			
+			this.fileDownTrans.setPostData("filename", name );
+			
+			//this.alert( this.ds_indir.getColumn( this.indirIndex, "name" ) );
+			this.fileDownTrans.setPostData("oriname", this.ds_indir.getColumn(this.indirIndex, "name") );
+			
+			this.fileDownTrans.download("/webhard/downFile");
+			
+// 			this.transaction(
+// 					"downFile", // 1. strSVCID
+// 					"/webhard/downFile", // 2. strURL
+// 					"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+// 					"", // 4. strOutDatasets -select Fds=Sds
+// 					"name="+name +" location=" + location, // 5. strArgument View에서 Server로 넘겨줄 변수
+// 					"fn_downFile_callback" // 6. strCallbackFunc
+// 				);
+		}
 	} else if ( contextID == "upload" ){
 	// 업로드
 		this.div_file_btnUpload_onclick();
@@ -352,20 +441,46 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 	
 	} else if ( contextID == "delete" ){
 	// 파일 삭제
-		this.transaction(
+		let flag = "";
+		if( this.ds_indir.getColumn( this.indirIndex, 1) == "false" ){
+			flag = this.confirm("파일을 삭제하시겠습니까?");
+		} else {
+			flag = this.confirm("폴더를 삭제하시겠습니까?");
+		}
+		if( flag ){
+			this.transaction(
 				"delFile", // 1. strSVCID
-				"", // 2. strURL
+				"/webhard/delete", // 2. strURL
 				"", // 3. strInDatasets, Sds-Fds:U, :A, :N
 				"", // 4. strOutDatasets -select Fds=Sds
-				"", // 5. strArgument View에서 Server로 넘겨줄 변수
-				"" // 6. strCallbackFunc
+				"name="+name +" location=" + location + " isFolder=" + this.ds_indir.getColumn(this.indirIndex, 1), // 5. strArgument View에서 Server로 넘겨줄 변수
+				"fn_delIndir_callback" // 6. strCallbackFunc
 			);
+		}
 	} else if ( contextID == "status" ){
 	// 속성
 	
 	}
 };
 
+this.fn_delIndir_callback = function( pId, pErrCode, pErrMsg ){
+	if( pErrCode >= 1 ){
+		this.alert("파일이 삭제됐습니다.");
+		this.fn_indirTran( this.nameLoc.split(":")[1] );
+	}
+}
+
+this.downFileName = "";
+this.downFileUrl = "";
+this.fn_downFile_callback = function( pId, pErrCode, pErrMsg ){
+	if( pErrCode > 0 ){
+		this.fileDownTrans.clearPostDataList();
+		this.downFileUrl.split("/");
+		this.fileDownTrans.setPostData( "fileName", this.downFileName );
+		this.fileDownTrans.setPostData( "fileUrl", this.downFileUrl );
+		this.fileDownTrans.download( "/webhard/" + this.downFileName);
+	}
+}
 
 // 폴더 생성
 this.div_file_btn_crtFolder_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -439,8 +554,11 @@ this.fn_isNull=function(val){
 this.div_file_btnUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let objCF = new ChildFrame();
+	
 	objCF.init("popUpload", 0, 0, 300, 400);
 	objCF.set_formurl("Webhard::frmUpload.xfdl");
+	objCF.set_openalign("center middle");
+	objCF.set_showtitlebar(false);
 	objCF.showModal(
 		this.getOwnerFrame(),
 		{ parentID : this.div_file.form.st_dirID.text },
@@ -449,11 +567,11 @@ this.div_file_btnUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEve
 	);
 };
 
-
-
-
-
-
+this.fn_uploadCallback = function( pId, pErrCode, pErrMsg ){
+	if( pErrCode >= 1 ){
+		this.alert(pErrMsg);
+	}
+}
 
 
 // ListView Icon Click Event
@@ -487,6 +605,14 @@ this.frmLeftMenu_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 {
 	e.stopPropagation();
 };
+
+this.ds_indir_onrowsetchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowsetChangeEventInfo)
+{
+	this.alert( this.div_file.form.st_dirID.text );
+	this.fn_indirTran( this.div_file.form.st_dirID.text );
+}
+
+
 ]]></Script>
   </Form>
 </FDL>
