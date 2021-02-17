@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Board_post" width="1000" height="600" titletext="New Form" onload="Board_post_onload">
+  <Form id="Board_post" width="1000" height="600" titletext="New Form" onload="Board_post_onload" onsize="Board_post_onsize">
     <Layouts>
       <Layout height="600" mobileorientation="landscape" width="1000">
-        <WebBrowser id="web_post" taborder="0" left="10" top="50" right="10" bottom="90" onusernotify="web_post_onusernotify" onloadcompleted="web_post_onloadcompleted"/>
+        <WebBrowser id="web_post" taborder="0" left="10" top="50" right="10" bottom="90" onusernotify="web_post_onusernotify" onloadcompleted="web_post_onloadcompleted" border="none"/>
         <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Button id="btn_delete" taborder="3" text="삭제" width="80" height="35" cssclass="btn_WF_gantt01" onclick="btn_delete_onclick" left="515" bottom="32"/>
-        <Button id="btn_modify" taborder="2" text="수정" left="405" height="35" cssclass="btn_WF_gantt01" onclick="btn_modify_onclick" bottom="32" width="80"/>
+        <Button id="btn_delete" taborder="3" text="삭제" width="80" height="35" cssclass="btn_WF_gantt01" onclick="btn_delete_onclick" bottom="32" left="520"/>
+        <Button id="btn_modify" taborder="2" text="수정" left="400" height="35" cssclass="btn_WF_gantt01" onclick="btn_modify_onclick" bottom="32" width="80"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -30,6 +30,8 @@ this.Board_post_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		bdTitle = "공지사항";;
 	}
 	this.Static00.set_text(bdTitle);
+	
+	this.web_post.set_border("1px solid #999999");
 	
 	let seq = this.parent.seq;
 	this.web_post.set_url("http://localhost/viewPost?pageGroup=community&type="+this.type+"&seq="+seq+"&purp=view");
@@ -64,12 +66,18 @@ this.btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let seq = this.parent.seq;
 	let domain = "localhost/goModify?pageGroup=community&type="+this.type+"&seq="+seq+"&page=1&purp=modify";
 	this.web_post.set_url(domain);
-	
+
+	this.fn_buttonChangeToSave();
+};
+
+
+this.fn_buttonChangeToSave = function()
+{
 	this.btn_modify.set_visible("false");
 	this.btn_delete.set_visible("false");
 	
 	let objBtn1 = new Button();
-	objBtn1.init("btn_save",390,null,80,35,null,32);
+	objBtn1.init("btn_save",this.btn_modify.left,null,80,35,null,32);
 	objBtn1.set_text("저장");
 	objBtn1.set_cssclass("btn_WF_gantt01");
 	this.addChild("btn_save",objBtn1);
@@ -77,13 +85,21 @@ this.btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	objBtn1.addEventHandler("onclick",this.btn_save_onclick,this);
 	
 	let objBtn2 = new Button();
-	objBtn2.init("btn_cancel",500,null,80,35,null,32);
+	objBtn2.init("btn_cancel",this.btn_delete.left,null,80,35,null,32);
 	objBtn2.set_text("취소");
 	objBtn2.set_cssclass("btn_WF_gantt01");
 	this.addChild("btn_cancel",objBtn2);
 	objBtn2.show();
 	objBtn2.addEventHandler("onclick",this.btn_cancel_onclick,this);
-};
+}
+
+this.fn_buttonChangeToRead = function()
+{
+	this.btn_modify.set_visible("true");
+	this.btn_delete.set_visible("true");
+	this.btn_save.destroy();
+	this.btn_cancel.destroy();
+}
 
 
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -108,7 +124,7 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let arg;
 	let callback = "fn_callback_save";
 	
-	if(this.boardType=="notice"){
+	if(this.type=="notice"){
 		title = _win.callMethod("getTitle");
 		contents = _win.callMethod("getContents");
 		category = _win.callMethod("getCategory");
@@ -137,7 +153,7 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		let nRow = this.ds_board.extractRows("seq=="+this.parent.seq);	
 		this.ds_board.setColumn(nRow,"title", title);
 		this.ds_board.setColumn(nRow,"contents", contents);
-		this.ds_board.setColumn(nRow,"boardType", this.boardType);
+		this.ds_board.setColumn(nRow,"boardType", this.type);
 		this.ds_board.setColumn(nRow,"writer","관리자");
 		
 		id = "modifyBoard";
@@ -164,23 +180,46 @@ this.isPostNull = function(title, contents)
 
 this.fn_callback_save = function(id,errCD,errMSG)
 {
-	
+	let seq = this.parent.seq;
 	if(errCD<0){
 		this.alert("수정하지 못했습니다.");
 	}else{
 		this.alert("수정되었습니다.");
+		this.web_post.set_url("http://localhost/viewPost?pageGroup=community&type="+this.type+"&seq="+seq+"&purp=view");
+		this.fn_buttonChangeToRead();
 	}
-// 	trace(this.parent.parent.name);
-// 	this.parent.popupCallback("refresh");
-//	this.close();
 }
 
-this.RunCallbackFunction = function() { };
 
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
 }
+
+
+// 버튼 위치 조정
+this.Board_post_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
+{
+	let comp1;
+	let comp2;
+	
+	if(this.btn_modify.visible){
+		comp1 = this.btn_modify;
+		comp2 = this.btn_delete;
+	}else {
+		comp1 = this.btn_save;
+		comp2 = this.btn_cancel;
+	}
+
+	let nX = e.cx;
+
+	let comp1Width = comp1.getOffsetWidth();
+	let comp1X = (e.cx/2) - comp1Width - 20;
+	comp1.setOffsetLeft(comp1X);
+	
+	let comp2X = (e.cx/2) + 20;
+	comp2.setOffsetLeft(comp2X);
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_board">
