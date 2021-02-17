@@ -6,7 +6,7 @@
         <Static id="Static00" taborder="0" text="수업시간조회" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
         <Static id="Static01" taborder="1" text="" left="5" top="34" height="76" right="5" background="#c8ddee"/>
         <Static id="Static00_00" taborder="2" text="강의알람리스트" left="0" top="120" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Grid id="Grid00" taborder="3" left="5" top="164" right="5" bottom="10" autofittype="col">
+        <Grid id="Grid00" taborder="3" left="5" top="164" right="5" bottom="10" autofittype="col" nodatatext="조회된 데이터가 없습니다.">
           <Formats>
             <Format id="default">
               <Columns>
@@ -80,7 +80,7 @@
           </Dataset>
         </Combo>
         <Static id="Static02_00_00_00_00" taborder="6" text="개설학기" left="161" top="40" width="60" height="30"/>
-        <Combo id="cmb_semester" taborder="7" text="1학기" left="221" top="40" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
+        <Combo id="cmb_semester" taborder="7" text="1" left="221" top="40" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -89,11 +89,11 @@
             <Rows>
               <Row>
                 <Col id="codecolumn">1</Col>
-                <Col id="datacolumn">1</Col>
+                <Col id="datacolumn">1학기</Col>
               </Row>
               <Row>
                 <Col id="codecolumn">2</Col>
-                <Col id="datacolumn">2</Col>
+                <Col id="datacolumn">2학기</Col>
               </Row>
             </Rows>
           </Dataset>

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Board_write" width="1090" height="650" titletext="New Form" onload="Board_write_onload">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="1090">
+        <WebBrowser id="WebBrowser00" taborder="0" left="10" top="50" width="1070" height="510" onloadcompleted="WebBrowser00_onloadcompleted"/>
+        <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01" text="홍보게시판 등록"/>
+        <Button id="btn_save" taborder="2" text="등록" left="505" top="575" width="80" height="35" onclick="btn_save_onclick" cssclass="btn_WF_gantt01"/>
+        <Static id="Static12" taborder="3" left="0" top="620" width="1090" height="30" text=""/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+var _win;
+this.boardType=this.parent.type;
+
+
+// 페이지 로드
+this.Board_write_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	let bdTitle;
+	if(this.boardType=="promote"){
+		bdTitle = "홍보게시판";
+	}else if(this.boardType=="event"){
+		bdTitle = "행사게시판";
+	}else {
+		bdTitle = "공지사항"
+	}
+	this.Static00.set_text(bdTitle+" 등록");
+	
+	let domain = "localhost/goWrite.nex?type="+this.boardType;
+	this.WebBrowser00.set_url(domain);
+};
+
+
+// 로딩 완료시
+this.WebBrowser00_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+	_win = this.WebBrowser00.getProperty('window');
+	trace("win: "+_win);
+};
+
+// 등록
+this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let title;
+	let contents;
+	let category;
+	
+	let id;
+	let url;
+	let inData;
+	let outData;
+	let arg;
+	let callback = "fn_callback";
+	
+	if(this.boardType=="notice"){
+		title = _win.callMethod("getTitle");
+		contents = _win.callMethod("getContents");
+		category = _win.callMethod("getCategory");
+		
+		this.isPostNull(title,contents);
+		
+		this.ds_notice.addRow();
+		let nRow = this.ds_notice.rowposition;
+	
+		this.ds_notice.setColumn(nRow,"noti_title", title);
+		this.ds_notice.setColumn(nRow,"noti_contents", contents);
+		this.ds_notice.setColumn(nRow,"category", category);
+		
+		id = "writeNotice";
+		url = "/writeNotice.nex";
+		inData = "in_notice=ds_notice:U in_files=ds_files:U";
+		
+		trace(title);
+		trace(contents);
+		trace(category);
+		
+	}else {
+		title = _win.callMethod("getTitle");
+		contents = _win.callMethod("getContents");
+		
+		this.isPostNull(title,contents);
+		
+		this.ds_board.addRow();
+		let nRow = this.ds_board.rowposition;
+		
+		this.ds_board.setColumn(nRow,"title", title);
+		this.ds_board.setColumn(nRow,"contents", contents);
+		this.ds_board.setColumn(nRow,"boardType", this.boardType);
+		this.ds_board.setColumn(nRow,"writer","관리자");
+		
+		id = "writeBoard";
+		url = "/writeBoard.nex";
+		inData = "in_board=ds_board:U in_files=ds_files:U";
+		
+		trace(title);
+		trace(contents);
+	}
+
+	this.transaction(id,url,inData,outData,arg,callback);
+
+};
+
+this.isPostNull = function(title, contents)
+{
+	if(title==null||title.length<=0){
+		this.alert("제목을 입력해주세요.");
+		return;
+	}else if(contents==null||contents.length<=0){
+		this.alert("내용을 입력해주세요.");
+		return;
+	}
+}
+
+this.fn_callback = function(id, errCD, errMsg)
+{
+	if(errCD<0){
+		this.alert("등록하지 못했습니다.");
+	}else {
+		this.alert("등록되었습니다.");
+	}
+	this.close();
+}
+]]></Script>
+    <Objects>
+      <Dataset id="ds_board">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="boardType" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="writer" type="STRING" size="256"/>
+          <Column id="writeDate" type="DATE" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_files">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="parent_code" type="STRING" size="256"/>
+          <Column id="oriName" type="STRING" size="256"/>
+          <Column id="savedName" type="STRING" size="256"/>
+          <Column id="reg_date" type="DATE" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_notice">
+        <ColumnInfo>
+          <Column id="noti_seq" type="INT" size="256"/>
+          <Column id="noti_title" type="STRING" size="256"/>
+          <Column id="noti_contents" type="STRING" size="256"/>
+          <Column id="noti_writeDate" type="DATE" size="256"/>
+          <Column id="category" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
