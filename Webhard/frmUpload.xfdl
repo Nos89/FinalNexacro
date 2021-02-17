@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="sample_fileuptransfer_01" left="0" top="0" width="1024" height="768" titletext="New Form" border="" background="" onload="sample_fileuptransfer_01_onload">
+  <Form id="sample_fileuptransfer_01" left="0" top="0" width="530" height="420" titletext="New Form" border="" background="" onload="sample_fileuptransfer_01_onload">
     <Layouts>
-      <Layout height="768" width="1024" stepcount="0">
+      <Layout height="420" width="530" stepcount="0">
         <Static id="Static00" taborder="2" text="Drop Files Here" left="20" top="80" width="482" height="150" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
         <Button id="Button00" taborder="0" text="open" left="20" top="40" width="120" height="30" onclick="Button00_onclick"/>
         <Grid id="Grid00" taborder="1" left="20" top="80" width="482" height="150" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop">
@@ -30,6 +30,7 @@
         <Button id="Button01" taborder="3" text="upload" left="380" top="40" width="120" height="30" onclick="Button01_onclick"/>
         <TextArea id="TextArea00" taborder="4" left="20" top="240" width="482" height="120"/>
         <Static id="st_parentID" taborder="5" left="20" top="7" width="55" height="27" visible="false"/>
+        <Button id="btn_cc" taborder="6" text="취소" left="221" top="379" width="89" height="27" onclick="btn_cc_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -160,6 +161,11 @@ this.fn_addlog = function(strMessage)
 	
 }
 
+
+this.btn_cc_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
 ]]></Script>
   </Form>
 </FDL>
