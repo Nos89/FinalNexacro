@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="allAttendCheck" width="680" height="570" titletext="New Form" onload="allAttendCheck_onload">
+    <Layouts>
+      <Layout height="570" mobileorientation="landscape" width="680">
+        <Static id="Static00_01_00" taborder="0" text="과목명" left="20" top="16" width="54" height="35"/>
+        <Combo id="cbo_title" taborder="1" left="64" top="18" width="116" height="32" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="-1" value="all" onitemchanged="cbo_title_onitemchanged" text="--선택 --" displaynulltext="--선택--"/>
+        <Grid id="Grid00" taborder="2" left="11" top="60" width="649" height="430" binddataset="ds_total" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="92"/>
+                <Column size="92"/>
+                <Column size="92"/>
+                <Column size="92"/>
+                <Column size="92"/>
+                <Column size="92"/>
+                <Column size="92"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="학과"/>
+                <Cell col="1" text="학번"/>
+                <Cell col="2" text="이름"/>
+                <Cell col="3" text="학년"/>
+                <Cell col="4" text="출석"/>
+                <Cell col="5" text="지각"/>
+                <Cell col="6" text="결석"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:att_deptName"/>
+                <Cell col="1" text="bind:att_stdId"/>
+                <Cell col="2" text="bind:att_stdName"/>
+                <Cell col="3" text="bind:att_stdLevel"/>
+                <Cell col="4" text="bind:attend" displaytype="mask" maskedittype="string" maskeditformat="#회"/>
+                <Cell col="5" text="bind:late" maskedittype="string" maskeditformat="#회" displaytype="mask"/>
+                <Cell col="6" text="bind:absent" maskedittype="string" maskeditformat="#회" displaytype="mask"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_close" taborder="3" text="닫기" left="251" top="515" width="149" height="35" onclick="btn_close_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_total">
+        <ColumnInfo>
+          <Column id="att_lecCode" type="STRING" size="256"/>
+          <Column id="att_deptName" type="STRING" size="256"/>
+          <Column id="att_stdId" type="STRING" size="256"/>
+          <Column id="att_stdLevel" type="STRING" size="256"/>
+          <Column id="att_stdName" type="STRING" size="256"/>
+          <Column id="attend" type="INT" size="256"/>
+          <Column id="late" type="INT" size="256"/>
+          <Column id="absent" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cboTitle">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_openClass">
+        <ColumnInfo>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_year" type="DATE" size="256"/>
+          <Column id="oc_semester" type="STRING" size="256"/>
+          <Column id="oc_schedule" type="STRING" size="256"/>
+          <Column id="oc_max" type="INT" size="256"/>
+          <Column id="oc_part" type="INT" size="256"/>
+          <Column id="oc_is_close" type="STRING" size="256"/>
+          <Column id="oc_close_reason" type="STRING" size="256"/>
+          <Column id="oc_pro_code" type="STRING" size="256"/>
+          <Column id="oc_class_room" type="STRING" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="dept_code" type="STRING" size="256"/>
+          <Column id="col_code" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.fn_callback = function(id, errCode, errMsg){
+	if(id=="allAttCheckOnLoad"){
+		this.fn_setTitle();
+		this.ds_total.filter("att_stdId=='xxxxxx'");
+	}else if(id=="attendCheckAll"){
+		var lec_code = this.cbo_title.value;
+		this.ds_total.filter("att_lecCode=='"+lec_code+"'");
+	}
+};
+
+
+this.allAttendCheck_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var id =this.parent.objArguments;
+	this.transaction(
+		"allAttCheckOnLoad",
+		"/professor/allAttCheckOnLoad.nex",	
+		"",        
+		"ds_openClass=out_ds", 
+		"id="+ id+"", 
+		"fn_callback" 
+	);
+};
+
+
+this.fn_setTitle = function(){
+	//title 집어넣어주기
+	for(var i=0; i<this.ds_openClass.getRowCount(); i++){
+		var code = this.ds_openClass.getColumn(i,"oc_code");
+		var title = this.ds_openClass.getColumn(i,"name");
+		this.fn_setCombo(title, code);
+		
+	}
+	
+}
+
+this.fn_setCombo = function(title, code){
+	var check = 0;
+	for(var i=0; i<this.ds_cboTitle.getRowCount(); i++){
+		var code2 = this.ds_cboTitle.getColumn(i,"code");
+		if(code==code2){
+			check = 1;
+		}
+	}
+	if(check==0){
+			var nRow = this.ds_cboTitle.addRow();
+			this.ds_cboTitle.setColumn(nRow,"code",code);
+			this.ds_cboTitle.setColumn(nRow,"name",title);
+		}else {
+			check = 0;
+		}
+	
+}
+
+
+this.cbo_title_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	var lec_code = this.cbo_title.value;
+	if(lec_code=="all")
+	{
+		this.ds_total.filter("");
+		return;
+	}else{
+	this.transaction(
+		"attendCheckAll", 
+		"/professor/attendCheckAll.nex",		
+		"",   
+		"ds_total=out_ds", 
+		"code="+lec_code+"",  
+		"fn_callback"
+	);
+	
+	}
+	
+	
+	
+};
+
+
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

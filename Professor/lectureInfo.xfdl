@@ -54,14 +54,14 @@
             </Format>
           </Formats>
         </Grid>
-        <Combo id="cbo_year" taborder="3" text="Combo00" left="64" top="45" width="86" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Combo id="cbo_target" taborder="4" text="Combo01" left="217" top="46" width="93" height="31" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Combo id="cbo_semester" taborder="5" text="Combo02" left="369" top="47" width="83" height="30" innerdataset="ds_semester" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00" taborder="6" text="학기" left="337" top="44" width="74" height="35"/>
-        <Static id="Static00_01" taborder="7" text="학년" left="180" top="45" width="67" height="35"/>
+        <Combo id="cbo_year" taborder="3" text="Combo00" left="64" top="43" width="86" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Combo id="cbo_target" taborder="4" text="Combo01" left="217" top="43" width="93" height="31" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Combo id="cbo_semester" taborder="5" text="Combo02" left="369" top="43" width="83" height="30" innerdataset="ds_semester" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00" taborder="6" text="학기" left="337" top="43" width="74" height="35"/>
+        <Static id="Static00_01" taborder="7" text="학년" left="180" top="43" width="67" height="35"/>
         <Static id="Static00_01_00" taborder="8" text="년도" left="20" top="43" width="54" height="35"/>
-        <Button id="btn_search" taborder="9" text="조회" left="512" top="52" width="85" height="24" onclick="btn_search_onclick"/>
-        <Button id="btn_reset" taborder="10" text="초기화" left="616" top="52" width="85" height="25" onclick="btn_reset_onclick"/>
+        <Button id="btn_search" taborder="9" text="조회" left="512" top="43" width="85" height="24" onclick="btn_search_onclick"/>
+        <Button id="btn_reset" taborder="10" text="초기화" left="616" top="43" width="85" height="25" onclick="btn_reset_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.id = nexacro.Application.gvID;
@@ -81,6 +81,7 @@ this.fn_callback = function(id, errCode, errMsg){
 	this.fn_setYear();
 };
 
+//combo에 연도 집어넣기
 this.fn_setYear = function(){
 	var min =0;
 	var max =0;

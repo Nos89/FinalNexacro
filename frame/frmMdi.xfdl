@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<FDL version="2.0">
+<FDL version="2.1">
   <Form id="fm_mdi" width="1070" height="30" titletext="New Form" onload="fm_mdi_onload" scrollbartype="none" scrolltype="none">
     <Layouts>
       <Layout height="30" mobileorientation="landscape" width="1070">
@@ -32,11 +32,11 @@ this.tabMdi_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventIn
 
 this.tabMdi_onextrabuttonclick = function(obj:nexacro.Tab,e:nexacro.TabMouseEventInfo)
 {
-	var sWinId = obj.tabpages[e.index].name;	
+	var sWinId = obj.tabpages[e.index].name;
 	obj.removeTabpage(e.index);
 	
 	this.application.WorkFrame[sWinId].form.close();
-
+	//this.fn_DeleteTabpage(sWinId);
 	this.application.LeftFrame.form.fn_DelOpenMenu(sWinId);
 };
 
@@ -76,9 +76,11 @@ this.fn_ActiveTabPage = function(pvWinId)
 this.btnCloseAll_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var WorkFrame = this.application.WorkFrame.all;
+	
 	for(var i=WorkFrame.length-1; i>=0; i--) 
 	{
 		WorkFrame[i].form.close();
+		//this.alert(WorkFrame.get_id(i));
 		this.tabMdi.removeTabpage(i);
 	}
 };

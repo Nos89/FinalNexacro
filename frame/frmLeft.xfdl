@@ -89,8 +89,8 @@
             <Col id="UP_MENU_CD">0002</Col>
             <Col id="MENU_NM">성적관리</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work01.xfdl</Col>
+            <Col id="PGM_PATH">Professor</Col>
+            <Col id="PGM_ID">gradMng.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">2002</Col>
@@ -127,8 +127,8 @@
             <Col id="UP_MENU_CD">0003</Col>
             <Col id="MENU_NM">학과 업무일지</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work03.xfdl</Col>
+            <Col id="PGM_PATH">Professor</Col>
+            <Col id="PGM_ID">diary.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">4000</Col>
@@ -295,8 +295,9 @@
             <Col id="MENU_CD">0018</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="MENU_NM">휴강조회</Col>
+            <Col id="MENU_NM">휴강조회(개발중)</Col>
             <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_classCancelled.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0019</Col>
@@ -304,6 +305,7 @@
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">강의평가/금학기성적조회</Col>
             <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_myGrade.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0020</Col>
@@ -311,6 +313,7 @@
             <Col id="MENU_NM">학점포기신청</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_creditRenounce.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0021</Col>
@@ -318,6 +321,7 @@
             <Col id="MENU_NM">강의평가결과조회</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0022</Col>
@@ -496,6 +500,7 @@
 this.application = null;
 this.loginID = "";
 this.userType = "";
+this.userName ="";
 
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -508,6 +513,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	if(param=="sugang"){
 		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
 		return;
+		
 	}
 	this.transaction(
 		"whichUser", // 1. strSVCID
@@ -516,6 +522,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"", // 4. strOutDatasets -select Fds=Sds
 		"", // 5. strArgument View에서 Server로 넘겨줄 변수
 		"fn_loginCallback" // 6. strCallbackFunc
+
 	);
 
 };
@@ -523,12 +530,16 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fn_loginCallback = function( pID, pErr, pMsg ){
 	this.application=nexacro.getApplication()
 	if( this.userType == "학생" ){
+		this.Static00.set_text("학생종합정보");
 		this.grdLeft.set_binddataset(this.grd_student);
 	} else if ( this.userType == "교수" ){	
-		this.application.gvID = id;
+		this.Static00.set_text("교수종합정보");
+		this.application.gvProName = this.userName;
+		this.application.gvID = this.loginID;
 		this.grdLeft.set_binddataset(this.grd_professor);
 	} else if ( this.userType == "관리자" ){
-		this.grdLeft.set_binddataset(this.grd_admin);
+		this.Static00.set_text("관리자종합정보");
+		this.grdLeft.set_binddataset(this.application.gdsLeftMenu_admin);
 	}
 }
 

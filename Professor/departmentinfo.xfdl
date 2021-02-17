@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="departmentinfo" width="1090" height="690" titletext="New Form" onload="departmentinfo_onload">
+  <Form id="departmentinfo" width="1090" height="650" titletext="New Form" onload="departmentinfo_onload">
     <Layouts>
-      <Layout height="690" width="1090">
+      <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="학과정보" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
         <Static id="Static01" taborder="1" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
         <Static id="Static02" taborder="2" text="소속대학" left="38" top="49" width="122" height="30"/>
@@ -20,7 +20,7 @@
         <Static id="Static02_00_01_00_01_00" taborder="14" text="사무실번호" left="639" top="255" width="122" height="30"/>
         <Static id="Static04" taborder="15" text="학과 사무실" left="8" top="179" width="171" height="42" cssclass="sta_WF_title02"/>
         <Static id="Static01_00" taborder="16" text="Static01" left="10" top="219" width="1060" height="1" border="1px solid black,0px none,0px none"/>
-        <Grid id="Grid00" taborder="17" left="19" top="360" width="1037" height="310" binddataset="ds_proList" autofittype="col">
+        <Grid id="Grid00" taborder="17" left="19" top="360" width="1037" height="270" binddataset="ds_proList" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>

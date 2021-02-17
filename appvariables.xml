@@ -806,8 +806,8 @@
     </Dataset>
   </Datasets>
   <Variables>
-    <Variable id="gvID" initval="P-1001"/>
-    <Variable id="gvProName" initval="김교수"/>
+    <Variable id="gvID" initval=""/>
+    <Variable id="gvProName" initval=""/>
     <Variable id="gvStdID" initval=""/>
   </Variables>
 </AppVariables>
