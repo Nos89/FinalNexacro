@@ -357,6 +357,7 @@ this.userName ="";
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
+	this.grdLeft.set_binddataset(this.application.gdsLeftMenu_admin); //============지울것
 	 var address = unescape(location.href);
 	 var param = "";
 	if(address.indexOf("name", 0) != -1) {  
@@ -367,6 +368,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		return;
 
 	}
+
 	this.transaction(
 		"whichUser", // 1. strSVCID
 		"/whichUser.nex", // 2. strURL

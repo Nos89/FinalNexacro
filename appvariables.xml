@@ -127,6 +127,14 @@
           <Col id="PGM_ID">Board_Report.xfdl</Col>
         </Row>
         <Row>
+          <Col id="MENU_CD">0007</Col>
+          <Col id="UP_MENU_CD">0000</Col>
+          <Col id="MENU_NM">자료게시판 관리</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_ID">Board_Archives.xfdl</Col>
+        </Row>
+        <Row>
           <Col id="MENU_NM">게시글 등록</Col>
           <Col id="MENU_LVL">0</Col>
           <Col id="MENU_CD">0010</Col>
@@ -156,6 +164,14 @@
           <Col id="PGM_PATH">Admin</Col>
           <Col id="PGM_ID">Board_Event_write.xfdl</Col>
           <Col id="MENU_LVL">1</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">0014</Col>
+          <Col id="UP_MENU_CD">0010</Col>
+          <Col id="MENU_NM">자료게시판 등록</Col>
+          <Col id="MENU_LVL">1</Col>
+          <Col id="PGM_PATH">Admin</Col>
+          <Col id="PGM_ID">Board_Archives_write.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_CD">0020</Col>
