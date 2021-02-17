@@ -28,7 +28,7 @@
         </Combo>
         <Edit id="edt_searchKeyword" taborder="2" left="103" top="56" width="166" height="24"/>
         <Button id="btn_search" taborder="3" left="279" top="56" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
-        <Button id="btn_refresh" taborder="4" text="새로고침" left="910" top="50" width="80" height="30"/>
+        <Button id="btn_refresh" taborder="4" text="새로고침" left="820" top="50" width="80" height="30" onclick="btn_refresh_onclick"/>
         <Button id="btn_delete" taborder="5" text="삭제" left="1000" top="50" width="80" height="30" onclick="btn_delete_onclick"/>
         <Div id="div_page" taborder="6" left="288" top="580" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
         <Static id="Static12" taborder="7" left="0" top="621" width="1090" height="29" text=""/>
@@ -63,6 +63,7 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="btn_write" taborder="9" text="작성" left="910" top="50" width="80" height="30" onclick="btn_write_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -79,7 +80,7 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
-this.fv_bdDiv = "promote";
+this.boardType = "promote";
 this.fv_pageRowCount = 15;
 this.totalRowCount = "";
 
@@ -92,7 +93,7 @@ this.Board_Promote_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		, "/BoardOnLoad.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, "ds_board=out_board"	// 4. strOutDatasets -select Fds=Sds
-		, "bdDiv="+this.fv_bdDiv // 5. strArgument
+		, "boardType="+this.boardType // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
 };
@@ -136,7 +137,7 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let check = this.confirm("삭제하시겠습니까?");
-	let nRows = this.ds_board.extractRows("chk==1");
+	let arrRows = this.ds_board.extractRows("chk==1");
 	
 	if(check){
 		if(arrRows==''||arrRows==null){
@@ -149,7 +150,7 @@ this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			, "/DeleteBoard.nex"	// 2. strURL(string 형태의 url)
 			, "in_board=ds_board:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 			, ""	// 4. strOutDatasets -select Fds=Sds
-			, "bdDiv="+this.fv_bdDiv // 5. strArgument
+			, "boardType="+this.boardType // 5. strArgument
 			, "fn_callback_del"	// 6. strCallbackFunc
 		);
 	}
@@ -177,7 +178,7 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		, "/SearchBoard.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, "ds_board=out_board"	// 4. strOutDatasets -select Fds=Sds
-		, "sTarget="+sTarget+" sKeyword="+sKeyword+" bdDiv="+this.fv_bdDiv // 5. strArgument
+		, "sTarget="+sTarget+" sKeyword="+sKeyword+" boardType="+this.boardType // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
 };
@@ -194,9 +195,28 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 			"bdPromote"+nSeq
 			, "Admin::Board_post.xfdl"
 			, this.getOwnerFrame()
-			, {seq:nSeq, div:this.fv_bdDiv}
+			, {seq:nSeq, type:this.boardType}
 		)
 	}
+};
+
+// this.popupCallback = function(returnVal) {
+// 	this.alert(returnVal);
+// }
+
+this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
+
+this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	nexacro.open(
+		"bdPromote"
+		, "Admin::Board_write.xfdl"
+		, this.getOwnerFrame()
+		, {type:this.boardType}
+	)
 };
 ]]></Script>
   </Form>

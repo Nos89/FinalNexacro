@@ -1,18 +1,217 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Board_Free_post" width="800" height="600" titletext="New Form" onload="Board_Free_post_onload">
+  <Form id="Board_post" width="1000" height="600" titletext="New Form" onload="Board_post_onload">
     <Layouts>
-      <Layout height="600" mobileorientation="landscape" width="800">
-        <WebBrowser id="web_bdFree" taborder="0" left="0" top="0" right="0" bottom="0"/>
+      <Layout height="600" mobileorientation="landscape" width="1000">
+        <WebBrowser id="web_post" taborder="0" left="10" top="50" right="10" bottom="90" onusernotify="web_post_onusernotify" onloadcompleted="web_post_onloadcompleted"/>
+        <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
+        <Button id="btn_delete" taborder="3" text="삭제" width="80" height="35" cssclass="btn_WF_gantt01" onclick="btn_delete_onclick" left="515" bottom="32"/>
+        <Button id="btn_modify" taborder="2" text="수정" left="405" height="35" cssclass="btn_WF_gantt01" onclick="btn_modify_onclick" bottom="32" width="80"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
-this.Board_Free_post_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+this.type = this.parent.type;
+var _win;
+
+this.Board_post_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	let bdTitle; 
+	if(this.type=="anonym"){
+		bdTitle = "익명게시판";
+	}else if(this.type=="event"){
+		bdTitle = "행사게시판";
+	}else if(this.type=="free"){
+		bdTitle = "자유게시판";
+	}else if(this.type=="promote"){
+		bdTitle = "홍보게시판";
+	}else if(this.type=="report"){
+		bdTitle = "건의게시판";
+	}else {
+		bdTitle = "공지사항";;
+	}
+	this.Static00.set_text(bdTitle);
+	
+	let seq = this.parent.seq;
+	this.web_post.set_url("http://localhost/viewPost?pageGroup=community&type="+this.type+"&seq="+seq+"&purp=view");
+};
+
+this.web_post_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
 {
 	let seq = this.parent.seq;
-	let div = this.parent.div;
-	this.web_bdFree.set_url("http://localhost/main/board.view?pageGroup=community&type="+div+"&seq="+seq+"&page=1&purp=view");
+	_win = this.web_post.getProperty('window');
+	
+	this.transaction(
+		"getPost"	// 1. strSvcID(string 형태의 id)
+		, "/getPost.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_board=out_board ds_notice=out_notice ds_files=out_files"	// 4. strOutDatasets -select Fds=Sds
+		, "seq="+seq+" boardType="+this.parent.type // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+	_win = this.web_post.getProperty('window');
 };
+
+this.fn_callback = function(id, errCD, errMSG)
+{
+	if(errCD<0){
+		this.alert("정보를 불러오지 못했습니다.");
+	}
+}
+
+
+this.btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let seq = this.parent.seq;
+	let domain = "localhost/goModify?pageGroup=community&type="+this.type+"&seq="+seq+"&page=1&purp=modify";
+	this.web_post.set_url(domain);
+	
+	this.btn_modify.set_visible("false");
+	this.btn_delete.set_visible("false");
+	
+	let objBtn1 = new Button();
+	objBtn1.init("btn_save",390,null,80,35,null,32);
+	objBtn1.set_text("저장");
+	objBtn1.set_cssclass("btn_WF_gantt01");
+	this.addChild("btn_save",objBtn1);
+	objBtn1.show();
+	objBtn1.addEventHandler("onclick",this.btn_save_onclick,this);
+	
+	let objBtn2 = new Button();
+	objBtn2.init("btn_cancel",500,null,80,35,null,32);
+	objBtn2.set_text("취소");
+	objBtn2.set_cssclass("btn_WF_gantt01");
+	this.addChild("btn_cancel",objBtn2);
+	objBtn2.show();
+	objBtn2.addEventHandler("onclick",this.btn_cancel_onclick,this);
+};
+
+
+this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let check = this.confirm("삭제하시겠습니까?");
+	if(check){
+		this.close();
+	}
+};
+
+
+this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let title;
+	let contents;
+	let category;
+	
+	let id;
+	let url;
+	let inData;
+	let outData;
+	let arg;
+	let callback = "fn_callback_save";
+	
+	if(this.boardType=="notice"){
+		title = _win.callMethod("getTitle");
+		contents = _win.callMethod("getContents");
+		category = _win.callMethod("getCategory");
+		
+		this.isPostNull(title,contents);
+		
+		let nRow = this.ds_notice.rowposition;
+		this.ds_notice.setColumn(nRow,"noti_title", title);
+		this.ds_notice.setColumn(nRow,"noti_contents", contents);
+		this.ds_notice.setColumn(nRow,"category", category);
+		
+		id = "modifyNotice";
+		url = "/modifyNotice.nex";
+		inData = "in_notice=ds_notice:U in_files=ds_files:U";
+		
+		trace(title);
+		trace(contents);
+		trace(category);
+		
+	}else {
+		title = _win.callMethod("getTitle");
+		contents = _win.callMethod("getContents");
+		
+		this.isPostNull(title,contents);
+		
+		let nRow = this.ds_board.extractRows("seq=="+this.parent.seq);	
+		this.ds_board.setColumn(nRow,"title", title);
+		this.ds_board.setColumn(nRow,"contents", contents);
+		this.ds_board.setColumn(nRow,"boardType", this.boardType);
+		this.ds_board.setColumn(nRow,"writer","관리자");
+		
+		id = "modifyBoard";
+		url = "/modifyBoard.nex";
+		inData = "in_board=ds_board:U in_files=ds_files:U";
+		
+		trace(title);
+		trace(contents);
+	}
+
+	this.transaction(id,url,inData,outData,arg,callback);
+}
+
+this.isPostNull = function(title, contents)
+{
+	if(title==null||title.length<=0){
+		this.alert("제목을 입력해주세요.");
+		return;
+	}else if(contents==null||contents.length<=0){
+		this.alert("내용을 입력해주세요.");
+		return;
+	}
+}
+
+this.fn_callback_save = function(id,errCD,errMSG)
+{
+	
+	if(errCD<0){
+		this.alert("수정하지 못했습니다.");
+	}else{
+		this.alert("수정되었습니다.");
+	}
+// 	trace(this.parent.parent.name);
+// 	this.parent.popupCallback("refresh");
+//	this.close();
+}
+
+this.RunCallbackFunction = function() { };
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
 ]]></Script>
+    <Objects>
+      <Dataset id="ds_board">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="category" type="STRING" size="256"/>
+          <Column id="boardType" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="writer" type="STRING" size="256"/>
+          <Column id="writeDate" type="DATE" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_files">
+        <ColumnInfo>
+          <Column id="seq" type="INT" size="256"/>
+          <Column id="parent_code" type="STRING" size="256"/>
+          <Column id="oriName" type="STRING" size="256"/>
+          <Column id="savedName" type="STRING" size="256"/>
+          <Column id="reg_date" type="DATE" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_notice">
+        <ColumnInfo>
+          <Column id="noti_seq" type="INT" size="256"/>
+          <Column id="noti_title" type="STRING" size="256"/>
+          <Column id="noti_contents" type="STRING" size="256"/>
+          <Column id="noti_writeDate" type="DATE" size="256"/>
+          <Column id="category" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

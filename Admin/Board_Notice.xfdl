@@ -236,9 +236,9 @@
         </Combo>
         <Edit id="edt_searchKeyword" taborder="3" left="882" top="46" width="166" height="24"/>
         <Button id="btn_search" taborder="4" left="1058" top="46" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
-        <Button id="btn_delete" taborder="5" text="삭제" left="910" top="576" width="80" height="24" onclick="btn_delete_onclick"/>
-        <Button id="btn_update" taborder="6" text="수정" left="1000" top="576" width="80" height="24" onclick="btn_update_onclick"/>
-        <Button id="btn_write" taborder="7" text="작성" left="820" top="576" width="80" height="24" onclick="btn_write_onclick"/>
+        <Button id="btn_delete" taborder="5" text="삭제" left="910" top="576" width="80" height="30" onclick="btn_delete_onclick"/>
+        <Button id="btn_update" taborder="6" text="수정" left="1000" top="576" width="80" height="30" onclick="btn_update_onclick"/>
+        <Button id="btn_write" taborder="7" text="작성" left="820" top="576" width="80" height="30" onclick="btn_write_onclick"/>
         <Div id="div_page" taborder="8" left="289" top="568" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
         <Static id="Static12" taborder="9" left="0" top="610" width="1090" height="40" text=""/>
       </Layout>
@@ -259,14 +259,14 @@
     <Script type="xscript5.1"><![CDATA[
 this.fv_pageRowCount = 15;	// 한 페이지에 불러올 Row 개수
 this.totalRowCount = "";	// 전체 Row 수
-
+this.boardType="notice";
 
 // 페이지 로드
 this.Notice_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.transaction(
-		"noticeOnLoad"	// 1. strSvcID(string 형태의 id)
-		, "/NoticeOnLoad.nex"	// 2. strURL(string 형태의 url)
+		"getBoardNotice"	// 1. strSvcID(string 형태의 id)
+		, "/getBoardNotice.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, "ds_Notice=out_notice"	// 4. strOutDatasets -select Fds=Sds
 		, "category='학사'" // 5. strArgument
@@ -302,7 +302,7 @@ this.tab_Notice_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEve
 	
 	this.transaction(
 		"noticeTabChanged"	// 1. strSvcID(string 형태의 id)
-		, "/NoticeTabChanged.nex"	// 2. strURL(string 형태의 url)
+		, "/noticeTabChanged.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, "ds_Notice=out_notice"	// 4. strOutDatasets -select Fds=Sds
 		, "category="+sTabName // 5. strArgument
@@ -322,7 +322,7 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	this.transaction(
 		"searchNotice"	// 1. strSvcID(string 형태의 id)
-		, "/SearchNotice.nex"	// 2. strURL(string 형태의 url)
+		, "/searchNotice.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, "ds_Notice=out_notice"	// 4. strOutDatasets -select Fds=Sds
 		, "sTarget="+sTarget+" sKeyword="+sKeyword+" category="+sTabName // 5. strArgument
@@ -345,7 +345,7 @@ this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		}
 		this.transaction(
 			"deleteNotice"	// 1. strSvcID(string 형태의 id)
-			, "/DeleteNotice.nex"	// 2. strURL(string 형태의 url)
+			, "/deleteNotice.nex"	// 2. strURL(string 형태의 url)
 			, "in_notice=ds_Notice:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 			, ""	// 4. strOutDatasets -select Fds=Sds
 			, "" // 5. strArgument
@@ -395,7 +395,7 @@ this.tab_Notice_Tabpage_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro
 			"bdNotice"+nSeq
 			, "Admin::Board_post.xfdl"
 			, this.getOwnerFrame()
-			, {seq:nSeq, div:"notice"}
+			, {seq:nSeq, type:"notice"}
 		);
 	}
 };
@@ -404,7 +404,12 @@ this.tab_Notice_Tabpage_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro
 // 작성
 this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.go("Admin::Board_Notice_write.xfdl");
+	nexacro.open(
+		"bdNotice"
+		, "Admin::Board_write.xfdl"
+		, this.getOwnerFrame()
+		, {type:this.boardType}
+	)
 };
 ]]></Script>
   </Form>
