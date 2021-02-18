@@ -42,11 +42,55 @@
         </ColumnInfo>
       </Dataset>
       <FileUpTransfer id="FileUpTransfer00" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess" onerror="FileUpTransfer00_onerror"/>
+      <Dataset id="ds_upindir" onrowsetchanged="ds_indir_onrowsetchanged">
+        <ColumnInfo>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="isFolder" type="STRING" size="256"/>
+          <Column id="size" type="STRING" size="256"/>
+          <Column id="date" type="STRING" size="256"/>
+          <Column id="savedName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="name">A</Col>
+            <Col id="isFolder">true</Col>
+            <Col id="savedName">A</Col>
+          </Row>
+          <Row>
+            <Col id="name">B</Col>
+            <Col id="isFolder">true</Col>
+            <Col id="savedName">B</Col>
+          </Row>
+          <Row>
+            <Col id="name">fileA</Col>
+            <Col id="isFolder">false</Col>
+            <Col id="size">3</Col>
+            <Col id="date">20210205</Col>
+            <Col id="savedName">asdfasdf</Col>
+          </Row>
+          <Row>
+            <Col id="name">fileB</Col>
+            <Col id="isFolder">false</Col>
+            <Col id="size">4</Col>
+            <Col id="date">20210205</Col>
+            <Col id="savedName">ffdsa</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.sample_fileuptransfer_01_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.storage = "";
+this.maxStorage = "";
+
+this.sample_fileuptransfer_01_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	let parentID = this.parent.parentID;
 	this.st_parentID.set_text(parentID);
+	this.storage = this.parent.storage;
+	this.maxStorage = this.parent.maxStorage;
+	
+	this.ds_upindir.copyData(this.parent.ds_indir);
+	trace(this.ds_upindir.getRowCount());
+	//this.alert( this.storage + " : " + this.maxStorage );
 };
 
 
@@ -80,11 +124,31 @@ this.FileList_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFil
 			obj.getFileSize();
 			break;
 		case 9:
-			var nRowIdx = this.Dataset00.addRow();
-			this.Dataset00.setColumn(nRowIdx, 0, obj.filename);
-			this.Dataset00.setColumn(nRowIdx, 1, this.cutFileSize(e.filesize));
-			this.FileUpTransfer00.addFile(obj.filename, obj);
-			break;
+			var sizesum = nexacro.toNumber(this.storage) + nexacro.toNumber(e.filesize);
+			
+			trace( "최대 용량 : " + this.maxStorage );
+			trace( "사용 용량 : " + this.storage );
+			trace( "파일 용량 : " + e.filesize );
+			trace( "사용+파일 : " + sizesum );
+			trace( "filename : " + obj.filename);
+			
+			var isDup = this.ds_upindir.findRow( "name", obj.filename );
+			trace(isDup);
+			if( isDup < 0 ){
+				if( sizesum <= nexacro.toNumber(this.maxStorage) ){
+					var nRowIdx = this.Dataset00.addRow();
+					this.Dataset00.setColumn(nRowIdx, 0, obj.filename);
+					this.Dataset00.setColumn(nRowIdx, 1, this.cutFileSize(e.filesize));
+					this.FileUpTransfer00.addFile(obj.filename, obj);
+					break;
+				} else {
+					this.alert( "용량이 부족합니다" );
+					break;
+				}			
+			} else {
+				this.alert("중복된 파일명입니다.");
+				break;
+			}
 	}
 }
 
@@ -146,7 +210,7 @@ this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUploadTransfer,e:nexa
 	this.fn_addlog(e.code);
 	this.fn_addlog(e.message);
 	this.alert(e.message);
-	this.close();
+	this.close("1");
 };
 
 this.FileUpTransfer00_onerror = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferErrorEventInfo)

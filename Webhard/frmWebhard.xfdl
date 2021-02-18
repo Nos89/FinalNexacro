@@ -34,8 +34,8 @@
             </Layout>
           </Layouts>
         </PopupDiv>
-        <PopupMenu id="pm_context" left="750" top="410" width="120" height="170" innerdataset="ds_context" captioncolumn="captioncolumn" checkboxcolumn="" enablecolumn="" hotkeycolumn="" iconcolumn="iconcolumn" idcolumn="idcolumn" levelcolumn="levelcolumn" userdatacolumn="userdatacolumn" onlbuttondown="pm_context_onlbuttondown"/>
-        <Div id="div_file" taborder="2" left="190" top="0" text="" right="0" bottom="0">
+        <PopupMenu id="pm_context" left="1110" top="415" width="120" height="170" innerdataset="ds_context" captioncolumn="captioncolumn" checkboxcolumn="" enablecolumn="" hotkeycolumn="" iconcolumn="iconcolumn" idcolumn="idcolumn" levelcolumn="levelcolumn" userdatacolumn="userdatacolumn" onlbuttondown="pm_context_onlbuttondown"/>
+        <Div id="div_file" taborder="1" left="190" top="0" text="" right="0" bottom="0">
           <Layouts>
             <Layout>
               <Static id="st_dirName" taborder="0" left="20" top="11" width="170" height="29"/>
@@ -48,6 +48,47 @@
             </Layout>
           </Layouts>
         </Div>
+        <PopupDiv id="pd_status" text="PopupDiv01" visible="false" left="10" top="667" width="355" height="370" background="#cccccc">
+          <Layouts>
+            <Layout>
+              <Static id="st_titlebar" taborder="0" left="0" top="0" width="100%" height="5%" background="#ffffff"/>
+              <Div id="Div00" taborder="1" text="Div00" left="0" top="32" width="100%" height="80%" background="#ffffff">
+                <Layouts>
+                  <Layout>
+                    <Div id="Div00" taborder="0" left="10" top="10" height="47" right="10" border="0px none, 0px none, 1px solid #7b7b7b">
+                      <Layouts>
+                        <Layout>
+                          <Static id="st_fileName" taborder="0" left="50" top="10" width="280" height="20" onclick="pd_status_Div00_Div00_st_fileName_onclick"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_00" taborder="1" left="10" top="58" height="40" border="0px none, 0px none, 1px solid #7b7b7b" width="335">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static00" taborder="0" text="파일 형식 :" left="10" top="7" width="131" height="24" onclick="pd_status_Div00_Div00_00_Static00_onclick"/>
+                          <Static id="st_fileType" taborder="1" left="118" top="7" width="212" height="24" onclick="pd_status_Div00_Div00_00_Static01_onclick"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_01" taborder="2" text="Div00" left="10" top="99" height="131" border="0px none, 0px none, 1px solid #7b7b7b" width="335">
+                      <Layouts>
+                        <Layout>
+                          <Static id="st_statusFileSize" taborder="0" text="크기 :" left="10" top="7" width="131" height="24" onclick="pd_status_Div00_Div00_00_Static00_onclick"/>
+                          <Static id="st_fileSize" taborder="1" left="118" top="7" width="212" height="24" onclick="pd_status_Div00_Div00_00_Static01_onclick"/>
+                          <Static id="st_statusFileSize00" taborder="2" text="만든 날짜 :" left="10" top="47" width="131" height="24" onclick="pd_status_Div00_Div00_00_Static00_onclick"/>
+                          <Static id="st_fileDate" taborder="3" left="118" top="47" width="212" height="24" onclick="pd_status_Div00_Div00_00_Static01_onclick"/>
+                          <Static id="st_statusFileSize00_00" taborder="4" text="위치 :" left="10" top="89" width="131" height="24" onclick="pd_status_Div00_Div00_00_Static00_onclick"/>
+                          <Static id="st_fileLocation" taborder="5" left="118" top="89" width="212" height="24" onclick="pd_status_Div00_Div00_00_Static01_onclick"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Button id="btn_ok" taborder="2" text="확인" left="115" top="343" width="124" height="27"/>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
       </Layout>
     </Layouts>
     <Objects>
@@ -161,11 +202,6 @@
             <Col id="idcolumn">move</Col>
           </Row>
           <Row>
-            <Col id="captioncolumn">복사</Col>
-            <Col id="levelcolumn">0</Col>
-            <Col id="idcolumn">copy</Col>
-          </Row>
-          <Row>
             <Col id="captioncolumn">다중선택</Col>
             <Col id="levelcolumn">0</Col>
             <Col id="idcolumn">multiselect</Col>
@@ -184,10 +220,11 @@
       </Dataset>
       <FileDownTransfer id="fileDownTrans"/>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
-this.cnt = 0;
+    <Script type="xscript5.1"><![CDATA[this.cnt = 0;
 this.parentID = 0;
 this.nameLoc = ""; // 디렉토리 내 폴더, 파일 이름 & 저장 위치
+this.storage = "";
+this.maxStorage = 52428800;
 
 this.frmLeftMenu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -201,13 +238,52 @@ this.frmLeftMenu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		);
 };
 
+this.getDirectory = function(){
+	this.transaction(
+			"getDirectory", // 1. strSVCID
+			"/webhard/getDirectory", // 2. strURL
+			"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+			"ds_directory=out_directory", // 4. strOutDatasets -select Fds=Sds
+			"", // 5. strArgument View에서 Server로 넘겨줄 변수
+			"fn_getDirCallback" // 6. strCallbackFunc
+		);
+}
+
+this.fn_getDirCallback = function( pId, pErrCode, pErrMsg ){
+	this.div_left.form.gd_left.set_binddataset(this.ds_directory);
+}
+
 this.fn_onloadCallback = function( pId, pErrCode, pMsg ){
+	this.fillStorage( this.storage );
 	this.div_left.form.gd_left.setTreeStatus( 0, "expand");
+	
 	this.div_file.form.st_dirName.set_text(this.div_left.form.gd_left.getBindDataset().getColumn(0, "directoryName"));
 	this.div_file.form.st_dirID.set_text(this.div_left.form.gd_left.getBindDataset().getColumn(0, "dirID"));
-	this.fn_indirTran(this.div_file.form.st_dirID.text);
+	
 	this.cnt = this.ds_indir.getRowCount();
+	if( this.cnt != 0 ){
+		this.fn_indirTran(this.div_file.form.st_dirID.text);
+	}
 }
+
+this.fillStorage = function(){
+	let cutsize = this.cutFileSize(this.storage);
+	this.div_left.form.ProgressBar00.set_text( cutsize + " / " + this.cutFileSize(this.maxStorage) );
+	let pStorage  = nexacro.round( ((this.storage / this.maxStorage) * 100 ), 1 );
+	
+	//this.alert( cutsize + " : " + pStorage );
+	this.div_left.form.ProgressBar00.set_pos( pStorage );
+}
+
+this.cutFileSize = function(filesize)
+{
+	var sOutput = filesize + " bytes";
+	for (var aMultiples = ["KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"], nMultiple = 0, nApprox = filesize / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) 
+	{
+		sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple];
+	}
+	return sOutput;
+};
 
 this.fn_indirTran = function( parentID ){
 	this.transaction(
@@ -221,7 +297,15 @@ this.fn_indirTran = function( parentID ){
 }
 
 this.fn_indirCallback = function( pID, pErrCode, pMsg ){
-	
+	let rowcount = this.ds_indir.getRowCount();
+	let colIdx = this.ds_indir.getColIndex("size");
+	trace(colIdx);
+	for( let i = 0; i < rowcount; i++ ){
+		//this.ds_indir.setColumn(nRow, nColIdx, varVal);
+		trace(this.cutFileSize(this.ds_indir.getColumn(i, colIdx)));
+		this.ds_indir.setColumn(i, colIdx, this.cutFileSize(this.ds_indir.getColumn(i, colIdx)));
+	}
+	trace(this.ds_indir);
 	if( this.div_file.form.btnListView.getSelectStatus() ){
 		this.div_file_btnListView_onclick();
 	} else {
@@ -255,12 +339,8 @@ this.fn_indir = function(){
 		}
 		for( let j = 0; j < itemPerRow; j++ ){
 			let nX = (divWidth + 1) * j;
-			
 			let objDiv = new Div();
-			
 			objDiv.init( "Div"+index, nX , nY , divWidth, divHeight );
-		
-		//objDiv.set_background("pink");
 		
 		// 아이콘
 		let objDivIcon = new Div();
@@ -295,56 +375,10 @@ this.fn_indir = function(){
 		this.div_file.form.div_inDir.form.addChild("Div"+index, objDiv);
 		objDiv.show();
 		objDivIcon.addEventHandler("onrbuttondown", this.rClick, this);
+		
 		index++;
 		}
 	}
-	
-// 	for( let i = 0; i < this.cnt; i++ ){
-// 		let objDiv = new Div();
-// 		let nWidth = 80;
-// 		let nHeight = 100;
-// 		let nX = i * (nWidth + 1);
-// 		let nY = parseInt(i/parseInt(in_width/nWidth)) * (nHeight + 3);
-// 		
-// 		objDiv.init( "Div"+i, nX , nY , nWidth, nHeight );
-// 		
-// 		//objDiv.set_background("pink");
-// 		
-// 		// 아이콘
-// 		let objDivIcon = new Div();
-// 		nWidth = 70;
-// 		nHeight = 70;
-// 		objDivIcon.init("iconDiv", 5, 5, nWidth, nHeight );
-// 		//objDivIcon.set_background("green");
-// 		objDiv.addChild("iconDiv"+i, objDivIcon);
-// 		if( dsIndir.getColumn(i, "isFolder") == "true" ){
-// 			objDivIcon.set_cssclass("folder");
-// 		} else {
-// 			objDivIcon.set_border("1px solid black");
-// 		}
-// 		
-// 		// 이름
-//  		let objStatic = new Static();
-//  		nWidth = 75;
-//  		nHeight = 15;
-//  		objStatic.init("Static"+i, 5, 75, nWidth, nHeight);
-//  		objStatic.set_text(dsIndir.getColumn(i, "name"));
-//  		objDiv.addChild("Static", objStatic);
-// 		
-// 		let objIdentify = new Static();
-// 		objIdentify.init("savedName:fileLocation"+i, 0, 0, 0, 0);
-// 		let savedName = dsIndir.getColumn(i, "savedName");
-// 		let fileLocation = this.div_file.form.st_dirID.text;
-// 		objIdentify.set_text( savedName + ":" + fileLocation );
-// 		
-// 		objIdentify.set_visible(false);
-// 		objDiv.addChild("identify", objIdentify);
-// 		
-// 		this.div_file.form.div_inDir.form.addChild("Div"+i, objDiv);
-// 		objDiv.show();
-// 		//objDivIcon.addEventHandler("oncontextmenu", this.div_file_div_inDir_oncontextmenu, this);
-// 		objDivIcon.addEventHandler("onrbuttondown", this.rClick, this);
-// 	}
 }
 
 this.div_file_div_inDir_onsize = function(obj:nexacro.Div,e:nexacro.SizeEventInfo)
@@ -393,7 +427,6 @@ this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 	this.indirIndex = obj.parent.parent.id.substring(3, obj.parent.parent.id.length);
 	this.nameLoc = obj.parent.identify.text;
 	
-	
 	this.pm_context.trackPopupByComponent( obj, targetX, targetY );
 };
 
@@ -412,33 +445,35 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 			this.fileDownTrans.clearPostDataList();
 			
 			this.fileDownTrans.setPostData("filename", name );
-			
-			//this.alert( this.ds_indir.getColumn( this.indirIndex, "name" ) );
 			this.fileDownTrans.setPostData("oriname", this.ds_indir.getColumn(this.indirIndex, "name") );
 			
 			this.fileDownTrans.download("/webhard/downFile");
-			
-// 			this.transaction(
-// 					"downFile", // 1. strSVCID
-// 					"/webhard/downFile", // 2. strURL
-// 					"", // 3. strInDatasets, Sds-Fds:U, :A, :N
-// 					"", // 4. strOutDatasets -select Fds=Sds
-// 					"name="+name +" location=" + location, // 5. strArgument View에서 Server로 넘겨줄 변수
-// 					"fn_downFile_callback" // 6. strCallbackFunc
-// 				);
 		}
 	} else if ( contextID == "upload" ){
 	// 업로드
 		this.div_file_btnUpload_onclick();
 	} else if ( contextID == "move" ){
 	// 이동
-	
-	} else if ( contextID == "copy" ){
-	// 복사
-	
+		let objCF = new ChildFrame();
+
+		objCF.init("popMove", 0, 0, 300, 400);
+		objCF.set_formurl("Webhard::frmMove.xfdl");
+		objCF.set_openalign("center middle");
+		objCF.set_showtitlebar(false);
+		objCF.showModal(
+			this.getOwnerFrame(),
+			{ 	contentName : name,
+				location : location,
+				type : this.ds_indir.getColumn( this.ds_indir.findRow("savedName", name), "isFolder"),
+				ds_dir : this.ds_directory
+			},
+			this,
+			"fn_moveCallback"
+		);
+		
 	} else if ( contextID == "multiselect" ){
 	// 다중 선택
-	
+		this.alert("개발중입니다.");
 	} else if ( contextID == "delete" ){
 	// 파일 삭제
 		let flag = "";
@@ -452,24 +487,31 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 				"delFile", // 1. strSVCID
 				"/webhard/delete", // 2. strURL
 				"", // 3. strInDatasets, Sds-Fds:U, :A, :N
-				"", // 4. strOutDatasets -select Fds=Sds
+				"ds_directory=out_directory", // 4. strOutDatasets -select Fds=Sds
 				"name="+name +" location=" + location + " isFolder=" + this.ds_indir.getColumn(this.indirIndex, 1), // 5. strArgument View에서 Server로 넘겨줄 변수
 				"fn_delIndir_callback" // 6. strCallbackFunc
 			);
 		}
 	} else if ( contextID == "status" ){
 	// 속성
-	
+		this.alert("개발중입니다.");
 	}
 };
 
 this.fn_delIndir_callback = function( pId, pErrCode, pErrMsg ){
-	if( pErrCode >= 1 ){
+	let location = this.nameLoc.split(":")[1];
+	if( pErrCode == 1 ){
 		this.alert("파일이 삭제됐습니다.");
-		this.fn_indirTran( this.nameLoc.split(":")[1] );
+		this.fn_indirTran( location );
+	} else if( pErrCode == 2 ){
+		this.alert("폴더가 삭제 됐습니다.");
+		this.div_left.form.gd_left.setBindDataset(this.ds_directory);
+		this.div_left.form.gd_left.setTreeStatus( location, "expand");
+		this.fn_indirTran( location );
 	}
 }
 
+// 파일 다운로드
 this.downFileName = "";
 this.downFileUrl = "";
 this.fn_downFile_callback = function( pId, pErrCode, pErrMsg ){
@@ -479,6 +521,15 @@ this.fn_downFile_callback = function( pId, pErrCode, pErrMsg ){
 		this.fileDownTrans.setPostData( "fileName", this.downFileName );
 		this.fileDownTrans.setPostData( "fileUrl", this.downFileUrl );
 		this.fileDownTrans.download( "/webhard/" + this.downFileName);
+	}
+}
+
+// 파일 및 폴더 이동 콜백
+this.fn_moveCallback = function( pId, pErrCode ){
+	if( nexacro.toNumber( pErrCode ) > 0 ){
+		this.fn_delDiv();
+		this.getDirectory();
+		this.fn_indirTran( this.div_file.form.st_dirID.text );
 	}
 }
 
@@ -532,6 +583,8 @@ this.fn_crtFolderTr = function(pId, nFolder){
 this.fn_crtFolderCallback = function ( pId, pErrCode, pMsg ){
 	if( pErrCode >= 1 ){
 		this.alert("폴더가 생성됐습니다.");
+		this.fn_delDiv();
+		this.fn_indirTran( this.div_file.form.st_dirID.text );
 	} else {
 		this.alert(pErrCode);
 	}
@@ -561,15 +614,20 @@ this.div_file_btnUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEve
 	objCF.set_showtitlebar(false);
 	objCF.showModal(
 		this.getOwnerFrame(),
-		{ parentID : this.div_file.form.st_dirID.text },
+		{ parentID : this.div_file.form.st_dirID.text,
+			storage : this.storage,
+			maxStorage : this.maxStorage,
+			ds_indir : this.ds_indir
+		},
 		this,
 		"fn_uploadCallback"
 	);
 };
 
-this.fn_uploadCallback = function( pId, pErrCode, pErrMsg ){
-	if( pErrCode >= 1 ){
-		this.alert(pErrMsg);
+this.fn_uploadCallback = function( pId, pErrCode ){
+	if( nexacro.toNumber( pErrCode ) >= 1 ){
+		this.fn_delDiv();
+		this.fn_indirTran( this.div_file.form.st_dirID.text );
 	}
 }
 
@@ -611,6 +669,9 @@ this.ds_indir_onrowsetchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSR
 	this.alert( this.div_file.form.st_dirID.text );
 	this.fn_indirTran( this.div_file.form.st_dirID.text );
 }
+
+
+
 
 
 ]]></Script>
