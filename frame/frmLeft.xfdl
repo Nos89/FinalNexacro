@@ -479,6 +479,7 @@
             <Col id="MENU_CD">0041</Col>
             <Col id="UP_MENU_CD">0040</Col>
             <Col id="PGM_PATH">Admin</Col>
+            <Col id="PGM_ID">Applications.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">웹하드</Col>

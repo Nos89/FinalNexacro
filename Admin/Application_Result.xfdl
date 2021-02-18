@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Application_Result" width="300" height="450" titletext="New Form" onload="Application_Result_onload">
+    <Layouts>
+      <Layout height="450" mobileorientation="landscape" width="300">
+        <TextArea id="txt_contents" taborder="0" left="10" top="120" width="280" height="260" textAlign="left" scrolltype="vertical" wordWrap="char"/>
+        <Static id="Static00" taborder="1" text="처리 결과 통지" left="11" top="15" width="100" height="17" cssclass="sta_WF_title02"/>
+        <Button id="btn_send" taborder="2" text="전송" left="60" width="80" height="30" onclick="btn_send_onclick" cssclass="btn_WF_gantt01" bottom="25"/>
+        <Button id="btn_close" taborder="3" text="닫기" left="160" width="80" height="30" onclick="btn_close_onclick" cssclass="btn_WF_gantt01" bottom="25"/>
+        <Edit id="edt_title" taborder="4" left="50" top="45" width="240" height="25"/>
+        <Edit id="edt_receiver" taborder="5" left="111" top="80" width="179" height="25"/>
+        <Static id="Static01" taborder="6" text="제목" left="10" top="45" width="30" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="Static02" taborder="7" text="받는 사람" left="10" top="80" width="65" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_mail">
+        <ColumnInfo>
+          <Column id="mail_seq" type="INT" size="256"/>
+          <Column id="receiver" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="received_date" type="DATE" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.result = this.parent.msg;
+
+this.Application_Result_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	if(this.result=="approve"){
+		this.edt_title.set_value("신청사항이 처리되었습니다.");
+	}else if(this.result=="reject"){
+		this.edt_title.set_value("신청사항이 반려되었습니다.");
+	}
+	this.edt_receiver.set_value(this.parent.receiver);
+};
+
+
+this.btn_send_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let check;
+	if(this.result=="approve"){
+		check = this.confirm("완료 처리하시겠습니까?");
+	}else{
+		check = this.confirm("반려하시겠습니까?");
+	}
+	
+	if(check){
+		let objReturn;
+		objReturn = {
+				"title" : this.edt_title.value,
+				"receiver" : this.edt_receiver.value,
+				"contents" : this.txt_contents.value
+				}
+		this.close(JSON.stringify(objReturn,null,"\t"));
+	}else{
+		return;
+	}
+};
+
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let check = this.confirm("창을 닫으시겠습니까?");
+	if(check){
+		this.close();
+	}else{
+		return;
+	}
+};
+]]></Script>
+  </Form>
+</FDL>
