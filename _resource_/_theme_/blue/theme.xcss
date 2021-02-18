@@ -3398,9 +3398,40 @@
 	color : #999999;
 	-nexa-icon : URL('theme://images/chk_WF_Box_DS.png');
 }
+
+.Div.jpgThum
+{
+	-nexa-edge : url('theme://images/jpgThum.jpg') 1px 1px;
+}
+.Div.xlxThum
+{
+	-nexa-edge : url('theme://images/xlsxThum.jpg') 0px 0px;
+}
+.Div.zipThum
+{
+	-nexa-edge : url('theme://images/zipThum.jpg') 0px 0px;
+}
+.Div.txtThum
+{
+	-nexa-edge : url('theme://images/txtThum.jpg') 0px 0px;
+}
+.Div.unThum
+{
+	-nexa-edge : url('theme://images/unknowThum.jpg') 0px 0px;
+}
+.Div.hwpThum
+{
+	-nexa-edge : url('theme://images/hwpThum.jpg') 0px 0px;
+}
+.Static.st_home
+{
+	-nexa-edge : url('theme://images/main_new_visual01_edit.jpg') 5px 5px;
+}
+
 .ComboControl .combolist .listboxitem
 {
 	-nexa-text-align : center;
+
 }
 .Grid.grd_LF_treeMenu .body .row .cell .celltreeitem
 {

@@ -133,8 +133,17 @@ this.FileList_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFil
 			trace( "filename : " + obj.filename);
 			
 			var isDup = this.ds_upindir.findRow( "name", obj.filename );
-			trace(isDup);
+
 			if( isDup < 0 ){
+				trace( obj.filename.split(".").length );
+				trace( obj.filename.length );
+				if( obj.filename.split(".").length > 2 ){
+					this.alert("파일 이름은 . 을 포함 할 수 없습니다.");
+					break;
+				} else if( obj.filename.length >= 50 ){
+					this.alert("파일 이름은 영어 - 50, 한글 16자를 넘을 수 없습니다.");
+					break;
+				}
 				if( sizesum <= nexacro.toNumber(this.maxStorage) ){
 					var nRowIdx = this.Dataset00.addRow();
 					this.Dataset00.setColumn(nRowIdx, 0, obj.filename);

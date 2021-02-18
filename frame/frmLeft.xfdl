@@ -521,7 +521,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	if(param=="sugang"){
 		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
 		return;
-	}	
+	}
 	this.transaction(
 		"whichUser", // 1. strSVCID
 		"/whichUser.nex", // 2. strURL
@@ -561,6 +561,7 @@ this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 
 this.fn_openMenu = function(sMenuId)
 {
+	nexacro.getApplication().mainframe.VFSet01.HFSet01.VFSet02.set_separatesize("30,*,0");
 	var objMdiFrame = this.application.MdiFrame;	// 상단 탭
 	var objWorkFrame = this.application.WorkFrame;	// 화면
 	
@@ -663,7 +664,10 @@ this.fn_DelOpenMenu = function(pvWinId)
 	
 	var nRow = objOpenMenuDs.findRow("WINID", pvWinId);
 	
-	objOpenMenuDs.deleteRow(nRow);	
+	objOpenMenuDs.deleteRow(nRow);
+	if( objOpenMenuDs.getRowCount() == 0 ){
+		this.fn_home();
+	}
 }
 
 /*****************************************************************************
@@ -693,6 +697,13 @@ this.gfnIsNull = function (pvVal)
 
 	return false;
 }
-]]></Script>
+
+this.fn_home = function(){
+	nexacro.getApplication().mainframe.VFSet01.HFSet01.VFSet02.set_separatesize("30,0,*");
+}
+
+this.fn_tab = function(){
+	this.application.VFSet02.set_separatesize("30,*,0");
+}]]></Script>
   </Form>
 </FDL>

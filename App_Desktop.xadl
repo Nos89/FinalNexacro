@@ -10,10 +10,11 @@
               <Frames>
                 <ChildFrame id="LoginFrame" formurl="ClassRegistration::crLogin.xfdl" dragmovetype="none" showtitlebar="false"/>
                 <ChildFrame id="LeftFrame" formurl="frame::frmLeft.xfdl" dragmovetype="none" showtitlebar="false"/>
-                <VFrameSet id="VFSet02" separatesize="30,*">
+                <VFrameSet id="VFSet02" separatesize="30,0,*">
                   <Frames>
                     <ChildFrame id="MdiFrame" formurl="frame::frmMdi.xfdl" showtitlebar="false" dragmovetype="none"/>
                     <FrameSet id="WorkFrame"/>
+                    <ChildFrame id="cf_home" showtitlebar="false" formurl="frame::frmHome.xfdl"/>
                   </Frames>
                 </VFrameSet>
               </Frames>
@@ -32,7 +33,7 @@ this.LeftFrame;
 this.MdiFrame;
 this.BottomFrame;
 this.WorkFrame;
-
+this.HomeFrame;
 
 
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
@@ -47,6 +48,7 @@ this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventIn
 	this.MdiFrame = this.mainframe.VFSet01.HFSet01.VFSet02.MdiFrame;
 	this.BottomFrame = this.mainframe.VFSet01.BottomFrame;
 	this.WorkFrame = this.mainframe.VFSet01.HFSet01.VFSet02.WorkFrame;
+	this.HomeFrame = this.mainframe.VFSet01.HFSet01.VFSet02.cf_home;
 	
 
 };
