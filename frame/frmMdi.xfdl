@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="fm_mdi" width="1070" height="30" titletext="New Form" onload="fm_mdi_onload" scrollbartype="none" scrolltype="none">
+  <Form id="fm_mdi" width="1070" height="30" titletext="New Form" onload="fm_mdi_onload" scrollbartype="none" scrolltype="none" background="#ffffff">
     <Layouts>
       <Layout height="30" mobileorientation="landscape" width="1070">
-        <Static id="Static00" taborder="0" left="0" top="0" height="30" right="0" cssclass="sta_mdi_bg01"/>
+        <Static id="Static00" taborder="0" left="0" top="0" height="30" right="0" color="#ffffff"/>
         <Tab id="tabMdi" taborder="1" tabindex="0" left="30" top="0" height="100" right="100" cssclass="tab_mdi_menu" showextrabutton="true" onchanged="tabMdi_onchanged" onextrabuttonclick="tabMdi_onextrabuttonclick">
           <Tabpages>
             <Tabpage id="Tabpage2" text="Tabpage2"/>
