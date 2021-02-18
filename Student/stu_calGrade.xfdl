@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="stu_calGrade" width="1090" height="650" titletext="New Form" onload="stu_calGrade_onload">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static01" taborder="0" left="0" top="34" width="1090" height="46" background="#c8ddee" text="" cssclass="sta_WF_title01"/>
+        <Edit id="edt_name" taborder="1" left="223" top="42" width="95" height="30" enable="false"/>
+        <Button id="btn_search" taborder="2" left="189" top="42" width="29" height="30" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff" onclick="btn_search_onclick"/>
+        <Edit id="edt_num" taborder="3" left="88" top="42" width="95" height="30" enable="false"/>
+        <Static id="Static02_00_00_00_00_00" taborder="4" text="학번/성명" left="30" top="42" width="55" height="30"/>
+        <Static id="Static00" taborder="5" text="학점계산기" left="5" top="0" height="34" cssclass="sta_img_circle01" width="1080"/>
+        <Static id="Static01_00" taborder="6" left="0" top="80" width="1090" height="46" background="#c8ddee" text="" cssclass="sta_WF_title01"/>
+        <Static id="Static02_00_00_00_00_00_00" taborder="7" text="대학" left="28" top="85" width="49" height="30" textAlign="right"/>
+        <Static id="Static02_00_00_00_00_00_00_00" taborder="8" text="학부(과)" left="237" top="85" width="50" height="30"/>
+        <Static id="Static02_00_00_00_00_00_01" taborder="9" text="학년" left="440" top="85" width="55" height="30"/>
+        <Edit id="edt_year" taborder="10" left="470" top="85" width="30" height="30" enable="false" textAlign="center"/>
+        <Static id="Static00_00" taborder="11" text="학점이수정보" left="5" top="126" height="36" cssclass="sta_img_schedule" width="1080"/>
+        <Grid id="Grid1" taborder="12" left="0" top="162" autofittype="col" binddataset="ds_grade" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="1085" height="148" border="2px solid #0052a6,0px none,0px none">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="111"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="구분"/>
+                <Cell col="1" text="기준학점(A)"/>
+                <Cell col="2" text="이수(취득+인정)학점(B)"/>
+                <Cell col="3" text="수강신청학점(B)"/>
+                <Cell col="4" text="잔여학점(A-(B+C))"/>
+              </Band>
+              <Band id="body">
+                <Cell textAlign="center" text="bind:section"/>
+                <Cell col="1" textAlign="center" text="bind:min"/>
+                <Cell col="2" text="bind:got" textAlign="center"/>
+                <Cell col="3" textAlign="center" text="bind:apply"/>
+                <Cell col="4" text="expr:min-(got+apply)" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00_00_00" taborder="13" text="교양필수과목 이수정보" left="5" top="310" height="36" cssclass="sta_img_schedule" width="1080"/>
+        <Grid id="Grid2" taborder="14" left="0" top="346" autofittype="col" binddataset="ds_gradeList" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="1085" height="124">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="150"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="75"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="과목명"/>
+                <Cell col="1" text="학점"/>
+                <Cell col="2" text="이수여부"/>
+                <Cell col="3" text="이수학기"/>
+                <Cell col="4" text="등급"/>
+                <Cell col="5" text="이수학점"/>
+              </Band>
+              <Band id="body">
+                <Cell textAlign="center" text="bind:oc_name"/>
+                <Cell col="1" textAlign="center" text="bind:reco_score"/>
+                <Cell col="2" text="O" textAlign="center"/>
+                <Cell col="3" textAlign="center" text="2021/1"/>
+                <Cell col="4" textAlign="center" text="bind:grade_code"/>
+                <Cell col="5" textAlign="center" text="bind:reco_score"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00_00_00_00" taborder="15" text="교양영역이수과목" left="5" top="472" height="36" cssclass="sta_img_schedule" width="540"/>
+        <Static id="Static00_00_00_00_00" taborder="16" text="졸업자격정보" left="560" top="472" height="36" cssclass="sta_img_schedule" width="535"/>
+        <Grid id="Grid3" taborder="17" left="0" top="508" autofittype="col" binddataset="ds_electives" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="545" height="142" border="2px solid #0052a6,1px solid #c7c7c7,0px none,0px none">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="178"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="영역"/>
+                <Cell col="1" text="이수학점"/>
+                <Cell col="2" text="이수과목수"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:section" textAlign="center"/>
+                <Cell col="1" textAlign="center" text="bind:reco_score"/>
+                <Cell col="2" text="bind:got" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid4" taborder="18" left="555" top="508" autofittype="col" binddataset="ds_final" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="530" height="142" border="2px solid #0052a6,1px solid #c7c7c7,0px none">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="178"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="전공구분"/>
+                <Cell col="1" text="학부(과)"/>
+                <Cell col="2" text="자격구분"/>
+                <Cell col="3" text="통과여부"/>
+                <Cell col="4" text="면제여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:section" textAlign="center"/>
+                <Cell col="1" textAlign="center" text="bind:dept_title"/>
+                <Cell col="2" text="bind:section2" textAlign="center"/>
+                <Cell col="3" textAlign="center" text="X"/>
+                <Cell col="4" textAlign="center" text="X"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_excel" taborder="19" text="엑셀" left="1024" top="131" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel_onclick"/>
+        <Button id="btn_excel2" taborder="20" text="엑셀" left="932" top="315" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel2_onclick"/>
+        <Button id="btn_excel3" taborder="21" text="엑셀" left="480" top="477" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel3_onclick"/>
+        <Button id="btn_excel4" taborder="22" text="엑셀" left="932" top="477" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel4_onclick"/>
+        <Edit id="Edit00" taborder="23" left="88" top="85" width="129" height="30" enable="false"/>
+        <Edit id="Edit00_00" taborder="24" left="291" top="85" width="129" height="30" enable="false"/>
+        <Static id="Static02_00_00" taborder="25" text="건" left="1067" top="315" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="26" left="1018" top="315" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_01" taborder="27" text="총" left="998" top="315" width="11" height="26" verticalAlign="middle"/>
+        <Static id="Static02_01_00" taborder="28" text="총" left="998" top="477" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00_00" taborder="29" left="1018" top="477" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_00_00_00" taborder="30" text="건" left="1067" top="477" width="11" height="26" verticalAlign="middle"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_stuInfo">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="pw" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="birth" type="DATE" size="256"/>
+          <Column id="gender" type="STRING" size="256"/>
+          <Column id="country" type="STRING" size="256"/>
+          <Column id="inDate" type="DATE" size="256"/>
+          <Column id="outDate" type="DATE" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="zipcode" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="bank" type="STRING" size="256"/>
+          <Column id="accountnum" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stuDetail">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="std_status" type="STRING" size="256"/>
+          <Column id="std_year" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_grade">
+        <ColumnInfo>
+          <Column id="section" type="STRING" size="256"/>
+          <Column id="min" type="INT" size="256"/>
+          <Column id="got" type="INT" size="256"/>
+          <Column id="apply" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="section">졸업최소학점</Col>
+            <Col id="min">140</Col>
+            <Col id="got">0</Col>
+            <Col id="apply">0</Col>
+          </Row>
+          <Row>
+            <Col id="section">주전공이수학점</Col>
+            <Col id="min">60</Col>
+            <Col id="got">0</Col>
+            <Col id="apply">0</Col>
+          </Row>
+          <Row>
+            <Col id="section">교양이수학점</Col>
+            <Col id="min">30</Col>
+            <Col id="got">0</Col>
+            <Col id="apply">0</Col>
+          </Row>
+          <Row>
+            <Col id="section">일반선택(자유선택)</Col>
+            <Col id="min">50</Col>
+            <Col id="got">0</Col>
+            <Col id="apply">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_gradeList">
+        <ColumnInfo>
+          <Column id="oc_code" type="STRING" size="256"/>
+          <Column id="oc_name" type="STRING" size="256"/>
+          <Column id="oc_targetlevel" type="STRING" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="grade_code" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_electives">
+        <ColumnInfo>
+          <Column id="section" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="got" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="reco_score">0</Col>
+            <Col id="got">0</Col>
+            <Col id="section">제1영역 문화와예술</Col>
+          </Row>
+          <Row>
+            <Col id="reco_score">0</Col>
+            <Col id="got">0</Col>
+            <Col id="section">제2영역 역사와지성</Col>
+          </Row>
+          <Row>
+            <Col id="reco_score">0</Col>
+            <Col id="got">0</Col>
+            <Col id="section">제3영역 인간과사회</Col>
+          </Row>
+          <Row>
+            <Col id="reco_score">0</Col>
+            <Col id="got">0</Col>
+            <Col id="section">제4영역 과학과기술</Col>
+          </Row>
+          <Row>
+            <Col id="reco_score">0</Col>
+            <Col id="got">0</Col>
+            <Col id="section">제5영역 정치와경제</Col>
+          </Row>
+          <Row>
+            <Col id="section">제6영역 SW기술</Col>
+            <Col id="reco_score">0</Col>
+            <Col id="got">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_final">
+        <ColumnInfo>
+          <Column id="section" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="section2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="section">주전공</Col>
+            <Col id="section2">졸업작품</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="edt_year" propid="value" datasetid="ds_stuDetail" columnid="std_year"/>
+      <BindItem id="item1" compid="edt_num" propid="value" datasetid="ds_stuInfo" columnid="id"/>
+      <BindItem id="item2" compid="edt_name" propid="value" datasetid="ds_stuInfo" columnid="name"/>
+      <BindItem id="item3" compid="Edit00" propid="value" datasetid="ds_stuInfo" columnid="col_title"/>
+      <BindItem id="item4" compid="Edit00_00" propid="value" datasetid="ds_stuInfo" columnid="dept_title"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+
+this.majorGotCredit = "";
+this.majorGetCredit = "";
+this.totalGotCredit = "";
+this.totalGetCredit = "";
+this.electivesGotCredit = "";
+this.electivesGetCredit = "";
+this.choiceGotCredit = "";
+this.choiceGetCredit = "";
+
+
+this.stu_calGrade_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction("stuInfoOnLoad","/stuInfoOnLoad.nex","","ds_stuInfo=out_stuInfo ds_stuDetail=out_stuDetail","","fn_callback");
+	
+	this.transaction("stuMyCredit","/stuMyCredit.nex","","","","fn_callback_credit");
+	
+	this.transaction("getMyElectivesGrade","/getMyElectivesGrade.nex","","ds_gradeList=out_gradeList","","fn_callback_elective");
+	
+	this.sta_count00_00.set_text(this.ds_final.getRowCount());
+};
+
+this.fn_callback_elective=function(id,errCode,errMsg)
+{
+	this.sta_count00.set_text(this.ds_gradeList.getRowCount());
+};
+
+this.fn_callback=function(id,errCode,errMsg)
+{
+
+};
+
+this.fn_callback_credit=function(id,errCode,errMsg)
+{
+	this.ds_grade.setColumn(0,"got",this.totalGotCredit);
+	this.ds_grade.setColumn(0,"apply",this.totalGetCredit);
+	this.ds_grade.setColumn(1,"got",this.majorGotCredit);
+	this.ds_grade.setColumn(1,"apply",this.majorGetCredit);
+	this.ds_grade.setColumn(2,"got",this.electivesGotCredit);
+	this.ds_grade.setColumn(2,"apply",this.electivesGetCredit);
+	this.ds_grade.setColumn(3,"got",this.choiceGotCredit);
+	this.ds_grade.setColumn(3,"apply",this.choiceGetCredit);
+};
+
+this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ExcelExportObject1 == null){
+		var id = this.Grid1;
+		this.gfn_export(id,1);
+	}
+	this.objExcelExport.set_exportfilename("학점이수정보 리스트");
+	this.objExcelExport.exportData(); 
+};
+
+this.btn_excel2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	if(this.ExcelExportObject2 == null){
+		var id2 = this.Grid2;
+		this.gfn_export(id2,2);
+	}
+	this.objExcelExport.set_exportfilename("교양필수과목 이수정보 리스트");
+	this.objExcelExport.exportData(); 
+};
+
+this.btn_excel3_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ExcelExportObject3 == null){
+		var id3 = this.Grid3;
+		this.gfn_export(id3,3);
+	}
+	this.objExcelExport.set_exportfilename("교양영역 이수정보 리스트");
+	this.objExcelExport.exportData(); 
+};
+
+this.btn_excel4_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ExcelExportObject4 == null){
+		var id4 = this.Grid4;
+		this.gfn_export(id4,4);
+	}
+	this.objExcelExport.set_exportfilename("졸업자격정보 리스트");
+	this.objExcelExport.exportData(); 
+};
+]]></Script>
+    <InitValue>
+      <Grid id="Grid1" binddataset="ds_classList"/>
+      <Grid id="Grid2" binddataset="ds_classList"/>
+      <Grid id="Grid3" binddataset="ds_classList"/>
+      <Grid id="Grid4" binddataset="ds_classList"/>
+    </InitValue>
+  </Form>
+</FDL>

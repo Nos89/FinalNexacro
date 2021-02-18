@@ -3,21 +3,38 @@
   <Form id="stu_returnApply" width="1090" height="650" titletext="New Form" onload="stu_returnApply_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="복학신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Static id="Static01" taborder="1" text="" left="5" top="34" height="36" right="5" background="#c8ddee"/>
+        <Static id="Static00" taborder="0" text="복학신청" left="5" top="0" height="34" cssclass="sta_img_circle01" right="5"/>
+        <Static id="Static01" taborder="1" text="" left="5" top="34" height="36" background="#c8ddee" width="1080"/>
         <Edit id="Edit00_00" taborder="2" left="180" top="40" width="92" height="26" enable="false"/>
         <Edit id="Edit00" taborder="3" left="80" top="40" width="92" height="26" enable="false"/>
         <Static id="Static02" taborder="4" text="학번/성명" left="10" top="37" width="60" height="30"/>
-        <Static id="Static00_00" taborder="5" text="휴학신청정보" left="0" top="76" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Static id="Static01_00" taborder="6" text="" left="4" top="110" height="86" right="6" background="#c8ddee"/>
+        <Static id="Static00_00" taborder="5" text="휴학신청정보" left="4" top="73" height="34" cssclass="sta_img_check01" right="6"/>
+        <Static id="Static01_00" taborder="6" text="" left="4" top="110" height="86" background="#c8ddee" width="1080"/>
         <Button id="btn_apply" taborder="7" text="신청" left="924" top="4" width="56" height="26" onclick="btn_apply_onclick"/>
         <Button id="btn_cancel" taborder="8" text="신청취소" left="990" top="4" width="70" height="26"/>
         <Static id="Static02_00_00_00" taborder="9" text="복학년도" left="19" top="120" width="60" height="30"/>
-        <Combo id="cb_year" taborder="10" text="Combo00" left="79" top="120" width="79" height="30" enable="false"/>
+        <Combo id="cb_year" taborder="10" left="79" top="120" width="79" height="30" enable="false"/>
         <Static id="Static02_00_00_00_00" taborder="11" text="복학학기" left="168" top="120" width="60" height="30"/>
-        <Combo id="cb_semester" taborder="12" text="Combo00" left="228" top="120" width="79" height="30" enable="false"/>
+        <Combo id="cb_semester" taborder="12" left="228" top="120" width="79" height="30" enable="false"/>
         <Static id="Static02_00_00_00_01" taborder="13" text="복학사유" left="19" top="160" width="60" height="30"/>
-        <Combo id="cb_reason" taborder="14" text="Combo00" left="79" top="160" width="146" height="30" enable="false"/>
+        <Combo id="cb_reason" taborder="14" left="79" top="160" width="146" height="30" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">일반복학</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">제대 후 복학</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
         <Static id="Static02_00" taborder="15" text="작성일자" left="330" top="120" width="60" height="30"/>
         <Calendar id="cal_applyDay" taborder="16" left="395" top="120" width="146" height="30" enable="false"/>
       </Layout>

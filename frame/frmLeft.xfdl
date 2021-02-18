@@ -3,7 +3,7 @@
   <Form id="fm_left" width="190" height="700" titletext="New Form" onload="fm_left_onload">
     <Layouts>
       <Layout height="700" mobileorientation="landscape" width="190">
-        <Grid id="grdLeft" taborder="0" left="0" top="40" width="190" binddataset="grd_professor" autofittype="col" treeusecheckbox="false" cssclass="grd_LF_treeMenu" bottom="0" treeinitstatus="expand,all" oncellclick="divLeft_grdLeft_oncellclick" border="0px solid #c7c7c7,1px solid #c7c7c7">
+        <Grid id="grdLeft" taborder="0" left="0" top="40" width="190" autofittype="col" treeusecheckbox="false" cssclass="grd_LF_treeMenu" bottom="0" treeinitstatus="expand,all" oncellclick="divLeft_grdLeft_oncellclick" border="0px solid #c7c7c7,1px solid #c7c7c7">
           <Formats>
             <Format id="default">
               <Columns>
@@ -202,6 +202,7 @@
             <Col id="MENU_NM">부/복수포기신청</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_minorWithdraw.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0006</Col>
@@ -232,6 +233,8 @@
             <Col id="MENU_CD">0009</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">stu_certification.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0010</Col>
@@ -244,6 +247,8 @@
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_CD">0011</Col>
             <Col id="UP_MENU_CD">0000</Col>
+            <Col id="PGM_ID">stu_tuition.xfdl</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0012</Col>
@@ -318,10 +323,10 @@
           <Row>
             <Col id="MENU_CD">0021</Col>
             <Col id="UP_MENU_CD">0000</Col>
-            <Col id="MENU_NM">강의평가결과조회</Col>
+            <Col id="MENU_NM">강의평가결과조회(개발중)</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Student</Col>
-            <Col id="PGM_ID">stu_</Col>
+            <Col id="PGM_ID">stu_classEvaluation.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0022</Col>
@@ -334,6 +339,8 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">학점계산기</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_ID">stu_calGrade.xfdl</Col>
+            <Col id="PGM_PATH">Student</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0023</Col>
@@ -465,7 +472,7 @@
             <Col id="MENU_CD">0033</Col>
             <Col id="UP_MENU_CD">0030</Col>
             <Col id="PGM_PATH">Admin</Col>
-            <Col id="PGM_ID"/>
+            <Col id="PGM_ID">Board_Archives.xfdl</Col>
           </Row>
           <Row>
             <Col id="UP_MENU_CD">0</Col>
@@ -513,7 +520,6 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	if(param=="sugang"){
 		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
 		return;
-		
 	}
 	this.transaction(
 		"whichUser", // 1. strSVCID
@@ -623,6 +629,7 @@ this.fn_openMenu = function(sMenuId)
 	this.fn_AddOpenMenu(sWinId, sMenuId, sMenuNm);
 	
 	objMdiFrame.form.fn_ActiveTabPage(sWinId);
+	
 	
 }
 

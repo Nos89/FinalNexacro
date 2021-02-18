@@ -283,6 +283,7 @@
 
 .Combo .comboedit,.ComboControl .comboedit
 {
+	-nexa-text-align : center;
 	/*EditControl과 동일*/
 }
 
@@ -290,6 +291,7 @@
 {
 	-nexa-padding : 1px 2px 0px 0px;
 	-nexa-icon : URL('theme://images/cmb_WF_drop.png');
+	-nexa-text-align : center;
 }
 
 .Combo .dropbutton[status=mouseover],.Combo .dropbutton[status=focused],.ComboControl .dropbutton[status=mouseover],.ComboControl .dropbutton[status=focused]
@@ -2570,6 +2572,46 @@
 	-nexa-padding : 0px 0px 0px 10px;
 }
 
+.Static.sta_img_circle01
+{
+	background : url('theme://images/img_circle.png') no-repeat left center;
+	color : #101010;
+	font : bold 14px "Malgun Gothic","Arial","Gulim";
+	-nexa-padding : 0px 0px 0px 20px;
+}
+
+.Static.sta_img_person
+{
+	background : url('theme://images/img_person.png') no-repeat left center;
+	color : #101010;
+	font : bold 14px "Malgun Gothic","Arial","Gulim";
+	-nexa-padding : 0px 0px 0px 20px;
+}
+
+.Static.sta_img_check01
+{
+	background : url('theme://images/img_check01.png') no-repeat left center;
+	color : #101010;
+	font : bold 14px "Malgun Gothic","Arial","Gulim";
+	-nexa-padding : 0px 0px 0px 20px;
+}
+
+.Static.sta_img_horn
+{
+	background : url('theme://images/img_horn.png') no-repeat left center;
+	color : #101010;
+	font : bold 14px "Malgun Gothic","Arial","Gulim";
+	-nexa-padding : 0px 0px 0px 20px;
+}
+
+.Static.sta_img_schedule
+{
+	background : url('theme://images/img_schedule.png') no-repeat left center;
+	color : #101010;
+	font : bold 14px "Malgun Gothic","Arial","Gulim";
+	-nexa-padding : 0px 0px 0px 20px;
+}
+
 .Static.sta_WF_title02
 {
 	background : URL('theme://images/img_WF_title02.png') no-repeat left center;
@@ -2815,10 +2857,10 @@
 
 .Button.btn_WF_excel01,.Button.btn_WF_excel01[status=focused],.Button.btn_WF_excel01[userstatus=selected]
 {
-	background : #e7e7e7;
+	background : #c7f9cf;
 	color : #101010;
 	cursor : pointer;
-	-nexa-border : 1px solid #c7c7c7;
+	-nexa-border : 1px solid #95f898;
 	-nexa-icon : url("imagerc::img_WF_excel01.png");
 	-nexa-icon-position : left;
 	-nexa-text-align : left;
@@ -2827,14 +2869,13 @@
 }
 .Button.btn_WF_excel01[status=mouseover]
 {
-	background : #e0e0e0;
+	background : #7df191;
 	-nexa-border : 1px solid #c7c7c7;
 }
 .Button.btn_WF_excel01[userstatus=pushed]
 {
-	background : #d7d7d7;
+	background : #c7f9cf;
 	-nexa-border : 1px solid #c7c7c7;
-	-nexa-text-decoration : underline;
 }
 .Button.btn_WF_excel01[status=disabled]
 {
@@ -3360,6 +3401,7 @@
 	color : #999999;
 	-nexa-icon : URL('theme://images/chk_WF_Box_DS.png');
 }
+
 .Div.jpgThum
 {
 	-nexa-edge : url('theme://images/jpgThum.jpg') 1px 1px;
@@ -3387,5 +3429,11 @@
 .Static.st_home
 {
 	-nexa-edge : url('theme://images/main_new_visual01_edit.jpg') 5px 5px;
+}
+
+.ComboControl .combolist .listboxitem
+{
+	-nexa-text-align : center;
+
 }
 ]]></XCSS>

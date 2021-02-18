@@ -3,10 +3,10 @@
   <Form id="stu_classTimeSearch" width="1090" height="650" titletext="New Form" onload="stu_classTimeSearch_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="수업시간조회" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Static id="Static01" taborder="1" text="" left="5" top="34" height="76" right="5" background="#c8ddee"/>
-        <Static id="Static00_00" taborder="2" text="강의알람리스트" left="0" top="120" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Grid id="Grid00" taborder="3" left="5" top="164" right="5" bottom="10" autofittype="col" nodatatext="조회된 데이터가 없습니다.">
+        <Static id="Static00" taborder="0" text="수업시간조회" left="5" top="0" height="34" cssclass="sta_img_circle01" width="1080"/>
+        <Static id="Static01" taborder="1" text="" left="5" top="34" height="76" background="#c8ddee" width="1080"/>
+        <Static id="Static00_00" taborder="2" text="강의알람리스트" left="5" top="110" height="40" cssclass="sta_img_schedule" width="1080"/>
+        <Grid id="Grid00" taborder="3" left="5" top="150" autofittype="col" nodatatext="조회된 데이터가 없습니다." width="1080" height="490">
           <Formats>
             <Format id="default">
               <Columns>
@@ -105,7 +105,11 @@
         <Combo id="cmbCode02" taborder="12" text="2021" left="280" top="75" width="129" height="30" innerdataset="ds_code02" codecolumn="Code" datacolumn="Value" index="0" value="2021"/>
         <Button id="btn_search" taborder="13" text="조회" left="880" top="2" width="54" height="30" onclick="btn_search_onclick"/>
         <Edit id="edt_code" taborder="14" left="377" top="40" width="103" height="30"/>
-        <Button id="Button00" taborder="15" left="486" top="40" width="29" height="30" onclick="Div00_Button00_onclick" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center #ffffff"/>
+        <Button id="Button00" taborder="15" left="486" top="40" width="29" height="30" onclick="Div00_Button00_onclick" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff"/>
+        <Button id="btn_excel" taborder="16" text="엑셀" left="932" top="117" height="26" cssclass="btn_WF_excel01" onclick="btn_excel_onclick" width="56"/>
+        <Static id="Static02_00" taborder="17" text="건" left="1069" top="117" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count" taborder="18" left="1020" top="117" width="40" height="26" color="#d02424" textAlign="right"/>
+        <Static id="Static02" taborder="19" text="총" left="1000" top="117" width="11" height="26"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -290,9 +294,11 @@
     <InitValue>
       <Grid id="Grid00" binddataset="ds_classList"/>
     </InitValue>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+
 this.stu_classTimeSearch_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	
 	this.transaction(
 		"stuInfoOnLoad",
 		"/stuInfoOnLoad.nex",
@@ -313,17 +319,36 @@ this.stu_classTimeSearch_onload = function(obj:nexacro.Form,e:nexacro.LoadEventI
 	
 	var arrComboList = [this.cmbCode01, this.cmbCode02];
 	this.gfnInitMultiCombo(arrComboList);
+	
+	var grid_id = this.Grid00;
+	this.gfn_export(id,0);
+
 };
 
 this.fn_callback=function(id,errCode,errMsg)
 {
-	this.cmbCode01.set_datacolumn(this.ds_stuInfo.getColumn(0,"col_title"));
-	this.cmbCode02.set_datacolumn(this.ds_stuInfo.getColumn(0,"dept_title"));
+	this.sta_count.set_text(this.ds_classList.getRowCount());
 };
 
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_classList.filter("oc_year == '" + this.cmb_year.text.substr(2,2) + "' && oc_semester == '" + this.cmb_semester.text + "' && oc_code == '" + this.edt_code.value + "' && dept_title == '" + this.cmbCode02.text + "'");
+	if(this.edt_code.value == null){
+		if(this.cmbCode01.index == 0){
+			this.ds_classList.filter("oc_year.indexOf(" + this.cmb_year.text.substr(2,2) + ")>=0 && oc_semester.indexOf(" + this.cmb_semester.text.substr(0,1) + ")>=0");
+		}else if(this.cmbCode01.index != 0 && this.cmbCode02.index == 0){
+			this.ds_classList.filter("oc_year.indexOf(" + this.cmb_year.text.substr(2,2) + ")>=0 && oc_semester.indexOf(" + this.cmb_semester.text.substr(0,1) + ")>=0 && col_title.indexOf('" + this.cmbCode01.text + "')>=0");
+		}else{
+			this.ds_classList.filter("oc_year.indexOf(" + this.cmb_year.text.substr(2,2) + ")>=0 && oc_semester.indexOf(" + this.cmb_semester.text.substr(0,1) + ")>=0 && dept_title.indexOf('" + this.cmbCode02.text + "')>=0");
+		}
+	}else{
+		if(this.cmbCode01.index == 0){
+			this.ds_classList.filter("oc_year.indexOf(" + this.cmb_year.text.substr(2,2) + ")>=0 && oc_semester.indexOf(" + this.cmb_semester.text.substr(0,1) + ")>=0 && oc_code.indexOf('" + this.edt_code.value + "')>=0");
+		}else if(this.cmbCode01.index != 0 && this.cmbCode02.index == 0){
+			this.ds_classList.filter("oc_year.indexOf(" + this.cmb_year.text.substr(2,2) + ")>=0 && oc_semester.indexOf(" + this.cmb_semester.text.substr(0,1) + ")>=0 && oc_code.indexOf(" + this.edt_code.value + ")>=0 && col_title.indexOf('" + this.cmbCode01.text + "')>=0");
+		}else{
+			this.ds_classList.filter("oc_year.indexOf(" + this.cmb_year.text.substr(2,2) + ")>=0 && oc_semester.indexOf(" + this.cmb_semester.text.substr(0,1) + ")>=0 && oc_code.indexOf(" + this.edt_code.value + ")>=0 && dept_title.indexOf('" + this.cmbCode02.text + "')>=0");
+		}
+	}
 };
 
 this.gfnInitMultiCombo = function(arrComboList)
@@ -336,7 +361,7 @@ this.gfnInitMultiCombo = function(arrComboList)
 	for(i=0;i<nCount;i++)
 	{
 		objCombo = arrComboList[i];
-				
+		
 		if(i!=nCount-1)
 		{
 			objChildCombo = arrComboList[i+1];
@@ -376,6 +401,11 @@ this.cmbMultiCombo_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEvent
 	this.gfnItemChangedMultiCombo(obj, e.postvalue);
 }
 
+this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objExcelExport.set_exportfilename("강의알람 리스트");
+	this.objExcelExport.exportData();  
+};
 ]]></Script>
   </Form>
 </FDL>
