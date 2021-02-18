@@ -62,14 +62,14 @@
                 <Cell col="7" text="연구실"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:name" textAlign="center"/>
-                <Cell col="1" text="bind:id" textAlign="center"/>
-                <Cell col="2" text="bind:colcode" edittype="none" displaytype="combotext" textAlign="center" combodataset="ds_college" combocodecol="col_code" combodatacol="col_title"/>
-                <Cell col="3" text="bind:deptcode" displaytype="combotext" textAlign="center" combodataset="ds_department" combocodecol="dept_code" combodatacol="dept_title"/>
-                <Cell col="4" text="bind:email" textAlign="center"/>
-                <Cell col="5" text="bind:phone" textAlign="center"/>
-                <Cell col="6" text="bind:pro_status" textAlign="center"/>
-                <Cell col="7" text="bind:pro_office" textAlign="center"/>
+                <Cell text="bind:name"/>
+                <Cell col="1" text="bind:id"/>
+                <Cell col="2" text="bind:colcode"/>
+                <Cell col="3" text="bind:deptcode"/>
+                <Cell col="4" text="bind:email"/>
+                <Cell col="5" text="bind:phone"/>
+                <Cell col="6" text="bind:pro_status"/>
+                <Cell col="7" text="bind:pro_office"/>
               </Band>
             </Format>
           </Formats>
@@ -332,8 +332,16 @@ this.Professor_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		, "" // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
-	this.ds_professor.filter("pro_status=='재직'");
 };
+
+this.fn_callback = function(id, errCD, errMSG)
+{
+	if(errCD<0){
+		this.alert("데이터를 불러오지 못했습니다.");
+	}else{
+		this.ds_professor.filter("pro_status=='재직'");
+	}
+}
 
 
 // 필터링
@@ -431,7 +439,6 @@ this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEve
 	if(pro_status=="퇴직"){
 		this.cal_outdate.set_readonly("false");
 	}else {
-		this.cal_outdate.set_value("");
 		this.cal_outdate.set_readonly("true");
 	}
 };
@@ -444,7 +451,6 @@ this.com_pro_status_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemCha
 	if(pro_status=="퇴직"){
 		this.cal_outdate.set_readonly("false");
 	}else {
-		this.cal_outdate.set_value("");
 		this.cal_outdate.set_readonly("true");
 	}	
 };
@@ -478,10 +484,19 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		, "in_pro=ds_professor:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, ""	// 4. strOutDatasets -select Fds=Sds
 		, "" // 5. strArgument
-		, "fn_callback"	// 6. strCallbackFunc
+		, "fn_callback_save"	// 6. strCallbackFunc
 	);
 };
 
+this.fn_callback_save = function(id, errCD, errMSG)
+{
+	if(errCD<0){
+		this.alert("저장하지 못했습니다.");
+	}else{
+		this.alert("저장되었습니다.");
+	}
+	this.reload();
+}
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="edt_name" propid="value" datasetid="ds_professor" columnid="name"/>
@@ -492,7 +507,6 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       <BindItem id="item5" compid="edt_pro_office" propid="value" datasetid="ds_professor" columnid="pro_office"/>
       <BindItem id="item6" compid="edt_phone" propid="value" datasetid="ds_professor" columnid="phone"/>
       <BindItem id="item7" compid="cal_indate" propid="value" datasetid="ds_professor" columnid="inDate"/>
-      <BindItem id="item8" compid="cal_outdate" propid="value" datasetid="ds_professor" columnid="outDate"/>
       <BindItem id="item9" compid="cal_birth" propid="value" datasetid="ds_professor" columnid="birth"/>
       <BindItem id="item10" compid="rdo_gender" propid="value" datasetid="ds_professor" columnid="gender"/>
       <BindItem id="item11" compid="com_country" propid="value" datasetid="ds_professor" columnid="country"/>
@@ -502,6 +516,7 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       <BindItem id="item15" compid="edt_addr1" propid="value" datasetid="ds_professor" columnid="addr1"/>
       <BindItem id="item16" compid="edt_addr2" propid="value" datasetid="ds_professor" columnid="addr2"/>
       <BindItem id="item17" compid="edt_zipcode" propid="value" datasetid="ds_professor" columnid="zipcode"/>
+      <BindItem id="item18" compid="cal_outdate" propid="value" datasetid="ds_professor" columnid="outDate"/>
     </Bind>
   </Form>
 </FDL>

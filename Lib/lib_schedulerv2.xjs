@@ -1084,5 +1084,4 @@ this.gfnSetGraphicProperties = function(sCompId, jsnProps)
    
    //생성된 Graphics 하위 오브젝트 리턴
    return objComp;
-}
-]]></Script>
+}]]></Script>

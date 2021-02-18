@@ -24,7 +24,7 @@ this.fv_pageRowCount = 15;	// 페이지당 보여줄 row 개수
 this.fv_totalRowCount;	// 총 row 개수
 this.fv_totalPagesCount;	// 총 페이지 개수
 this.fv_pageIdx;	// 현재 페이지
-this.fv_listIdx;	// 페이지당 보여줄 네비들의 단위(0~9는 0, 10~19는 1...)
+this.fv_listIdx;	// 화면에 보여줄 페이지들의 단위(0~9는 0, 10~19는 1...)
 
 
 // <,>,<<,>> 버튼 클릭시
@@ -48,9 +48,9 @@ this.initPages = function(totalRowCount, pageRowCount)
 	this.fv_pageRowCount = pageRowCount;		// 한 페이지에 나타낼 Row
 	this.fv_totalPagesCount = nexacro.ceil(this.fv_totalRowCount/this.fv_pageRowCount);	// 총 페이지 수
 	
-	this.alert("총데이터Row: "+this.fv_totalRowCount+" | 한페이지Row: "+this.fv_pageRowCount+" | 총 페이지수: "+this.fv_totalPagesCount);
+//	this.alert("총데이터Row: "+this.fv_totalRowCount+" | 한페이지Row: "+this.fv_pageRowCount+" | 총 페이지수: "+this.fv_totalPagesCount);
 	
-	if(this.fv_totalPagesCount>1)
+	if(this.fv_totalPagesCount>=1)
 	{
 		this.btnFirst.set_visible(true);
 		this.btnPrev.set_visible(true);
@@ -114,7 +114,7 @@ this.setPage = function(sPage)
 			objBtnPage.set_text(nPageNum);
 			objBtnPage.set_visible(true);
 			
-			if(nPageNum==(this.fv_pageIdx+1)){objBtnPage.set_enable(false);}	// ?
+			if(nPageNum==(this.fv_pageIdx+1)){objBtnPage.set_enable(false);}	// 현재 페이지 버튼은 사용 못하게 함
 			else {objBtnPage.set_enable(true);}
 		}else
 		{

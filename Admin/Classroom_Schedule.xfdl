@@ -140,6 +140,22 @@ this.Classroom_Schedule_onload = function(obj:nexacro.Form,e:nexacro.LoadEventIn
 	this.com_classroom.set_value(arrCls[1]);
 };
 
+this.fn_callback = function(id, errCD, errMSG)
+{
+	if(errCD<0){
+		this.alert("데이터를 로딩하지 못했습니다.");
+	}
+}
+
+// 강의실 콤보 범위 설정
+this.com_building_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	let build = this.com_building.value;
+	this.com_classroom.set_enable("true");
+	this.com_classroom.set_value('');
+	this.ds_classroom.filter("build_code=='"+build+"'");
+};
+
 
 // 조회 버튼 클릭
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -151,10 +167,17 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, "ds_timetable=out_timetable"	// 4. strOutDatasets -select Fds=Sds
 		, "classroom="+classroom+" year="+this.parent.oc_year+" semester="+this.parent.lec_semester // 5. strArgument
-		, "fn_callback"	// 6. strCallbackFunc
+		, "fn_searchTimetable"	// 6. strCallbackFunc
 	);
+};
 
-	this.set_Schedules();
+this.fn_searchTimetable = function(id, errCD, errMSG)
+{
+	if(errCD<0){
+		this.alert("시간표를 조회하지 못했습니다.");
+	}else{
+		this.set_Schedules();
+	}
 };
 
 
@@ -227,16 +250,6 @@ this.resetTimetable = function()
 		}
 	}
 }
-
-
-// 콤보 범위 설정
-this.com_building_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
-{
-	let build = this.com_building.value;
-	this.com_classroom.set_enable("true");
-	this.com_classroom.set_value('');
-	this.ds_classroom.filter("build_code=='"+build+"'");
-};
 
 
 // 창 닫기

@@ -420,6 +420,11 @@
 	-nexa-text-align : center;
 	-nexa-padding : 4px 4px 4px 4px;
 }
+
+.Grid .body .row .cell.classCss
+{
+  background : #f2d9b4;
+}
 /*-----------------------------------bodycellbutton:ButtonControl과 동일------------------------------------*/
 /*-----------------------------------bodycellcalendar:CalendarControl과 동일------------------------------------*/
 /*-----------------------------------bodycellcheckbox:CheckBoxControl과 동일------------------------------------*/
