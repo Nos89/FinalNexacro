@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Board_write" width="1090" height="650" titletext="New Form" onload="Board_write_onload">
+  <Form id="Board_write" width="1000" height="600" titletext="New Form" onload="Board_write_onload" onsize="Board_write_onsize">
     <Layouts>
-      <Layout height="650" mobileorientation="landscape" width="1090">
-        <WebBrowser id="WebBrowser00" taborder="0" left="10" top="50" width="1070" height="510" onloadcompleted="WebBrowser00_onloadcompleted"/>
+      <Layout height="600" mobileorientation="landscape" width="1000">
+        <WebBrowser id="WebBrowser00" taborder="0" left="10" top="50" onloadcompleted="WebBrowser00_onloadcompleted" right="10" bottom="90" border="none"/>
         <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01" text="홍보게시판 등록"/>
-        <Button id="btn_save" taborder="2" text="등록" left="505" top="575" width="80" height="35" onclick="btn_save_onclick" cssclass="btn_WF_gantt01"/>
-        <Static id="Static12" taborder="3" left="0" top="620" width="1090" height="30" text=""/>
+        <Button id="btn_cancel" taborder="2" text="취소" width="80" height="35" cssclass="btn_WF_gantt01" onclick="btn_cancel_onclick" bottom="32" left="520"/>
+        <Button id="btn_save" taborder="3" text="등록" left="400" height="35" cssclass="btn_WF_gantt01" onclick="btn_save_onclick" bottom="32" width="80"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -26,6 +26,8 @@ this.Board_write_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		bdTitle = "공지사항"
 	}
 	this.Static00.set_text(bdTitle+" 등록");
+	
+	this.WebBrowser00.set_border("1px solid #999999");
 	
 	let domain = "localhost/goWrite.nex?type="+this.boardType;
 	this.WebBrowser00.set_url(domain);
@@ -121,6 +123,33 @@ this.fn_callback = function(id, errCD, errMsg)
 	}
 	this.close();
 }
+
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+
+// 버튼 위치 조정
+this.Board_write_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
+{
+	let comp1;
+	let comp2;
+	
+	comp1 = this.btn_save;
+	comp2 = this.btn_cancel;
+
+	let nX = e.cx;
+
+	let comp1Width = comp1.getOffsetWidth();
+	let comp1X = (e.cx/2) - comp1Width - 20;
+	comp1.setOffsetLeft(comp1X);
+	
+	let comp2X = (e.cx/2) + 20;
+	comp2.setOffsetLeft(comp2X);
+};
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_board">

@@ -19,7 +19,7 @@
                           <Column size="30"/>
                         </Columns>
                         <Rows>
-                          <Row size="28" band="head"/>
+                          <Row size="27" band="head"/>
                           <Row size="28"/>
                         </Rows>
                         <Band id="head">
@@ -212,7 +212,7 @@
             </Tabpage>
           </Tabpages>
         </Tab>
-        <Combo id="com_searchTarget" taborder="2" left="789" top="46" width="90" height="24" innerdataset="innerdataset" datacolumn="datacolumn" codecolumn="codecolumn" text="제목" index="0" value="noti_title">
+        <Combo id="com_searchTarget" taborder="2" left="790" top="578" width="90" height="24" innerdataset="innerdataset" datacolumn="datacolumn" codecolumn="codecolumn" text="제목" index="0" value="noti_title">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -234,13 +234,13 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_searchKeyword" taborder="3" left="882" top="46" width="166" height="24"/>
-        <Button id="btn_search" taborder="4" left="1058" top="46" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
-        <Button id="btn_delete" taborder="5" text="삭제" left="910" top="576" width="80" height="30" onclick="btn_delete_onclick"/>
-        <Button id="btn_update" taborder="6" text="수정" left="1000" top="576" width="80" height="30" onclick="btn_update_onclick"/>
-        <Button id="btn_write" taborder="7" text="작성" left="820" top="576" width="80" height="30" onclick="btn_write_onclick"/>
-        <Div id="div_page" taborder="8" left="289" top="568" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
-        <Static id="Static12" taborder="9" left="0" top="610" width="1090" height="40" text=""/>
+        <Edit id="edt_searchKeyword" taborder="3" left="883" top="578" width="167" height="24"/>
+        <Button id="btn_search" taborder="4" left="1056" top="578" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
+        <Div id="div_page" taborder="5" left="289" top="568" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
+        <Static id="Static12" taborder="6" left="0" top="610" width="1090" height="40" text=""/>
+        <Button id="btn_refresh" taborder="7" text="새로고침" left="820" top="40" width="80" height="30" onclick="btn_refresh_onclick"/>
+        <Button id="btn_write" taborder="8" text="작성" left="910" top="40" width="80" height="30" onclick="btn_write_onclick"/>
+        <Button id="btn_delete" taborder="9" text="삭제" left="1000" top="40" width="80" height="30" onclick="btn_delete_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -410,6 +410,11 @@ this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		, this.getOwnerFrame()
 		, {type:this.boardType}
 	)
+};
+
+this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
 };
 ]]></Script>
   </Form>
