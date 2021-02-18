@@ -622,6 +622,7 @@ this.fn_openMenu = function(sMenuId)
 	
 	objMdiFrame.form.fn_ActiveTabPage(sWinId);
 	
+	
 }
 
 /*****************************************************************************
