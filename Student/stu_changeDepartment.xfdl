@@ -74,9 +74,9 @@
           </Dataset>
         </Combo>
         <Static id="Static02_00_00_00_00_01" taborder="15" text="전과대학" left="19" top="155" width="60" height="30"/>
-        <Combo id="cmbCode01" taborder="16" text="Combo00" left="79" top="155" width="79" height="30" innerdataset="ds_code01" codecolumn="Code" datacolumn="Value" onitemchanged="Combo00_00_00_01_onitemchanged"/>
-        <Combo id="cmbCode02" taborder="17" text="Combo00" left="266" top="155" width="79" height="30" innerdataset="ds_cpde02" codecolumn="Code" datacolumn="Value"/>
-        <Static id="Static02_00_00_00_00_01_00" taborder="18" text="전과학부(학과)" left="172" top="155" width="84" height="30"/>
+        <Combo id="cmbCode01" taborder="16" text="Combo00" left="79" top="155" width="161" height="30" innerdataset="ds_code01" codecolumn="Code" datacolumn="Value" canitemchange="Combo00_00_00_01_onitemchanged"/>
+        <Combo id="cmbCode02" taborder="17" text="Combo00" left="344" top="155" width="161" height="30" innerdataset="ds_code02" codecolumn="Code" datacolumn="Value" onitemchanged="cmbCode02_onitemchanged"/>
+        <Static id="Static02_00_00_00_00_01_00" taborder="18" text="전과학부(학과)" left="250" top="155" width="84" height="30"/>
         <Static id="Static02_00_00_00_01_00" taborder="19" text="작성일자" left="19" top="195" width="60" height="30"/>
         <Calendar id="cal_applyDay" taborder="20" left="79" top="195" width="146" height="30" enable="false"/>
       </Layout>
@@ -88,7 +88,6 @@
       <BindItem id="item3" compid="Combo00_00_00" propid="value" datasetid="ds_changeDept" columnid="changeSemester"/>
       <BindItem id="item4" compid="Combo00_01" propid="value" datasetid="ds_changeDept" columnid="reason"/>
       <BindItem id="item5" compid="cmbCode01" propid="value" datasetid="ds_changeDept" columnid="changeCollege"/>
-      <BindItem id="item6" compid="cmbCode02" propid="value" datasetid="ds_changeDept" columnid="changeDept"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[
 this.stu_changeMajor_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -119,10 +118,11 @@ this.fn_callback=function(id,errCode,errMsg)
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(this.cmbCode01.value == -1 || this.cmbCode02.value == -1){
-		alert("선택해주세요.");
+		alert("전부 선택해주세요.");
 		return;
 	}
 	var sDate = this.cal_applyDay.value;
+	this.ds_changeDept.setColumn(0,"changeDept",this.cmbCode02.value.substr(2,3));
 	this.transaction(
 		"stuChangeDeptApply",
 		"/stuChangeDeptApply.nex",
@@ -190,7 +190,8 @@ this.cmbMultiCombo_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEvent
 {
 	//콤보 아이템 변경 처리 함수 호출
 	this.gfnItemChangedMultiCombo(obj, e.postvalue);
-}]]></Script>
+}
+]]></Script>
     <Objects>
       <Dataset id="ds_stuInfo">
         <ColumnInfo>

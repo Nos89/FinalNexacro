@@ -393,8 +393,6 @@
 .Grid .body .row .cell
 {
 	color : #101010;
-	cursor : pointer;
-	-nexa-background-odd : #f7f7f7;
 	-nexa-border : 1px solid #dbdee2;
 	-nexa-padding : 4px 4px 4px 4px;
 }
@@ -2220,8 +2218,7 @@
 }
 .Grid.grd_LF_treeMenu .body .row .cell[userstatus=selected],.Grid.grd_LF_treeMenu .body .row .cell[status=focused]
 {
-	background : #a1c4e8;
-	-nexa-border : 0px none;
+
 }
 
 
@@ -3435,5 +3432,89 @@
 {
 	-nexa-text-align : center;
 
+}
+.Grid.grd_LF_treeMenu .body .row .cell .celltreeitem
+{
+	background : #ffffff;
+}
+.Grid.grd_LF_treeMenu .body .row .cell .celltreeitem .treeitembutton[userstatus=collapse]
+{
+	-nexa-icon : url('theme://images/btn_WF_Hinc_O.png');
+	
+}
+.Grid.grd_LF_treeMenu .body .row .cell .celltreeitem .treeitembutton[userstatus=expand]
+{
+}
+.Grid.grd_LF_treeMenu .body .row .cell .celltreeitem .treeitemimage
+{
+}
+.Grid.grd_LF_treeMenu .body .row .cell .celltreeitem .treeitemimage[userstatus=expand]
+{
+	-nexa-icon : url('none');
+}
+.Grid.grd_LF_treeMenu .body .row .cell .celltreeitem .treeitemimage[userstatus=collapse]
+{
+	-nexa-icon : url('none');
+}
+.Grid.grd_LF_treeMenu .body .row .cell .celltreeitem .treeitemimage[userstatus=leaf]
+{
+	-nexa-icon : url('imagerc::img_WF_list01.png');
+}
+.Grid.tree_edit
+{
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton
+{
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[userstatus=collapse]
+{
+	-nexa-icon : url('theme://images/tree-collapse.png');
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[userstatus=expand]
+{
+	-nexa-icon : url('theme://images/tree-expand.png');
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[userstatus=leaf]
+{
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitemimage[userstatus=collapse]
+{
+	-nexa-icon : url('none');	
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitemimage
+{
+	
+}
+.Grid.tree_edit .body .row .cell .celltreeitem
+{
+	
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitemtext
+{
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitemimage[userstatus=leaf]
+{
+	-nexa-icon : url('imagerc::img_WF_list01.png');
+}
+.Grid.tree_edit .body .row .cell
+{
+	background : #ffffff;
+}
+.Grid.tree_edit .body .row .cell[userstatus=blinked]
+{
+	background : #ffffff;
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[status=mouseover]
+{
+}
+.Grid .head .row .cell .celltreeitem
+{
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitemimage[userstatus=expand]
+{
+	-nexa-icon : url('none');
+}
+.Grid .body .row .cell .celltreeitem
+{
 }
 ]]></XCSS>
