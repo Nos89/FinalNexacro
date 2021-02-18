@@ -3,15 +3,15 @@
   <Form id="stu_minorWithdraw" width="1090" height="650" titletext="New Form" onload="stu_minorWithdraw_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="부/복수포기신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static00" taborder="0" text="부/복수포기신청" left="5" top="0" height="34" cssclass="sta_img_circle01" right="5"/>
         <Static id="Static01" taborder="1" text="" left="5" top="34" height="36" right="5" background="#c8ddee"/>
         <Static id="Static02" taborder="2" text="학번/성명" left="10" top="37" width="60" height="30"/>
         <Button id="Button00" taborder="3" text="포기신청" left="870" top="4" width="60" height="26"/>
         <Button id="Button00_00" taborder="4" text="포기신청취소" left="940" top="4" width="80" height="26"/>
         <Edit id="Edit00" taborder="5" left="80" top="40" width="92" height="26" enable="false"/>
         <Edit id="Edit00_00" taborder="6" left="180" top="40" width="92" height="26" enable="false"/>
-        <Static id="Static00_00" taborder="7" text="부/복수포기신청 리스트" left="0" top="76" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Grid id="Grid00" taborder="8" left="5" top="110" right="5" bottom="300" autofittype="col">
+        <Static id="Static00_00" taborder="7" text="부/복수포기신청 리스트" left="5" top="72" height="34" cssclass="sta_img_schedule" right="5"/>
+        <Grid id="Grid00" taborder="8" left="5" top="110" autofittype="col" width="1080" height="240">
           <Formats>
             <Format id="default">
               <Columns>
@@ -66,6 +66,10 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="btn_excel" taborder="9" text="엑셀" left="932" top="76" height="26" cssclass="btn_WF_excel01" onclick="btn_excel_onclick" width="56"/>
+        <Static id="Static02_01" taborder="10" text="총" left="996" top="77" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="11" left="1016" top="77" width="40" height="26" color="#d02424" textAlign="right" text="0" verticalAlign="middle"/>
+        <Static id="Static02_00_00" taborder="12" text="건" left="1065" top="77" width="11" height="26" verticalAlign="middle"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -117,9 +121,11 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+
 this.stu_minorWithdraw_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	alert("지금은 이용할 수 없습니다.");
 	this.transaction(
 		"stuInfoOnLoad",
 		"/stuInfoOnLoad.nex",
@@ -128,6 +134,15 @@ this.stu_minorWithdraw_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInf
 		"",  
 		"fn_callback"
 	);
+	
+	var grid_id = this.Grid00;
+	this.gfn_export(id,0);
+};
+
+this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objExcelExport.set_exportfilename("부/복수포기신청 리스트");
+	this.objExcelExport.exportData();  
 };
 ]]></Script>
     <Bind>

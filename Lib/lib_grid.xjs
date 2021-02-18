@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Script version="1.0" type="xscript5.1"><![CDATA[
+<Script version="1.0" type="xscript5.1"><![CDATA[//서버 Xeni Excel 관련 servlet mapping 주소
+this.url = "http://localhost/XExportImport.do";
+//Export에 사용할 ExcelExportObject 변수생성
+this.objExcelExport = null;
 
 // Sort Function Sample -  Grid Head Click
 this.CONST_NONE_MARK = "";
@@ -41,4 +44,71 @@ this.gfn_gridSort = function (obj, e)
 // 		obj.setCellProperty("head", this.nPrevCell, "text", sPrevText.substr(0, sPrevText.length - 1));
 // 	}
 // 	this.nPrevCell = e.cell;
-}]]></Script>
+}
+
+this.gfn_export = function(id,num)
+{
+	//폼로딩후 ExcelExportObject 생성
+  this.objExcelExport = new nexacro.ExcelExportObject("ExcelExportObject" + num,this);
+  
+  //생성한 오브젝트에 이벤트추가
+  this.objExcelExport.addEventHandler("onprogress", this.ExcelExportObject00_onprogress, this);
+  this.objExcelExport.addEventHandler("onsuccess", this.ExcelExportObject00_onsuccess, this);  
+  this.objExcelExport.addEventHandler("onerror", this.ExcelExportObject00_onerror, this);    
+  
+  //ExcelExportObject 의 대상 Grid 및 속성설정
+  this.objExcelExport.addExportItem(nexacro.ExportItemTypes.GRID, id, "Sheet1!A1","allband","allrecord", "merge", "allstyle", "none", "none", "width");  
+  this.objExcelExport.set_exportmessageprocess("%d [ %d / %d ]");
+  this.objExcelExport.set_exportuitype("exportprogress");
+  this.objExcelExport.set_exporteventtype("itemrecord");
+  this.objExcelExport.set_exporttype(nexacro.ExportTypes.EXCEL2010);
+  this.objExcelExport.set_exporturl(this.url); 
+
+  this.addChild("ExcelExportObject" + num, this.objExcelExport);
+}
+
+this.ExcelExportObject00_onsuccess = function(obj:ExportObject, e:nexacro.ExcelExportObject)
+{   
+  var str = "";
+  
+  str += "\n=========== onsuccess event start=================";
+  str += "\ne.eventid : " + e.eventid;
+  str += "\ne.url: " +  e.url;  
+  str += "\ne.id :"+e.id;
+  str += "\ne.fromobject :"+e.fromobject;
+  str += "\ne.fromreferenceobject  :"+e.fromreferenceobject;
+  
+  trace(str);
+};
+
+this.ExcelExportObject00_onprogress = function(obj:ExportObject, e:nexacro.ExcelExportObject)
+{
+  var str = "";
+  
+  str += "\n=========== onprogress event start================";
+  str += "\ne.eventid  :"+e.eventid;
+  str += "\ne.id :"+e.id;
+  str += "\ne.fromobject :"+e.fromobject;
+  str += "\ne.fromreferenceobject  :"+e.fromreferenceobject;
+  str += "\ne.itemindex :"+e.itemindex;
+  str += "\ne.itemtype :"+e.itemtype;
+  str += "\ne.recordindex :"+e.recordindex;  
+  
+  trace(str);
+};
+
+this.ExcelExportObject00_onerror = function(obj:ExportObject, e:nexacro.ExcelExportObject)
+{  
+  var str = "";
+  
+  str += "\n=========== onerror event start===================";
+  str += "\ne.eventid :"+e.eventid;
+  str += "\ne.id :"+e.id;
+  str += "\ne.fromobject :"+e.fromobject;
+  str += "\ne.fromreferenceobject :"+e.fromreferenceobject;
+  str += "\ne.errorcode :"+e.errorcode;
+  str += "\ne.errormsg :"+e.errormsg;  
+
+  trace(str);
+};
+]]></Script>

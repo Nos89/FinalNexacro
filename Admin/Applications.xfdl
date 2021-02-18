@@ -87,35 +87,6 @@
           <Column id="apply_date" type="DATE" size="256"/>
           <Column id="approval" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="seq">1</Col>
-            <Col id="title">졸업증명서 신청</Col>
-            <Col id="contents">신청함</Col>
-            <Col id="applicant">S-1001</Col>
-            <Col id="apply_date">20210218</Col>
-            <Col id="approval">0</Col>
-            <Col id="name">김학생</Col>
-          </Row>
-          <Row>
-            <Col id="seq">2</Col>
-            <Col id="title">성적증명서 신청</Col>
-            <Col id="contents">신청함</Col>
-            <Col id="applicant">S-1002</Col>
-            <Col id="apply_date">20210218</Col>
-            <Col id="approval">1</Col>
-            <Col id="name">이학생</Col>
-          </Row>
-          <Row>
-            <Col id="seq">3</Col>
-            <Col id="title">강의계획서 처리 문의</Col>
-            <Col id="contents">신청함</Col>
-            <Col id="applicant">P-1001</Col>
-            <Col id="apply_date">20210218</Col>
-            <Col id="approval">0</Col>
-            <Col id="name">김교수</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_mail">
         <ColumnInfo>

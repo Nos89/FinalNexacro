@@ -1,17 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Board_post" width="1000" height="600" titletext="New Form" onload="Board_post_onload" onsize="Board_post_onsize">
+  <Form id="Board_post" width="1000" height="730" titletext="New Form" onload="Board_post_onload" onsize="Board_post_onsize">
     <Layouts>
-      <Layout height="600" mobileorientation="landscape" width="1000">
-        <WebBrowser id="web_post" taborder="0" left="10" top="50" right="10" bottom="90" onusernotify="web_post_onusernotify" onloadcompleted="web_post_onloadcompleted" border="none"/>
+      <Layout height="730" mobileorientation="landscape" width="1000">
+        <WebBrowser id="web_post" taborder="0" left="10" top="50" right="10" bottom="210" onusernotify="web_post_onusernotify" onloadcompleted="web_post_onloadcompleted" border="none"/>
         <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Button id="btn_delete" taborder="3" text="삭제" width="80" height="35" cssclass="btn_WF_gantt01" onclick="btn_delete_onclick" bottom="32" left="520"/>
+        <Button id="btn_delete" taborder="3" text="닫기" width="80" height="35" cssclass="btn_WF_gantt01" onclick="btn_delete_onclick" bottom="32" left="520"/>
         <Button id="btn_modify" taborder="2" text="수정" left="400" height="35" cssclass="btn_WF_gantt01" onclick="btn_modify_onclick" bottom="32" width="80"/>
+        <Grid id="grid_file" taborder="4" left="150" top="525" width="476" height="110" binddataset="ds_fileList" autofittype="col" visible="false" onexpandup="grid_file_onexpandup">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="260"/>
+                <Column size="28"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="fileName"/>
+                <Cell col="1"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:fileName" textAlign="center"/>
+                <Cell col="1" expandimage="url('theme://images/btn_TF_Close_O.png')" expandshow="show" expandsize="25" cursor="pointer"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_add" taborder="5" text="파일추가" left="636" top="527" width="125" height="27" onclick="btn_add_onclick" visible="false"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
 this.type = this.parent.type;
 var _win;
+
+this.nMaxFileSize = 2000000;  //각 파일 최대사이즈 (2 Mbyte)
+this.param="";
+this.fileDomain="";
+this.domain="";
 
 this.Board_post_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -26,7 +54,9 @@ this.Board_post_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		bdTitle = "홍보게시판";
 	}else if(this.type=="report"){
 		bdTitle = "건의게시판";
-	}else {
+	}else if(this.type=="Archive"){
+		bdTitle = "자료게시판";
+	}else{
 		bdTitle = "공지사항";;
 	}
 	this.Static00.set_text(bdTitle);
@@ -34,7 +64,14 @@ this.Board_post_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.web_post.set_border("1px solid #999999");
 	
 	let seq = this.parent.seq;
-	this.web_post.set_url("http://localhost/viewPost?pageGroup=community&type="+this.type+"&seq="+seq+"&purp=view");
+	
+	this.domain = document.location.href;
+	this.domain = this.domain.replace("/nex","");
+    var arrdomain = this.domain.split('/');
+    var currentfile = arrdomain.pop();
+	this.fileDomain = this.domain.replace(currentfile,"uploadBoardFiles.nex");
+	
+	this.web_post.set_url(this.domain.replace(currentfile,"viewPost?pageGroup=community&type="+this.type+"&seq="+seq+"&purp=view"));
 };
 
 this.web_post_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
@@ -57,6 +94,15 @@ this.fn_callback = function(id, errCD, errMSG)
 {
 	if(errCD<0){
 		this.alert("정보를 불러오지 못했습니다.");
+	}if(id=="getPost"){
+		if(this.ds_files.getRowCount()>0){
+			this.ds_fileList.deleteAll();
+			for(var i=0; i<this.ds_files.getRowCount(); i++){
+				var nRow = this.ds_fileList.addRow();
+				this.ds_fileList.setColumn(nRow,"fileName",this.ds_files.getColumn(i,"oriName"));
+				this.ds_fileList.setColumn(nRow,"parent_seq",this.ds_files.getColumn(i,"parent_seq"));
+			}
+		}
 	}
 }
 
@@ -64,9 +110,12 @@ this.fn_callback = function(id, errCD, errMSG)
 this.btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let seq = this.parent.seq;
-	let domain = "localhost/goModify?pageGroup=community&type="+this.type+"&seq="+seq+"&page=1&purp=modify";
-	this.web_post.set_url(domain);
-
+    var arrdomain = this.domain.split('/');
+    var currentfile = arrdomain.pop();
+	this.domain.replace(currentfile,"goModify?pageGroup=community&type="+this.type+"&seq="+seq+"&page=1&purp=modify");
+	
+	this.web_post.set_url(this.domain.replace(currentfile,"goModify?pageGroup=community&type="+this.type+"&seq="+seq+"&page=1&purp=modify"));
+	
 	this.fn_buttonChangeToSave();
 };
 
@@ -75,6 +124,9 @@ this.fn_buttonChangeToSave = function()
 {
 	this.btn_modify.set_visible("false");
 	this.btn_delete.set_visible("false");
+	
+	this.grid_file.set_visible("true");
+	this.btn_add.set_visible("true");
 	
 	let objBtn1 = new Button();
 	objBtn1.init("btn_save",this.btn_modify.left,null,80,35,null,32);
@@ -97,6 +149,9 @@ this.fn_buttonChangeToRead = function()
 {
 	this.btn_modify.set_visible("true");
 	this.btn_delete.set_visible("true");
+	this.grid_file.set_visible("false");
+	this.btn_add.set_visible("false");
+	
 	this.btn_save.destroy();
 	this.btn_cancel.destroy();
 }
@@ -104,11 +159,7 @@ this.fn_buttonChangeToRead = function()
 
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let check = this.confirm("삭제하시겠습니까?");
-	if(check){
-		
-		this.close();
-	}
+	this.close();
 };
 
 
@@ -139,7 +190,7 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		
 		id = "modifyNotice";
 		url = "/modifyNotice.nex";
-		inData = "in_notice=ds_notice:U in_files=ds_files:U";
+		inData = "in_notice=ds_notice in_files=ds_files:U";
 		
 		trace(title);
 		trace(contents);
@@ -159,12 +210,12 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		
 		id = "modifyBoard";
 		url = "/modifyBoard.nex";
-		inData = "in_board=ds_board:U in_files=ds_files:U";
+		inData = "in_board=ds_board in_files=ds_files:U";
 		
 		trace(title);
 		trace(contents);
 	}
-
+	
 	this.transaction(id,url,inData,outData,arg,callback);
 }
 
@@ -179,15 +230,24 @@ this.isPostNull = function(title, contents)
 	}
 }
 
+//수정 완료시
 this.fn_callback_save = function(id,errCD,errMSG)
 {
 	let seq = this.parent.seq;
 	if(errCD<0){
 		this.alert("수정하지 못했습니다.");
 	}else{
-		this.alert("수정되었습니다.");
-		this.web_post.set_url("http://localhost/viewPost?pageGroup=community&type="+this.type+"&seq="+seq+"&purp=view");
-		this.fn_buttonChangeToRead();
+		
+		if(this.FileUpTransfer00.filelist.length != 0) {
+			
+			this.FileUpTransfer00.upload(this.fileDomain+"?param="+seq+"");	
+		}else{
+			this.alert("수정되었습니다.");
+			var arrdomain = this.domain.split('/');
+			var currentfile = arrdomain.pop();
+			this.web_post.set_url(this.domain.replace(currentfile,"viewPost?pageGroup=community&type="+this.type+"&seq="+seq+"&purp=view"));
+			this.fn_buttonChangeToRead();
+		}
 	}
 }
 
@@ -211,9 +271,9 @@ this.Board_post_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 		comp1 = this.btn_save;
 		comp2 = this.btn_cancel;
 	}
-
+	
 	let nX = e.cx;
-
+	
 	let comp1Width = comp1.getOffsetWidth();
 	let comp1X = (e.cx/2) - comp1Width - 20;
 	comp1.setOffsetLeft(comp1X);
@@ -221,7 +281,152 @@ this.Board_post_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 	let comp2X = (e.cx/2) + 20;
 	comp2.setOffsetLeft(comp2X);
 };
-]]></Script>
+
+
+//파일 그리드의 x버튼 클릭시 실행됨
+this.grid_file_onexpandup = function(obj:nexacro.Grid,e:nexacro.GridMouseEventInfo)
+{
+	var check = 0;
+	
+	var rmName = this.ds_files.getColumn(e.row,"oriName");
+	var seq = this.ds_files.getColumn(e.row,"seq");
+	var parentCode = this.ds_files.getColumn(e.row,"parent_code");
+	var savedName = this.ds_files.getColumn(e.row,"savedName");
+	for(var i=0; i<this.ds_fileList.getRowCount(); i++){
+		if(rmName==this.ds_fileList.getColumn(i,"fileName")){
+			check = 1;
+			break;
+		}
+	}
+	if(check==1){
+		this.ds_fileList.deleteRow(e.row);
+		this.transaction(
+			"delFile", 
+			"/delFile.nex",		
+			"", 
+			"ds_boardfileList=out_ds", 
+			"fileSeq="+seq+" parent_code="+parentCode+" name="+savedName, 
+			"fn_callback" 
+		);
+	}else{
+		check = 0;
+		var fileName = this.ds_fileList.getColumn(e.row,"fileName")
+		this.FileUpTransfer00.removeFile(fileName);
+		this.ds_fileList.deleteRow(e.row);
+	}
+};
+//=============================================================파일 추가
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.FileDialog00.open( "파일선택", FileDialog.LOAD );
+};
+
+
+//업로드용 Virtual 파일 onsuccess 이벤트
+this.Upload_VirtualFile_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileEventInfo)
+{
+	if (e.reason == 1)  //open() callback
+	{
+		//파일사이즈 체크
+		obj.getFileSize();
+	}
+	if (e.reason == 9) //getFileSize() callback
+	{
+		obj.close();
+		
+		var sFileName = obj.filename;
+		var nFileSize = e.filesize;
+		if(nFileSize > this.nMaxFileSize){
+			alert("첨부파일 최대용량은 2 MByte 입니다.");
+			return;
+		}
+		
+		for(var i=0; i<this.ds_fileList.getRowCount(); i++){
+			if(sFileName==this.ds_fileList.getColumn(i,"fileName")){
+				alert("같은이름의 파일이 존재합니다.");
+				return;
+			}
+		}
+		
+		//FileUpTransfer 해당 파일추가
+		this.FileUpTransfer00.addFile(sFileName,obj);
+		
+		//화면 파일정보 셋팅
+		var nRow = this.ds_fileList.addRow();
+		this.ds_fileList.setColumn(nRow, "fileName", sFileName);
+		this.ds_fileList.setColumn(nRow, "fileSize", nFileSize);
+		
+	}
+}
+
+//업로드용 Virtual 파일 oneroor 이벤트
+this.Upload_VirtualFile_onerror = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileErrorEventInfo)
+{
+	var msg = ">>>>>>>>> VirtualFile event ERROR >>>>>>>>\n";
+	
+	alert(msg);
+}
+
+this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	if(e.reason == 0 ) {  //파일선택 취소
+		return;
+	}else{
+		if(e.reason == 1) {    //FileDialog.LOAD 옵션의 파일선택
+			var vFile = e.virtualfiles[0];      
+			var isExist = this.FileUpTransfer00.existFile(vFile);
+			//파일중복체크
+			if(isExist){
+				alert("이미추가된 파일이 있습니다.");
+				return;
+			}
+			
+			//VirtualFile 이벤트 생성
+			vFile.addEventHandler("onsuccess", this.Upload_VirtualFile_onsuccess, this);
+			vFile.addEventHandler("onerror", this.Upload_VirtualFile_onerror, this);
+			
+			//File 사이즈 체크를 위해
+			vFile.open(null,VirtualFile.openRead);
+		}
+	}
+};
+
+this.FileUpTransfer00_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferErrorEventInfo)
+{
+	//파일전송 실패시
+	var msg = ">>>>>>>>>>>>>>>>>>>>>>>>>>  ERROR >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+	alert("파일을 첨부하지 못했습니다");
+	
+};
+
+this.FileUpTransfer00_onprogress = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferProgressEventInfo)
+{
+	trace(e.loaded +" / "+e.total +" Byte Uploading...");
+};
+
+//파일전송 선공시
+this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
+{
+	var msg = ">>>>>>>>>>>>>>>>>>>>>>>>>>  SUCCESS >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+	
+	let seq = this.parent.seq;
+	//파일정보 초기화
+	this.fn_FileClear();
+	
+	this.alert("수정되었습니다.");
+	var arrdomain = this.domain.split('/');
+	var currentfile = arrdomain.pop();
+	this.web_post.set_url(this.domain.replace(currentfile,"viewPost?pageGroup=community&type="+this.type+"&seq="+seq+"&purp=view"));
+	this.fn_buttonChangeToRead();
+};
+
+//파일정보 초기화
+this.fn_FileClear = function (){
+	//FileUpTransfer 파일 모두삭제
+	this.FileUpTransfer00.clearFileList();
+	//파일정보 모두삭제
+	this.ds_fileList.clearData();  
+}]]></Script>
     <Objects>
       <Dataset id="ds_board">
         <ColumnInfo>
@@ -252,6 +457,15 @@ this.Board_post_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
           <Column id="category" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_fileList">
+        <ColumnInfo>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="fileSize" type="STRING" size="256"/>
+          <Column id="parent_seq" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
+      <FileUpTransfer id="FileUpTransfer00" onerror="FileUpTransfer00_onerror" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess"/>
     </Objects>
   </Form>
 </FDL>

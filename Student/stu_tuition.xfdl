@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="stu_tuition" width="1090" height="650" titletext="New Form" onload="stu_tuition_onload">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static01" taborder="0" left="0" top="34" width="1090" height="46" background="#c8ddee" text="" cssclass="sta_WF_title01"/>
+        <Edit id="edt_name" taborder="1" left="763" top="42" width="95" height="30" enable="false"/>
+        <Button id="btn_search" taborder="2" left="729" top="42" width="29" height="30" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff" onclick="btn_search_onclick"/>
+        <Edit id="edt_num" taborder="3" left="628" top="42" width="95" height="30" enable="false"/>
+        <Static id="Static02_00_00_00_00_00" taborder="4" text="학번/성명" left="570" top="42" width="55" height="30"/>
+        <Combo id="cmb_semester" taborder="5" text="1학기" left="216" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1학기</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2학기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static02_00_00_00_00" taborder="6" text="등록학기" left="161" top="42" width="60" height="30"/>
+        <Combo id="cmb_year" taborder="7" text="2021" left="71" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="21">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">21</Col>
+                <Col id="datacolumn">2021</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">22</Col>
+                <Col id="datacolumn">2022</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">23</Col>
+                <Col id="datacolumn">2023</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">24</Col>
+                <Col id="datacolumn">2024</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static02_00_00_00" taborder="8" text="등록년도" left="15" top="42" width="50" height="30"/>
+        <Static id="Static00" taborder="9" text="등록금고지서(영수증)출력" left="5" top="0" height="34" cssclass="sta_img_circle01" width="1080"/>
+        <Static id="Static02_00_00_00_00_01" taborder="10" text="납부차수" left="310" top="42" width="60" height="30"/>
+        <Combo id="cmb_semester00" taborder="11" text="1학기" left="365" top="42" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1학기</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2학기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Button id="btn_search00" taborder="12" text="조회" left="993" top="2" width="54" height="30" onclick="btn_search_onclick"/>
+        <Button id="btn_search00_00" taborder="13" text="납입확인서출력" left="870" top="2" width="114" height="30" onclick="btn_search_onclick"/>
+        <Button id="btn_search00_00_00" taborder="14" text="등록금고지서(영수증)출력" left="694" top="2" width="164" height="30" onclick="btn_search_onclick"/>
+        <Grid id="Grid00" taborder="15" left="5" top="120" autofittype="col" nodatatext="조회된 데이터가 없습니다." width="1080" height="240" binddataset="ds_tuition">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="67"/>
+                <Column size="80"/>
+                <Column size="75"/>
+                <Column size="69"/>
+                <Column size="69"/>
+                <Column size="69"/>
+                <Column size="94"/>
+                <Column size="69"/>
+                <Column size="82"/>
+                <Column size="65"/>
+                <Column size="48"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="33" band="head"/>
+                <Row size="47" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="그 외"/>
+                <Cell col="1" colspan="5" text="장학금액"/>
+                <Cell col="6" rowspan="2" text="expr:'납부\n여부'"/>
+                <Cell col="7" colspan="4" text="기타납부금"/>
+                <Cell col="11" rowspan="2" text="은행1"/>
+                <Cell col="12" rowspan="2" text="가상계좌"/>
+                <Cell row="1" col="1" text="입학금"/>
+                <Cell row="1" col="2" text="수업료"/>
+                <Cell row="1" col="3" text="교내계"/>
+                <Cell row="1" col="4" text="교외계"/>
+                <Cell row="1" col="5" text="계"/>
+                <Cell row="1" col="7" text="학생회비"/>
+                <Cell row="1" col="8" text="expr:'납부\n여부'"/>
+                <Cell row="1" col="9" text="앨범비"/>
+                <Cell row="1" col="10" text="expr:'납부\n여부'"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4" textAlign="center"/>
+                <Cell col="5" textAlign="center"/>
+                <Cell col="6" textAlign="center"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00_00" taborder="16" text="등록금정보" left="1" top="82" height="34" cssclass="sta_img_schedule" width="1080"/>
+        <Static id="Static00_00_00" taborder="17" text="분납정보" left="5" top="363" height="34" cssclass="sta_img_schedule" width="1080"/>
+        <Grid id="Grid00_00" taborder="18" left="5" top="400" autofittype="col" nodatatext="조회된 데이터가 없습니다." width="1080" height="240">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="70"/>
+              </Columns>
+              <Rows>
+                <Row size="61" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="분납1차"/>
+                <Cell col="1" text="분납2차"/>
+                <Cell col="2" text="분납3차"/>
+                <Cell col="3" text="분납4차"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02_01" taborder="19" text="총" left="997" top="86" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="20" left="1017" top="86" width="40" height="26" color="#d02424" textAlign="right" text="0" verticalAlign="middle"/>
+        <Static id="Static02_00_00" taborder="21" text="건" left="1070" top="86" width="11" height="26" verticalAlign="middle"/>
+        <Static id="Static02_01_00" taborder="22" text="총" left="1001" top="367" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00_00" taborder="23" left="1021" top="367" width="40" height="26" color="#d02424" textAlign="right" text="0" verticalAlign="middle"/>
+        <Static id="Static02_00_00_01" taborder="24" text="건" left="1070" top="367" width="11" height="26" verticalAlign="middle"/>
+        <Button id="btn_excel" taborder="25" text="엑셀" left="932" top="86" height="26" cssclass="btn_WF_excel01" onclick="btn_excel_onclick" width="56"/>
+        <Button id="btn_excel00" taborder="26" text="엑셀" left="932" top="367" height="26" cssclass="btn_WF_excel01" onclick="btn_excel_onclick" width="56"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.stu_tuition_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	alert("개발중입니다.");
+};
+]]></Script>
+    <InitValue>
+      <Grid id="Grid00" binddataset="ds_classList"/>
+      <Grid id="Grid00_00" binddataset="ds_classList"/>
+    </InitValue>
+    <Objects>
+      <Dataset id="ds_tuition"/>
+    </Objects>
+  </Form>
+</FDL>

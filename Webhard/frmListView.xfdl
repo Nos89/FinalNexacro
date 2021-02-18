@@ -3,7 +3,7 @@
   <Form id="frmListView" width="878" height="600" titletext="New Form" onload="frmListView_onload">
     <Layouts>
       <Layout height="600" width="878">
-        <Grid id="grid_listView" taborder="0" left="0" top="0" width="100%" bottom="0" binddataset="ds_indir_test" autofittype="col">
+        <Grid id="grid_listView" taborder="0" left="0" top="0" width="100%" bottom="0" binddataset="ds_indir_test" autofittype="col" onrbuttondown="grid_listView_onrbuttondown">
           <Formats>
             <Format id="default">
               <Columns>
@@ -18,15 +18,15 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell displaytype="checkboxcontrol" edittype="checkbox" checkboxfalsevalue="0" checkboxtruevalue="1"/>
                 <Cell col="1" text="종류"/>
                 <Cell col="2" text="name"/>
                 <Cell col="3" text="size"/>
                 <Cell col="4" text="date"/>
               </Band>
               <Band id="body">
-                <Cell/>
-                <Cell col="1" text="expr:isFolder==&quot;true&quot;? &quot;theme://images/a_folder.png&quot;: &quot;no&quot;" displaytype="imagecontrol" imagestretch="fixaspectratio"/>
+                <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk" checkboxfalsevalue="0" checkboxtruevalue="1"/>
+                <Cell col="1" text="expr:isFolder==&quot;true&quot;? &quot;theme://images/a_folder.png&quot;: name.substring(name.indexOf(&quot;.&quot;), name.length) == &quot;jpg&quot;?  &quot;theme://images/jpgImg.jpg&quot; : &quot;&quot;" displaytype="imagecontrol" imagestretch="fixaspectratio"/>
                 <Cell col="2" text="bind:name"/>
                 <Cell col="3" text="bind:size"/>
                 <Cell col="4" text="bind:date" displaytype="date"/>
@@ -34,11 +34,13 @@
             </Format>
           </Formats>
         </Grid>
+        <PopupMenu id="pm_context" left="950" top="103" width="110" height="177" innerdataset="ds_context" captioncolumn="captioncolumn" iconcolumn="iconcolumn" idcolumn="idcolumn" levelcolumn="levelcolumn" userdatacolumn="userdatacolumn"/>
       </Layout>
     </Layouts>
     <Objects>
       <Dataset id="ds_indir_test">
         <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
           <Column id="isFolder" type="STRING" size="256"/>
           <Column id="size" type="STRING" size="256"/>
@@ -50,10 +52,12 @@
           <Row>
             <Col id="name">A</Col>
             <Col id="isFolder">true</Col>
+            <Col id="chk">0</Col>
           </Row>
           <Row>
             <Col id="name">B</Col>
             <Col id="isFolder">true</Col>
+            <Col id="chk">0</Col>
           </Row>
           <Row>
             <Col id="name">fileA</Col>
@@ -62,6 +66,7 @@
             <Col id="date">20210205</Col>
             <Col id="savedName">asdfasdf</Col>
             <Col id="file_location">P-1001</Col>
+            <Col id="chk">0</Col>
           </Row>
           <Row>
             <Col id="name">fileB</Col>
@@ -70,6 +75,48 @@
             <Col id="date">20210205</Col>
             <Col id="savedName">ffdsa</Col>
             <Col id="file_location">P-1001</Col>
+            <Col id="chk">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_context">
+        <ColumnInfo>
+          <Column id="captioncolumn" size="256"/>
+          <Column id="iconcolumn" size="256"/>
+          <Column id="idcolumn" size="256"/>
+          <Column id="levelcolumn" size="256"/>
+          <Column id="userdatacolumn" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="captioncolumn">다운로드</Col>
+            <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">download</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">업로드</Col>
+            <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">upload</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">이동</Col>
+            <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">move</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">다중선택</Col>
+            <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">multiselect</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">삭제</Col>
+            <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">delete</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">속성</Col>
+            <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">status</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -79,6 +126,13 @@ this.frmListView_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	let indir = this.parent.parent.parent.parent.ds_indir;
 	this.grid_listView.setBindDataset(indir);
+	//this.Grid01.setCellProperty("body",0,"displaytype","expr:Column2=='Y'?'checkbox':'normal'");
+	//this.grid_listView.setCellProperty("body", 0, "isFolder", "1");
+};
+
+this.grid_listView_onrbuttondown = function(obj:nexacro.Grid,e:nexacro.GridMouseEventInfo)
+{
+	
 };
 ]]></Script>
   </Form>
