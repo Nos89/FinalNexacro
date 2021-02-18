@@ -9,12 +9,13 @@
         <Calendar id="calSDate" taborder="3" left="70" top="38" width="130" height="24"/>
         <Static id="Static00_01" taborder="4" text="내용" left="10" top="90" width="40" height="24" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <TextArea id="teaContent" taborder="5" left="10" top="120" height="130" width="380"/>
-        <Button id="btnOk" taborder="6" text="확인" left="113" top="259" width="80" height="30" onclick="btnOk_onclick" cssclass="btn_WF_gantt01"/>
-        <Button id="btnCancle" taborder="7" text="취소" left="203" top="259" width="80" height="30" onclick="btnCancle_onclick" cssclass="btn_WF_gantt01"/>
+        <Button id="btnOk" taborder="6" text="확인" left="10" top="260" width="80" height="30" onclick="btnOk_onclick" cssclass="btn_WF_gantt01"/>
+        <Button id="btnCancle" taborder="7" text="취소" left="100" top="260" width="80" height="30" onclick="btnCancle_onclick" cssclass="btn_WF_gantt01"/>
         <Calendar id="calEDate" taborder="8" left="230" top="38" width="130" height="24"/>
         <Static id="Static00_00_01" taborder="9" text="~" left="210" top="40" width="10" height="24"/>
         <Static id="Static00_00_00" taborder="10" text="색상" left="10" top="64" width="40" height="24" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Combo id="Combo00" taborder="11" left="70" top="66" width="100" height="24"/>
+        <Combo id="cmbType" taborder="11" left="70" top="66" width="100" height="24" index="0" innerdataset="dsType" datacolumn="value" codecolumn="code" text="빨강" displaynulltext="색깔" value="01"/>
+        <Button id="btn_del" taborder="12" text="삭제" left="310" top="260" width="80" height="30" cssclass="btn_WF_gantt03" onclick="btn_del_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -34,6 +35,9 @@ this.scheduler_popup_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		this.cmbType.set_value(objFrame.type);
 	}else if(this.popuptype=="new")
 	{
+		this.btn_del.set_visible("false");
+		this.btnOk.set_left(110);
+		this.btnCancle.set_left(200);
 		if(objFrame.sdate)
 		{
 			this.calSDate.set_value(objFrame.sdate);
@@ -62,6 +66,16 @@ this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btnCancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
+};
+
+this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let check = this.confirm("삭제하시겠습니까?");
+	if(check){
+		let objReturn;
+		objReturn = {"popuptype" : "delete", "id" : this.scheduleId}
+		this.close(JSON.stringify(objReturn, null, "\t"));
+	}
 };
 ]]></Script>
     <Objects>

@@ -164,44 +164,6 @@
           <Column id="dept_code" type="STRING" size="256"/>
           <Column id="col_code" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="oc_code">123</Col>
-            <Col id="oc_year">20210108</Col>
-            <Col id="oc_semester">1</Col>
-            <Col id="oc_schedule">월(1,4)/수(4,5)</Col>
-            <Col id="oc_max">25</Col>
-            <Col id="oc_part">0</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-202</Col>
-            <Col id="name">양자역학의 이해</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="oc_targetlevel">3</Col>
-            <Col id="isu">전공선택</Col>
-          </Row>
-          <Row>
-            <Col id="oc_code">125</Col>
-            <Col id="oc_year">20210105</Col>
-            <Col id="oc_semester">4</Col>
-            <Col id="oc_schedule">금(1,2,3)</Col>
-            <Col id="oc_max">30</Col>
-            <Col id="oc_part">0</Col>
-            <Col id="oc_is_close">N</Col>
-            <Col id="oc_pro_code">P-1001</Col>
-            <Col id="oc_class_room">07-404</Col>
-            <Col id="name">물리학의 이해</Col>
-            <Col id="reco_score">3</Col>
-            <Col id="oc_targetlevel">1</Col>
-            <Col id="isu">전공필수</Col>
-          </Row>
-          <Row>
-            <Col id="oc_code">1236</Col>
-            <Col id="oc_year">20210506</Col>
-            <Col id="oc_semester">1</Col>
-            <Col id="name">양자역학의 이해</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_crDetail">
         <ColumnInfo>
@@ -213,40 +175,6 @@
           <Column id="std_year" type="INT" size="256"/>
           <Column id="check" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="lec_code">123</Col>
-            <Col id="title">양자역학의 이해</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="dept_title">정보통신</Col>
-            <Col id="name">박학생</Col>
-            <Col id="std_year">3</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">125</Col>
-            <Col id="title">물리학의 이해</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="dept_title">정보통신</Col>
-            <Col id="name">박학생</Col>
-            <Col id="std_year">3</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">123</Col>
-            <Col id="title">양자역학의 이해</Col>
-            <Col id="id">S-1002</Col>
-            <Col id="dept_title">소프트웨어 </Col>
-            <Col id="name">이학생</Col>
-            <Col id="std_year">3</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">125</Col>
-            <Col id="title">물리학의 이해</Col>
-            <Col id="id">S-1002</Col>
-            <Col id="dept_title">소프트웨어</Col>
-            <Col id="name">이학생</Col>
-            <Col id="std_year">3</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_lecture">
         <ColumnInfo>
@@ -266,56 +194,6 @@
           <Column id="lec_book" type="STRING" size="256"/>
           <Column id="lec_eval" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="lec_code">125</Col>
-            <Col id="lec_title">양자역학의이해</Col>
-            <Col id="lec_approval">1</Col>
-            <Col id="pro_name">김교수</Col>
-            <Col id="lec_semester">1</Col>
-            <Col id="lec_targetLevel">전체</Col>
-            <Col id="lec_classroom">07-202</Col>
-            <Col id="lec_schedule">월(1,4)/수(4,5)</Col>
-            <Col id="lec_score">3</Col>
-            <Col id="lec_isu">전공필수</Col>
-            <Col id="lec_summary">양자역학을 이해한다</Col>
-            <Col id="lec_way">100/0/0/0/0</Col>
-            <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
-            <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">126</Col>
-            <Col id="lec_title">양자역학의이해</Col>
-            <Col id="lec_approval">0</Col>
-            <Col id="pro_name">김교수</Col>
-            <Col id="lec_semester">1</Col>
-            <Col id="lec_targetLevel">전체</Col>
-            <Col id="lec_classroom">07-202</Col>
-            <Col id="lec_schedule">월(1,4)/수(4,5)</Col>
-            <Col id="lec_score">3</Col>
-            <Col id="lec_isu">전공필수</Col>
-            <Col id="lec_summary">양자역학을 이해한다</Col>
-            <Col id="lec_way">100/0/0/0/0</Col>
-            <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
-            <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">127</Col>
-            <Col id="lec_title">양자역학의이해</Col>
-            <Col id="lec_approval">-1</Col>
-            <Col id="pro_name">김교수</Col>
-            <Col id="lec_semester">1</Col>
-            <Col id="lec_targetLevel">전체</Col>
-            <Col id="lec_classroom">07-202</Col>
-            <Col id="lec_schedule">월(1,4)/수(4,5)</Col>
-            <Col id="lec_score">3</Col>
-            <Col id="lec_isu">전공필수</Col>
-            <Col id="lec_summary">양자역학을 이해한다</Col>
-            <Col id="lec_way">100/0/0/0/0</Col>
-            <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
-            <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_stdYear">
         <ColumnInfo>
@@ -454,16 +332,6 @@
           <Column id="grade_code" type="STRING" size="256"/>
           <Column id="grade_number" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="grade_code">A+</Col>
-            <Col id="grade_number">4.5</Col>
-          </Row>
-          <Row>
-            <Col id="grade_code">A</Col>
-            <Col id="grade_number">4.0</Col>
-          </Row>
-        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[//===============================

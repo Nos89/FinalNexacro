@@ -79,7 +79,7 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
-this.fv_bdDiv = "report";
+this.boardType = "report";
 this.fv_pageRowCount = 15;
 this.totalRowCount = "";
 
@@ -92,13 +92,13 @@ this.Board_Report_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		, "/BoardOnLoad.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, "ds_board=out_board"	// 4. strOutDatasets -select Fds=Sds
-		, "bdDiv="+this.fv_bdDiv // 5. strArgument
+		, "boardType="+this.boardType // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
 };
 
 
-// 트랜잭션 후 콜백
+// 글 목록 받아온 후 콜백
 this.fn_callback = function()
 {
 	this.div_page.form.initPages(this.totalRowCount,this.fv_pageRowCount);
@@ -136,10 +136,10 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let check = this.confirm("삭제하시겠습니까?");
-	let nRows = this.ds_board.exchangeRow("chk==1");
+	let nRows = this.ds_board.extractRows("chk==1");
 	
 	if(check){
-		if(nRow==''||nRow==null){
+		if(nRows==''||nRows==null){
 			this.ds_board.deleteRow(this.ds_board.rowposition);
 		}else {
 			this.ds_board.deleteMultiRows(nRows);
@@ -149,19 +149,21 @@ this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			, "/DeleteBoard.nex"	// 2. strURL(string 형태의 url)
 			, "in_board=ds_board:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 			, ""	// 4. strOutDatasets -select Fds=Sds
-			, "bdDiv="+this.fv_bdDiv // 5. strArgument
-			, ""	// 6. strCallbackFunc
-		);
-		this.transaction(
-			"boardOnLoad"	// 1. strSvcID(string 형태의 id)
-			, "/BoardOnLoad.nex"	// 2. strURL(string 형태의 url)
-			, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
-			, "ds_board=out_board"	// 4. strOutDatasets -select Fds=Sds
-			, "bdDiv="+this.fv_bdDiv // 5. strArgument
-			, "fn_callback"	// 6. strCallbackFunc
+			, "boardType="+this.boardType // 5. strArgument
+			, "fn_callback_del"	// 6. strCallbackFunc
 		);
 	}
 };
+
+this.fn_callback_del = function(id, ErrCD, ErrMSG)
+{
+	if(ErrCD<0){
+		this.alert("삭제하지 못했습니다.");
+	}else{
+		this.alert("삭제되었습니다.");
+	}
+	this.reload();
+}
 
 
 // 검색
@@ -175,7 +177,7 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		, "/SearchBoard.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, "ds_board=out_board"	// 4. strOutDatasets -select Fds=Sds
-		, "sTarget="+sTarget+" sKeyword="+sKeyword+" bdDiv="+this.fv_bdDiv // 5. strArgument
+		, "sTarget="+sTarget+" sKeyword="+sKeyword+" boardType="+this.boardType // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
 };
@@ -199,7 +201,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 			"bdReport"+nSeq
 			, "Admin::Board_post.xfdl"
 			, this.getOwnerFrame()
-			, {seq:nSeq, div:this.fv_bdDiv}
+			, {seq:nSeq, type:this.boardType}
 		)
 	}
 };

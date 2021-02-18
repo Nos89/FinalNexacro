@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frmCopyAndMove" width="440" height="390" titletext="New Form" onload="frmCopyAndMove_onload">
+    <Layouts>
+      <Layout height="390" width="440">
+        <Static id="st_title" taborder="0" text="Static00" left="8" top="5" width="426" height="49"/>
+        <Grid id="grd_dir" taborder="1" left="0" top="60" width="440" height="290" autofittype="col" treeusecheckbox="false" binddataset="ds_directory" oncelldblclick="grd_dir_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24"/>
+              </Rows>
+              <Band id="body">
+                <Cell text="bind:directoryName" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:lv"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_cancel" taborder="2" text="취소" left="220" top="360" width="73" height="27" onclick="btn_cancel_onclick"/>
+        <Button id="btn_move" taborder="3" text="이동" left="142" top="360" width="73" height="27" onclick="btn_move_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.contentName = "";
+this.location = "";
+this.type = "";
+
+this.frmCopyAndMove_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.st_title.set_text("이동할 디렉토리를 선택해주세요.");
+	
+	this.contentName = this.parent.contentName;
+	this.location = this.parent.location;
+	trace( this.parent.type );
+	if( this.parent.type == "true" ){
+		this.type = "folder";
+	} else {
+		this.type = "file";
+	}
+	this.ds_childDir.copyData(this.parent.ds_dir);
+	this.grd_dir.set_binddataset("ds_childDir");
+};
+
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close("-1");
+};
+
+this.btn_move_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let rowpos = this.ds_childDir.rowposition;
+	let moveLocation = this.ds_childDir.getColumn( rowpos, "dirID" );
+	if( this.location == moveLocation ){
+		this.alert("동일한 폴더입니다.");
+	} else {
+		this.transaction(
+				"moveContents", // 1. strSVCID
+				"/webhard/moveContents", // 2. strURL
+				"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+				"", // 4. strOutDatasets -select Fds=Sds
+				"name=" + this.contentName + " location=" + this.location + " moveLocation=" + moveLocation + " type=" + this.type, // 5. strArgument View에서 Server로 넘겨줄 변수
+				"fn_moveCallback" // 6. strCallbackFunc
+			);
+	}
+};
+
+this.grd_dir_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.grd_dir.setTreeStatus( e.row, "expand");
+};
+
+this.fn_moveCallback = function(pId, pErrCode, pErrMsg ){
+	let type = "";
+	if( this.type == "folder" ){
+		type = "폴더";
+	} else {
+		type = "파일";
+	}
+	if( pErrCode >= 1 ){
+		this.alert( type + "이(가) 이동됐습니다.");
+		this.close("1");
+	} else {
+		//this.alert("디렉토리 이동 실패");
+	}
+}]]></Script>
+    <Objects>
+      <Dataset id="ds_childDir">
+        <ColumnInfo>
+          <Column id="dirID" type="STRING" size="256"/>
+          <Column id="userID" type="STRING" size="256"/>
+          <Column id="directoryName" type="STRING" size="256"/>
+          <Column id="parentID" type="STRING" size="256"/>
+          <Column id="lv" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="dirID">1</Col>
+            <Col id="userID">P-1001</Col>
+            <Col id="directoryName">P-1001</Col>
+            <Col id="parentID">root</Col>
+            <Col id="lv">0</Col>
+          </Row>
+          <Row>
+            <Col id="dirID">2</Col>
+            <Col id="userID">P-1001</Col>
+            <Col id="directoryName">A</Col>
+            <Col id="parentID">P-1001</Col>
+            <Col id="lv">1</Col>
+          </Row>
+          <Row>
+            <Col id="dirID">3</Col>
+            <Col id="userID">P-1001</Col>
+            <Col id="directoryName">B</Col>
+            <Col id="parentID">P-1001</Col>
+            <Col id="lv">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

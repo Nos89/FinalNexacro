@@ -244,7 +244,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="com_country" taborder="34" text="" left="465" top="552" width="150" height="24" value="" innerdataset="gdsCountries" codecolumn="name" datacolumn="name"/>
+        <Combo id="com_country" taborder="34" text="" left="465" top="552" width="150" height="24" value="" innerdataset="gdsCountries" codecolumn="name" datacolumn="name" readonly="true"/>
         <Combo id="com_college" taborder="26" left="117" top="459" width="140" height="24" onitemchanged="com_college_onitemchanged" innerdataset="ds_college" codecolumn="col_code" datacolumn="col_title"/>
         <Combo id="com_department" taborder="27" left="465" top="459" width="140" height="24" text="" innerdataset="ds_department" codecolumn="dept_code" datacolumn="dept_title"/>
         <Combo id="com_std_year" taborder="25" left="813" top="428" width="100" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true">
@@ -399,8 +399,16 @@ this.Students_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		, "" // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
-	this.ds_student.filter("std_status=='재학'");
 };
+
+this.fn_callback = function(id, errCD, errMSG)
+{
+	if(errCD<0){
+		this.alert("데이터를 불러오지 못했습니다.");
+	}else{
+		this.ds_student.filter("std_status=='재학'");
+	}
+}
 
 
 // 필터링
@@ -510,11 +518,19 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		, "in_std=ds_student:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, ""	// 4. strOutDatasets -select Fds=Sds
 		, "" // 5. strArgument
-		, "fn_callback"	// 6. strCallbackFunc
+		, "fn_callback_save"	// 6. strCallbackFunc
 	);
 };
 
-
+this.fn_callback_save = function(id, errCD, errMSG)
+{
+	if(errCD<0){
+		this.alert("저장하지 못했습니다.");
+	}else{
+		this.alert("저장되었습니다.");
+	}
+	this.reload();
+}
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="edt_name" propid="value" datasetid="ds_student" columnid="name"/>

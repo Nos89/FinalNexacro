@@ -26,7 +26,7 @@
 **************************************************************************/
 include "Lib::lib_base.xjs";
 include "Lib::lib_date.xjs";
-include "Lib::lib_schedulerv2.xjs";
+include "Lib::lib_proDiary.xjs";
 
 /**************************************************************************
 * FORM 변수 선언 영역
