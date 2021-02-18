@@ -3,12 +3,12 @@
   <Form id="crLogin" width="1280" height="720" titletext="New Form">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Static id="Static00" taborder="0" text="" left="280" top="175" width="56.25%" height="51.39%" border="1px solid #c7c7c7"/>
-        <Static id="Static01" taborder="1" text="수강신청시스템 로그인" left="530" top="191" width="455" height="69" onclick="Static01_onclick" usedecorate="true" font="bold 20px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Edit id="edt_id" taborder="2" left="311" top="300" displaynulltext="학번입력" height="45" width="426"/>
-        <Edit id="edt_pw" taborder="3" left="310" top="368" width="426" height="45" displaynulltext="비밀번호 입력" onchanged="Edit00_00_onchanged" password="true"/>
-        <Button id="btn_login" taborder="4" text="로그인" left="783" top="303" width="118" height="104" onclick="btn_login_onclick"/>
-        <Static id="Static02" taborder="5" text="Since 2021.SADARI UNIVERSITY." left="530" top="459" width="221" height="28" onclick="Static02_onclick"/>
+        <Static id="Static00" taborder="0" text="" left="21.88%" top="24.31%" width="56.25%" height="51.39%" border="1px solid #c7c7c7"/>
+        <Static id="Static01" taborder="1" text="수강신청시스템 로그인" left="41.41%" top="26.53%" width="35.55%" height="9.58%" onclick="Static01_onclick" usedecorate="true" font="bold 20px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Edit id="edt_id" taborder="2" left="24.3%" top="41.67%" displaynulltext="학번입력" height="6.25%" width="33.28%"/>
+        <Edit id="edt_pw" taborder="3" left="24.22%" top="51.11%" width="33.28%" height="6.25%" displaynulltext="비밀번호 입력" onchanged="Edit00_00_onchanged" password="true"/>
+        <Button id="btn_login" taborder="4" text="로그인" left="61.17%" top="42.08%" width="9.22%" height="14.44%" onclick="btn_login_onclick"/>
+        <Static id="Static02" taborder="5" text="Since 2021.SADARI UNIVERSITY." left="41.41%" top="63.75%" width="17.27%" height="3.89%" onclick="Static02_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

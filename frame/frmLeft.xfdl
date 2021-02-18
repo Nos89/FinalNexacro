@@ -465,7 +465,7 @@
             <Col id="MENU_CD">0033</Col>
             <Col id="UP_MENU_CD">0030</Col>
             <Col id="PGM_PATH">Admin</Col>
-            <Col id="PGM_ID"/>
+            <Col id="PGM_ID">Board_Archives.xfdl</Col>
           </Row>
           <Row>
             <Col id="UP_MENU_CD">0</Col>
@@ -513,8 +513,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	if(param=="sugang"){
 		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
 		return;
-		
-	}
+	}	
 	this.transaction(
 		"whichUser", // 1. strSVCID
 		"/whichUser.nex", // 2. strURL
@@ -622,6 +621,7 @@ this.fn_openMenu = function(sMenuId)
 	this.fn_AddOpenMenu(sWinId, sMenuId, sMenuNm);
 	
 	objMdiFrame.form.fn_ActiveTabPage(sWinId);
+	
 	
 }
 

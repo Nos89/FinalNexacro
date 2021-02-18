@@ -450,9 +450,7 @@ this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.fn_addAttendMng = function(){
 	var ocRow = this.ds_openClass.extractRows("oc_code=='"+this.lec_code+"'");
 	var crRow = this.ds_crDetail.extractRows("lec_code=='"+this.lec_code+"'&&id=='"+this.selectId+"'");
-	alert("id==:"+this.selectId);
-	alert("crRow ="+crRow);
-	trace(ocRow);
+
 	var nRow = this.ds_transaction.addRow();
 	this.ds_transaction.setColumn(nRow,"att_seq","0");
 	this.ds_transaction.setColumn(nRow,"att_lecCode",this.lec_code);

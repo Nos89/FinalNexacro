@@ -136,10 +136,10 @@ this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let check = this.confirm("삭제하시겠습니까?");
-	let nRows = this.ds_board.exchangeRow("chk==1");
+	let nRows = this.ds_board.extractRows("chk==1");
 	
 	if(check){
-		if(nRow==''||nRow==null){
+		if(nRows==''||nRows==null){
 			this.ds_board.deleteRow(this.ds_board.rowposition);
 		}else {
 			this.ds_board.deleteMultiRows(nRows);
