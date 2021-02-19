@@ -3468,18 +3468,16 @@
 }
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[userstatus=collapse]
 {
-	-nexa-icon : url('theme://images/tree-collapse.png');
 }
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[userstatus=expand]
 {
-	-nexa-icon : url('theme://images/tree-expand.png');
 }
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[userstatus=leaf]
 {
 }
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitemimage[userstatus=collapse]
 {
-	-nexa-icon : url('none');	
+	-nexa-icon : url('theme://images/tree-collapse.png');	
 }
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitemimage
 {
@@ -3512,7 +3510,7 @@
 }
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitemimage[userstatus=expand]
 {
-	-nexa-icon : url('none');
+	-nexa-icon : url('theme://images/tree-expand.png');
 }
 .Grid .body .row .cell .celltreeitem
 {

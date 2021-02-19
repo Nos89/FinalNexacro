@@ -83,7 +83,7 @@
         </Grid>
         <Static id="Static00_00_00_00" taborder="15" text="교양영역이수과목" left="5" top="472" height="36" cssclass="sta_img_schedule" width="540"/>
         <Static id="Static00_00_00_00_00" taborder="16" text="졸업자격정보" left="560" top="472" height="36" cssclass="sta_img_schedule" width="535"/>
-        <Grid id="Grid3" taborder="17" left="0" top="508" autofittype="col" binddataset="ds_electives" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="545" height="142" border="2px solid #0052a6,,2px solid #0052a6,1px solid #c7c7c7">
+        <Grid id="Grid3" taborder="17" left="0" top="508" autofittype="col" binddataset="ds_electives" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="545" height="142" border="2px solid #0052a6,1px solid #c7c7c7,1px solid #c7c7c7">
           <Formats>
             <Format id="default">
               <Columns>
@@ -108,7 +108,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid4" taborder="18" left="555" top="508" autofittype="col" binddataset="ds_final" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="530" height="142" border="2px solid #0052a6,1px solid #c7c7c7,0px none">
+        <Grid id="Grid4" taborder="18" left="555" top="508" autofittype="col" binddataset="ds_final" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="530" height="142" border="2px solid #0052a6,1px solid #c7c7c7,1px solid #c7c7c7">
           <Formats>
             <Format id="default">
               <Columns>
