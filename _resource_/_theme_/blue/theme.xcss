@@ -3378,10 +3378,12 @@
 .Button.btnIconView
 {
 	-nexa-edge : url('theme://images/btn_iconView.png') 10px 10px;
+	cursor : pointer;
 }
 .Button.btnListView
 {
 	-nexa-edge : url('theme://images/btn_listView.png') 10px 0px;
+	cursor : pointer;
 }
 .Button.btnIconView[userstatus=selected]
 {
@@ -3532,5 +3534,18 @@
 }
 .Grid .body .row .cell .celltreeitem
 {
+}
+.Div.webHeader
+{
+	background : linear-gradient(to right,#ffffff 27%,#0081ea 100%);
+}
+.Button.upload
+{
+	-nexa-edge : url('theme://images/upload.png') 0px 0px;
+	-nexa-border : 1px none;
+	background: transparent;
+	color : #ffffff;
+	cursor : pointer;
+	font : normal 700 10pt/normal "Malgun Gothic";
 }
 ]]></XCSS>
