@@ -18,7 +18,7 @@
               </Columns>
               <Rows>
                 <Row size="35" band="head"/>
-                <Row size="35"/>
+                <Row size="40"/>
               </Rows>
               <Band id="head">
                 <Cell text="구분"/>
@@ -62,167 +62,167 @@
           <Row>
             <Col id="division">1교시&#13;
 (09:00)</Col>
-            <Col id="mon"></Col>
-            <Col id="tue"></Col>
-            <Col id="wen"></Col>
-            <Col id="tur"></Col>
-            <Col id="fri"></Col>
-            <Col id="sat"></Col>
-            <Col id="sun"></Col>
+            <Col id="mon"/>
+            <Col id="tue"/>
+            <Col id="wen"/>
+            <Col id="tur"/>
+            <Col id="fri"/>
+            <Col id="sat"/>
+            <Col id="sun"/>
           </Row>
           <Row>
             <Col id="division">2교시&#13;
 (10:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">3교시&#13;
 (11:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">4교시&#13;
 (12:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">5교시&#13;
 (13:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">6교시&#13;
 (14:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">7교시&#13;
 (15:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">8교시&#13;
 (16:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">9교시&#13;
 (17:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">10교시&#13;
 (18:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">11교시&#13;
 (19:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">12교시&#13;
 (20:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">13교시&#13;
 (21:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">14교시&#13;
 (22:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
           <Row>
             <Col id="division">15교시&#13;
 (23:00)</Col>
-            <Col id="sun"></Col>
-            <Col id="sat"></Col>
-            <Col id="fri"></Col>
-            <Col id="tur"></Col>
-            <Col id="wen"></Col>
-            <Col id="tue"></Col>
-            <Col id="mon"></Col>
+            <Col id="sun"/>
+            <Col id="sat"/>
+            <Col id="fri"/>
+            <Col id="tur"/>
+            <Col id="wen"/>
+            <Col id="tue"/>
+            <Col id="mon"/>
           </Row>
         </Rows>
       </Dataset>

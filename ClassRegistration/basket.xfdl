@@ -52,8 +52,7 @@
                 <Cell col="3" text="expr:dataset.getRowCount()"/>
                 <Cell col="4" colspan="2" text="신청학점계"/>
                 <Cell col="6" text="expr:dataset.getSum(&quot;reco_score&quot;)"/>
-                <Cell col="7"/>
-                <Cell col="8"/>
+                <Cell col="7" colspan="2"/>
                 <Cell col="9"/>
               </Band>
             </Format>
