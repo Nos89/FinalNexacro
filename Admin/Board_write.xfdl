@@ -66,8 +66,6 @@ this.Board_write_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     var currentfile = arrdomain.pop();
 	this.fileDomain = this.domain.replace(currentfile,"uploadBoardFiles.nex");
 	
-	
-	//let domain = "localhost/goWrite.nex?type="+this.boardType;
 	this.WebBrowser00.set_url(this.domain.replace(currentfile,"goWrite.nex?type="+this.boardType));
 };
 
