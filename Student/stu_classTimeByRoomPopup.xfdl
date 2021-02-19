@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="stu_classTimeByRoomPopup" width="480" height="370" onload="stu_classTimeByRoomPopup_onload" titletext="호실 검색 팝업">
+  <Form id="stu_classTimeByRoomPopup" width="480" height="370" onload="stu_classTimeByRoomPopup_onload" titletext="호실 검색 팝업" scrollbartype="none none">
     <Layouts>
       <Layout height="370" width="480">
         <Static id="Static00" taborder="0" text="호실 리스트" left="9" top="50" height="20" cssclass="sta_img_schedule" right="-9"/>

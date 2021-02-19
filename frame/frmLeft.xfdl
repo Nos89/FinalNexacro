@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="fm_left" width="190" height="700" titletext="New Form" onload="fm_left_onload">
+  <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="auto none">
     <Layouts>
-      <Layout height="700" mobileorientation="landscape" width="190">
-        <Grid id="grdLeft" taborder="0" left="0" top="40" width="190" autofittype="col" treeusecheckbox="false" cssclass="grd_LF_treeMenu" bottom="0" treeinitstatus="expand,all" oncellclick="divLeft_grdLeft_oncellclick" border="0px solid #c7c7c7,1px solid #c7c7c7">
+      <Layout height="700" mobileorientation="landscape" width="250">
+        <Grid id="grdLeft" taborder="0" left="30" top="90" width="210" autofittype="col" treeusecheckbox="false" bottom="0" oncellclick="divLeft_grdLeft_oncellclick" border="0px solid #c7c7c7,1px solid #c7c7c7" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" fillareatype="linerow" treeusebutton="noclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -13,12 +13,13 @@
                 <Row size="32"/>
               </Rows>
               <Band id="body">
-                <Cell text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL"/>
+                <Cell text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL" cssclass="treeitem_edit"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="1" text="Main Title Menu" left="0" top="0" height="40" width="190" cssclass="sta_LF_title01"/>
+        <Static id="Static00" taborder="1" text="Main Title Menu" left="30" top="40" height="50" width="210" color="#ffffff" background="#165ba1" cssclass="sta_LF_title01"/>
+        <Static id="Static00_00" taborder="2" left="30" top="1" height="39" width="210" color="#ffffff" background="#545454" border="0px none,1px solid #c7c7c7,1px solid #545454"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -553,7 +554,7 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	if(param=="sugang"){
 		this.application.mainframe.VFSet01.HFSet01.set_separatesize("*,0,0");
 		return;
-	}	
+	}
 	this.transaction(
 		"whichUser", // 1. strSVCID
 		"/whichUser.nex", // 2. strURL
@@ -584,6 +585,11 @@ this.fn_loginCallback = function( pID, pErr, pMsg ){
 
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
+	if(this.grdLeft.getTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition)) == 0){
+		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'true');
+	}else{
+		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'false');
+	}
 	//this.alert(this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"));
 	var sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"); 
 	//let sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD");
@@ -593,6 +599,7 @@ this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 
 this.fn_openMenu = function(sMenuId)
 {
+	nexacro.getApplication().mainframe.VFSet01.HFSet01.VFSet02.set_separatesize("30,*,0");
 	var objMdiFrame = this.application.MdiFrame;	// 상단 탭
 	var objWorkFrame = this.application.WorkFrame;	// 화면
 	
@@ -695,7 +702,10 @@ this.fn_DelOpenMenu = function(pvWinId)
 	
 	var nRow = objOpenMenuDs.findRow("WINID", pvWinId);
 	
-	objOpenMenuDs.deleteRow(nRow);	
+	objOpenMenuDs.deleteRow(nRow);
+	if( objOpenMenuDs.getRowCount() == 0 ){
+		this.fn_home();
+	}
 }
 
 /*****************************************************************************
@@ -725,6 +735,13 @@ this.gfnIsNull = function (pvVal)
 
 	return false;
 }
-]]></Script>
+
+this.fn_home = function(){
+	nexacro.getApplication().mainframe.VFSet01.HFSet01.VFSet02.set_separatesize("30,0,*");
+}
+
+this.fn_tab = function(){
+	this.application.VFSet02.set_separatesize("30,*,0");
+}]]></Script>
   </Form>
 </FDL>

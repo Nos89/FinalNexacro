@@ -87,7 +87,7 @@
                   <Calendar id="Calendar00_00" taborder="43" left="870" top="265" width="140" height="30" enable="false"/>
                   <MaskEdit id="MaskEdit00" taborder="44" left="54" top="67" width="150" height="30" enable="false" format="@@@@년" maskchar=" " type="string"/>
                   <MaskEdit id="MaskEdit00_00" taborder="45" left="54" top="35" width="150" height="30" enable="false" format="@@@@년" type="string" maskchar=" "/>
-                  <MaskEdit id="MaskEdit00_01" taborder="46" left="54" top="199" width="150" height="30" enable="false" format="@@@@" maskchar=" " type="string"/>
+                  <MaskEdit id="MaskEdit00_01" taborder="46" left="54" top="199" width="150" height="30" enable="false" format="@@@@년" maskchar=" " type="string"/>
                 </Layout>
               </Layouts>
             </Tabpage>
