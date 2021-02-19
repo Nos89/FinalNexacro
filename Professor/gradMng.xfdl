@@ -3,15 +3,21 @@
   <Form id="gradMng" width="1090" height="650" titletext="New Form" onload="gradMng_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
-        <Combo id="cbo_title" taborder="0" left="585" top="49" width="116" height="25" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="-1" value="all" onitemclick="cbo_title_onitemclick" onitemchanged="cbo_title_onitemchanged" text="전체" displaynulltext="--선택--"/>
-        <Static id="Static00_01_00" taborder="1" text="과목명" left="535" top="45" width="54" height="35"/>
-        <Static id="Static00" taborder="2" text="년도" left="9" top="50" width="40" height="23"/>
-        <Combo id="cbo_year" taborder="3" text="" left="45" top="50" width="85" height="25" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--" onitemchanged="cbo_year_onitemchanged"/>
-        <Combo id="cbo_stdYear" taborder="4" text="Combo00" left="173" top="50" width="75" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00_01" taborder="5" text="학년" left="140" top="50" width="40" height="23"/>
-        <Static id="Static02" taborder="6" text="학기" left="257" top="50" width="43" height="25"/>
-        <Combo id="cbo_semester" taborder="7" text="" left="293" top="50" width="87" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_semester" displaynulltext="--선택--"/>
-        <Grid id="grd_student" taborder="8" left="9" top="120" width="540" height="207" binddataset="ds_crDetail" autofittype="col">
+        <Static id="Static10_01_00" taborder="78" text="" left="683" top="50" width="392" height="40" cssclass="sta_base"/>
+        <Static id="Static10" taborder="73" text="" left="126" top="50" width="220" height="40" cssclass="sta_base"/>
+        <Static id="Static10_00" taborder="74" text="" left="126" top="89" width="220" height="40" cssclass="sta_base"/>
+        <Static id="Static10_01" taborder="75" text="" left="464" top="50" width="220" height="40" cssclass="sta_base"/>
+        <Static id="Static10_02" taborder="76" text="" left="464" top="89" width="220" height="40" cssclass="sta_base"/>
+        <Static id="Static10_03" taborder="77" text="" left="802" top="89" width="273" height="40" cssclass="sta_base"/>
+        <Combo id="cbo_title" taborder="0" left="815" top="97" width="155" height="25" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="-1" value="all" onitemclick="cbo_title_onitemclick" onitemchanged="cbo_title_onitemchanged" text="전체" displaynulltext="--선택--"/>
+        <Static id="Static00_01_00" taborder="1" text="과목명" left="683" top="89" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static00" taborder="2" text="년도" left="7" top="50" width="120" height="40" cssclass="sta_gray"/>
+        <Combo id="cbo_year" taborder="3" text="" left="133" top="58" width="127" height="25" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--" onitemchanged="cbo_year_onitemchanged"/>
+        <Combo id="cbo_stdYear" taborder="4" text="Combo00" left="133" top="100" width="127" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00_01" taborder="5" text="학년" left="7" top="89" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static02" taborder="6" text="학기" left="345" top="50" width="120" height="40" cssclass="sta_gray"/>
+        <Combo id="cbo_semester" taborder="7" text="" left="475" top="58" width="135" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_semester" displaynulltext="--선택--"/>
+        <Grid id="grd_student" taborder="8" left="9" top="160" width="540" height="207" binddataset="ds_crDetail" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -48,54 +54,46 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static01" taborder="9" text="" left="565" top="101" width="510" height="540" border="1px solid black" onclick="Static01_onclick"/>
-        <Button id="btn_search" taborder="10" text="조회" left="746" top="48" width="66" height="24" onclick="btn_search_onclick"/>
-        <Static id="Static04" taborder="11" text="학번" left="579" top="157" width="81" height="30"/>
-        <Static id="sta_stdId" taborder="12" text="" left="649" top="156" width="119" height="30" border="0px none,0px none,1px solid black"/>
-        <Static id="sta_stdDeptTitle" taborder="13" text="" left="930" top="156" width="119" height="30" border="0px none,0px none,1px solid black"/>
-        <Static id="sta_stdYear" taborder="14" text="" left="930" top="199" width="119" height="30" border="0px none,0px none,1px solid black"/>
-        <Static id="sta_stdName" taborder="15" text="" left="649" top="199" width="119" height="30" border="0px none,0px none,1px solid black"/>
-        <Static id="Static04_00" taborder="16" text="이름" left="579" top="197" width="81" height="30"/>
-        <Static id="Static04_00_00" taborder="17" text="학년" left="860" top="197" width="81" height="30"/>
-        <Static id="Static04_00_00_00" taborder="18" text="학과" left="860" top="157" width="81" height="30"/>
-        <Static id="Static06" taborder="19" text="평가기준" left="581" top="242" width="116" height="26"/>
-        <Static id="Static07_06_00" taborder="20" text="출석" left="579" top="276" width="122" height="21" cssclass="sta_cm_box01C"/>
-        <Static id="sta_attend" taborder="21" left="579" top="297" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center" text=""/>
-        <Static id="Static07_06_00_01" taborder="22" text="과제물" left="579" top="322" width="122" height="21" cssclass="sta_cm_box01C"/>
-        <Static id="sta_assignment" taborder="23" left="579" top="340" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
-        <Static id="sta_presentation" taborder="24" left="700" top="340" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
-        <Static id="Static07_06_00_00_01" taborder="25" text="발표" left="700" top="322" width="122" height="21" cssclass="sta_cm_box01C"/>
-        <Static id="sta_middleTest" taborder="26" left="700" top="297" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
-        <Static id="Static07_06_00_00" taborder="27" text="중간고사" left="700" top="276" width="122" height="21" cssclass="sta_cm_box01C"/>
-        <Static id="Static07_06_00_00_00" taborder="28" text="기말고사" left="821" top="276" width="122" height="21" cssclass="sta_cm_box01C"/>
-        <Static id="sta_finalTest" taborder="29" left="821" top="297" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
-        <Static id="Static07_06_00_00_00_02" taborder="30" text="수업태도" left="821" top="322" width="122" height="21" cssclass="sta_cm_box01C"/>
-        <Static id="sta_attitude" taborder="31" left="821" top="340" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
-        <Static id="sta_other1" taborder="32" left="942" top="340" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
-        <Static id="Static07_06_00_00_00_00_00" taborder="33" text="기타" left="942" top="322" width="122" height="21" cssclass="sta_cm_box01C"/>
-        <Static id="sta_test" taborder="34" left="942" top="297" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
-        <Static id="Static07_06_00_00_00_00" taborder="35" text="수시평가" left="942" top="276" width="122" height="21" cssclass="sta_cm_box01C"/>
-        <Static id="Static07" taborder="36" text="" left="565" top="378" width="510" height="172" border="1px solid #c7c7c7,0px none"/>
-        <Static id="Static08" taborder="37" text="출석" left="628" top="390" width="73" height="30"/>
-        <Static id="Static08_00" taborder="38" text="중간고사" left="630" top="430" width="73" height="30"/>
-        <Static id="Static08_00_00" taborder="39" text="기말고사" left="629" top="470" width="73" height="30"/>
-        <Static id="Static08_00_00_00" taborder="40" text="수시평가" left="629" top="510" width="73" height="30"/>
-        <MaskEdit id="mask_attend" taborder="41" left="685" top="390" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
-        <MaskEdit id="mask_middleTest" taborder="42" left="685" top="430" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
-        <MaskEdit id="mask_finalTest" taborder="43" left="685" top="470" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
-        <MaskEdit id="mask_test" taborder="44" left="685" top="510" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
-        <Static id="Static08_01" taborder="45" text="과제물" left="858" top="390" width="73" height="30"/>
-        <Static id="Static08_00_01" taborder="46" text="발표" left="860" top="430" width="73" height="30"/>
-        <MaskEdit id="mask_presentation" taborder="47" left="915" top="430" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
-        <MaskEdit id="mask_assignment" taborder="48" left="915" top="390" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
-        <MaskEdit id="mask_attitude" taborder="49" left="915" top="470" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
-        <Static id="Static08_00_00_01" taborder="50" text="수업태도" left="859" top="470" width="73" height="30"/>
-        <Static id="Static08_00_00_00_00" taborder="51" text="기타" left="859" top="510" width="73" height="30"/>
-        <MaskEdit id="mask_other1" taborder="52" left="915" top="510" width="95" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
-        <Static id="Static09" taborder="53" text="총점" left="615" top="557" width="67" height="28"/>
-        <MaskEdit id="mask_total" taborder="54" left="685" top="558" width="95" height="30" enable="false"/>
-        <Static id="Static09_00" taborder="55" text="학점" left="813" top="558" width="67" height="28"/>
-        <Grid id="grd_grade" taborder="56" left="10" top="375" width="540" height="270" binddataset="ds_grade" autofittype="col" oncellclick="grd_grade_oncellclick" onheadclick="grd_grade_onheadclick">
+        <Static id="Static01" taborder="9" text="" left="565" top="141" width="510" height="509" border="1px solid #b4bcc2" onclick="Static01_onclick"/>
+        <Button id="btn_search" taborder="10" text="조회" left="734" top="58" width="66" height="24" onclick="btn_search_onclick"/>
+        <Static id="Static04" taborder="11" text="학번" left="578" top="200" width="100" height="30" cssclass="sta_gray"/>
+        <Static id="sta_stdId" taborder="12" text="" left="677" top="200" width="140" height="30" cssclass="sta_base" textAlign="center"/>
+        <Static id="sta_stdDeptTitle" taborder="13" text="" left="915" top="200" width="140" height="30" cssclass="sta_base" textAlign="center"/>
+        <Static id="sta_stdYear" taborder="14" text="" left="915" top="229" width="140" height="30" cssclass="sta_base" textAlign="center"/>
+        <Static id="sta_stdName" taborder="15" text="" left="677" top="229" width="140" height="30" cssclass="sta_base" textAlign="center"/>
+        <Static id="Static04_00" taborder="16" text="이름" left="578" top="229" width="100" height="30" cssclass="sta_gray"/>
+        <Static id="Static04_00_00" taborder="17" text="학년" left="816" top="229" width="100" height="30" cssclass="sta_gray"/>
+        <Static id="Static04_00_00_00" taborder="18" text="학과" left="816" top="200" width="100" height="30" cssclass="sta_gray"/>
+        <Static id="Static06" taborder="19" text="평가기준" left="581" top="262" width="116" height="26"/>
+        <Static id="Static07_06_00" taborder="20" text="출석" left="579" top="296" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_attend" taborder="21" left="579" top="317" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center" text=""/>
+        <Static id="Static07_06_00_01" taborder="22" text="과제물" left="579" top="342" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_assignment" taborder="23" left="579" top="360" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="sta_presentation" taborder="24" left="700" top="360" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00_01" taborder="25" text="발표" left="700" top="342" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_middleTest" taborder="26" left="700" top="317" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00" taborder="27" text="중간고사" left="700" top="296" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="Static07_06_00_00_00" taborder="28" text="기말고사" left="821" top="296" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_finalTest" taborder="29" left="821" top="317" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00_00_02" taborder="30" text="수업태도" left="821" top="342" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_attitude" taborder="31" left="821" top="360" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="sta_other1" taborder="32" left="942" top="360" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00_00_00_00" taborder="33" text="기타" left="942" top="342" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="sta_test" taborder="34" left="942" top="317" width="122" height="26" border="0px none,1px solid #c7c7c7,1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static07_06_00_00_00_00" taborder="35" text="수시평가" left="942" top="296" width="122" height="21" cssclass="sta_cm_box01C"/>
+        <Static id="Static07" taborder="36" text="" left="565" top="398" width="510" height="172" border="1px solid #b4bcc2"/>
+        <Static id="Static08" taborder="37" text="출석" left="578" top="405" width="80" height="40" cssclass="sta_gray"/>
+        <Static id="Static08_00" taborder="38" text="중간고사" left="578" top="444" width="80" height="40" cssclass="sta_gray"/>
+        <Static id="Static08_00_00" taborder="39" text="기말고사" left="578" top="483" width="80" height="40" cssclass="sta_gray"/>
+        <Static id="Static08_00_00_00" taborder="40" text="수시평가" left="578" top="522" width="80" height="40" cssclass="sta_gray"/>
+        <Static id="Static08_01" taborder="45" text="과제물" left="815" top="405" width="80" height="40" cssclass="sta_gray"/>
+        <Static id="Static08_00_01" taborder="46" text="발표" left="815" top="444" width="80" height="40" cssclass="sta_gray"/>
+        <Static id="Static08_00_00_01" taborder="50" text="수업태도" left="815" top="483" width="80" height="40" cssclass="sta_gray"/>
+        <Static id="Static08_00_00_00_00" taborder="51" text="기타" left="815" top="522" width="80" height="40" cssclass="sta_gray"/>
+        <Static id="Static09" taborder="53" text="총점" left="615" top="577" width="67" height="28"/>
+        <MaskEdit id="mask_total" taborder="54" left="685" top="578" width="95" height="30" enable="false"/>
+        <Static id="Static09_00" taborder="55" text="학점" left="813" top="578" width="67" height="28"/>
+        <Grid id="grd_grade" taborder="56" left="10" top="415" width="540" height="235" binddataset="ds_grade" autofittype="col" oncellclick="grd_grade_oncellclick" onheadclick="grd_grade_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -126,22 +124,38 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_cancle" taborder="57" text="취소" left="679" top="605" width="127" height="29" onclick="btn_cancle_onclick"/>
-        <Button id="btn_ok" taborder="58" text="완료" left="840" top="605" width="127" height="29" onclick="btn_ok_onclick"/>
-        <Button id="btn_attend" taborder="59" text="출결조회" left="959" top="49" width="116" height="23" onclick="btn_attend_onclick"/>
+        <Button id="btn_cancle" taborder="57" text="취소" left="679" top="615" width="127" height="29" onclick="btn_cancle_onclick"/>
+        <Button id="btn_ok" taborder="58" text="완료" left="840" top="615" width="127" height="29" onclick="btn_ok_onclick"/>
+        <Button id="btn_attend" taborder="59" text="출결조회" left="902" top="59" width="98" height="23" onclick="btn_attend_onclick"/>
         <Static id="Static00_00" taborder="60" text="성적관리" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
         <Static id="Static01_00" taborder="61" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
-        <Static id="Static04_01" taborder="62" text="성적입력/수정" left="575" top="108" width="171" height="42" cssclass="sta_WF_title02"/>
-        <Button id="btn_add" taborder="63" left="495" top="341" width="25" height="25" cssclass="btn_WF_add01" text="" onclick="btn_add_onclick"/>
-        <Button id="btn_delete" taborder="64" left="523" top="341" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick"/>
-        <Button id="btn_reset" taborder="65" text="초기화" left="828" top="48" width="69" height="24" onclick="btn_reset_onclick"/>
-        <Static id="Static00_01_00_00" taborder="66" text="과목코드" left="383" top="45" width="54" height="35"/>
-        <Combo id="cbo_lecCode" taborder="67" text="Combo00" left="441" top="51" width="86" height="24" innerdataset="ds_lecCode" codecolumn="code" datacolumn="name" displaynulltext="--선택--" onitemchanged="cbo_lecCode_onitemchanged"/>
-        <Combo id="cbo_gradeCode" taborder="68" left="962" top="558" width="83" height="25" innerdataset="ds_gradeCard" codecolumn="grade_code" datacolumn="grade_code" index="-1" value="all" text="전체" displaynulltext="--선택--" onitemchanged="cbo_gradeCode_onitemchanged"/>
-        <Static id="Static05" taborder="69" text="총점은 평가기준 비율에 따라 자동 계산됩니다." left="822" top="107" width="248" height="38" background="bisque"/>
-        <Edit id="edt_gradeCode" taborder="70" left="858" top="558" width="95" height="30" readonly="true" textAlign="center"/>
-        <Static id="Static03" taborder="71" text="성적정보" left="12" top="344" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Static id="Static03_00" taborder="72" text="학생목록" left="10" top="90" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="Static04_01" taborder="62" text="성적입력/수정" left="575" top="148" width="171" height="42" cssclass="sta_WF_title02"/>
+        <Button id="btn_add" taborder="63" left="495" top="381" width="25" height="25" cssclass="btn_WF_add01" text="" onclick="btn_add_onclick"/>
+        <Button id="btn_delete" taborder="64" left="523" top="381" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick"/>
+        <Button id="btn_reset" taborder="65" text="초기화" left="816" top="58" width="69" height="24" onclick="btn_reset_onclick"/>
+        <Static id="Static00_01_00_00" taborder="66" text="과목코드" left="345" top="89" width="120" height="40" cssclass="sta_gray"/>
+        <Combo id="cbo_lecCode" taborder="67" text="Combo00" left="475" top="98" width="135" height="24" innerdataset="ds_lecCode" codecolumn="code" datacolumn="name" displaynulltext="--선택--" onitemchanged="cbo_lecCode_onitemchanged"/>
+        <Combo id="cbo_gradeCode" taborder="68" left="962" top="578" width="83" height="25" innerdataset="ds_gradeCard" codecolumn="grade_code" datacolumn="grade_code" index="-1" value="all" text="전체" displaynulltext="--선택--" onitemchanged="cbo_gradeCode_onitemchanged"/>
+        <Static id="Static05" taborder="69" text="총점은 평가기준 비율에 따라 자동 계산됩니다." left="822" top="147" width="248" height="38" background="bisque"/>
+        <Edit id="edt_gradeCode" taborder="70" left="858" top="578" width="95" height="30" readonly="true" textAlign="center"/>
+        <Static id="Static03" taborder="71" text="성적정보" left="12" top="384" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="Static03_00" taborder="72" text="학생목록" left="10" top="130" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="static00" taborder="79" text="" left="656" top="405" width="160" height="40" cssclass="sta_base"/>
+        <Static id="static00_00" taborder="80" text="" left="894" top="522" width="160" height="40" cssclass="sta_base"/>
+        <Static id="static00_01" taborder="81" text="" left="894" top="483" width="160" height="40" cssclass="sta_base"/>
+        <Static id="static00_02" taborder="82" text="" left="894" top="444" width="160" height="40" cssclass="sta_base"/>
+        <Static id="static00_03" taborder="83" text="" left="894" top="405" width="160" height="40" cssclass="sta_base"/>
+        <Static id="static00_04" taborder="84" text="" left="656" top="522" width="160" height="40" cssclass="sta_base"/>
+        <Static id="static00_05" taborder="85" text="" left="656" top="483" width="160" height="40" cssclass="sta_base"/>
+        <Static id="static00_06" taborder="86" text="" left="656" top="444" width="160" height="40" cssclass="sta_base"/>
+        <MaskEdit id="mask_attend" taborder="41" left="676" top="410" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_middleTest" taborder="42" left="676" top="449" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_finalTest" taborder="43" left="676" top="488" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_test" taborder="44" left="676" top="527" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_presentation" taborder="47" left="914" top="449" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_assignment" taborder="48" left="914" top="410" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_attitude" taborder="49" left="914" top="488" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <MaskEdit id="mask_other1" taborder="52" left="914" top="527" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -267,42 +281,6 @@
           <Column id="grade_etc" type="INT" size="256"/>
           <Column id="grade_total" type="INT" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="std_id">S-1001</Col>
-            <Col id="lec_code">123</Col>
-            <Col id="grade_code">0</Col>
-            <Col id="grade_attend">0</Col>
-            <Col id="grade_repo">0</Col>
-            <Col id="grade_mid">0</Col>
-            <Col id="grade_pre">0</Col>
-            <Col id="grade_final">0</Col>
-            <Col id="grade_atti">0</Col>
-            <Col id="grade_quiz">0</Col>
-            <Col id="grade_etc">0</Col>
-            <Col id="grade_total">0</Col>
-          </Row>
-          <Row>
-            <Col id="std_id">S-1002</Col>
-            <Col id="lec_code">123</Col>
-            <Col id="grade_code">A0</Col>
-            <Col id="grade_attend">100</Col>
-            <Col id="grade_repo">100</Col>
-            <Col id="grade_mid">100</Col>
-            <Col id="grade_pre">100</Col>
-            <Col id="grade_final">100</Col>
-            <Col id="grade_atti">100</Col>
-            <Col id="grade_quiz">100</Col>
-            <Col id="grade_etc">100</Col>
-            <Col id="grade_total">100</Col>
-          </Row>
-          <Row>
-            <Col id="std_id">S-1002</Col>
-            <Col id="lec_code">125</Col>
-            <Col id="grade_total">0</Col>
-            <Col id="grade_code">0</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_lecCode">
         <ColumnInfo>

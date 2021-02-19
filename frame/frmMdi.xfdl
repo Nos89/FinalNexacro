@@ -12,7 +12,7 @@
         <Button id="btn_MdiPrev" taborder="2" top="-1" width="30" height="31" right="58" cssclass="btn_mdi_prev"/>
         <Button id="btn_MdiNext" taborder="3" top="-1" width="30" height="31" right="29" cssclass="btn_mdi_next"/>
         <Button id="btnCloseAll" taborder="4" top="-1" width="30" height="31" right="0" cssclass="btn_mdi_close" onclick="btnCloseAll_onclick"/>
-        <Static id="Static01" taborder="5" left="0" top="0" width="30" height="30" cssclass="sta_mdi_home"/>
+        <Static id="Static01" taborder="5" left="0" top="0" width="30" height="30" cssclass="sta_mdi_home" onclick="Static01_onclick" text=""/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.application = null;
@@ -83,6 +83,14 @@ this.btnCloseAll_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		//this.alert(WorkFrame.get_id(i));
 		this.tabMdi.removeTabpage(i);
 	}
+};
+
+
+
+this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	var objApp = nexacro.getApplication();
+	objApp.mainframe.VFSet01.HFSet01.VFSet02.set_separatesize("*,30");
 };
 ]]></Script>
   </Form>
