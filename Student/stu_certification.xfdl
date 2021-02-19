@@ -145,23 +145,9 @@
 
 this.stu_certification_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.transaction(
-		"stuInfoOnLoad",
-		"/stuInfoOnLoad.nex",
-		"",
-		"ds_stuInfo=out_stuInfo ds_proFile=out_proFile ds_stuDetail=out_stuDetail",
-		"",  
-		"fn_callback"
-	);
+	this.transaction("stuInfoOnLoad","/stuInfoOnLoad.nex","","ds_stuInfo=out_stuInfo ds_proFile=out_proFile ds_stuDetail=out_stuDetail","","fn_callback");
 	
-	this.transaction(
-		"gotMyCertification",
-		"/gotMyCertification.nex",
-		"",
-		"ds_specificList=out_specificList",
-		"",  
-		"fn_callback_list"
-	);
+	this.transaction("gotMyCertification","/gotMyCertification.nex","","ds_specificList=out_specificList","","fn_callback_list");
 	
 	this.sta_count00_00.set_text(this.ds_list.getRowCount());
 	
@@ -262,14 +248,7 @@ this.Grid2_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 	if(e.cell == "5"){
 		
 		name = this.ds_list.getColumn(0,"name");
-		this.transaction(
-			"whichCertification",
-			"/whichCertification.nex",
-			"",
-			"",
-			"name="+ nexacro.wrapQuote(name),  
-			"fn_callback_check"
-		);
+		this.transaction("whichCertification","/whichCertification.nex","","","name="+ nexacro.wrapQuote(name),"fn_callback_check");
 	}
 };
 
@@ -284,14 +263,7 @@ this.fn_callback_check=function(id,errCode,errMsg)
 	
 	window.open('/getCertification.nex', 'certification', 'status=no, height=730, width=670, left='+ popupX + ', top='+ nH);
 	
-	this.transaction(
-		"gotMyCertification",
-		"/gotMyCertification.nex",
-		"",
-		"ds_specificList=out_specificList",
-		"",  
-		""
-	);
+	this.transaction("gotMyCertification","/gotMyCertification.nex","","ds_specificList=out_specificList","","");
 };
 this.Grid1_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {

@@ -3,13 +3,15 @@
   <Form id="attendMng" width="1090" height="650" titletext="New Form" onload="attendMng_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
+        <Static id="Static02_00" taborder="17" text="" left="472" top="43" width="248" height="40" cssclass="sta_base"/>
+        <Static id="Static02" taborder="16" text="" left="116" top="43" width="248" height="40" cssclass="sta_base"/>
         <Static id="Static00" taborder="0" text="출결관리" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
-        <Static id="Static01" taborder="1" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
-        <Combo id="cbo_title" taborder="2" left="64" top="45" width="116" height="32" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="0" value="all" onitemclick="cbo_title_onitemclick" onitemchanged="cbo_title_onitemchanged" text="전체"/>
-        <Combo id="cbo_week" taborder="3" text="1" left="237" top="46" width="63" height="31" innerdataset="ds_week" codecolumn="code" datacolumn="name" index="0" value="1" onitemchanged="cbo_week_onitemchanged"/>
-        <Static id="Static00_01" taborder="4" text="주차" left="200" top="45" width="40" height="35"/>
-        <Static id="Static00_01_00" taborder="5" text="과목명" left="20" top="43" width="54" height="35"/>
-        <Button id="btn_search" taborder="6" text="조회" left="320" top="46" width="85" height="32" onclick="btn_search_onclick"/>
+        <Static id="Static01" taborder="1" text="Static01" left="9" top="35" width="1061" height="1" border="1px solid black,0px none,0px none"/>
+        <Combo id="cbo_title" taborder="2" left="148" top="47" width="162" height="32" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="0" value="all" onitemclick="cbo_title_onitemclick" onitemchanged="cbo_title_onitemchanged" text="전체"/>
+        <Combo id="cbo_week" taborder="3" text="1" left="483" top="48" width="87" height="31" innerdataset="ds_week" codecolumn="code" datacolumn="name" index="0" value="1" onitemchanged="cbo_week_onitemchanged"/>
+        <Static id="Static00_01" taborder="4" text="주차" left="363" top="43" width="110" height="40" cssclass="sta_gray"/>
+        <Static id="Static00_01_00" taborder="5" text="과목명" left="13" top="43" width="127" height="40" cssclass="sta_gray"/>
+        <Button id="btn_search" taborder="6" text="조회" left="840" top="46" width="85" height="32" onclick="btn_search_onclick"/>
         <Grid id="grd_lecture" taborder="7" left="9" top="95" width="1065" height="179" binddataset="ds_openClass" autofittype="col" oncellclick="Grid01_oncellclick">
           <Formats>
             <Format id="default">
@@ -53,8 +55,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static05_00_00" taborder="8" text="학생출결관리" left="7" top="274" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
-        <Button id="btn_save" taborder="9" text="저장" left="939" top="314" width="109" height="26" onclick="btn_save_onclick"/>
+        <Static id="Static05_00_00" taborder="8" text="학생출결관리" left="386" top="315" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Button id="btn_save" taborder="9" text="저장" left="959" top="314" width="109" height="26" onclick="btn_save_onclick"/>
         <Grid id="grd_student" taborder="10" left="9" top="350" width="361" height="290" binddataset="ds_crDetail" autofittype="col" oncellclick="grd_student_oncellclick">
           <Formats>
             <Format id="default">
@@ -123,10 +125,10 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_add" taborder="12" text="추가" left="825" top="314" width="109" height="27" onclick="btn_add_onclick"/>
+        <Button id="btn_add" taborder="12" text="추가" left="835" top="314" width="109" height="27" onclick="btn_add_onclick"/>
         <Button id="btn_attRetrive" taborder="13" text="현재출결조회" left="711" top="314" width="109" height="27" onclick="btn_attRetrive_onclick"/>
-        <Static id="Static05_00_00_00" taborder="14" text="수강학생 목록" left="10" top="317" width="128" height="26" font="normal  10pt/normal &quot;Arial&quot;"/>
-        <Button id="Button00" taborder="15" text="전체출결조회" left="935" top="54" width="139" height="31" onclick="Button00_onclick"/>
+        <Static id="Static05_00_00_00" taborder="14" text="수강학생 목록" left="10" top="317" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Button id="Button00" taborder="15" text="전체출결조회" left="935" top="46" width="139" height="31" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>

@@ -93,14 +93,7 @@
 this.stu_changeMajor_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 
-	this.transaction(
-		"stuInfoOnLoad",
-		"/stuInfoOnLoad.nex",
-		"",
-		"ds_stuInfo=out_stuInfo",
-		"",  
-		"fn_callback"
-	);
+	this.transaction("stuInfoOnLoad","/stuInfoOnLoad.nex","","ds_stuInfo=out_stuInfo","","fn_callback");
 	
 	var d = new Date();
 	this.cal_applyDay.set_value(d.getYear()+""+((d.getMonth()+1)+"").padLeft(2,'0')+""+(""+d.getDate()).padLeft(2,'0'));

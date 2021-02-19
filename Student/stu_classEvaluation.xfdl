@@ -92,7 +92,7 @@
             </ColumnInfo>
           </Dataset>
         </Combo>
-        <Button id="btn_search" taborder="19" text="조회" left="1023" top="2" width="54" height="30" onclick="btn_search_onclick"/>
+        <Button id="btn_search" taborder="19" text="조회" left="1019" top="2" width="57" height="30" onclick="btn_search_onclick" cssclass="btn_WF_search02"/>
         <Static id="Static00_00" taborder="20" text="강의평가결과 리스트" left="5" top="126" height="34" cssclass="sta_img_schedule" width="1080"/>
         <Grid id="Grid00" taborder="21" left="5" top="164" autofittype="col" nodatatext="조회된 데이터가 없습니다." width="1080" height="476">
           <Formats>
