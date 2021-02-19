@@ -191,8 +191,9 @@
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var objCF = new ChildFrame();
-	objCF.init("popRoom", 295, 140, 0, 0);
+	objCF.init("popRoom", 295, 140, 480, 370);
 	objCF.set_openalign("center middle");
+	objCF.set_openstatus('maximize');
 	objCF.set_formurl("Student::stu_classTimeByRoomPopup.xfdl");
 	
 	objCF.showModal(
