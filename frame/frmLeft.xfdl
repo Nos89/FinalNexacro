@@ -3,7 +3,7 @@
   <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="auto none">
     <Layouts>
       <Layout height="700" mobileorientation="landscape" width="250">
-        <Grid id="grdLeft" taborder="0" left="30" top="90" width="210" autofittype="col" treeusecheckbox="false" bottom="0" oncellclick="divLeft_grdLeft_oncellclick" border="0px solid #c7c7c7,1px solid #c7c7c7" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" fillareatype="linerow">
+        <Grid id="grdLeft" taborder="0" left="30" top="90" width="210" autofittype="col" treeusecheckbox="false" bottom="0" oncellclick="divLeft_grdLeft_oncellclick" border="0px solid #c7c7c7,1px solid #c7c7c7" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" fillareatype="linerow" treeusebutton="noclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -552,6 +552,11 @@ this.fn_loginCallback = function( pID, pErr, pMsg ){
 
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
+	if(this.grdLeft.getTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition)) == 0){
+		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'true');
+	}else{
+		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'false');
+	}
 	//this.alert(this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"));
 	var sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"); 
 	//let sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD");
