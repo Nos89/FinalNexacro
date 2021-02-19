@@ -3,8 +3,8 @@
   <Form id="stu_info" width="1090" height="650" titletext="New Form" onload="stu_info_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
-        <Static id="Static00" taborder="0" text="개인정보관리" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Static id="Static01" taborder="1" left="0" top="34" width="1090" height="34" background="#c8ddee" text="학생기본정보" cssclass="sta_WF_title01"/>
+        <Static id="Static00" taborder="0" text="개인정보관리" left="5" top="0" height="34" cssclass="sta_img_circle01" width="1080"/>
+        <Static id="Static01" taborder="1" left="4" top="34" width="1083" height="34" text="학생기본정보" cssclass="sta_img_person" border="1px solid #c8ddee,0px none"/>
         <Static id="Static01_00" taborder="2" left="5" top="68" width="1080" height="152" border="0px none,0px none,1px solid black"/>
         <ImageViewer id="ImageViewer00" taborder="3" left="20" top="78" width="110" height="102" stretch="fit"/>
         <Button id="btn_imgUpload" taborder="4" text="사진업로드" left="20" top="179" width="110" height="26" onclick="btn_imgUpload_onclick"/>
@@ -41,7 +41,7 @@
             <Tabpage id="Tabpage1" text="기본">
               <Layouts>
                 <Layout>
-                  <Static id="Static00" taborder="0" text="기본정보" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-2"/>
+                  <Static id="Static00" taborder="0" text="기본정보" left="4" top="1" height="34" right="-6" cssclass="sta_img_person"/>
                   <Static id="Static02_01" taborder="1" text="과정년도" left="-1" top="34" width="50" height="30" textAlign="right"/>
                   <Static id="Static02_01_00" taborder="2" text="입학년도" left="-1" top="67" width="50" height="30" textAlign="right"/>
                   <Static id="Static02_01_00_00" taborder="3" text="입학대학" left="-1" top="100" width="50" height="30" textAlign="right"/>
@@ -56,7 +56,7 @@
                   <Static id="Static02_01_00_05" taborder="12" text="학위(국)" left="-1" top="265" width="50" height="30" textAlign="right"/>
                   <Edit id="Edit00_01_00_05" taborder="13" left="54" top="265" width="150" height="30" enable="false"/>
                   <Static id="Static02_01_00_06" taborder="14" text="입학학기" left="255" top="67" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_01_00_06" taborder="15" left="310" top="67" width="150" height="30" enable="false"/>
+                  <Edit id="Edit00_01_00_06" taborder="15" left="310" top="67" width="150" height="30" enable="false" value="1학기" text="1학기"/>
                   <Static id="Static02_01_00_00_00" taborder="16" text="입학학부(과)" left="230" top="100" width="75" height="30" textAlign="right"/>
                   <Edit id="Edit00_01_00_00_00" taborder="17" left="310" top="100" width="150" height="30" enable="false"/>
                   <Static id="Static02_01_00_01_00" taborder="18" text="부전공2" left="255" top="133" width="50" height="30" textAlign="right"/>
@@ -71,7 +71,7 @@
                   <Static id="Static02_01_00_00_00_00_00" taborder="27" text="입학학과(전공)" left="510" top="100" width="80" height="30" textAlign="right"/>
                   <Edit id="Edit00_01_00_00_00_00_00" taborder="28" left="595" top="100" width="150" height="30" enable="false"/>
                   <Static id="Static02_01_00_01_00_00_00" taborder="29" text="복수전공1" left="520" top="133" width="70" height="30" textAlign="right"/>
-                  <Edit id="Edit00_01_00_06_00_00" taborder="30" left="595" top="67" width="150" height="30" enable="false"/>
+                  <Edit id="Edit00_01_00_06_00_00" taborder="30" left="595" top="67" width="150" height="30" enable="false" value="1학년" text="1학년"/>
                   <Edit id="Edit00_01_00_01_00_00_00" taborder="31" left="595" top="133" width="150" height="30" enable="false"/>
                   <Static id="Static02_01_00_06_00_00_00" taborder="32" text="입학일자" left="805" top="67" width="50" height="30" textAlign="right"/>
                   <Edit id="Edit00_01_00_01_00_00_00_00" taborder="33" left="860" top="133" width="150" height="30" enable="false"/>
@@ -85,16 +85,16 @@
                   <Static id="Static02_01_00_01_00_00_01_00" taborder="41" text="졸업/수료일자" left="760" top="265" width="95" height="30" textAlign="right"/>
                   <Calendar id="Calendar00" taborder="42" left="870" top="67" width="140" height="30" enable="false"/>
                   <Calendar id="Calendar00_00" taborder="43" left="870" top="265" width="140" height="30" enable="false"/>
-                  <MaskEdit id="MaskEdit00" taborder="44" left="54" top="67" width="150" height="30" enable="false" format="@@@@" maskchar=" " type="string"/>
-                  <MaskEdit id="MaskEdit00_00" taborder="45" left="54" top="35" width="150" height="30" enable="false" format="@@@@" type="string" maskchar=" "/>
-                  <MaskEdit id="MaskEdit00_01" taborder="46" left="54" top="199" width="150" height="30" enable="false" format="@@@@" maskchar=" " type="string"/>
+                  <MaskEdit id="MaskEdit00" taborder="44" left="54" top="67" width="150" height="30" enable="false" format="@@@@년" maskchar=" " type="string"/>
+                  <MaskEdit id="MaskEdit00_00" taborder="45" left="54" top="35" width="150" height="30" enable="false" format="@@@@년" type="string" maskchar=" "/>
+                  <MaskEdit id="MaskEdit00_01" taborder="46" left="54" top="199" width="150" height="30" enable="false" format="@@@@년" maskchar=" " type="string"/>
                 </Layout>
               </Layouts>
             </Tabpage>
             <Tabpage id="Tabpage2" text="입시(개발중)">
               <Layouts>
                 <Layout>
-                  <Static id="Static00" taborder="0" text="기본항목" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-2"/>
+                  <Static id="Static00" taborder="0" text="기본항목" left="4" top="0" height="34" cssclass="sta_img_person" right="-6"/>
                   <Static id="Static02" taborder="1" text="수험번호" left="0" top="35" width="50" height="30" textAlign="right"/>
                   <Static id="Static02_00" taborder="2" text="입학구분" left="0" top="70" width="50" height="30" textAlign="right"/>
                   <Edit id="Edit00_00" taborder="3" left="55" top="70" width="150" height="30" enable="false"/>
@@ -120,30 +120,30 @@
             <Tabpage id="Tabpage3" tabbuttonwidth="45" text="신상" formscrollbarsize="15">
               <Layouts>
                 <Layout>
-                  <Static id="Static00" taborder="0" text="학적변경 이력정보" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-2"/>
+                  <Static id="Static00" taborder="0" text="학적변경 이력정보" left="5" top="-1" height="34" cssclass="sta_img_person" right="-7"/>
                   <Static id="Static02_00" taborder="1" text="성명" left="-1" top="34" width="50" height="30" textAlign="right"/>
                   <Edit id="Edit00_00" taborder="2" left="54" top="34" width="150" height="30" enable="false"/>
                   <Static id="Static02_02" taborder="3" text="성별" left="0" top="69" width="50" height="30" textAlign="right"/>
                   <Static id="Static02_00_00" taborder="4" text="성명(영어)" left="214" top="34" width="66" height="30" textAlign="right"/>
                   <Static id="Static02_02_00" taborder="5" text="국적" left="231" top="69" width="50" height="30" textAlign="right"/>
                   <Edit id="Edit00_02_00" taborder="6" left="286" top="69" width="150" height="30" enable="false" value="대한민국" text="대한민국" font="16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-                  <Edit id="Edit00_00_00" taborder="7" left="285" top="34" width="150" height="30"/>
-                  <Static id="Static00_00" taborder="8" text="학생정보" left="0" top="105" height="34" cssclass="sta_WF_title01" right="-2"/>
+                  <Edit id="Edit00_00_00" taborder="7" left="285" top="34" width="150" height="30" enable="false"/>
+                  <Static id="Static00_00" taborder="8" text="학생정보" left="0" top="105" height="34" cssclass="sta_img_check01" right="-2"/>
                   <Static id="Static02_00_01" taborder="9" text="생년월일" left="0" top="139" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_00_01" taborder="10" left="519" top="34" width="150" height="30"/>
+                  <Edit id="Edit00_00_00_01" taborder="10" left="519" top="34" width="150" height="30" enable="false"/>
                   <Static id="Static02_00_00_01" taborder="11" text="성명(한자)" left="448" top="34" width="66" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00" taborder="12" left="54" top="174" width="150" height="30"/>
+                  <Edit id="Edit00_00_01_00" taborder="12" left="54" top="174" width="150" height="30" enable="false"/>
                   <Static id="Static02_00_01_00" taborder="13" text="예금주" left="-1" top="174" width="50" height="30" textAlign="right"/>
                   <Static id="Static02_00_01_00_00" taborder="14" text="은행" left="231" top="174" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00_00" taborder="15" left="286" top="174" width="150" height="30"/>
+                  <Edit id="edt_bank" taborder="15" left="286" top="174" width="150" height="30" text="asd"/>
                   <Static id="Static02_00_01_00_00_00" taborder="16" text="계좌번호" left="446" top="174" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00_00_00" taborder="17" left="501" top="174" width="150" height="30"/>
+                  <Edit id="edt_accountnum" taborder="17" left="501" top="174" width="150" height="30"/>
                   <Static id="Static02_00_01_00_01" taborder="18" text="전화번호" left="-1" top="209" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00_01" taborder="19" left="54" top="209" width="150" height="30"/>
+                  <Edit id="Edit00_00_01_00_01" taborder="19" left="54" top="209" width="150" height="30" enable="false"/>
                   <Static id="Static02_00_01_00_01_00" taborder="20" text="핸드폰" left="230" top="209" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00_01_00" taborder="21" left="286" top="209" width="150" height="30"/>
+                  <Edit id="edt_phone" taborder="21" left="286" top="209" width="150" height="30"/>
                   <Static id="Static02_00_01_00_01_01" taborder="22" text="이메일" left="0" top="244" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00_01_01" taborder="23" left="55" top="244" width="381" height="30" enable="false"/>
+                  <Edit id="edt_email" taborder="23" left="55" top="244" width="381" height="30"/>
                   <Static id="Static02_00_01_00_01_01_00" taborder="24" text="입대일자" left="0" top="280" width="50" height="30" textAlign="right"/>
                   <Static id="Static02_00_01_00_01_01_00_00" taborder="25" text="병역" left="0" top="315" width="50" height="30" textAlign="right"/>
                   <Static id="Static02_00_01_00_01_01_00_00_00" taborder="26" text="제대일자" left="230" top="280" width="50" height="30" textAlign="right"/>
@@ -151,17 +151,17 @@
                   <Static id="Static02_00_01_00_01_01_00_00_00_01" taborder="28" text="계급" left="446" top="315" width="50" height="30" textAlign="right"/>
                   <Edit id="Edit00_00_01_00_01_01_00_00_00_01_00" taborder="29" left="725" top="315" width="245" height="30" enable="false"/>
                   <Static id="Static02_00_01_00_01_01_00_00_00_01_00" taborder="30" text="군번" left="670" top="315" width="50" height="30" textAlign="right"/>
-                  <Static id="Static00_00_00" taborder="31" text="현거주지주소" left="-1" top="360" height="34" cssclass="sta_WF_title01" right="-1"/>
+                  <Static id="Static00_00_00" taborder="31" text="현거주지주소" left="-1" top="360" height="34" cssclass="sta_img_check01" right="-1"/>
                   <Static id="Static02_00_01_00_01_01_00_00_01" taborder="32" text="우편번호" left="-1" top="404" width="50" height="30" textAlign="right"/>
                   <Edit id="edtPostcode" taborder="33" left="54" top="404" width="150" height="30" enable="false"/>
-                  <Button id="btn_adrress" taborder="34" text="Button00" left="216" top="404" width="29" height="30" onclick="Tab00_Tabpage3_btn_adrress_onclick"/>
+                  <Button id="btn_adrress" taborder="34" left="216" top="404" width="29" height="30" onclick="Tab00_Tabpage3_btn_adrress_onclick" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff"/>
                   <Edit id="edtAddress1" taborder="35" left="345" top="404" width="306" height="30" enable="false"/>
                   <Static id="Static02_00_01_00_01_01_00_00_01_00" taborder="36" text="주소" left="290" top="404" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00_01_01_00_00_01_00_00" taborder="37" left="657" top="404" width="306" height="30"/>
+                  <Edit id="edtAddress2" taborder="37" left="657" top="404" width="306" height="30"/>
                   <Calendar id="Calendar00" taborder="38" left="55" top="139" width="150" height="30" enable="false"/>
                   <Calendar id="Calendar00_00" taborder="39" left="54" top="280" width="150" height="30" enable="false"/>
                   <Calendar id="Calendar00_00_00" taborder="40" left="285" top="280" width="150" height="30" enable="false"/>
-                  <Button id="btn_save" taborder="41" text="저장(개발중)" left="969" top="11" width="74" height="28" onclick="Tab00_Tabpage3_btn_save_onclick"/>
+                  <Button id="btn_save" taborder="41" text="저장" left="969" top="11" width="74" height="28" onclick="Tab00_Tabpage3_btn_save_onclick"/>
                   <Edit id="Edit00_00_01" taborder="42" left="54" top="69" width="150" height="30" enable="false"/>
                   <Edit id="Edit00_00_01_01" taborder="43" left="54" top="315" width="150" height="30" enable="false"/>
                   <Edit id="Edit00_00_01_01_00" taborder="44" left="285" top="315" width="150" height="30" enable="false"/>
@@ -169,11 +169,11 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="Tabpage4" text="변동">
+            <Tabpage id="Tabpage4" text="변동(개발중)">
               <Layouts>
                 <Layout>
-                  <Static id="Static00" taborder="0" text="학적변동" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-2"/>
-                  <Grid id="Grid00" taborder="1" left="5" top="43" right="6" bottom="22" autofittype="col">
+                  <Static id="Static00" taborder="0" text="학적변동" left="5" top="5" height="34" cssclass="sta_img_schedule" right="-7"/>
+                  <Grid id="Grid00" taborder="1" left="5" top="43" autofittype="col" width="1067" height="303">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -231,10 +231,14 @@
                       </Format>
                     </Formats>
                   </Grid>
+                  <Button id="Button00" taborder="2" text="엑셀" left="918" top="9" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
+                  <Static id="Static02" taborder="3" text="총" left="986" top="9" width="11" height="26"/>
+                  <Static id="sta_count" taborder="4" left="1006" top="9" width="40" height="26" color="#d02424" textAlign="right" text="0"/>
+                  <Static id="Static02_00" taborder="5" text="건" left="1055" top="9" width="11" height="26" verticalAlign="middle"/>
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="Tabpage5" text="등록">
+            <Tabpage id="Tabpage5" text="등록(개발중)">
               <Layouts>
                 <Layout>
                   <Grid id="Grid00" taborder="0" left="5" top="35" right="6" bottom="179" autofittype="col">
@@ -292,8 +296,44 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Static id="Static00" taborder="1" text="등록내역" left="-2" top="-1" height="25" cssclass="sta_WF_title01" right="0"/>
-                  <Static id="Static00_00" taborder="2" text="분납내역" left="0" top="189" height="25" cssclass="sta_WF_title01" right="-2"/>
+                  <Static id="Static00" taborder="1" text="등록내역" left="5" top="6" height="25" cssclass="sta_img_schedule" right="-7"/>
+                  <Static id="Static00_00" taborder="2" text="분납내역" left="5" top="190" height="25" cssclass="sta_img_schedule" right="-7"/>
+                  <Grid id="Grid00_00" taborder="3" left="4" top="218" right="7" bottom="-4" autofittype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="48"/>
+                          <Column size="48"/>
+                          <Column size="48"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="분납1차"/>
+                          <Cell col="1" text="분납2차"/>
+                          <Cell col="2" text="분납3차"/>
+                          <Cell col="3" text="분납4차"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell/>
+                          <Cell col="1"/>
+                          <Cell col="2"/>
+                          <Cell col="3"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="Button00" taborder="4" text="엑셀" left="912" top="5" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
+                  <Static id="Static02" taborder="5" text="총" left="980" top="5" width="11" height="26"/>
+                  <Static id="sta_count" taborder="6" left="1000" top="5" width="40" height="26" color="#d02424" textAlign="right" text="0"/>
+                  <Static id="Static02_00" taborder="7" text="건" left="1049" top="5" width="11" height="26" verticalAlign="middle"/>
+                  <Button id="Button00_00" taborder="8" text="엑셀" left="912" top="191" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
+                  <Static id="Static02_01" taborder="9" text="총" left="980" top="191" width="11" height="26"/>
+                  <Static id="sta_count00" taborder="10" left="1000" top="191" width="40" height="26" color="#d02424" textAlign="right" text="0"/>
+                  <Static id="Static02_00_00" taborder="11" text="건" left="1049" top="191" width="11" height="26" verticalAlign="middle"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -302,11 +342,11 @@
                 <Layout/>
               </Layouts>
             </Tabpage>
-            <Tabpage id="Tabpage7" text="수강">
+            <Tabpage id="Tabpage7" text="수강(개발중)">
               <Layouts>
                 <Layout>
-                  <Static id="Static00" taborder="0" text="학기별 수강" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-2" onclick="Tab00_Tabpage7_Static00_onclick"/>
-                  <Grid id="Grid00" taborder="1" left="5" top="35" right="6" bottom="179" autofittype="col">
+                  <Static id="Static00" taborder="0" text="학기별 수강" left="5" top="1" height="34" cssclass="sta_img_schedule" right="-7" onclick="Tab00_Tabpage7_Static00_onclick"/>
+                  <Grid id="Grid00" taborder="1" left="5" top="35" autofittype="col" width="1067" height="154">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -337,8 +377,8 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Static id="Static00_00" taborder="2" text="학기별 수강 상세" left="0" top="199" height="34" cssclass="sta_WF_title01" right="-2"/>
-                  <Grid id="Grid00_00" taborder="3" left="1" top="235" right="10" bottom="-21" autofittype="col">
+                  <Static id="Static00_00" taborder="2" text="학기별 수강 상세" left="5" top="197" height="34" cssclass="sta_img_schedule" right="-7" onclick="Tab00_Tabpage7_Static00_00_onclick"/>
+                  <Grid id="Grid00_00" taborder="3" left="1" top="235" autofittype="col" width="1067" height="154">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -378,14 +418,22 @@
                       </Format>
                     </Formats>
                   </Grid>
+                  <Button id="Button00" taborder="4" text="엑셀" left="906" top="5" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
+                  <Static id="Static02" taborder="5" text="총" left="974" top="5" width="11" height="26"/>
+                  <Static id="sta_count" taborder="6" left="994" top="5" width="40" height="26" color="#d02424" textAlign="right"/>
+                  <Static id="Static02_00" taborder="7" text="건" left="1043" top="5" width="11" height="26" verticalAlign="middle"/>
+                  <Button id="Button00_00" taborder="8" text="엑셀" left="906" top="201" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
+                  <Static id="Static02_01" taborder="9" text="총" left="974" top="201" width="11" height="26"/>
+                  <Static id="sta_count00" taborder="10" left="994" top="201" width="40" height="26" color="#d02424" textAlign="right"/>
+                  <Static id="Static02_00_00" taborder="11" text="건" left="1043" top="201" width="11" height="26" verticalAlign="middle"/>
                 </Layout>
               </Layouts>
             </Tabpage>
             <Tabpage id="Tabpage8" text="성적">
               <Layouts>
                 <Layout>
-                  <Static id="Static00" taborder="0" text="총성적" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-2"/>
-                  <Grid id="Grid00" taborder="1" left="5" top="35" right="6" bottom="263" autofittype="col">
+                  <Static id="Static00" taborder="0" text="총성적" left="5" top="0" height="34" cssclass="sta_img_schedule" right="-7"/>
+                  <Grid id="Grid00" taborder="1" left="5" top="35" autofittype="col" width="1067" height="94">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -419,8 +467,8 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Static id="Static00_00" taborder="2" text="학기별 성적" left="1" top="105" height="34" cssclass="sta_WF_title01" right="-3"/>
-                  <Grid id="Grid00_00" taborder="3" left="5" top="144" right="6" bottom="69" autofittype="col">
+                  <Static id="Static00_00" taborder="2" text="학기별 성적" left="5" top="129" height="34" cssclass="sta_img_schedule" right="-7"/>
+                  <Grid id="Grid00_00" taborder="3" left="5" top="163" autofittype="col" width="1067" height="136">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -435,7 +483,7 @@
                           <Column size="48"/>
                           <Column size="74"/>
                           <Column size="48"/>
-                          <Column size="48"/>
+                          <Column size="55"/>
                           <Column size="95"/>
                           <Column size="92"/>
                         </Columns>
@@ -478,8 +526,8 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Static id="Static00_00_00" taborder="4" text="학기별 성적 상세" left="1" top="305" height="34" cssclass="sta_WF_title01" right="-3"/>
-                  <Grid id="Grid00_00_00" taborder="5" left="5" top="349" right="6" bottom="-136" autofittype="col">
+                  <Static id="Static00_00_00" taborder="4" text="학기별 성적 상세" left="5" top="305" height="34" cssclass="sta_img_schedule" right="-7" onclick="Tab00_Tabpage8_Static00_00_00_onclick"/>
+                  <Grid id="Grid00_00_00" taborder="5" left="5" top="349" autofittype="col" width="1067" height="155">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -528,6 +576,18 @@
                       </Format>
                     </Formats>
                   </Grid>
+                  <Button id="Button00" taborder="6" text="엑셀" left="906" top="5" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
+                  <Static id="Static02" taborder="7" text="총" left="974" top="5" width="11" height="26"/>
+                  <Static id="sta_count" taborder="8" left="994" top="5" width="40" height="26" color="#d02424" textAlign="right"/>
+                  <Static id="Static02_00" taborder="9" text="건" left="1043" top="5" width="11" height="26" verticalAlign="middle"/>
+                  <Button id="Button00_00" taborder="10" text="엑셀" left="906" top="133" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
+                  <Static id="Static02_01" taborder="11" text="총" left="974" top="133" width="11" height="26"/>
+                  <Static id="sta_count00" taborder="12" left="994" top="133" width="40" height="26" color="#d02424" textAlign="right" text="0"/>
+                  <Static id="Static02_00_00" taborder="13" text="건" left="1043" top="133" width="11" height="26" verticalAlign="middle"/>
+                  <Button id="Button00_01" taborder="14" text="엑셀" left="912" top="309" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
+                  <Static id="Static02_02" taborder="15" text="총" left="980" top="309" width="11" height="26"/>
+                  <Static id="sta_count01" taborder="16" left="1000" top="309" width="40" height="26" color="#d02424" textAlign="right" text="0"/>
+                  <Static id="Static02_00_01" taborder="17" text="건" left="1049" top="309" width="11" height="26" verticalAlign="middle"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -536,11 +596,11 @@
                 <Layout/>
               </Layouts>
             </Tabpage>
-            <Tabpage id="Tabpage10" text="상담">
+            <Tabpage id="Tabpage10" text="상담(개발중)">
               <Layouts>
                 <Layout>
-                  <Static id="Static00" taborder="0" text="상담이력" left="0" top="0" height="34" cssclass="sta_WF_title01" right="-2"/>
-                  <Grid id="Grid00" taborder="1" left="5" top="35" right="6" bottom="23" autofittype="col">
+                  <Static id="Static00" taborder="0" text="상담이력" left="5" top="1" height="34" cssclass="sta_img_schedule" right="-7"/>
+                  <Grid id="Grid00" taborder="1" left="5" top="35" autofittype="col" width="1067" height="310">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -568,6 +628,10 @@
                       </Format>
                     </Formats>
                   </Grid>
+                  <Button id="Button00" taborder="2" text="엑셀" left="918" top="5" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
+                  <Static id="Static02" taborder="3" text="총" left="986" top="5" width="11" height="26"/>
+                  <Static id="sta_count" taborder="4" left="1006" top="5" width="40" height="26" color="#d02424" textAlign="right" text="0"/>
+                  <Static id="Static02_00" taborder="5" text="건" left="1055" top="5" width="11" height="26" verticalAlign="middle"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -610,6 +674,8 @@
     <Script type="xscript5.1"><![CDATA[this.multiFileName = "";
 this.nMaxFileSize = 2000000;  //각 파일 최대사이즈 (2 Mbyte)
 
+include "Lib::lib_grid.xjs";
+
 this.stu_info_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.transaction(
@@ -629,14 +695,30 @@ this.fn_callback=function(id,errCode,errMsg)
 
 this.Tab00_Tabpage3_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.transaction(
-		"stuInfoSave",
-		"/stuInfoSave.nex",	
-		"in_stuInfo=ds_stuInfo:U", 
-		"", 
-		"", 
-		"fn_callback" 
-	);
+	this.ds_update.setColumn(0,"bank",this.Tab00.Tabpage3.form.edt_bank.value);
+	this.ds_update.setColumn(0,"accountnum",this.Tab00.Tabpage3.form.edt_accountnum.value);
+	this.ds_update.setColumn(0,"phone",this.Tab00.Tabpage3.form.edt_phone.value);
+	this.ds_update.setColumn(0,"zipcode",this.Tab00.Tabpage3.form.edtPostcode.value);
+	this.ds_update.setColumn(0,"addr1",this.Tab00.Tabpage3.form.edtAddress1.value);
+	this.ds_update.setColumn(0,"addr2",this.Tab00.Tabpage3.form.edtAddress2.value);
+	this.ds_update.setColumn(0,"email",this.Tab00.Tabpage3.form.edt_email.value);
+	
+	if(this.Tab00.Tabpage3.form.edt_accountnum.value == "" || this.Tab00.Tabpage3.form.edt_email.value == "" || this.Tab00.Tabpage3.form.edt_bank.value == "" || this.Tab00.Tabpage3.form.edt_phone.value == "" || this.Tab00.Tabpage3.form.edtAddress2.value == ""){
+		alert("빈칸을 전부 채워주세요.");
+	}else{
+		if(this.confirm("정보를 변경하시겠습니까?")){
+			this.transaction("stuInfoSave","/stuInfoSave.nex","in_update=ds_update:A","","","fn_callback_update");
+		}
+	}
+};
+
+this.fn_callback_update=function(id,errCode,errMsg)
+{
+	if(errCode==1){
+		alert("변경되었습니다.");
+	}else{
+		alert("에러");
+	}
 };
 
 this.btn_imgUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -846,7 +928,15 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
 	
 	// 동적으로 생성한 ChildFrame을 Modal Dialog로 보여줌.
 	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);
-};]]></Script>
+};
+
+
+
+this.Tab00_Tabpage7_Static00_00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="Edit00" propid="value" datasetid="ds_stuInfo" columnid="id"/>
       <BindItem id="item1" compid="Edit00_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
@@ -873,15 +963,15 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
       <BindItem id="item51" compid="Tab00.Tabpage3.form.Edit00_00_00" propid="value" datasetid="ds_proInfo" columnid="name"/>
       <BindItem id="item54" compid="Tab00.Tabpage3.form.Edit00_00_00_01" propid="value" datasetid="ds_proInfo" columnid="name"/>
       <BindItem id="item50" compid="Tab00.Tabpage3.form.Calendar00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
-      <BindItem id="item49" compid="Tab00.Tabpage3.form.Edit00_00_01_00_00" propid="value" datasetid="ds_stuInfo" columnid="bank"/>
-      <BindItem id="item52" compid="Tab00.Tabpage3.form.Edit00_00_01_00_00_00" propid="value" datasetid="ds_stuInfo" columnid="accountnum"/>
-      <BindItem id="item53" compid="Tab00.Tabpage3.form.Edit00_00_01_00_01_00" propid="value" datasetid="ds_stuInfo" columnid="phone"/>
-      <BindItem id="item55" compid="Tab00.Tabpage3.form.Edit00_00_01_00_01_01" propid="value" datasetid="ds_stuInfo" columnid="email"/>
+      <BindItem id="item49" compid="Tab00.Tabpage3.form.edt_bank" propid="value" datasetid="ds_stuInfo" columnid="bank"/>
+      <BindItem id="item52" compid="Tab00.Tabpage3.form.edt_accountnum" propid="value" datasetid="ds_stuInfo" columnid="accountnum"/>
+      <BindItem id="item53" compid="Tab00.Tabpage3.form.edt_phone" propid="value" datasetid="ds_stuInfo" columnid="phone"/>
+      <BindItem id="item55" compid="Tab00.Tabpage3.form.edt_email" propid="value" datasetid="ds_stuInfo" columnid="email"/>
       <BindItem id="item57" compid="Edit00_05_00" propid="value" datasetid="ds_proInfo" columnid="id"/>
       <BindItem id="item58" compid="Edit00_00_02_00" propid="value" datasetid="ds_proInfo" columnid="name"/>
       <BindItem id="item61" compid="Tab00.Tabpage1.form.Calendar00" propid="value" datasetid="ds_stuInfo" columnid="inDate"/>
       <BindItem id="item62" compid="Tab00.Tabpage3.form.edtAddress1" propid="value" datasetid="ds_stuInfo" columnid="addr1"/>
-      <BindItem id="item63" compid="Tab00.Tabpage3.form.Edit00_00_01_00_01_01_00_00_01_00_00" propid="value" datasetid="ds_stuInfo" columnid="addr2"/>
+      <BindItem id="item63" compid="Tab00.Tabpage3.form.edtAddress2" propid="value" datasetid="ds_stuInfo" columnid="addr2"/>
       <BindItem id="item6" compid="MaskEdit00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
       <BindItem id="item7" compid="MaskEdit00_00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
       <BindItem id="item15" compid="Tab00.Tabpage1.form.Edit00_01_00_00" propid="value" datasetid="ds_stuInfo" columnid="col_title"/>
@@ -900,6 +990,8 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
       <BindItem id="item5" compid="MaskEdit00_01" propid="value" datasetid="ds_stuDetail" columnid="std_year"/>
       <BindItem id="item26" compid="MaskEdit00_01_00" propid="value" datasetid="ds_stuDetail" columnid="std_year"/>
       <BindItem id="item27" compid="Tab00.Tabpage1.form.MaskEdit00_01" propid="value" datasetid="ds_stuInfo" columnid="outDate"/>
+      <BindItem id="item28" compid="Tab00.Tabpage3.form.Edit00_00_01_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
+      <BindItem id="item29" compid="Tab00.Tabpage3.form.edtPostcode" propid="value" datasetid="ds_stuInfo" columnid="zipcode"/>
     </Bind>
     <Objects>
       <Dataset id="ds_stuInfo">
@@ -950,6 +1042,20 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
           <Column id="savedName" type="STRING" size="256"/>
           <Column id="reg_date" type="DATE" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_update">
+        <ColumnInfo>
+          <Column id="bank" type="STRING" size="256"/>
+          <Column id="accountnum" type="STRING" size="256"/>
+          <Column id="phone" type="STRING" size="256"/>
+          <Column id="zipcode" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="email" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
       </Dataset>
     </Objects>
   </Form>

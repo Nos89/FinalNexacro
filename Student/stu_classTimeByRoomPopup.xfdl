@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="stu_classTimeByRoomPopup" width="480" height="370" onload="stu_classTimeByRoomPopup_onload" titletext="호실 검색 팝업">
+  <Form id="stu_classTimeByRoomPopup" width="480" height="370" onload="stu_classTimeByRoomPopup_onload" titletext="호실 검색 팝업" scrollbartype="none none">
     <Layouts>
       <Layout height="370" width="480">
-        <Static id="Static00" taborder="0" text="호실 리스트" left="0" top="50" height="20" cssclass="sta_WF_title01" right="0"/>
+        <Static id="Static00" taborder="0" text="호실 리스트" left="9" top="50" height="20" cssclass="sta_img_schedule" right="-9"/>
         <Static id="Static01" taborder="1" text="" left="0" top="0" width="480" height="40" background="#5892e8"/>
         <Grid id="Grid00" taborder="2" left="0" top="80" width="480" height="230" autofittype="col" binddataset="ds_room" oncelldblclick="Grid00_oncelldblclick">
           <Formats>
@@ -81,9 +81,14 @@
         <Static id="Static02_00_00_00_00" taborder="7" text="호실 번호" left="150" top="5" width="60" height="30" color="white"/>
         <Edit id="edt_roomNum" taborder="8" left="208" top="5" width="105" height="30"/>
         <Button id="btn_search" taborder="9" text="검색" left="402" top="5" width="57" height="30" onclick="btn_search_onclick"/>
+        <Button id="btn_excel" taborder="10" text="엑셀" left="329" top="47" height="26" cssclass="btn_WF_excel01" onclick="btn_excel_onclick" width="56"/>
+        <Static id="Static02_01" taborder="11" text="총" left="395" top="47" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="12" left="415" top="47" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_00_00" taborder="13" text="건" left="464" top="47" width="11" height="26" verticalAlign="middle"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+
 this.stu_classTimeByRoomPopup_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {	
 
@@ -95,6 +100,14 @@ this.stu_classTimeByRoomPopup_onload = function(obj:nexacro.Form,e:nexacro.LoadE
 		"",  
 		"fn_callback"
 	);
+	
+	var grid_id = this.Grid00;
+	this.gfn_export(id,0);
+};
+
+this.fn_callback=function(id,errCode,errMsg)
+{
+	this.sta_count00.set_text(this.ds_room.getRowCount());
 };
 
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -155,7 +168,12 @@ this.cmb_roomName_canitemchange = function(obj:nexacro.Combo,e:nexacro.ItemChang
 		}
 	}
 };
-]]></Script>
+
+this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.objExcelExport.set_exportfilename("호실 리스트");
+	this.objExcelExport.exportData();  
+};]]></Script>
     <Objects>
       <Dataset id="ds_room">
         <ColumnInfo>

@@ -3,7 +3,7 @@
   <Form id="stu_minorApply" width="1090" height="650" titletext="New Form" onload="stu_minorApply_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static00" taborder="0" text="부/복수전공신청" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
+        <Static id="Static00" taborder="0" text="부/복수전공신청" left="5" top="2" height="34" cssclass="sta_img_circle01" right="5"/>
         <Static id="Static01_00" taborder="1" left="5" top="34" width="1080" height="152" border="0px none,0px none,1px solid black"/>
         <ImageViewer id="ImageViewer00" taborder="2" left="20" top="44" width="110" height="132" stretch="fit"/>
         <Edit id="Edit00" taborder="3" left="189" top="44" width="111" height="30" enable="false"/>
@@ -46,7 +46,7 @@
         <MaskEdit id="MaskEdit00_00" taborder="40" left="772" top="151" width="128" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
         <MaskEdit id="MaskEdit00_01" taborder="41" left="356" top="114" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
         <MaskEdit id="MaskEdit00_01_00" taborder="42" left="356" top="149" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
-        <Grid id="Grid00" taborder="43" left="5" top="200" right="5" bottom="210" autofittype="col">
+        <Grid id="Grid00" taborder="43" left="5" top="220" autofittype="col" width="1080" height="240">
           <Formats>
             <Format id="default">
               <Columns>
@@ -54,15 +54,15 @@
                 <Column size="48"/>
                 <Column size="48"/>
                 <Column size="48"/>
-                <Column size="48"/>
-                <Column size="48"/>
+                <Column size="58"/>
+                <Column size="82"/>
                 <Column size="63"/>
                 <Column size="78"/>
                 <Column size="91"/>
                 <Column size="48"/>
                 <Column size="75"/>
                 <Column size="69"/>
-                <Column size="48"/>
+                <Column size="58"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -101,6 +101,10 @@
             </Format>
           </Formats>
         </Grid>
+        <Static id="Static02_01_03" taborder="44" text="총" left="996" top="191" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="45" left="1016" top="191" width="40" height="26" color="#d02424" textAlign="right" text="0" verticalAlign="middle"/>
+        <Static id="Static02_00_00_00" taborder="46" text="건" left="1065" top="191" width="11" height="26" verticalAlign="middle"/>
+        <Button id="btn_excel" taborder="47" text="엑셀" left="937" top="191" height="26" cssclass="btn_WF_excel01" onclick="btn_excel_onclick" width="56"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -122,9 +126,11 @@
       <BindItem id="item15" compid="MaskEdit00_01" propid="value" datasetid="ds_stuDetail" columnid="std_year"/>
       <BindItem id="item16" compid="MaskEdit00_01_00" propid="value" datasetid="ds_stuDetail" columnid="std_year"/>
     </Bind>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+
 this.stu_minorApply_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	alert("지금은 이용할 수 없습니다.");
 	this.transaction(
 		"stuInfoOnLoad",
 		"/stuInfoOnLoad.nex",

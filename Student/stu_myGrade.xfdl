@@ -54,9 +54,9 @@
           </Dataset>
         </Combo>
         <Static id="Static02_00_00_00" taborder="8" text="수강년도" left="15" top="42" width="50" height="30"/>
-        <Static id="Static00" taborder="9" text="강의평가/금학기성적조회" left="0" top="0" height="34" cssclass="sta_WF_title01" right="10"/>
-        <Static id="Static00_00" taborder="10" text="성적리스트" left="0" top="240" height="36" cssclass="sta_WF_title01" right="10"/>
-        <Grid id="Grid00" taborder="11" left="0" top="276" right="5" bottom="10" autofittype="col" binddataset="ds_myGrade" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick">
+        <Static id="Static00" taborder="9" text="강의평가/금학기성적조회" left="5" top="0" height="34" cssclass="sta_img_circle01" right="5"/>
+        <Static id="Static00_00" taborder="10" text="성적리스트" left="5" top="240" height="36" cssclass="sta_img_schedule" right="5"/>
+        <Grid id="Grid00" taborder="11" left="0" top="276" autofittype="col" binddataset="ds_myGrade" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="1085" height="364">
           <Formats>
             <Format id="default">
               <Columns>
@@ -105,16 +105,22 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00_00_00" taborder="12" text="안내사항" left="0" top="90" height="20" cssclass="sta_WF_title01" right="10"/>
-        <Static id="Static02" taborder="13" text="" left="0" top="124" width="1084" height="116" border="1px solid"/>
+        <Static id="Static00_00_00" taborder="12" text="안내사항" left="5" top="90" height="20" cssclass="sta_img_horn" right="5"/>
+        <Static id="Static02" taborder="13" text="" left="5" top="124" height="116" border="1px solid" width="1079"/>
+        <Button id="Button00" taborder="14" text="엑셀" left="932" top="245" width="56" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01"/>
+        <Static id="Static02_01" taborder="15" text="총" left="996" top="245" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="16" left="1016" top="245" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_00_00" taborder="17" text="건" left="1065" top="245" width="11" height="26" verticalAlign="middle"/>
       </Layout>
     </Layouts>
     <InitValue>
       <Grid id="Grid00" binddataset="ds_classList"/>
     </InitValue>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+
 this.stu_myGrade_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+ 
 	this.transaction(
 		"stuInfoOnLoad",
 		"/stuInfoOnLoad.nex",
@@ -135,22 +141,35 @@ this.stu_myGrade_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"",  
 		"fn_callback"
 	);
+	var grid_id = this.Grid00;
+	this.gfn_export(grid_id,0);
+	
 };
 
 this.fn_callback=function(id,errCode,errMsg)
 {
 	this.edt_num.set_value(this.ds_stuInfo.getColumn(0,"id"));
 	this.edt_name.set_value(this.ds_stuInfo.getColumn(0,"name"));
+	this.sta_count00.set_text(this.ds_myGrade.getRowCount());
 };
 
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(e.cell == "9"){
 		alert("개발중입니다.");
-			let target = this.ds_classList.rowposition;
-			let oc_code = this.ds_classList.getColumn(target,"oc_code");
+		let target = this.ds_classList.rowposition;
+		let oc_code = this.ds_classList.getColumn(target,"oc_code");
 	}
 };
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//파일이름 셋팅 및 ExcelExport 실행
+  this.objExcelExport.set_exportfilename("성적 리스트");
+  this.objExcelExport.exportData();  
+};
+
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_stuInfo">

@@ -48,17 +48,18 @@
             </Layout>
           </Layouts>
         </Div>
-        <PopupDiv id="pd_status" text="PopupDiv01" visible="false" left="10" top="667" width="355" height="370" background="#cccccc">
+        <PopupDiv id="pd_status" text="PopupDiv01" visible="false" left="10" top="667" width="355" height="343" background="#cccccc" border="1px solid black">
           <Layouts>
             <Layout>
-              <Static id="st_titlebar" taborder="0" left="0" top="0" width="100%" height="5%" background="#ffffff"/>
-              <Div id="Div00" taborder="1" text="Div00" left="0" top="32" width="100%" height="80%" background="#ffffff">
+              <Static id="st_titlebar" taborder="0" left="0" top="0" width="100%" height="8%" background="#ffffff" padding="2px"/>
+              <Div id="Div00" taborder="1" text="Div00" left="0" top="38" width="100.00%" height="86.22%" background="#ffffff">
                 <Layouts>
                   <Layout>
                     <Div id="Div00" taborder="0" left="10" top="10" height="47" right="10" border="0px none, 0px none, 1px solid #7b7b7b">
                       <Layouts>
                         <Layout>
                           <Static id="st_fileName" taborder="0" left="50" top="10" width="280" height="20" onclick="pd_status_Div00_Div00_st_fileName_onclick"/>
+                          <Div id="div_fileType" taborder="1" left="0" top="10" width="30" bottom="10"/>
                         </Layout>
                       </Layouts>
                     </Div>
@@ -85,7 +86,6 @@
                   </Layout>
                 </Layouts>
               </Div>
-              <Button id="btn_ok" taborder="2" text="확인" left="115" top="343" width="124" height="27"/>
             </Layout>
           </Layouts>
         </PopupDiv>
@@ -174,6 +174,20 @@
             <Col id="size">4</Col>
             <Col id="date">20210205</Col>
             <Col id="savedName">ffdsa</Col>
+          </Row>
+          <Row>
+            <Col id="name">asdfasdfasdfasdfasdfasdf</Col>
+            <Col id="isFolder">false</Col>
+            <Col id="size">5</Col>
+            <Col id="date">20210218</Col>
+            <Col id="savedName">wiefojwiefojwioefjwiof</Col>
+          </Row>
+          <Row>
+            <Col id="isFolder">false</Col>
+            <Col id="size">5</Col>
+            <Col id="date">20210218</Col>
+            <Col id="savedName">awefawefawefawefawefawefawefawefawefawefawef</Col>
+            <Col id="name">gewgawegawefjwioefjiqnwgiosfimnwaoefawoeij.gif</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -304,8 +318,8 @@ this.fn_indirCallback = function( pID, pErrCode, pMsg ){
 		//this.ds_indir.setColumn(nRow, nColIdx, varVal);
 		trace(this.cutFileSize(this.ds_indir.getColumn(i, colIdx)));
 		this.ds_indir.setColumn(i, colIdx, this.cutFileSize(this.ds_indir.getColumn(i, colIdx)));
+		trace( this.ds_indir.getColumn( i, "size" ) + " : " + this.ds_indir.getColumn( i, "date" ));
 	}
-	trace(this.ds_indir);
 	if( this.div_file.form.btnListView.getSelectStatus() ){
 		this.div_file_btnListView_onclick();
 	} else {
@@ -326,7 +340,7 @@ this.fn_indir = function(){
 	this.cnt = dsIndir.getRowCount();
 	
 	let divWidth = 80;
-	let divHeight = 100;
+	let divHeight = 140;
 	this.maxItem = parseInt(this.div_fileWidth / (divWidth + 1));
 	let itemPerRow = this.maxItem;
 	let maxRow = parseInt(this.cnt / this.maxItem) +1;
@@ -352,15 +366,31 @@ this.fn_indir = function(){
 		if( dsIndir.getColumn(index, "isFolder") == "true" ){
 			objDivIcon.set_cssclass("folder");
 		} else {
-			objDivIcon.set_border("1px solid black");
+			var filename = dsIndir.getColumn( index, "name" );
+			var extention = filename.substring( filename.indexOf(".") +1, filename.length);
+			if( extention.toUpperCase() == "JPG" || extention.toUpperCase() == "PNG" || extention.toUpperCase() == "GIF" || extention.toUpperCase() == "BMP" ){
+				objDivIcon.set_cssclass("jpgThum");
+			} else if( extention.toUpperCase() == "ZIP" || extention.toUpperCase() == "7ZIP" || extention.toUpperCase() == "ALZ"){
+				objDivIcon.set_cssclass("zipThum");
+			} else if( extention.toUpperCase() == "txt" ){
+				objDivIcon.set_cssclass("txtThum");
+			} else if( extention.toUpperCase() == "XLSX" || extention.toUpperCase() == "XLSM" || extention.toUpperCase() == "XLSB" || extention.toUpperCase() == "XLS"){
+				objDivIcon.set_cssclass("xlxThum");
+			} else if( extention.toUpperCase() == "HWP" ) {
+				objDivIcon.set_cssclass("hwpThum");
+			} else {
+				objDivIcon.set_cssclass("unThum");
+			}			
 		}
 		
 		// 이름
  		let objStatic = new Static();
  		nWidth = 75;
- 		nHeight = 15;
+ 		nHeight = 60;
  		objStatic.init("Static", 5, 75, nWidth, nHeight);
  		objStatic.set_text(dsIndir.getColumn(index, "name"));
+		objStatic.set_wordWrap("char");
+		
  		objDiv.addChild("Static", objStatic);
 		
 		let objIdentify = new Static();
@@ -374,13 +404,16 @@ this.fn_indir = function(){
 		
 		this.div_file.form.div_inDir.form.addChild("Div"+index, objDiv);
 		objDiv.show();
-		objDivIcon.addEventHandler("onrbuttondown", this.rClick, this);
+		objDiv.addEventHandler("onrbuttondown", this.rClick, this);
+		objDiv.addEventHandler("onmouseenter", this.objDiv_onmouseenter, this);
+		objDiv.addEventHandler("onmouseleave", this.objDiv_onmouseleave, this);
 		
 		index++;
 		}
 	}
 }
 
+// 화면 사이즈 변경
 this.div_file_div_inDir_onsize = function(obj:nexacro.Div,e:nexacro.SizeEventInfo)
 {
 	let a_maxItem = parseInt(e.cx / (80 + 1));
@@ -390,6 +423,15 @@ this.div_file_div_inDir_onsize = function(obj:nexacro.Div,e:nexacro.SizeEventInf
 	}
 	
 };
+
+this.objDiv_onmouseenter = function(obj:nexacro.Div,e:nexacro.MouseEventInfo)
+{
+	obj.set_background("#d6e8ff");
+};
+
+this.objDiv_onmouseleave = function(obj:nexacro.Div, e:nexacro.MouseEventInfo){
+	obj.set_background("");
+}
 
 // 동적 생성된 Div 지우기
 this.fn_delDiv = function(){
@@ -416,19 +458,21 @@ this.div_dir_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridCli
 };
 
 // Context Menu 보이기
-
-
 this.indirIndex = "";
 
 this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 {
 	let targetX = e.clientx;
 	let targetY = e.clienty;
-	this.indirIndex = obj.parent.parent.id.substring(3, obj.parent.parent.id.length);
-	this.nameLoc = obj.parent.identify.text;
+	//this.indirIndex = obj.parent.parent.id.substring(3, obj.parent.parent.id.length);
+	//this.nameLoc = obj.parent.identify.text;
+	this.indirIndex = obj.id.substring(3, obj.id.length);
+	this.nameLoc = obj.form.identify.text;
 	
 	this.pm_context.trackPopupByComponent( obj, targetX, targetY );
+	
 };
+
 
 // Context Menu Event
 this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMouseEventInfo)
@@ -494,7 +538,46 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 		}
 	} else if ( contextID == "status" ){
 	// 속성
-		this.alert("개발중입니다.");
+		//this.alert("개발중입니다.");
+		this.pd_status.trackPopupByComponent(obj, 100, 0);
+		
+		var filename = this.ds_indir.getColumn(this.indirIndex, "name");
+		
+		trace( filename + " : " + this.indirIndex );
+		
+		this.pd_status.form.st_titlebar.set_text(filename);
+		this.pd_status.form.Div00.form.Div00.form.st_fileName.set_text(filename);
+		
+		var extention = filename.substring(filename.indexOf(".")+1, filename.length);
+		var fileType = "";
+		if( extention.toUpperCase() == "JPG" || extention.toUpperCase() == "PNG" || extention.toUpperCase() == "GIF" || extention.toUpperCase() == "BMP" ){
+			fileType = "이미지";
+			this.pd_status.form.Div00.form.Div00.form.div_fileType.set_cssclass("jpgThum");
+		} else if( extention.toUpperCase() == "ZIP" || extention.toUpperCase() == "7ZIP" || extention.toUpperCase() == "ALZ" ){
+			fileType = "압축파일";
+			this.pd_status.form.Div00.form.Div00.form.div_fileType.set_cssclass("zipThum");
+		} else if( extention.toUpperCase() == "txt" ){
+			fileType = "텍스트";
+			this.pd_status.form.Div00.form.Div00.form.div_fileType.set_cssclass("txtThum");
+		} else if( extention == "mp3" || extention == "wav" ){
+			fileType = "음원파일";
+		} else if( extention.toUpperCase() == "XLSX" || extention.toUpperCase() == "XLSM" || extention.toUpperCase() == "XLSB" || extention.toUpperCase() == "XLS"){
+			fileType = "엑셀파일";
+			this.pd_status.form.Div00.form.Div00.form.div_fileType.set_cssclass("xlxThum");
+		} else if( extention.toUpperCase() == "HWP" ) {
+			fileType = "한글파일";
+			this.pd_status.form.Div00.form.Div00.form.div_fileType.set_cssclass("hwpThum");
+		} else {
+			fileType = "알수없는 파일";
+			this.pd_status.form.Div00.form.Div00.form.div_fileType.set_cssclass("unThum");
+		}
+		
+		this.pd_status.form.Div00.form.Div00_00.form.st_fileType.set_text(fileType + "(" + extention.toUpperCase() + ")");
+		this.pd_status.form.Div00.form.Div00_01.form.st_fileSize.set_text( this.cutFileSize(this.ds_indir.getColumn( this.indirIndex, "size")) );
+		
+		var mkdate = this.ds_indir.getColumn( this.indirIndex, "date");
+		this.pd_status.form.Div00.form.Div00_01.form.st_fileDate.set_text( mkdate.substr(0, 4) + "년 " + mkdate.substr(4, 2) + "월 " + mkdate.substr(6, 2) + "일" );
+		this.pd_status.form.Div00.form.Div00_01.form.st_fileLocation.set_text( this.ds_directory.getColumn( this.ds_directory.findRow("dirID", this.div_file.form.st_dirID.text), "directoryName") + "/");
 	}
 };
 
@@ -635,6 +718,7 @@ this.fn_uploadCallback = function( pId, pErrCode ){
 // ListView Icon Click Event
 this.div_file_btnListView_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	this.alert("개발중 입니다.");
 	this.div_file.form.btnIconView.setSelectStatus(false);
 	this.div_file.form.btnListView.setSelectStatus(true);
 	
@@ -669,8 +753,6 @@ this.ds_indir_onrowsetchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSR
 	this.alert( this.div_file.form.st_dirID.text );
 	this.fn_indirTran( this.div_file.form.st_dirID.text );
 }
-
-
 
 
 
