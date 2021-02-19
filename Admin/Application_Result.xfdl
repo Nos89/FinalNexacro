@@ -25,14 +25,16 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
-this.result = this.parent.msg;
+this.result = this.parent.msg;	// 승인/반려
 
 this.Application_Result_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	let type = this.parent.applyType;
+
 	if(this.result=="approve"){
-		this.edt_title.set_value("신청사항이 처리되었습니다.");
+		this.edt_title.set_value(type+"신청이 승인되었습니다.");
 	}else if(this.result=="reject"){
-		this.edt_title.set_value("신청사항이 반려되었습니다.");
+		this.edt_title.set_value(type+"신청이 반려되었습니다.");
 	}
 	this.edt_receiver.set_value(this.parent.receiver);
 };
@@ -42,17 +44,17 @@ this.btn_send_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let check;
 	if(this.result=="approve"){
-		check = this.confirm("완료 처리하시겠습니까?");
+		check = this.confirm("승인하시겠습니까?");
 	}else{
 		check = this.confirm("반려하시겠습니까?");
 	}
-	
 	if(check){
 		let objReturn;
 		objReturn = {
 				"title" : this.edt_title.value,
 				"receiver" : this.edt_receiver.value,
-				"contents" : this.txt_contents.value
+				"contents" : this.txt_contents.value,
+				"approval" : this.result
 				}
 		this.close(JSON.stringify(objReturn,null,"\t"));
 	}else{

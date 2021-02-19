@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Applications" width="1090" height="650" titletext="New Form" onload="Applications_onload">
+  <Form id="Application_TakeOff" width="1090" height="650" titletext="New Form">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
-        <Static id="Static00" taborder="0" text="신청사항 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
+        <Static id="Static00" taborder="0" text="휴학신청 목록" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
         <Grid id="grd_apply" taborder="1" left="10" top="80" width="520" height="550" binddataset="ds_apply" autofittype="col" fillareatype="linerow">
           <Formats>
             <Format id="default">
@@ -76,16 +76,25 @@
         <Static id="Static01" taborder="4" left="0" height="20" width="1090" bottom="0"/>
       </Layout>
     </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="div_application.form.sta_title" propid="text" datasetid="ds_apply" columnid="title"/>
+      <BindItem id="item1" compid="div_application.form.sta_applicant" propid="text" datasetid="ds_apply" columnid="name"/>
+      <BindItem id="item2" compid="div_application.form.sta_apply_date" propid="text" datasetid="ds_apply" columnid="apply_date"/>
+      <BindItem id="item3" compid="div_application.form.sta_applicant00" propid="text" datasetid="ds_apply" columnid="contents"/>
+      <BindItem id="item4" compid="div_application.form.sta_applicant01" propid="text" datasetid="ds_apply" columnid="applicant"/>
+    </Bind>
     <Objects>
-      <Dataset id="ds_apply">
+      <Dataset id="ds_takeoffapply">
         <ColumnInfo>
           <Column id="seq" type="INT" size="256"/>
-          <Column id="title" type="STRING" size="256"/>
-          <Column id="contents" type="STRING" size="256"/>
-          <Column id="applicant" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
+          <Column id="reason" type="STRING" size="256"/>
+          <Column id="takeoff_year" type="INT" size="256"/>
+          <Column id="takeoffSemester" type="STRING" size="256"/>
+          <Column id="expectedReturnYear" type="INT" size="256"/>
           <Column id="apply_date" type="DATE" size="256"/>
-          <Column id="approval" type="STRING" size="256"/>
+          <Column id="apply_approve" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_mail">
@@ -98,139 +107,5 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
-// 폼 로드 시
-this.Applications_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{
-	this.transaction(
-		"getApplication"	// 1. strSvcID(string 형태의 id)
-		, "/getApplication.nex"	// 2. strURL(string 형태의 url)
-		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
-		, "ds_apply=out_apply"	// 4. strOutDatasets -select Fds=Sds
-		, "" // 5. strArgument
-		, "fn_callback_onload"	// 6. strCallbackFunc
-	);
-};
-
-this.fn_callback_onload = function(id, errCD, errMSG)
-{
-	if(errCD<0){
-		this.alert("데이터를 가져오지 못했습니다.");
-	}else {
-		this.ds_apply.filter("approval=='0'");
-	}
-}
-
-
-// 처리여부 필터링
-this.rdo_approval_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
-{
-	let approval = this.rdo_approval.value;
-	this.ds_apply.filter("approval=="+approval);
-};
-
-
-// 처리
-this.div_application_btn_approval_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.fn_notifyResult("approve");
-};
-
-
-// 반려
-this.div_application_btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.fn_notifyResult("reject");
-};
-
-
-// 메일 전송 팝업창
-this.fn_notifyResult = function(msg)
-{
-	let sId = this.ds_apply.getColumn(this.ds_apply.rowposition, "applicant");
-	let objCF = new ChildFrame();
-	objCF.init("notifyResult",(this.width-300)/2, (this.height-450)/2, 300, 450, null, null, "Admin::Application_Result.xfdl");
-		
-	if(msg=="approve"){
-		objCF.showModal(this.getOwnerFrame(),{receiver:sId, msg:msg},this,"fn_approved");
-	}else if(msg=="reject"){
-		objCF.showModal(this.getOwnerFrame(),{receiver:sId, msg:msg},this,"fn_reject");
-	}else{
-		this.alert("쪽지를 보낼 수 없습니다.");
-	}
-}
-
-this.fn_approved = function(id, objReturn)
-{
-	let nRow = this.ds_apply.rowposition;
-	
-	if(objReturn){
-		let mail = JSON.parse(objReturn);
-		this.ds_mail.addRow();	
-		this.ds_mail.setColumn(0,"title",mail.title);
-		this.ds_mail.setColumn(0,"receiver",mail.receiver);
-		this.ds_mail.setColumn(0,"contents",mail.contents);
-		
-		this.ds_apply.setColumn(nRow,"approval",1);
-		
-		this.transaction(
-			"appApproved"	// 1. strSvcID(string 형태의 id)
-			, "/appApproved.nex"	// 2. strURL(string 형태의 url)
-			, "in_apply=ds_apply:U in_mail=ds_mail:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
-			, ""	// 4. strOutDatasets -select Fds=Sds
-			, "" // 5. strArgument
-			, "fn_callback_save"	// 6. strCallbackFunc
-		);
-	}else {return;}
-}
-
-this.fn_reject = function(id, objReturn)
-{
-	let nRow = this.ds_apply.rowposition;
-	
-	if(objReturn){
-		let mail = JSON.parse(objReturn);
-		this.ds_mail.addRow();	
-		this.ds_mail.setColumn(0,"title",mail.title);
-		this.ds_mail.setColumn(0,"receiver",mail.receiver);
-		this.ds_mail.setColumn(0,"contents",mail.contents);
-		
-		this.ds_apply.setColumn(nRow,"approval",-1);
-		
-		this.transaction(
-			"appRejected"	// 1. strSvcID(string 형태의 id)
-			, "/appRejected.nex"	// 2. strURL(string 형태의 url)
-			, "in_apply=ds_apply:U in_mail=ds_mail:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
-			, ""	// 4. strOutDatasets -select Fds=Sds
-			, "" // 5. strArgument
-			, "fn_callback_save"	// 6. strCallbackFunc
-		);
-	}else {return;}
-}
-
-
-this.fn_callback_save = function(id,errCD,errMSG)
-{
-	if(errCD<0){
-		this.alert("처리하지 못했습니다.");
-	}else{
-		if(id=="appApproved"){
-			this.alert("처리되었습니다.");
-		}else if(id=="appRejected"){
-			this.alert("반려되었습니다");
-		}
-	}
-	this.reload();
-}
-
-
-]]></Script>
-    <Bind>
-      <BindItem id="item0" compid="div_application.form.sta_title" propid="text" datasetid="ds_apply" columnid="title"/>
-      <BindItem id="item1" compid="div_application.form.sta_applicant" propid="text" datasetid="ds_apply" columnid="name"/>
-      <BindItem id="item2" compid="div_application.form.sta_apply_date" propid="text" datasetid="ds_apply" columnid="apply_date"/>
-      <BindItem id="item3" compid="div_application.form.sta_applicant00" propid="text" datasetid="ds_apply" columnid="contents"/>
-      <BindItem id="item4" compid="div_application.form.sta_applicant01" propid="text" datasetid="ds_apply" columnid="applicant"/>
-    </Bind>
   </Form>
 </FDL>
