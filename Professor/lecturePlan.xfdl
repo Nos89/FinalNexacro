@@ -33,10 +33,10 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static03" taborder="3" text="" left="460" top="78" width="622" height="564" background="#ffffff" border="1px solid black"/>
+        <Static id="Static03" taborder="3" text="" left="460" top="78" width="622" height="564" background="#ffffff" border="1px solid #b4bcc2"/>
         <Static id="Static04" taborder="4" text="" left="460" top="117" width="619" height="527" border="1px solid black,0px none,0px none"/>
         <Static id="Static05" taborder="5" text="미리보기" left="480" top="84" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
-        <Button id="btn_modify" taborder="6" text="수정" left="933" top="86" width="113" height="25" onclick="btn_modify_onclick"/>
+        <Button id="btn_modify" taborder="6" text="수정" left="964" top="86" width="113" height="25" onclick="btn_modify_onclick"/>
         <Static id="Static06" taborder="7" text="교과목명" left="484" top="124" width="87" height="24"/>
         <Static id="Static06_00" taborder="8" text="교수명" left="548" top="163" width="87" height="25"/>
         <Static id="Static06_00_00_00" taborder="9" text="과목코드" left="765" top="162" width="87" height="25"/>
@@ -49,14 +49,14 @@
         <Static id="Static07_01" taborder="16" left="830" top="163" width="138" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static07_03" taborder="17" left="613" top="222" width="138" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static07_04_00_00_00_00" taborder="18" left="830" top="253" width="138" height="25" cssclass="sta_cm_box01C"/>
-        <Static id="Static08" taborder="19" text="강의계획 및 목표" left="481" top="330" width="188" height="20"/>
+        <Static id="Static08" taborder="19" text="강의계획 및 목표" left="481" top="330" width="188" height="20" font="normal bold 10pt/normal &quot;Arial&quot;"/>
         <Static id="sta_title" taborder="20" left="540" top="124" width="490" height="26" cssclass="sta_cm_box01C"/>
         <TextArea id="TextArea00" taborder="21" left="478" top="350" width="596" height="70" readonly="true"/>
-        <Static id="Static08_00" taborder="22" text="평가기준" left="481" top="425" width="188" height="23"/>
-        <Static id="Static08_00_00" taborder="23" text="강의방법" left="485" top="510" width="188" height="23"/>
-        <Static id="Static08_00_00_00" taborder="24" text="교재" left="802" top="510" width="188" height="23"/>
+        <Static id="Static08_00" taborder="22" text="평가기준" left="481" top="425" width="188" height="23" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Static id="Static08_00_00" taborder="23" text="강의방법" left="485" top="510" width="188" height="23" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Static id="Static08_00_00_00" taborder="24" text="교재" left="802" top="510" width="188" height="23" font="normal bold 10pt/normal &quot;Arial&quot;"/>
         <TextArea id="TextArea01" taborder="25" left="800" top="540" width="275" height="90" onchanged="TextArea01_onchanged" readonly="true"/>
-        <Button id="btn_write" taborder="26" text="새로 작성" left="804" top="86" width="113" height="25" onclick="btn_write_onclick"/>
+        <Button id="btn_write" taborder="26" text="새로 작성" left="841" top="86" width="113" height="25" onclick="btn_write_onclick"/>
         <Static id="Static07_06" taborder="27" text="강의" left="478" top="448" width="120" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static07_07" taborder="28" text="토론" left="597" top="448" width="120" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static07_08" taborder="29" text="실습" left="716" top="448" width="120" height="25" cssclass="sta_cm_box01C"/>

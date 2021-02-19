@@ -2668,6 +2668,7 @@
 	-nexa-text-align : left;
 	-nexa-padding : 0px 0px 2px 3px;
 	-nexa-text-padding : 0px 0px 0px 5px;
+	border-radius : 10px;
 }
 .Button.btn_WF_search02[status=mouseover]
 {
@@ -3398,6 +3399,25 @@
 {
 	color : #999999;
 	-nexa-icon : URL('theme://images/chk_WF_Box_DS.png');
+}
+.Static.sta_backGround
+{
+	-nexa-border : 1px solid #b4bcc2;
+	background : #bddff7;
+	-nexa-text-align : center;
+
+}
+.Static.sta_base
+{
+	background : white;
+	-nexa-border : 1px solid #b4bcc2;
+}
+.Static.sta_gray
+{
+	background : #e6e6e6;
+	-nexa-border : 1px solid #b4bcc2;
+	-nexa-text-align : center;
+	
 }
 
 .Div.jpgThum

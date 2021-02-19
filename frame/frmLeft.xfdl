@@ -3,7 +3,7 @@
   <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="auto none">
     <Layouts>
       <Layout height="700" mobileorientation="landscape" width="250">
-        <Grid id="grdLeft" taborder="0" left="30" top="90" width="210" autofittype="col" treeusecheckbox="false" bottom="0" oncellclick="divLeft_grdLeft_oncellclick" border="0px solid #c7c7c7,1px solid #c7c7c7" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" fillareatype="linerow" treeusebutton="noclick">
+        <Grid id="grdLeft" taborder="0" left="30" top="80" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" fillareatype="linerow" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" height="620" width="217">
           <Formats>
             <Format id="default">
               <Columns>
@@ -18,8 +18,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="1" text="Main Title Menu" left="30" top="40" height="50" width="210" color="#ffffff" background="#165ba1" cssclass="sta_LF_title01"/>
-        <Static id="Static00_00" taborder="2" left="30" top="1" height="39" width="210" color="#ffffff" background="#545454" border="0px none,1px solid #c7c7c7,1px solid #545454"/>
+        <Static id="Static00" taborder="1" text="Main Title Menu" left="30" top="30" height="50" color="#ffffff" background="#165ba1" cssclass="sta_LF_title01" border="0px none,0px none,0px none,1px solid #165ba1" width="217"/>
+        <Static id="Static00_00" taborder="2" left="30" top="0" height="30" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="217"/>
       </Layout>
     </Layouts>
     <Objects>

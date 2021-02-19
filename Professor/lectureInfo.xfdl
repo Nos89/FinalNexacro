@@ -3,9 +3,13 @@
   <Form id="lectureInfo" width="1090" height="650" titletext="New Form" onclick="lectureInfo_onclick" onload="lectureInfo_onload">
     <Layouts>
       <Layout height="650" width="1090">
+        <Static id="Static02" taborder="11" text="" left="132" top="43" width="238" height="40" cssclass="sta_base"/>
+        <Static id="Static02_00" taborder="12" text="" left="844" top="43" width="238" height="40" cssclass="sta_base"/>
+        <Static id="Static02_01" taborder="13" text="" left="488" top="43" width="238" height="40" cssclass="sta_base"/>
+        <Combo id="cbo_year" taborder="3" text="Combo00" left="143" top="48" width="150" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
         <Static id="Static00_00" taborder="0" text="강의정보" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
         <Static id="Static01" taborder="1" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
-        <Grid id="Grid00" taborder="2" left="21" top="90" width="1069" height="500" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
+        <Grid id="Grid00" taborder="2" left="10" top="131" width="1069" height="509" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -54,14 +58,13 @@
             </Format>
           </Formats>
         </Grid>
-        <Combo id="cbo_year" taborder="3" text="Combo00" left="64" top="43" width="86" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Combo id="cbo_target" taborder="4" text="Combo01" left="217" top="43" width="93" height="31" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Combo id="cbo_semester" taborder="5" text="Combo02" left="369" top="43" width="83" height="30" innerdataset="ds_semester" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00" taborder="6" text="학기" left="337" top="43" width="74" height="35"/>
-        <Static id="Static00_01" taborder="7" text="학년" left="180" top="43" width="67" height="35"/>
-        <Static id="Static00_01_00" taborder="8" text="년도" left="20" top="43" width="54" height="35"/>
-        <Button id="btn_search" taborder="9" text="조회" left="512" top="43" width="85" height="24" onclick="btn_search_onclick"/>
-        <Button id="btn_reset" taborder="10" text="초기화" left="616" top="43" width="85" height="25" onclick="btn_reset_onclick"/>
+        <Combo id="cbo_target" taborder="4" text="Combo01" left="500" top="48" width="150" height="31" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Combo id="cbo_semester" taborder="5" text="Combo02" left="857" top="48" width="150" height="30" innerdataset="ds_semester" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00" taborder="6" text="학기" left="725" top="43" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static00_01" taborder="7" text="학년" left="369" top="43" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static00_01_00" taborder="8" text="년도" left="13" top="43" width="120" height="40" cssclass="sta_gray"/>
+        <Button id="btn_search" taborder="9" text="조회" left="890" top="96" width="85" height="24" onclick="btn_search_onclick"/>
+        <Button id="btn_reset" taborder="10" text="초기화" left="985" top="96" width="85" height="25" onclick="btn_reset_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.id = nexacro.Application.gvID;

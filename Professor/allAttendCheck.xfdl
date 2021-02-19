@@ -3,9 +3,10 @@
   <Form id="allAttendCheck" width="680" height="570" titletext="New Form" onload="allAttendCheck_onload">
     <Layouts>
       <Layout height="570" mobileorientation="landscape" width="680">
-        <Static id="Static00_01_00" taborder="0" text="과목명" left="20" top="16" width="54" height="35"/>
-        <Combo id="cbo_title" taborder="1" left="64" top="18" width="116" height="32" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="-1" value="all" onitemchanged="cbo_title_onitemchanged" text="--선택 --" displaynulltext="--선택--"/>
-        <Grid id="Grid00" taborder="2" left="11" top="60" width="649" height="430" binddataset="ds_total" autofittype="col">
+        <Static id="Static01" taborder="4" text="" left="153" top="6" width="505" height="50" cssclass="sta_base"/>
+        <Static id="Static00" taborder="3" text="과목명" left="10" top="6" width="144" height="50" cssclass="sta_gray"/>
+        <Combo id="cbo_title" taborder="0" left="164" top="15" width="161" height="32" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="-1" value="all" onitemchanged="cbo_title_onitemchanged" text="--선택 --" displaynulltext="--선택--"/>
+        <Grid id="Grid00" taborder="1" left="11" top="60" width="649" height="430" binddataset="ds_total" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -42,7 +43,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_close" taborder="3" text="닫기" left="251" top="515" width="149" height="35" onclick="btn_close_onclick"/>
+        <Button id="btn_close" taborder="2" text="닫기" left="251" top="515" width="149" height="35" onclick="btn_close_onclick" cssclass="btn_WF_gantt01"/>
       </Layout>
     </Layouts>
     <Objects>

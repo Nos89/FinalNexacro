@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="ClassRegistration" width="1280" height="650" titletext="New Form" onload="ClassRegistration_onload">
+  <Form id="ClassRegistration" width="1090" height="650" titletext="New Form" onload="ClassRegistration_onload">
     <Layouts>
-      <Layout height="650" mobileorientation="landscape" width="1280">
+      <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="1" text="" left="0" top="10" width="230" height="640" border="1px solid #c7c7c7"/>
         <Button id="btn_logOut" taborder="0" text="로그아웃" left="142" top="16" width="75" height="17" onclick="btn_logOut_onclick"/>
         <Div id="Div00" taborder="2" text="\" left="7" top="40" width="217" height="170">
@@ -40,7 +40,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="5" left="240" top="50" width="1010" height="292" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
+        <Grid id="Grid00" taborder="5" left="240" top="50" width="850" height="292" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -89,7 +89,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01" taborder="6" left="240" top="400" width="1010" height="250" binddataset="ds_stdClass" autofittype="col" oncellclick="Grid01_oncellclick">
+        <Grid id="Grid01" taborder="6" left="240" top="400" width="850" height="250" binddataset="ds_stdClass" autofittype="col" oncellclick="Grid01_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -137,13 +137,13 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00_00" taborder="7" text="시간표조회" left="7" top="507" width="138" height="27" border="1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static00_00" taborder="7" text="시간표조회" left="7" top="507" width="138" height="27" border="1px solid #c7c7c7" textAlign="center" background="#f5f5f5"/>
         <Button id="btn_timeSchedule" taborder="8" text="조회" left="145" top="507" width="80" height="27" onclick="btn_timeSchedule_onclick"/>
-        <Static id="Static00_00_00" taborder="9" text="장바구니" left="7" top="477" width="138" height="27" border="1px solid #c7c7c7" textAlign="center"/>
+        <Static id="Static00_00_00" taborder="9" text="장바구니" left="7" top="477" width="138" height="27" border="1px solid #c7c7c7" textAlign="center" background="#f5f5f5"/>
         <Button id="btn_basket" taborder="10" text="조회" left="145" top="477" width="80" height="27" onclick="btn_basket_onclick"/>
         <Static id="Static01_00" taborder="11" text="개설강의" left="245" top="10" width="225" height="29" cssclass="sta_WF_title02"/>
         <Static id="Static01_00_00" taborder="12" text="수강신청 내역 리스트" left="240" top="366" width="225" height="29" cssclass="sta_WF_title02"/>
-        <Button id="btn_retrive" taborder="13" text="새로고침" left="1080" top="8" width="162" height="33" onclick="btn_retrive_onclick"/>
+        <Button id="btn_retrive" taborder="13" text="새로고침" left="919" top="7" width="162" height="33" onclick="btn_retrive_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.id = nexacro.Application.gvStdID;
@@ -202,11 +202,22 @@ this.ClassRegistration_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInf
 //수강신청 버튼 클릭 시
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	var nRow;
+	var check=0;
 	if(this.Grid00.getCellPos()==10){
+		
 		this.score += this.ds_openClass.getColumn(e.row,"reco_score");
 		var targetlevel = this.ds_openClass.getColumn(e.row,"oc_targetlevel");
 		var myYear = this.ds_stdDetail.getColumn(0,"std_year");
+		
+		var dept =this.ds_student.getColumn(0,"dept_title");
+		for(var i =0; i<this.ds_department.getRowCount(); i++){
+			if(this.ds_department.getColumn(i,"dept_title")==dept){
+				check = 1;
+				break;
+			}else{check =0;}
+		}
+		if(check==1){this.alert("신청대상 학과가 아닙니다");}
+		
 		if(this.score >20){
 			this.alert("20학점 이상은 채울 수 없습니다.");
 			return;
