@@ -177,40 +177,6 @@
           <Column id="std_year" type="INT" size="256"/>
           <Column id="check" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="lec_code">123</Col>
-            <Col id="title">양자역학의 이해</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="dept_title">정보통신</Col>
-            <Col id="name">박학생</Col>
-            <Col id="std_year">3</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">125</Col>
-            <Col id="title">물리학의 이해</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="dept_title">정보통신</Col>
-            <Col id="name">박학생</Col>
-            <Col id="std_year">3</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">123</Col>
-            <Col id="title">양자역학의 이해</Col>
-            <Col id="id">S-1002</Col>
-            <Col id="dept_title">소프트웨어 </Col>
-            <Col id="name">이학생</Col>
-            <Col id="std_year">3</Col>
-          </Row>
-          <Row>
-            <Col id="lec_code">125</Col>
-            <Col id="title">물리학의 이해</Col>
-            <Col id="id">S-1002</Col>
-            <Col id="dept_title">소프트웨어</Col>
-            <Col id="name">이학생</Col>
-            <Col id="std_year">3</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_openClass">
         <ColumnInfo>
