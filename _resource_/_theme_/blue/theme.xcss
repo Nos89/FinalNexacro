@@ -1065,8 +1065,9 @@
 
 .ProgressBar .progressbartext,.ProgressBarControl .progressbartext
 {
-	color : #ffffff;
+	color : #000000;
 	-nexa-text-align : center;
+	font : normal bold 10pt/normal "Arial";
 }
 
 
@@ -3433,6 +3434,23 @@
 	-nexa-text-align : center;
 
 }
+
+.ProgressBar.warn
+{
+}
+.ProgressBar.warn .progressbaritem
+{
+	background : #c01a1a;
+}
+.ProgressBar.warn .progressbartext
+{
+	color : #ffffff;
+}
+.Div.webhardLogo
+{
+	-nexa-edge : url('theme://images/transLogo.jpg') 5px 5px;
+}
+
 .Grid.grd_LF_treeMenu .body .row .cell .celltreeitem
 {
 	background : #ffffff;

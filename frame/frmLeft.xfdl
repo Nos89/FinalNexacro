@@ -590,6 +590,10 @@ this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 	}else{
 		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'false');
 	}
+	
+	if( this.grdLeft.getBindDataset().getColumn( this.grdLeft.getBindDataset().rowposition, "PGM_PATH" ) == "" ){
+		this.fn_tab();
+	}
 	//this.alert(this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"));
 	var sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"); 
 	//let sMenuId = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD");
@@ -599,7 +603,6 @@ this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 
 this.fn_openMenu = function(sMenuId)
 {
-	nexacro.getApplication().mainframe.VFSet01.HFSet01.VFSet02.set_separatesize("30,*,0");
 	var objMdiFrame = this.application.MdiFrame;	// 상단 탭
 	var objWorkFrame = this.application.WorkFrame;	// 화면
 	
