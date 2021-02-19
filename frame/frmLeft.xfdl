@@ -513,8 +513,8 @@ this.userName ="";
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
-	 var address = unescape(location.href);
-	 var param = "";
+	var address = unescape(location.href);
+	var param = "";
 	if(address.indexOf("name", 0) != -1) {  
 		param = address.substring(address.indexOf("name", 0) + 5);
 	} 
