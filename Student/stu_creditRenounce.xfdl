@@ -102,7 +102,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_search2" taborder="12" text="조회" left="983" top="42" width="57" height="30" onclick="btn_search2_onclick"/>
+        <Button id="btn_search2" taborder="12" text="조회" left="1019" top="2" width="57" height="30" onclick="btn_search2_onclick" cssclass="btn_WF_search02"/>
         <Button id="Button00" taborder="13" text="엑셀" left="932" top="87" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01" width="56"/>
         <Static id="Static02" taborder="14" text="총" left="1000" top="87" width="11" height="26"/>
         <Static id="sta_count" taborder="15" left="1020" top="87" width="40" height="26" color="#d02424" textAlign="right"/>

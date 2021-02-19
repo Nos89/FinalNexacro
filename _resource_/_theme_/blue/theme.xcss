@@ -2667,6 +2667,7 @@
 	-nexa-text-align : left;
 	-nexa-padding : 0px 0px 2px 3px;
 	-nexa-text-padding : 0px 0px 0px 5px;
+	border-radius : 10px;
 }
 .Button.btn_WF_search02[status=mouseover]
 {
