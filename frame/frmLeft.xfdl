@@ -3,7 +3,7 @@
   <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="auto none">
     <Layouts>
       <Layout height="700" mobileorientation="landscape" width="250">
-        <Grid id="grdLeft" taborder="0" left="30" top="80" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" fillareatype="linerow" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" height="620" width="217">
+        <Grid id="grdLeft" taborder="0" left="30" top="80" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" fillareatype="linerow" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" width="217" bottom="0">
           <Formats>
             <Format id="default">
               <Columns>
@@ -137,7 +137,7 @@
             <Col id="MENU_NM">메일함</Col>
             <Col id="MENU_LVL">0</Col>
             <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work01.xfdl</Col>
+            <Col id="PGM_ID"></Col>
           </Row>
           <Row>
             <Col id="MENU_CD">5000</Col>
