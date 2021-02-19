@@ -103,7 +103,6 @@ this.tabMdi_onlbuttondown = function(obj:nexacro.Tab,e:nexacro.MouseEventInfo)
 		this.application.LeftFrame.form.fn_tab();
 		trace(obj.getIndex(e.clientx, e.canvasy));
 	}
-};
-]]></Script>
+};]]></Script>
   </Form>
 </FDL>
