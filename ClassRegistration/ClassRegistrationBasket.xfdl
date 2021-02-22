@@ -139,6 +139,7 @@
         <Static id="Static01_00" taborder="9" text="개설강의" left="245" top="10" width="225" height="29" cssclass="sta_WF_title02"/>
         <Static id="Static01_00_00" taborder="10" text="신청된 장바구니 리스트" left="240" top="366" width="225" height="29" cssclass="sta_WF_title02"/>
         <Button id="btn_retrive" taborder="11" text="새로고침" left="1090" top="8" width="162" height="33" onclick="btn_retrive_onclick"/>
+        <Button id="Button00" taborder="12" text="Button00" left="612" top="2" width="140" height="40" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.id = nexacro.Application.gvStdID;
@@ -194,14 +195,38 @@ this.ClassRegistration_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInf
 //수강신청 버튼 클릭 시
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
+	var check=0;
 	var nRow;
 	if(this.Grid00.getCellPos()==9){
+		var targetlevel = this.ds_openClass.getColumn(e.row,"oc_targetlevel");
+		var myYear = this.ds_stdDetail.getColumn(0,"std_year");
+		var isu = this.ds_openClass.getColumn(e.row,"isu");
+		
+		var dept =this.ds_student.getColumn(0,"dept_title");
+		var deptCode = this.ds_openClass.getColumn(e.row,"dept_code");
+		var ndeptTitle ="";
+		
+		if(isu=="전공필수"||isu=="전공선택"){
+		for(var i =0; i<this.ds_department.getRowCount(); i++){
+			if(this.ds_department.getColumn(i,"dept_code")==deptCode){
+				ndeptTitle = this.ds_department.getColumn(i,"dept_title");
+				break;
+				}
+		}
+		check = this.ds_student.findRow("dept_title",ndeptTitle);
+		if(check==-1){this.alert("신청대상 학과가 아닙니다\n강의 대상 학과  : "+ndeptTitle); return;}
+		}
 		this.score += this.ds_openClass.getColumn(e.row,"reco_score");
 		if(this.score >20){
-			alert("20학점 이상은 채울 수 없습니다.");
+			this.alert("20학점 이상은 채울 수 없습니다.");
 			return;
 		}
-		this.fn_addClass(e.row);
+		if(targetlevel==myYear || targetlevel=="전체"){
+			this.fn_addClass(e.row);
+		}else{
+			this.alert("신청대상 학년이 아닙니다");
+			return;
+		}
 	}
 };
 
@@ -246,7 +271,9 @@ this.fn_setStdClass = function(){
 	this.sat.length = 0;
 	this.sun.length = 0;
 	
+	this.score = 0;
 	for(var i=0; i<this.ds_stdClass.getRowCount(); i++){
+		this.score += this.ds_stdClass.getColumn(i,"reco_score");
 		var schedule = this.ds_stdClass.getColumn(i,"oc_schedule");
 		var title =this.ds_stdClass.getColumn(i,"name")+"\r\n";
 		title += "("+this.ds_stdClass.getColumn(i,"oc_pro_code")+")";
@@ -254,6 +281,7 @@ this.fn_setStdClass = function(){
 		this.fn_setDayArr(arr,title);
 	}
 };
+
 //입력된 수강리스트 불러오기
 this.fn_reload = function(){
 	this.ds_stdClass.deleteAll();
@@ -265,7 +293,10 @@ this.fn_reload = function(){
 		"id="+this.id+"", 
 		"fn_callback"
 	);
+	
 }
+
+
 
 //신청버튼 클릭시 확인후 서버로 정보 전달
 this.fn_addClass =function(row){
@@ -451,6 +482,11 @@ this.btn_logOut_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	if(this.confirm("로그아웃 하시겠습니까?")){
 		location.href="/info";
 	}
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fn_setDeptTitle();
 };
 ]]></Script>
     <Objects>

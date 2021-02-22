@@ -99,8 +99,10 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		contents = _win.callMethod("getContents");
 		category = _win.callMethod("getCategory");
 		
-		this.isPostNull(title,contents);
-		
+		var result = this.isPostNull(title,contents);
+		if(result==-1){
+			return;
+		}
 		this.ds_notice.addRow();
 		let nRow = this.ds_notice.rowposition;
 		
@@ -120,7 +122,10 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		title = _win.callMethod("getTitle");
 		contents = _win.callMethod("getContents");
 		
-		this.isPostNull(title,contents);
+		var result = this.isPostNull(title,contents);
+		if(result==-1){
+			return;
+		}
 		
 		this.ds_board.addRow();
 		let nRow = this.ds_board.rowposition;
@@ -144,13 +149,21 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.isPostNull = function(title, contents)
 {
+	var check
 	if(title==null||title.length<=0){
 		this.alert("제목을 입력해주세요.");
-		return;
+		return -1;
 	}else if(contents==null||contents.length<=0){
 		this.alert("내용을 입력해주세요.");
-		return;
+		return -1;
 	}
+	if(this.boardType=="promote"){
+		if(contents.indexOf('<img src="')== -1){
+			this.alert("적어도 하나의 이미지를 등록해주세요");
+			return -1;
+		}
+	}
+	
 }
 
 this.fn_callback = function(id, errCD, errMsg)
@@ -236,7 +249,7 @@ this.Upload_VirtualFile_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.
 this.Upload_VirtualFile_onerror = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileErrorEventInfo)
 {
 	var msg = ">>>>>>>>> VirtualFile event ERROR >>>>>>>>\n";
-
+	
 }
 
 this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
@@ -311,13 +324,6 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.ds_fileList.deleteAll();
 };
 
-
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-		var title = _win.callMethod("getTitle");
-		var contents = _win.callMethod("getContents");
-		trace(contents);
-};
 ]]></Script>
     <Objects>
       <Dataset id="ds_board">
