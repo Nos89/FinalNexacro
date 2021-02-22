@@ -362,14 +362,6 @@ this.fn_setTitle = function(){
 		var code = this.ds_openClass.getColumn(i,"oc_code");
 		var title = this.ds_openClass.getColumn(i,"name");
 		this.fn_setCombo(title, code);
-		/*
-		for(var j=0; j<this.ds_crDetail.getRowCount(); j++){
-			if(code==this.ds_crDetail.getColumn(j,"lec_code")){
-				this.ds_crDetail.setColumn(j,"title",title);
-				trace(title);
-				trace(this.ds_crDetail.getColumn(j,"title"));
-			}
-		}*/
 	}
 
 }

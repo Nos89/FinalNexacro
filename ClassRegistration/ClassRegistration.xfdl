@@ -204,19 +204,25 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 {
 	var check=0;
 	if(this.Grid00.getCellPos()==10){
-		
-		this.score += this.ds_openClass.getColumn(e.row,"reco_score");
 		var targetlevel = this.ds_openClass.getColumn(e.row,"oc_targetlevel");
 		var myYear = this.ds_stdDetail.getColumn(0,"std_year");
+		var isu = this.ds_openClass.getColumn(e.row,"isu");
 		
 		var dept =this.ds_student.getColumn(0,"dept_title");
+		var deptCode = this.ds_openClass.getColumn(e.row,"dept_code");
+		var ndeptTitle ="";
+		
+		if(isu=="전공필수"||isu=="전공선택"){
 		for(var i =0; i<this.ds_department.getRowCount(); i++){
-			if(this.ds_department.getColumn(i,"dept_title")==dept){
-				check = 1;
+			if(this.ds_department.getColumn(i,"dept_code")==deptCode){
+				ndeptTitle = this.ds_department.getColumn(i,"dept_title");
 				break;
-			}else{check =0;}
+				}
 		}
-		if(check==1){this.alert("신청대상 학과가 아닙니다");}
+		check = this.ds_student.findRow("dept_title",ndeptTitle);
+		if(check==-1){this.alert("신청대상 학과가 아닙니다\n강의 대상 학과  : "+ndeptTitle); return;}
+		}
+		this.score += this.ds_openClass.getColumn(e.row,"reco_score");
 		
 		if(this.score >20){
 			this.alert("20학점 이상은 채울 수 없습니다.");
@@ -226,6 +232,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 			this.fn_addClass(e.row);
 		}else{
 			this.alert("신청대상 학년이 아닙니다");
+			return;
 		}
 	
 	}
@@ -272,7 +279,9 @@ this.fn_setStdClass = function(){
 	this.sat.length = 0;
 	this.sun.length = 0;
 	
+	this.score = 0;
 	for(var i=0; i<this.ds_stdClass.getRowCount(); i++){
+		this.score += this.ds_stdClass.getColumn(i,"reco_score");
 		var schedule = this.ds_stdClass.getColumn(i,"oc_schedule");
 		var title =this.ds_stdClass.getColumn(i,"name")+"\r\n";
 		title += "("+this.ds_stdClass.getColumn(i,"oc_pro_code")+")";
