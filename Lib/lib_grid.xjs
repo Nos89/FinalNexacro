@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Script version="1.0" type="xscript5.1"><![CDATA[//서버 Xeni Excel 관련 servlet mapping 주소
-this.url = "http://13.209.97.69/XExportImport.do";
+this.url = "http://localhost/XExportImport.do";
 //Export에 사용할 ExcelExportObject 변수생성
 this.objExcelExport = null;
 

@@ -178,7 +178,7 @@ this.stu_classRegistrationWithdraw_onload = function(obj:nexacro.Form,e:nexacro.
 	);
 	
 	var grid_id = this.Grid00;
-	this.gfn_export(id,0);
+	this.gfn_export(grid_id,0);
 };
 
 this.fn_callback=function(id,errCode,errMsg)
@@ -190,7 +190,7 @@ this.fn_callback=function(id,errCode,errMsg)
 
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	if(e.cell == "9"){
+	if(e.cell == 9){
 		if(this.confirm("취소하면 되돌릴 수 없습니다. \n 진행 하시겠습니까?")){
 			let target = this.ds_classList.rowposition;
 			let oc_code = this.ds_classList.getColumn(target,"oc_code");
@@ -204,7 +204,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 			);
 		}
 		
-	}else if(e.cell == "10"){
+	}else if(e.cell == 9){
 		let target = this.ds_classList.rowposition;
 	};
 	

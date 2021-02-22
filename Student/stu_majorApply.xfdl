@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="0" text="주전공배정신청" left="5" top="0" height="34" cssclass="sta_img_circle01" right="5"/>
-        <Static id="Static01" taborder="1" text="" left="5" top="34" height="86" right="5" background="#c8ddee"/>
+        <Static id="Static01" taborder="1" text="" left="5" top="34" height="86" background="#c8ddee" width="1080"/>
         <Static id="Static02" taborder="2" text="신청일자" left="20" top="44" width="60" height="30"/>
         <Calendar id="cal_applyDay" taborder="3" left="88" top="42" width="146" height="30"/>
         <Static id="Static02_00" taborder="4" text="제1지망" left="20" top="82" width="60" height="30"/>
@@ -33,7 +33,7 @@
         <Button id="btn_apply" taborder="6" text="신청" left="874" top="4" width="56" height="26" onclick="btn_apply_onclick"/>
         <Button id="btn_applyCancel" taborder="7" text="신청취소" left="940" top="4" width="70" height="26"/>
         <Static id="Static00_00" taborder="8" text="승인정보" left="5" top="131" height="34" cssclass="sta_img_check01" right="5"/>
-        <Static id="Static01_00" taborder="9" text="" left="5" top="167" height="86" right="5" background="#c8ddee"/>
+        <Static id="Static01_00" taborder="9" text="" left="5" top="167" height="86" background="#c8ddee" width="1080"/>
         <Static id="Static02_01" taborder="10" text="승인구분" left="20" top="175" width="60" height="30"/>
         <Combo id="Combo00_00" taborder="11" text="Combo00" left="88" top="175" width="146" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
@@ -59,6 +59,8 @@
         <Static id="Static02_01_00_00_00" taborder="15" text="반려사유" left="500" top="175" width="60" height="30"/>
         <Edit id="Edit00" taborder="16" left="560" top="175" width="450" height="30"/>
         <Edit id="Edit00_00" taborder="17" left="88" top="210" width="232" height="30"/>
+        <Static id="Static00_00_00" taborder="18" text="안내사항" left="5" top="263" height="20" cssclass="sta_img_horn" right="5"/>
+        <Static id="Static02_01_01" taborder="19" text="" left="5" top="297" height="316" border="1px solid" width="1079"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

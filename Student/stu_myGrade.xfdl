@@ -155,7 +155,7 @@ this.fn_callback=function(id,errCode,errMsg)
 
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	if(e.cell == "9"){
+	if(e.cell == 9){
 		alert("개발중입니다.");
 		let target = this.ds_classList.rowposition;
 		let oc_code = this.ds_classList.getColumn(target,"oc_code");

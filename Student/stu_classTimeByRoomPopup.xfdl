@@ -102,7 +102,7 @@ this.stu_classTimeByRoomPopup_onload = function(obj:nexacro.Form,e:nexacro.LoadE
 	);
 	
 	var grid_id = this.Grid00;
-	this.gfn_export(id,0);
+	this.gfn_export(grid_id,0);
 };
 
 this.fn_callback=function(id,errCode,errMsg)

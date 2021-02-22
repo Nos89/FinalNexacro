@@ -193,7 +193,6 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var objCF = new ChildFrame();
 	objCF.init("popRoom", 295, 140, 480, 370);
 	objCF.set_openalign("center middle");
-	objCF.set_openstatus('maximize');
 	objCF.set_formurl("Student::stu_classTimeByRoomPopup.xfdl");
 	
 	objCF.showModal(
@@ -274,7 +273,7 @@ this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.stu_classTimeByRoom_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var grid_id = this.Grid00;
-	this.gfn_export(id,0);
+	this.gfn_export(grid_id,0);
 };
 ]]></Script>
   </Form>
