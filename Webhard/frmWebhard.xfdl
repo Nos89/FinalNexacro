@@ -89,11 +89,11 @@
             </Layout>
           </Layouts>
         </PopupDiv>
-        <Div id="div_header" taborder="2" left="0" top="0" height="70" right="0" text="" background="black">
+        <Div id="div_header" taborder="2" left="0" top="0" height="70" right="0" text="" cssclass="webHeader">
           <Layouts>
             <Layout>
               <Div id="div_logo" taborder="0" left="0" top="0" width="90" bottom="0" cssclass="webhardLogo"/>
-              <Button id="btnUpload" taborder="1" text="업로드" left="250" top="17" width="104" height="27" onclick="div_file_btnUpload_onclick"/>
+              <Button id="btnUpload" taborder="1" text="업로드" left="280" top="5" width="70" height="50" onclick="div_file_btnUpload_onclick" cssclass="upload"/>
               <Button id="btn_crtFolder" taborder="2" text="폴더 생성" left="364" top="17" width="99" height="27" onclick="div_file_btn_crtFolder_onclick"/>
             </Layout>
           </Layouts>

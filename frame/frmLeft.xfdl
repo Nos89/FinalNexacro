@@ -139,7 +139,7 @@
             <Col id="MENU_NM">메일함</Col>
             <Col id="MENU_LVL">0</Col>
             <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID">work01.xfdl</Col>
+            <Col id="PGM_ID"></Col>
           </Row>
           <Row>
             <Col id="MENU_CD">5000</Col>
