@@ -139,7 +139,7 @@
             <Col id="MENU_NM">메일함</Col>
             <Col id="MENU_LVL">0</Col>
             <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID"></Col>
+            <Col id="PGM_ID"/>
           </Row>
           <Row>
             <Col id="MENU_CD">5000</Col>
@@ -561,7 +561,9 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
 	var address = unescape(location.href);
+
 	var param = "";
+
 	if(address.indexOf("name", 0) != -1) {  
 		param = address.substring(address.indexOf("name", 0) + 5);
 	} 
@@ -617,8 +619,8 @@ this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'true');
 	}else{
 		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'false');
+
 	}
-	
 	if( this.grdLeft.getBindDataset().getColumn( this.grdLeft.getBindDataset().rowposition, "PGM_PATH" ) == "" ){
 		this.fn_tab();
 	}
