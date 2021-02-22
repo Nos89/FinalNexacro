@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frm_myMenuPopup" width="700" height="680" titletext="New Form" onload="frm_myMenuPopup_onload">
+    <Layouts>
+      <Layout height="680" width="700">
+        <Grid id="grdLeft" taborder="0" left="0" top="40" height="560" width="700" autofittype="col" treeusecheckbox="false" treeuseline="false" oncellclick="grdLeft_oncellclick" treeinitstatus="expand,all">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="78"/>
+                <Column size="362"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="메뉴코드"/>
+                <Cell col="1" text="메뉴명"/>
+                <Cell col="2" text="메뉴열기"/>
+                <Cell col="3"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:MENU_CD" textAlign="center"/>
+                <Cell col="1" text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL"/>
+                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
+                <Cell col="3" text="삭제" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'"/>
+              </Band>
+            </Format>
+            <Format id="mymenu">
+              <Columns>
+                <Column size="78"/>
+                <Column size="362"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="메뉴코드"/>
+                <Cell col="1" text="메뉴명"/>
+                <Cell col="2" text="메뉴열기"/>
+                <Cell col="3"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:MENU_CD" textAlign="center" expr="this.grdLeft.getBindDataset().set_keystring(&quot;G:MENU_CD&quot;);"/>
+                <Cell col="1" text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL"/>
+                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
+                <Cell col="3" text="추가" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Radio id="rdo_menu" taborder="1" left="220" top="0" width="230" height="40" text="마이메뉴" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical" value="01" onitemchanged="rdo_menu_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">01</Col>
+                <Col id="datacolumn">마이메뉴</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">02</Col>
+                <Col id="datacolumn">전체메뉴</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="Static00" taborder="2" text="메뉴구분" left="158" top="0" width="50" height="40"/>
+        <Button id="btn_close" taborder="3" text="닫기" left="307" top="630" width="56" height="24" onclick="btn_close_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.objApp = nexacro.getApplication();
+this.grd_myMenu = this.parent.myMenu;
+
+this.rdo_menu_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	if(e.postvalue == 01){
+		this.transaction(
+			"getMyMenu",
+			"/getMyMenu.nex",
+			"",
+			"grd_myMenu=out_myMenu",
+			"",  
+			"fn_callback"
+		);
+		this.grdLeft.set_binddataset(this.parent.myMenu);
+		this.grdLeft.set_formatid("default");
+		
+	}else if(e.postvalue == 02){
+		this.grdLeft.set_binddataset(this.parent.bindedDs);
+		this.grdLeft.set_formatid("mymenu");
+	}
+};
+
+this.grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.cell == 2){		
+		if(this.grdLeft.getBindDataset().getColumn(e.row, "MENU_LVL") == 1){
+			var sReturn = this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"); 
+			this.close(sReturn);
+		}
+	}else if(e.cell == 3){
+		if(this.grdLeft.getCellText(e.row,3) == "삭제"){
+			if(this.confirm("현재 메뉴를 마이메뉴에서 삭제하시겠습니까?")){
+				var menu_nm = this.grdLeft.getBindDataset().getColumn(e.row,"MENU_NM");
+				this.transaction(
+					"myMenuDel",
+					"/myMenuDel.nex",
+					"",
+					"",
+					"menu_nm="+menu_nm,  
+					"fn_callback"
+				);
+			}
+		}else if(this.grdLeft.getCellText(e.row,3) == "추가"){
+			if(this.confirm("현재 메뉴를 마이메뉴에 추가하시겠습니까?")){
+				
+				// 				for(var i=0;i<this.objApp.gds_myMenu.getRowCount();i++){
+				// 					if(this.grdLeft.getBindDataset().getColumn(e.row,"MENU_NM") == this.objApp.gds_myMenu.getColumn(i,"MENU_NM")){
+				// 						alert("이미 추가 되어 있습니다.");
+				// 						return;
+				// 					}
+				// 				}
+				
+				var menu_cd = this.grdLeft.getBindDataset().getColumn(e.row,"MENU_CD");
+				var up_menu_cd = this.grdLeft.getBindDataset().getColumn(e.row,"UP_MENU_CD");
+				var menu_nm = this.grdLeft.getBindDataset().getColumn(e.row,"MENU_NM");
+				var menu_lvl = this.grdLeft.getBindDataset().getColumn(e.row,"MENU_LVL");
+				var pgm_path = this.grdLeft.getBindDataset().getColumn(e.row,"PGM_PATH");
+				var pgm_id = this.grdLeft.getBindDataset().getColumn(e.row,"PGM_ID");
+				this.transaction(
+					"myMenuAdd",
+					"/myMenuAdd.nex",
+					"",
+					"",
+					"menu_cd="+menu_cd+" up_menu_cd="+up_menu_cd+" menu_nm="+menu_nm+" menu_lvl="+menu_lvl+" pgm_path="+pgm_path+" pgm_id="+pgm_id,  
+					"fn_callback"
+				);
+			}
+			
+		}
+	}
+};
+
+this.fn_callback=function(id,errCode,errMsg)
+{
+	if(id == "myMenuDel"){
+		this.parent.myMenu.deleteRow(this.parent.myMenu.rowposition);
+		alert("삭제되었습니다.");
+	}else if(id == "myMenuAdd"){
+		if(errCode == 0){
+			alert("이미 추가 되어 있습니다.");
+		}else{
+			alert("추가되었습니다.");
+			this.transaction(
+				"getMyMenu",
+				"/getMyMenu.nex",
+				"",
+				"grd_myMenu=out_myMenu",
+				"",  
+				"fn_callback"
+			);
+		}
+	}else if(id == "getMyMenu"){
+		
+	}
+};
+
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.frm_myMenuPopup_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.grdLeft.set_binddataset(this.parent.myMenu);
+};
+]]></Script>
+    <Objects/>
+  </Form>
+</FDL>

@@ -3,7 +3,7 @@
   <Form id="frmLeftMenu" width="1090" height="650" titletext="New Form" onload="frmLeftMenu_onload" onclose="frmLeftMenu_onclose">
     <Layouts>
       <Layout height="650" width="1090">
-        <Div id="div_left" taborder="0" left="0" top="5" width="190" bottom="5">
+        <Div id="div_left" taborder="0" left="0" top="85" width="190" bottom="5">
           <Layouts>
             <Layout>
               <Grid id="gd_left" taborder="0" left="0" width="190" binddataset="ds_directory" treeusecheckbox="false" autofittype="col" oncelldblclick="div_dir_Grid00_oncelldblclick" top="75" bottom="0">
@@ -26,29 +26,29 @@
             </Layout>
           </Layouts>
         </Div>
-        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="550" top="49" width="345" height="30">
+        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="1109" top="115" width="451" height="135" border="1px solid black" background="#ffffff">
           <Layouts>
             <Layout>
-              <Edit id="Edit00" taborder="0" left="5" top="0" width="272" height="30" displaynulltext="폴더명을 입력해주세요." text="qwfqwf"/>
-              <Button id="btn_createFolder" taborder="1" text="생성" left="277" top="0" width="68" height="30" onclick="PopupDiv00_btn_createFolder_onclick"/>
+              <Edit id="Edit00" taborder="0" left="5" top="31" width="272" height="30" displaynulltext="폴더명을 입력해주세요." text="qwfqwf" onkeydown="PopupDiv00_Edit00_onkeydown"/>
+              <Button id="btn_createFolder" taborder="1" text="생성" left="277" top="31" width="68" height="30" onclick="PopupDiv00_btn_createFolder_onclick"/>
+              <Static id="st_validateFolder" taborder="2" left="6" top="68" width="339" height="26"/>
+              <Static id="st_crtFolder" taborder="3" text="폴더명을 입력해주세요." left="9" top="0" width="336" height="27"/>
             </Layout>
           </Layouts>
         </PopupDiv>
-        <PopupMenu id="pm_context" left="1110" top="415" width="120" height="170" innerdataset="ds_context" captioncolumn="captioncolumn" checkboxcolumn="" enablecolumn="" hotkeycolumn="" iconcolumn="iconcolumn" idcolumn="idcolumn" levelcolumn="levelcolumn" userdatacolumn="userdatacolumn" onlbuttondown="pm_context_onlbuttondown"/>
-        <Div id="div_file" taborder="1" left="190" top="0" text="" right="0" bottom="0">
+        <PopupMenu id="pm_context" left="1110" top="415" width="120" height="170" innerdataset="ds_context" captioncolumn="captioncolumn" checkboxcolumn="" enablecolumn="" hotkeycolumn="" iconcolumn="iconcolumn" idcolumn="idcolumn" levelcolumn="levelcolumn" userdatacolumn="userdatacolumn" onlbuttondown="pm_context_onlbuttondown" onmouseleave="pm_context_onmouseleave"/>
+        <Div id="div_file" taborder="1" left="190" top="80" text="" width="900" height="570">
           <Layouts>
             <Layout>
               <Static id="st_dirName" taborder="0" left="20" top="11" width="170" height="29"/>
               <Static id="st_dirID" taborder="1" left="207" top="9" width="42" height="23" visible="false"/>
-              <Button id="btn_crtFolder" taborder="2" text="폴더 생성" left="125" top="49" width="99" height="27" onclick="div_file_btn_crtFolder_onclick"/>
-              <Button id="btnUpload" taborder="3" text="업로드" left="11" top="49" width="104" height="27" onclick="div_file_btnUpload_onclick"/>
-              <Div id="div_inDir" taborder="4" left="11" top="80" border="1px solid black" bottom="5" right="5" url="Webhard::frmIconView.xfdl" text="" onsize="div_file_div_inDir_onsize"/>
-              <Button id="btnListView" taborder="5" top="50" width="26" height="25" cssclass="btnListView" onclick="div_file_btnListView_onclick" right="11"/>
-              <Button id="btnIconView" taborder="6" top="50" height="25" cssclass="btnIconView" onclick="div_file_btnIconView_onclick" width="26" right="37"/>
+              <Div id="div_inDir" taborder="2" left="11" top="80" border="1px solid black" bottom="5" right="5" url="Webhard::frmIconView.xfdl" text="" onsize="div_file_div_inDir_onsize" onrbuttondown="div_file_div_inDir_onrbuttondown"/>
+              <Button id="btnListView" taborder="3" top="50" width="26" height="25" cssclass="btnListView" onclick="div_file_btnListView_onclick" right="11"/>
+              <Button id="btnIconView" taborder="4" top="50" height="25" cssclass="btnIconView" onclick="div_file_btnIconView_onclick" width="26" right="37"/>
             </Layout>
           </Layouts>
         </Div>
-        <PopupDiv id="pd_status" text="PopupDiv01" visible="false" left="10" top="667" width="355" height="343" background="#cccccc" border="1px solid black">
+        <PopupDiv id="pd_status" text="PopupDiv01" visible="false" left="10" top="667" width="355" height="343" background="#cccccc" border="1px solid black" oncloseup="pd_status_oncloseup">
           <Layouts>
             <Layout>
               <Static id="st_titlebar" taborder="0" left="0" top="0" width="100%" height="8%" background="#ffffff" padding="2px"/>
@@ -89,6 +89,15 @@
             </Layout>
           </Layouts>
         </PopupDiv>
+        <Div id="div_header" taborder="2" left="0" top="0" height="70" right="0" text="" cssclass="webHeader">
+          <Layouts>
+            <Layout>
+              <Div id="div_logo" taborder="0" left="0" top="0" width="90" bottom="0" cssclass="webhardLogo"/>
+              <Button id="btnUpload" taborder="1" text="업로드" left="280" top="5" width="70" height="50" onclick="div_file_btnUpload_onclick" cssclass="upload"/>
+              <Button id="btn_crtFolder" taborder="2" text="폴더 생성" left="364" top="17" width="99" height="27" onclick="div_file_btn_crtFolder_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Objects>
@@ -233,6 +242,32 @@
         </Rows>
       </Dataset>
       <FileDownTransfer id="fileDownTrans"/>
+      <Dataset id="ds_indirContext">
+        <ColumnInfo>
+          <Column id="captioncolumn" size="256"/>
+          <Column id="iconcolumn" size="256"/>
+          <Column id="idcolumn" size="256"/>
+          <Column id="levelcolumn" size="256"/>
+          <Column id="userdatacolumn" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="captioncolumn">업로드</Col>
+            <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">upload</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">다중선택</Col>
+            <Col id="levelcolumn">0</Col>
+            <Col id="idcolumn">multiselect</Col>
+          </Row>
+          <Row>
+            <Col id="captioncolumn">폴더생성</Col>
+            <Col id="idcolumn">createFolder</Col>
+            <Col id="levelcolumn">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.cnt = 0;
 this.parentID = 0;
@@ -286,7 +321,11 @@ this.fillStorage = function(){
 	let pStorage  = nexacro.round( ((this.storage / this.maxStorage) * 100 ), 1 );
 	
 	//this.alert( cutsize + " : " + pStorage );
+	
 	this.div_left.form.ProgressBar00.set_pos( pStorage );
+	if( pStorage >= 80 ){
+		this.div_left.form.ProgressBar00.set_cssclass("warn");
+	}
 }
 
 this.cutFileSize = function(filesize)
@@ -411,6 +450,8 @@ this.fn_indir = function(){
 		index++;
 		}
 	}
+	
+	this.div_file.form.div_inDir.addEventHandler("onrbuttondown", this.rClick, this);
 }
 
 // 화면 사이즈 변경
@@ -424,9 +465,11 @@ this.div_file_div_inDir_onsize = function(obj:nexacro.Div,e:nexacro.SizeEventInf
 	
 };
 
+this.mouseonDiv = "";
 this.objDiv_onmouseenter = function(obj:nexacro.Div,e:nexacro.MouseEventInfo)
 {
-	obj.set_background("#d6e8ff");
+	this.mouseonDiv = obj;
+	this.setDivBackground("#d6e8ff");
 };
 
 this.objDiv_onmouseleave = function(obj:nexacro.Div, e:nexacro.MouseEventInfo){
@@ -464,15 +507,28 @@ this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 {
 	let targetX = e.clientx;
 	let targetY = e.clienty;
-	//this.indirIndex = obj.parent.parent.id.substring(3, obj.parent.parent.id.length);
-	//this.nameLoc = obj.parent.identify.text;
-	this.indirIndex = obj.id.substring(3, obj.id.length);
-	this.nameLoc = obj.form.identify.text;
+
+	trace(obj.id);
+	if( obj.id != "div_inDir" ){
+		this.pm_context.set_innerdataset(this.ds_context);
+		this.indirIndex = obj.id.substring(3, obj.id.length);
+		this.nameLoc = obj.form.identify.text;
+		this.div_file.form.div_inDir.set_enableevent(false);
+	} else {
+		this.pm_context.set_innerdataset(this.ds_indirContext);
+	}
 	
 	this.pm_context.trackPopupByComponent( obj, targetX, targetY );
-	
 };
 
+this.pm_context_onmouseleave = function(obj:nexacro.PopupMenu,e:nexacro.MenuMouseEventInfo)
+{
+	if( this.mouseonDiv != "" ){
+		this.setDivBackground("");
+	}
+	this.div_file.form.div_inDir.set_enableevent(true);
+	obj.closePopup();
+};
 
 // Context Menu Event
 this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMouseEventInfo)
@@ -482,7 +538,7 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 	let name = this.nameLoc.split(":")[0];
 	let location = this.nameLoc.split(":")[1];
 	//this.alert(this.nameLoc);
-	let contextID = this.ds_context.getColumn(index, "idcolumn");
+	let contextID = this.pm_context.getInnerDataset().getColumn(index, "idcolumn");
 	if( contextID == "download" ){
 	// 다운로드
 		if( this.ds_indir.getColumn( this.indirIndex, 1 ) == "false" ){
@@ -567,6 +623,9 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 		} else if( extention.toUpperCase() == "HWP" ) {
 			fileType = "한글파일";
 			this.pd_status.form.Div00.form.Div00.form.div_fileType.set_cssclass("hwpThum");
+		} else if( this.ds_indir.getColumn( this.indirIndex, "isFolder" ) == "true" ){
+			fileType = "폴더";
+			this.pd_status.form.Div00.form.Div00.form.div_fileType.set_cssclass("folder");
 		} else {
 			fileType = "알수없는 파일";
 			this.pd_status.form.Div00.form.Div00.form.div_fileType.set_cssclass("unThum");
@@ -578,8 +637,21 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 		var mkdate = this.ds_indir.getColumn( this.indirIndex, "date");
 		this.pd_status.form.Div00.form.Div00_01.form.st_fileDate.set_text( mkdate.substr(0, 4) + "년 " + mkdate.substr(4, 2) + "월 " + mkdate.substr(6, 2) + "일" );
 		this.pd_status.form.Div00.form.Div00_01.form.st_fileLocation.set_text( this.ds_directory.getColumn( this.ds_directory.findRow("dirID", this.div_file.form.st_dirID.text), "directoryName") + "/");
+	} else if( contextID == "createFolder" ){
+		this.div_file_btn_crtFolder_onclick();
 	}
 };
+
+// 속성창 닫힐때 이벤트
+this.pd_status_oncloseup = function(obj:nexacro.PopupDiv,e:nexacro.EventInfo)
+{
+	this.setDivBackground("");
+};
+
+// 동적 생성된 div 배경색 설정
+this.setDivBackground = function( pColor ){
+	this.mouseonDiv.set_background(pColor);
+}
 
 this.fn_delIndir_callback = function( pId, pErrCode, pErrMsg ){
 	let location = this.nameLoc.split(":")[1];
@@ -619,15 +691,16 @@ this.fn_moveCallback = function( pId, pErrCode ){
 // 폴더 생성
 this.div_file_btn_crtFolder_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.PopupDiv00.trackPopupByComponent(obj, 100, 0, 400, 100, "fn_crtFolderTr");
+	this.PopupDiv00.trackPopupByComponent(this.div_header.form.btn_crtFolder, 0, 40, 400, 100, "fn_crtFolderTr");
 };
 
 this.PopupDiv00_btn_createFolder_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let nFolder = this.PopupDiv00.form.Edit00.value;
-	
+	this.PopupDiv00.form.st_validateFolder.set_color("red");
 	if( nFolder == null || nFolder == "" ){
-		this.alert("폴더명을 입력해주세요.");
+		this.PopupDiv00.form.st_validateFolder.set_text("폴더명을 입력해주세요.");
+		//this.alert("폴더명을 입력해주세요.");
 		return;
 	}
 	let parentID = this.div_file.form.st_dirID.text;
@@ -638,10 +711,18 @@ this.PopupDiv00_btn_createFolder_onclick = function(obj:nexacro.Button,e:nexacro
 	
 	if( isDup > 0 ){
 		this.alert("중복된 폴더명입니다.");
+		this.PopupDiv00.form.st_validateFolder.set_text("중복된 폴더명입니다.");
 		return;
 	}
-
+	this.PopupDiv00.form.st_validateFolder.set_text("");
 	this.PopupDiv00.closePopup(nFolder);
+};
+
+this.PopupDiv00_Edit00_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{
+	if( e.keycode == 13 ){
+		this.PopupDiv00_btn_createFolder_onclick();
+	}
 };
 
 this.fn_crtFolderTr = function(pId, nFolder){
@@ -753,6 +834,7 @@ this.ds_indir_onrowsetchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSR
 	this.alert( this.div_file.form.st_dirID.text );
 	this.fn_indirTran( this.div_file.form.st_dirID.text );
 }
+
 
 
 

@@ -103,7 +103,7 @@
         <Combo id="cmbCode01" taborder="10" text="--선택--" left="71" top="75" width="129" height="30" innerdataset="ds_code01" codecolumn="Code" datacolumn="Value" index="0" value="-1"/>
         <Static id="Static02_00_00_00_00_00_00_00" taborder="11" text="학부(과)" left="220" top="75" width="50" height="30"/>
         <Combo id="cmbCode02" taborder="12" text="2021" left="280" top="75" width="129" height="30" innerdataset="ds_code02" codecolumn="Code" datacolumn="Value" index="0" value="2021"/>
-        <Button id="btn_search" taborder="13" text="조회" left="880" top="2" width="54" height="30" onclick="btn_search_onclick"/>
+        <Button id="btn_search" taborder="13" text="조회" left="1019" top="2" width="54" height="30" onclick="btn_search_onclick" cssclass="btn_WF_search02"/>
         <Edit id="edt_code" taborder="14" left="377" top="40" width="103" height="30"/>
         <Button id="Button00" taborder="15" left="486" top="40" width="29" height="30" onclick="Div00_Button00_onclick" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff"/>
         <Button id="btn_excel" taborder="16" text="엑셀" left="932" top="117" height="26" cssclass="btn_WF_excel01" onclick="btn_excel_onclick" width="56"/>
@@ -321,7 +321,7 @@ this.stu_classTimeSearch_onload = function(obj:nexacro.Form,e:nexacro.LoadEventI
 	this.gfnInitMultiCombo(arrComboList);
 	
 	var grid_id = this.Grid00;
-	this.gfn_export(id,0);
+	this.gfn_export(grid_id,0);
 
 };
 

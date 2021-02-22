@@ -316,7 +316,7 @@ this.fn_callback_elective=function(id,errCode,errMsg)
 
 this.fn_callback=function(id,errCode,errMsg)
 {
-
+	this.ds_final.setColumn(0,"dept_title",this.Edit00_00.value);
 };
 
 this.fn_callback_credit=function(id,errCode,errMsg)

@@ -1065,8 +1065,9 @@
 
 .ProgressBar .progressbartext,.ProgressBarControl .progressbartext
 {
-	color : #ffffff;
+	color : #000000;
 	-nexa-text-align : center;
+	font : normal bold 10pt/normal "Arial";
 }
 
 
@@ -2129,7 +2130,7 @@
 	font : normal 600 14px "Malgun Gothic","Arial";
 	-nexa-border : 0px solid #c7c7c7, 1px solid #c7c7c7, 1px solid #c7c7c7, 1px solid #c7c7c7;
 	-nexa-text-align : left;
-	-nexa-padding : 0px 0px 0px 45px;
+	-nexa-padding : 0px 0px 0px 0px;
 }
 
 .Button.btn_LF_menu01,.Button.btn_LF_menu01[status=focused],.Button.btn_LF_menu01[userstatus=selected]
@@ -2667,6 +2668,7 @@
 	-nexa-text-align : left;
 	-nexa-padding : 0px 0px 2px 3px;
 	-nexa-text-padding : 0px 0px 0px 5px;
+	border-radius : 10px;
 }
 .Button.btn_WF_search02[status=mouseover]
 {
@@ -3377,10 +3379,12 @@
 .Button.btnIconView
 {
 	-nexa-edge : url('theme://images/btn_iconView.png') 10px 10px;
+	cursor : pointer;
 }
 .Button.btnListView
 {
 	-nexa-edge : url('theme://images/btn_listView.png') 10px 0px;
+	cursor : pointer;
 }
 .Button.btnIconView[userstatus=selected]
 {
@@ -3452,6 +3456,23 @@
 	-nexa-text-align : center;
 
 }
+
+.ProgressBar.warn
+{
+}
+.ProgressBar.warn .progressbaritem
+{
+	background : #c01a1a;
+}
+.ProgressBar.warn .progressbartext
+{
+	color : #ffffff;
+}
+.Div.webhardLogo
+{
+	-nexa-edge : url('theme://images/transLogo.jpg') 5px 5px;
+}
+
 .Grid.grd_LF_treeMenu .body .row .cell .celltreeitem
 {
 	background : #ffffff;
@@ -3533,5 +3554,18 @@
 }
 .Grid .body .row .cell .celltreeitem
 {
+}
+.Div.webHeader
+{
+	background : linear-gradient(to right,#ffffff 27%,#0081ea 100%);
+}
+.Button.upload
+{
+	-nexa-edge : url('theme://images/upload.png') 0px 0px;
+	-nexa-border : 1px none;
+	background: transparent;
+	color : #ffffff;
+	cursor : pointer;
+	font : normal 700 10pt/normal "Malgun Gothic";
 }
 ]]></XCSS>

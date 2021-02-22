@@ -108,6 +108,8 @@
             </Rows>
           </Dataset>
         </Combo>
+        <Static id="Static00_00_00" taborder="21" text="안내사항" left="5" top="210" height="20" cssclass="sta_img_horn" right="5"/>
+        <Static id="Static02_01" taborder="22" text="" left="5" top="244" height="316" border="1px solid" width="1079"/>
       </Layout>
     </Layouts>
     <Bind>

@@ -74,7 +74,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btn_search00" taborder="12" text="조회" left="993" top="2" width="54" height="30" onclick="btn_search_onclick"/>
+        <Button id="btn_search00" taborder="12" text="조회" left="993" top="2" width="54" height="30" onclick="btn_search_onclick" cssclass="btn_WF_search02"/>
         <Button id="btn_search00_00" taborder="13" text="납입확인서출력" left="870" top="2" width="114" height="30" onclick="btn_search_onclick"/>
         <Button id="btn_search00_00_00" taborder="14" text="등록금고지서(영수증)출력" left="694" top="2" width="164" height="30" onclick="btn_search_onclick"/>
         <Grid id="Grid00" taborder="15" left="5" top="120" autofittype="col" nodatatext="조회된 데이터가 없습니다." width="1080" height="240" binddataset="ds_tuition">

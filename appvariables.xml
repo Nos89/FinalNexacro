@@ -804,6 +804,19 @@
         </Row>
       </Rows>
     </Dataset>
+    <Dataset id="gds_myMenu" keystring="G:+MENU_CD">
+      <ColumnInfo>
+        <Column id="MENU_CD" type="STRING" size="256"/>
+        <Column id="UP_MENU_CD" type="STRING" size="256"/>
+        <Column id="MENU_NM" type="STRING" size="256"/>
+        <Column id="MENU_LVL" type="STRING" size="256"/>
+        <Column id="PGM_PATH" type="STRING" size="256"/>
+        <Column id="PGM_ID" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row/>
+      </Rows>
+    </Dataset>
   </Datasets>
   <Variables>
     <Variable id="gvID" initval=""/>

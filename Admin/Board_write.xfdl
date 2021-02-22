@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="660" mobileorientation="landscape" width="1000">
         <WebBrowser id="WebBrowser00" taborder="0" left="10" top="50" onloadcompleted="WebBrowser00_onloadcompleted" right="10" bottom="170" border="none"/>
-        <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01" text="홍보게시판 등록"/>
+        <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
         <Button id="btn_cancel" taborder="2" text="취소" width="80" height="35" cssclass="btn_WF_gantt01" onclick="btn_cancel_onclick" bottom="12" left="500"/>
         <Button id="btn_save" taborder="3" text="등록" left="380" height="35" cssclass="btn_WF_gantt01" onclick="btn_save_onclick" bottom="12" width="80"/>
         <Grid id="Grid00" taborder="4" left="150" top="493" width="430" height="111" binddataset="ds_fileList" autofittype="col" oncellclick="Grid00_oncellclick">
@@ -66,9 +66,7 @@ this.Board_write_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     var arrdomain = this.domain.split('/');
     var currentfile = arrdomain.pop();
 	this.fileDomain = this.domain.replace(currentfile,"uploadBoardFiles.nex");
-	
-	
-	//let domain = "localhost/goWrite.nex?type="+this.boardType;
+
 	this.WebBrowser00.set_url(this.domain.replace(currentfile,"goWrite.nex?type="+this.boardType));
 };
 
@@ -249,7 +247,7 @@ this.Upload_VirtualFile_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.
 this.Upload_VirtualFile_onerror = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileErrorEventInfo)
 {
 	var msg = ">>>>>>>>> VirtualFile event ERROR >>>>>>>>\n";
-	
+
 }
 
 this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)

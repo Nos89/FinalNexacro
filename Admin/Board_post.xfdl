@@ -128,7 +128,6 @@ this.fn_buttonChangeToSave = function()
 	this.grid_file.set_visible("true");
 	this.btn_add.set_visible("true");
 	
-	
 	let objBtn1 = new Button();
 	objBtn1.init("btn_save",this.btn_modify.left,null,80,35,null,32);
 	objBtn1.set_text("저장");
@@ -160,7 +159,7 @@ this.fn_buttonChangeToRead = function()
 
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-		this.close();
+	this.close();
 };
 
 
@@ -282,6 +281,7 @@ this.Board_post_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 	let comp2X = (e.cx/2) + 20;
 	comp2.setOffsetLeft(comp2X);
 };
+
 
 //파일 그리드의 x버튼 클릭시 실행됨
 this.grid_file_onexpandup = function(obj:nexacro.Grid,e:nexacro.GridMouseEventInfo)

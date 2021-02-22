@@ -95,7 +95,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_search2" taborder="11" text="조회" left="983" top="42" width="57" height="30" onclick="btn_search2_onclick"/>
+        <Button id="btn_search2" taborder="11" text="조회" left="1019" top="2" width="57" height="30" onclick="btn_search2_onclick" cssclass="btn_WF_search02"/>
         <Button id="btn_excel" taborder="12" text="엑셀" left="1012" top="87" height="26" cssclass="btn_WF_excel01" onclick="btn_excel_onclick" width="56"/>
       </Layout>
     </Layouts>
@@ -230,7 +230,7 @@ this.stu_myClassTime_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	);
 	
 	var grid_id = this.Grid00;
-	this.gfn_export(grid_id);
+	this.gfn_export(grid_id,0);
 };
 
 this.fn_callback=function(id,errCode,errMsg)

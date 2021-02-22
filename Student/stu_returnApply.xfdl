@@ -37,6 +37,8 @@
         </Combo>
         <Static id="Static02_00" taborder="15" text="작성일자" left="330" top="120" width="60" height="30"/>
         <Calendar id="cal_applyDay" taborder="16" left="395" top="120" width="146" height="30" enable="false"/>
+        <Static id="Static00_00_00" taborder="17" text="안내사항" left="4" top="206" height="20" cssclass="sta_img_horn" right="6"/>
+        <Static id="Static02_01" taborder="18" text="" left="4" top="240" height="316" border="1px solid" width="1079"/>
       </Layout>
     </Layouts>
     <Bind>
