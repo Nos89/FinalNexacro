@@ -139,7 +139,7 @@
             <Col id="MENU_NM">메일함</Col>
             <Col id="MENU_LVL">0</Col>
             <Col id="PGM_PATH">Base</Col>
-            <Col id="PGM_ID"></Col>
+            <Col id="PGM_ID"/>
           </Row>
           <Row>
             <Col id="MENU_CD">5000</Col>
@@ -538,7 +538,7 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="grd_myMenu">
+      <Dataset id="grd_myMenu" keystring="S:MENU_CD">
         <ColumnInfo>
           <Column id="MENU_CD" type="STRING" size="256"/>
           <Column id="UP_MENU_CD" type="STRING" size="256"/>
