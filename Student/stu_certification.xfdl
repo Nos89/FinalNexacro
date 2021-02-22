@@ -151,6 +151,8 @@ this.stu_certification_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInf
 	
 	this.sta_count00_00.set_text(this.ds_list.getRowCount());
 	
+	var d = new Date();
+	this.cal_day.set_value(d.getYear()+""+((d.getMonth()+1)+"").padLeft(2,'0')+""+(""+d.getDate()).padLeft(2,'0'));
 };
 
 this.fn_callback_list=function(id,errCode,errMsg)
@@ -245,8 +247,7 @@ this.btn_del_onclick = function()
 
 this.Grid2_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	if(e.cell == "5"){
-		
+	if(e.cell == 5){		
 		name = this.ds_list.getColumn(0,"name");
 		this.transaction("whichCertification","/whichCertification.nex","","","name="+ nexacro.wrapQuote(name),"fn_callback_check");
 	}

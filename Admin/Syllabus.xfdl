@@ -415,7 +415,7 @@ this.div_lecture_btn_cls_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
 		this.getOwnerFrame()
 		,{lec_schedule:schedule, lec_classroom:classroom, oc_year:year, lec_semester:semester}
 		,this
-		,"fn_cls_callback"
+		,""
 	);
 };
 
@@ -454,15 +454,6 @@ this.div_lecture_btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.Clic
 			, "" // 5. strArgument
 			, "fn_callback_apprv"	// 6. strCallbackFunc
 		);
-// 		let objCF = new ChildFrame();
-// 		objCF.init("syllabusReject",230,50,300,400,null,null,"Admin::Syllabus_Reject.xfdl");
-// 	
-// 		objCF.showModal(
-// 			this.getOwnerFrame()
-// 			,{}
-// 			,this
-// 			,"fn_callback_reject"
-// 		);
 	}
 };
 
@@ -470,7 +461,7 @@ this.div_lecture_btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.Clic
 this.fn_callback_apprv = function(id, errCD, errMSG)
 {
 	if(errCD<0){
-		this.alert("처리에 실패했습니다.");
+		this.alert("처리하지 못했습니다.");
 	}else{
 		if(id=="syllabusSave"){
 			this.alert("승인되었습니다.");

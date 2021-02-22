@@ -396,8 +396,9 @@ this.tab_Notice_Tabpage_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro
 			, "Admin::Board_post.xfdl"
 			, this.getOwnerFrame()
 			, {seq:nSeq, type:"notice"}
-		);
+		);	
 	}
+
 };
 
 
