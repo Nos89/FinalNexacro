@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="stu_mail" width="1090" height="650" titletext="New Form" onload="stu_mail_onload">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="1090">
+        <Static id="Static00" taborder="0" text="메일함" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
+        <Grid id="grd_mailBox" taborder="1" left="10" top="90" width="520" height="530" binddataset="ds_mail" autofittype="col" fillareatype="linerow" oncelldblclick="grd_mailBox_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="120"/>
+                <Column size="55"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell/>
+                <Cell col="1" text="번호"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="수신일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:read"/>
+                <Cell col="1" text="bind:mail_seq"/>
+                <Cell col="2" text="bind:title"/>
+                <Cell col="3" text="bind:received_date"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_mail" taborder="2" left="550" top="90" width="530" height="530" border="1px solid #9ea7b1">
+          <Layouts>
+            <Layout>
+              <Static id="sta_sub_title" taborder="0" text="제목" left="20" top="27" width="80" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_sub_contents" taborder="1" text="내용" left="20" top="129" width="80" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_sub_title00" taborder="2" text="수신일" left="20" top="74" width="80" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_title" taborder="3" left="100" top="27" width="409" height="35" cssclass="sta_cm_box02L"/>
+              <Static id="sta_received_date" taborder="4" left="100" top="74" width="409" height="35" cssclass="sta_cm_box02L"/>
+              <Static id="sta_contents" taborder="5" left="19" top="169" width="490" height="340" cssclass="sta_cm_box02L"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="sta_userInfo" taborder="3" left="10" top="50" width="310" height="31" text=""/>
+        <Radio id="Radio00" taborder="4" left="405" top="56" width="165" height="24" index="1" text="안읽음" value="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">안읽음</Col>
+                <Col id="codecolumn">0</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">읽음</Col>
+                <Col id="codecolumn">1</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_mail">
+        <ColumnInfo>
+          <Column id="mail_seq" type="INT" size="256"/>
+          <Column id="receiver" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="received_date" type="DATE" size="256"/>
+          <Column id="read" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.stu_mail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		""	// 1. strSvcID(string 형태의 id)
+		, ""	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, ""	// 4. strOutDatasets -select Fds=Sds
+		, "" // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+	let nUnread = this.ds_mail.getCaseCount("read=='0'");
+	this.sta_top.set_text("읽지 않은 메세지가 "+nUnread+"건 있습니다.");
+};
+
+this.fn_callback = function(id,errCD,errMSG)
+{
+	if(errCD<0){
+		this.alert("데이터를 불러오지 못했습니다.");
+	}
+}
+
+this.grd_mailBox_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.div_mail.form.sta_title.set_value(this.ds_mail.getColumn(obj.rowcount,"title"));
+	this.div_mail.form.sta_received_date.set_value(this.ds_mail.getColumn(obj.rowcount,"received_date"));
+	this.div_mail.form.sta_contents.set_value(this.ds_mail.getColumn(obj.rowcount,"contents"));
+	
+	this.ds_mail.setColumn(obj.rowcount,"read",1);
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Application_ChangeDept" width="1090" height="650" titletext="New Form">
+  <Form id="Application_ChangeDept" width="1090" height="650" titletext="New Form" onload="Application_ChangeDept_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="0" text="전과신청 목록" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Grid id="grd_apply" taborder="1" left="10" top="70" width="520" height="550" binddataset="ds_changeDeptApply" autofittype="col" fillareatype="linerow">
+        <Grid id="grd_apply" taborder="1" left="10" top="70" width="520" height="550" binddataset="ds_changeDeptApply" autofittype="col" fillareatype="linerow" oncellclick="grd_apply_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -54,32 +54,37 @@
             </Rows>
           </Dataset>
         </Radio>
-        <Div id="div_application" taborder="3" left="550" top="70" width="530" height="550" border="1px solid gray">
+        <Div id="div_application" taborder="3" left="550" top="70" width="530" height="550" border="1px solid #9ea7b1" text="">
           <Layouts>
             <Layout>
-              <Static id="Static02" taborder="3" text="신청자" left="19" top="104" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_applicant" taborder="4" left="99" top="104" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
+              <Static id="Static02" taborder="3" text="신청자" left="19" top="99" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_name" taborder="4" left="99" top="99" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
               <Static id="Static03" taborder="5" text="신청일" left="19" top="54" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
               <Static id="sta_apply_date" taborder="6" left="99" top="54" width="160" height="35" cssclass="sta_cm_box02L" expr="comp.text.substr(0,4)+&quot;년 &quot;+comp.text.substr(4,2)+&quot;월 &quot;+comp.text.substr(6,2)+&quot;일&quot;"/>
-              <Static id="Static04" taborder="7" left="19" top="352" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" text="전과대학"/>
-              <Static id="sta_applicant01" taborder="8" left="99" top="154" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
-              <Static id="Static05" taborder="9" text="학번" left="19" top="154" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="Static02_00" taborder="10" text="전과년도" left="19" top="204" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_changeYear" taborder="11" left="99" top="204" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
-              <Static id="Static02_01" taborder="12" text="전과학기" left="19" top="254" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_changeSemester" taborder="13" left="99" top="254" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
-              <Static id="Static02_02" taborder="14" text="전과사유" left="19" top="304" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_reason" taborder="15" left="99" top="304" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
-              <Static id="sta_changeCollege" taborder="16" left="99" top="352" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
-              <Static id="sta_changeDept" taborder="17" left="99" top="399" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
-              <Static id="Static04_00" taborder="18" left="19" top="399" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" text="전과학부"/>
+              <Static id="Static04" taborder="7" left="19" top="282" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" text="전과대학"/>
+              <Static id="sta_id" taborder="8" left="359" top="99" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
+              <Static id="Static05" taborder="9" text="학번" left="279" top="99" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="Static02_00" taborder="10" text="전과년도" left="19" top="237" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_changeYear" taborder="11" left="99" top="237" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
+              <Static id="Static02_01" taborder="12" text="전과학기" left="279" top="237" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_changeSemester" taborder="13" left="359" top="237" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
+              <Static id="Static02_02" taborder="14" text="전과사유" left="19" top="327" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_reason" taborder="15" left="99" top="327" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
+              <Static id="sta_changeCollege" taborder="16" left="99" top="282" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
+              <Static id="sta_college" taborder="17" left="99" top="144" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
+              <Static id="Static06" taborder="18" left="19" top="144" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" text="대학"/>
               <Static id="Static00" taborder="2" text="신청사항 조회" left="8" top="14" width="120" height="16" cssclass="sta_WF_title02"/>
               <Button id="btn_reject" taborder="1" left="294" top="509" width="100" height="30" text="반려" cssclass="btn_WF_gantt01" onclick="div_application_btn_reject_onclick"/>
               <Button id="btn_approval" taborder="0" text="승인" left="164" top="509" width="100" height="30" cssclass="btn_WF_gantt01" onclick="div_application_btn_approval_onclick"/>
+              <Static id="Static04_00_00" taborder="19" left="279" top="282" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" text="전과학부"/>
+              <Static id="sta_changeDept" taborder="20" left="359" top="282" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
+              <Static id="Static04_00_01" taborder="21" left="279" top="144" width="60" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" text="학부"/>
+              <Static id="sta_department" taborder="22" left="359" top="144" width="160" height="35" cssclass="sta_cm_box02L" text=""/>
             </Layout>
           </Layouts>
         </Div>
         <Static id="Static01" taborder="4" left="0" height="30" width="1090" bottom="0"/>
+        <Button id="btn_refresh" taborder="5" text="새로고침" left="1000" top="38" width="80" height="24" onclick="btn_refresh_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -88,6 +93,8 @@
           <Column id="seq" type="INT" size="256"/>
           <Column id="id" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
           <Column id="changeYear" type="INT" size="256"/>
           <Column id="changeSemester" type="STRING" size="256"/>
           <Column id="reason" type="STRING" size="256"/>
@@ -108,6 +115,8 @@
             <Col id="changeDept">d01</Col>
             <Col id="apply_date">20210109</Col>
             <Col id="apply_approve">신청</Col>
+            <Col id="col_title">c1</Col>
+            <Col id="dept_title">d1</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -119,6 +128,30 @@
           <Column id="contents" type="STRING" size="256"/>
           <Column id="received_date" type="DATE" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_department">
+        <ColumnInfo>
+          <Column id="dept_code" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="dept_code">d1</Col>
+            <Col id="dept_title">소프트웨어학과</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_college">
+        <ColumnInfo>
+          <Column id="col_code" type="STRING" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="col_code">c1</Col>
+            <Col id="col_title">공과대학</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
@@ -147,6 +180,13 @@ this.fn_callback_onload = function(id, errCD, errMSG)
 }
 
 
+// 새로고침
+this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
+
+
 // 처리여부 필터링
 this.rdo_approval_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
 {
@@ -155,34 +195,80 @@ this.rdo_approval_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChang
 };
 
 
-// 처리
+// 승인
 this.div_application_btn_approval_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.fn_notifyResult("approve");
+	let nRow = this.ds_takeOffApply.rowposition;
+	let check = this.confirm("승인하시겠습니까?");
+	
+	if(check){
+		this.ds_changeDeptApply.setColumn(nRow,"apply_approve","완료");
+		this.transaction(
+			"changeDeptApproval"	// 1. strSvcID(string 형태의 id)
+			, "/changeDeptApproval.nex"	// 2. strURL(string 형태의 url)
+			, "in_changeDeptApply=ds_changeDeptApply:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+			, ""	// 4. strOutDatasets -select Fds=Sds
+			, "" // 5. strArgument
+			, "fn_approved"	// 6. strCallbackFunc
+		);
+	}
+};
+
+this.fn_approved = function(id,errCD,errMSG)
+{
+	if(errCD<0){
+		this.alert("처리하지 못했습니다.");
+	}else{
+		this.alert("처리되었습니다.");
+		this.fn_notifyResult("approve");
+	}
+	this.reload();
 };
 
 
 // 반려
 this.div_application_btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.fn_notifyResult("reject");
+	let nRow = this.ds_takeOffApply.rowposition;
+	let check = this.confirm("반려하시겠습니까?");
+	
+	if(check){
+		this.ds_changeDeptApply.setColumn(nRow,"apply_approve","반려");
+		this.transaction(
+			"changeDeptApproval"	// 1. strSvcID(string 형태의 id)
+			, "/changeDeptApproval.nex"	// 2. strURL(string 형태의 url)
+			, "in_changeDeptApply=ds_changeDeptApply:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+			, ""	// 4. strOutDatasets -select Fds=Sds
+			, "" // 5. strArgument
+			, "fn_rejected"	// 6. strCallbackFunc
+		);
+	}
 };
 
+this.fn_rejected = function(id,errCD,errMSG)
+{
+	if(errCD<0){
+		this.alert("처리하지 못했습니다.");
+	}else{
+		this.alert("처리되었습니다.");
+		this.fn_notifyResult("reject");
+	}
+	this.reload();
+}
 
-// 메일 전송 팝업창
+
+// 메일 전송 팝업창 띄우기
 this.fn_notifyResult = function(msg)
 {
 	let sId = this.ds_changeDeptApply.getColumn(this.ds_changeDeptApply.rowposition, "id");
 	let objCF = new ChildFrame();
 	objCF.init("notifyResult",(this.width-300)/2, (this.height-450)/2, 300, 450, null, null, "Admin::Application_Result.xfdl");
 		
-	objCF.showModal(this.getOwnerFrame(),{receiver:sId, msg:msg, applyType:this.applyType},this,"fn_approval");
+	objCF.showModal(this.getOwnerFrame(),{receiver:sId, msg:msg, applyType:this.applyType},this,"fn_sendResult");
 }
 
-this.fn_approval = function(id, objReturn)
+this.fn_sendResult = function(id, objReturn)
 {
-	let nRow = this.ds_changeDeptApply.rowposition;
-	
 	if(objReturn){
 		let mail = JSON.parse(objReturn);
 		this.ds_mail.addRow();	
@@ -190,45 +276,43 @@ this.fn_approval = function(id, objReturn)
 		this.ds_mail.setColumn(0,"receiver",mail.receiver);
 		this.ds_mail.setColumn(0,"contents",mail.contents);
 		
-		if(mail.approval=="approve"){
-			this.ds_changeDeptApply.setColumn(nRow,"apply_approve","완료");
-		}else if(mail.approval=="reject"){
-			this.ds_changeDeptApply.setColumn(nRow,"apply_approve","반려");
-		}else{
-			return;
-		}
 		this.transaction(
-			"appApproval"	// 1. strSvcID(string 형태의 id)
-			, "/changeDeptApproval.nex"	// 2. strURL(string 형태의 url)
-			, "in_changeDeptApply=ds_changeDeptApply:U in_mail=ds_mail:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+			"sendAppResult"	// 1. strSvcID(string 형태의 id)
+			, "/sendAppResult.nex"	// 2. strURL(string 형태의 url)
+			, "in_mail=ds_mail:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 			, ""	// 4. strOutDatasets -select Fds=Sds
 			, "" // 5. strArgument
-			, "fn_callback_save"	// 6. strCallbackFunc
+			, "fn_callback_result"	// 6. strCallbackFunc
 		);
 	}else {return;}
 }
 
-this.fn_callback_save = function(id,errCD,errMSG)
+this.fn_callback_result = function(id,errCD,errMSG)
 {
 	if(errCD<0){
 		this.alert("처리하지 못했습니다.");
-	}else{
-		this.alert("처리되었습니다.");
 	}
 	this.reload();
 }
 
 
+this.grd_apply_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	
+};
+
 ]]></Script>
     <Bind>
-      <BindItem id="item0" compid="div_application.form.sta_applicant" propid="text" datasetid="ds_changeDeptApply" columnid="name"/>
-      <BindItem id="item1" compid="div_application.form.sta_applicant01" propid="text" datasetid="ds_changeDeptApply" columnid="id"/>
-      <BindItem id="item2" compid="div_application.form.sta_changeYear" propid="text" datasetid="ds_changeDeptApply" columnid="changeYear"/>
-      <BindItem id="item3" compid="div_application.form.sta_changeSemester" propid="text" datasetid="ds_changeDeptApply" columnid="changeSemester"/>
-      <BindItem id="item4" compid="div_application.form.sta_reason" propid="text" datasetid="ds_changeDeptApply" columnid="reason"/>
-      <BindItem id="item5" compid="div_application.form.sta_changeDept" propid="text" datasetid="ds_changeDeptApply" columnid="changeDept"/>
-      <BindItem id="item6" compid="div_application.form.sta_changeCollege" propid="text" datasetid="ds_changeDeptApply" columnid="changeCollege"/>
-      <BindItem id="item7" compid="div_application.form.sta_apply_date" propid="text" datasetid="ds_changeDeptApply" columnid="apply_date"/>
+      <BindItem id="item0" compid="div_application.form.sta_apply_date" propid="text" datasetid="ds_changeDeptApply" columnid="apply_date"/>
+      <BindItem id="item1" compid="div_application.form.sta_name" propid="text" datasetid="ds_changeDeptApply" columnid="name"/>
+      <BindItem id="item2" compid="div_application.form.sta_id" propid="text" datasetid="ds_changeDeptApply" columnid="id"/>
+      <BindItem id="item3" compid="div_application.form.sta_college" propid="text" datasetid="ds_changeDeptApply" columnid="col_title"/>
+      <BindItem id="item4" compid="div_application.form.sta_department" propid="text" datasetid="ds_changeDeptApply" columnid="dept_title"/>
+      <BindItem id="item5" compid="div_application.form.sta_changeYear" propid="text" datasetid="ds_changeDeptApply" columnid="changeYear"/>
+      <BindItem id="item6" compid="div_application.form.sta_changeSemester" propid="text" datasetid="ds_changeDeptApply" columnid="changeSemester"/>
+      <BindItem id="item7" compid="div_application.form.sta_changeCollege" propid="text" datasetid="ds_changeDeptApply" columnid="changeCollege"/>
+      <BindItem id="item8" compid="div_application.form.sta_changeDept" propid="text" datasetid="ds_changeDeptApply" columnid="changeDept"/>
+      <BindItem id="item9" compid="div_application.form.sta_reason" propid="text" datasetid="ds_changeDeptApply" columnid="reason"/>
     </Bind>
   </Form>
 </FDL>
