@@ -131,7 +131,7 @@ this.stu_classRegistration_onload = function(obj:nexacro.Form,e:nexacro.LoadEven
 	);
 	
 	var grid_id = this.Grid00;
-	this.gfn_export(id,0);
+	this.gfn_export(grid_id,0);
 	
 };
 

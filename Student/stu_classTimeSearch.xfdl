@@ -321,7 +321,7 @@ this.stu_classTimeSearch_onload = function(obj:nexacro.Form,e:nexacro.LoadEventI
 	this.gfnInitMultiCombo(arrComboList);
 	
 	var grid_id = this.Grid00;
-	this.gfn_export(id,0);
+	this.gfn_export(grid_id,0);
 
 };
 

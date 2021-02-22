@@ -2130,7 +2130,7 @@
 	font : normal 600 14px "Malgun Gothic","Arial";
 	-nexa-border : 0px solid #c7c7c7, 1px solid #c7c7c7, 1px solid #c7c7c7, 1px solid #c7c7c7;
 	-nexa-text-align : left;
-	-nexa-padding : 0px 0px 0px 45px;
+	-nexa-padding : 0px 0px 0px 0px;
 }
 
 .Button.btn_LF_menu01,.Button.btn_LF_menu01[status=focused],.Button.btn_LF_menu01[userstatus=selected]

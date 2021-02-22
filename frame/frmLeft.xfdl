@@ -3,7 +3,7 @@
   <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="auto none">
     <Layouts>
       <Layout height="700" mobileorientation="landscape" width="250">
-        <Grid id="grdLeft" taborder="0" left="30" top="80" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" fillareatype="linerow" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" height="620" width="217">
+        <Grid id="grdLeft" taborder="0" left="30" top="100" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" width="217" bottom="0">
           <Formats>
             <Format id="default">
               <Columns>
@@ -18,8 +18,10 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="1" text="Main Title Menu" left="30" top="30" height="50" color="#ffffff" background="#165ba1" cssclass="sta_LF_title01" border="0px none,0px none,0px none,1px solid #165ba1" width="217"/>
-        <Static id="Static00_00" taborder="2" left="30" top="0" height="30" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="217"/>
+        <Static id="Static00" taborder="1" text="Main Title Menu" left="30" top="40" height="60" color="#ffffff" background="#165ba1" cssclass="sta_LF_title01" border="0px none,0px none,0px none,1px solid #165ba1" width="217" textAlign="center" font="bold 11pt Dotum"/>
+        <Static id="Static00_00" taborder="2" left="30" top="0" height="40" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="217"/>
+        <Button id="btn_menu" taborder="3" text="메뉴목록" left="100" top="10" width="50" height="20" onclick="btn_menu_onclick"/>
+        <Button id="btn_myMenu" taborder="4" text="마이메뉴" left="160" top="10" width="50" height="20" onclick="btn_myMenu_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -503,18 +505,30 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="grd_myMenu">
+        <ColumnInfo>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="UP_MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_LVL" type="STRING" size="256"/>
+          <Column id="PGM_PATH" type="STRING" size="256"/>
+          <Column id="PGM_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
 this.application = null;
 this.loginID = "";
 this.userType = "";
 this.userName ="";
+this.bindedDs = "";
+this.mainTitleText = "";
 
 this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
-	 var address = unescape(location.href);
-	 var param = "";
+	var address = unescape(location.href);
+	var param = "";
 	if(address.indexOf("name", 0) != -1) {  
 		param = address.substring(address.indexOf("name", 0) + 5);
 	} 
@@ -529,23 +543,37 @@ this.fm_left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"", // 4. strOutDatasets -select Fds=Sds
 		"", // 5. strArgument View에서 Server로 넘겨줄 변수
 		"fn_loginCallback" // 6. strCallbackFunc
-
+		
 	);
-
+	
+	this.transaction(
+		"getMyMenu",
+		"/getMyMenu.nex",
+		"",
+		"grd_myMenu=out_myMenu",
+		"",  
+		"fn_callback"
+	);
 };
 
 this.fn_loginCallback = function( pID, pErr, pMsg ){
 	this.application=nexacro.getApplication()
 	if( this.userType == "학생" ){
 		this.Static00.set_text("학생종합정보");
+		this.mainTitleText = "학생종합정보";
+		this.bindedDs = this.grd_student;
 		this.grdLeft.set_binddataset(this.grd_student);
 	} else if ( this.userType == "교수" ){	
 		this.Static00.set_text("교수종합정보");
+		this.mainTitleText = "교수종합정보";
 		this.application.gvProName = this.userName;
 		this.application.gvID = this.loginID;
+		this.bindedDs = this.grd_professor;
 		this.grdLeft.set_binddataset(this.grd_professor);
 	} else if ( this.userType == "관리자" ){
 		this.Static00.set_text("관리자종합정보");
+		this.mainTitleText = "관리자종합정보";
+		this.bindedDs = this.grd_admin;
 		this.grdLeft.set_binddataset(this.grd_admin);
 	}
 }
@@ -582,7 +610,14 @@ this.fn_openMenu = function(sMenuId)
 	var sMenuNm;
 	var sMenuNavi;
 	
-	var objMenuDs = this.grdLeft.getBindDataset();
+	var objMenuDs;
+	if( this.userType == "학생" ){
+		objMenuDs = this.grd_student;
+	}else if( this.userType == "교수" ){
+		objMenuDs = this.grd_professor;
+	}else if( this.userType == "관리자" ){
+		objMenuDs = this.grd_admin;
+	}
 	var objOpenMenuDs = this.application.gdsOpenMenu;
 	
 	nFRow 		= objMenuDs.findRow("MENU_CD", sMenuId);
@@ -618,13 +653,13 @@ this.fn_openMenu = function(sMenuId)
 	sWinId = sMenuId + "_" + objOpenMenuDs.rowcount+ "_" + parseInt(Math.random() * 100);
 	
 	var oParam = { FORM_ID : sWinId, 
-                   MENU_NM : sMenuNm, 
-                   FORM_URL : sPGMPATH+"::"+sPGMID
-				   };	
+		MENU_NM : sMenuNm, 
+		FORM_URL : sPGMPATH+"::"+sPGMID
+	};	
 	
 	var objChildFrame = new ChildFrame();	
 	objChildFrame.init(sWinId, 0, 0, null, null, 0, 0);
-
+	
 	objWorkFrame.addChild(objChildFrame.name, objChildFrame);
 	objChildFrame.param = oParam;
 	objChildFrame.set_resizable(true);
@@ -646,8 +681,8 @@ this.fn_openMenu = function(sMenuId)
 함 수 명 칭 : gfnAddOpenMenu
 함 수 설 명 : 열린화면리스트 저장
 파 라 미 터 : pvWinId – 업무화면 ID
-			   pvMenuCd – 메뉴코드
-			   pvMenuNm – 메뉴명
+pvMenuCd – 메뉴코드
+pvMenuNm – 메뉴명
 리 턴 내 용 : 없음
 *****************************************************************************/
 this.fn_AddOpenMenu = function(pvWinId, pvMenuCd, pvMenuNm) 
@@ -702,7 +737,7 @@ this.gfnIsNull = function (pvVal)
 	{
 		return true;
 	}
-
+	
 	return false;
 }
 
@@ -712,6 +747,69 @@ this.fn_home = function(){
 
 this.fn_tab = function(){
 	this.application.VFSet02.set_separatesize("30,*,0");
-}]]></Script>
+}
+
+this.btn_menu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.btn_menu.setSelectStatus(true);
+	this.btn_myMenu.setSelectStatus(false);
+	this.Static00.set_text(this.mainTitleText);
+	this.Static00.set_border("0px none,0px none,0px none,1px solid #165ba1")
+	this.Static00.set_background("#165ba1");
+	this.Static00.set_color("#ffffff");
+	this.Static00.set_font("bold 11pt Dotum");
+	this.grdLeft.set_binddataset(this.bindedDs);
+	
+	this.removeChild("btn_manage");
+};
+
+this.btn_myMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.btn_menu.setSelectStatus(false);
+	this.btn_myMenu.setSelectStatus(true);
+	this.Static00.set_text("마이 메뉴");
+	this.Static00.set_border("0px solid #c7c7c7, 1px solid #e3e3e3, 1px solid #e3e3e3, 1px solid #e3e3e3")
+	this.Static00.set_background("#f4f4f4");
+	this.Static00.set_color("#383d6b");
+	this.Static00.set_font("bold 11pt Dotum");
+	this.grdLeft.set_binddataset("grd_myMenu");
+	
+	
+	if(this.btn_manage == null){
+		
+		var btn_manage = new Button();
+		btn_manage.init("btn_manage",190,60,42,22);
+		this.addChild("btn_manage",btn_manage);
+		btn_manage.addEventHandler("onclick",this.btn_manage_onclick,this);
+		btn_manage.set_text("관리");
+		btn_manage.show();
+		
+	}
+};
+
+this.btn_manage_onclick = function()
+{
+	var objCF = new ChildFrame();
+	objCF.init("popMyMenu", 295, 140, 480, 370);
+	objCF.set_openalign("center middle");
+	objCF.set_formurl("frame::frm_myMenuPopup.xfdl");
+	
+	objCF.showModal(
+		this.getOwnerFrame()
+		,{bindedDs:this.bindedDs,myMenu:this.grd_myMenu}
+		,this
+		,"fn_callback_pop"
+	);
+}
+
+this.fn_callback_pop = function(id, sReturn)
+{
+	if(sReturn == null){
+		
+	}else{
+		this.fn_openMenu(sReturn);
+	}
+}
+]]></Script>
   </Form>
 </FDL>
