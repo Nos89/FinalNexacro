@@ -394,7 +394,6 @@
 {
 	color : #101010;
 	-nexa-border : 1px solid #dbdee2;
-	-nexa-padding : 4px 4px 4px 4px;
 }
 
 .Grid .body .row .cell[status=mouseover]
@@ -3070,10 +3069,9 @@
 	cursor : pointer;
 	-nexa-border : 1px solid #c7c7c7;
 	-nexa-icon : url("imagerc::img_WF_music01.png");
-	-nexa-icon-position : left;
-	-nexa-text-align : left;
-	-nexa-padding : 0px 0px 2px 6px;
-	-nexa-text-padding : 0px 0px 0px 5px;
+	-nexa-icon-position : top;
+	-nexa-text-align : center;
+	-nexa-text-padding : 0px 0px 0px 0px;
 }
 .Button.btn_WF_music01[status=mouseover]
 {
@@ -3512,9 +3510,6 @@
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[userstatus=expand]
 {
 }
-.Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[userstatus=leaf]
-{
-}
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitemimage[userstatus=collapse]
 {
 	-nexa-icon : url('theme://images/tree-collapse.png');	
@@ -3529,16 +3524,13 @@
 }
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitemtext
 {
+
 }
 .Grid.tree_edit .body .row .cell .celltreeitem .treeitemimage[userstatus=leaf]
 {
 	-nexa-icon : url('imagerc::img_WF_list01.png');
 }
 .Grid.tree_edit .body .row .cell
-{
-	background : #ffffff;
-}
-.Grid.tree_edit .body .row .cell[userstatus=blinked]
 {
 	background : #ffffff;
 }
@@ -3567,5 +3559,142 @@
 	color : #ffffff;
 	cursor : pointer;
 	font : normal 700 10pt/normal "Malgun Gothic";
+}
+.Button.btn_bookmark
+{	
+	background : url('theme://images/img_bookmark2.png') no-repeat center center;
+}
+.Button.btn_list[status=focused]
+{
+}
+.Button.btn_list[status=focused][userstatus=selected]
+{
+}
+.Button.btn_list[status=focused][userstatus=pushed]
+{
+}
+.Button.btn_list01[userstatus=selected]
+{
+	background : url('theme://images/img_list3.png') no-repeat center center #0a2465;
+}
+.Button.btn_list01[status=mouseover]
+{
+	background : url('theme://images/img_list3.png') no-repeat center center #0a2465;
+}
+.ButtonControl.btn_menu01
+{
+}
+.ButtonControl.btn_menu01[status=mouseover]
+{
+	background : #0f338e;
+}
+.Button.btn_list01
+{
+	background : url('theme://images/img_list3.png') no-repeat center center;
+}
+.Button.btn_bookmark[status=mouseover]
+{
+	background : url('theme://images/img_bookmark2.png') no-repeat center center #0a2465;
+}
+.Button.btn_bookmark[userstatus=selected]
+{
+	background : url('theme://images/img_bookmark2.png') no-repeat center center #0a2465;
+}
+.Grid.tree_edit .body .row .cell .celltreeitem[status=mouseover]
+{	
+}
+.Grid.tree_edit .body .row .cell[status=mouseover]
+{
+	font : bold 9pt Dotum;
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitemtext[status=mouseover]
+{
+	font : bold 9pt Dotum;
+}
+.Grid.tree_edit .body .row .cell .celltreeitem[status=focused]
+{
+	
+	font : bold 9pt Dotum;
+	background : #ebf1fd;
+}
+.Grid.tree_edit .body .row .cell[status=focused]
+{
+	background : #ebf1fd;
+	font : bold 9pt Dotum;
+}
+.Grid.tree_edit .body .row .cell[status=mouseover][userstatus=selected]
+{
+	font : bold 9pt Dotum;
+}
+.Grid.tree_edit .body .row .cell[userstatus=selected]
+{
+	background : #ebf1fd;
+	font : normal 700 9pt/normal "Arial";
+}
+.Grid.tree_edit .body .row .cell[userstatus=selected][status=focused]
+{
+	font : bold 9pt Dotum;
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[status=focused][userstatus=collapse]
+{
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitembutton[status=focused]
+{
+}
+.Grid.tree_edit .body .row .cell[userstatus=selected][status=mouseover]
+{
+	background : #e6eef7;
+	font : bold 9pt Dotum;
+}
+.Grid.tree_edit .body .row .cell .cellexpandbutton
+{
+}
+.Grid.tree_edit .body .row .cell .cellexpandbutton[userstatus=selected]
+{
+}
+.Grid.tree_edit .body .row .cell .cellexpandbutton[userstatus=selected][status=focused]
+{
+}
+.Grid.tree_edit .body .row .cell .celltreeitem .treeitemtext[status=disabled]
+{
+}
+.Grid.tree_edit .body .row .cell[status=focused][userstatus=selected]
+{
+	background : #ebf1fd;
+	font : bold 9pt Dotum;
+}
+.Button.btn_menuclose
+{
+	-nexa-icon : url('theme://images/left-arrow2.png');
+	-nexa-icon-position : top;
+	-nexa-text-align : center;
+	font : 8pt "Arial","Bahnschrift Light Condensed";
+	color : #fafafa;
+	-nexa-text-padding : 5px 0px 0px;
+	-nexa-padding : 4px 0px 0px;
+	cursor : pointer;
+	background : #545454;
+	
+}
+.Button.btn_menuopen
+{
+	-nexa-icon : url('theme://images/right-arrow2.png');
+	-nexa-icon-position : top;
+	-nexa-text-align : center;
+	font : 8pt "Arial","Bahnschrift Light Condensed";
+	color : #fafafa;
+	-nexa-text-padding : 5px 0px 0px;
+	-nexa-padding : 4px 0px 0px;
+	cursor : pointer;
+	background : #545454;
+}
+.Button.btn_menuclose[status=mouseover]
+{
+	background : #0a2465;
+
+}
+.Button.btn_menuopen[status=mouseover]
+{
+	background : #0a2465;
 }
 ]]></XCSS>

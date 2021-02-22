@@ -3,7 +3,7 @@
   <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="auto none">
     <Layouts>
       <Layout height="700" mobileorientation="landscape" width="250">
-        <Grid id="grdLeft" taborder="0" left="30" top="100" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" width="217" bottom="0">
+        <Grid id="grdLeft" taborder="0" left="40" top="100" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" width="207" bottom="0">
           <Formats>
             <Format id="default">
               <Columns>
@@ -13,15 +13,20 @@
                 <Row size="32"/>
               </Rows>
               <Band id="body">
-                <Cell text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL" cssclass="treeitem_edit"/>
+                <Cell text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL" cssclass="tree_edit" font="bold 9pt Dotum"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="1" text="Main Title Menu" left="30" top="40" height="60" color="#ffffff" background="#165ba1" cssclass="sta_LF_title01" border="0px none,0px none,0px none,1px solid #165ba1" width="217" textAlign="center" font="bold 11pt Dotum"/>
-        <Static id="Static00_00" taborder="2" left="30" top="0" height="40" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="217"/>
-        <Button id="btn_menu" taborder="3" text="메뉴목록" left="100" top="10" width="50" height="20" onclick="btn_menu_onclick"/>
-        <Button id="btn_myMenu" taborder="4" text="마이메뉴" left="160" top="10" width="50" height="20" onclick="btn_myMenu_onclick"/>
+        <Static id="Static00" taborder="1" left="40" top="40" height="60" color="#ffffff" background="#165ba1" cssclass="sta_LF_title01" border="0px none,0px none,0px none,1px solid #165ba1" width="207" textAlign="center" font="bold 11pt Dotum"/>
+        <Static id="sta_openmenu" taborder="2" left="40" top="0" height="40" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="207" text=""/>
+        <Button id="btn_menu" taborder="3" left="108" top="4" width="35" height="30" onclick="btn_menu_onclick" tooltiptext="메뉴 목록" tooltiptype="hover" cursor="pointer" border="0px none" cssclass="btn_list01" borderRadius="20px"/>
+        <Button id="btn_myMenu" taborder="4" left="175" top="4" width="30" height="30" onclick="btn_myMenu_onclick" tooltiptext="마이메뉴 목록" tooltiptype="hover" borderRadius="20px" border="0px none" cursor="pointer" cssclass="btn_bookmark"/>
+        <Static id="sta_closedmenu" taborder="5" left="0" top="0" height="140" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="40" visible="false"/>
+        <Button id="btn_menu00" taborder="6" left="3" top="50" width="35" height="30" onclick="btn_menu_onclick" tooltiptext="메뉴 목록" tooltiptype="hover" cursor="pointer" border="0px none" cssclass="btn_list01" borderRadius="20px" visible="false"/>
+        <Button id="btn_myMenu00" taborder="7" left="5" top="95" width="30" height="30" onclick="btn_myMenu_onclick" tooltiptext="마이메뉴 목록" tooltiptype="hover" borderRadius="20px" border="0px none" cursor="pointer" cssclass="btn_bookmark" visible="false"/>
+        <Button id="btn_menuopen" taborder="8" text="OPEN" left="0" top="0" width="40" height="40" onclick="btn_menuopen_onclick" cssclass="btn_menuopen" visible="false" border="0px none"/>
+        <Button id="btn_menuclose" taborder="9" text="CLOSE" left="40" top="0" width="40" height="40" onclick="btn_menuclose_onclick" cssclass="btn_menuclose" textAlign="center" border="0px none"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -538,7 +543,7 @@
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="grd_myMenu">
+      <Dataset id="grd_myMenu" keystring="S:MENU_CD">
         <ColumnInfo>
           <Column id="MENU_CD" type="STRING" size="256"/>
           <Column id="UP_MENU_CD" type="STRING" size="256"/>
@@ -786,6 +791,10 @@ this.fn_tab = function(){
 
 this.btn_menu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	if(this.btn_menuopen.visible == true){
+		this.application.HFSet01.set_separatesize("0,250,*");
+		this.menu_unfold();
+	}
 	this.btn_menu.setSelectStatus(true);
 	this.btn_myMenu.setSelectStatus(false);
 	this.Static00.set_text(this.mainTitleText);
@@ -800,6 +809,10 @@ this.btn_menu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btn_myMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	if(this.btn_menuopen.visible == true){
+		this.application.HFSet01.set_separatesize("0,250,*");
+		this.menu_unfold();
+	}
 	this.btn_menu.setSelectStatus(false);
 	this.btn_myMenu.setSelectStatus(true);
 	this.Static00.set_text("마이 메뉴");
@@ -845,6 +858,46 @@ this.fn_callback_pop = function(id, sReturn)
 		this.fn_openMenu(sReturn);
 	}
 }
+
+this.btn_menuclose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var app = nexacro.getApplication();
+	app.mainframe.VFSet01.HFSet01.set_separatesize("0,45,*");
+	this.sta_openmenu.set_visible(false);
+	this.btn_menu.set_visible(false);
+	this.btn_myMenu.set_visible(false);
+	this.btn_menuclose.set_visible(false);
+	this.grdLeft.set_visible(false);
+	this.Static00.set_visible(false);
+	
+	this.btn_menu00.set_visible(true);
+	this.btn_myMenu00.set_visible(true);
+	this.sta_closedmenu.set_visible(true);
+	this.btn_menuopen.set_visible(true);
+};
+
+this.btn_menuopen_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.menu_unfold();
+};
+
+this.menu_unfold = function()
+{
+	var app = nexacro.getApplication();
+	app.mainframe.VFSet01.HFSet01.set_separatesize("0,250,*");
+	this.sta_openmenu.set_visible(true);
+	this.btn_menu.set_visible(true);
+	this.btn_myMenu.set_visible(true);
+	this.btn_menuclose.set_visible(true);
+	this.grdLeft.set_visible(true);
+	this.Static00.set_visible(true);
+	
+	this.btn_menu00.set_visible(false);
+	this.btn_myMenu00.set_visible(false);
+	this.sta_closedmenu.set_visible(false);
+	this.btn_menuopen.set_visible(false);
+};
 ]]></Script>
+    <InitValue/>
   </Form>
 </FDL>
