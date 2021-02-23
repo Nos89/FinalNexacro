@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="writeMail" width="550" height="600" titletext="New Form">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="550">
+        <Static id="Static00" taborder="0" text="메일 작성" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
+        <Div id="div_mail" taborder="1" left="11" top="50" width="530" height="480" text="">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="1" left="0" top="0" height="90" border="1px solid #bababa, 0px none" right="0" text=""/>
+              <Static id="sta_sub_title" taborder="0" text="제목" left="20" top="15" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_sub_title00_00" taborder="2" text="수신인" left="20" top="50" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Edit id="edt_title" taborder="3" left="100" top="15" width="409" height="25"/>
+              <Edit id="edt_receiver" taborder="4" left="100" top="50" width="200" height="25"/>
+              <TextArea id="txt_contents" taborder="5" left="19" top="100" width="490" height="370"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_send" taborder="2" text="전송" left="161" top="545" width="100" height="35" cssclass="btn_WF_gantt01" onclick="btn_send_onclick"/>
+        <Button id="btn_close" taborder="3" text="닫기" left="291" top="545" width="100" height="35" cssclass="btn_WF_gantt01" onclick="btn_close_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_send_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let check = this.confirm("발송하시겠습니까?");
+	
+	if(check){
+		let sTitle = this.div_mail.form.edt_title.value;
+		let sReceiver = this.div_mail.form.edt_receiver.value;
+		let sContents = this.div_mail.form.txt_contents.value;
+		
+		this.ds_mail.addRow();
+		this.ds_mail.setColumn(0,"title",sTitle);
+		this.ds_mail.setColumn(0,"receiver",sReceiver);
+		this.ds_mail.setColumn(0,"contents",sContents);
+		
+		this.transaction(
+			"sendMail"	// 1. strSvcID(string 형태의 id)
+			, "/sendMail.nex"	// 2. strURL(string 형태의 url)
+			, "in_mail=ds_mail:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+			, ""	// 4. strOutDatasets -select Fds=Sds
+			, "" // 5. strArgument
+			, "fn_callback"	// 6. strCallbackFunc
+		);
+	}
+};
+
+this.fn_callback = function(id,errCD,errMSG)
+{
+	if(errCD<0){
+		this.alert("메일을 전송하지 못했습니다.");
+	}else{
+		this.close("save");
+	}
+}
+
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let check = this.confirm("창을 닫으시겠습니까?");
+	if(check){
+		this.close("close");
+	}
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_mail">
+        <ColumnInfo>
+          <Column id="receiver" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
