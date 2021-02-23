@@ -146,15 +146,15 @@
         <ColumnInfo>
           <Column id="id" type="STRING" size="256"/>
           <Column id="reason" type="STRING" size="256"/>
-          <Column id="takeOffYear" type="INT" size="256"/>
-          <Column id="takeOffSemester" type="STRING" size="256"/>
+          <Column id="takeOff_Year" type="INT" size="256"/>
+          <Column id="takeOff_Semester" type="STRING" size="256"/>
           <Column id="expectedReturnYear" type="INT" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
             <Col id="reason">--선택--</Col>
-            <Col id="takeOffYear">--선택--</Col>
-            <Col id="takeOffSemester">--선택--</Col>
+            <Col id="takeOff_Year">--선택--</Col>
+            <Col id="takeOff_Semester">--선택--</Col>
             <Col id="expectedReturnYear">--선택--</Col>
           </Row>
         </Rows>
