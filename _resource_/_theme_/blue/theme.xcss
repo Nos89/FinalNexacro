@@ -25,7 +25,8 @@
 
 .MainFrame .titlebar .titleicon
 {
-	-nexa-icon : URL('theme://images/titlebar_icon_nexacro17.ico');
+	font : bold 14pt "Arial";
+	-nexa-icon : url('none');
 }
 
 
@@ -3696,5 +3697,51 @@
 .Button.btn_menuopen[status=mouseover]
 {
 	background : #0a2465;
+}
+.Button.btn_gear
+{
+	-nexa-icon : url('theme://images/gear2.png');
+	-nexa-text-padding : 0px 0px 0px 2px;
+	color : #ffffff;
+	background : #2944cb;
+	border-radius : 3px;
+}
+.Button.btn_gear[status=mouseover]
+{
+	background : #0505b2;
+}
+.Button.btn_gear[userstatus=pushed]
+{
+	background : #0505b2;
+}
+.Button.btn_gear[userstatus=pushed][status=mouseover]
+{
+	background : #0505b2;
+}
+.Button.btn_gear[userstatus=pushed][status=focused]
+{
+}
+.Button.btn_gear[userstatus=selected]
+{
+	background : #2944cb;
+}
+.Button.btn_gear[userstatus=selected][status=focused]
+{
+	background : #2944cb;
+}
+.Button.btn_gear[status=focused]
+{
+	background : #2944cb;
+}
+.MainFrame .titlebar
+{
+}
+.ChildFrame .titlebar
+{
+
+}
+.ChildFrame .titlebar .titleicon
+{
+	-nexa-icon : url('none');
 }
 ]]></XCSS>

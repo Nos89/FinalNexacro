@@ -25,8 +25,8 @@
               <Band id="body">
                 <Cell text="bind:MENU_CD" textAlign="center"/>
                 <Cell col="1" text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL"/>
-                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
-                <Cell col="3" text="삭제" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'"/>
+                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
+                <Cell col="3" text="삭제" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:MENU_LVL == 0 ? 'none' : 'button'"/>
               </Band>
             </Format>
             <Format id="mymenu">
@@ -49,8 +49,8 @@
               <Band id="body">
                 <Cell text="bind:MENU_CD" textAlign="center" expr="this.grdLeft.getBindDataset().set_keystring(&quot;G:MENU_CD&quot;);"/>
                 <Cell col="1" text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL"/>
-                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
-                <Cell col="3" text="추가" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'"/>
+                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
+                <Cell col="3" text="추가" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:MENU_LVL == 0 ? 'none' : 'button'"/>
               </Band>
             </Format>
           </Formats>
