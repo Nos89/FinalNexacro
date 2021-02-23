@@ -51,6 +51,7 @@
     <Service prefixid="Webhard" type="form" url="./Webhard/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="Lib" type="js" url="./Lib/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="Admin" type="form" url="./Admin/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="Mail" type="form" url="./Mail/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>
   <Protocols/>
   <Update/>
