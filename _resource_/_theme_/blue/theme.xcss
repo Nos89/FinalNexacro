@@ -3705,6 +3705,7 @@
 	color : #ffffff;
 	background : #2944cb;
 	border-radius : 3px;
+	cursor : pointer;
 }
 .Button.btn_gear[status=mouseover]
 {

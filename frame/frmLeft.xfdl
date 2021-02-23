@@ -144,15 +144,15 @@
             <Col id="MENU_NM">메일</Col>
             <Col id="MENU_LVL">0</Col>
             <Col id="PGM_PATH"></Col>
-            <Col id="PGM_ID"/>
+            <Col id="PGM_ID"></Col>
           </Row>
           <Row>
             <Col id="MENU_CD">4001</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">메일함</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="PGM_PATH"></Col>
-            <Col id="PGM_ID"></Col>
+            <Col id="PGM_PATH">Admin</Col>
+            <Col id="PGM_ID">inBox.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">5000</Col>
@@ -375,15 +375,19 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">메일함</Col>
             <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Admin</Col>
+            <Col id="PGM_ID">inBox.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0026</Col>
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">자료실</Col>
             <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH"></Col>
+            <Col id="PGM_ID"></Col>
           </Row>
           <Row>
-            <Col id="MENU_CD">0027</Col>
+            <Col id="MENU_CD">0025</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">1</Col>
@@ -547,24 +551,30 @@
             <Col id="PGM_ID">Application_CreditRenounce.xfdl</Col>
           </Row>
           <Row>
-            <Col id="MENU_NM">신청사항 관리</Col>
+            <Col id="MENU_CD">0050</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_NM">메일</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">0051</Col>
+            <Col id="UP_MENU_CD">0050</Col>
+            <Col id="MENU_NM">발신메일함</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="MENU_CD">0045</Col>
-            <Col id="UP_MENU_CD">0040</Col>
             <Col id="PGM_PATH">Admin</Col>
-            <Col id="PGM_ID">Applications.xfdl</Col>
+            <Col id="PGM_ID">outBox.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="MENU_CD">0050</Col>
+            <Col id="MENU_CD">0060</Col>
             <Col id="UP_MENU_CD">0</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">웹하드 관리</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="MENU_CD">0051</Col>
-            <Col id="UP_MENU_CD">0050</Col>
+            <Col id="MENU_CD">0061</Col>
+            <Col id="UP_MENU_CD">0060</Col>
             <Col id="PGM_PATH">Admin</Col>
           </Row>
         </Rows>
@@ -856,7 +866,6 @@ this.btn_myMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.addChild("btn_manage",btn_manage);
 		btn_manage.addEventHandler("onclick",this.btn_manage_onclick,this);
 		btn_manage.set_text("관리");
-		btn_manage.set_cursor('pointer');
 		btn_manage.set_cssclass('btn_gear');
 		btn_manage.show();
 		

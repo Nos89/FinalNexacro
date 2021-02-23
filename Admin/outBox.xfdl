@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="outBox" width="1090" height="650" titletext="New Form" onload="outBox_onload">
+    <Layouts>
+      <Layout height="650" width="1090">
+        <Static id="Static00" taborder="0" text="발신메일함" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
+        <Grid id="grd_mailBox" taborder="1" left="10" top="90" width="520" height="530" binddataset="ds_mail" autofittype="col" fillareatype="linerow" oncelldblclick="grd_mailBox_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="25"/>
+                <Column size="40"/>
+                <Column size="120"/>
+                <Column size="48"/>
+                <Column size="55"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="imagecontrol" imagestretch="none" text="imagerc::img_WF_envelopeClose.png"/>
+                <Cell col="1" text="번호"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="수신인"/>
+                <Cell col="4" text="수신일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:read" expr="expr:read=='0'?'imagerc::img_WF_envelopeClose.png':'imagerc::img_WF_envelopeOpen.png'" displaytype="imagecontrol" imagestretch="fixaspectratio"/>
+                <Cell col="1" text="bind:mail_seq"/>
+                <Cell col="2" text="bind:title"/>
+                <Cell col="3" text="bind:receiver"/>
+                <Cell col="4" text="bind:received_date" displaytype="date"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_mail" taborder="2" left="550" top="90" width="530" height="530" text="">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="5" left="0" top="0" height="115" border="1px solid #bababa, 0px none" right="0" text=""/>
+              <Static id="sta_sub_title" taborder="0" text="제목" left="20" top="15" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_sub_title00" taborder="1" text="수신일" left="20" top="75" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_title" taborder="2" left="100" top="15" width="409" height="25" cssclass="sta_cm_box02L"/>
+              <Static id="sta_received_date" taborder="3" left="100" top="75" width="200" height="25" cssclass="sta_cm_box02L" expr="comp.text.substr(0,4)+&quot;년 &quot;+comp.text.substr(4,2)+&quot;월 &quot;+comp.text.substr(6,2)+&quot;일&quot;" text=""/>
+              <Static id="sta_contents" taborder="4" left="19" top="129" width="490" height="401" cssclass="sta_cm_box02L" verticalAlign="top" padding="5px"/>
+              <Static id="sta_sub_title00_00" taborder="6" text="수신인" left="20" top="45" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_received_date00" taborder="7" left="100" top="45" width="200" height="25" cssclass="sta_cm_box02L" text=""/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Radio id="rdo_read" taborder="3" left="330" top="56" width="240" height="24" index="0" text="전체" value="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" onitemchanged="rdo_read_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">전체</Col>
+                <Col id="codecolumn">-1</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">안읽음</Col>
+                <Col id="codecolumn">0</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">읽음</Col>
+                <Col id="codecolumn">1</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="Static01" taborder="4" left="0" right="0" bottom="0" height="30" text=""/>
+        <Button id="btn_refresh" taborder="5" text="새로고침" left="910" top="56" width="80" height="24" onclick="btn_refresh_onclick"/>
+        <Button id="btn_write" taborder="6" text="메일 작성" left="1000" top="56" width="80" height="24" onclick="btn_write_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.outBox_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"getOutBox"	// 1. strSvcID(string 형태의 id)
+		, "/getOutBox.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_mail=out_mail"	// 4. strOutDatasets -select Fds=Sds
+		, "" // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+};
+
+this.fn_callback = function(id,errCD,errMSG)
+{
+	if(errCD<0){
+		if(id=="getOutBox"){
+			this.alert("데이터를 불러오지 못했습니다.");
+		}else if(id=="saveRead"){
+			this.alert("저장하지 못했습니다.");
+		}
+	}
+}
+
+
+// 메일 조회
+this.grd_mailBox_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let nRow = this.ds_mail.rowposition;
+	let nVal = this.ds_mail.getColumn(nRow,"read");
+	
+	this.div_mail.form.sta_title.set_text(this.ds_mail.getColumn(nRow,"title"));
+	this.div_mail.form.sta_received_date.set_text(this.ds_mail.getColumn(nRow,"received_date"));
+	this.div_mail.form.sta_contents.set_text(this.ds_mail.getColumn(nRow,"contents"));
+	
+	if(nVal==0){
+		this.ds_mail.setColumn(nRow,"read",1);
+		this.transaction(
+			"updateReadStatus"	// 1. strSvcID(string 형태의 id)
+			, "/updateReadStatus.nex"	// 2. strURL(string 형태의 url)
+			, "in_mail=ds_mail:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+			, ""	// 4. strOutDatasets -select Fds=Sds
+			, "" // 5. strArgument
+			, "fn_callback"	// 6. strCallbackFunc
+		);
+	}
+};
+
+
+// 새로고침
+this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
+
+
+// 필터링
+this.rdo_read_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	if(e.postvalue==-1){
+		this.ds_mail.filter("");
+	}else {
+		this.ds_mail.filter("read=="+e.postvalue);
+	}
+};
+
+
+// 작성
+this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let objCF = new ChildFrame();
+	objCF.init("writeMail",145,30,550,600,null,null,"Admin::writeMail.xfdl");
+	objCF.showModal(this.getOwnerFrame(),{},this,"fn_mailSend");
+};
+
+this.fn_mailSend = function(id,msg)
+{
+	if(msg=="save"){
+		this.reload();
+	}
+}
+]]></Script>
+    <Objects>
+      <Dataset id="ds_mail">
+        <ColumnInfo>
+          <Column id="mail_seq" type="INT" size="256"/>
+          <Column id="receiver" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="received_date" type="DATE" size="256"/>
+          <Column id="read" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="div_mail.form.sta_title" propid="text" datasetid="ds_mail" columnid="title"/>
+      <BindItem id="item1" compid="div_mail.form.sta_received_date00" propid="text" datasetid="ds_mail" columnid="receiver"/>
+      <BindItem id="item2" compid="div_mail.form.sta_received_date" propid="text" datasetid="ds_mail" columnid="received_date"/>
+      <BindItem id="item3" compid="div_mail.form.sta_contents" propid="text" datasetid="ds_mail" columnid="contents"/>
+    </Bind>
+  </Form>
+</FDL>
