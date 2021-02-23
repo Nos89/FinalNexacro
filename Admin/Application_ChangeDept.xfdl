@@ -4,14 +4,14 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="0" text="전과신청 목록" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Grid id="grd_apply" taborder="1" left="10" top="70" width="520" height="550" binddataset="ds_changeDeptApply" autofittype="col" fillareatype="linerow" oncellclick="grd_apply_oncellclick">
+        <Grid id="grd_apply" taborder="1" left="10" top="70" width="520" height="550" binddataset="ds_changeDeptApply" autofittype="col" fillareatype="linerow">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="30"/>
-                <Column size="50"/>
-                <Column size="50"/>
-                <Column size="50"/>
+                <Column size="48"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -27,7 +27,7 @@
                 <Cell text="bind:seq"/>
                 <Cell col="1" text="bind:id"/>
                 <Cell col="2" text="bind:name"/>
-                <Cell col="3" text="bind:apply_date" displaytype="date" calendardateformat="yyyy.MM.dd"/>
+                <Cell col="3" text="bind:apply_date" calendardateformat="yyyy.MM.dd" displaytype="date"/>
               </Band>
             </Format>
           </Formats>
@@ -93,8 +93,8 @@
           <Column id="seq" type="INT" size="256"/>
           <Column id="id" type="STRING" size="256"/>
           <Column id="name" type="STRING" size="256"/>
-          <Column id="col_title" type="STRING" size="256"/>
-          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="colTitle" type="STRING" size="256"/>
+          <Column id="deptTitle" type="STRING" size="256"/>
           <Column id="changeYear" type="INT" size="256"/>
           <Column id="changeSemester" type="STRING" size="256"/>
           <Column id="reason" type="STRING" size="256"/>
@@ -103,22 +103,6 @@
           <Column id="apply_date" type="DATE" size="256"/>
           <Column id="apply_approve" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="seq">2</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="name">김학생</Col>
-            <Col id="changeYear">2021</Col>
-            <Col id="changeSemester">1학기</Col>
-            <Col id="reason">전과</Col>
-            <Col id="changeCollege">c1</Col>
-            <Col id="changeDept">d01</Col>
-            <Col id="apply_date">20210109</Col>
-            <Col id="apply_approve">신청</Col>
-            <Col id="col_title">c1</Col>
-            <Col id="dept_title">d1</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_mail">
         <ColumnInfo>
@@ -128,30 +112,6 @@
           <Column id="contents" type="STRING" size="256"/>
           <Column id="received_date" type="DATE" size="256"/>
         </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_department">
-        <ColumnInfo>
-          <Column id="dept_code" type="STRING" size="256"/>
-          <Column id="dept_title" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="dept_code">d1</Col>
-            <Col id="dept_title">소프트웨어학과</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="ds_college">
-        <ColumnInfo>
-          <Column id="col_code" type="STRING" size="256"/>
-          <Column id="col_title" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="col_code">c1</Col>
-            <Col id="col_title">공과대학</Col>
-          </Row>
-        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
@@ -198,7 +158,7 @@ this.rdo_approval_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChang
 // 승인
 this.div_application_btn_approval_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let nRow = this.ds_takeOffApply.rowposition;
+	let nRow = this.ds_changeDeptApply.rowposition;
 	let check = this.confirm("승인하시겠습니까?");
 	
 	if(check){
@@ -229,7 +189,7 @@ this.fn_approved = function(id,errCD,errMSG)
 // 반려
 this.div_application_btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let nRow = this.ds_takeOffApply.rowposition;
+	let nRow = this.ds_changeDeptApply.rowposition;
 	let check = this.confirm("반려하시겠습니까?");
 	
 	if(check){
@@ -296,18 +256,13 @@ this.fn_callback_result = function(id,errCD,errMSG)
 }
 
 
-this.grd_apply_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
-{
-	
-};
-
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="div_application.form.sta_apply_date" propid="text" datasetid="ds_changeDeptApply" columnid="apply_date"/>
       <BindItem id="item1" compid="div_application.form.sta_name" propid="text" datasetid="ds_changeDeptApply" columnid="name"/>
       <BindItem id="item2" compid="div_application.form.sta_id" propid="text" datasetid="ds_changeDeptApply" columnid="id"/>
-      <BindItem id="item3" compid="div_application.form.sta_college" propid="text" datasetid="ds_changeDeptApply" columnid="col_title"/>
-      <BindItem id="item4" compid="div_application.form.sta_department" propid="text" datasetid="ds_changeDeptApply" columnid="dept_title"/>
+      <BindItem id="item3" compid="div_application.form.sta_college" propid="text" datasetid="ds_changeDeptApply" columnid="colTitle"/>
+      <BindItem id="item4" compid="div_application.form.sta_department" propid="text" datasetid="ds_changeDeptApply" columnid="deptTitle"/>
       <BindItem id="item5" compid="div_application.form.sta_changeYear" propid="text" datasetid="ds_changeDeptApply" columnid="changeYear"/>
       <BindItem id="item6" compid="div_application.form.sta_changeSemester" propid="text" datasetid="ds_changeDeptApply" columnid="changeSemester"/>
       <BindItem id="item7" compid="div_application.form.sta_changeCollege" propid="text" datasetid="ds_changeDeptApply" columnid="changeCollege"/>
