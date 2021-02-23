@@ -230,7 +230,7 @@ this.stu_myClassTime_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	);
 	
 	var grid_id = this.Grid00;
-	this.gfn_export(grid_id);
+	this.gfn_export(grid_id,0);
 };
 
 this.fn_callback=function(id,errCode,errMsg)
