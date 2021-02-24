@@ -127,9 +127,9 @@
         <Button id="btn_cancle" taborder="57" text="취소" left="679" top="615" width="127" height="29" onclick="btn_cancle_onclick"/>
         <Button id="btn_ok" taborder="58" text="완료" left="840" top="615" width="127" height="29" onclick="btn_ok_onclick"/>
         <Button id="btn_attend" taborder="59" text="출결조회" left="902" top="59" width="98" height="23" onclick="btn_attend_onclick"/>
-        <Static id="Static00_00" taborder="60" text="성적관리" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
+        <Static id="Static00_00" taborder="60" text="성적관리" left="7" top="6" width="116" height="32" cssclass="sta_img_circle01"/>
         <Static id="Static01_00" taborder="61" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
-        <Static id="Static04_01" taborder="62" text="성적입력/수정" left="575" top="148" width="171" height="42" cssclass="sta_WF_title02"/>
+        <Static id="Static04_01" taborder="62" text="성적입력/수정" left="575" top="148" width="171" height="42" cssclass="sta_img_circle01"/>
         <Button id="btn_add" taborder="63" left="495" top="381" width="25" height="25" cssclass="btn_WF_add01" text="" onclick="btn_add_onclick"/>
         <Button id="btn_delete" taborder="64" left="523" top="381" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick"/>
         <Button id="btn_reset" taborder="65" text="초기화" left="816" top="58" width="69" height="24" onclick="btn_reset_onclick"/>
@@ -138,8 +138,8 @@
         <Combo id="cbo_gradeCode" taborder="68" left="962" top="578" width="83" height="25" innerdataset="ds_gradeCard" codecolumn="grade_code" datacolumn="grade_code" index="-1" value="all" text="전체" displaynulltext="--선택--" onitemchanged="cbo_gradeCode_onitemchanged"/>
         <Static id="Static05" taborder="69" text="총점은 평가기준 비율에 따라 자동 계산됩니다." left="822" top="147" width="248" height="38" background="bisque"/>
         <Edit id="edt_gradeCode" taborder="70" left="858" top="578" width="95" height="30" readonly="true" textAlign="center"/>
-        <Static id="Static03" taborder="71" text="성적정보" left="12" top="384" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Static id="Static03_00" taborder="72" text="학생목록" left="10" top="130" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="Static03" taborder="71" text="성적정보" left="12" top="384" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" cssclass="sta_img_schedule"/>
+        <Static id="Static03_00" taborder="72" text="학생목록" left="10" top="130" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" cssclass="sta_img_schedule"/>
         <Static id="static00" taborder="79" text="" left="656" top="405" width="160" height="40" cssclass="sta_base"/>
         <Static id="static00_00" taborder="80" text="" left="894" top="522" width="160" height="40" cssclass="sta_base"/>
         <Static id="static00_01" taborder="81" text="" left="894" top="483" width="160" height="40" cssclass="sta_base"/>

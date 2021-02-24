@@ -7,7 +7,7 @@
         <Static id="Static03_00" taborder="12" text="" left="159" top="94" width="212" height="45" cssclass="sta_base"/>
         <Static id="Static03" taborder="11" text="" left="159" top="50" width="212" height="45" cssclass="sta_base"/>
         <Static id="Static01" taborder="0" left="0.92%" top="5.69%" width="98.35%" height="0%" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
-        <Static id="Static00_00" taborder="1" text="학생정보 조회" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
+        <Static id="Static00_00" taborder="1" text="학생정보 조회" left="7" top="4" width="127" height="36" cssclass="sta_img_circle01"/>
         <Combo id="cbo_stdYear" taborder="2" text="Combo00" left="182" top="60" width="168" height="30" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
         <Static id="Static00_01" taborder="3" text="학년" left="7" top="50" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
         <Static id="Static02" taborder="4" text="학과" left="7" top="94" width="153" height="45" cssclass="sta_gray"/>
