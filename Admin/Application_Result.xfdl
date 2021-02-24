@@ -43,11 +43,8 @@ this.Application_Result_onload = function(obj:nexacro.Form,e:nexacro.LoadEventIn
 this.btn_send_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let check;
-	if(this.result=="approve"){
-		check = this.confirm("승인하시겠습니까?");
-	}else{
-		check = this.confirm("반려하시겠습니까?");
-	}
+	check = this.confirm("전송하시겠습니까?");
+
 	if(check){
 		let objReturn;
 		objReturn = {
