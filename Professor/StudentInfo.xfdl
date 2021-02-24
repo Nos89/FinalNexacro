@@ -9,8 +9,8 @@
         <Static id="Static01" taborder="0" left="0.92%" top="5.69%" width="98.35%" height="0%" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
         <Static id="Static00_00" taborder="1" text="학생정보 조회" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
         <Combo id="cbo_stdYear" taborder="2" text="Combo00" left="182" top="60" width="168" height="30" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00_01" taborder="3" text="학년" left="7" top="50" width="153" height="45" background="#bddff7 " border="1px solid #b4bcc2" cssclass="sta_gray"/>
-        <Static id="Static02" taborder="4" text="학과" left="7" top="94" width="153" height="45" background="#bddff7 " cssclass="sta_gray"/>
+        <Static id="Static00_01" taborder="3" text="학년" left="7" top="50" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
+        <Static id="Static02" taborder="4" text="학과" left="7" top="94" width="153" height="45" cssclass="sta_gray"/>
         <Combo id="cbo_department" taborder="5" text="Combo00" left="182" top="102" width="169" height="30" codecolumn="code" datacolumn="name" innerdataset="ds_department" displaynulltext="--선택--" onitemchanged="cbo_department_onitemchanged"/>
         <Combo id="cbo_lecTitle" taborder="6" text="Combo00" left="532" top="60" width="192" height="30" codecolumn="code" datacolumn="name" innerdataset="ds_lecTitle" displaynulltext="--선택--"/>
         <Button id="btn_search" taborder="7" text="조회" left="860" top="51" width="99" height="29" onclick="btn_search_onclick"/>
@@ -49,8 +49,8 @@
           </Formats>
         </Grid>
         <Button id="btn_reset" taborder="9" text="초기화" left="751" top="51" width="99" height="29" onclick="btn_reset_onclick"/>
-        <Static id="Static00_01_00" taborder="13" text="강의명" left="370" top="50" width="153" height="45" background="#bddff7 " border="1px solid #b4bcc2" cssclass="sta_gray"/>
-        <Static id="Static00_01_00_00" taborder="14" text="이름" left="370" top="94" width="153" height="45" background="#bddff7 " border="1px solid #b4bcc2" cssclass="sta_gray"/>
+        <Static id="Static00_01_00" taborder="13" text="강의명" left="370" top="50" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
+        <Static id="Static00_01_00_00" taborder="14" text="이름" left="370" top="94" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
         <Static id="Static03_01_00" taborder="16" text="" left="522" top="94" width="212" height="45" cssclass="sta_base"/>
         <Edit id="edt_name" taborder="10" left="532" top="102" width="192" height="30"/>
       </Layout>
