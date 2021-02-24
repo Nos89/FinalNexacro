@@ -3,7 +3,7 @@
   <Form id="lecturePlanView" width="640" height="680" titletext="New Form" onload="lecturePlanView_onload">
     <Layouts>
       <Layout height="680" mobileorientation="landscape" width="640">
-        <Static id="Static00" taborder="0" text="강의계획서 미리보기" left="10" top="10" width="180" height="37" cssclass="sta_WF_title02"/>
+        <Static id="Static00" taborder="0" text="강의계획서 미리보기" left="10" top="10" width="180" height="37" cssclass="sta_img_circle01"/>
         <Static id="Static01" taborder="1" text="교과목명" left="33" top="73" width="68" height="28"/>
         <Edit id="edt_title" taborder="2" left="101" top="73" width="461" height="29" onchanged="Edit00_onchanged" readonly="true"/>
         <Static id="Static17" taborder="3" text="강의 개요 및 목표" left="13" top="260" width="176" height="29" font="normal bold 10pt/normal &quot;Arial&quot;"/>

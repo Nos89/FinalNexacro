@@ -58,7 +58,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static01_00" taborder="0" text="장바구니" left="11" top="10" width="225" height="29" cssclass="sta_WF_title02"/>
+        <Static id="Static01_00" taborder="0" text="장바구니" left="11" top="10" width="225" height="29" cssclass="sta_img_circle01"/>
         <Button id="btn_apply" taborder="1" text="일괄신청" left="760" top="345" width="89" height="25" onclick="btn_apply_onclick"/>
         <Button id="btn_close" taborder="3" text="닫기" left="386" top="379" width="124" height="33" onclick="btn_close_onclick"/>
       </Layout>
