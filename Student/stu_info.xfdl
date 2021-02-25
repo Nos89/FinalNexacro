@@ -666,7 +666,7 @@
         <Edit id="Edit00_01_02_00" taborder="40" left="971" top="148" width="114" height="30" enable="false"/>
         <Edit id="Edit00_02_02_00" taborder="41" left="971" top="183" width="114" height="30" enable="false"/>
         <MaskEdit id="MaskEdit00" taborder="42" left="189" top="148" width="111" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
-        <MaskEdit id="MaskEdit00_00" taborder="43" left="772" top="185" width="128" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
+        <MaskEdit id="MaskEdit00_00" taborder="43" left="772" top="185" width="128" height="30" type="string" enable="false"/>
         <MaskEdit id="MaskEdit00_01" taborder="44" left="356" top="148" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
         <MaskEdit id="MaskEdit00_01_00" taborder="45" left="356" top="183" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
       </Layout>
@@ -973,7 +973,6 @@ this.Tab00_Tabpage7_Static00_00_onclick = function(obj:nexacro.Static,e:nexacro.
       <BindItem id="item62" compid="Tab00.Tabpage3.form.edtAddress1" propid="value" datasetid="ds_stuInfo" columnid="addr1"/>
       <BindItem id="item63" compid="Tab00.Tabpage3.form.edtAddress2" propid="value" datasetid="ds_stuInfo" columnid="addr2"/>
       <BindItem id="item6" compid="MaskEdit00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
-      <BindItem id="item7" compid="MaskEdit00_00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
       <BindItem id="item15" compid="Tab00.Tabpage1.form.Edit00_01_00_00" propid="value" datasetid="ds_stuInfo" columnid="col_title"/>
       <BindItem id="item16" compid="Tab00.Tabpage1.form.Edit00_01_00_00_00" propid="value" datasetid="ds_stuInfo" columnid="dept_title"/>
       <BindItem id="item17" compid="Tab00.Tabpage1.form.Edit00_01_00_00_00_00_00" propid="value" datasetid="ds_stuInfo" columnid="dept_title"/>
