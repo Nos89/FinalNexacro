@@ -16,8 +16,8 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="btn_send" taborder="2" text="전송" left="161" top="545" width="100" height="35" cssclass="btn_WF_gantt01" onclick="btn_send_onclick"/>
-        <Button id="btn_close" taborder="3" text="닫기" left="291" top="545" width="100" height="35" cssclass="btn_WF_gantt01" onclick="btn_close_onclick"/>
+        <Button id="btn_send" taborder="2" text="전송" left="161" top="545" width="100" height="35" cssclass="btn_WF_gantt01" onclick="btn_send_onclick" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_close" taborder="3" text="닫기" left="291" top="545" width="100" height="35" cssclass="btn_WF_gantt01" onclick="btn_close_onclick" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

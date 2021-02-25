@@ -28,8 +28,8 @@
         </Combo>
         <Edit id="edt_searchKeyword" taborder="2" left="103" top="56" width="166" height="24"/>
         <Button id="btn_search" taborder="3" left="279" top="56" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
-        <Button id="btn_refresh" taborder="4" text="새로고침" left="820" top="50" width="80" height="30" onclick="btn_refresh_onclick"/>
-        <Button id="btn_delete" taborder="5" text="삭제" left="1000" top="50" width="80" height="30" onclick="btn_delete_onclick"/>
+        <Button id="btn_refresh" taborder="4" text="새로고침" left="830" top="55" width="80" height="25" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_delete" taborder="5" text="삭제" left="1000" top="55" width="80" height="25" onclick="btn_delete_onclick" cssclass="btn_WF_gantt03" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Div id="div_page" taborder="6" left="288" top="580" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
         <Static id="Static12" taborder="7" left="0" top="621" width="1090" height="29" text=""/>
         <Grid id="Grid00" taborder="8" left="10" top="90" width="1070" height="481" binddataset="ds_board" autofittype="col" fillareatype="linerow" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick">
@@ -55,15 +55,15 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="bind:seq"/>
-                <Cell col="2" text="bind:title"/>
-                <Cell col="3" text="bind:writer"/>
+                <Cell col="1" text="bind:seq" padding="0px 5px"/>
+                <Cell col="2" text="bind:title" padding="0px 5px"/>
+                <Cell col="3" text="bind:writer" padding="0px 5px"/>
                 <Cell col="4" text="bind:writeDate" calendardateformat="yyyy.MM.dd" displaytype="date"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_write" taborder="9" text="작성" left="910" top="50" width="80" height="30" onclick="btn_write_onclick"/>
+        <Button id="btn_write" taborder="9" text="작성" left="915" top="55" width="80" height="25" onclick="btn_write_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
       </Layout>
     </Layouts>
     <Objects>

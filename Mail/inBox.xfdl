@@ -18,15 +18,15 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell displaytype="imagecontrol" imagestretch="none" text="imagerc::img_WF_envelopeClose.png"/>
+                <Cell displaytype="imagecontrol" text="imagerc::img_WF_mailClose_24.png"/>
                 <Cell col="1" text="번호"/>
                 <Cell col="2" text="제목"/>
                 <Cell col="3" text="수신일"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:read" expr="expr:read=='0'?'imagerc::img_WF_envelopeClose.png':'imagerc::img_WF_envelopeOpen.png'" displaytype="imagecontrol" imagestretch="fixaspectratio"/>
-                <Cell col="1" text="bind:mail_seq"/>
-                <Cell col="2" text="bind:title"/>
+                <Cell text="bind:read" expr="expr:read=='0'?'imagerc::img_WF_mailClose_16.png':'imagerc::img_WF_mailOpen_16.png'" displaytype="imagecontrol"/>
+                <Cell col="1" text="bind:mail_seq" padding="0px 5px"/>
+                <Cell col="2" text="bind:title" padding="0px 5px"/>
                 <Cell col="3" text="bind:received_date" displaytype="date"/>
               </Band>
             </Format>
@@ -44,7 +44,8 @@
             </Layout>
           </Layouts>
         </Div>
-        <Static id="sta_userInfo" taborder="3" left="10" top="50" width="310" height="31" background="url('imagerc::img_WF_envelopeClose.png') no-repeat left center" padding="0px 0px 0px 20px"/>
+        <Static id="sta_userInfo" taborder="3" left="10" top="50" width="310" height="31" background="url('imagerc::img_WF_mailClose_24.png') no-repeat 2% center" padding="0px 0px 0px 35px"/>
+        <Static id="Static01" taborder="5" left="0" right="0" bottom="0" height="30" text=""/>
         <Radio id="rdo_read" taborder="4" left="330" top="56" width="240" height="24" index="0" text="전체" value="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" onitemchanged="rdo_read_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -67,8 +68,7 @@
             </Rows>
           </Dataset>
         </Radio>
-        <Static id="Static01" taborder="5" left="0" right="0" bottom="0" height="30" text=""/>
-        <Button id="btn_refresh" taborder="6" text="새로고침" left="1000" top="56" width="80" height="24" onclick="btn_refresh_onclick"/>
+        <Button id="btn_refresh" taborder="6" text="새로고침" left="1000" top="56" width="80" height="24" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -112,17 +112,17 @@ this.fn_callback = function(id,errCD,errMSG)
 }
 
 
+// 메일 조회
 this.grd_mailBox_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	let nRow = this.ds_mail.rowposition;
-	let nVal = this.ds_mail.getColumn(nRow,"read");
+	let nVal = this.ds_mail.getColumn(e.row,"read");
 	
-	this.div_mail.form.sta_title.set_text(this.ds_mail.getColumn(nRow,"title"));
-	this.div_mail.form.sta_received_date.set_text(this.ds_mail.getColumn(nRow,"received_date"));
-	this.div_mail.form.sta_contents.set_text(this.ds_mail.getColumn(nRow,"contents"));
+	this.div_mail.form.sta_title.set_text(this.ds_mail.getColumn(e.row,"title"));
+	this.div_mail.form.sta_received_date.set_text(this.ds_mail.getColumn(e.row,"received_date"));
+	this.div_mail.form.sta_contents.set_text(this.ds_mail.getColumn(e.row,"contents"));
 	
 	if(nVal==0){
-		this.ds_mail.setColumn(nRow,"read",1);
+		this.ds_mail.setColumn(e.row,"read",1);
 		this.transaction(
 			"updateReadStatus"	// 1. strSvcID(string 형태의 id)
 			, "/updateReadStatus.nex"	// 2. strURL(string 형태의 url)
@@ -151,7 +151,6 @@ this.rdo_read_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEve
 		this.ds_mail.filter("read=="+e.postvalue);
 	}
 };
-
 
 ]]></Script>
   </Form>

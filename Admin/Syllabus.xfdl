@@ -30,7 +30,7 @@
               <Static id="sta_lec_score" taborder="20" left="390" top="110" width="201" height="25" cssclass="sta_cm_box02L" text=""/>
               <Static id="sta_lec_isu" taborder="21" left="390" top="140" width="201" height="25" cssclass="sta_cm_box02L" text=""/>
               <Static id="sta_lec_classroom" taborder="22" left="390" top="170" width="201" height="25" cssclass="sta_cm_box02L" text=""/>
-              <Static id="sta_lec_summary" taborder="23" left="10" top="235" width="581" height="90" cssclass="sta_cm_box02L" text="" verticalAlign="top"/>
+              <Static id="sta_lec_summary" taborder="23" left="10" top="235" width="581" height="90" cssclass="sta_cm_box02L" text="" verticalAlign="top" padding="3px 0px"/>
               <Static id="Static13_00" taborder="24" left="9" top="453" width="146" height="25" cssclass="sta_cm_box01R" text="출석" textAlign="center"/>
               <Static id="Static13_01" taborder="25" left="154" top="453" width="146" height="25" cssclass="sta_cm_box01R" text="중간고사" textAlign="center"/>
               <Static id="Static13_02" taborder="26" left="299" top="453" width="146" height="25" cssclass="sta_cm_box01R" text="기말고사" textAlign="center"/>
@@ -58,7 +58,7 @@
               <Static id="sta_lec_way_4" taborder="48" left="357" top="390" width="117" height="25" cssclass="sta_cm_box02L" textAlign="center"/>
               <Static id="sta_lec_way_5" taborder="49" left="473" top="390" width="117" height="25" cssclass="sta_cm_box02L" textAlign="center"/>
               <Static id="sta_lec_approval" taborder="50" left="550" top="13" width="40" height="25" cssclass="sta_cm_box02L" text=""/>
-              <Static id="sta_lec_book" taborder="51" left="9" top="589" width="581" height="70" cssclass="sta_cm_box02L" verticalAlign="top"/>
+              <Static id="sta_lec_book" taborder="51" left="9" top="589" width="581" height="70" cssclass="sta_cm_box02L" verticalAlign="top" padding="3px 0px"/>
               <Button id="btn_approval" taborder="52" text="승인" left="160" top="820" width="120" height="30" onclick="div_lecture_btn_approval_onclick" cssclass="btn_WF_gantt01"/>
               <Button id="btn_reject" taborder="53" text="반려" left="320" top="820" width="120" height="30" onclick="div_lecture_btn_reject_onclick" cssclass="btn_WF_gantt01"/>
               <Button id="btn_cls" taborder="54" left="569" top="173" width="19" height="19" cssclass="btn_WF_search02" padding="1px" onclick="div_lecture_btn_cls_onclick"/>
@@ -90,10 +90,10 @@
                 <Cell col="3" text="이수구분"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:lec_code"/>
-                <Cell col="1" text="bind:lec_title"/>
-                <Cell col="2" text="bind:pro_name"/>
-                <Cell col="3" text="bind:lec_isu"/>
+                <Cell text="bind:lec_code" padding="0px 5px"/>
+                <Cell col="1" text="bind:lec_title" padding="0px 5px"/>
+                <Cell col="2" text="bind:pro_name" padding="0px 5px"/>
+                <Cell col="3" text="bind:lec_isu" padding="0px 5px"/>
               </Band>
             </Format>
           </Formats>
@@ -272,7 +272,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btn_refresh" taborder="6" left="1000" top="46" width="80" height="24" text="새로고침" onclick="btn_refresh_onclick"/>
+        <Button id="btn_refresh" taborder="6" left="1000" top="46" width="80" height="24" text="새로고침" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01"/>
+        <Static id="Static01" taborder="7" left="0" top="630" right="0" bottom="0"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -303,9 +304,9 @@ this.fn_callback = function(id, errCD, errMSG)
 // 현재 기준으로 년도/학기 값 세팅
 this.fn_setInitVal = function()
 {
-	let d = new nexacro.Date();
- 	let stdYear = d.getFullYear();
- 	let stdSemester = d.getMonth()+1;
+	let day = new nexacro.Date();
+ 	let stdYear = day.getFullYear();
+ 	let stdSemester = day.getMonth()+1;
 	
 	this.com_year.set_value(stdYear);
 	if(1<stdSemester && stdSemester<8){
