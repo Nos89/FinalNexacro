@@ -33,7 +33,7 @@
             <Format id="default">
               <Columns>
                 <Column size="30"/>
-                <Column size="40"/>
+                <Column size="50"/>
                 <Column size="280"/>
                 <Column size="60"/>
                 <Column size="60"/>
@@ -51,9 +51,9 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" edittype="checkbox" displaytype="checkboxcontrol"/>
-                <Cell col="1" text="bind:seq"/>
-                <Cell col="2" text="bind:title"/>
-                <Cell col="3" text="bind:writer"/>
+                <Cell col="1" text="bind:seq" padding="0px 5px"/>
+                <Cell col="2" text="bind:title" padding="0px 5px"/>
+                <Cell col="3" text="bind:writer" padding="0px 5px"/>
                 <Cell col="4" text="bind:writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
               </Band>
             </Format>
@@ -61,8 +61,8 @@
         </Grid>
         <Static id="Static00" taborder="1" text="자유게시판 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
         <Static id="Static12" taborder="6" left="0" top="621" width="1090" height="29" text=""/>
-        <Button id="btn_delete" taborder="7" text="삭제" left="1000" top="50" width="80" height="30" onclick="btn_delete_onclick"/>
-        <Button id="btn_refresh" taborder="8" text="새로고침" left="910" top="50" width="80" height="30" onclick="btn_refresh_onclick"/>
+        <Button id="btn_delete" taborder="7" text="삭제" left="1000" top="55" width="80" height="25" onclick="btn_delete_onclick" cssclass="btn_WF_gantt03" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_refresh" taborder="8" text="새로고침" left="915" top="55" width="80" height="25" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
       </Layout>
     </Layouts>
     <Objects>
