@@ -6,7 +6,7 @@
         <Div id="div_left" taborder="0" left="0" top="85" width="190" bottom="5">
           <Layouts>
             <Layout>
-              <Grid id="gd_left" taborder="0" left="0" width="190" binddataset="ds_directory" treeusecheckbox="false" autofittype="col" oncelldblclick="div_dir_Grid00_oncelldblclick" top="75" bottom="0">
+              <Grid id="gd_left" taborder="0" left="0" width="190" binddataset="ds_directory" treeusecheckbox="false" autofittype="col" oncelldblclick="div_dir_Grid00_oncelldblclick" top="75" bottom="0" oncellclick="div_left_gd_left_oncellclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -94,7 +94,7 @@
             <Layout>
               <Div id="div_logo" taborder="0" left="0" top="0" width="90" bottom="0" cssclass="webhardLogo"/>
               <Button id="btnUpload" taborder="1" text="업로드" left="280" top="5" width="70" height="50" onclick="div_file_btnUpload_onclick" cssclass="upload"/>
-              <Button id="btn_crtFolder" taborder="2" text="폴더 생성" left="364" top="17" width="99" height="27" onclick="div_file_btn_crtFolder_onclick"/>
+              <Button id="btn_crtFolder" taborder="2" left="364" top="10" width="66" height="45" onclick="div_file_btn_crtFolder_onclick" cssclass="crtFolder"/>
             </Layout>
           </Layouts>
         </Div>
@@ -108,6 +108,7 @@
           <Column id="directoryName" type="STRING" size="256"/>
           <Column id="parentID" type="STRING" size="256"/>
           <Column id="lv" type="STRING" size="256"/>
+          <Column id="crtDate" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -275,8 +276,16 @@ this.nameLoc = ""; // 디렉토리 내 폴더, 파일 이름 & 저장 위치
 this.storage = "";
 this.maxStorage = 52428800;
 
+this.maxItem = "";
+this.div_fileWidth = "";
+this.div_fileHeight = "";
+
+this.mouseonDiv = "";
+this.indirIndex = "";
+
 this.frmLeftMenu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	//trace("Onload Event");
 	this.transaction(
 		"webhardOnload", // 1. strSVCID
 		"/webhard/onload", // 2. strURL
@@ -288,6 +297,7 @@ this.frmLeftMenu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 };
 
 this.getDirectory = function(){
+	//trace("GetDirectory Event");
 	this.transaction(
 		"getDirectory", // 1. strSVCID
 		"/webhard/getDirectory", // 2. strURL
@@ -298,12 +308,24 @@ this.getDirectory = function(){
 	);
 }
 
+this.fn_indirTran = function( parentID ){
+	this.transaction(
+		"getInDir", // 1. strSVCID
+		"/webhard/getIndir", // 2. strURL
+		"", // 3. strInDatasets, Sds-Fds:U, :A, :N
+		"ds_indir=out_indir", // 4. strOutDatasets -select Fds=Sds
+		"parentID="+parentID, // 5. strArgument View에서 Server로 넘겨줄 변수
+		"fn_trCallback" // 6. strCallbackFunc
+	);
+}
+
 this.fn_trCallback = function( pId, pErrCode, pErrMsg ){
+	//trace( pId + " : " + pErrCode );
 	if( pErrCode >= 1 ){
 		switch( pId ){
 		case "webhardOnload":
 			this.fillStorage( this.storage );
-			this.div_left.form.gd_left.setTreeStatus( 0, "expand");
+			this.div_left.form.gd_left.setTreeStatus( 0, "true");
 			
 			this.div_file.form.st_dirName.set_text(this.div_left.form.gd_left.getBindDataset().getColumn(0, "directoryName"));
 			this.div_file.form.st_dirID.set_text(this.div_left.form.gd_left.getBindDataset().getColumn(0, "dirID"));
@@ -312,19 +334,24 @@ this.fn_trCallback = function( pId, pErrCode, pErrMsg ){
 			if( this.cnt != 0 ){
 				this.fn_indirTran(this.div_file.form.st_dirID.text);
 			}
+			
+			//this.alert( this.div_left.form.gd_left.getBindDataset().getColumn( "dirID", 0, "crtDate") );
+			
 			break;
 		case "getDirectory":
 			this.div_left.form.gd_left.set_binddataset(this.ds_directory);
+			this.expandDir( this.div_file.form.st_dirID.text );
 			break;
 		case "getInDir":
-			let rowcount = this.ds_indir.getRowCount();
-			let colIdx = this.ds_indir.getColIndex("size");
-			trace(colIdx);
-			for( let i = 0; i < rowcount; i++ ){
-				trace(this.cutFileSize(this.ds_indir.getColumn(i, colIdx)));
+			var rowcount = this.ds_indir.getRowCount();
+			var colIdx = this.ds_indir.getColIndex("size");
+			//trace(colIdx);
+			for( var i = 0; i < rowcount; i++ ){
+				//trace(this.cutFileSize(this.ds_indir.getColumn(i, colIdx)));
 				this.ds_indir.setColumn(i, colIdx, this.cutFileSize(this.ds_indir.getColumn(i, colIdx)));
-				trace( this.ds_indir.getColumn( i, "size" ) + " : " + this.ds_indir.getColumn( i, "date" ));
+				//trace( this.ds_indir.getColumn( i, "size" ) + " : " + this.ds_indir.getColumn( i, "date" ));
 			}
+						
 			if( this.div_file.form.btnListView.getSelectStatus() ){
 				this.div_file_btnListView_onclick();
 			} else {
@@ -332,24 +359,57 @@ this.fn_trCallback = function( pId, pErrCode, pErrMsg ){
 			}
 			break;
 		case "delFile":
+			var location = this.nameLoc.split(":")[1];
+			if( pErrCode == 1 ){
+				this.alert("파일이 삭제됐습니다.");
+				this.fn_indirTran( location );
+			} else if( pErrCode == 2 ){
+				this.alert("폴더가 삭제 됐습니다.");
+				this.div_left.form.gd_left.setBindDataset(this.ds_directory);
+				this.expandDir( this.div_file.form.st_dirID.text );
+				this.fn_indirTran( location );
+			}
+			break;
+		case "popMove":
+			this.fn_delDiv();
+			this.getDirectory();
+			this.fn_indirTran( this.div_file.form.st_dirID.text );
+			break;
+		case "createFolder":
+			this.alert("폴더가 생성됐습니다.");
+			var left = this.div_left.form.gd_left;
 			
+			this.expandDir(this.div_file.form.st_dirID.text);
+			this.fn_delDiv();
+			this.fn_indirTran( this.div_file.form.st_dirID.text );
+			break;
+		case "popUpload":
+			this.fn_delDiv();
+			this.fn_indirTran( this.div_file.form.st_dirID.text );
 			break;
 		}
 	} else {
 		switch( pId ) {
 		case "delFile":
-			
+			this.alert("삭제 실패");
+			break;
+		case "popMove":
+			trace( pErrCode + " : " + pErrMsg );
+			break;
+		case "createFolder":
+			trace ( pErrCode + " : " + pErrMsg );
+			break;
+		case "popUpload":
+			trace( pErrCode + " : " + pErrMsg );
 			break;
 		default:	// 로그인 안됐거나, session 날아감
 			this.alert( pErrMsg );
-			location.href = "/";
+			//location.href = "/";
 			break;
 		}
 	}
+	
 }
-
-
-
 
 this.fillStorage = function(){
 	let cutsize = this.cutFileSize(this.storage);
@@ -372,22 +432,9 @@ this.cutFileSize = function(filesize)
 	return sOutput;
 };
 
-this.fn_indirTran = function( parentID ){
-	this.transaction(
-		"getInDir", // 1. strSVCID
-		"/webhard/getIndir", // 2. strURL
-		"", // 3. strInDatasets, Sds-Fds:U, :A, :N
-		"ds_indir=out_indir", // 4. strOutDatasets -select Fds=Sds
-		"parentID="+parentID, // 5. strArgument View에서 Server로 넘겨줄 변수
-		"fn_trCallback" // 6. strCallbackFunc
-	);
-}
+
 
 // 폴더 내 하위 폴더 및 파일 뿌려주기
-this.maxItem = "";
-this.div_fileWidth = "";
-this.div_fileHeight = "";
-
 this.fn_indir = function(){
 	this.div_fileWidth = this.div_file.getOffsetWidth();
 	this.div_fileHeight = this.div_file.getOffsetHeight();
@@ -482,7 +529,7 @@ this.div_file_div_inDir_onsize = function(obj:nexacro.Div,e:nexacro.SizeEventInf
 	
 };
 
-this.mouseonDiv = "";
+
 this.objDiv_onmouseenter = function(obj:nexacro.Div,e:nexacro.MouseEventInfo)
 {
 	this.mouseonDiv = obj;
@@ -505,26 +552,46 @@ this.fn_delDiv = function(){
 // Tree dbClick event
 this.div_dir_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	let rowpos = e.row;
-	this.div_left.form.gd_left.setTreeStatus(rowpos, "expand");
-	let dirName = this.div_left.form.gd_left.getBindDataset().getColumn(rowpos, "directoryName");
+	var leftGrid = this.div_left.form.gd_left;
+	var ds = leftGrid.getBindDataset();
+	var dirName = ds.getColumn(e.row, "directoryName");
 	this.div_file.form.st_dirName.set_text(dirName);
 	
-	let dirID = this.div_left.form.gd_left.getBindDataset().getColumn(rowpos, "dirID");
+	var dirID = ds.getColumn(e.row, "dirID");
 	this.div_file.form.st_dirID.set_text(dirID);
 	
+	var targetRow = leftGrid.getTreeRow( ds.findRow("dirID", dirID) );
+	var targetStatus = leftGrid.getTreeStatus( targetRow );
+
 	this.fn_indirTran(dirID);
 };
 
+this.div_left_gd_left_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var leftGrid = this.div_left.form.gd_left;
+	var ds = leftGrid.getBindDataset();
+	
+	var dirID = ds.getColumn(e.row, "dirID");
+	var targetRow = leftGrid.getTreeRow( ds.findRow("dirID", dirID) );
+	var targetStatus = leftGrid.getTreeStatus( targetRow );
+	
+	trace( e.row + " : " + dirID + " : " + targetRow + " : " + targetStatus );
+	if( targetStatus <= 0 ){
+		leftGrid.setTreeStatus( targetRow, true );
+	} else {
+		leftGrid.setTreeStatus( targetRow, false );
+	}
+};
+
 // Context Menu 보이기
-this.indirIndex = "";
+
 
 this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 {
-	let targetX = e.clientx;
-	let targetY = e.clienty;
+	var targetX = e.clientx;
+	var targetY = e.clienty;
 	
-	trace(obj.id);
+	//trace(obj.id);
 	if( obj.id != "div_inDir" ){
 		this.pm_context.set_innerdataset(this.ds_context);
 		this.indirIndex = obj.id.substring(3, obj.id.length);
@@ -586,7 +653,7 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 				ds_dir : this.ds_directory
 			},
 			this,
-			"fn_moveCallback"
+			"fn_trCallback"
 		);
 		
 	} else if ( contextID == "multiselect" ){
@@ -606,8 +673,8 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 				"/webhard/delete", // 2. strURL
 				"", // 3. strInDatasets, Sds-Fds:U, :A, :N
 				"ds_directory=out_directory", // 4. strOutDatasets -select Fds=Sds
-				"name="+name +" location=" + location + " isFolder=" + this.ds_indir.getColumn(this.indirIndex, 1), // 5. strArgument View에서 Server로 넘겨줄 변수
-				"fn_delIndir_callback" // 6. strCallbackFunc
+				"name="+name +" location=" + location + " isFolder=" + this.ds_indir.getColumn(this.indirIndex, "isFolder"), // 5. strArgument View에서 Server로 넘겨줄 변수
+				"fn_trCallback" // 6. strCallbackFunc
 			);
 		}
 	} else if ( contextID == "status" ){
@@ -617,7 +684,7 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 		
 		var filename = this.ds_indir.getColumn(this.indirIndex, "name");
 		
-		trace( filename + " : " + this.indirIndex );
+		//trace( filename + " : " + this.indirIndex );
 		
 		this.pd_status.form.st_titlebar.set_text(filename);
 		this.pd_status.form.Div00.form.Div00.form.st_fileName.set_text(filename);
@@ -653,7 +720,9 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 		this.pd_status.form.Div00.form.Div00_01.form.st_fileSize.set_text( this.cutFileSize(this.ds_indir.getColumn( this.indirIndex, "size")) );
 		
 		var mkdate = this.ds_indir.getColumn( this.indirIndex, "date");
-		this.pd_status.form.Div00.form.Div00_01.form.st_fileDate.set_text( mkdate.substr(0, 4) + "년 " + mkdate.substr(4, 2) + "월 " + mkdate.substr(6, 2) + "일" );
+		mkdate = mkdate.substr(0, 4) + "년 " + mkdate.substr(4, 2) + "월 " + mkdate.substr(6, 2) + "일" ;
+
+		this.pd_status.form.Div00.form.Div00_01.form.st_fileDate.set_text( mkdate );
 		this.pd_status.form.Div00.form.Div00_01.form.st_fileLocation.set_text( this.ds_directory.getColumn( this.ds_directory.findRow("dirID", this.div_file.form.st_dirID.text), "directoryName") + "/");
 	} else if( contextID == "createFolder" ){
 		this.div_file_btn_crtFolder_onclick();
@@ -681,19 +750,6 @@ this.fileDownTrans_onerror = function(obj:nexacro.FileDownTransfer,e:nexacro.Fil
 	this.alert(e.errormsg);
 };
 
-this.fn_delIndir_callback = function( pId, pErrCode, pErrMsg ){
-	let location = this.nameLoc.split(":")[1];
-	if( pErrCode == 1 ){
-		this.alert("파일이 삭제됐습니다.");
-		this.fn_indirTran( location );
-	} else if( pErrCode == 2 ){
-		this.alert("폴더가 삭제 됐습니다.");
-		this.div_left.form.gd_left.setBindDataset(this.ds_directory);
-		this.div_left.form.gd_left.setTreeStatus( location, "expand");
-		this.fn_indirTran( location );
-	}
-}
-
 // 파일 다운로드
 this.downFileName = "";
 this.downFileUrl = "";
@@ -707,15 +763,6 @@ this.fn_downFile_callback = function( pId, pErrCode, pErrMsg ){
 	}
 }
 
-// 파일 및 폴더 이동 콜백
-this.fn_moveCallback = function( pId, pErrCode ){
-	if( nexacro.toNumber( pErrCode ) > 0 ){
-		this.fn_delDiv();
-		this.getDirectory();
-		this.fn_indirTran( this.div_file.form.st_dirID.text );
-	}
-}
-
 // 폴더 생성
 this.div_file_btn_crtFolder_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -724,16 +771,15 @@ this.div_file_btn_crtFolder_onclick = function(obj:nexacro.Button,e:nexacro.Clic
 
 this.PopupDiv00_btn_createFolder_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let nFolder = this.PopupDiv00.form.Edit00.value;
+	var nFolder = this.PopupDiv00.form.Edit00.value;
 	this.PopupDiv00.form.st_validateFolder.set_color("red");
 	if( nFolder == null || nFolder == "" ){
 		this.PopupDiv00.form.st_validateFolder.set_text("폴더명을 입력해주세요.");
-		//this.alert("폴더명을 입력해주세요.");
 		return;
 	}
-	let parentID = this.div_file.form.st_dirID.text;
+	var parentID = this.div_file.form.st_dirID.text;
 	this.ds_directory.filter("parentID=='" + parentID + "'&&directoryName=='" + nFolder + "'");
-	let isDup = this.ds_directory.getRowCount();
+	var isDup = this.ds_directory.getRowCount();
 	
 	this.ds_directory.filter("");
 	
@@ -743,6 +789,7 @@ this.PopupDiv00_btn_createFolder_onclick = function(obj:nexacro.Button,e:nexacro
 		return;
 	}
 	this.PopupDiv00.form.st_validateFolder.set_text("");
+	this.PopupDiv00.form.Edit00.set_value("");
 	this.PopupDiv00.closePopup(nFolder);
 };
 
@@ -754,32 +801,19 @@ this.PopupDiv00_Edit00_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEventI
 };
 
 this.fn_crtFolderTr = function(pId, nFolder){
-	let folderID = this.div_file.form.st_dirID.text;
-	
+	var folderID = this.div_file.form.st_dirID.text;
 	if( nFolder.length == 0 ){
 		return;
 	}
-	
-	//this.alert( folderID + " : " + nFolder );
 	this.transaction(
 		"createFolder", // 1. strSVCID
 		"/webhard/createFolder", // 2. strURL
 		"", // 3. strInDatasets, Sds-Fds:U, :A, :N
 		"ds_directory=outds_dirList ds_indir=out_indir", // 4. strOutDatasets -select Fds=Sds
 		"parentID="+folderID+" nFolder="+nFolder, // 5. strArgument View에서 Server로 넘겨줄 변수
-		"fn_crtFolderCallback" // 6. strCallbackFunc
+		"fn_trCallback" // 6. strCallbackFunc
 	);
 	
-}
-
-this.fn_crtFolderCallback = function ( pId, pErrCode, pMsg ){
-	if( pErrCode >= 1 ){
-		this.alert("폴더가 생성됐습니다.");
-		this.fn_delDiv();
-		this.fn_indirTran( this.div_file.form.st_dirID.text );
-	} else {
-		this.alert(pErrCode);
-	}
 }
 
 this.fn_isNull=function(val){
@@ -798,7 +832,7 @@ this.fn_isNull=function(val){
 // 파일 업로드
 this.div_file_btnUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let objCF = new ChildFrame();
+	var objCF = new ChildFrame();
 	
 	objCF.init("popUpload", 0, 0, 300, 400);
 	objCF.set_formurl("Webhard::frmUpload.xfdl");
@@ -812,17 +846,9 @@ this.div_file_btnUpload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEve
 			ds_indir : this.ds_indir
 		},
 		this,
-		"fn_uploadCallback"
+		"fn_trCallback"
 	);
 };
-
-this.fn_uploadCallback = function( pId, pErrCode ){
-	if( nexacro.toNumber( pErrCode ) >= 1 ){
-		this.fn_delDiv();
-		this.fn_indirTran( this.div_file.form.st_dirID.text );
-	}
-}
-
 
 // ListView Icon Click Event
 this.div_file_btnListView_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -830,12 +856,8 @@ this.div_file_btnListView_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 	this.alert("개발중 입니다.");
 	this.div_file.form.btnIconView.setSelectStatus(false);
 	this.div_file.form.btnListView.setSelectStatus(true);
-	
 	this.fn_delDiv();
-	
 	this.div_file.form.div_inDir.set_url("Webhard::frmListView.xfdl");
-	
-	
 };
 
 // IconView Icon Click Event
@@ -844,13 +866,9 @@ this.div_file_btnIconView_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 	this.div_file.form.btnIconView.setSelectStatus(true);
 	this.div_file.form.btnListView.setSelectStatus(false);
 	this.div_file.form.div_inDir.set_url("Webhard::frmIconView.xfdl");
-	
 	this.fn_delDiv();
-	
 	this.fn_indir();
 };
-
-
 
 this.frmLeftMenu_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 {
@@ -863,7 +881,34 @@ this.ds_indir_onrowsetchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSR
 	this.fn_indirTran( this.div_file.form.st_dirID.text );
 }
 
-
+this.expandDir = function( location ){
+	var ds = this.div_left.form.gd_left.getBindDataset();
+	var rowcount = ds.getRowCount();
+	var parentID = location;
+	var flag = true;
+	//trace( location );
+	var arrEx = new Array();
+	arrEx.push(location);
+	//this.div_left.form.gd_left.setTreeStatus( ds.findRow( "dirID", location ), true );
+	var lv = ds.getColumn( ds.findRow( "dirID", location ), "lv" );
+	while( flag ){
+		trace(lv);
+		if( lv != 0 ){
+			parentID = ds.getColumn( ds.findRow( "dirID", parentID ), "parentID" );
+			lv = ds.getColumn( ds.findRow( "dirID", parentID ), "lv" );
+			arrEx.push(parentID);
+			//this.div_left.form.gd_left.setTreeStatus( ds.findRow( "dirID", parentID ), true );
+		} else {
+			flag = false;
+		}
+	}
+	arrEx.reverse();
+	for( var i = 0; i < arrEx.length; i++ ){
+		trace(arrEx[i]);
+		//Grid.getTreeRow( nDSRowIndex ) 
+		this.div_left.form.gd_left.setTreeStatus( this.div_left.form.gd_left.getTreeRow(ds.findRow("dirID", arrEx[i])), true );
+	}
+}
 
 
 

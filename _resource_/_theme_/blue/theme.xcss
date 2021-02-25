@@ -3745,7 +3745,7 @@
 }
 .ChildFrame .titlebar
 {
-	
+
 }
 .ChildFrame .titlebar .titleicon
 {
@@ -3873,5 +3873,40 @@
 .Static.sta_mdi_home[status=mouseover]
 {
 	background : url('theme://images/img_home.png') no-repeat center center #424b4c;
+}
+.Button.crtFolder
+{
+	-nexa-edge : url('theme://images/crtFolder.png') 1px 1px;
+	background : transparent;
+	-nexa-border : 1px none;
+	cursor : pointer;
+}
+.Button.crtFolder[status=mouseover]
+{
+	background : transparent;
+	-nexa-border : 1px none;
+	
+}
+.Button.crtFolder[userstatus=pushed]
+{
+	background : transparent;
+}
+.Button.upload[status=mouseover]
+{
+	background : transparent;
+	-nexa-border : 1px none;
+	
+}
+.Button.upload[userstatus=pushed]
+{
+	background : transparent;
+}
+.Button.crtFolder[userstatus=selected]
+{
+	background : transparent;
+}
+.Button.upload[userstatus=selected]
+{
+	background : transparent;
 }
 ]]></XCSS>

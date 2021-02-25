@@ -54,6 +54,7 @@ this.btn_move_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let rowpos = this.ds_childDir.rowposition;
 	let moveLocation = this.ds_childDir.getColumn( rowpos, "dirID" );
+	//this.alert( this.location + " : " + moveLocation );
 	if( this.location == moveLocation ){
 		this.alert("동일한 폴더입니다.");
 	} else {

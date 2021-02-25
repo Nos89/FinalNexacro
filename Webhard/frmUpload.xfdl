@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="420" width="530" stepcount="0">
         <Static id="Static00" taborder="2" text="Drop Files Here" left="20" top="80" width="482" height="150" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
-        <Button id="Button00" taborder="0" text="open" left="20" top="40" width="120" height="30" onclick="Button00_onclick"/>
+        <Button id="Button00" taborder="0" text="파일 선택" left="20" top="40" width="120" height="30" onclick="Button00_onclick"/>
         <Grid id="Grid00" taborder="1" left="20" top="80" width="482" height="150" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop">
           <Formats>
             <Format id="default">
@@ -17,8 +17,8 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="name"/>
-                <Cell col="1" text="size"/>
+                <Cell text="파일명"/>
+                <Cell col="1" text="용량"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:name"/>
@@ -27,7 +27,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button01" taborder="3" text="upload" left="380" top="40" width="120" height="30" onclick="Button01_onclick"/>
+        <Button id="Button01" taborder="3" text="업로드" left="380" top="40" width="120" height="30" onclick="Button01_onclick"/>
         <TextArea id="TextArea00" taborder="4" left="20" top="240" width="482" height="120"/>
         <Static id="st_parentID" taborder="5" left="20" top="7" width="55" height="27" visible="false"/>
         <Button id="btn_cc" taborder="6" text="취소" left="221" top="379" width="89" height="27" onclick="btn_cc_onclick"/>
