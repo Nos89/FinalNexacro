@@ -7,10 +7,10 @@
         <Static id="Static01" taborder="1" left="0" top="-1" height="76" right="0" onclick="Static01_onclick" background="#ffffff"/>
         <Static id="Static02" taborder="2" left="45" top="12" width="205" height="48" text="가차대학교" font="bold 24px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" letterSpacing="2px" textAlign="right" background="url('theme://images/university2.png') no-repeat left center" padding="0px 15px 0px 0px"/>
         <Button id="Button00" taborder="3" text="대표 홈페이지로" top="0" width="120" height="50" cssclass="btn_top_menu" onclick="Button00_onclick" right="0"/>
-        <Static id="Static02_00" taborder="4" left="295" top="-1" width="150" height="76" text="종합정보시스템" font="18px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;,&quot;HY궁서B&quot;" letterSpacing="0px" textAlign="center"/>
+        <Static id="Static02_00" taborder="4" left="295" top="-1" width="150" height="76" text="종합정보시스템" font="normal 600 18px/normal &quot;Arial&quot;" letterSpacing="0px" textAlign="center"/>
         <Static id="sta_userName" taborder="5" text="" left="490" top="7" width="144" height="36" textAlign="right" font="bold 16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#00479d"/>
         <Static id="Static04_00" taborder="6" text="님" left="640" top="7" width="20" height="36" font="14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Button id="btn_logout" taborder="7" text="로그아웃" left="674" top="12" width="72" height="27" onclick="btn_logout_onclick" cssclass="btn_logout"/>
+        <Button id="btn_logout" taborder="7" text="로그아웃" left="674" top="12" width="72" height="27" onclick="btn_logout_onclick" cssclass="btn_logout" borderRadius="5px"/>
         <Static id="Static03" taborder="8" left="256" top="25" width="14" height="25" border="0px none,2px solid gray,0px none,0px none"/>
       </Layout>
     </Layouts>

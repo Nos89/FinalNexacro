@@ -25,16 +25,16 @@
                 <Cell col="3" text="수용인원"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:build_name"/>
-                <Cell col="1" text="bind:room_num"/>
-                <Cell col="2" text="bind:room_use"/>
-                <Cell col="3" text="bind:room_max"/>
+                <Cell text="bind:build_name" textAlign="center"/>
+                <Cell col="1" text="bind:room_num" textAlign="center"/>
+                <Cell col="2" text="bind:room_use" textAlign="center"/>
+                <Cell col="3" text="bind:room_max" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_ok" taborder="3" text="선택" left="143" top="325" width="74" height="32" onclick="btn_ok_onclick"/>
-        <Button id="btn_cancel" taborder="4" text="닫기" left="249" top="324" width="74" height="32" onclick="btn_cancel_onclick"/>
+        <Button id="btn_ok" taborder="3" text="선택" left="143" top="325" width="74" height="32" onclick="btn_ok_onclick" cssclass="btn_select"/>
+        <Button id="btn_cancel" taborder="4" text="닫기" left="249" top="324" width="74" height="32" onclick="btn_cancel_onclick" cssclass="btn_close"/>
         <Static id="Static02_00_00_00" taborder="5" text="건물" left="10" top="5" width="30" height="30" color="white"/>
         <Combo id="cmb_roomName" taborder="6" text="1학기" left="40" top="5" width="103" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021" canitemchange="cmb_roomName_canitemchange">
           <Dataset id="innerdataset">

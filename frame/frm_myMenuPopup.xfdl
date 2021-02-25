@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frm_myMenuPopup" width="700" height="680" titletext="마이메뉴관리" onload="frm_myMenuPopup_onload">
+  <Form id="frm_myMenuPopup" width="700" height="654" titletext="마이메뉴관리" onload="frm_myMenuPopup_onload">
     <Layouts>
-      <Layout height="680" width="700">
+      <Layout height="654" width="700">
         <Grid id="grdLeft" taborder="0" left="0" top="40" height="560" width="700" autofittype="col" treeusecheckbox="false" treeuseline="false" oncellclick="grdLeft_oncellclick" treeinitstatus="expand,all" cssclass="grd_mymenu">
           <Formats>
             <Format id="default">
@@ -74,7 +74,7 @@
           </Dataset>
         </Radio>
         <Static id="Static00" taborder="2" text="메뉴구분" left="140" top="0" width="60" height="40" font="14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;,&quot;HY궁서B&quot;"/>
-        <Button id="btn_close" taborder="3" text="닫기" left="307" top="630" width="56" height="24" onclick="btn_close_onclick"/>
+        <Button id="btn_close" taborder="3" text="닫기" left="319" top="610" width="63" height="34" onclick="btn_close_onclick" cssclass="btn_close"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

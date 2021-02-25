@@ -1057,6 +1057,7 @@ this.Tab00_Tabpage7_Static00_00_onclick = function(obj:nexacro.Static,e:nexacro.
           <Row/>
         </Rows>
       </Dataset>
+      <Dataset id="ds_score"/>
     </Objects>
   </Form>
 </FDL>

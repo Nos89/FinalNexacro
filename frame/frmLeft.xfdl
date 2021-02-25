@@ -722,7 +722,7 @@ this.fn_openMenu = function(sMenuId)
 	
 	if(objOpenMenuDs.rowcount > 12)
 	{
-		alert("메뉴는  8개이상 오픈할 수 없습니다.");
+		alert("메뉴는 13개이상 오픈할 수 없습니다.");
 		return;
 	}
 	
@@ -818,11 +818,11 @@ this.gfnIsNull = function (pvVal)
 }
 
 this.fn_home = function(){
-	nexacro.getApplication().mainframe.VFSet01.HFSet01.VFSet02.set_separatesize("30,0,*");
+	nexacro.getApplication().mainframe.VFSet01.HFSet01.VFSet02.set_separatesize("40,0,*");
 }
 
 this.fn_tab = function(){
-	this.application.VFSet02.set_separatesize("30,*,0");
+	this.application.VFSet02.set_separatesize("40,*,0");
 }
 
 this.btn_menu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
