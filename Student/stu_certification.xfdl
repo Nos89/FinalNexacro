@@ -158,6 +158,7 @@ this.stu_certification_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInf
 this.fn_callback_list=function(id,errCode,errMsg)
 {
 	this.sta_count00_01.set_text(this.ds_specificList.getRowCount());
+	this.ImageViewer00.set_image("/resources/ProFile/"+this.ds_proFile.getColumn(0,"savedName")+"");
 };
 
 this.fn_callback=function(id,errCode,errMsg)

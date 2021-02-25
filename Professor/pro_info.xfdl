@@ -84,7 +84,7 @@
         </Tab>
         <MaskEdit id="MaskEdit00" taborder="20" left="237" top="132" width="150" height="30" type="string" format="####년##월##일" enable="false"/>
         <MaskEdit id="MaskEdit01" taborder="21" left="797" top="52" width="150" height="30" enable="false" type="string" format="####년##월##일"/>
-        <Button id="btn_imgupload" taborder="22" text="이미지 업로드" left="12" top="190" width="140" height="25" onclick="btn_imgupload_onclick"/>
+        <Button id="btn_imgupload" taborder="22" text="이미지 업로드" left="12" top="190" width="140" height="25" onclick="btn_imgupload_onclick" cssclass="btn_imgupload"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.id = nexacro.Application.gvID;

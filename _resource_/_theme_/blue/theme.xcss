@@ -3923,4 +3923,14 @@
 {
 	background : transparent;
 }
+.Button.btn_imgupload
+{
+	-nexa-icon : url('theme://images/img_upload01.png');
+	-nexa-text-padding : 0px 0px 0px 4px;
+}
+.Button.btn_imgupload[status=mouseover]
+{
+	background : #0a78ff;
+	cursor : pointer;
+}
 ]]></XCSS>
