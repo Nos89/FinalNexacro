@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="fm_top" width="1260" height="65" titletext="New Form" onload="fm_top_onload">
+  <Form id="fm_top" width="1260" height="100" titletext="New Form" onload="fm_top_onload">
     <Layouts>
-      <Layout height="65" mobileorientation="landscape" width="1260">
-        <Static id="Static00" taborder="0" left="0" top="50" height="15" right="0" cssclass="sta_top_bg02"/>
-        <Static id="Static01" taborder="1" left="0" top="-1" height="51" right="0" onclick="Static01_onclick" background="#ffffff"/>
-        <Static id="Static02" taborder="2" left="90" top="10" width="160" height="30" text="가차대학교" font="bold 20px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" letterSpacing="2px" textAlign="center" border="0px none,2px solid gray,0px none,0px none"/>
+      <Layout height="100" mobileorientation="landscape" width="1260">
+        <Static id="Static00" taborder="0" left="0" top="75" height="25" right="0" cssclass="sta_top_bg02"/>
+        <Static id="Static01" taborder="1" left="0" top="-1" height="76" right="0" onclick="Static01_onclick" background="#ffffff"/>
+        <Static id="Static02" taborder="2" left="45" top="12" width="205" height="48" text="가차대학교" font="bold 24px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" letterSpacing="2px" textAlign="right" background="url('theme://images/university2.png') no-repeat left center" padding="0px 15px 0px 0px"/>
         <Button id="Button00" taborder="3" text="대표 홈페이지로" top="0" width="120" height="50" cssclass="btn_top_menu" onclick="Button00_onclick" right="0"/>
-        <Static id="Static03" taborder="4" left="10" top="0" width="210" height="24" cssclass="sta_top_textWht"/>
-        <Static id="Static02_00" taborder="5" left="250" top="-1" width="150" height="51" text="종합시스템" font="bold 18px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" letterSpacing="0px" textAlign="center"/>
-        <Static id="sta_userName" taborder="6" text="" left="490" top="7" width="144" height="36" textAlign="right" font="bold 16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#00479d"/>
-        <Static id="Static04_00" taborder="7" text="님" left="640" top="7" width="20" height="36" font="14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="Static02_00" taborder="4" left="295" top="-1" width="150" height="76" text="종합정보시스템" font="normal 600 18px/normal &quot;Arial&quot;" letterSpacing="0px" textAlign="center"/>
+        <Static id="sta_userName" taborder="5" text="" left="490" top="7" width="144" height="36" textAlign="right" font="bold 16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#00479d"/>
+        <Static id="Static04_00" taborder="6" text="님" left="640" top="7" width="20" height="36" font="14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_logout" taborder="7" text="로그아웃" left="674" top="12" width="72" height="27" onclick="btn_logout_onclick" cssclass="btn_logout" borderRadius="5px"/>
+        <Static id="Static03" taborder="8" left="256" top="25" width="14" height="25" border="0px none,2px solid gray,0px none,0px none"/>
       </Layout>
     </Layouts>
     <Objects/>
@@ -37,6 +38,11 @@ this.fm_top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fn_loginCallback = function( pID, pErr, pMsg ){
 	this.sta_userName.set_text(this.userName);
 }
+
+this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	location.href = "/info/logout";
+};
 ]]></Script>
   </Form>
 </FDL>

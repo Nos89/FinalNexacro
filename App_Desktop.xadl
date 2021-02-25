@@ -3,14 +3,14 @@
   <Application id="App_Desktop" screenid="Desktop_screen" onload="Application_onload">
     <Layout>
       <MainFrame id="mainframe" showtitlebar="true" showstatusbar="false" width="1280" height="720" titletext="학사정보시스템">
-        <VFrameSet id="VFSet01" separatesize="65,*,30">
+        <VFrameSet id="VFSet01" separatesize="100,*,30">
           <Frames>
             <ChildFrame id="TopFrame" formurl="frame::frmTop.xfdl" dragmovetype="none" showstatusbar="false" showtitlebar="false"/>
             <HFrameSet id="HFSet01" separatesize="0,250,*">
               <Frames>
                 <ChildFrame id="LoginFrame" formurl="ClassRegistration::crLogin.xfdl" dragmovetype="none" showtitlebar="false"/>
                 <ChildFrame id="LeftFrame" formurl="frame::frmLeft.xfdl" dragmovetype="none" showtitlebar="false"/>
-                <VFrameSet id="VFSet02" separatesize="30,0,*">
+                <VFrameSet id="VFSet02" separatesize="40,0,*">
                   <Frames>
                     <ChildFrame id="MdiFrame" formurl="frame::frmMdi.xfdl" showtitlebar="false" dragmovetype="none"/>
                     <FrameSet id="WorkFrame"/>

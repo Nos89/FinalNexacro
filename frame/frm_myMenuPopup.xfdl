@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="frm_myMenuPopup" width="700" height="680" titletext="New Form" onload="frm_myMenuPopup_onload">
+  <Form id="frm_myMenuPopup" width="700" height="654" titletext="마이메뉴관리" onload="frm_myMenuPopup_onload">
     <Layouts>
-      <Layout height="680" width="700">
-        <Grid id="grdLeft" taborder="0" left="0" top="40" height="560" width="700" autofittype="col" treeusecheckbox="false" treeuseline="false" oncellclick="grdLeft_oncellclick" treeinitstatus="expand,all">
+      <Layout height="654" width="700">
+        <Grid id="grdLeft" taborder="0" left="0" top="40" height="560" width="700" autofittype="col" treeusecheckbox="false" treeuseline="false" oncellclick="grdLeft_oncellclick" treeinitstatus="expand,all" cssclass="grd_mymenu">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="78"/>
                 <Column size="362"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="69"/>
+                <Column size="45"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -25,16 +25,16 @@
               <Band id="body">
                 <Cell text="bind:MENU_CD" textAlign="center"/>
                 <Cell col="1" text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL"/>
-                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
-                <Cell col="3" text="삭제" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'"/>
+                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
+                <Cell col="3" text="삭제" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:MENU_LVL == 0 ? 'none' : 'button'"/>
               </Band>
             </Format>
             <Format id="mymenu">
               <Columns>
                 <Column size="78"/>
                 <Column size="362"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="69"/>
+                <Column size="45"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -47,10 +47,10 @@
                 <Cell col="3"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:MENU_CD" textAlign="center" expr="this.grdLeft.getBindDataset().set_keystring(&quot;G:MENU_CD&quot;);"/>
+                <Cell text="bind:MENU_CD" textAlign="center"/>
                 <Cell col="1" text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL"/>
-                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
-                <Cell col="3" text="추가" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:expr:MENU_LVL == 0 ? 'none' : 'button'"/>
+                <Cell col="2" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:MENU_LVL == 0 ? 'none' : 'button'" text="메뉴열기"/>
+                <Cell col="3" text="추가" displaytype="expr:MENU_LVL == 0 ? 'none' : 'buttoncontrol'" edittype="expr:MENU_LVL == 0 ? 'none' : 'button'"/>
               </Band>
             </Format>
           </Formats>
@@ -73,8 +73,8 @@
             </Rows>
           </Dataset>
         </Radio>
-        <Static id="Static00" taborder="2" text="메뉴구분" left="158" top="0" width="50" height="40"/>
-        <Button id="btn_close" taborder="3" text="닫기" left="307" top="630" width="56" height="24" onclick="btn_close_onclick"/>
+        <Static id="Static00" taborder="2" text="메뉴구분" left="140" top="0" width="60" height="40" font="14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;,&quot;HY궁서B&quot;"/>
+        <Button id="btn_close" taborder="3" text="닫기" left="319" top="610" width="63" height="34" onclick="btn_close_onclick" cssclass="btn_close"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
