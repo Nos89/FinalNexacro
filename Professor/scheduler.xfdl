@@ -8,7 +8,7 @@
         <Button id="btnNext" taborder="2" text="▶" left="60.64%" top="9.23%" width="5.5%" height="6.15%" onclick="btnNext_onclick" background="transparent" border=" 0px solid white" font="normal 15pt/normal &quot;Arial&quot;"/>
         <Static id="stYearMonth" taborder="3" left="42.75%" top="9.38%" width="16.33%" height="6%" textAlign="center" font="bold 24px/normal &quot;Gulim&quot;"/>
         <Button id="btnNew" taborder="4" text="신규일정" left="86.24%" top="9.23%" onclick="btnNew_onclick" right="8.26%" bottom="86.15%"/>
-        <Static id="Static00" taborder="5" text="교수/학과스케줄" left="7" top="6" width="116" height="32" cssclass="sta_WF_title01"/>
+        <Static id="Static00" taborder="5" text="교수/학과스케줄" left="7" top="6" width="116" height="32" cssclass="sta_img_circle01"/>
         <Static id="Static01" taborder="6" text="Static01" left="0.83%" top="5.85%" width="97.34%" height="0.15%" border="1px solid black,0px none,0px none"/>
         <Button id="btn_del" taborder="7" text="삭제" left="92.57%" top="9.23%" onclick="btn_del_onclick" right="1.74%" bottom="86.00%"/>
       </Layout>

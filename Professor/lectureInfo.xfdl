@@ -7,7 +7,7 @@
         <Static id="Static02_00" taborder="12" text="" left="844" top="43" width="238" height="40" cssclass="sta_base"/>
         <Static id="Static02_01" taborder="13" text="" left="488" top="43" width="238" height="40" cssclass="sta_base"/>
         <Combo id="cbo_year" taborder="3" text="Combo00" left="143" top="48" width="150" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00_00" taborder="0" text="강의정보" left="7" top="4" width="127" height="36" cssclass="sta_WF_title01"/>
+        <Static id="Static00_00" taborder="0" text="강의정보" left="7" top="4" width="127" height="36" cssclass="sta_img_circle01"/>
         <Static id="Static01" taborder="1" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
         <Grid id="Grid00" taborder="2" left="10" top="131" width="1069" height="509" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
