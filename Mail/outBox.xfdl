@@ -19,17 +19,17 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell displaytype="imagecontrol" imagestretch="none" text="imagerc::img_WF_envelopeClose.png"/>
+                <Cell displaytype="imagecontrol" imagestretch="none" text="imagerc::img_WF_mailClose_24.png"/>
                 <Cell col="1" text="번호"/>
                 <Cell col="2" text="제목"/>
                 <Cell col="3" text="수신인"/>
                 <Cell col="4" text="수신일"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:read" expr="expr:read=='0'?'imagerc::img_WF_envelopeClose.png':'imagerc::img_WF_envelopeOpen.png'" displaytype="imagecontrol" imagestretch="fixaspectratio"/>
-                <Cell col="1" text="bind:mail_seq"/>
-                <Cell col="2" text="bind:title"/>
-                <Cell col="3" text="bind:receiver"/>
+                <Cell text="bind:read" expr="expr:read=='0'?'imagerc::img_WF_mailClose_16.png':'imagerc::img_WF_mailOpen_16.png'" displaytype="imagecontrol"/>
+                <Cell col="1" text="bind:mail_seq" padding="0px 5px"/>
+                <Cell col="2" text="bind:title" padding="0px 5px"/>
+                <Cell col="3" text="bind:receiver" padding="0px 5px"/>
                 <Cell col="4" text="bind:received_date" displaytype="date"/>
               </Band>
             </Format>
@@ -72,8 +72,8 @@
           </Dataset>
         </Radio>
         <Static id="Static01" taborder="4" left="0" right="0" bottom="0" height="30" text=""/>
-        <Button id="btn_refresh" taborder="5" text="새로고침" left="910" top="56" width="80" height="24" onclick="btn_refresh_onclick"/>
-        <Button id="btn_write" taborder="6" text="메일 작성" left="1000" top="56" width="80" height="24" onclick="btn_write_onclick"/>
+        <Button id="btn_refresh" taborder="5" text="새로고침" left="910" top="56" width="80" height="24" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_write" taborder="6" text="메일 작성" left="1000" top="56" width="80" height="24" onclick="btn_write_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -104,24 +104,11 @@ this.fn_callback = function(id,errCD,errMSG)
 // 메일 조회
 this.grd_mailBox_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	let nRow = this.ds_mail.rowposition;
-	let nVal = this.ds_mail.getColumn(nRow,"read");
+	let nVal = this.ds_mail.getColumn(e.row,"read");
 	
-	this.div_mail.form.sta_title.set_text(this.ds_mail.getColumn(nRow,"title"));
-	this.div_mail.form.sta_received_date.set_text(this.ds_mail.getColumn(nRow,"received_date"));
-	this.div_mail.form.sta_contents.set_text(this.ds_mail.getColumn(nRow,"contents"));
-	
-	if(nVal==0){
-		this.ds_mail.setColumn(nRow,"read",1);
-		this.transaction(
-			"updateReadStatus"	// 1. strSvcID(string 형태의 id)
-			, "/updateReadStatus.nex"	// 2. strURL(string 형태의 url)
-			, "in_mail=ds_mail:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
-			, ""	// 4. strOutDatasets -select Fds=Sds
-			, "" // 5. strArgument
-			, "fn_callback"	// 6. strCallbackFunc
-		);
-	}
+	this.div_mail.form.sta_title.set_text(this.ds_mail.getColumn(e.row,"title"));
+	this.div_mail.form.sta_received_date.set_text(this.ds_mail.getColumn(e.row,"received_date"));
+	this.div_mail.form.sta_contents.set_text(this.ds_mail.getColumn(e.row,"contents"));
 };
 
 
@@ -147,7 +134,7 @@ this.rdo_read_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEve
 this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let objCF = new ChildFrame();
-	objCF.init("writeMail",145,30,550,600,null,null,"Admin::writeMail.xfdl");
+	objCF.init("writeMail",240,30,550,600,null,null,"Mail::writeMail.xfdl");
 	objCF.showModal(this.getOwnerFrame(),{},this,"fn_mailSend");
 };
 
@@ -168,6 +155,10 @@ this.fn_mailSend = function(id,msg)
           <Column id="received_date" type="DATE" size="256"/>
           <Column id="read" type="INT" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+        </Rows>
       </Dataset>
     </Objects>
     <Bind>

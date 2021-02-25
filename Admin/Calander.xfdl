@@ -9,6 +9,7 @@
         <Static id="stYearMonth" taborder="3" left="411" top="41" width="178" height="39" textAlign="center" font="bold 24px/normal &quot;Gulim&quot;" text=""/>
         <Button id="btnNew" taborder="4" text="신규일정" left="935" top="40" width="75" height="40" onclick="btnNew_onclick" cssclass="btn_WF_gantt02"/>
         <Static id="Static00" taborder="5" text="학사일정 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
+        <Static id="Static01" taborder="6" left="0" top="610" bottom="0" width="1090"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**

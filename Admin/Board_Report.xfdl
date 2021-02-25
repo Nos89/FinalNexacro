@@ -4,8 +4,8 @@
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="건의게시판 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Button id="btn_refresh" taborder="1" text="새로고침" left="910" top="50" width="80" height="30" onclick="btn_refresh_onclick"/>
-        <Button id="btn_delete" taborder="2" text="삭제" left="1000" top="50" width="80" height="30" onclick="btn_delete_onclick"/>
+        <Button id="btn_refresh" taborder="1" text="새로고침" left="910" top="55" width="80" height="25" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_delete" taborder="2" text="삭제" left="1000" top="55" width="80" height="25" onclick="btn_delete_onclick" cssclass="btn_WF_gantt03" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Grid id="Grid00" taborder="3" left="10" top="90" width="1070" height="481" binddataset="ds_board" autofittype="col" fillareatype="linerow" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
@@ -29,9 +29,9 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
-                <Cell col="1" text="bind:seq"/>
-                <Cell col="2" text="bind:title"/>
-                <Cell col="3" text="bind:writer"/>
+                <Cell col="1" text="bind:seq" padding="0px 5px"/>
+                <Cell col="2" text="bind:title" padding="0px 5px"/>
+                <Cell col="3" text="bind:writer" padding="0px 5px"/>
                 <Cell col="4" text="bind:writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
               </Band>
             </Format>

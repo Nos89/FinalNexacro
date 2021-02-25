@@ -143,7 +143,7 @@
             <Col id="UP_MENU_CD">4</Col>
             <Col id="MENU_NM">메일함</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH">Admin</Col>
+            <Col id="PGM_PATH">Mail</Col>
             <Col id="PGM_ID">inBox.xfdl</Col>
           </Row>
           <Row>
@@ -355,7 +355,7 @@
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">메일함</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH">Admin</Col>
+            <Col id="PGM_PATH">Mail</Col>
             <Col id="PGM_ID">inBox.xfdl</Col>
           </Row>
           <Row>
@@ -533,7 +533,7 @@
             <Col id="UP_MENU_CD">0050</Col>
             <Col id="MENU_NM">발신메일함</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="PGM_PATH">Admin</Col>
+            <Col id="PGM_PATH">Mail</Col>
             <Col id="PGM_ID">outBox.xfdl</Col>
           </Row>
           <Row>

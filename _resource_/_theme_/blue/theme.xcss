@@ -3151,6 +3151,19 @@
 	-nexa-border : 1px solid #aaaaaa;
 }
 
+.Button.btn_WF_refresh,.Button.btn_WF_refresh[status=focused],.Button.btn_WF_refresh[userstatus=selected]
+{
+	background : #e7e7e7;
+	color : #101010;
+	cursor : pointer;
+	-nexa-border : 1px solid #c7c7c7;
+	-nexa-icon : url("imagerc::btn_WF_refresh.png");
+	-nexa-icon-position : left;
+	-nexa-text-align : left;
+	-nexa-padding : 0px 0px 2px 3px;
+	-nexa-text-padding : 0px 0px 0px 5px;
+}
+
 .Button.btn_WF_word01,.Button.btn_WF_word01[status=focused],.Button.btn_WF_word01[userstatus=selected]
 {
 	background : #e7e7e7;
