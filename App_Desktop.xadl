@@ -10,7 +10,7 @@
               <Frames>
                 <ChildFrame id="LoginFrame" formurl="ClassRegistration::crLogin.xfdl" dragmovetype="none" showtitlebar="false"/>
                 <ChildFrame id="LeftFrame" formurl="frame::frmLeft.xfdl" dragmovetype="none" showtitlebar="false"/>
-                <VFrameSet id="VFSet02" separatesize="30,0,*">
+                <VFrameSet id="VFSet02" separatesize="40,0,*">
                   <Frames>
                     <ChildFrame id="MdiFrame" formurl="frame::frmMdi.xfdl" showtitlebar="false" dragmovetype="none"/>
                     <FrameSet id="WorkFrame"/>

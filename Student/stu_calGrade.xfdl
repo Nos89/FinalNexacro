@@ -112,8 +112,8 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="178"/>
-                <Column size="100"/>
+                <Column size="141"/>
+                <Column size="151"/>
                 <Column size="100"/>
                 <Column size="100"/>
                 <Column size="100"/>

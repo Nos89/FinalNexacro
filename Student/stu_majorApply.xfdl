@@ -30,8 +30,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btn_apply" taborder="6" text="신청" left="874" top="4" width="56" height="26" onclick="btn_apply_onclick"/>
-        <Button id="btn_applyCancel" taborder="7" text="신청취소" left="940" top="4" width="70" height="26"/>
+        <Button id="btn_apply" taborder="6" text="신청" left="874" top="4" width="56" height="26" onclick="btn_apply_onclick" cssclass="btn_apply"/>
+        <Button id="btn_applyCancel" taborder="7" text="신청취소" left="940" top="4" width="70" height="26" cssclass="btn_apply"/>
         <Static id="Static00_00" taborder="8" text="승인정보" left="5" top="131" height="34" cssclass="sta_img_check01" right="5"/>
         <Static id="Static01_00" taborder="9" text="" left="5" top="167" height="86" background="#c8ddee" width="1080"/>
         <Static id="Static02_01" taborder="10" text="승인구분" left="20" top="175" width="60" height="30"/>

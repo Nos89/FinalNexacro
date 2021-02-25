@@ -1332,6 +1332,7 @@
 {
 	-nexa-padding : 0px 0px 0px 20px;
 	-nexa-icon : URL('theme://images/btn_WF_Tabextra.png');
+	-nexa-icon-position : left;
 	/*-nexa-icon-position : right;*/
 }
 
@@ -2232,17 +2233,19 @@
 
 .Static.sta_mdi_home
 {
-	background : url("imagerc::img_mdi_home.png") no-repeat center center #e7e7e7;
+	background : url('theme://images/img_home.png') no-repeat center center #637172;
 	cursor : pointer;
 	-nexa-border : 0px solid #c7c7c7, 0px solid #c7c7c7, 1px solid #c7c7c7, 0px solid #c7c7c7;
+	border-radius : 3px;
 }
 
 .Button.btn_mdi_next, .Button.btn_mdi_next[status=focused],.Button.btn_mdi_next[userstatus=selected]
 {
-	background : url("imagerc::img_WF_pagingNext.png") no-repeat center center #e7e7e7;
+	background : url("imagerc::img_WF_pagingNext.png") no-repeat center center #FAFAFA;
 	cursor : pointer;
-	-nexa-border : 1px solid #c7c7c7
-;}
+	-nexa-border : 1px solid #c7c7c7;
+	border-radius : 3px;
+}
 .Button.btn_mdi_next[status=mouseover], .Button.btn_mdi_next[userstatus=pushed]
 {
 	background : url("imagerc::img_WF_pagingNext_O.png") no-repeat center center #e3e3e3;
@@ -2258,10 +2261,11 @@
 
 .Button.btn_mdi_prev, .Button.btn_mdi_prev[status=focused],.Button.btn_mdi_prev[userstatus=selected]
 {
-	background : url("imagerc::img_WF_pagingPrev.png") no-repeat center center #e7e7e7;
+	background : url("imagerc::img_WF_pagingPrev.png") no-repeat center center #FAFAFA;
 	cursor : pointer;
-	-nexa-border : 1px solid #c7c7c7
-;}
+	-nexa-border : 1px solid #c7c7c7;
+	border-radius : 3px;	
+}
 .Button.btn_mdi_prev[status=mouseover], .Button.btn_mdi_prev[userstatus=pushed]
 {
 	background : url("imagerc::img_WF_pagingPrev_O.png") no-repeat center center #e3e3e3;
@@ -2277,10 +2281,12 @@
 
 .Button.btn_mdi_close, .Button.btn_mdi_close[status=focused],.Button.btn_mdi_close[userstatus=selected]
 {
-	background : url("imagerc::btn_mdi_close.png") no-repeat center center #e7e7e7;
+	background : url("imagerc::btn_mdi_close.png") no-repeat center center #FAFAFA;
 	cursor : pointer;
-	-nexa-border : 1px solid #c7c7c7
-;}
+	-nexa-border : 1px solid #c7c7c7;
+	border-radius : 3px;
+	
+	}
 .Button.btn_mdi_close[status=mouseover], .Button.btn_mdi_close[userstatus=pushed]
 {
 	background : url("imagerc::btn_mdi_close.png") no-repeat center center #e3e3e3;
@@ -2363,7 +2369,7 @@
 {
 	background : #ffffff;
 	color : #101010;
-	-nexa-border : 1px solid #ffffff, 1px solid #c7c7c7, 1px solid #ffffff, 1px solid #c7c7c7;
+	-nexa-border : 1px solid #c7c7c7, 1px solid #c7c7c7, 1px solid #ffffff, 1px solid #c7c7c7;
 }
 
 .Tab.tab_mdi_menu .tabbuttonitem[status=disabled]
@@ -3807,19 +3813,66 @@
 	background : #e3ecfb;
 	-nexa-border : 1px solid #6f8aa8;
 }
-.Button.btn_logout
+.Button.btn_logout[status=mouseover]
+{
+	background : #787371;
+}.Button.btn_logout
 {
 	background : #00479d;
 	color : #ffffff;
 	cursor : pointer;
 	font : bold 10pt "Arial";
 }
-.Button.btn_logout[status=mouseover]
+.Grid .body .row .cell .cellbutton
 {
-	background : #787371;
+	border-radius : 3px;
+	-nexa-border : 1px solid #6f8aa8;
 }
-.Static.sta_uniLogo
+.Grid .body .row .cell .cellbutton[status=mouseover]
 {
+	background : #e3ecfb;
+	-nexa-border : 1px solid #6f8aa8;
+}
+.Button.btn_close
+{
+	-nexa-icon : url('imagerc::btn_WF_Tabextra.png');
+	border-radius : 3px;
+	cursor : pointer;
+	-nexa-text-padding : 0px 0px 0px 4px;
+}
+.Button.btn_close[status=mouseover]
+{
+	-nexa-border : 1px solid #6f8aa8;
+}
+.Button.btn_select
+{
+	-nexa-icon : url('theme://images/img_WF_Popupcheck2.png');
+	border-radius : 3px;
+	cursor : pointer;
+	-nexa-text-padding : 0px 0px 0px 4px;
+}
+.Button.btn_select[status=mouseover]
+{
+	-nexa-border : 1px solid #6f8aa8;
+}
+.Button.btn_etc
+{
+	
+}
+.Button.btn_apply
+{
+	-nexa-icon : url('theme://images/img_WF_Menuitem2.png');
+	border-radius : 3px;
+	cursor : pointer;
+	-nexa-text-padding : 0px 0px 0px 4px;
+}
+.Button.btn_apply[status=mouseover]
+{
+	-nexa-border : 1px solid #6f8aa8;
+}
+.Static.sta_mdi_home[status=mouseover]
+{
+	background : url('theme://images/img_home.png') no-repeat center center #424b4c;
 }
 .Button.crtFolder
 {

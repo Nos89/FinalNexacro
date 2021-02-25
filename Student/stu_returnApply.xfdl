@@ -10,8 +10,8 @@
         <Static id="Static02" taborder="4" text="학번/성명" left="10" top="37" width="60" height="30"/>
         <Static id="Static00_00" taborder="5" text="휴학신청정보" left="4" top="73" height="34" cssclass="sta_img_check01" right="6"/>
         <Static id="Static01_00" taborder="6" text="" left="4" top="110" height="86" background="#c8ddee" width="1080"/>
-        <Button id="btn_apply" taborder="7" text="신청" left="924" top="4" width="56" height="26" onclick="btn_apply_onclick"/>
-        <Button id="btn_cancel" taborder="8" text="신청취소" left="990" top="4" width="70" height="26"/>
+        <Button id="btn_apply" taborder="7" text="신청" left="924" top="4" width="56" height="26" onclick="btn_apply_onclick" cssclass="btn_apply"/>
+        <Button id="btn_cancel" taborder="8" text="신청취소" left="990" top="4" width="70" height="26" cssclass="btn_apply"/>
         <Static id="Static02_00_00_00" taborder="9" text="복학년도" left="19" top="120" width="60" height="30"/>
         <Combo id="cb_year" taborder="10" left="79" top="120" width="79" height="30" enable="false"/>
         <Static id="Static02_00_00_00_00" taborder="11" text="복학학기" left="168" top="120" width="60" height="30"/>
