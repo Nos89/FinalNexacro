@@ -143,8 +143,8 @@
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">메일</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH"></Col>
-            <Col id="PGM_ID"></Col>
+            <Col id="PGM_PATH"/>
+            <Col id="PGM_ID"/>
           </Row>
           <Row>
             <Col id="MENU_CD">4001</Col>
@@ -383,8 +383,8 @@
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">자료실</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH"></Col>
-            <Col id="PGM_ID"></Col>
+            <Col id="PGM_PATH"/>
+            <Col id="PGM_ID"/>
           </Row>
           <Row>
             <Col id="MENU_CD">0025</Col>
@@ -866,7 +866,7 @@ this.btn_myMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.addChild("btn_manage",btn_manage);
 		btn_manage.addEventHandler("onclick",this.btn_manage_onclick,this);
 		btn_manage.set_text("관리");
-		btn_manage.set_cssclass('btn_gear');
+		btn_manage.set_cssclass("btn_gear");
 		btn_manage.show();
 		
 	}
@@ -877,6 +877,9 @@ this.btn_manage_onclick = function()
 	var objCF = new ChildFrame();
 	objCF.init("popMyMenu", 295, 140, 480, 370);
 	objCF.set_openalign("center middle");
+	objCF.set_titlebarheight("50px");
+	objCF.set_cssclass("popup");
+	objCF.set_titlebarbuttonsize("20px");
 	objCF.set_formurl("frame::frm_myMenuPopup.xfdl");
 	
 	objCF.showModal(
