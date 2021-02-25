@@ -3,7 +3,7 @@
   <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="auto none">
     <Layouts>
       <Layout height="700" mobileorientation="landscape" width="250">
-        <Grid id="grdLeft" taborder="0" left="40" top="100" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" binddataset="grd_student" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" width="207" bottom="0">
+        <Grid id="grdLeft" taborder="0" left="40" top="100" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" width="207" bottom="0">
           <Formats>
             <Format id="default">
               <Columns>
@@ -143,8 +143,8 @@
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">메일</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH"></Col>
-            <Col id="PGM_ID"></Col>
+            <Col id="PGM_PATH"/>
+            <Col id="PGM_ID"/>
           </Row>
           <Row>
             <Col id="MENU_NM">수신메일함</Col>

@@ -7,7 +7,7 @@
         <Static id="Static01" taborder="1" left="4" top="34" width="1083" height="34" text="학생기본정보" cssclass="sta_img_person" border="1px solid #c8ddee,0px none"/>
         <Static id="Static01_00" taborder="2" left="5" top="68" width="1080" height="152" border="0px none,0px none,1px solid black"/>
         <ImageViewer id="ImageViewer00" taborder="3" left="20" top="78" width="110" height="102" stretch="fit"/>
-        <Button id="btn_imgUpload" taborder="4" text="사진업로드" left="20" top="179" width="110" height="26" onclick="btn_imgUpload_onclick"/>
+        <Button id="btn_imgUpload" taborder="4" text="사진업로드" left="20" top="179" width="110" height="26" onclick="btn_imgUpload_onclick" cssclass="btn_imgupload" background=""/>
         <Edit id="Edit00" taborder="5" left="189" top="78" width="111" height="30" enable="false"/>
         <Edit id="Edit00_00" taborder="6" left="189" top="113" width="111" height="30" enable="false"/>
         <Edit id="Edit00_02" taborder="7" left="189" top="183" width="111" height="30" enable="false"/>
