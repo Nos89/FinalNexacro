@@ -3743,7 +3743,83 @@
 }
 .ChildFrame .titlebar .titleicon
 {
-	-nexa-icon : url('none');
+	-nexa-icon : none;
+}
+.ChildFrame.popup
+{
+	
+}
+.ChildFrame.popup .titlebar .titleicon
+{
+	-nexa-icon : none;
+}
+.ChildFrame.popup .titlebar .closebutton
+{
+	background : #1d326b;
+	border-radius : 3px;
+	cursor : pointer;
+	-nexa-vertical-align : middle;
+	-nexa-padding : 0px 2px 0px 0px;
+}
+.ChildFrame.popup .titlebar .closebutton[status=mouseover]
+{
+	background : #ffffff;
+}
+.ChildFrame.popup .titlebar
+{
+	background : #3875f9;
+	color : #ffffff;
+	font : bold italic 14pt/normal "Arial";
+	-nexa-padding : 0px 15px 0px 10px;
+	-nexa-border : 0px none,0px none,1px solid gray;
+	
+}
+.Grid.grd_mymenu
+{
+}
+.Grid.grd_mymenu .body .row
+{
+}
+.Grid.grd_mymenu .body .row .cell .celltreeitem .treeitemimage[userstatus=expand]
+{
+	-nexa-icon : none;
+	
+}
+.Grid.grd_mymenu .body .row .cell .celltreeitem .treeitemimage[userstatus=collapse]
+{
+	-nexa-icon : none;
+}
+.Grid.grd_mymenu .body .row .cell .celltreeitem .treeitembutton[userstatus=expand]
+{
+}
+.Grid.grd_mymenu .body .row .cell .cellbutton
+{
+	border-radius : 3px;
+	-nexa-border : 1px solid #6f8aa8;
+	
+}
+.Grid.grd_mymenu .body .row .cell
+{
+	-nexa-padding : 0px 3px;	
+}
+.Grid.grd_mymenu .body .row .cell .cellbutton[status=mouseover]
+{
+	background : #e3ecfb;
+	-nexa-border : 1px solid #6f8aa8;
+}
+.Button.btn_logout
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[status=mouseover]
+{
+	background : #787371;
+}
+.Static.sta_uniLogo
+{
 }
 .Button.crtFolder
 {

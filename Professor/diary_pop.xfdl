@@ -3,7 +3,7 @@
   <Form id="diary_pop" width="720" height="500" titletext="New Form" onload="diary_pop_onload">
     <Layouts>
       <Layout height="500" width="720">
-        <Static id="Static00" taborder="0" text="업무일지" left="20" top="10" width="680" height="40" textAlign="center" font="normal 15pt/normal &quot;맑은 고딕&quot;" border="1px solid #c7c7c7" onclick="Static00_onclick" cssclass="sta_gray"/>
+        <Static id="Static00" taborder="0" text="업무일지" left="20" top="10" width="680" height="40" textAlign="center" font="normal 15pt/normal &quot;맑은 고딕&quot;" onclick="Static00_onclick"/>
         <Div id="Div00" taborder="1" text="Div00" left="20" top="50" width="680" height="404" border="1px solid #c7c7c7">
           <Layouts>
             <Layout>
