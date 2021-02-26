@@ -30,7 +30,7 @@
         <Button id="btn_refresh" taborder="3" text="새로고침" left="830" top="55" width="80" height="25" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Button id="btn_delete" taborder="4" text="삭제" left="1000" top="55" width="80" height="25" onclick="btn_delete_onclick" cssclass="btn_WF_gantt03" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Div id="div_page" taborder="5" left="288" top="580" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
-        <Grid id="Grid00" taborder="6" left="10" top="90" width="1070" height="481" fillareatype="linerow" autofittype="col" binddataset="ds_board" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick">
+        <Grid id="Grid00" taborder="6" left="10" top="90" width="1070" height="481" fillareatype="linerow" autofittype="col" binddataset="ds_board" onheadclick="Grid00_onheadclick" oncelldblclick="Grid00_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -178,8 +178,9 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 
 // 게시글 팝업
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
-{
+this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{	
+
 	let sCol = obj.getCellProperty("body",e.cell,"text").replace("bind:","");
 	let nSeq = this.ds_board.getColumn(e.row,"seq");
 	
@@ -192,6 +193,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		)
 	}
 };
+
 
 
 this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -207,7 +209,8 @@ this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.reload();
-};]]></Script>
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_board">
         <ColumnInfo>

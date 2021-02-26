@@ -3,7 +3,7 @@
   <Form id="Board_write" width="1000" height="650" titletext="New Form" onload="Board_write_onload" onsize="Board_write_onsize">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1000">
-        <WebBrowser id="WebBrowser00" taborder="0" left="10" top="50" onloadcompleted="WebBrowser00_onloadcompleted" right="10" bottom="170" border="none"/>
+        <WebBrowser id="WebBrowser00" taborder="0" left="10" top="50" onloadcompleted="WebBrowser00_onloadcompleted" right="10" bottom="170" border="0px solid black"/>
         <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
         <Button id="btn_cancel" taborder="2" text="취소" width="100" height="35" cssclass="btn_WF_gantt01" onclick="btn_cancel_onclick" bottom="55" right="10"/>
         <Button id="btn_save" taborder="3" text="등록" height="35" cssclass="btn_WF_gantt01" onclick="btn_save_onclick" bottom="55" width="100" right="120"/>

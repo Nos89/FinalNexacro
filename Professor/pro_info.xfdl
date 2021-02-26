@@ -3,7 +3,7 @@
   <Form id="pro_info" width="1090" height="650" titletext="New Form" onload="pro_info_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
-        <Static id="Static00" taborder="0" text="교수기본정보" left="7" top="4" width="127" height="36" cssclass="sta_img_circle01"/>
+        <Static id="Static00" taborder="0" text="교수기본정보" left="5" top="0" width="127" height="36" cssclass="sta_img_circle01"/>
         <ImageViewer id="ImageViewer00" taborder="1" left="10" top="52" width="142" height="131" stretch="fit" background="white"/>
         <Static id="Static01" taborder="2" left="10" top="40" width="1072" height="186" border="1px solid black,0px none" text="" onclick="Static01_onclick"/>
         <Static id="Static02" taborder="3" text="교수번호" left="162" top="52" width="76" height="30"/>
@@ -47,10 +47,10 @@
                   <Static id="Static00" taborder="0" text="교수정보" left="10" top="91" width="1040" height="22" cssclass="sta_img_person" border="0px none,0px none,1px solid black"/>
                   <Static id="Static00_00" taborder="1" text="현거주지 주소" left="15" top="307" width="225" height="23" font="normal bold 10pt/normal &quot;Arial&quot;"/>
                   <Static id="Static02" taborder="2" text="우편번호" left="11" top="336" width="60" height="23"/>
-                  <Edit id="Edit01" taborder="3" left="69" top="335" width="127" height="25"/>
+                  <Edit id="edtPostCode" taborder="3" left="69" top="335" width="127" height="25"/>
                   <Static id="Static02_00" taborder="4" text="주소" left="241" top="336" width="60" height="23"/>
-                  <Edit id="Edit01_00" taborder="5" left="299" top="335" width="241" height="25"/>
-                  <Edit id="Edit01_00_00" taborder="6" left="550" top="335" width="270" height="25"/>
+                  <Edit id="edtAddress1" taborder="5" left="299" top="335" width="241" height="25"/>
+                  <Edit id="edtAddress2" taborder="6" left="550" top="335" width="270" height="25"/>
                   <Edit id="Edit00_02_00" taborder="7" left="70" top="152" width="121" height="25"/>
                   <Edit id="Edit00_02_00_00" taborder="8" left="70" top="182" width="121" height="25"/>
                   <Edit id="Edit00_02_00_00_00" taborder="9" left="70" top="212" width="220" height="25"/>
@@ -77,6 +77,7 @@
                   <Static id="Static01_02_00_00_00_00_00" taborder="30" text="병역" left="-9" top="271" width="69" height="25" textAlign="right"/>
                   <Calendar id="Calendar00" taborder="31" left="69" top="244" width="169" height="25" readonly="true"/>
                   <Calendar id="Calendar01" taborder="32" left="69" top="122" width="122" height="27" popuptype="normal"/>
+                  <Button id="Button01" taborder="33" left="202" top="333" width="29" height="30" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center" text="" onclick="Tab00_Tabpage2_Button01_onclick"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -130,7 +131,46 @@ this.fn_callback=function(id,errCode,errMsg){
 	}
 };
 
-//이미지업로드
+//popup call back
+this.popupCallBack = function(sFormId, sArg)
+{
+	if(sFormId=="searchapi")
+	{
+		if(!this.gfn_isNull(sArg))
+		{
+			var addData = sArg.split(",");
+			this.Tab00.Tabpage2.form.edtPostCode.set_value(addData[0]);
+			this.Tab00.Tabpage2.form.edtAddress1.set_value(addData[1]);
+			this.Tab00.Tabpage2.form.edtAddress2.set_value(addData[2]);
+			
+			this.edtAddressDetail.setFocus();
+		}		
+	}
+}
+
+//옵션 간소화 팝업
+this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, obj, nPopupLeft, nPopupTop, nPopupWidth, nPopupHeight)
+{
+	// child frame 생성
+	var childFrame = new ChildFrame();
+	
+	// parent frame 정의
+	var parentFrame = obj.getOwnerFrame();
+	
+	//child frame 초기화
+	childFrame.init(sPopupId, nPopupLeft, nPopupTop, nPopupWidth, nPopupHeight, null, null, sPopupUrl);
+	
+	// Modal Dialog 추가 옵션
+	//autosize default true
+	childFrame.set_autosize(false);	
+	//statusbar default true
+	childFrame.set_showtitlebar(false);
+	
+	// 동적으로 생성한 ChildFrame을 Modal Dialog로 보여줌.
+	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);
+};
+
+//이미지업로드=========================================================
 this.btn_imgupload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.FileDialog00.open('파일선택', FileDialog.LOAD);
@@ -150,7 +190,7 @@ this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialog
 				alert("이미추가된 파일이 있습니다.");
 				return;
 			}
-			//VirtualFile 이벤트 생성
+			//VirtualFile 이벤트 생성ed
 			vFile.addEventHandler("onsuccess", this.Upload_VirtualFile_onsuccess, this);
 			vFile.addEventHandler("onerror", this.Upload_VirtualFile_onerror, this);
 			
@@ -264,7 +304,19 @@ this.fn_FileClear = function (){
 	//FileUpTransfer 파일 모두삭제
 	this.FileUpTransfer00.clearFileList();
 	
-};]]></Script>
+};
+this.Tab00_Tabpage2_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//popup 화면으로 전달할 값
+	var oArg = {};
+	
+		sPopupId = "searchapi";
+		sPopupUrl = "Student::jusoapisearchpop_popup.xfdl";
+	
+	//modal popup open call
+	this.gfn_showModal(sPopupId, oArg, sPopupUrl, "popupCallBack", this, 300, 100, 570, 450);
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_proInfo">
         <ColumnInfo>
@@ -340,9 +392,9 @@ this.fn_FileClear = function (){
       <BindItem id="item13" compid="Tab00.Tabpage2.form.Edit00" propid="value" datasetid="ds_proInfo" columnid="name"/>
       <BindItem id="item14" compid="Tab00.Tabpage2.form.Edit00_01" propid="value" datasetid="ds_proInfo" columnid="gender"/>
       <BindItem id="item15" compid="Tab00.Tabpage2.form.Edit00_01_00" propid="value" datasetid="ds_proInfo" columnid="country"/>
-      <BindItem id="item24" compid="Tab00.Tabpage2.form.Edit01" propid="value" datasetid="ds_proInfo" columnid="zipcode"/>
-      <BindItem id="item25" compid="Tab00.Tabpage2.form.Edit01_00" propid="value" datasetid="ds_proInfo" columnid="addr1"/>
-      <BindItem id="item26" compid="Tab00.Tabpage2.form.Edit01_00_00" propid="value" datasetid="ds_proInfo" columnid="addr2"/>
+      <BindItem id="item24" compid="Tab00.Tabpage2.form.edtPostCode" propid="value" datasetid="ds_proInfo" columnid="zipcode"/>
+      <BindItem id="item25" compid="Tab00.Tabpage2.form.edtAddress1" propid="value" datasetid="ds_proInfo" columnid="addr1"/>
+      <BindItem id="item26" compid="Tab00.Tabpage2.form.edtAddress2" propid="value" datasetid="ds_proInfo" columnid="addr2"/>
       <BindItem id="item8" compid="Tab00.Tabpage1.form.Edit00_00" propid="value" datasetid="ds_proInfo" columnid="col_title"/>
       <BindItem id="item9" compid="Tab00.Tabpage1.form.Edit00_00_00" propid="value" datasetid="ds_proInfo" columnid="dept_title"/>
       <BindItem id="item10" compid="Tab00.Tabpage1.form.Edit00_00_00_00" propid="value" datasetid="ds_proInfo" columnid="dept_title"/>

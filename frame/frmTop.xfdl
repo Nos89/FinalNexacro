@@ -37,6 +37,13 @@ this.fm_top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.fn_loginCallback = function( pID, pErr, pMsg ){
 	this.sta_userName.set_text(this.userName);
+	if(this.userName==""){
+		this.Static04_00.set_visible(false);
+		this.btn_logout.set_visible(false);
+	}else{
+		this.Static04_00.set_visible(true);
+		this.btn_logout.set_visible(true);
+	}
 }
 
 this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)

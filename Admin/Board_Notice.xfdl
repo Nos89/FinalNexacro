@@ -9,7 +9,7 @@
             <Tabpage id="Tabpage1" text="학사">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" left="9" top="10" width="1050" height="450" binddataset="ds_Notice" autofittype="col" oncellclick="tab_Notice_Tabpage_Grid00_oncellclick" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" fillareatype="linerow">
+                  <Grid id="Grid00" taborder="0" left="9" top="10" width="1050" height="450" binddataset="ds_Notice" autofittype="col" onheadclick="tab_Notice_Tabpage_Grid00_onheadclick" fillareatype="linerow" oncelldblclick="tab_Notice_Tabpage_Grid00_oncellclick">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -417,6 +417,8 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.reload();
 };
+
+
 ]]></Script>
   </Form>
 </FDL>

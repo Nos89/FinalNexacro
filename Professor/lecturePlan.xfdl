@@ -4,8 +4,8 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static01" taborder="0" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
-        <Static id="Static00_00" taborder="1" text="강의계획서작성" left="7" top="4" width="127" height="36" cssclass="sta_img_circle01"/>
-        <Grid id="Grid00" taborder="2" left="20" top="104" width="430" height="256" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
+        <Static id="Static00_00" taborder="1" text="강의계획서작성" left="5" top="0" width="127" height="34" cssclass="sta_img_circle01"/>
+        <Grid id="Grid00" taborder="2" left="5" top="104" width="430" height="256" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -87,7 +87,7 @@
         <MaskEdit id="MaskEdit00_00_00" taborder="54" left="830" top="223" width="138" height="25" cssclass="mask_cm_box01C" format="#학기" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
         <Static id="Static06_00_00_00_00_01_00" taborder="55" text="강의실" left="549" top="248" width="87" height="25"/>
         <Static id="Static07_03_00" taborder="56" left="613" top="251" width="138" height="25" cssclass="sta_cm_box01C"/>
-        <Grid id="grd_Lecture" taborder="57" left="20" top="411" width="430" height="229" binddataset="ds_lecture" autofittype="col" oncellclick="grd_Lecture_oncellclick">
+        <Grid id="grd_Lecture" taborder="57" left="5" top="411" width="430" height="229" binddataset="ds_lecture" autofittype="col" oncellclick="grd_Lecture_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -118,8 +118,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static05_00" taborder="58" text="개설강의" left="20" top="78" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
-        <Static id="Static05_00_00" taborder="59" text="강의계획서" left="20" top="375" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
+        <Static id="Static05_00" taborder="58" text="개설강의" left="5" top="78" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
+        <Static id="Static05_00_00" taborder="59" text="강의계획서" left="5" top="385" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
         <Edit id="Edit00" taborder="60" left="613" top="191" width="138" height="25" onchanged="Edit00_onchanged" enable="false" textAlign="center"/>
         <Static id="Static07_03_00_00" taborder="61" left="831" top="281" width="138" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static06_00_00_00_00_01_00_00" taborder="62" text="이수구분" left="767" top="278" width="87" height="25"/>

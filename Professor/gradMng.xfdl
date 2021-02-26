@@ -3,21 +3,21 @@
   <Form id="gradMng" width="1090" height="650" titletext="New Form" onload="gradMng_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
-        <Static id="Static10_01_00" taborder="78" text="" left="683" top="50" width="392" height="40" cssclass="sta_base"/>
-        <Static id="Static10" taborder="73" text="" left="126" top="50" width="220" height="40" cssclass="sta_base"/>
-        <Static id="Static10_00" taborder="74" text="" left="126" top="89" width="220" height="40" cssclass="sta_base"/>
-        <Static id="Static10_01" taborder="75" text="" left="464" top="50" width="220" height="40" cssclass="sta_base"/>
-        <Static id="Static10_02" taborder="76" text="" left="464" top="89" width="220" height="40" cssclass="sta_base"/>
-        <Static id="Static10_03" taborder="77" text="" left="802" top="89" width="273" height="40" cssclass="sta_base"/>
+        <Static id="Static10_01_00" taborder="78" text="" left="681" top="50" width="392" height="40" cssclass="sta_base"/>
+        <Static id="Static10" taborder="73" text="" left="124" top="50" width="220" height="40" cssclass="sta_base"/>
+        <Static id="Static10_00" taborder="74" text="" left="124" top="89" width="220" height="40" cssclass="sta_base"/>
+        <Static id="Static10_01" taborder="75" text="" left="462" top="50" width="220" height="40" cssclass="sta_base"/>
+        <Static id="Static10_02" taborder="76" text="" left="462" top="89" width="220" height="40" cssclass="sta_base"/>
+        <Static id="Static10_03" taborder="77" text="" left="800" top="89" width="273" height="40" cssclass="sta_base"/>
         <Combo id="cbo_title" taborder="0" left="815" top="97" width="155" height="25" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="-1" value="all" onitemclick="cbo_title_onitemclick" onitemchanged="cbo_title_onitemchanged" text="전체" displaynulltext="--선택--"/>
-        <Static id="Static00_01_00" taborder="1" text="과목명" left="683" top="89" width="120" height="40" cssclass="sta_gray"/>
-        <Static id="Static00" taborder="2" text="년도" left="7" top="50" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static00_01_00" taborder="1" text="과목명" left="681" top="89" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static00" taborder="2" text="년도" left="5" top="50" width="120" height="40" cssclass="sta_gray"/>
         <Combo id="cbo_year" taborder="3" text="" left="133" top="58" width="127" height="25" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--" onitemchanged="cbo_year_onitemchanged"/>
         <Combo id="cbo_stdYear" taborder="4" text="Combo00" left="133" top="100" width="127" height="25" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00_01" taborder="5" text="학년" left="7" top="89" width="120" height="40" cssclass="sta_gray"/>
-        <Static id="Static02" taborder="6" text="학기" left="345" top="50" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static00_01" taborder="5" text="학년" left="5" top="89" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static02" taborder="6" text="학기" left="343" top="50" width="120" height="40" cssclass="sta_gray"/>
         <Combo id="cbo_semester" taborder="7" text="" left="475" top="58" width="135" height="25" codecolumn="code" datacolumn="name" innerdataset="ds_semester" displaynulltext="--선택--"/>
-        <Grid id="grd_student" taborder="8" left="9" top="160" width="540" height="207" binddataset="ds_crDetail" autofittype="col">
+        <Grid id="grd_student" taborder="8" left="5" top="160" width="540" height="207" binddataset="ds_crDetail" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -93,7 +93,7 @@
         <Static id="Static09" taborder="53" text="총점" left="615" top="577" width="67" height="28"/>
         <MaskEdit id="mask_total" taborder="54" left="685" top="578" width="95" height="30" enable="false"/>
         <Static id="Static09_00" taborder="55" text="학점" left="813" top="578" width="67" height="28"/>
-        <Grid id="grd_grade" taborder="56" left="10" top="415" width="540" height="235" binddataset="ds_grade" autofittype="col" oncellclick="grd_grade_oncellclick" onheadclick="grd_grade_onheadclick">
+        <Grid id="grd_grade" taborder="56" left="5" top="415" width="540" height="235" binddataset="ds_grade" autofittype="col" oncellclick="grd_grade_oncellclick" onheadclick="grd_grade_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -127,19 +127,19 @@
         <Button id="btn_cancle" taborder="57" text="취소" left="679" top="615" width="127" height="29" onclick="btn_cancle_onclick"/>
         <Button id="btn_ok" taborder="58" text="완료" left="840" top="615" width="127" height="29" onclick="btn_ok_onclick"/>
         <Button id="btn_attend" taborder="59" text="출결조회" left="902" top="59" width="98" height="23" onclick="btn_attend_onclick"/>
-        <Static id="Static00_00" taborder="60" text="성적관리" left="7" top="6" width="116" height="32" cssclass="sta_img_circle01"/>
+        <Static id="Static00_00" taborder="60" text="성적관리" left="5" top="0" width="116" height="34" cssclass="sta_img_circle01"/>
         <Static id="Static01_00" taborder="61" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
         <Static id="Static04_01" taborder="62" text="성적입력/수정" left="575" top="148" width="171" height="42" cssclass="sta_img_circle01"/>
         <Button id="btn_add" taborder="63" left="495" top="381" width="25" height="25" cssclass="btn_WF_add01" text="" onclick="btn_add_onclick"/>
         <Button id="btn_delete" taborder="64" left="523" top="381" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick"/>
         <Button id="btn_reset" taborder="65" text="초기화" left="816" top="58" width="69" height="24" onclick="btn_reset_onclick"/>
-        <Static id="Static00_01_00_00" taborder="66" text="과목코드" left="345" top="89" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static00_01_00_00" taborder="66" text="과목코드" left="343" top="89" width="120" height="40" cssclass="sta_gray"/>
         <Combo id="cbo_lecCode" taborder="67" text="Combo00" left="475" top="98" width="135" height="24" innerdataset="ds_lecCode" codecolumn="code" datacolumn="name" displaynulltext="--선택--" onitemchanged="cbo_lecCode_onitemchanged"/>
         <Combo id="cbo_gradeCode" taborder="68" left="962" top="578" width="83" height="25" innerdataset="ds_gradeCard" codecolumn="grade_code" datacolumn="grade_code" index="-1" value="all" text="전체" displaynulltext="--선택--" onitemchanged="cbo_gradeCode_onitemchanged"/>
         <Static id="Static05" taborder="69" text="총점은 평가기준 비율에 따라 자동 계산됩니다." left="822" top="147" width="248" height="38" background="bisque"/>
         <Edit id="edt_gradeCode" taborder="70" left="858" top="578" width="95" height="30" readonly="true" textAlign="center"/>
-        <Static id="Static03" taborder="71" text="성적정보" left="12" top="384" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" cssclass="sta_img_schedule"/>
-        <Static id="Static03_00" taborder="72" text="학생목록" left="10" top="130" width="157" height="26" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" cssclass="sta_img_schedule"/>
+        <Static id="Static03" taborder="71" text="성적정보" left="5" top="384" width="157" height="34" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" cssclass="sta_img_schedule"/>
+        <Static id="Static03_00" taborder="72" text="학생목록" left="5" top="130" width="157" height="34" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" cssclass="sta_img_schedule"/>
         <Static id="static00" taborder="79" text="" left="656" top="405" width="160" height="40" cssclass="sta_base"/>
         <Static id="static00_00" taborder="80" text="" left="894" top="522" width="160" height="40" cssclass="sta_base"/>
         <Static id="static00_01" taborder="81" text="" left="894" top="483" width="160" height="40" cssclass="sta_base"/>
@@ -178,6 +178,20 @@
           <Column id="dept_code" type="STRING" size="256"/>
           <Column id="col_code" type="STRING" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="oc_code">1</Col>
+            <Col id="oc_year">20120202</Col>
+            <Col id="oc_semester">1</Col>
+            <Col id="name">물리학</Col>
+          </Row>
+          <Row>
+            <Col id="oc_year">20210203</Col>
+            <Col id="oc_code">2</Col>
+            <Col id="oc_semester">2</Col>
+            <Col id="name">양자학</Col>
+          </Row>
+        </Rows>
       </Dataset>
       <Dataset id="ds_crDetail">
         <ColumnInfo>
@@ -336,6 +350,7 @@ this.fn_callback = function(id, errCode, errMsg){
 		this.fn_setCombo();
 		this.ds_crDetail.filter("lec_code=='xxxxxx'");
 		this.ds_grade.filter("lec_code=='xxxxxx'");
+		this.btn_reset_onclick();
 	}else if(id=="gradeAdd" || id=="deleteGrade"){
 		if(errCode==0){
 			alert("잠시후 다시 시도해 주세요");
@@ -373,9 +388,7 @@ this.gradMng_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"fn_callback"
 	);
 	
-	
-	
-	
+//	this.fn_setCombo();
 	
 };
 
@@ -500,6 +513,7 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fn_search();
+	//과목이 2개이상일때 알려주기
 	if(this.ds_openClass.getRowCount()>1){
 		var arr = new Array();
 		for(var i=0; i<this.ds_openClass.getRowCount(); i++){
@@ -514,6 +528,7 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.ds_grade.filter("lec_code=='"+lecCode+"'");
 		this.fn_gradeCheck();
 	}
+	this.ds_openClass.filter("oc_code=='xxxxxxx'");
 };
 this.fn_search = function(){
 	var str = "";
@@ -545,6 +560,10 @@ this.fn_search = function(){
 		}
 	}
 	this.ds_openClass.filter(str);
+	if(this.ds_openClass.getRowCount()==0){
+		alert("검색결과가 없습니다"); 
+		return;
+	}
 };
 
 
