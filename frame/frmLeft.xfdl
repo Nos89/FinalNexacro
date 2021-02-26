@@ -151,6 +151,8 @@
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Mail</Col>
             <Col id="PGM_ID">inBox.xfdl</Col>
+            <Col id="MENU_CD">4001</Col>
+            <Col id="UP_MENU_CD">0004</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">5000</Col>
@@ -160,7 +162,7 @@
           </Row>
           <Row>
             <Col id="MENU_CD">5001</Col>
-            <Col id="UP_MENU_CD">0000</Col>
+            <Col id="UP_MENU_CD">0005</Col>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Webhard</Col>
@@ -385,7 +387,7 @@
             <Col id="PGM_ID"/>
           </Row>
           <Row>
-            <Col id="MENU_CD">0025</Col>
+            <Col id="MENU_CD">0027</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">1</Col>
@@ -459,7 +461,7 @@
             <Col id="PGM_ID">Board_Report.xfdl</Col>
           </Row>
           <Row>
-            <Col id="MENU_CD">0020</Col>
+            <Col id="MENU_CD">0010</Col>
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_LVL">0</Col>
             <Col id="MENU_NM">학생/교수</Col>
@@ -467,16 +469,16 @@
           <Row>
             <Col id="MENU_NM">학생</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="UP_MENU_CD">0020</Col>
-            <Col id="MENU_CD">0021</Col>
+            <Col id="UP_MENU_CD">0010</Col>
+            <Col id="MENU_CD">0011</Col>
             <Col id="PGM_PATH">Admin</Col>
             <Col id="PGM_ID">Students.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">교수</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="UP_MENU_CD">0020</Col>
-            <Col id="MENU_CD">0022</Col>
+            <Col id="UP_MENU_CD">0010</Col>
+            <Col id="MENU_CD">0012</Col>
             <Col id="PGM_PATH">Admin</Col>
             <Col id="PGM_ID">Professor.xfdl</Col>
           </Row>
@@ -484,29 +486,29 @@
             <Col id="MENU_NM">학사</Col>
             <Col id="MENU_LVL">0</Col>
             <Col id="UP_MENU_CD">0</Col>
-            <Col id="MENU_CD">0030</Col>
+            <Col id="MENU_CD">0020</Col>
           </Row>
           <Row>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">학사 일정 관리</Col>
-            <Col id="UP_MENU_CD">0030</Col>
-            <Col id="MENU_CD">0031</Col>
+            <Col id="UP_MENU_CD">0020</Col>
+            <Col id="MENU_CD">0021</Col>
             <Col id="PGM_PATH">Admin</Col>
             <Col id="PGM_ID">Calander.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_NM">강의계획서 관리</Col>
-            <Col id="MENU_CD">0032</Col>
-            <Col id="UP_MENU_CD">0030</Col>
+            <Col id="MENU_CD">0022</Col>
+            <Col id="UP_MENU_CD">0020</Col>
             <Col id="PGM_PATH">Admin</Col>
             <Col id="PGM_ID">Syllabus.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">학사 자료실 관리</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="MENU_CD">0033</Col>
-            <Col id="UP_MENU_CD">0030</Col>
+            <Col id="MENU_CD">0023</Col>
+            <Col id="UP_MENU_CD">0020</Col>
             <Col id="PGM_PATH">Admin</Col>
             <Col id="PGM_ID">Board_Archives.xfdl</Col>
           </Row>
@@ -514,49 +516,49 @@
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_LVL">0</Col>
             <Col id="MENU_NM">신청사항</Col>
-            <Col id="MENU_CD">0040</Col>
+            <Col id="MENU_CD">0030</Col>
           </Row>
           <Row>
-            <Col id="MENU_CD">0041</Col>
-            <Col id="UP_MENU_CD">0040</Col>
+            <Col id="MENU_CD">0031</Col>
+            <Col id="UP_MENU_CD">0030</Col>
             <Col id="MENU_NM">휴학신청</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Admin</Col>
             <Col id="PGM_ID">Application_TakeOff.xfdl</Col>
           </Row>
           <Row>
-            <Col id="MENU_CD">0042</Col>
-            <Col id="UP_MENU_CD">0040</Col>
+            <Col id="MENU_CD">0032</Col>
+            <Col id="UP_MENU_CD">0030</Col>
             <Col id="MENU_NM">복학신청</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Admin</Col>
             <Col id="PGM_ID">Application_Return.xfdl</Col>
           </Row>
           <Row>
-            <Col id="MENU_CD">0043</Col>
-            <Col id="UP_MENU_CD">0040</Col>
+            <Col id="MENU_CD">0033</Col>
+            <Col id="UP_MENU_CD">0030</Col>
             <Col id="MENU_NM">전과신청</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Admin</Col>
             <Col id="PGM_ID">Application_ChangeDept.xfdl</Col>
           </Row>
           <Row>
-            <Col id="MENU_CD">0044</Col>
-            <Col id="UP_MENU_CD">0040</Col>
+            <Col id="MENU_CD">0034</Col>
+            <Col id="UP_MENU_CD">0030</Col>
             <Col id="MENU_NM">학점포기신청</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Admin</Col>
             <Col id="PGM_ID">Application_CreditRenounce.xfdl</Col>
           </Row>
           <Row>
-            <Col id="MENU_CD">0050</Col>
+            <Col id="MENU_CD">0040</Col>
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">메일</Col>
             <Col id="MENU_LVL">0</Col>
           </Row>
           <Row>
-            <Col id="MENU_CD">0051</Col>
-            <Col id="UP_MENU_CD">0050</Col>
+            <Col id="MENU_CD">0041</Col>
+            <Col id="UP_MENU_CD">0040</Col>
             <Col id="MENU_NM">발신메일함</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="PGM_PATH">Mail</Col>
@@ -565,14 +567,14 @@
           <Row>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="MENU_CD">0060</Col>
+            <Col id="MENU_CD">0050</Col>
             <Col id="UP_MENU_CD">0</Col>
           </Row>
           <Row>
             <Col id="MENU_NM">웹하드 관리</Col>
             <Col id="MENU_LVL">1</Col>
-            <Col id="MENU_CD">0061</Col>
-            <Col id="UP_MENU_CD">0060</Col>
+            <Col id="MENU_CD">0051</Col>
+            <Col id="UP_MENU_CD">0050</Col>
             <Col id="PGM_PATH">Admin</Col>
           </Row>
         </Rows>

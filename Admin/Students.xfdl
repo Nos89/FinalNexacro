@@ -523,7 +523,7 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		, "/StudentUpdate.nex"	// 2. strURL(string 형태의 url)
 		, "in_std=ds_student:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, ""	// 4. strOutDatasets -select Fds=Sds
-		, "" // 5. strArgument
+		, "user=student" // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
 };

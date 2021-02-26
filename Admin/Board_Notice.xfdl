@@ -413,6 +413,8 @@ this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	)
 };
 
+
+// 새로고침
 this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.reload();

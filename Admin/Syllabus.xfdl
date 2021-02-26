@@ -30,7 +30,7 @@
               <Static id="sta_lec_score" taborder="20" left="390" top="110" width="201" height="25" cssclass="sta_cm_box02L" text=""/>
               <Static id="sta_lec_isu" taborder="21" left="390" top="140" width="201" height="25" cssclass="sta_cm_box02L" text=""/>
               <Static id="sta_lec_classroom" taborder="22" left="390" top="170" width="201" height="25" cssclass="sta_cm_box02L" text=""/>
-              <Static id="sta_lec_summary" taborder="23" left="10" top="235" width="581" height="90" cssclass="sta_cm_box02L" text="" verticalAlign="top" padding="3px 0px"/>
+              <Static id="sta_lec_summary" taborder="23" left="10" top="235" width="581" height="90" cssclass="sta_cm_box02L" text="" verticalAlign="top" padding="3px"/>
               <Static id="Static13_00" taborder="24" left="9" top="453" width="146" height="25" cssclass="sta_cm_box01R" text="출석" textAlign="center"/>
               <Static id="Static13_01" taborder="25" left="154" top="453" width="146" height="25" cssclass="sta_cm_box01R" text="중간고사" textAlign="center"/>
               <Static id="Static13_02" taborder="26" left="299" top="453" width="146" height="25" cssclass="sta_cm_box01R" text="기말고사" textAlign="center"/>
@@ -58,15 +58,15 @@
               <Static id="sta_lec_way_4" taborder="48" left="357" top="390" width="117" height="25" cssclass="sta_cm_box02L" textAlign="center"/>
               <Static id="sta_lec_way_5" taborder="49" left="473" top="390" width="117" height="25" cssclass="sta_cm_box02L" textAlign="center"/>
               <Static id="sta_lec_approval" taborder="50" left="550" top="13" width="40" height="25" cssclass="sta_cm_box02L" text=""/>
-              <Static id="sta_lec_book" taborder="51" left="9" top="589" width="581" height="70" cssclass="sta_cm_box02L" verticalAlign="top" padding="3px 0px"/>
-              <Button id="btn_approval" taborder="52" text="승인" left="160" top="820" width="120" height="30" onclick="div_lecture_btn_approval_onclick" cssclass="btn_WF_gantt01"/>
-              <Button id="btn_reject" taborder="53" text="반려" left="320" top="820" width="120" height="30" onclick="div_lecture_btn_reject_onclick" cssclass="btn_WF_gantt01"/>
+              <Static id="sta_lec_book" taborder="51" left="9" top="589" width="581" height="70" cssclass="sta_cm_box02L" verticalAlign="top" padding="3px"/>
+              <Button id="btn_approval" taborder="52" text="승인" left="160" top="690" width="120" height="30" onclick="div_lecture_btn_approval_onclick" cssclass="btn_WF_gantt01"/>
+              <Button id="btn_reject" taborder="53" text="반려" left="320" top="690" width="120" height="30" onclick="div_lecture_btn_reject_onclick" cssclass="btn_WF_gantt01"/>
               <Button id="btn_cls" taborder="54" left="569" top="173" width="19" height="19" cssclass="btn_WF_search02" padding="1px" onclick="div_lecture_btn_cls_onclick"/>
               <Static id="Static00" taborder="55" text="강의계획서 조회" left="8" top="14" width="120" height="16" cssclass="sta_WF_title02"/>
               <Static id="Static04_00" taborder="56" text="년도" left="320" top="80" width="60" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
               <Static id="sta_oc_year" taborder="57" left="390" top="80" width="89" height="25" cssclass="sta_cm_box02L" text=""/>
-              <TextArea id="txt_lec_deny_reason" taborder="58" left="9" top="699" width="581" height="100"/>
-              <Static id="Static16" taborder="59" text="반려사유" left="9" top="674" width="60" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Button id="btn_reason" taborder="58" text="반려사유 작성" left="460" top="693" width="83" height="24" cssclass="btn_WF_gantt02" onclick="btn_reason_onclick" borderRadius="3px"/>
+              <Div id="div_bottom" taborder="59" left="0" top="770" width="600" height="30"/>
             </Layout>
           </Layouts>
         </Div>
@@ -98,7 +98,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Radio id="Radio00" taborder="3" left="280" top="45" width="191" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" index="0" text="미승인" value="0" onitemchanged="Radio00_onitemchanged">
+        <Radio id="rdo_approval" taborder="3" left="280" top="45" width="191" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" index="0" text="미승인" value="0" onitemchanged="rdo_approval_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -273,7 +273,7 @@
           </Dataset>
         </Combo>
         <Button id="btn_refresh" taborder="6" left="1000" top="46" width="80" height="24" text="새로고침" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01"/>
-        <Static id="Static01" taborder="7" left="0" top="630" right="0" bottom="0"/>
+        <Static id="Static01" taborder="7" left="0" top="630" text="" width="1090" height="20"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -326,7 +326,7 @@ this.com_semester_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChang
 
 
 // 필터링(승인/미승인)
-this.Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+this.rdo_approval_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
 {
 	this.fn_timeFilter();
 };
@@ -336,7 +336,7 @@ this.fn_timeFilter = function()
 {
 	let nYear = this.com_year.value;
 	let nSemester = this.com_semester.value;
-	let nApproval = this.Radio00.value;
+	let nApproval = this.rdo_approval.value;
 	
 	if(nYear==null||nYear==''){
 		return;
@@ -349,8 +349,22 @@ this.fn_timeFilter = function()
 // 그리드 셀 선택시
 this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	let nRow = this.ds_lecture.rowposition;
-	this.fn_syllabus_detail(nRow);
+	let nApproval = this.rdo_approval.value;
+	this.fn_syllabus_detail(e.row);
+	
+	let sta = this.Div01.form["Static15"];
+	if(sta instanceof Static){
+		this.Div01.form.Static15.destroy();
+		this.Div01.form.sta_lec_deny_reason.destroy();	
+	}
+	
+	if(nApproval==-1){				// 반려
+		this.fn_showDenyReason();
+	}else if(nApproval==1){			// 승인
+		this.fn_hideButtons();
+	}else{							// 미승인
+		this.fn_showButtons();
+	}
 };
 
 
@@ -401,6 +415,45 @@ this.fn_lec_eval = function(nRow)
 }
 
 
+// 승인,반려버튼 숨기기
+this.fn_hideButtons = function()
+{
+	this.Div01.form.btn_approval.set_visible("false");
+	this.Div01.form.btn_reject.set_visible("false");
+	this.Div01.form.btn_reason.set_visible("false");
+}
+
+
+// 승인,반려버튼 보이기
+this.fn_showButtons = function()
+{
+	this.Div01.form.btn_approval.set_visible("true");
+	this.Div01.form.btn_reject.set_visible("true");
+	this.Div01.form.btn_reason.set_visible("true");
+}
+
+
+// 반려사유 표시
+this.fn_showDenyReason = function()
+{
+	this.fn_hideButtons();
+	
+	let objStatic1 = new Static();
+	objStatic1.init("Static15",9,675,60,25);
+	objStatic1.set_text("반려사유");
+	objStatic1.set_font("bold 12px/normal Arial,Malgun Gothic,Gulim");
+	this.Div01.form.addChild("Static15",objStatic1);
+	objStatic1.show();
+	
+	let objStatic2 = new Static();
+	objStatic2.init("sta_lec_deny_reason",9,700,581,70);
+	objStatic2.set_text(this.ds_lecture.getColumn(this.ds_lecture.rowposition,"lec_deny_reason"));
+	objStatic2.set_cssclass("sta_cm_box02L");
+	this.Div01.form.addChild("sta_lec_deny_reason",objStatic2);
+	objStatic2.show();
+}
+
+
 // 강의실 시간표 조회(모달)
 this.div_lecture_btn_cls_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -445,16 +498,23 @@ this.div_lecture_btn_approval_onclick = function(obj:nexacro.Button,e:nexacro.Cl
 this.div_lecture_btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let check = this.confirm("반려하시겠습니까?");
+	let nRow = this.ds_lecture.rowposition;
 	
 	if(check){
-		this.transaction(
-			"syllabusRejected"	// 1. strSvcID(string 형태의 id)
-			, "/SyllabusRejected.nex"	// 2. strURL(string 형태의 url)
-			, "in_lecture=ds_lecture:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
-			, ""	// 4. strOutDatasets -select Fds=Sds
-			, "" // 5. strArgument
-			, "fn_callback_apprv"	// 6. strCallbackFunc
-		);
+		let sReason = this.ds_lecture.getColumn(nRow,"lec_deny_reason");
+		if(sReason==null||sReason.length<=0){
+			this.alert("반려사유를 작성해주세요.");
+			return;
+		}else{
+			this.transaction(
+				"syllabusRejected"	// 1. strSvcID(string 형태의 id)
+				, "/SyllabusRejected.nex"	// 2. strURL(string 형태의 url)
+				, "in_lecture=ds_lecture:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+				, ""	// 4. strOutDatasets -select Fds=Sds
+				, "" // 5. strArgument
+				, "fn_callback_apprv"	// 6. strCallbackFunc
+			);
+		}
 	}
 };
 
@@ -471,6 +531,28 @@ this.fn_callback_apprv = function(id, errCD, errMSG)
 		}
 	}
 	this.reload();
+}
+
+
+// 반려사유 작성
+this.btn_reason_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let nRow = this.ds_lecture.rowposition;
+	let reason = this.ds_lecture.getColumn(nRow,"lec_deny_reason");
+	let objCF = new ChildFrame();
+	objCF.init("Syllabus_Reject",520,70,300,400,null,null,"Admin::Syllabus_Reject.xfdl");
+	objCF.showModal(this.getOwnerFrame(),{reason:reason},this,"fn_reject");
+};
+
+this.fn_reject = function(id,objReturn)
+{
+	if(objReturn){
+		let reject = JSON.parse(objReturn);
+		if(reject.rtnType=="save"){
+			let nRow = this.ds_lecture.rowposition;
+			this.ds_lecture.setColumn(nRow,"lec_deny_reason",reject.reason);
+		}
+	}
 }
 
 
@@ -502,6 +584,10 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="lec_eval" type="STRING" size="256"/>
           <Column id="oc_year" type="STRING" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+        </Rows>
       </Dataset>
     </Objects>
     <Bind>

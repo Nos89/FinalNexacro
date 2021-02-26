@@ -252,60 +252,6 @@
           <Column id="pro_office" type="STRING" size="256"/>
           <Column id="pro_status" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="id">P-001</Col>
-            <Col id="name">김교수</Col>
-            <Col id="birth">1950-01-01</Col>
-            <Col id="gender">남</Col>
-            <Col id="country">대한민국</Col>
-            <Col id="inDate">1990-02-04</Col>
-            <Col id="pro_status">재직</Col>
-            <Col id="pro_office">참빛관 505</Col>
-            <Col id="phone">010-1234-1234</Col>
-            <Col id="email">abc@kh.ac.kr</Col>
-            <Col id="addr1">서울시 ㅇㅇ구 ㅇㅇ로11길 1</Col>
-            <Col id="addr2">101호</Col>
-            <Col id="zipcode">01010</Col>
-            <Col id="colcode">c1</Col>
-            <Col id="deptcode">d01</Col>
-          </Row>
-          <Row>
-            <Col id="id">P-002</Col>
-            <Col id="name">이교수</Col>
-            <Col id="birth">1965-02-02</Col>
-            <Col id="gender">여</Col>
-            <Col id="country">대한민국</Col>
-            <Col id="inDate">2001-04-05</Col>
-            <Col id="pro_status">퇴직</Col>
-            <Col id="pro_office">누리관 512</Col>
-            <Col id="phone">010-3456-3456</Col>
-            <Col id="email">def@kh.ac.kr</Col>
-            <Col id="addr2">202호</Col>
-            <Col id="addr1">서울시 ㅇㅇ구 ㅇㅇ로22길 2</Col>
-            <Col id="zipcode">02020</Col>
-            <Col id="outDate">2010-04-30</Col>
-            <Col id="colcode">c2</Col>
-            <Col id="deptcode">d06</Col>
-          </Row>
-          <Row>
-            <Col id="id">P-003</Col>
-            <Col id="name">최교수</Col>
-            <Col id="birth">1970-03-03</Col>
-            <Col id="gender">여</Col>
-            <Col id="country">대한민국</Col>
-            <Col id="inDate">2007-10-10</Col>
-            <Col id="pro_status">휴직</Col>
-            <Col id="pro_office">한울관 508</Col>
-            <Col id="phone">010-7890-7890</Col>
-            <Col id="email">ghi@kh.ac.kr</Col>
-            <Col id="addr2">303호</Col>
-            <Col id="addr1">서울시 ㅇㅇ구 ㅇㅇ로33길 3</Col>
-            <Col id="zipcode">03030</Col>
-            <Col id="colcode">c4</Col>
-            <Col id="deptcode">d16</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_college">
         <ColumnInfo>
@@ -484,7 +430,7 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		, "/ProfessorUpdate.nex"	// 2. strURL(string 형태의 url)
 		, "in_pro=ds_professor:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, ""	// 4. strOutDatasets -select Fds=Sds
-		, "" // 5. strArgument
+		, "user=professor" // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
 };
