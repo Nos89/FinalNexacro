@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="classRegistrationTimeScheduler" width="680" height="640" titletext="New Form" onload="classRegistrationTimeScheduler_onload">
+  <Form id="classRegistrationTimeScheduler" width="680" height="530" titletext="New Form" onload="classRegistrationTimeScheduler_onload">
     <Layouts>
-      <Layout height="640" width="680">
-        <Grid id="Grid00" taborder="0" left="0" top="0" width="680" height="593" binddataset="ds_scheduler" autofittype="col" cellclickbound="cell" autosizingtype="row">
+      <Layout height="530" width="680">
+        <Grid id="Grid00" taborder="0" left="0" top="0" width="680" height="473" binddataset="ds_scheduler" autofittype="col" cellclickbound="cell" autosizingtype="row">
           <Formats>
             <Format id="default">
               <Columns>
@@ -32,18 +32,18 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:division" wordWrap="char" textAlign="center"/>
-                <Cell col="1" text="bind:mon" displaytype="text" edittype="none" checkboxfalsevalue="     " wordWrap="char"/>
-                <Cell col="2" text="bind:tue" displaytype="normal" edittype="none" wordWrap="char"/>
-                <Cell col="3" text="bind:wen" displaytype="normal" edittype="none" wordWrap="char"/>
-                <Cell col="4" text="bind:tur" displaytype="normal" edittype="none" wordWrap="char"/>
-                <Cell col="5" text="bind:fri" displaytype="normal" edittype="none" wordWrap="char"/>
-                <Cell col="6" text="bind:sat" displaytype="normal" edittype="none" wordWrap="char"/>
-                <Cell col="7" text="bind:sun" displaytype="normal" edittype="none" wordWrap="char"/>
+                <Cell col="1" text="bind:mon" displaytype="text" edittype="none" checkboxfalsevalue="     " wordWrap="char" textAlign="center"/>
+                <Cell col="2" text="bind:tue" displaytype="normal" edittype="none" wordWrap="char" textAlign="center"/>
+                <Cell col="3" text="bind:wen" displaytype="normal" edittype="none" wordWrap="char" textAlign="center"/>
+                <Cell col="4" text="bind:tur" displaytype="normal" edittype="none" wordWrap="char" textAlign="center"/>
+                <Cell col="5" text="bind:fri" displaytype="normal" edittype="none" wordWrap="char" textAlign="center"/>
+                <Cell col="6" text="bind:sat" displaytype="normal" edittype="none" wordWrap="char" textAlign="center"/>
+                <Cell col="7" text="bind:sun" displaytype="normal" edittype="none" wordWrap="char" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_close" taborder="1" text="닫기" left="253" top="601" width="192" height="34" onclick="btn_close_onclick"/>
+        <Button id="btn_close" taborder="1" text="닫기" left="250" top="486" width="192" height="34" onclick="btn_close_onclick" cssclass="btn_WF_gantt01"/>
       </Layout>
     </Layouts>
     <Objects>

@@ -11,8 +11,8 @@
         <Combo id="cmbType" taborder="5" text="공지" left="260" top="40" width="130" height="20" innerdataset="dsType" codecolumn="code" datacolumn="value" index="0" value="01"/>
         <Static id="Static00_01" taborder="6" text="내용" left="10" top="80" width="40" height="20"/>
         <TextArea id="teaContent" taborder="7" left="10" top="110" height="140" width="380"/>
-        <Button id="btnOk" taborder="8" text="확인" left="113" top="259" width="80" height="30" onclick="btnOk_onclick"/>
-        <Button id="btnCancle" taborder="9" text="취소" left="203" top="259" width="80" height="30" onclick="btnCancle_onclick"/>
+        <Button id="btnOk" taborder="8" text="확인" left="113" top="259" width="80" height="30" onclick="btnOk_onclick" cssclass="btn_WF_gantt01"/>
+        <Button id="btnCancle" taborder="9" text="취소" left="203" top="259" width="80" height="30" onclick="btnCancle_onclick" cssclass="btn_WF_gantt01"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

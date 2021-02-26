@@ -24,15 +24,15 @@
               </Band>
               <Band id="body">
                 <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:check"/>
-                <Cell col="1" text="bind:sche_title"/>
-                <Cell col="2" text="bind:sche_contents"/>
-                <Cell col="3" text="bind:sche_date"/>
+                <Cell col="1" text="bind:sche_title" textAlign="center"/>
+                <Cell col="2" text="bind:sche_contents" textAlign="center"/>
+                <Cell col="3" text="bind:sche_date" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_del" taborder="1" text="삭제" left="87" top="305" width="118" height="38" onclick="btn_del_onclick"/>
-        <Button id="btn_cancle" taborder="2" text="취소" left="260" top="305" width="118" height="38" onclick="btn_cancle_onclick"/>
+        <Button id="btn_del" taborder="1" text="삭제" left="87" top="305" width="118" height="38" onclick="btn_del_onclick" cssclass="btn_WF_gantt01"/>
+        <Button id="btn_cancle" taborder="2" text="취소" left="260" top="305" width="118" height="38" onclick="btn_cancle_onclick" cssclass="btn_WF_gantt01"/>
       </Layout>
     </Layouts>
     <Objects>

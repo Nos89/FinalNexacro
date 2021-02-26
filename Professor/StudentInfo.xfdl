@@ -3,18 +3,18 @@
   <Form id="StudentInfo" width="1090" height="710" titletext="New Form" onload="StudentInfo_onload">
     <Layouts>
       <Layout height="710" width="1090">
-        <Static id="Static03_01" taborder="15" text="" left="522" top="50" width="212" height="45" cssclass="sta_base"/>
-        <Static id="Static03_00" taborder="12" text="" left="159" top="94" width="212" height="45" cssclass="sta_base"/>
-        <Static id="Static03" taborder="11" text="" left="159" top="50" width="212" height="45" cssclass="sta_base"/>
-        <Static id="Static01" taborder="0" left="0.92%" top="5.69%" width="98.35%" height="0%" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
-        <Static id="Static00_00" taborder="1" text="학생정보 조회" left="7" top="4" width="127" height="36" cssclass="sta_img_circle01"/>
+        <Static id="Static03_01" taborder="15" text="" left="520" top="50" width="212" height="45" cssclass="sta_base"/>
+        <Static id="Static03_00" taborder="12" text="" left="157" top="94" width="212" height="45" cssclass="sta_base"/>
+        <Static id="Static03" taborder="11" text="" left="157" top="50" width="212" height="45" cssclass="sta_base"/>
+        <Static id="Static01" taborder="0" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
+        <Static id="Static00_00" taborder="1" text="학생정보 조회" left="5" top="0" width="127" height="34" cssclass="sta_img_circle01"/>
         <Combo id="cbo_stdYear" taborder="2" text="Combo00" left="182" top="60" width="168" height="30" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00_01" taborder="3" text="학년" left="7" top="50" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
-        <Static id="Static02" taborder="4" text="학과" left="7" top="94" width="153" height="45" cssclass="sta_gray"/>
+        <Static id="Static00_01" taborder="3" text="학년" left="5" top="50" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
+        <Static id="Static02" taborder="4" text="학과" left="5" top="94" width="153" height="45" cssclass="sta_gray"/>
         <Combo id="cbo_department" taborder="5" text="Combo00" left="182" top="102" width="169" height="30" codecolumn="code" datacolumn="name" innerdataset="ds_department" displaynulltext="--선택--" onitemchanged="cbo_department_onitemchanged"/>
         <Combo id="cbo_lecTitle" taborder="6" text="Combo00" left="532" top="60" width="192" height="30" codecolumn="code" datacolumn="name" innerdataset="ds_lecTitle" displaynulltext="--선택--"/>
-        <Button id="btn_search" taborder="7" text="조회" left="860" top="51" width="99" height="29" onclick="btn_search_onclick"/>
-        <Grid id="Grid00" taborder="8" left="7" top="157" width="1073" height="543" binddataset="ds_crDetail" autofittype="col">
+        <Button id="btn_search" taborder="7" text="조회" left="860" top="51" width="99" height="29" onclick="btn_search_onclick" cssclass="btn_WF_gantt01"/>
+        <Grid id="Grid00" taborder="8" left="5" top="157" width="1073" height="543" binddataset="ds_crDetail" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -38,20 +38,20 @@
                 <Cell col="5" text="학년"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:lec_code"/>
-                <Cell col="1" text="bind:title"/>
-                <Cell col="2" text="bind:id"/>
-                <Cell col="3" text="bind:dept_title"/>
-                <Cell col="4" text="bind:name"/>
-                <Cell col="5" text="bind:std_year"/>
+                <Cell text="bind:lec_code" textAlign="center"/>
+                <Cell col="1" text="bind:title" textAlign="center"/>
+                <Cell col="2" text="bind:id" textAlign="center"/>
+                <Cell col="3" text="bind:dept_title" textAlign="center"/>
+                <Cell col="4" text="bind:name" textAlign="center"/>
+                <Cell col="5" text="bind:std_year" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_reset" taborder="9" text="초기화" left="751" top="51" width="99" height="29" onclick="btn_reset_onclick"/>
-        <Static id="Static00_01_00" taborder="13" text="강의명" left="370" top="50" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
-        <Static id="Static00_01_00_00" taborder="14" text="이름" left="370" top="94" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
-        <Static id="Static03_01_00" taborder="16" text="" left="522" top="94" width="212" height="45" cssclass="sta_base"/>
+        <Button id="btn_reset" taborder="9" text="초기화" left="751" top="51" width="99" height="29" onclick="btn_reset_onclick" cssclass="btn_WF_gantt01"/>
+        <Static id="Static00_01_00" taborder="13" text="강의명" left="368" top="50" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
+        <Static id="Static00_01_00_00" taborder="14" text="이름" left="368" top="94" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
+        <Static id="Static03_01_00" taborder="16" text="" left="520" top="94" width="212" height="45" cssclass="sta_base"/>
         <Edit id="edt_name" taborder="10" left="532" top="102" width="192" height="30"/>
         <Button id="btn_excel1" taborder="17" text="엑셀" left="933" top="126" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel1_onclick"/>
         <Static id="Static02_01_03" taborder="18" text="총" left="999" top="126" width="11" height="26" verticalAlign="middle"/>

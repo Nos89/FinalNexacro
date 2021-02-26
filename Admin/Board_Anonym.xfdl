@@ -30,7 +30,7 @@
         <Button id="btn_search" taborder="3" left="279" top="56" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
         <Static id="Static12" taborder="4" left="0" top="621" width="1090" height="29" text=""/>
         <Div id="div_page" taborder="5" left="288" top="580" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
-        <Grid id="Grid00" taborder="6" left="10" top="90" width="1070" height="480" binddataset="ds_board" autofittype="col" fillareatype="linerow" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick">
+        <Grid id="Grid00" taborder="6" left="10" top="90" width="1070" height="480" binddataset="ds_board" autofittype="col" fillareatype="linerow" onheadclick="Grid00_onheadclick" oncelldblclick="Grid00_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -184,7 +184,7 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 
 // 게시글 팝업
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	let sCol = obj.getCellProperty("body",e.cell,"text").replace("bind:","");
 	let nSeq = this.ds_board.getColumn(e.row,"seq");

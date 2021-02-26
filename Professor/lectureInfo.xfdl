@@ -3,13 +3,13 @@
   <Form id="lectureInfo" width="1090" height="650" titletext="New Form" onclick="lectureInfo_onclick" onload="lectureInfo_onload">
     <Layouts>
       <Layout height="650" width="1090">
-        <Static id="Static02" taborder="11" text="" left="132" top="43" width="238" height="40" cssclass="sta_base"/>
-        <Static id="Static02_00" taborder="12" text="" left="844" top="43" width="238" height="40" cssclass="sta_base"/>
-        <Static id="Static02_01" taborder="13" text="" left="488" top="43" width="238" height="40" cssclass="sta_base"/>
-        <Combo id="cbo_year" taborder="3" text="Combo00" left="143" top="48" width="150" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00_00" taborder="0" text="강의정보" left="7" top="4" width="127" height="36" cssclass="sta_img_circle01"/>
-        <Static id="Static01" taborder="1" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
-        <Grid id="Grid00" taborder="2" left="10" top="131" width="1069" height="509" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
+        <Static id="Static02" taborder="11" text="" left="124" top="43" width="238" height="40" cssclass="sta_base"/>
+        <Static id="Static02_00" taborder="12" text="" left="836" top="43" width="238" height="40" cssclass="sta_base"/>
+        <Static id="Static02_01" taborder="13" text="" left="480" top="43" width="238" height="40" cssclass="sta_base"/>
+        <Combo id="cbo_year" taborder="3" text="Combo00" left="133" top="48" width="150" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00_00" taborder="0" text="강의정보" left="5" top="0" width="127" height="34" cssclass="sta_img_circle01"/>
+        <Static id="Static01" taborder="1" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
+        <Grid id="Grid00" taborder="2" left="5" top="131" width="1069" height="509" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -43,28 +43,28 @@
                 <Cell col="10" text="강의구분"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:currow+1"/>
-                <Cell col="1" text="bind:oc_code"/>
-                <Cell col="2" text="bind:name"/>
+                <Cell text="expr:currow+1" textAlign="center"/>
+                <Cell col="1" text="bind:oc_code" textAlign="center"/>
+                <Cell col="2" text="bind:name" textAlign="center"/>
                 <Cell col="3" text="bind:oc_targetlevel" displaytype="normal" maskedittype="string" textAlign="center"/>
-                <Cell col="4" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년"/>
-                <Cell col="5" text="bind:oc_semester" displaytype="mask" maskedittype="string" maskeditformat="#학기"/>
-                <Cell col="6" text="bind:oc_part"/>
-                <Cell col="7" text="bind:oc_is_close"/>
+                <Cell col="4" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년" textAlign="center"/>
+                <Cell col="5" text="bind:oc_semester" displaytype="mask" maskedittype="string" maskeditformat="#학기" textAlign="center"/>
+                <Cell col="6" text="bind:oc_part" textAlign="center"/>
+                <Cell col="7" text="bind:oc_is_close" textAlign="center"/>
                 <Cell col="8" displaytype="buttoncontrol" edittype="button" text="미리보기"/>
-                <Cell col="9" text="bind:oc_schedule"/>
-                <Cell col="10" text="bind:isu"/>
+                <Cell col="9" text="bind:oc_schedule" textAlign="center"/>
+                <Cell col="10" text="bind:isu" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Combo id="cbo_target" taborder="4" text="Combo01" left="500" top="48" width="150" height="31" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Combo id="cbo_semester" taborder="5" text="Combo02" left="857" top="48" width="150" height="30" innerdataset="ds_semester" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
-        <Static id="Static00" taborder="6" text="학기" left="725" top="43" width="120" height="40" cssclass="sta_gray"/>
-        <Static id="Static00_01" taborder="7" text="학년" left="369" top="43" width="120" height="40" cssclass="sta_gray"/>
-        <Static id="Static00_01_00" taborder="8" text="년도" left="13" top="43" width="120" height="40" cssclass="sta_gray"/>
-        <Button id="btn_search" taborder="9" text="조회" left="890" top="96" width="85" height="24" onclick="btn_search_onclick"/>
-        <Button id="btn_reset" taborder="10" text="초기화" left="985" top="96" width="85" height="25" onclick="btn_reset_onclick"/>
+        <Combo id="cbo_target" taborder="4" text="Combo01" left="490" top="48" width="150" height="31" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Combo id="cbo_semester" taborder="5" text="Combo02" left="847" top="48" width="150" height="30" innerdataset="ds_semester" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
+        <Static id="Static00" taborder="6" text="학기" left="717" top="43" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static00_01" taborder="7" text="학년" left="361" top="43" width="120" height="40" cssclass="sta_gray"/>
+        <Static id="Static00_01_00" taborder="8" text="년도" left="5" top="43" width="120" height="40" cssclass="sta_gray"/>
+        <Button id="btn_search" taborder="9" text="조회" left="890" top="96" width="85" height="24" onclick="btn_search_onclick" cssclass="btn_WF_gantt01"/>
+        <Button id="btn_reset" taborder="10" text="초기화" left="985" top="96" width="85" height="25" onclick="btn_reset_onclick" cssclass="btn_WF_gantt01"/>
         <Button id="btn_excel1" taborder="14" text="엑셀" left="726" top="95" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel1_onclick"/>
         <Static id="Static02_01_03" taborder="15" text="총" left="792" top="95" width="11" height="26" verticalAlign="middle"/>
         <Static id="sta_count00" taborder="16" left="812" top="95" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>

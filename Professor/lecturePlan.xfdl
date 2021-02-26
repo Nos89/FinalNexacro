@@ -3,9 +3,9 @@
   <Form id="lecturePlan" width="1090" height="650" titletext="New Form" onload="lecturePlan_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
-        <Static id="Static01" taborder="0" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
-        <Static id="Static00_00" taborder="1" text="강의계획서작성" left="7" top="4" width="127" height="36" cssclass="sta_img_circle01"/>
-        <Grid id="Grid00" taborder="2" left="20" top="104" width="430" height="256" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
+        <Static id="Static01" taborder="0" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
+        <Static id="Static00_00" taborder="1" text="강의계획서작성" left="5" top="0" width="127" height="34" cssclass="sta_img_circle01"/>
+        <Grid id="Grid00" taborder="2" left="5" top="104" width="430" height="256" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -25,10 +25,10 @@
                 <Cell col="3" text="교수번호"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:oc_code"/>
-                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년"/>
-                <Cell col="2" text="bind:oc_semester"/>
-                <Cell col="3" text="bind:oc_pro_code"/>
+                <Cell text="bind:oc_code" textAlign="center"/>
+                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년" textAlign="center"/>
+                <Cell col="2" text="bind:oc_semester" textAlign="center"/>
+                <Cell col="3" text="bind:oc_pro_code" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
@@ -36,7 +36,7 @@
         <Static id="Static03" taborder="3" text="" left="460" top="78" width="622" height="564" background="#ffffff" border="1px solid #b4bcc2"/>
         <Static id="Static04" taborder="4" text="" left="460" top="117" width="619" height="527" border="1px solid black,0px none,0px none"/>
         <Static id="Static05" taborder="5" text="미리보기" left="480" top="84" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;"/>
-        <Button id="btn_modify" taborder="6" text="수정" left="964" top="86" width="113" height="25" onclick="btn_modify_onclick"/>
+        <Button id="btn_modify" taborder="6" text="수정" left="964" top="86" width="113" height="25" onclick="btn_modify_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static06" taborder="7" text="교과목명" left="484" top="124" width="87" height="24"/>
         <Static id="Static06_00" taborder="8" text="교수명" left="548" top="163" width="87" height="25"/>
         <Static id="Static06_00_00_00" taborder="9" text="과목코드" left="765" top="162" width="87" height="25"/>
@@ -56,7 +56,7 @@
         <Static id="Static08_00_00" taborder="23" text="강의방법" left="485" top="510" width="188" height="23" font="normal bold 10pt/normal &quot;Arial&quot;"/>
         <Static id="Static08_00_00_00" taborder="24" text="교재" left="802" top="510" width="188" height="23" font="normal bold 10pt/normal &quot;Arial&quot;"/>
         <TextArea id="TextArea01" taborder="25" left="800" top="540" width="275" height="90" onchanged="TextArea01_onchanged" readonly="true"/>
-        <Button id="btn_write" taborder="26" text="새로 작성" left="841" top="86" width="113" height="25" onclick="btn_write_onclick"/>
+        <Button id="btn_write" taborder="26" text="새로 작성" left="841" top="86" width="113" height="25" onclick="btn_write_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static07_06" taborder="27" text="강의" left="478" top="448" width="120" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static07_07" taborder="28" text="토론" left="597" top="448" width="120" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static07_08" taborder="29" text="실습" left="716" top="448" width="120" height="25" cssclass="sta_cm_box01C"/>
@@ -87,7 +87,7 @@
         <MaskEdit id="MaskEdit00_00_00" taborder="54" left="830" top="223" width="138" height="25" cssclass="mask_cm_box01C" format="#학기" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
         <Static id="Static06_00_00_00_00_01_00" taborder="55" text="강의실" left="549" top="248" width="87" height="25"/>
         <Static id="Static07_03_00" taborder="56" left="613" top="251" width="138" height="25" cssclass="sta_cm_box01C"/>
-        <Grid id="grd_Lecture" taborder="57" left="20" top="411" width="430" height="229" binddataset="ds_lecture" autofittype="col" oncellclick="grd_Lecture_oncellclick">
+        <Grid id="grd_Lecture" taborder="57" left="5" top="411" width="430" height="229" binddataset="ds_lecture" autofittype="col" oncellclick="grd_Lecture_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -110,16 +110,16 @@
               </Band>
               <Band id="body">
                 <Cell text="expr:currow+1"/>
-                <Cell col="1" text="bind:lec_code"/>
-                <Cell col="2" text="bind:lec_title"/>
+                <Cell col="1" text="bind:lec_code" textAlign="center"/>
+                <Cell col="2" text="bind:lec_title" textAlign="center"/>
                 <Cell col="3" text="expr:dataset.getColumn(currow,&quot;lec_approval&quot;)==1?&quot;승인&quot;:dataset.getColumn(currow,&quot;lec_approval&quot;)==0?&quot;미승인&quot;:&quot;반려&quot;" displaytype="normal" textAlign="center"/>
-                <Cell col="4" text="bind:lec_deny_reason"/>
+                <Cell col="4" text="bind:lec_deny_reason" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static05_00" taborder="58" text="개설강의" left="20" top="78" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
-        <Static id="Static05_00_00" taborder="59" text="강의계획서" left="20" top="375" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
+        <Static id="Static05_00" taborder="58" text="개설강의" left="5" top="78" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
+        <Static id="Static05_00_00" taborder="59" text="강의계획서" left="5" top="385" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
         <Edit id="Edit00" taborder="60" left="613" top="191" width="138" height="25" onchanged="Edit00_onchanged" enable="false" textAlign="center"/>
         <Static id="Static07_03_00_00" taborder="61" left="831" top="281" width="138" height="25" cssclass="sta_cm_box01C"/>
         <Static id="Static06_00_00_00_00_01_00_00" taborder="62" text="이수구분" left="767" top="278" width="87" height="25"/>
