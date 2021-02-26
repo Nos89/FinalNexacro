@@ -18,13 +18,13 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell displaytype="imagecontrol" text="imagerc::img_WF_mailClose_24.png"/>
+                <Cell displaytype="imagecontrol" text="theme://images/img_WF_MailClose_24.png"/>
                 <Cell col="1" text="번호"/>
                 <Cell col="2" text="제목"/>
                 <Cell col="3" text="수신일"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:read" expr="expr:read=='0'?'imagerc::img_WF_mailClose_16.png':'imagerc::img_WF_mailOpen_16.png'" displaytype="imagecontrol"/>
+                <Cell text="bind:read" expr="expr:read=='0'?'theme://images/img_WF_MailClose_16.png':'theme://images/img_WF_MailOpen_16.png'" displaytype="imagecontrol"/>
                 <Cell col="1" text="bind:mail_seq" padding="0px 5px"/>
                 <Cell col="2" text="bind:title" padding="0px 5px"/>
                 <Cell col="3" text="bind:received_date" displaytype="date"/>
@@ -44,8 +44,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Static id="sta_userInfo" taborder="3" left="10" top="50" width="310" height="31" background="url('imagerc::img_WF_mailClose_24.png') no-repeat 2% center" padding="0px 0px 0px 35px"/>
-        <Static id="Static01" taborder="5" left="0" right="0" bottom="0" height="30" text=""/>
+        <Static id="sta_userInfo" taborder="3" left="10" top="50" width="310" height="31" background="url('theme://images/img_WF_MailClose_24.png') no-repeat 2% center" padding="0px 0px 0px 35px"/>
         <Radio id="rdo_read" taborder="4" left="330" top="56" width="240" height="24" index="0" text="전체" value="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" onitemchanged="rdo_read_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -68,7 +67,8 @@
             </Rows>
           </Dataset>
         </Radio>
-        <Button id="btn_refresh" taborder="6" text="새로고침" left="1000" top="56" width="80" height="24" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_refresh" taborder="5" text="새로고침" left="1000" top="56" width="80" height="24" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="Static12" taborder="6" left="0" top="621" width="1090" height="29" text=""/>
       </Layout>
     </Layouts>
     <Objects>

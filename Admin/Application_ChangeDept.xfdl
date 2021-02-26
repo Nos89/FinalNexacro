@@ -24,10 +24,10 @@
                 <Cell col="3" text="신청일"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:seq" padding="0px 5px"/>
-                <Cell col="1" text="bind:id" padding="0px 5px"/>
-                <Cell col="2" text="bind:name" padding="0px 5px"/>
-                <Cell col="3" text="bind:apply_date" calendardateformat="yyyy.MM.dd" displaytype="date" padding="0px 5px"/>
+                <Cell text="bind:seq" padding="0px 5px" font="12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+                <Cell col="1" text="bind:id" padding="0px 5px" font="12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+                <Cell col="2" text="bind:name" padding="0px 5px" font="12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+                <Cell col="3" text="bind:apply_date" calendardateformat="yyyy.MM.dd" displaytype="date" padding="0px 5px" font="12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
               </Band>
             </Format>
           </Formats>
@@ -85,8 +85,8 @@
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static01" taborder="4" left="0" height="30" width="1090" bottom="0"/>
-        <Button id="btn_refresh" taborder="5" text="새로고침" left="1000" top="38" width="80" height="24" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01"/>
+        <Button id="btn_refresh" taborder="4" text="새로고침" left="1000" top="38" width="80" height="24" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01"/>
+        <Static id="Static12" taborder="5" left="0" top="621" width="1090" height="29" text=""/>
       </Layout>
     </Layouts>
     <Objects>
