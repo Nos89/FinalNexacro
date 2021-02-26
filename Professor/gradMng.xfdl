@@ -55,7 +55,7 @@
           </Formats>
         </Grid>
         <Static id="Static01" taborder="9" text="" left="565" top="141" width="510" height="509" border="1px solid #b4bcc2" onclick="Static01_onclick"/>
-        <Button id="btn_search" taborder="10" text="조회" left="734" top="58" width="66" height="24" onclick="btn_search_onclick"/>
+        <Button id="btn_search" taborder="10" text="조회" left="734" top="58" width="66" height="24" onclick="btn_search_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static04" taborder="11" text="학번" left="578" top="200" width="100" height="30" cssclass="sta_gray"/>
         <Static id="sta_stdId" taborder="12" text="" left="677" top="200" width="140" height="30" cssclass="sta_base" textAlign="center"/>
         <Static id="sta_stdDeptTitle" taborder="13" text="" left="915" top="200" width="140" height="30" cssclass="sta_base" textAlign="center"/>
@@ -124,15 +124,15 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_cancle" taborder="57" text="취소" left="679" top="615" width="127" height="29" onclick="btn_cancle_onclick"/>
-        <Button id="btn_ok" taborder="58" text="완료" left="840" top="615" width="127" height="29" onclick="btn_ok_onclick"/>
-        <Button id="btn_attend" taborder="59" text="출결조회" left="902" top="59" width="98" height="23" onclick="btn_attend_onclick"/>
+        <Button id="btn_cancle" taborder="57" text="취소" left="679" top="615" width="127" height="29" onclick="btn_cancle_onclick" cssclass="btn_WF_gantt01"/>
+        <Button id="btn_ok" taborder="58" text="완료" left="840" top="615" width="127" height="29" onclick="btn_ok_onclick" cssclass="btn_WF_gantt01"/>
+        <Button id="btn_attend" taborder="59" text="출결조회" left="902" top="59" width="98" height="23" onclick="btn_attend_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static00_00" taborder="60" text="성적관리" left="5" top="0" width="116" height="34" cssclass="sta_img_circle01"/>
         <Static id="Static01_00" taborder="61" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
         <Static id="Static04_01" taborder="62" text="성적입력/수정" left="575" top="148" width="171" height="42" cssclass="sta_img_circle01"/>
         <Button id="btn_add" taborder="63" left="495" top="381" width="25" height="25" cssclass="btn_WF_add01" text="" onclick="btn_add_onclick"/>
         <Button id="btn_delete" taborder="64" left="523" top="381" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick"/>
-        <Button id="btn_reset" taborder="65" text="초기화" left="816" top="58" width="69" height="24" onclick="btn_reset_onclick"/>
+        <Button id="btn_reset" taborder="65" text="초기화" left="816" top="58" width="69" height="24" onclick="btn_reset_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static00_01_00_00" taborder="66" text="과목코드" left="343" top="89" width="120" height="40" cssclass="sta_gray"/>
         <Combo id="cbo_lecCode" taborder="67" text="Combo00" left="475" top="98" width="135" height="24" innerdataset="ds_lecCode" codecolumn="code" datacolumn="name" displaynulltext="--선택--" onitemchanged="cbo_lecCode_onitemchanged"/>
         <Combo id="cbo_gradeCode" taborder="68" left="962" top="578" width="83" height="25" innerdataset="ds_gradeCard" codecolumn="grade_code" datacolumn="grade_code" index="-1" value="all" text="전체" displaynulltext="--선택--" onitemchanged="cbo_gradeCode_onitemchanged"/>

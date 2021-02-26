@@ -13,7 +13,7 @@
         <Static id="Static02" taborder="4" text="학과" left="5" top="94" width="153" height="45" cssclass="sta_gray"/>
         <Combo id="cbo_department" taborder="5" text="Combo00" left="182" top="102" width="169" height="30" codecolumn="code" datacolumn="name" innerdataset="ds_department" displaynulltext="--선택--" onitemchanged="cbo_department_onitemchanged"/>
         <Combo id="cbo_lecTitle" taborder="6" text="Combo00" left="532" top="60" width="192" height="30" codecolumn="code" datacolumn="name" innerdataset="ds_lecTitle" displaynulltext="--선택--"/>
-        <Button id="btn_search" taborder="7" text="조회" left="860" top="51" width="99" height="29" onclick="btn_search_onclick"/>
+        <Button id="btn_search" taborder="7" text="조회" left="860" top="51" width="99" height="29" onclick="btn_search_onclick" cssclass="btn_WF_gantt01"/>
         <Grid id="Grid00" taborder="8" left="5" top="157" width="1073" height="543" binddataset="ds_crDetail" autofittype="col">
           <Formats>
             <Format id="default">
@@ -48,7 +48,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_reset" taborder="9" text="초기화" left="751" top="51" width="99" height="29" onclick="btn_reset_onclick"/>
+        <Button id="btn_reset" taborder="9" text="초기화" left="751" top="51" width="99" height="29" onclick="btn_reset_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static00_01_00" taborder="13" text="강의명" left="368" top="50" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
         <Static id="Static00_01_00_00" taborder="14" text="이름" left="368" top="94" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
         <Static id="Static03_01_00" taborder="16" text="" left="520" top="94" width="212" height="45" cssclass="sta_base"/>

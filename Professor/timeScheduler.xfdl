@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="timeScheduler" width="680" height="650" titletext="New Form" onload="timeScheduler_onload">
+  <Form id="timeScheduler" width="680" height="560" titletext="New Form" onload="timeScheduler_onload">
     <Layouts>
-      <Layout height="650" mobileorientation="landscape" width="680">
-        <Grid id="Grid00" taborder="0" left="0" top="0" width="680" height="593" binddataset="ds_scheduler" oncellclick="Grid00_oncellclick" autofittype="col" cellclickbound="cell" autosizingtype="row">
+      <Layout height="560" mobileorientation="landscape" width="680">
+        <Grid id="Grid00" taborder="0" left="0" top="0" width="680" height="504" binddataset="ds_scheduler" oncellclick="Grid00_oncellclick" autofittype="col" cellclickbound="cell" autosizingtype="row">
           <Formats>
             <Format id="default">
               <Columns>
@@ -18,7 +18,7 @@
               </Columns>
               <Rows>
                 <Row size="35" band="head"/>
-                <Row size="35"/>
+                <Row size="40"/>
               </Rows>
               <Band id="head">
                 <Cell text="구분"/>
@@ -43,7 +43,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button00" taborder="1" text="확인" left="276" top="603" width="134" height="38" onclick="Button00_onclick"/>
+        <Button id="Button00" taborder="1" text="확인" left="273" top="514" width="134" height="38" onclick="Button00_onclick" cssclass="btn_WF_gantt01"/>
       </Layout>
     </Layouts>
     <Objects>

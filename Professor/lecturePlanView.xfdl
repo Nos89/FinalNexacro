@@ -8,7 +8,7 @@
         <Edit id="edt_title" taborder="2" left="101" top="73" width="461" height="29" onchanged="Edit00_onchanged" readonly="true"/>
         <Static id="Static17" taborder="3" text="강의 개요 및 목표" left="13" top="260" width="176" height="29" font="normal bold 10pt/normal &quot;Arial&quot;"/>
         <TextArea id="TextArea00" taborder="4" left="11" top="300" width="609" height="86" onchanged="TextArea00_onchanged" readonly="true"/>
-        <Button id="btn_close" taborder="5" text="닫기" left="234" top="643" width="152" height="27" onclick="btn_close_onclick"/>
+        <Button id="btn_close" taborder="5" text="닫기" left="234" top="643" width="152" height="27" onclick="btn_close_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static18" taborder="6" text="Static18" left="7" top="37" width="613" height="3" border="1px solid black,0px none,0px none"/>
         <Static id="Static08_00" taborder="7" text="평가기준" left="21" top="405" width="188" height="23"/>
         <Static id="Static08_00_00" taborder="8" text="강의방법" left="25" top="490" width="188" height="23"/>
