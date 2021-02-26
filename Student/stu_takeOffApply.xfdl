@@ -10,14 +10,12 @@
         <Static id="Static02" taborder="4" text="학번/성명" left="10" top="37" width="60" height="30"/>
         <Static id="Static00_00" taborder="5" text="휴학신청정보" left="4" top="74" height="34" cssclass="sta_img_check01" right="6"/>
         <Static id="Static01_00" taborder="6" text="" left="4" top="110" height="86" background="#c8ddee" width="1080"/>
-        <Combo id="Combo00" taborder="7" left="87" top="158" width="146" height="30"/>
-        <Calendar id="cal_applyDay" taborder="8" left="87" top="118" width="146" height="30" enable="false"/>
-        <Static id="Static02_00" taborder="9" text="작성일자" left="19" top="120" width="60" height="30"/>
-        <Static id="Static02_00_00" taborder="10" text="승인구분" left="19" top="158" width="60" height="30"/>
-        <Button id="btn_apply" taborder="11" text="신청" left="924" top="4" width="56" height="26" onclick="btn_apply_onclick" cssclass="btn_apply"/>
-        <Button id="btn_applyCancel" taborder="12" text="신청취소" left="990" top="4" width="70" height="26" cssclass="btn_apply"/>
-        <Static id="Static02_00_00_00" taborder="13" text="휴학년도" left="243" top="120" width="60" height="30"/>
-        <Combo id="Combo00_00" taborder="14" text="2021" left="303" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="2021" index="0">
+        <Calendar id="cal_applyDay" taborder="7" left="87" top="118" width="146" height="30" enable="false"/>
+        <Static id="Static02_00" taborder="8" text="작성일자" left="19" top="120" width="60" height="30"/>
+        <Button id="btn_apply" taborder="9" text="신청" left="924" top="4" width="56" height="26" onclick="btn_apply_onclick" cssclass="btn_apply"/>
+        <Button id="btn_applyCancel" taborder="10" text="신청취소" left="990" top="4" width="70" height="26" cssclass="btn_apply"/>
+        <Static id="Static02_00_00_00" taborder="11" text="휴학년도" left="243" top="120" width="60" height="30"/>
+        <Combo id="Combo00_00" taborder="12" text="2021" left="303" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="2021" index="0">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -43,8 +41,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static02_00_00_00_00" taborder="15" text="휴학학기" left="392" top="120" width="60" height="30"/>
-        <Combo id="Combo00_00_00" taborder="16" text="1학기" left="452" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1학기">
+        <Static id="Static02_00_00_00_00" taborder="13" text="휴학학기" left="392" top="120" width="60" height="30"/>
+        <Combo id="Combo00_00_00" taborder="14" text="1학기" left="452" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1학기">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -62,8 +60,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static02_00_00_00_00_00" taborder="17" text="복학예정년도" left="544" top="120" width="76" height="30"/>
-        <Combo id="Combo00_00_00_00" taborder="18" text="2021" left="620" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
+        <Static id="Static02_00_00_00_00_00" taborder="15" text="복학예정년도" left="544" top="120" width="76" height="30"/>
+        <Combo id="Combo00_00_00_00" taborder="16" text="2021" left="620" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -89,8 +87,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static02_00_00_00_01" taborder="19" text="휴학사유" left="243" top="158" width="60" height="30"/>
-        <Combo id="Combo00_01" taborder="20" text="" left="303" top="158" width="146" height="30" value="" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Static id="Static02_00_00_00_01" taborder="17" text="휴학사유" left="19" top="158" width="60" height="30"/>
+        <Combo id="Combo00_01" taborder="18" text="" left="87" top="158" width="146" height="30" value="" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -108,17 +106,19 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static00_00_00" taborder="21" text="안내사항" left="5" top="210" height="20" cssclass="sta_img_horn" right="5"/>
-        <Static id="Static02_01" taborder="22" text="" left="5" top="244" height="316" border="1px solid" width="1079"/>
+        <Static id="Static00_00_00" taborder="19" text="안내사항" left="5" top="210" height="20" cssclass="sta_img_horn" right="5"/>
+        <Div id="Div00" taborder="20" left="4" top="244" width="1080" height="396" background="RGBA(143,144,147,0.40)" formscrollbartype="none none" text="">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="가.신청기간&#13;&#10;&#13;&#10;휴학 : 2021.03.08.(월) 09:00 ~ 03.10(화) 17:00까지&#13;&#10;&#13;&#10;단, 부득이한 경우 2021.03.11.(목) 18:00까지 신청 가능&#13;&#10;&#13;&#10;(1학년은 공지사항의 역복학자 전공배정관련 안내(2021.03.08.) 참조)&#13;&#10;&#13;&#10;복학 : 2021.03.08.(월) 09:00 ~ 03.10(화) 18:00까지&#13;&#10;&#13;&#10;단, 총 수업일수 3/4이상 출석해야 성적취득 가능함&#13;&#10;&#13;&#10;나. 대상 : 재학생 학생 전체&#13;&#10;&#13;&#10;다. 신청 : 차세대포털시스템 – 종합정보시스템 – 학생서비스 - 학적증명 – 휴학신청 / 복학신청&#13;&#10;&#13;&#10;건축학과(전공)중 5년제 프로그램을 이수하는 학생은 반드시 학과상담후 복학신청해야 함" left="6" top="6" width="1064" height="384" padding="25px 0px 0px 25px" font="16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="left" verticalAlign="top" background="#c8ddee" border="1px solid black"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Bind>
       <BindItem id="item0" compid="Edit00_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
       <BindItem id="item1" compid="Edit00" propid="value" datasetid="ds_stuInfo" columnid="id"/>
-      <BindItem id="item2" compid="Combo00_00" propid="value" datasetid="ds_takeOff" columnid="takeOffYear"/>
-      <BindItem id="item3" compid="Combo00_00_00" propid="value" datasetid="ds_takeOff" columnid="takeOffSemester"/>
-      <BindItem id="item4" compid="Combo00_00_00_00" propid="value" datasetid="ds_takeOff" columnid="expectedReturnYear"/>
-      <BindItem id="item5" compid="Combo00_01" propid="value" datasetid="ds_takeOff" columnid="reason"/>
     </Bind>
     <Objects>
       <Dataset id="ds_stuInfo">
@@ -201,6 +201,11 @@ this.fn_Applycallback=function(id,errCode,errMsg)
 	}else{
 	alert("이미 신청된 내역이 있습니다.");
 	}
+};
+
+this.Div00_Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
 };
 ]]></Script>
   </Form>

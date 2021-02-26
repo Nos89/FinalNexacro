@@ -6,7 +6,7 @@
         <Div id="div_left" taborder="0" left="0" top="85" width="190" bottom="5">
           <Layouts>
             <Layout>
-              <Grid id="gd_left" taborder="0" left="0" width="190" binddataset="ds_directory" treeusecheckbox="false" autofittype="col" oncelldblclick="div_dir_Grid00_oncelldblclick" top="75" bottom="0" oncellclick="div_left_gd_left_oncellclick">
+              <Grid id="gd_left" taborder="0" left="0" width="190" binddataset="ds_directory" treeusecheckbox="false" autofittype="col" oncelldblclick="div_dir_Grid00_oncelldblclick" top="75" bottom="5" oncellclick="div_left_gd_left_oncellclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -26,13 +26,13 @@
             </Layout>
           </Layouts>
         </Div>
-        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="1109" top="115" width="451" height="135" border="1px solid black" background="#ffffff">
+        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="1109" top="115" width="400" height="100" background="#ffffff" borderRadius="5px" border="1px solid #7a7a7a" opacity="0.8">
           <Layouts>
             <Layout>
-              <Edit id="Edit00" taborder="0" left="5" top="31" width="272" height="30" displaynulltext="폴더명을 입력해주세요." text="qwfqwf" onkeydown="PopupDiv00_Edit00_onkeydown"/>
-              <Button id="btn_createFolder" taborder="1" text="생성" left="277" top="31" width="68" height="30" onclick="PopupDiv00_btn_createFolder_onclick"/>
-              <Static id="st_validateFolder" taborder="2" left="6" top="68" width="339" height="26"/>
-              <Static id="st_crtFolder" taborder="3" text="폴더명을 입력해주세요." left="9" top="0" width="336" height="27"/>
+              <Edit id="Edit00" taborder="0" left="25" top="34" width="272" height="30" displaynulltext="폴더명을 입력해주세요." text="qwfqwf" onkeydown="PopupDiv00_Edit00_onkeydown" borderRadius="3px" opacity="1"/>
+              <Button id="btn_createFolder" taborder="1" text="생성" left="302" top="34" width="68" height="30" onclick="PopupDiv00_btn_createFolder_onclick" cssclass="btn_logout" borderRadius="3px" opacity="1" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="st_validateFolder" taborder="2" left="25" top="64" width="340" height="26"/>
+              <Static id="st_crtFolder" taborder="3" text="폴더명을 입력해주세요." left="25" top="4" width="336" height="27"/>
             </Layout>
           </Layouts>
         </PopupDiv>
@@ -42,7 +42,7 @@
             <Layout>
               <Static id="st_dirName" taborder="0" left="20" top="11" width="170" height="29"/>
               <Static id="st_dirID" taborder="1" left="207" top="9" width="42" height="23" visible="false"/>
-              <Div id="div_inDir" taborder="2" left="11" top="80" border="1px solid black" bottom="5" right="5" url="Webhard::frmIconView.xfdl" text="" onsize="div_file_div_inDir_onsize" onrbuttondown="div_file_div_inDir_onrbuttondown"/>
+              <Div id="div_inDir" taborder="2" left="10" top="80" border="1px solid #cccccc" bottom="5" right="5" url="Webhard::frmIconView.xfdl" text="" onsize="div_file_div_inDir_onsize" onrbuttondown="div_file_div_inDir_onrbuttondown" boxShadow="3px 3px 30px #cccccc" color="#ffffff" borderRadius="3px"/>
               <Button id="btnListView" taborder="3" top="50" width="26" height="25" cssclass="btnListView" onclick="div_file_btnListView_onclick" right="11"/>
               <Button id="btnIconView" taborder="4" top="50" height="25" cssclass="btnIconView" onclick="div_file_btnIconView_onclick" width="26" right="37"/>
             </Layout>
@@ -93,8 +93,8 @@
           <Layouts>
             <Layout>
               <Div id="div_logo" taborder="0" left="0" top="0" width="90" bottom="0" cssclass="webhardLogo"/>
-              <Button id="btnUpload" taborder="1" text="업로드" left="280" top="5" width="70" height="50" onclick="div_file_btnUpload_onclick" cssclass="upload"/>
-              <Button id="btn_crtFolder" taborder="2" left="364" top="10" width="66" height="45" onclick="div_file_btn_crtFolder_onclick" cssclass="crtFolder"/>
+              <Button id="btnUpload" taborder="1" left="960" top="10" width="50" height="50" onclick="div_file_btnUpload_onclick" cssclass="btn_WF_Upload01"/>
+              <Button id="btn_crtFolder" taborder="2" left="1025" top="10" width="50" height="50" onclick="div_file_btn_crtFolder_onclick" cssclass="btn_WF_NewFolder01"/>
             </Layout>
           </Layouts>
         </Div>
@@ -774,7 +774,7 @@ this.PopupDiv00_btn_createFolder_onclick = function(obj:nexacro.Button,e:nexacro
 	var nFolder = this.PopupDiv00.form.Edit00.value;
 	this.PopupDiv00.form.st_validateFolder.set_color("red");
 	if( nFolder == null || nFolder == "" ){
-		this.PopupDiv00.form.st_validateFolder.set_text("폴더명을 입력해주세요.");
+		this.PopupDiv00.form.st_validateFolder.set_text("! 폴더명이 없습니다.");
 		return;
 	}
 	var parentID = this.div_file.form.st_dirID.text;

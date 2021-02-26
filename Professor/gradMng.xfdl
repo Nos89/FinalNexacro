@@ -156,6 +156,14 @@
         <MaskEdit id="mask_assignment" taborder="48" left="914" top="410" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
         <MaskEdit id="mask_attitude" taborder="49" left="914" top="488" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
         <MaskEdit id="mask_other1" taborder="52" left="914" top="527" width="120" height="30" onchanged="mask_edit_onchanged" oninput="MaskEdit_oninput" value="0"/>
+        <Button id="btn_excel1" taborder="87" text="엑셀" left="400" top="132" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel1_onclick"/>
+        <Static id="Static02_01_03" taborder="88" text="총" left="464" top="130" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="89" left="489" top="130" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_00_00_00" taborder="90" text="건" left="538" top="130" width="11" height="26" verticalAlign="middle"/>
+        <Button id="btn_excel2" taborder="91" text="엑셀" left="340" top="384" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel2_onclick"/>
+        <Static id="Static02_01_03_00" taborder="92" text="총" left="406" top="384" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00_00" taborder="93" left="426" top="384" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_00_00_00_00" taborder="94" text="건" left="475" top="384" width="11" height="26" verticalAlign="middle"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -351,6 +359,9 @@ this.fn_callback = function(id, errCode, errMsg){
 		this.ds_crDetail.filter("lec_code=='xxxxxx'");
 		this.ds_grade.filter("lec_code=='xxxxxx'");
 		this.btn_reset_onclick();
+
+		this.sta_count00.set_text(this.ds_crDetail.getRowCount());
+		this.sta_count00_00.set_text(this.ds_grade.getRowCount());
 	}else if(id=="gradeAdd" || id=="deleteGrade"){
 		if(errCode==0){
 			alert("잠시후 다시 시도해 주세요");
@@ -361,6 +372,7 @@ this.fn_callback = function(id, errCode, errMsg){
 	}else if(id=="selectGrade"){
 		this.fn_gradeCheck();
 	}else if(id=="updateGrade"){
+		this.sta_count00_00.set_text(this.ds_grade.getRowCount());
 		this.fn_reload();
 	}
 	
@@ -832,6 +844,26 @@ this.grd_grade_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 		return;
 	}
 	this.gfn_gridSort(obj, e);
+};
+
+this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ExcelExportObject1 == null){
+		var id = this.grd_student;
+		this.gfn_export(id,1);
+	}
+	this.objExcelExport.set_exportfilename("학생목록 리스트");
+	this.objExcelExport.exportData();  
+};
+
+this.btn_excel2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ExcelExportObject2 == null){
+		var id = this.grd_grade;
+		this.gfn_export(id,2);
+	}
+	this.objExcelExport.set_exportfilename("성적정보 리스트");
+	this.objExcelExport.exportData();  
 };
 ]]></Script>
     <Bind>

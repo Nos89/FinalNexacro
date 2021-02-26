@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="sample_fileuptransfer_01" left="0" top="0" width="530" height="420" titletext="New Form" border="" background="" onload="sample_fileuptransfer_01_onload">
+  <Form id="sample_fileuptransfer_01" left="0" top="0" width="530" height="450" titletext="New Form" border="" background="" onload="sample_fileuptransfer_01_onload">
     <Layouts>
-      <Layout height="420" width="530" stepcount="0">
+      <Layout height="450" width="530" stepcount="0">
         <Static id="Static00" taborder="2" text="Drop Files Here" left="20" top="80" width="482" height="150" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
-        <Button id="Button00" taborder="0" text="파일 선택" left="20" top="40" width="120" height="30" onclick="Button00_onclick"/>
+        <Button id="Button00" taborder="0" text="파일 선택" left="20" top="35" width="120" height="35" onclick="Button00_onclick" borderRadius="5px" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" cssclass="btn_WF_gantt02"/>
         <Grid id="Grid00" taborder="1" left="20" top="80" width="482" height="150" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop">
           <Formats>
             <Format id="default">
@@ -27,10 +27,10 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button01" taborder="3" text="업로드" left="380" top="40" width="120" height="30" onclick="Button01_onclick"/>
+        <Button id="Button01" taborder="3" text="업로드" left="380" top="35" width="120" height="35" onclick="Button01_onclick" borderRadius="5px" cssclass="btn_logout" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <TextArea id="TextArea00" taborder="4" left="20" top="240" width="482" height="120"/>
         <Static id="st_parentID" taborder="5" left="20" top="7" width="55" height="27" visible="false"/>
-        <Button id="btn_cc" taborder="6" text="취소" left="221" top="379" width="89" height="27" onclick="btn_cc_onclick"/>
+        <Button id="btn_cc" taborder="6" text="취소" left="201" top="390" width="120" height="35" onclick="btn_cc_onclick" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" borderRadius="3px" cssclass="btn_WF_gantt01"/>
       </Layout>
     </Layouts>
     <Objects>

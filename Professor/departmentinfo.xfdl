@@ -60,10 +60,16 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static04_00" taborder="18" text="교수 정보" left="5" top="320" width="171" height="34" cssclass="sta_img_schedule"/>
+        <Static id="Static04_00" taborder="18" text="교수 정보" left="8" top="310" width="171" height="42" cssclass="sta_img_schedule"/>
+        <Button id="btn_excel1" taborder="19" text="엑셀" left="906" top="318" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel1_onclick"/>
+        <Static id="Static02_01_03" taborder="20" text="총" left="972" top="318" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="21" left="992" top="318" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_00_00_00_00" taborder="22" text="건" left="1041" top="318" width="11" height="26" verticalAlign="middle"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.application =null;
+    <Script type="xscript5.1">include "Lib::lib_grid.xjs";
+
+this.application =null;
 this.departmentinfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
@@ -78,9 +84,18 @@ this.departmentinfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 };
 
 this.fn_callback = function(id,errCode,errMsg){
-	
+	this.sta_count00.set_text(this.ds_proList.getRowCount());
 }
-]]></Script>
+
+this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ExcelExportObject1 == null){
+		var id = this.Grid00;
+		this.gfn_export(id,1);
+	}
+	this.objExcelExport.set_exportfilename("교수정보 리스트");
+	this.objExcelExport.exportData();  
+};</Script>
     <Objects>
       <Dataset id="ds_proList">
         <ColumnInfo>

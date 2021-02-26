@@ -19,14 +19,14 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell displaytype="imagecontrol" imagestretch="none" text="imagerc::img_WF_mailClose_24.png"/>
+                <Cell displaytype="imagecontrol" imagestretch="none" text="theme://images/img_WF_MailClose_24.png"/>
                 <Cell col="1" text="번호"/>
                 <Cell col="2" text="제목"/>
                 <Cell col="3" text="수신인"/>
                 <Cell col="4" text="수신일"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:read" expr="expr:read=='0'?'imagerc::img_WF_mailClose_16.png':'imagerc::img_WF_mailOpen_16.png'" displaytype="imagecontrol"/>
+                <Cell text="bind:read" expr="expr:read=='0'?'theme://images/img_WF_MailClose_16.png':'theme://images/img_WF_MailOpen_16.png'" displaytype="imagecontrol"/>
                 <Cell col="1" text="bind:mail_seq" padding="0px 5px"/>
                 <Cell col="2" text="bind:title" padding="0px 5px"/>
                 <Cell col="3" text="bind:receiver" padding="0px 5px"/>
@@ -71,9 +71,9 @@
             </Rows>
           </Dataset>
         </Radio>
-        <Static id="Static01" taborder="4" left="0" right="0" bottom="0" height="30" text=""/>
-        <Button id="btn_refresh" taborder="5" text="새로고침" left="910" top="56" width="80" height="24" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Button id="btn_write" taborder="6" text="메일 작성" left="1000" top="56" width="80" height="24" onclick="btn_write_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_refresh" taborder="4" text="새로고침" left="910" top="56" width="80" height="24" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_write" taborder="5" text="메일 작성" left="1000" top="56" width="80" height="24" onclick="btn_write_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Static id="Static12" taborder="6" left="0" top="621" width="1090" height="29" text=""/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -155,10 +155,6 @@ this.fn_mailSend = function(id,msg)
           <Column id="received_date" type="DATE" size="256"/>
           <Column id="read" type="INT" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row/>
-          <Row/>
-        </Rows>
       </Dataset>
     </Objects>
     <Bind>

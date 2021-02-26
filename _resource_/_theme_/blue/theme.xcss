@@ -106,6 +106,56 @@
 	-nexa-border : 0px none;
 }
 
+.Button.btn_WF_NewFolder01,.Button.btn_WF_NewFolder01[status=focused],.Button.btn_WF_NewFolder01[userstatus=selected]
+{
+	-nexa-edge : url('theme://images/btn_WF_NewFolder01.png');
+	-nexa-border : 0px none;
+	background : transparent;
+}.Button.btn_WF_NewFolder01[status=mouseover]
+{
+	-nexa-edge : url('theme://images/btn_WF_NewFolder01.png');
+	-nexa-border : 1px solid #bfbfbf;
+	background : transparent;
+	border-radius : 1000px;
+	box-shadow : 0px 0px 5px #bababa;
+	
+}.Button.btn_WF_NewFolder02,.Button.btn_WF_NewFolder02[status=focused],.Button.btn_WF_NewFolder02[userstatus=selected]
+{
+	-nexa-edge : url('theme://images/btn_WF_NewFolder02.png');
+	-nexa-border : 0px none;
+	background : transparent;
+}.Button.btn_WF_NewFolder02[status=mouseover]
+{
+	-nexa-edge : url('theme://images/btn_WF_NewFolder02.png');
+	-nexa-border : 1px solid #bfbfbf;
+	background : transparent;
+	border-radius : 1000px;
+	box-shadow : 0px 0px 5px #bababa;
+}
+.Button.btn_WF_Upload01,.Button.btn_WF_Upload01[status=focused],.Button.btn_WF_Upload01[userstatus=selected]
+{
+	-nexa-edge : url('theme://images/btn_WF_Upload01.png');
+	-nexa-border : 0px none;
+	background : transparent;
+}.Button.btn_WF_Upload01[status=mouseover]{
+	-nexa-edge : url('theme://images/btn_WF_Upload01.png');
+	-nexa-border : 1px solid #bfbfbf;
+	background : transparent;
+	border-radius : 1000px;
+	box-shadow : 0px 0px 5px #bababa;	
+}.Button.btn_WF_Upload02,.Button.btn_WF_Upload02[status=focused],.Button.btn_WF_Upload02[userstatus=selected]
+{
+	-nexa-edge : url('theme://images/btn_WF_Upload02.png');
+	-nexa-border : 0px none;
+	background : transparent;
+}.Button.btn_WF_Upload02[status=mouseover]{
+	-nexa-edge : url('theme://images/btn_WF_Upload02.png');
+	-nexa-border : 1px solid #bfbfbf;
+	background : transparent;
+	border-radius : 1000px;
+	box-shadow : 0px 0px 5px #bababa;
+}
+
 .FileUpload
 {
 	/*별도스타일없음*/
@@ -3933,4 +3983,5 @@
 	background : #0a78ff;
 	cursor : pointer;
 }
+
 ]]></XCSS>
