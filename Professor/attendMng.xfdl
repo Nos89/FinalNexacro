@@ -6,7 +6,7 @@
         <Static id="Static02_00" taborder="17" text="" left="472" top="43" width="248" height="40" cssclass="sta_base"/>
         <Static id="Static02" taborder="16" text="" left="116" top="43" width="248" height="40" cssclass="sta_base"/>
         <Static id="Static00" taborder="0" text="출결관리" left="5" top="0" width="1063" height="34" cssclass="sta_img_circle01"/>
-        <Static id="Static01" taborder="1" text="Static01" left="9" top="35" width="1061" height="1" border="1px solid black,0px none,0px none"/>
+        <Static id="Static01" taborder="1" text="Static01" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none"/>
         <Combo id="cbo_title" taborder="2" left="148" top="47" width="162" height="32" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="0" value="all" onitemclick="cbo_title_onitemclick" onitemchanged="cbo_title_onitemchanged" text="전체"/>
         <Combo id="cbo_week" taborder="3" text="1" left="483" top="48" width="87" height="31" innerdataset="ds_week" codecolumn="code" datacolumn="name" index="0" value="1" onitemchanged="cbo_week_onitemchanged"/>
         <Static id="Static00_01" taborder="4" text="주차" left="363" top="43" width="110" height="40" cssclass="sta_gray"/>
@@ -42,15 +42,15 @@
                 <Cell col="8" text="이수구분"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:oc_code"/>
-                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년"/>
+                <Cell text="bind:oc_code" textAlign="center"/>
+                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년" textAlign="center"/>
                 <Cell col="2" text="bind:oc_semester"/>
                 <Cell col="3" text="bind:oc_schedule"/>
-                <Cell col="4" text="bind:oc_part"/>
+                <Cell col="4" text="bind:oc_part" textAlign="center"/>
                 <Cell col="5" text="bind:oc_targetlevel"/>
-                <Cell col="6" text="bind:name"/>
+                <Cell col="6" text="bind:name" textAlign="center"/>
                 <Cell col="7" text="bind:reco_score"/>
-                <Cell col="8" text="bind:isu"/>
+                <Cell col="8" text="bind:isu" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
@@ -79,10 +79,10 @@
                 <Cell col="4" text="학년"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:lec_code"/>
+                <Cell text="bind:lec_code" textAlign="center"/>
                 <Cell col="1" text="bind:title" textAlign="center"/>
-                <Cell col="2" text="bind:id"/>
-                <Cell col="3" text="bind:name"/>
+                <Cell col="2" text="bind:id" textAlign="center"/>
+                <Cell col="3" text="bind:name" textAlign="center"/>
                 <Cell col="4" text="bind:std_year"/>
               </Band>
             </Format>
@@ -114,10 +114,10 @@
                 <Cell col="6" text="주차"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:att_stdId"/>
+                <Cell text="bind:att_stdId" textAlign="center"/>
                 <Cell col="1" text="bind:att_targetLevel"/>
-                <Cell col="2" text="bind:att_deptName"/>
-                <Cell col="3" text="bind:att_stdName"/>
+                <Cell col="2" text="bind:att_deptName" textAlign="center"/>
+                <Cell col="3" text="bind:att_stdName" textAlign="center"/>
                 <Cell col="4" displaytype="calendarcontrol" edittype="date" text="bind:att_date"/>
                 <Cell col="5" text="bind:att_attend" edittype="combo" combodataset="ds_attend" combocodecol="code" combodatacol="name" displaytype="combocontrol"/>
                 <Cell col="6" text="bind:att_week"/>

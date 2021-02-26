@@ -28,10 +28,10 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:check" edittype="checkbox" displaytype="checkboxcontrol"/>
-                <Cell col="1" text="bind:busi_proId"/>
-                <Cell col="2" text="bind:busi_proName"/>
-                <Cell col="3" text="bind:busi_contents"/>
-                <Cell col="4" text="bind:busi_date"/>
+                <Cell col="1" text="bind:busi_proId" textAlign="center"/>
+                <Cell col="2" text="bind:busi_proName" textAlign="center"/>
+                <Cell col="3" text="bind:busi_contents" textAlign="center"/>
+                <Cell col="4" text="bind:busi_date" textAlign="center"/>
               </Band>
             </Format>
           </Formats>

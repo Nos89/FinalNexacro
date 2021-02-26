@@ -6,7 +6,7 @@
         <Static id="Static03_01" taborder="15" text="" left="520" top="50" width="212" height="45" cssclass="sta_base"/>
         <Static id="Static03_00" taborder="12" text="" left="157" top="94" width="212" height="45" cssclass="sta_base"/>
         <Static id="Static03" taborder="11" text="" left="157" top="50" width="212" height="45" cssclass="sta_base"/>
-        <Static id="Static01" taborder="0" left="0.92%" top="5.69%" width="98.35%" height="0%" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
+        <Static id="Static01" taborder="0" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
         <Static id="Static00_00" taborder="1" text="학생정보 조회" left="5" top="0" width="127" height="34" cssclass="sta_img_circle01"/>
         <Combo id="cbo_stdYear" taborder="2" text="Combo00" left="182" top="60" width="168" height="30" innerdataset="ds_stdYear" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
         <Static id="Static00_01" taborder="3" text="학년" left="5" top="50" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
@@ -38,12 +38,12 @@
                 <Cell col="5" text="학년"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:lec_code"/>
-                <Cell col="1" text="bind:title"/>
-                <Cell col="2" text="bind:id"/>
-                <Cell col="3" text="bind:dept_title"/>
-                <Cell col="4" text="bind:name"/>
-                <Cell col="5" text="bind:std_year"/>
+                <Cell text="bind:lec_code" textAlign="center"/>
+                <Cell col="1" text="bind:title" textAlign="center"/>
+                <Cell col="2" text="bind:id" textAlign="center"/>
+                <Cell col="3" text="bind:dept_title" textAlign="center"/>
+                <Cell col="4" text="bind:name" textAlign="center"/>
+                <Cell col="5" text="bind:std_year" textAlign="center"/>
               </Band>
             </Format>
           </Formats>

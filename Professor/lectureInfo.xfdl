@@ -8,7 +8,7 @@
         <Static id="Static02_01" taborder="13" text="" left="480" top="43" width="238" height="40" cssclass="sta_base"/>
         <Combo id="cbo_year" taborder="3" text="Combo00" left="133" top="48" width="150" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
         <Static id="Static00_00" taborder="0" text="강의정보" left="5" top="0" width="127" height="34" cssclass="sta_img_circle01"/>
-        <Static id="Static01" taborder="1" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
+        <Static id="Static01" taborder="1" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
         <Grid id="Grid00" taborder="2" left="5" top="131" width="1069" height="509" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
             <Format id="default">
@@ -43,17 +43,17 @@
                 <Cell col="10" text="강의구분"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:currow+1"/>
-                <Cell col="1" text="bind:oc_code"/>
-                <Cell col="2" text="bind:name"/>
+                <Cell text="expr:currow+1" textAlign="center"/>
+                <Cell col="1" text="bind:oc_code" textAlign="center"/>
+                <Cell col="2" text="bind:name" textAlign="center"/>
                 <Cell col="3" text="bind:oc_targetlevel" displaytype="normal" maskedittype="string" textAlign="center"/>
-                <Cell col="4" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년"/>
-                <Cell col="5" text="bind:oc_semester" displaytype="mask" maskedittype="string" maskeditformat="#학기"/>
-                <Cell col="6" text="bind:oc_part"/>
-                <Cell col="7" text="bind:oc_is_close"/>
+                <Cell col="4" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년" textAlign="center"/>
+                <Cell col="5" text="bind:oc_semester" displaytype="mask" maskedittype="string" maskeditformat="#학기" textAlign="center"/>
+                <Cell col="6" text="bind:oc_part" textAlign="center"/>
+                <Cell col="7" text="bind:oc_is_close" textAlign="center"/>
                 <Cell col="8" displaytype="buttoncontrol" edittype="button" text="미리보기"/>
-                <Cell col="9" text="bind:oc_schedule"/>
-                <Cell col="10" text="bind:isu"/>
+                <Cell col="9" text="bind:oc_schedule" textAlign="center"/>
+                <Cell col="10" text="bind:isu" textAlign="center"/>
               </Band>
             </Format>
           </Formats>

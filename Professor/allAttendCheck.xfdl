@@ -32,13 +32,13 @@
                 <Cell col="6" text="결석"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:att_deptName"/>
-                <Cell col="1" text="bind:att_stdId"/>
-                <Cell col="2" text="bind:att_stdName"/>
-                <Cell col="3" text="bind:att_stdLevel"/>
-                <Cell col="4" text="bind:attend" displaytype="mask" maskedittype="string" maskeditformat="#회"/>
-                <Cell col="5" text="bind:late" maskedittype="string" maskeditformat="#회" displaytype="mask"/>
-                <Cell col="6" text="bind:absent" maskedittype="string" maskeditformat="#회" displaytype="mask"/>
+                <Cell text="bind:att_deptName" textAlign="center"/>
+                <Cell col="1" text="bind:att_stdId" textAlign="center"/>
+                <Cell col="2" text="bind:att_stdName" textAlign="center"/>
+                <Cell col="3" text="bind:att_stdLevel" textAlign="center"/>
+                <Cell col="4" text="bind:attend" displaytype="mask" maskedittype="string" maskeditformat="#회" textAlign="center"/>
+                <Cell col="5" text="bind:late" maskedittype="string" maskeditformat="#회" displaytype="mask" textAlign="center"/>
+                <Cell col="6" text="bind:absent" maskedittype="string" maskeditformat="#회" displaytype="mask" textAlign="center"/>
               </Band>
             </Format>
           </Formats>

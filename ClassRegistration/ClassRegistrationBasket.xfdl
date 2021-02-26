@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1280">
         <Static id="Static00" taborder="1" text="" left="0" top="10" width="230" height="640" border="1px solid #c7c7c7"/>
-        <Button id="btn_logOut" taborder="0" text="로그아웃" left="149" top="17" width="75" height="17" onclick="btn_logOut_onclick"/>
+        <Button id="btn_logOut" taborder="0" text="로그아웃" left="149" top="17" width="75" height="17" onclick="btn_logOut_onclick" cssclass="btn_WF_gantt01"/>
         <Div id="Div00" taborder="2" text="\" left="7" top="40" width="217" height="170" border="0px solid black">
           <Layouts>
             <Layout>
@@ -35,8 +35,8 @@
               <Combo id="cbo_campus" taborder="5" text="Combo00" left="100" top="41" width="110" height="32" innerdataset="ds_college" codecolumn="col_code" datacolumn="col_title" displaynulltext="--선택--" border="1px solid #ced9e8"/>
               <Combo id="cbo_isu" taborder="6" text="" left="100" top="105" width="110" height="32" innerdataset="ds_isu" codecolumn="isu_code" datacolumn="isu_name" displaynulltext="--선택--" border="1px solid #ced9e8"/>
               <Edit id="edt_title" taborder="7" left="100" top="137" width="110" height="32" border="1px solid #ced9e8"/>
-              <Button id="Button00" taborder="8" text="조회" left="124" top="176" width="87" height="29" onclick="Div01_Button00_onclick"/>
-              <Button id="Button01" taborder="9" text="초기화" left="11" top="175" width="87" height="29" onclick="Div01_Button01_onclick"/>
+              <Button id="Button00" taborder="8" text="조회" left="124" top="176" width="87" height="29" onclick="Div01_Button00_onclick" cssclass="btn_WF_gantt01"/>
+              <Button id="Button01" taborder="9" text="초기화" left="11" top="175" width="87" height="29" onclick="Div01_Button01_onclick" cssclass="btn_WF_gantt01"/>
             </Layout>
           </Layouts>
         </Div>
@@ -72,15 +72,15 @@
                 <Cell col="9" text="신청"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:isu"/>
-                <Cell col="1" text="bind:oc_targetlevel"/>
-                <Cell col="2" text="bind:oc_code"/>
-                <Cell col="3" text="bind:name"/>
-                <Cell col="4" text="bind:reco_score"/>
-                <Cell col="5" text="bind:oc_pro_code"/>
-                <Cell col="6" text="bind:oc_schedule"/>
-                <Cell col="7" text="bind:oc_class_room"/>
-                <Cell col="8" text="bind:oc_max"/>
+                <Cell text="bind:isu" textAlign="center"/>
+                <Cell col="1" text="bind:oc_targetlevel" textAlign="center"/>
+                <Cell col="2" text="bind:oc_code" textAlign="center"/>
+                <Cell col="3" text="bind:name" textAlign="center"/>
+                <Cell col="4" text="bind:reco_score" textAlign="center"/>
+                <Cell col="5" text="bind:oc_pro_code" textAlign="center"/>
+                <Cell col="6" text="bind:oc_schedule" textAlign="center"/>
+                <Cell col="7" text="bind:oc_class_room" textAlign="center"/>
+                <Cell col="8" text="bind:oc_max" textAlign="center"/>
                 <Cell col="9" displaytype="buttoncontrol" edittype="button" text="신청"/>
               </Band>
             </Format>
@@ -117,14 +117,14 @@
                 <Cell col="8" text="취소"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:isu"/>
-                <Cell col="1" text="bind:oc_targetlevel"/>
-                <Cell col="2" text="bind:oc_code"/>
-                <Cell col="3" text="bind:name"/>
-                <Cell col="4" text="bind:reco_score"/>
-                <Cell col="5" text="bind:oc_pro_code"/>
-                <Cell col="6" text="bind:oc_schedule"/>
-                <Cell col="7" text="bind:oc_class_room"/>
+                <Cell text="bind:isu" textAlign="center"/>
+                <Cell col="1" text="bind:oc_targetlevel" textAlign="center"/>
+                <Cell col="2" text="bind:oc_code" textAlign="center"/>
+                <Cell col="3" text="bind:name" textAlign="center"/>
+                <Cell col="4" text="bind:reco_score" textAlign="center"/>
+                <Cell col="5" text="bind:oc_pro_code" textAlign="center"/>
+                <Cell col="6" text="bind:oc_schedule" textAlign="center"/>
+                <Cell col="7" text="bind:oc_class_room" textAlign="center"/>
                 <Cell col="8" displaytype="buttoncontrol" edittype="button" text="취소"/>
               </Band>
               <Band id="summary">
@@ -138,8 +138,7 @@
         <Button id="btn_timeSchedule" taborder="8" text="조회" left="145" top="507" width="80" height="27" onclick="btn_timeSchedule_onclick"/>
         <Static id="Static01_00" taborder="9" text="개설강의" left="245" top="10" width="225" height="29" cssclass="sta_img_schedule"/>
         <Static id="Static01_00_00" taborder="10" text="신청된 장바구니 리스트" left="240" top="366" width="225" height="29" cssclass="sta_img_schedule"/>
-        <Button id="btn_retrive" taborder="11" text="새로고침" left="1090" top="8" width="162" height="33" onclick="btn_retrive_onclick"/>
-        <Button id="Button00" taborder="12" text="Button00" left="612" top="2" width="140" height="40" onclick="Button00_onclick"/>
+        <Button id="btn_retrive" taborder="11" text="새로고침" left="1090" top="8" width="162" height="33" onclick="btn_retrive_onclick" cssclass="btn_WF_gantt01"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.id = nexacro.Application.gvStdID;

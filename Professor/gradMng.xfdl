@@ -43,12 +43,12 @@
                 <Cell col="6" text="입력여부"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:lec_code"/>
-                <Cell col="1" text="bind:title"/>
-                <Cell col="2" text="bind:id"/>
-                <Cell col="3" text="bind:dept_title"/>
-                <Cell col="4" text="bind:name"/>
-                <Cell col="5" text="bind:std_year"/>
+                <Cell text="bind:lec_code" textAlign="center"/>
+                <Cell col="1" text="bind:title" textAlign="center"/>
+                <Cell col="2" text="bind:id" textAlign="center"/>
+                <Cell col="3" text="bind:dept_title" textAlign="center"/>
+                <Cell col="4" text="bind:name" textAlign="center"/>
+                <Cell col="5" text="bind:std_year" textAlign="center"/>
                 <Cell col="6" text="bind:check" textAlign="center"/>
               </Band>
             </Format>
@@ -115,10 +115,10 @@
                 <Cell col="4" text="등급"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:currow+1"/>
-                <Cell col="1" text="bind:lec_code"/>
-                <Cell col="2" text="bind:std_id"/>
-                <Cell col="3" text="bind:grade_total"/>
+                <Cell text="expr:currow+1" textAlign="center"/>
+                <Cell col="1" text="bind:lec_code" textAlign="center"/>
+                <Cell col="2" text="bind:std_id" textAlign="center"/>
+                <Cell col="3" text="bind:grade_total" textAlign="center"/>
                 <Cell col="4" text="expr:dataset.getColumn(currow,&quot;grade_code&quot;)==&quot;0&quot;?&quot;미입력&quot;:dataset.getColumn(currow,&quot;grade_code&quot;)" textAlign="center"/>
               </Band>
             </Format>
@@ -128,7 +128,7 @@
         <Button id="btn_ok" taborder="58" text="완료" left="840" top="615" width="127" height="29" onclick="btn_ok_onclick" cssclass="btn_WF_gantt01"/>
         <Button id="btn_attend" taborder="59" text="출결조회" left="902" top="59" width="98" height="23" onclick="btn_attend_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static00_00" taborder="60" text="성적관리" left="5" top="0" width="116" height="34" cssclass="sta_img_circle01"/>
-        <Static id="Static01_00" taborder="61" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
+        <Static id="Static01_00" taborder="61" text="Static01" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none"/>
         <Static id="Static04_01" taborder="62" text="성적입력/수정" left="575" top="148" width="171" height="42" cssclass="sta_img_circle01"/>
         <Button id="btn_add" taborder="63" left="495" top="381" width="25" height="25" cssclass="btn_WF_add01" text="" onclick="btn_add_onclick"/>
         <Button id="btn_delete" taborder="64" left="523" top="381" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick"/>

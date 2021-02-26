@@ -24,9 +24,9 @@
               </Band>
               <Band id="body">
                 <Cell edittype="checkbox" displaytype="checkboxcontrol" text="bind:check"/>
-                <Cell col="1" text="bind:sche_title"/>
-                <Cell col="2" text="bind:sche_contents"/>
-                <Cell col="3" text="bind:sche_date"/>
+                <Cell col="1" text="bind:sche_title" textAlign="center"/>
+                <Cell col="2" text="bind:sche_contents" textAlign="center"/>
+                <Cell col="3" text="bind:sche_date" textAlign="center"/>
               </Band>
             </Format>
           </Formats>

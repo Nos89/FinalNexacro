@@ -3,7 +3,7 @@
   <Form id="lecturePlan" width="1090" height="650" titletext="New Form" onload="lecturePlan_onload">
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
-        <Static id="Static01" taborder="0" left="10" top="37" width="1072" height="0" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
+        <Static id="Static01" taborder="0" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
         <Static id="Static00_00" taborder="1" text="강의계획서작성" left="5" top="0" width="127" height="34" cssclass="sta_img_circle01"/>
         <Grid id="Grid00" taborder="2" left="5" top="104" width="430" height="256" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
           <Formats>
@@ -25,10 +25,10 @@
                 <Cell col="3" text="교수번호"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:oc_code"/>
-                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년"/>
-                <Cell col="2" text="bind:oc_semester"/>
-                <Cell col="3" text="bind:oc_pro_code"/>
+                <Cell text="bind:oc_code" textAlign="center"/>
+                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년" textAlign="center"/>
+                <Cell col="2" text="bind:oc_semester" textAlign="center"/>
+                <Cell col="3" text="bind:oc_pro_code" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
@@ -110,10 +110,10 @@
               </Band>
               <Band id="body">
                 <Cell text="expr:currow+1"/>
-                <Cell col="1" text="bind:lec_code"/>
-                <Cell col="2" text="bind:lec_title"/>
+                <Cell col="1" text="bind:lec_code" textAlign="center"/>
+                <Cell col="2" text="bind:lec_title" textAlign="center"/>
                 <Cell col="3" text="expr:dataset.getColumn(currow,&quot;lec_approval&quot;)==1?&quot;승인&quot;:dataset.getColumn(currow,&quot;lec_approval&quot;)==0?&quot;미승인&quot;:&quot;반려&quot;" displaytype="normal" textAlign="center"/>
-                <Cell col="4" text="bind:lec_deny_reason"/>
+                <Cell col="4" text="bind:lec_deny_reason" textAlign="center"/>
               </Band>
             </Format>
           </Formats>

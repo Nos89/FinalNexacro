@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static00" taborder="0" text="학과정보" left="5" top="0" width="116" height="34" cssclass="sta_img_circle01"/>
-        <Static id="Static01" taborder="1" text="Static01" left="9" top="38" width="1061" height="1" border="1px solid black,0px none,0px none"/>
+        <Static id="Static01" taborder="1" text="Static01" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none"/>
         <Static id="Static02" taborder="2" text="소속대학" left="38" top="49" width="122" height="30"/>
         <Static id="Static02_00" taborder="3" text="학과코드" left="38" top="100" width="122" height="30"/>
         <Static id="Static02_00_00" taborder="4" text="소속학부(과)" left="388" top="100" width="122" height="30"/>
@@ -48,14 +48,14 @@
                 <Cell col="7" text="연구실"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:id"/>
-                <Cell col="1" text="bind:name"/>
+                <Cell text="bind:id" textAlign="center"/>
+                <Cell col="1" text="bind:name" textAlign="center"/>
                 <Cell col="2" text="bind:birth" displaytype="calendarcontrol"/>
-                <Cell col="3" text="bind:gender"/>
-                <Cell col="4" text="bind:country"/>
-                <Cell col="5" text="bind:email"/>
-                <Cell col="6" text="bind:phone"/>
-                <Cell col="7" text="bind:pro_office"/>
+                <Cell col="3" text="bind:gender" textAlign="center"/>
+                <Cell col="4" text="bind:country" textAlign="center"/>
+                <Cell col="5" text="bind:email" textAlign="center"/>
+                <Cell col="6" text="bind:phone" textAlign="center"/>
+                <Cell col="7" text="bind:pro_office" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
