@@ -155,10 +155,6 @@ this.fn_mailSend = function(id,msg)
           <Column id="received_date" type="DATE" size="256"/>
           <Column id="read" type="INT" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row/>
-          <Row/>
-        </Rows>
       </Dataset>
     </Objects>
     <Bind>
