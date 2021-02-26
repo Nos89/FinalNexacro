@@ -178,6 +178,9 @@ this.stu_creditRenounce_onload = function(obj:nexacro.Form,e:nexacro.LoadEventIn
 		"",  
 		"fn_callback_grade"
 	);
+	
+	
+	
 	var grid_id = this.Grid00;
 	this.gfn_export(grid_id,0);
 };

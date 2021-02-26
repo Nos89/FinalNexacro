@@ -95,7 +95,7 @@ this.stu_classTimeByRoomPopup_onload = function(obj:nexacro.Form,e:nexacro.LoadE
 	this.transaction(
 		"roomInfoOnload",
 		"/roomInfoOnload.nex",
-		"in_condition=ds_condition:U",
+		"",
 		"ds_room=out_room",
 		"",  
 		"fn_callback"
@@ -181,7 +181,6 @@ this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="room_num" type="STRING" size="256"/>
           <Column id="room_use" type="STRING" size="256"/>
           <Column id="room_max" type="INT" size="256"/>
-          <Column id="oc_schedule" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

@@ -38,16 +38,16 @@
                 <Cell col="9" text="학점"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:currow + 1"/>
-                <Cell col="1" text="bind:oc_code"/>
-                <Cell col="2" text="bind:oc_name"/>
-                <Cell col="3" text="bind:isu"/>
+                <Cell text="expr:currow + 1" textAlign="center"/>
+                <Cell col="1" text="bind:oc_code" textAlign="center"/>
+                <Cell col="2" text="bind:oc_name" textAlign="center"/>
+                <Cell col="3" text="bind:isu" textAlign="center"/>
                 <Cell col="4" text="bind:pro_name" textAlign="center"/>
                 <Cell col="5" text="bind:oc_max" textAlign="center"/>
                 <Cell col="6" text="bind:oc_part" textAlign="center"/>
-                <Cell col="7" text="bind:oc_targetlevel"/>
-                <Cell col="8" text="bind:oc_schedule"/>
-                <Cell col="9" text="bind:reco_score"/>
+                <Cell col="7" text="bind:oc_targetlevel" textAlign="center"/>
+                <Cell col="8" text="bind:oc_schedule" textAlign="center"/>
+                <Cell col="9" text="bind:reco_score" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
@@ -102,7 +102,7 @@
         <Static id="Static02_00_00_00_00_00_00" taborder="9" text="대학" left="11" top="75" width="49" height="30" textAlign="right"/>
         <Combo id="cmbCode01" taborder="10" text="--선택--" left="71" top="75" width="129" height="30" innerdataset="ds_code01" codecolumn="Code" datacolumn="Value" index="0" value="-1"/>
         <Static id="Static02_00_00_00_00_00_00_00" taborder="11" text="학부(과)" left="220" top="75" width="50" height="30"/>
-        <Combo id="cmbCode02" taborder="12" text="2021" left="280" top="75" width="129" height="30" innerdataset="ds_code02" codecolumn="Code" datacolumn="Value" index="0" value="2021"/>
+        <Combo id="cmbCode02" taborder="12" text="2021" left="280" top="75" width="148" height="30" innerdataset="ds_code02" codecolumn="Code" datacolumn="Value" index="0" value="2021"/>
         <Button id="btn_search" taborder="13" text="조회" left="1019" top="2" width="54" height="30" onclick="btn_search_onclick" cssclass="btn_WF_search02"/>
         <Edit id="edt_code" taborder="14" left="377" top="40" width="103" height="30"/>
         <Button id="Button00" taborder="15" left="486" top="40" width="29" height="30" onclick="Div00_Button00_onclick" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff"/>
@@ -299,14 +299,7 @@
 this.stu_classTimeSearch_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	
-	this.transaction(
-		"stuInfoOnLoad",
-		"/stuInfoOnLoad.nex",
-		"",
-		"ds_stuInfo=out_stuInfo",
-		"",  
-		"fn_callback"
-	);
+	this.transaction("stuInfoOnLoad","/stuInfoOnLoad.nex","","ds_stuInfo=out_stuInfo","","");
 	
 	this.transaction(
 		"classTimeSearch",

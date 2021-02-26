@@ -109,17 +109,10 @@
 
 this.stu_classRegistration_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.transaction(
-		"stuInfoOnLoad",
-		"/stuInfoOnLoad.nex",
-		"",
-		"ds_stuInfo=out_stuInfo",
-		"",  
-		"fn_callback"
-	);
-	
 	this.ds_condition.setColumn(0,"year",this.cmb_year.value);
 	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
+	
+	this.transaction("stuInfoOnLoad","/stuInfoOnLoad.nex","","ds_stuInfo=out_stuInfo","","");
 	
 	this.transaction(
 		"getMyClass",
