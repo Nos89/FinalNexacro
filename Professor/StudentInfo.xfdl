@@ -53,6 +53,10 @@
         <Static id="Static00_01_00_00" taborder="14" text="이름" left="370" top="94" width="153" height="45" border="1px solid #b4bcc2" cssclass="sta_gray"/>
         <Static id="Static03_01_00" taborder="16" text="" left="522" top="94" width="212" height="45" cssclass="sta_base"/>
         <Edit id="edt_name" taborder="10" left="532" top="102" width="192" height="30"/>
+        <Button id="btn_excel1" taborder="17" text="엑셀" left="933" top="126" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel1_onclick"/>
+        <Static id="Static02_01_03" taborder="18" text="총" left="999" top="126" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="19" left="1019" top="126" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_00_00_00" taborder="20" text="건" left="1068" top="126" width="11" height="26" verticalAlign="middle"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -199,7 +203,8 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.application =null;
+    <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+this.application =null;
 this.StudentInfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
@@ -222,6 +227,7 @@ this.fn_callback = function(id, errMsg, errCode){
 		var dept = this.ds_crDetail.getColumn(i,"dept_title");
 		this.fn_setDepartment(dept);
 	}
+	this.sta_count00.set_text(this.ds_crDetail.getRowCount());
 	this.fn_setTitle();
 }
 this.fn_setTitle = function(){
@@ -305,6 +311,7 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 	this.ds_crDetail.filter(str);
 	
+	this.sta_count00.set_text(this.ds_crDetail.getRowCount());
 };
 
 this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -316,6 +323,16 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.cbo_lecTitle.set_value(null);
 };
 
+
+this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ExcelExportObject1 == null){
+		var id = this.Grid00;
+		this.gfn_export(id,1);
+	}
+	this.objExcelExport.set_exportfilename("학생정보 리스트");
+	this.objExcelExport.exportData();  
+};
 ]]></Script>
   </Form>
 </FDL>

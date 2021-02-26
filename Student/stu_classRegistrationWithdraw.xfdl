@@ -156,6 +156,9 @@
 
 this.stu_classRegistrationWithdraw_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	this.ds_condition.setColumn(0,"year",this.cmb_year.value);
+	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
+	
 	this.transaction(
 		"stuInfoOnLoad",
 		"/stuInfoOnLoad.nex",
@@ -164,9 +167,6 @@ this.stu_classRegistrationWithdraw_onload = function(obj:nexacro.Form,e:nexacro.
 		"",  
 		"fn_callback"
 	);
-	
-	this.ds_condition.setColumn(0,"year",this.cmb_year.value);
-	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
 	
 	this.transaction(
 		"getMyClass",
@@ -183,8 +183,12 @@ this.stu_classRegistrationWithdraw_onload = function(obj:nexacro.Form,e:nexacro.
 
 this.fn_callback=function(id,errCode,errMsg)
 {
+	if(id == "stuInfoOnLoad"){
 	this.edt_num.set_value(this.ds_stuInfo.getColumn(0,"id"));
 	this.edt_name.set_value(this.ds_stuInfo.getColumn(0,"name"));
+	}else if(id == "getMyClass"){
+		trace(this.ds_classList.saveXML());
+	}
 	this.sta_count00.set_text(this.ds_classList.getRowCount());
 };
 

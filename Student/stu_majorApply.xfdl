@@ -60,7 +60,7 @@
         <Edit id="Edit00" taborder="16" left="560" top="175" width="450" height="30"/>
         <Edit id="Edit00_00" taborder="17" left="88" top="210" width="232" height="30"/>
         <Static id="Static00_00_00" taborder="18" text="안내사항" left="5" top="263" height="20" cssclass="sta_img_horn" right="5"/>
-        <Static id="Static02_01_01" taborder="19" text="" left="5" top="297" height="316" border="1px solid" width="1079"/>
+        <Static id="Static02_01_01" taborder="19" text="학부입학생의전공배정규정에 의거 학부입학생(모집단위가 전공인 경우 제외)의 전공배정에 관한 세부내용에 대한 공지&#13;&#10;희망전공 : 학생들이 희망하는 전공을 사전 조사하여 각 전공에 통보&#13;&#10;신청시기 : 4월, 10월중 신청&#13;&#10;주전공배정 신청&#13;&#10;대상 : 학부입학생 중 1학년 재학생(모집단위 전공입학생은 제외)&#13;&#10;신청시기 : 12월 초&#13;&#10;배정인원 : 기준정원을 기준으로 전공배정위원회에서 정함&#13;&#10;전공배정 인원 초과시 배정기준&#13;&#10;1) 1학년(1,2학기) 성적 우선 선발&#13;&#10;2) 동점자 처리기준(이수학점수, 최근성적 우선)&#13;&#10;3) 1), 2)항이 같을 경우 초과하여 배정" left="5" top="297" height="316" border="1px solid" width="1079"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

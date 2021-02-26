@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="40" mobileorientation="landscape" width="1070">
         <Static id="Static00" taborder="0" left="0" top="0" height="35" right="0" border="0px none,0px none,1px solid gray"/>
-        <Tab id="tabMdi" taborder="1" tabindex="0" left="30" top="5" height="100" right="100" cssclass="tab_mdi_menu" showextrabutton="true" onchanged="tabMdi_onchanged" onextrabuttonclick="tabMdi_onextrabuttonclick" onlbuttondown="tabMdi_onlbuttondown">
+        <Tab id="tabMdi" taborder="1" tabindex="0" left="30" top="4" height="100" right="100" cssclass="tab_mdi_menu" showextrabutton="true" onchanged="tabMdi_onchanged" onextrabuttonclick="tabMdi_onextrabuttonclick" onlbuttondown="tabMdi_onlbuttondown" tabbuttonheight="31">
           <Tabpages>
             <Tabpage id="Tabpage2" text="Tabpage2">
               <Layouts>

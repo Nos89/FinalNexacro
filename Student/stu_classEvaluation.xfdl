@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="stu_classEvaluation" width="1090" height="650" titletext="New Form" onload="stu_classEvaluation_onload">
+  <Form id="stu_classEvaluation" width="1090" height="650" titletext="New Form">
     <Layouts>
       <Layout height="650" width="1090">
         <Static id="Static01_00" taborder="0" left="0" top="80" width="1090" height="46" background="#c8ddee" text="" cssclass="sta_WF_title01"/>
@@ -152,12 +152,7 @@
     <Bind>
       <BindItem id="item3" compid="cmb_year" propid="value" datasetid="ds_changeDept" columnid="changeYear"/>
     </Bind>
-    <Script type="xscript5.1"><![CDATA[
-this.stu_classEvaluation_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{
-	
-};
-]]></Script>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
     <InitValue>
       <Grid id="Grid00" binddataset="ds_classList"/>
     </InitValue>

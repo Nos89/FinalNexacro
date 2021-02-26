@@ -65,9 +65,15 @@
         <Static id="Static00_01_00" taborder="8" text="년도" left="13" top="43" width="120" height="40" cssclass="sta_gray"/>
         <Button id="btn_search" taborder="9" text="조회" left="890" top="96" width="85" height="24" onclick="btn_search_onclick"/>
         <Button id="btn_reset" taborder="10" text="초기화" left="985" top="96" width="85" height="25" onclick="btn_reset_onclick"/>
+        <Button id="btn_excel1" taborder="14" text="엑셀" left="726" top="95" height="26" cssclass="btn_WF_excel01" width="56" onclick="btn_excel1_onclick"/>
+        <Static id="Static02_01_03" taborder="15" text="총" left="792" top="95" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="16" left="812" top="95" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_00_00_00" taborder="17" text="건" left="861" top="95" width="11" height="26" verticalAlign="middle"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.id = nexacro.Application.gvID;
+    <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+
+this.id = nexacro.Application.gvID;
 this.lectureInfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.transaction(
@@ -81,6 +87,7 @@ this.lectureInfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 };
 
 this.fn_callback = function(id, errCode, errMsg){
+	this.sta_count00.set_text(this.ds_openClass.getRowCount());
 	this.fn_setYear();
 };
 
@@ -188,6 +195,16 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.cbo_semester.set_value(null);
 	this.cbo_target.set_value(null);
 	this.cbo_year.set_value(null);
+};
+
+this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ExcelExportObject1 == null){
+		var id = this.Grid00;
+		this.gfn_export(id,1);
+	}
+	this.objExcelExport.set_exportfilename("강의정보 리스트");
+	this.objExcelExport.exportData();  
 };
 ]]></Script>
     <Objects>
