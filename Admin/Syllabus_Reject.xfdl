@@ -19,15 +19,22 @@ this.Syllabus_Reject_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 // 저장
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let objReturn = {
-				"rtnType" : "save",
-				"reason" : this.txt_reason.value
-				}
+	let reason = this.txt_reason.value;
+	if(reason==null||reason==undefined||reason.replace(/ /g,"")==""){
+		this.alert("저장할 텍스트가 없습니다.")
+		return;
+	}else{
+		let objReturn = {
+					"rtnType" : "save",
+					"reason" : this.txt_reason.value
+					}
 
-	let check = this.confirm("저장하시겠습니까?");
-	if(check){
-		this.close(JSON.stringify(objReturn,null,"\t"));
+		let check = this.confirm("저장하시겠습니까?");
+		if(check){
+			this.close(JSON.stringify(objReturn,null,"\t"));
+		}
 	}
+
 };
 
 // 닫기
@@ -37,7 +44,7 @@ this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 				"rtnType" : "close",
 				"reason" : null
 				}
-	let check = this.confirm("창을 닫으시겠습니까?\n내용이 저장되지 않습니다.");
+	let check = this.confirm("창을 닫으시겠습니까?\n수정한 내용이 저장되지 않습니다.");
 	this.close(JSON.stringify(objReturn,null,"\t"));
 };
 
