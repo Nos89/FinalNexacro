@@ -140,7 +140,10 @@
           <Column id="semester" type="INT" size="256"/>
         </ColumnInfo>
         <Rows>
-          <Row/>
+          <Row>
+            <Col id="year">21</Col>
+            <Col id="semester">1</Col>
+          </Row>
         </Rows>
       </Dataset>
       <Dataset id="ds_gradeList">
@@ -167,8 +170,8 @@ this.stu_creditRenounce_onload = function(obj:nexacro.Form,e:nexacro.LoadEventIn
 		"fn_callback"
 	);
 	
-	this.ds_condition.setColumn(0,"year",this.cmb_year.value);
-	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
+	//this.ds_condition.setColumn(0,"year",this.cmb_year.value);
+	//this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
 	
 	this.transaction(
 		"getMyGrade",
@@ -249,6 +252,21 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.objExcelExport.set_exportfilename("성적 리스트");
 	this.objExcelExport.exportData();  
+};
+
+this.btn_search2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_condition.setColumn(0,"year",this.cmb_year.value);
+	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
+	
+	this.transaction(
+		"getMyGrade",
+		"/getMyGrade.nex",
+		"in_condition=ds_condition:U",
+		"ds_gradeList=out_gradeList",
+		"",  
+		"fn_callback_grade"
+	);
 };
 ]]></Script>
   </Form>

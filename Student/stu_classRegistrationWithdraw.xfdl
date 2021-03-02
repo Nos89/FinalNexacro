@@ -136,7 +136,10 @@
           <Column id="semester" type="INT" size="256"/>
         </ColumnInfo>
         <Rows>
-          <Row/>
+          <Row>
+            <Col id="year">21</Col>
+            <Col id="semester">1</Col>
+          </Row>
         </Rows>
       </Dataset>
       <Dataset id="ds_classList">
@@ -156,8 +159,8 @@
 
 this.stu_classRegistrationWithdraw_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.ds_condition.setColumn(0,"year",this.cmb_year.value);
-	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
+	//this.ds_condition.setColumn(0,"year",this.cmb_year.value);
+	//this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
 	
 	this.transaction(
 		"stuInfoOnLoad",

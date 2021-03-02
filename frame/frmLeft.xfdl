@@ -655,7 +655,7 @@ this.fn_loginCallback = function( pID, pErr, pMsg ){
 }
 
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
-{
+{	
 	if(this.grdLeft.getTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition)) == 0){
 		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'true');
 	}else{
@@ -750,7 +750,7 @@ this.fn_openMenu = function(sMenuId)
 	
 	objMdiFrame.form.fn_ActiveTabPage(sWinId);
 	
-	
+	this.application.gv_setTime = 1800;
 }
 
 /*****************************************************************************
@@ -845,6 +845,8 @@ this.btn_menu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btn_myMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	this.application.gv_setTime = 1800;
+	
 	if(this.btn_menuopen.visible == true){
 		this.application.HFSet01.set_separatesize("0,250,*");
 		this.menu_unfold();
@@ -874,6 +876,8 @@ this.btn_myMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btn_manage_onclick = function()
 {
+	this.application.gv_setTime = 1800;
+	
 	var objCF = new ChildFrame();
 	objCF.init("popMyMenu", 295, 140, 480, 370);
 	objCF.set_openalign("center middle");
