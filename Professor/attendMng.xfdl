@@ -5,14 +5,14 @@
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static02_00" taborder="17" text="" left="472" top="43" width="248" height="40" cssclass="sta_base"/>
         <Static id="Static02" taborder="16" text="" left="116" top="43" width="248" height="40" cssclass="sta_base"/>
-        <Static id="Static00" taborder="0" text="출결관리" left="7" top="6" width="116" height="32" cssclass="sta_img_circle01"/>
-        <Static id="Static01" taborder="1" text="Static01" left="9" top="35" width="1061" height="1" border="1px solid black,0px none,0px none"/>
+        <Static id="Static00" taborder="0" text="출결관리" left="5" top="0" width="1063" height="34" cssclass="sta_img_circle01"/>
+        <Static id="Static01" taborder="1" text="Static01" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none"/>
         <Combo id="cbo_title" taborder="2" left="148" top="47" width="162" height="32" innerdataset="ds_cboTitle" codecolumn="code" datacolumn="name" index="0" value="all" onitemclick="cbo_title_onitemclick" onitemchanged="cbo_title_onitemchanged" text="전체"/>
         <Combo id="cbo_week" taborder="3" text="1" left="483" top="48" width="87" height="31" innerdataset="ds_week" codecolumn="code" datacolumn="name" index="0" value="1" onitemchanged="cbo_week_onitemchanged"/>
         <Static id="Static00_01" taborder="4" text="주차" left="363" top="43" width="110" height="40" cssclass="sta_gray"/>
-        <Static id="Static00_01_00" taborder="5" text="과목명" left="13" top="43" width="127" height="40" cssclass="sta_gray"/>
-        <Button id="btn_search" taborder="6" text="조회" left="840" top="46" width="85" height="32" onclick="btn_search_onclick"/>
-        <Grid id="grd_lecture" taborder="7" left="9" top="95" width="1065" height="179" binddataset="ds_openClass" autofittype="col" oncellclick="Grid01_oncellclick">
+        <Static id="Static00_01_00" taborder="5" text="과목명" left="5" top="43" width="127" height="40" cssclass="sta_gray"/>
+        <Button id="btn_search" taborder="6" text="조회" left="840" top="46" width="85" height="32" onclick="btn_search_onclick" cssclass="btn_WF_gantt01"/>
+        <Grid id="grd_lecture" taborder="7" left="5" top="95" width="1065" height="179" binddataset="ds_openClass" autofittype="col" oncellclick="Grid01_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -42,22 +42,22 @@
                 <Cell col="8" text="이수구분"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:oc_code"/>
-                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년"/>
+                <Cell text="bind:oc_code" textAlign="center"/>
+                <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년" textAlign="center"/>
                 <Cell col="2" text="bind:oc_semester"/>
                 <Cell col="3" text="bind:oc_schedule"/>
-                <Cell col="4" text="bind:oc_part"/>
+                <Cell col="4" text="bind:oc_part" textAlign="center"/>
                 <Cell col="5" text="bind:oc_targetlevel"/>
-                <Cell col="6" text="bind:name"/>
+                <Cell col="6" text="bind:name" textAlign="center"/>
                 <Cell col="7" text="bind:reco_score"/>
-                <Cell col="8" text="bind:isu"/>
+                <Cell col="8" text="bind:isu" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static05_00_00" taborder="8" text="학생출결관리" left="386" top="315" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
-        <Button id="btn_save" taborder="9" text="저장" left="959" top="314" width="109" height="26" onclick="btn_save_onclick"/>
-        <Grid id="grd_student" taborder="10" left="9" top="350" width="361" height="290" binddataset="ds_crDetail" autofittype="col" oncellclick="grd_student_oncellclick">
+        <Static id="Static05_00_00" taborder="8" text="학생출결관리" left="388" top="322" width="128" height="34" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
+        <Button id="btn_save" taborder="9" text="저장" left="1001" top="315" width="71" height="26" onclick="btn_save_onclick" cssclass="btn_WF_save01"/>
+        <Grid id="grd_student" taborder="10" left="5" top="350" width="361" height="290" binddataset="ds_crDetail" autofittype="col" oncellclick="grd_student_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -79,10 +79,10 @@
                 <Cell col="4" text="학년"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:lec_code"/>
+                <Cell text="bind:lec_code" textAlign="center"/>
                 <Cell col="1" text="bind:title" textAlign="center"/>
-                <Cell col="2" text="bind:id"/>
-                <Cell col="3" text="bind:name"/>
+                <Cell col="2" text="bind:id" textAlign="center"/>
+                <Cell col="3" text="bind:name" textAlign="center"/>
                 <Cell col="4" text="bind:std_year"/>
               </Band>
             </Format>
@@ -114,10 +114,10 @@
                 <Cell col="6" text="주차"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:att_stdId"/>
+                <Cell text="bind:att_stdId" textAlign="center"/>
                 <Cell col="1" text="bind:att_targetLevel"/>
-                <Cell col="2" text="bind:att_deptName"/>
-                <Cell col="3" text="bind:att_stdName"/>
+                <Cell col="2" text="bind:att_deptName" textAlign="center"/>
+                <Cell col="3" text="bind:att_stdName" textAlign="center"/>
                 <Cell col="4" displaytype="calendarcontrol" edittype="date" text="bind:att_date"/>
                 <Cell col="5" text="bind:att_attend" edittype="combo" combodataset="ds_attend" combocodecol="code" combodatacol="name" displaytype="combocontrol"/>
                 <Cell col="6" text="bind:att_week"/>
@@ -125,10 +125,10 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_add" taborder="12" text="추가" left="835" top="314" width="109" height="27" onclick="btn_add_onclick"/>
-        <Button id="btn_attRetrive" taborder="13" text="현재출결조회" left="711" top="314" width="109" height="27" onclick="btn_attRetrive_onclick"/>
-        <Static id="Static05_00_00_00" taborder="14" text="수강학생 목록" left="10" top="317" width="128" height="26" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
-        <Button id="Button00" taborder="15" text="전체출결조회" left="935" top="46" width="139" height="31" onclick="Button00_onclick"/>
+        <Button id="btn_add" taborder="12" text="추가" left="835" top="314" width="109" height="27" onclick="btn_add_onclick" cssclass="btn_WF_gantt01"/>
+        <Button id="btn_attRetrive" taborder="13" text="현재출결조회" left="711" top="314" width="109" height="27" onclick="btn_attRetrive_onclick" cssclass="btn_WF_gantt01"/>
+        <Static id="Static05_00_00_00" taborder="14" text="수강학생 목록" left="5" top="317" width="128" height="34" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
+        <Button id="Button00" taborder="15" text="전체출결조회" left="935" top="46" width="139" height="31" onclick="Button00_onclick" cssclass="btn_WF_gantt01"/>
       </Layout>
     </Layouts>
     <Objects>

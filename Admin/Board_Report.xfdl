@@ -6,7 +6,7 @@
         <Static id="Static00" taborder="0" text="건의게시판 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
         <Button id="btn_refresh" taborder="1" text="새로고침" left="910" top="55" width="80" height="25" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Button id="btn_delete" taborder="2" text="삭제" left="1000" top="55" width="80" height="25" onclick="btn_delete_onclick" cssclass="btn_WF_gantt03" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Grid id="Grid00" taborder="3" left="10" top="90" width="1070" height="481" binddataset="ds_board" autofittype="col" fillareatype="linerow" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick">
+        <Grid id="Grid00" taborder="3" left="10" top="90" width="1070" height="481" binddataset="ds_board" autofittype="col" fillareatype="linerow" onheadclick="Grid00_onheadclick" oncelldblclick="Grid00_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -191,7 +191,7 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 
 // 게시글 팝업
-this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	let sCol = obj.getCellProperty("body",e.cell,"text").replace("bind:","");
 	let nSeq = this.ds_board.getColumn(e.row,"seq");
@@ -204,7 +204,9 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 			, {seq:nSeq, type:this.boardType}
 		)
 	}
-};
+};;
+
+
 
 
 ]]></Script>

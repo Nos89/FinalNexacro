@@ -7,7 +7,7 @@
         <Static id="Static01" taborder="1" text="수강신청시스템 로그인" left="41.41%" top="26.53%" width="35.55%" height="9.58%" onclick="Static01_onclick" usedecorate="true" font="bold 20px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Edit id="edt_id" taborder="2" left="24.3%" top="41.67%" displaynulltext="학번입력" height="6.25%" width="33.28%"/>
         <Edit id="edt_pw" taborder="3" left="24.22%" top="51.11%" width="33.28%" height="6.25%" displaynulltext="비밀번호 입력" onchanged="Edit00_00_onchanged" password="true"/>
-        <Button id="btn_login" taborder="4" text="로그인" left="61.17%" top="42.08%" width="9.22%" height="14.44%" onclick="btn_login_onclick"/>
+        <Button id="btn_login" taborder="4" text="로그인" left="61.17%" top="42.08%" width="9.22%" height="14.44%" onclick="btn_login_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static02" taborder="5" text="Since 2021.GACHA UNIVERSITY." left="41.41%" top="63.75%" width="17.27%" height="3.89%" onclick="Static02_onclick"/>
       </Layout>
     </Layouts>

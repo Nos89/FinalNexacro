@@ -7,9 +7,9 @@
         <Button id="btnPrev" taborder="1" text="◀" left="35.87%" top="9.23%" width="5.5%" height="6.15%" onclick="btnPrev_onclick" background="transparent" border="0px solid white" font="normal 15pt/normal &quot;Arial&quot;"/>
         <Button id="btnNext" taborder="2" text="▶" left="60.64%" top="9.23%" width="5.5%" height="6.15%" onclick="btnNext_onclick" background="transparent" font="normal 15pt/normal &quot;Arial&quot;" border="0px solid white"/>
         <Static id="stYearMonth" taborder="3" left="42.84%" top="9.38%" width="16.33%" height="6%" textAlign="center" font="bold 24px/normal &quot;Gulim&quot;"/>
-        <Static id="Static00" taborder="4" text="업무일지 작성" left="7" top="6" width="116" height="32" cssclass="sta_img_circle01"/>
-        <Static id="Static01" taborder="5" text="Static01" left="0.83%" top="5.85%" width="97.34%" height="0.15%" border="1px solid black,0px none,0px none"/>
-        <Button id="btn_del" taborder="6" text="삭제" left="92.57%" top="9.23%" width="5.41%" height="4.62%" onclick="btn_del_onclick"/>
+        <Static id="Static00" taborder="4" text="업무일지 작성" left="5" top="0" width="116" height="34" cssclass="sta_img_circle01"/>
+        <Static id="Static01" taborder="5" text="Static01" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none"/>
+        <Button id="btn_del" taborder="6" text="삭제" left="92.57%" top="9.23%" width="5.41%" height="4.62%" onclick="btn_del_onclick" cssclass="btn_WF_gantt03"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**

@@ -34,7 +34,7 @@ this.frmCopyAndMove_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	
 	this.contentName = this.parent.contentName;
 	this.location = this.parent.location;
-	trace( this.parent.type );
+	trace( this.parent.type);
 	if( this.parent.type == "true" ){
 		this.type = "folder";
 	} else {
@@ -42,6 +42,7 @@ this.frmCopyAndMove_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	}
 	this.ds_childDir.copyData(this.parent.ds_dir);
 	this.grd_dir.set_binddataset("ds_childDir");
+	this.expandDir(this.location);
 };
 
 
@@ -71,7 +72,19 @@ this.btn_move_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.grd_dir_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	this.grd_dir.setTreeStatus( e.row, "expand");
+	var dir = this.grd_dir;
+	var ds = dir.getBindDataset();
+	var dirName = ds.getColumn(e.row, "directoryName");
+	var dirID = ds.getColumn(e.row, "dirID");
+	
+	var targetRow = dir.getTreeRow( ds.findRow("dirID", dirID) );
+	var targetStatus = dir.getTreeStatus( targetRow );
+
+	if( targetStatus <= 0 ){
+		dir.setTreeStatus( targetRow, true );
+	} else {
+		dir.setTreeStatus( targetRow, false );
+	}
 };
 
 this.fn_moveCallback = function(pId, pErrCode, pErrMsg ){
@@ -86,6 +99,35 @@ this.fn_moveCallback = function(pId, pErrCode, pErrMsg ){
 		this.close("1");
 	} else {
 		//this.alert("디렉토리 이동 실패");
+	}
+}
+
+this.expandDir = function( location ){
+	var ds = this.grd_dir.getBindDataset();
+	var rowcount = ds.getRowCount();
+	var parentID = location;
+	var flag = true;
+	//trace( location );
+	var arrEx = new Array();
+	arrEx.push(location);
+	//this.div_left.form.gd_left.setTreeStatus( ds.findRow( "dirID", location ), true );
+	var lv = ds.getColumn( ds.findRow( "dirID", location ), "lv" );
+	while( flag ){
+		trace(lv);
+		if( lv != 0 ){
+			parentID = ds.getColumn( ds.findRow( "dirID", parentID ), "parentID" );
+			lv = ds.getColumn( ds.findRow( "dirID", parentID ), "lv" );
+			arrEx.push(parentID);
+			//this.div_left.form.gd_left.setTreeStatus( ds.findRow( "dirID", parentID ), true );
+		} else {
+			flag = false;
+		}
+	}
+	arrEx.reverse();
+	for( var i = 0; i < arrEx.length; i++ ){
+		trace(arrEx[i]);
+		//Grid.getTreeRow( nDSRowIndex ) 
+		this.grd_dir.setTreeStatus( this.grd_dir.getTreeRow(ds.findRow("dirID", arrEx[i])), true );
 	}
 }]]></Script>
     <Objects>

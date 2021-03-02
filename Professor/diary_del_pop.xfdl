@@ -3,8 +3,8 @@
   <Form id="diary_del_pop" width="490" height="360" titletext="New Form" onload="diary_del_pop_onload">
     <Layouts>
       <Layout height="360" width="490">
-        <Button id="btn_del" taborder="0" text="삭제" left="262" top="301" width="118" height="38" onclick="btn_del_onclick"/>
-        <Button id="btn_cancle" taborder="1" text="취소" left="110" top="300" width="118" height="38" onclick="btn_cancle_onclick"/>
+        <Button id="btn_del" taborder="0" text="삭제" left="262" top="301" width="118" height="38" onclick="btn_del_onclick" cssclass="btn_WF_gantt03"/>
+        <Button id="btn_cancle" taborder="1" text="취소" left="110" top="300" width="118" height="38" onclick="btn_cancle_onclick" cssclass="btn_WF_gantt01"/>
         <Grid id="Grid00" taborder="2" left="7" top="10" width="473" height="281" binddataset="dsSchedule" autofittype="col" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
@@ -28,10 +28,10 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:check" edittype="checkbox" displaytype="checkboxcontrol"/>
-                <Cell col="1" text="bind:busi_proId"/>
-                <Cell col="2" text="bind:busi_proName"/>
-                <Cell col="3" text="bind:busi_contents"/>
-                <Cell col="4" text="bind:busi_date"/>
+                <Cell col="1" text="bind:busi_proId" textAlign="center"/>
+                <Cell col="2" text="bind:busi_proName" textAlign="center"/>
+                <Cell col="3" text="bind:busi_contents" textAlign="center"/>
+                <Cell col="4" text="bind:busi_date" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
