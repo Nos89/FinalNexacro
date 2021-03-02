@@ -540,6 +540,8 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.fn_gradeCheck();
 	}
 	this.ds_openClass.filter("oc_code=='xxxxxxx'");
+	this.sta_count00.set_text(this.ds_crDetail.getRowCount());
+	this.sta_count00_00.set_text(this.ds_grade.getRowCount());
 };
 this.fn_search = function(){
 	var str = "";

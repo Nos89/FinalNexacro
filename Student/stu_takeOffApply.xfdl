@@ -107,10 +107,10 @@
           </Dataset>
         </Combo>
         <Static id="Static00_00_00" taborder="19" text="안내사항" left="5" top="210" height="20" cssclass="sta_img_horn" right="5"/>
-        <Div id="Div00" taborder="20" left="4" top="244" width="1080" height="396" background="RGBA(143,144,147,0.40)" formscrollbartype="none none" text="">
+        <Div id="Div00" taborder="20" left="4" top="244" width="1080" height="396" background="#eaf1fb" formscrollbartype="none none" text="" border="1px solid #8ba8d1">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="가.신청기간&#13;&#10;&#13;&#10;휴학 : 2021.03.08.(월) 09:00 ~ 03.10(화) 17:00까지&#13;&#10;&#13;&#10;단, 부득이한 경우 2021.03.11.(목) 18:00까지 신청 가능&#13;&#10;&#13;&#10;(1학년은 공지사항의 역복학자 전공배정관련 안내(2021.03.08.) 참조)&#13;&#10;&#13;&#10;복학 : 2021.03.08.(월) 09:00 ~ 03.10(화) 18:00까지&#13;&#10;&#13;&#10;단, 총 수업일수 3/4이상 출석해야 성적취득 가능함&#13;&#10;&#13;&#10;나. 대상 : 재학생 학생 전체&#13;&#10;&#13;&#10;다. 신청 : 차세대포털시스템 – 종합정보시스템 – 학생서비스 - 학적증명 – 휴학신청 / 복학신청&#13;&#10;&#13;&#10;건축학과(전공)중 5년제 프로그램을 이수하는 학생은 반드시 학과상담후 복학신청해야 함" left="6" top="6" width="1064" height="384" padding="25px 0px 0px 25px" font="16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="left" verticalAlign="top" background="#c8ddee" border="1px solid black"/>
+              <Static id="Static00" taborder="0" text="가.신청기간&#13;&#10;&#13;&#10;휴학 : 2021.03.08.(월) 09:00 ~ 03.10(화) 17:00까지&#13;&#10;&#13;&#10;단, 부득이한 경우 2021.03.11.(목) 18:00까지 신청 가능&#13;&#10;&#13;&#10;(1학년은 공지사항의 역복학자 전공배정관련 안내(2021.03.08.) 참조)&#13;&#10;&#13;&#10;나. 대상 : 재학생 학생 전체&#13;&#10;&#13;&#10;다. 신청 : 종합정보시스템 – 학생서비스 - 학적증명 – 휴학신청 " left="6" top="6" width="1064" height="384" padding="25px 0px 0px 25px" font="16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="left" verticalAlign="top" background="#d6d6d6" border="1px solid black"/>
             </Layout>
           </Layouts>
         </Div>
