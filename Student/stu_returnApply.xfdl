@@ -38,7 +38,13 @@
         <Static id="Static02_00" taborder="15" text="작성일자" left="330" top="120" width="60" height="30"/>
         <Calendar id="cal_applyDay" taborder="16" left="395" top="120" width="146" height="30" enable="false"/>
         <Static id="Static00_00_00" taborder="17" text="안내사항" left="4" top="206" height="20" cssclass="sta_img_horn" right="6"/>
-        <Static id="Static02_01" taborder="18" text="" left="4" top="240" height="316" border="1px solid" width="1079"/>
+        <Div id="Div00" taborder="18" left="4" top="236" width="1080" height="404" background="#eaf1fb" formscrollbartype="none none" text="" border="1px solid #8ba8d1">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="가.신청기간&#13;&#10;&#13;&#10;복학 : 2021.03.08.(월) 09:00 ~ 03.10(화) 18:00까지&#13;&#10;&#13;&#10;단, 총 수업일수 3/4이상 출석해야 성적취득 가능함&#13;&#10;&#13;&#10;나. 대상 : 재학생 학생 전체&#13;&#10;&#13;&#10;다. 신청 : 종합정보시스템 – 학생서비스 - 학적증명 –  복학신청&#13;&#10;&#13;&#10;건축학과(전공)중 5년제 프로그램을 이수하는 학생은 반드시 학과상담후 복학신청해야 함" left="6" top="6" width="1064" height="387" padding="25px 0px 0px 25px" font="16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="left" verticalAlign="top" background="#d6d6d6" border="1px solid black"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Bind>

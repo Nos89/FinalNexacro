@@ -196,8 +196,8 @@
       </Dataset>
       <Dataset id="ds_condition">
         <ColumnInfo>
-          <Column id="year" type="INT" size="256"/>
-          <Column id="semester" type="INT" size="256"/>
+          <Column id="year" type="STRING" size="256"/>
+          <Column id="semester" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -282,7 +282,8 @@ this.btn_search2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		"in_condition=ds_condition:U",
 		"ds_classTime=out_classTime",
 		"",  
-		"fn_callback_re"
+		"fn_callback_re",
+		false
 	);
 };
 
