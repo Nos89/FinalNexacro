@@ -47,6 +47,7 @@ this.fn_loginCallback = function( pID, pErr, pMsg ){
 	if(this.userName==""){
 		this.Static04_00.set_visible(false);
 		this.btn_logout.set_visible(false);
+		location.href = "/info/logout";
 	}else{
 		this.Static04_00.set_visible(true);
 		this.btn_logout.set_visible(true);
