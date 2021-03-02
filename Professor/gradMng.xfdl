@@ -348,7 +348,6 @@ this.assignment;
 this.presentation;
 this.attitude;
 this.other1;
-
 //================
 this.fn_callback = function(id, errCode, errMsg){
 	if(errCode==-1){
