@@ -35,16 +35,16 @@
         <Div id="div_mail" taborder="2" left="550" top="90" width="530" height="530" text="">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="5" left="0" top="0" height="115" border="1px solid #bababa, 0px none" right="0" text=""/>
-              <Static id="sta_sub_title" taborder="0" text="제목" left="20" top="19" width="80" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_sub_title00" taborder="1" text="수신일" left="20" top="66" width="80" height="35" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_title" taborder="2" left="100" top="19" width="409" height="35" cssclass="sta_cm_box02L"/>
-              <Static id="sta_received_date" taborder="3" left="100" top="66" width="409" height="35" cssclass="sta_cm_box02L" expr="comp.text.substr(0,4)+&quot;년 &quot;+comp.text.substr(4,2)+&quot;월 &quot;+comp.text.substr(6,2)+&quot;일&quot;" text=""/>
-              <Static id="sta_contents" taborder="4" left="19" top="129" width="490" height="401" cssclass="sta_cm_box02L" verticalAlign="top" padding="5px"/>
+              <Static id="Static00" taborder="5" left="0" top="10" height="75" border="1px solid #bababa, 0px none" right="0" text=""/>
+              <Static id="sta_sub_title" taborder="0" text="제목" left="20" top="15" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_sub_title00" taborder="1" text="수신일" left="20" top="45" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_title" taborder="2" left="100" top="15" width="409" height="25" background="#ffffff" border="0px none, 0px none, 1px solid #c7c7c7"/>
+              <Static id="sta_received_date" taborder="3" left="100" top="45" width="200" height="25" expr="comp.text.substr(0,4)+&quot;년 &quot;+comp.text.substr(4,2)+&quot;월 &quot;+comp.text.substr(6,2)+&quot;일&quot;" text="" background="#ffffff" border="0px none, 0px none, 1px solid #c7c7c7" padding="0px 5px 0px 5px" textAlign="left"/>
+              <Static id="sta_contents" taborder="4" left="19" top="100" width="490" height="430" cssclass="sta_cm_box02L" verticalAlign="top" padding="5px"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="sta_userInfo" taborder="3" left="10" top="50" width="310" height="31" background="url('theme://images/img_WF_MailClose_24.png') no-repeat 2% center" padding="0px 0px 0px 35px"/>
+        <Static id="sta_userInfo" taborder="3" left="10" top="50" width="310" height="30" background="url('theme://images/img_WF_MailClose_24.png') no-repeat 2% center" padding="0px 0px 0px 35px"/>
         <Radio id="rdo_read" taborder="4" left="330" top="56" width="240" height="24" index="0" text="전체" value="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" onitemchanged="rdo_read_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>

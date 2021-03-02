@@ -38,14 +38,15 @@
         <Div id="div_mail" taborder="2" left="550" top="90" width="530" height="530" text="">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="5" left="0" top="0" height="115" border="1px solid #bababa, 0px none" right="0" text=""/>
+              <Static id="Static00" taborder="5" left="0" top="0" height="110" border="1px solid #bababa, 0px none" right="0" text=""/>
               <Static id="sta_sub_title" taborder="0" text="제목" left="20" top="15" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
               <Static id="sta_sub_title00" taborder="1" text="수신일" left="20" top="75" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_title" taborder="2" left="100" top="15" width="409" height="25" cssclass="sta_cm_box02L"/>
-              <Static id="sta_received_date" taborder="3" left="100" top="75" width="200" height="25" cssclass="sta_cm_box02L" expr="comp.text.substr(0,4)+&quot;년 &quot;+comp.text.substr(4,2)+&quot;월 &quot;+comp.text.substr(6,2)+&quot;일&quot;" text=""/>
-              <Static id="sta_contents" taborder="4" left="19" top="129" width="490" height="401" cssclass="sta_cm_box02L" verticalAlign="top" padding="5px"/>
+              <Static id="sta_title" taborder="2" left="100" top="15" width="409" height="25" background="#ffffff" border="0px none, 0px none, 1px solid #c7c7c7" textAlign="left" padding="0px 5px 0px 5px"/>
+              <Static id="sta_received_date" taborder="3" left="100" top="75" width="200" height="25" expr="comp.text.substr(0,4)+&quot;년 &quot;+comp.text.substr(4,2)+&quot;월 &quot;+comp.text.substr(6,2)+&quot;일&quot;" text="" padding="0px 5px 0px 5px" border="0px none, 0px none, 1px solid #c7c7c7" background="#ffffff" textAlign="left"/>
+              <Static id="sta_contents" taborder="4" left="19" top="125" width="490" height="405" cssclass="sta_cm_box02L" verticalAlign="top" padding="5px"/>
               <Static id="sta_sub_title00_00" taborder="6" text="수신인" left="20" top="45" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_received_date00" taborder="7" left="100" top="45" width="200" height="25" cssclass="sta_cm_box02L" text=""/>
+              <Static id="sta_receiver" taborder="7" left="100" top="45" width="100" height="25" text="" padding="0px 5px 0px 5px" border="0px none, 0px none, 1px solid #c7c7c7" background="#ffffff"/>
+              <Static id="sta_name" taborder="8" left="200" top="45" width="100" height="25" cssclass="sta_cm_box02L" padding="0px 5px 0px 5px" border="0px none, 0px none, 1px solid #c7c7c7" background="#ffffff" textAlign="left"/>
             </Layout>
           </Layouts>
         </Div>
@@ -83,7 +84,7 @@ this.outBox_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"getOutBox"	// 1. strSvcID(string 형태의 id)
 		, "/getOutBox.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
-		, "ds_mail=out_mail"	// 4. strOutDatasets -select Fds=Sds
+		, "ds_mail=out_mail ds_name=out_name"	// 4. strOutDatasets -select Fds=Sds
 		, "" // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
@@ -93,7 +94,7 @@ this.fn_callback = function(id,errCD,errMSG)
 {
 	if(errCD<0){
 		if(id=="getOutBox"){
-			this.alert("데이터를 불러오지 못했습니다.");
+			this.alert("데이터를 가져오지 못했습니다.");
 		}else if(id=="saveRead"){
 			this.alert("저장하지 못했습니다.");
 		}
@@ -104,9 +105,10 @@ this.fn_callback = function(id,errCD,errMSG)
 // 메일 조회
 this.grd_mailBox_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	let nVal = this.ds_mail.getColumn(e.row,"read");
-	
+	let receiver = this.ds_mail.getColumn(e.row,"receiver");
 	this.div_mail.form.sta_title.set_text(this.ds_mail.getColumn(e.row,"title"));
+	this.div_mail.form.sta_receiver.set_text(receiver);
+	this.div_mail.form.sta_name.set_text("<"+this.ds_name.lookup("id",receiver,"name")+">");
 	this.div_mail.form.sta_received_date.set_text(this.ds_mail.getColumn(e.row,"received_date"));
 	this.div_mail.form.sta_contents.set_text(this.ds_mail.getColumn(e.row,"contents"));
 };
@@ -134,7 +136,7 @@ this.rdo_read_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEve
 this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let objCF = new ChildFrame();
-	objCF.init("writeMail",240,30,550,600,null,null,"Mail::writeMail.xfdl");
+	objCF.init("writeMail",395,15,550,600,null,null,"Mail::writeMail.xfdl");
 	objCF.showModal(this.getOwnerFrame(),{},this,"fn_mailSend");
 };
 
@@ -144,6 +146,7 @@ this.fn_mailSend = function(id,msg)
 		this.reload();
 	}
 }
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_mail">
@@ -156,12 +159,12 @@ this.fn_mailSend = function(id,msg)
           <Column id="read" type="INT" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_name">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
-    <Bind>
-      <BindItem id="item0" compid="div_mail.form.sta_title" propid="text" datasetid="ds_mail" columnid="title"/>
-      <BindItem id="item1" compid="div_mail.form.sta_received_date00" propid="text" datasetid="ds_mail" columnid="receiver"/>
-      <BindItem id="item2" compid="div_mail.form.sta_received_date" propid="text" datasetid="ds_mail" columnid="received_date"/>
-      <BindItem id="item3" compid="div_mail.form.sta_contents" propid="text" datasetid="ds_mail" columnid="contents"/>
-    </Bind>
   </Form>
 </FDL>

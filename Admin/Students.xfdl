@@ -236,10 +236,6 @@
                 <Col id="codecolumn">4</Col>
                 <Col id="datacolumn">4</Col>
               </Row>
-              <Row>
-                <Col id="codecolumn">5</Col>
-                <Col id="datacolumn">5</Col>
-              </Row>
             </Rows>
           </Dataset>
         </Combo>

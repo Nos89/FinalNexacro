@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="userList" width="400" height="400" titletext="New Form" cssclass="sta_WF_mail01" onload="userList_onload">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="400">
+        <Static id="sta_title" taborder="0" text="수신인 검색" left="10" top="10" width="120" height="20" cssclass="sta_WF_mail02" font="bold 14px &quot;Malgun Gothic&quot;,&quot;Arial&quot;,&quot;Gulim&quot;"/>
+        <Radio id="rdo_filter" taborder="1" left="280" top="40" width="120" height="20" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" index="0" text="학생" value="S" onitemchanged="rdo_filter_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">S</Col>
+                <Col id="datacolumn">학생</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">P</Col>
+                <Col id="datacolumn">교수</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Grid id="grd_userList" taborder="2" left="10" top="70" width="380" height="270" binddataset="ds_users" autofittype="col" oncelldblclick="grd_userList_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="학번/교번"/>
+                <Cell col="1" text="이름"/>
+                <Cell col="2" text="단과대"/>
+                <Cell col="3" text="학과"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:id" padding="0px 5px"/>
+                <Cell col="1" text="bind:name" padding="0px 5px"/>
+                <Cell col="2" text="bind:colcode" padding="0px 5px" displaytype="combotext" combodataset="ds_college" combocodecol="col_code" combodatacol="col_title" textAlign="left"/>
+                <Cell col="3" text="bind:deptcode" padding="0px 5px" displaytype="combotext" combodataset="ds_department" combocodecol="dept_code" combodatacol="dept_title" textAlign="left"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_choose" taborder="3" text="선택" left="115" top="358" width="80" height="24" cssclass="btn_WF_gantt01" onclick="btn_choose_onclick"/>
+        <Button id="btn_close" taborder="4" text="닫기" left="205" top="358" width="80" height="24" cssclass="btn_WF_gantt01" onclick="btn_close_onclick"/>
+        <Edit id="edt_searchKeyword" taborder="5" left="95" top="42" width="140" height="20"/>
+        <Combo id="cbo_searchTarget" taborder="6" left="10" top="42" width="80" height="20" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="학번" value="id">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">학번</Col>
+                <Col id="codecolumn">id</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">이름</Col>
+                <Col id="codecolumn">name</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">단과대</Col>
+                <Col id="codecolumn">col_title</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">학과</Col>
+                <Col id="codecolumn">dept_title</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Button id="btn_search" taborder="7" left="240" top="40" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_users">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="colcode" type="STRING" size="256"/>
+          <Column id="deptcode" type="STRING" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_college">
+        <ColumnInfo>
+          <Column id="col_code" type="STRING" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_department">
+        <ColumnInfo>
+          <Column id="dept_code" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="col_code" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+// 폼 로드 시
+this.userList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"getReceiverList"	// 1. strSvcID(string 형태의 id)
+		, "/getReceiverList.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_users=out_users ds_college=out_college ds_department=out_department"	// 4. strOutDatasets -select Fds=Sds
+		, "" // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+	// 퇴학생, 졸업생, 퇴직한 교수는 제외
+};
+
+this.fn_callback = function(id,errCD,errMSG)
+{
+	if(errCD<0){
+		this.alert("목록을 가져오지 못했습니다.");
+	}else{
+		let idType = this.rdo_filter.value;
+		this.ds_users.filter("String(id).indexOf('"+idType+"')>=0");
+	}
+}
+
+
+// 필터링
+this.rdo_filter_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	let userType = this.rdo_filter.value;
+	this.ds_users.filter("String(id).indexOf('"+userType+"')>=0");
+};
+
+
+// 검색
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let userType = this.rdo_filter.value;
+	let sTarget = this.cbo_searchTarget.value;
+	let sKeyword = this.edt_searchKeyword.value;
+	
+	this.ds_users.filter("String("+sTarget+").indexOf('"+sKeyword+"')>=0&&String(id).indexOf('"+userType+"')>=0");
+};
+
+
+// 그리드 클릭시
+this.grd_userList_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	let id = this.ds_users.getColumn(e.row,"id");
+	let name = this.ds_users.getColumn(e.row,"name");
+	if(name==undefined){
+		name="없는 이용자";
+	}
+	let receiver = id+" <"+name+">";
+	
+	this.close(receiver);
+};
+
+
+// 선택
+this.btn_choose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let receiver = this.ds_users.getColumn(this.ds_users.rowposition,"id");
+	this.close(receiver);
+};
+
+
+// 닫기
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close(null);
+};
+
+
+
+]]></Script>
+  </Form>
+</FDL>
