@@ -628,7 +628,7 @@ this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 	} else {
 		this.pm_context.set_innerdataset(this.ds_indirContext);
 	} 	
-	this.pm_context.trackPopupByComponent( obj, targetX, targetY );
+	this.pm_context.trackPopupByComponent( obj, targetX-10, targetY-10 );
 };
 
 this.pm_context_onmouseleave = function(obj:nexacro.PopupMenu,e:nexacro.MenuMouseEventInfo)
