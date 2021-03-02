@@ -18,9 +18,31 @@
         </Div>
         <Button id="btn_send" taborder="2" text="전송" left="161" top="545" width="100" height="35" cssclass="btn_WF_gantt01" onclick="btn_send_onclick" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Button id="btn_close" taborder="3" text="닫기" left="291" top="545" width="100" height="35" cssclass="btn_WF_gantt01" onclick="btn_close_onclick" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Button id="btn_search" taborder="4" left="320" top="100" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
+
+// 수신인 검색
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let objCF = new ChildFrame();
+	objCF.init("findReceiver",470,50,400,400,null,null,"Mail::userList.xfdl");
+	objCF.showModal(this.getOwnerFrame(),{},this,"fn_receiver");
+};
+
+
+this.fn_receiver = function(id,receiver)
+{
+	if(receiver==null){
+		return;
+	}else{
+		this.div_mail.form.edt_receiver.set_value(receiver);
+	}
+}
+
+
+// 전송
 this.btn_send_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let check = this.confirm("발송하시겠습니까?");
@@ -29,10 +51,11 @@ this.btn_send_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		let sTitle = this.div_mail.form.edt_title.value;
 		let sReceiver = this.div_mail.form.edt_receiver.value;
 		let sContents = this.div_mail.form.txt_contents.value;
+		let sReceiver2 = sReceiver.substr(0,sReceiver.indexOf(" "));
 		
 		this.ds_mail.addRow();
 		this.ds_mail.setColumn(0,"title",sTitle);
-		this.ds_mail.setColumn(0,"receiver",sReceiver);
+		this.ds_mail.setColumn(0,"receiver",sReceiver2);
 		this.ds_mail.setColumn(0,"contents",sContents);
 		
 		this.transaction(
@@ -55,6 +78,8 @@ this.fn_callback = function(id,errCD,errMSG)
 	}
 }
 
+
+// 닫기
 this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let check = this.confirm("창을 닫으시겠습니까?");

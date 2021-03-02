@@ -1280,6 +1280,20 @@
 	color : #999999;
 }
 
+.Static.sta_WF_mail01
+{
+	color : #000000;
+	background : url('theme://images/img_WF_MailClose_16.png') no-repeat left center;
+	-nexa-padding : 0px 22px;
+}
+
+.Static.sta_WF_mail02
+{
+	color : #000000;
+	background : url('theme://images/img_WF_MailClose_24.png') no-repeat left center;
+	-nexa-padding : 0px 30px;
+}
+
 
 /**********************TextArea***********************************************/
 .TextArea,.TextAreaControl
