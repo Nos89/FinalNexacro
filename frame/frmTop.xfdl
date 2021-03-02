@@ -1,21 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="fm_top" width="1260" height="100" titletext="New Form" onload="fm_top_onload">
+  <Form id="fm_top" width="1260" height="100" titletext="New Form" onload="fm_top_onload" ontimer="fm_top_ontimer" font="bold 9pt Dotum">
     <Layouts>
       <Layout height="100" mobileorientation="landscape" width="1260">
         <Static id="Static00" taborder="0" left="0" top="75" height="25" right="0" cssclass="sta_top_bg02"/>
         <Static id="Static01" taborder="1" left="0" top="-1" height="76" right="0" onclick="Static01_onclick" background="#ffffff"/>
-        <Static id="Static02" taborder="2" left="45" top="12" width="205" height="48" text="가차대학교" font="bold 24px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" letterSpacing="2px" textAlign="right" background="url('theme://images/university2.png') no-repeat left center" padding="0px 15px 0px 0px"/>
+        <Static id="Static02" taborder="2" left="50" top="-4" width="206" height="84" text="가차대학교" font="bold 24px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" letterSpacing="2px" textAlign="right" background="url('theme://images/gachalogo2.png') no-repeat left center" padding="0px 5px 0px 0px"/>
         <Button id="Button00" taborder="3" text="대표 홈페이지로" top="0" width="120" height="50" cssclass="btn_top_menu" onclick="Button00_onclick" right="0"/>
         <Static id="Static02_00" taborder="4" left="295" top="-1" width="150" height="76" text="종합정보시스템" font="normal 600 18px/normal &quot;Arial&quot;" letterSpacing="0px" textAlign="center"/>
         <Static id="sta_userName" taborder="5" text="" left="490" top="7" width="144" height="36" textAlign="right" font="bold 16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#00479d"/>
         <Static id="Static04_00" taborder="6" text="님" left="640" top="7" width="20" height="36" font="14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Button id="btn_logout" taborder="7" text="로그아웃" left="674" top="12" width="72" height="27" onclick="btn_logout_onclick" cssclass="btn_logout" borderRadius="5px"/>
+        <Button id="btn_logout" taborder="7" text="로그아웃" left="880" top="12" width="72" height="27" onclick="btn_logout_onclick" cssclass="btn_logout" borderRadius="5px"/>
         <Static id="Static03" taborder="8" left="256" top="25" width="14" height="25" border="0px none,2px solid gray,0px none,0px none"/>
+        <Static id="sta_timer" taborder="9" left="710" top="7" width="80" height="36" font="bold 10pt &quot;Arial&quot;" color="#444444"/>
+        <Button id="btn_timereset" taborder="10" text="로그인연장" left="790" top="12" width="80" height="27" cssclass="btn_logout" borderRadius="5px" onclick="btn_timereset_onclick"/>
       </Layout>
     </Layouts>
     <Objects/>
     <Script type="xscript5.1"><![CDATA[this.userName = "";
+this.application = null;
 
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -24,6 +27,8 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.fm_top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	this.application = nexacro.getApplication();
+	
 	this.transaction(
 		"whichUser", // 1. strSVCID
 		"/whichUser.nex", // 2. strURL
@@ -33,6 +38,8 @@ this.fm_top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"fn_loginCallback" // 6. strCallbackFunc
 		
 	);
+	
+	this.setTimer(1, 1000);
 };
 
 this.fn_loginCallback = function( pID, pErr, pMsg ){
@@ -49,6 +56,43 @@ this.fn_loginCallback = function( pID, pErr, pMsg ){
 this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	location.href = "/info/logout";
+};
+
+this.fm_top_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{
+	
+	if(e.timerid == 1){
+		
+		this.application.gv_setTime = this.application.gv_setTime - 1;
+		
+		if(this.timer <= 0)
+		{
+			this.killTimer(1);
+			this.sta_timer.set_text("세션만료");
+			
+			this.alert("세션이 만료되었습니다.");
+			location.href = "/info/logout";
+		}
+		
+		var min = nexacro.floor(this.application.gv_setTime / 60);
+        min = min.toString().padLeft(2, "0");
+		var sec = nexacro.floor(this.application.gv_setTime - min * 60);
+        sec = sec.toString().padLeft(2, "0");
+		
+		if (min+sec=="0500")
+		{
+			alert("5분 후 세션이 만료됩니다.");
+		}
+		
+		this.sta_timer.set_text(min + "분 " + sec + "초");
+	}
+};
+
+this.btn_timereset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.confirm("연장하시겠습니까?")){
+		this.application.gv_setTime = 1800;
+	}
 };
 ]]></Script>
   </Form>

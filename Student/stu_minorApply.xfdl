@@ -43,7 +43,7 @@
         <Edit id="Edit00_01_02_00" taborder="37" left="971" top="114" width="114" height="30" enable="false"/>
         <Edit id="Edit00_02_02_00" taborder="38" left="971" top="149" width="114" height="30" enable="false"/>
         <MaskEdit id="MaskEdit00" taborder="39" left="189" top="114" width="111" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
-        <MaskEdit id="MaskEdit00_00" taborder="40" left="772" top="151" width="128" height="30" type="string" format="@@@@-@@-@@" enable="false"/>
+        <MaskEdit id="MaskEdit00_00" taborder="40" left="772" top="151" width="128" height="30" type="string" enable="false"/>
         <MaskEdit id="MaskEdit00_01" taborder="41" left="356" top="114" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
         <MaskEdit id="MaskEdit00_01_00" taborder="42" left="356" top="149" width="115" height="30" type="string" format="@'학년'" enable="false" maskchar=" "/>
         <Grid id="Grid00" taborder="43" left="5" top="220" autofittype="col" width="1080" height="240">
@@ -122,7 +122,6 @@
       <BindItem id="item11" compid="Edit00_00_02_00" propid="value" datasetid="ds_proInfo" columnid="name"/>
       <BindItem id="item12" compid="Edit00_01_01" propid="value" datasetid="ds_stuInfo" columnid="dept_title"/>
       <BindItem id="item13" compid="MaskEdit00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
-      <BindItem id="item14" compid="MaskEdit00_00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
       <BindItem id="item15" compid="MaskEdit00_01" propid="value" datasetid="ds_stuDetail" columnid="std_year"/>
       <BindItem id="item16" compid="MaskEdit00_01_00" propid="value" datasetid="ds_stuDetail" columnid="std_year"/>
     </Bind>

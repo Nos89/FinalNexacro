@@ -118,7 +118,6 @@
 	background : transparent;
 	border-radius : 1000px;
 	box-shadow : 0px 0px 5px #bababa;
-	
 }.Button.btn_WF_NewFolder02,.Button.btn_WF_NewFolder02[status=focused],.Button.btn_WF_NewFolder02[userstatus=selected]
 {
 	-nexa-edge : url('theme://images/btn_WF_NewFolder02.png');
@@ -3998,4 +3997,47 @@
 	cursor : pointer;
 }
 
+
+.Button.btn_logout[status=focused]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[status=focused][userstatus=pushed]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[status=focused][userstatus=selected]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[userstatus=selected]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[userstatus=selected][status=focused]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[userstatus=pushed]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
 ]]></XCSS>
