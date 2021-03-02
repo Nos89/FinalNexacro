@@ -171,7 +171,7 @@
           <Column id="p_name" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_condition">
+      <Dataset id="ds_conditionByRoom">
         <ColumnInfo>
           <Column id="year" type="INT" size="256"/>
           <Column id="semester" type="INT" size="256"/>
@@ -210,25 +210,30 @@ this.fn_callback_pop = function(id, sReturn)
 {
 	var year = this.cmb_year.value;
 	var semester = this.cmb_semester.value;
-	this.ds_condition.setColumn(0,"year",year);
-	this.ds_condition.setColumn(0,"semester",semester);
+	this.ds_conditionByRoom.setColumn(0,"year",year);
+	this.ds_conditionByRoom.setColumn(0,"semester",semester);
 	
-	var arrRtn = sReturn.split("|");
-	var sName = arrRtn[0];
-	var sNum = arrRtn[1];
-	
-	this.ds_condition.setColumn(0,"classroom",sNum);
-	this.edt_name.set_value(sName);
-	this.edt_num.set_value(sNum);
-	
-	this.transaction(
-		"getClassTime",
-		"/getClassTime.nex",
-		"in_condition=ds_condition:A",
-		"ds_classTime=out_classTime",
-		"",  
-		"fn_callback"
-	);
+	if(sReturn == "cancel"){
+		trace("Nothing");
+	}else{
+		var arrRtn = sReturn.split("|");
+		var sName = arrRtn[0];
+		var sNum = arrRtn[1];
+		
+		this.ds_conditionByRoom.setColumn(0,"classroom",sNum);
+		this.edt_name.set_value(sName);
+		this.edt_num.set_value(sNum);
+		
+		this.transaction(
+			"getClassTime",
+			"/getClassTime.nex",
+			"in_conditionByRoom=ds_conditionByRoom:U",
+			"ds_classTime=out_classTime",
+			"",  
+			"fn_callback"
+		);
+		
+	}
 }
 
 this.fn_callback=function(id,errCode,errMsg)

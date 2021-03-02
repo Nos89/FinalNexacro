@@ -112,7 +112,8 @@ this.fn_callback=function(id,errCode,errMsg)
 
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.close();
+	var sReturn = "cancel";
+	this.close(sReturn);
 };
 
 this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -120,9 +121,9 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var sName = this.ds_room.getColumn(this.ds_room.rowposition, "build_name");
 	var sNum = this.ds_room.getColumn(this.ds_room.rowposition, "room_num");
 	
-	var sRtn = sName + "|" + sNum;
+	var sReturn = sName + "|" + sNum;
 	
-	this.close(sRtn);
+	this.close(sReturn);
 };
 
 this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
@@ -130,9 +131,9 @@ this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 	var sName = this.ds_room.getColumn(this.ds_room.rowposition, "build_name");
 	var sNum = this.ds_room.getColumn(this.ds_room.rowposition, "room_num");
 	
-	var sRtn = sName + "|" + sNum;
+	var sReturn = sName + "|" + sNum;
 	
-	this.close(sRtn);
+	this.close(sReturn);
 };
 
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)

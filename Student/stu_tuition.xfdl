@@ -105,7 +105,7 @@
                 <Cell col="1" colspan="5" text="장학금액"/>
                 <Cell col="6" rowspan="2" text="expr:'납부\n여부'"/>
                 <Cell col="7" colspan="4" text="기타납부금"/>
-                <Cell col="11" rowspan="2" text="은행1"/>
+                <Cell col="11" rowspan="2" text="은행"/>
                 <Cell col="12" rowspan="2" text="가상계좌"/>
                 <Cell row="1" col="1" text="입학금"/>
                 <Cell row="1" col="2" text="수업료"/>
