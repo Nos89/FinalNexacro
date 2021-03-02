@@ -19,6 +19,7 @@
     <Objects/>
     <Script type="xscript5.1"><![CDATA[this.userName = "";
 this.application = null;
+this.userType = "";
 
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -44,12 +45,19 @@ this.fm_top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.fn_loginCallback = function( pID, pErr, pMsg ){
 	this.sta_userName.set_text(this.userName);
-	if(this.userName==""){
+	if(this.userType==""){
 		this.Static04_00.set_visible(false);
 		this.btn_logout.set_visible(false);
 	}else{
 		this.Static04_00.set_visible(true);
 		this.btn_logout.set_visible(true);
+	}
+	
+	if(this.userType=="학생" || this.userType == "교수"){
+		// visible 이미 true
+	}else{
+		this.btn_timereset.set_visible(false);
+		this.sta_timer.set_visible(false);
 	}
 }
 
