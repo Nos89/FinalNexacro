@@ -106,11 +106,17 @@
           </Formats>
         </Grid>
         <Static id="Static00_00_00" taborder="12" text="안내사항" left="5" top="90" height="20" cssclass="sta_img_horn" right="5"/>
-        <Static id="Static02" taborder="13" text="" left="5" top="124" height="116" border="1px solid" width="1079"/>
-        <Button id="Button00" taborder="14" text="엑셀" left="932" top="245" width="56" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01"/>
-        <Static id="Static02_01" taborder="15" text="총" left="996" top="245" width="11" height="26" verticalAlign="middle"/>
-        <Static id="sta_count00" taborder="16" left="1016" top="245" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
-        <Static id="Static02_00_00" taborder="17" text="건" left="1065" top="245" width="11" height="26" verticalAlign="middle"/>
+        <Button id="Button00" taborder="13" text="엑셀" left="932" top="245" width="56" height="26" onclick="Button00_onclick" cssclass="btn_WF_excel01"/>
+        <Static id="Static02_01" taborder="14" text="총" left="996" top="245" width="11" height="26" verticalAlign="middle"/>
+        <Static id="sta_count00" taborder="15" left="1016" top="245" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
+        <Static id="Static02_00_00" taborder="16" text="건" left="1065" top="245" width="11" height="26" verticalAlign="middle"/>
+        <Div id="Div00" taborder="17" left="4" top="124" width="1080" height="116" background="#eaf1fb" formscrollbartype="default default" text="" border="1px solid #8ba8d1">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="수업시간의 3/4이상 출석한 자에 한해 취득한 성적을 인정할 수 있다.&#13;&#10;&#13;&#10;학업성적은 각 교과목의 출석, 과제 및 시험성적 등을 종합하여 평가한다. 다만, 실험, 실습, 실기 및 기타 이에 준하는 특수과목의 성적평가 방법은 담당교수가 따로 정할 수 있다.&#13;&#10;&#13;&#10;학업성적의 평가 요소별 비율은 담당교수가 평가 목적에 맞게 정한다.&#13;&#10;&#13;&#10;상대평가 교과목의 등급별 비율은 A급 20%, B급 30%, C급 40%, D급 10%를 기준으로 하되 5% 이내에서 증감 할 수 있으며, F는 10%를 초과할 수 없다. &#13;&#10;단, 출석미달 및 시험 불응자는 평가 비율에서 제외하고 상대평가 대상 과목 중 교직과목과 군사학과 전공과목에 대해서는 A등급 25% 이하로 하고 B등급 이하 등급은 자율로 평가 할 수 있다.&#13;&#10;&#13;&#10;학점인정&#13;&#10;&#13;&#10;학점을 인정하는 시기는 매학기말로 한다. 성적등급 D급 이상을 얻은 교과목을 학점취득으로 인정한다.&#13;&#10;&#13;&#10;수강신청하지 않고 수강한 과목은 학점을 인정하지 않으며, 학점이 인정된 과목을 중복이수하여 취득한 학점은 졸업학점으로 인정하지 않는다.&#13;&#10;&#13;&#10;수강 승인된 교과목을 임의로 이수치 않을 경우 성적 미취득으로 F처리 된다.&#13;&#10;&#13;&#10;수업시간의 3/4이상 출석한 자에 한해 기말시험에 응시할 자격을 부여하고 취득한 성적을 인정한다.&#13;&#10;&#13;&#10;수업일수 3/4선 이후에 군입대 휴학으로 인하여 기말고사에 응시하지 못하는 경우에는 기말고사 이전의 평가로 해당학기 성적을 인정한다.(3/4 이상 출석한자)&#13;&#10;&#13;&#10;정당한 사유없이 소정의 등록기간내에 등록을 필하지 않고(미등록 제적대상자) 취득한 성적의 학점은 인정하지 않는다.&#13;&#10;&#13;&#10;중간시험 이후 기말시험 종료전에 일반(질병)휴학자의 취득한 성적의 학점은 무효로 한다.&#13;&#10;&#13;&#10;계절학기에 취득한 성적의 학점은 이수 구분별로 인정하되 매학기 평점평균에 산입하지 않고 졸업학점 및 총평점 평균 산출시만 적용한다.&#13;&#10;&#13;&#10;R.O.T.C학생은 그 과정 이수로서 제3학년 및 제4학년의 군사학점을 인정한다." left="6" top="8" width="1364" height="627" padding="25px 0px 0px 25px" font="16px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" textAlign="left" verticalAlign="top" background="#d6d6d6" border="1px solid black"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <InitValue>
@@ -170,6 +176,11 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 
+
+this.Div00_Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_stuInfo">
@@ -207,8 +218,8 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       </Dataset>
       <Dataset id="ds_condition">
         <ColumnInfo>
-          <Column id="year" type="INT" size="256"/>
-          <Column id="semester" type="INT" size="256"/>
+          <Column id="year" type="STRING" size="256"/>
+          <Column id="semester" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
