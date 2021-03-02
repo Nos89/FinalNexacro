@@ -153,6 +153,7 @@ this.sun = new Array();
 this.fn_callback = function(id,errCode,errMsg){
 	if(errCode==-1){
 		alert("예기치 못한 오류가 발생했습니다. 잠시 후 다시 시도해주세요");
+		location.href = "/classRegistration.nex";
 	}
 
 	if(id=="onloadBasket"){
