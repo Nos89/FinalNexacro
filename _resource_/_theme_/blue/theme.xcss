@@ -3984,4 +3984,46 @@
 	cursor : pointer;
 }
 
+.Button.btn_logout[status=focused]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[status=focused][userstatus=pushed]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[status=focused][userstatus=selected]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[userstatus=selected]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[userstatus=selected][status=focused]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
+.Button.btn_logout[userstatus=pushed]
+{
+	background : #00479d;
+	color : #ffffff;
+	cursor : pointer;
+	font : bold 10pt "Arial";
+}
 ]]></XCSS>

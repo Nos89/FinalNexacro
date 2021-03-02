@@ -822,5 +822,6 @@
     <Variable id="gvID" initval=""/>
     <Variable id="gvProName" initval=""/>
     <Variable id="gvStdID" initval=""/>
+    <Variable id="gv_setTime" initval="1800"/>
   </Variables>
 </AppVariables>

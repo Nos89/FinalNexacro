@@ -109,9 +109,6 @@
 
 this.stu_classRegistration_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.ds_condition.setColumn(0,"year",this.cmb_year.value);
-	this.ds_condition.setColumn(0,"semester",this.cmb_semester.value);
-	
 	this.transaction("stuInfoOnLoad","/stuInfoOnLoad.nex","","ds_stuInfo=out_stuInfo","","");
 	
 	this.transaction(
@@ -143,7 +140,7 @@ this.btn_search2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.transaction(
 		"getMyClass",
 		"/getMyClass.nex",
-		"in_condition=ds_condition:A",
+		"in_condition=ds_condition:U",
 		"ds_classList=out_classList",
 		"",  
 		"fn_callback"
@@ -195,7 +192,10 @@ this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="semester" type="INT" size="256"/>
         </ColumnInfo>
         <Rows>
-          <Row/>
+          <Row>
+            <Col id="year">21</Col>
+            <Col id="semester">1</Col>
+          </Row>
         </Rows>
       </Dataset>
     </Objects>
