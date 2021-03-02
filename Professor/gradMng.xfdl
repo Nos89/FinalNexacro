@@ -164,6 +164,8 @@
         <Static id="Static02_01_03_00" taborder="92" text="총" left="406" top="384" width="11" height="26" verticalAlign="middle"/>
         <Static id="sta_count00_00" taborder="93" left="426" top="384" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
         <Static id="Static02_00_00_00_00" taborder="94" text="건" left="475" top="384" width="11" height="26" verticalAlign="middle"/>
+        <Static id="Static11" taborder="95" text="현재 입력 중인 강의 : " left="100" top="134" width="124" height="26" onclick="Static11_onclick"/>
+        <Static id="sta_searchTitle" taborder="96" text="" left="225" top="132" width="137" height="28"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -192,12 +194,14 @@
             <Col id="oc_year">20120202</Col>
             <Col id="oc_semester">1</Col>
             <Col id="name">물리학</Col>
+            <Col id="oc_targetlevel">1</Col>
           </Row>
           <Row>
             <Col id="oc_year">20210203</Col>
             <Col id="oc_code">2</Col>
             <Col id="oc_semester">2</Col>
             <Col id="name">양자학</Col>
+            <Col id="oc_targetlevel">전체</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -211,6 +215,12 @@
           <Column id="std_year" type="INT" size="256"/>
           <Column id="check" type="STRING" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="title">물리학</Col>
+            <Col id="lec_code">1</Col>
+          </Row>
+        </Rows>
       </Dataset>
       <Dataset id="ds_lecture">
         <ColumnInfo>
@@ -238,7 +248,7 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">all</Col>
+            <Col id="code">전체</Col>
             <Col id="name">전체</Col>
           </Row>
           <Row>
@@ -357,10 +367,10 @@ this.fn_callback = function(id, errCode, errMsg){
 		this.fn_setCombo();
 		this.ds_crDetail.filter("lec_code=='xxxxxx'");
 		this.ds_grade.filter("lec_code=='xxxxxx'");
-		this.btn_reset_onclick();
 
 		this.sta_count00.set_text(this.ds_crDetail.getRowCount());
 		this.sta_count00_00.set_text(this.ds_grade.getRowCount());
+		this.btn_reset_onclick();
 	}else if(id=="gradeAdd" || id=="deleteGrade"){
 		if(errCode==0){
 			alert("잠시후 다시 시도해 주세요");
@@ -537,11 +547,12 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		var lecCode = this.ds_openClass.getColumn(0,"oc_code");
 		this.ds_crDetail.filter("lec_code=='"+lecCode+"'");
 		this.ds_grade.filter("lec_code=='"+lecCode+"'");
+		this.sta_searchTitle.set_text(this.ds_crDetail.getColumn(0,"title"));
 		this.fn_gradeCheck();
 	}
-	this.ds_openClass.filter("oc_code=='xxxxxxx'");
 	this.sta_count00.set_text(this.ds_crDetail.getRowCount());
 	this.sta_count00_00.set_text(this.ds_grade.getRowCount());
+
 };
 this.fn_search = function(){
 	var str = "";
@@ -553,6 +564,7 @@ this.fn_search = function(){
 	var lecCode = this.cbo_lecCode.value;
 	var title = this.cbo_title.value;
 	
+
 	arr.push(year,stdYear,semester,lecCode,title);
 	for(var i=0; i<arr.length; i++){
 		if(arr[i]!=null){
@@ -866,6 +878,7 @@ this.btn_excel2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.objExcelExport.set_exportfilename("성적정보 리스트");
 	this.objExcelExport.exportData();  
 };
+
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="mask_attend" propid="value" datasetid="ds_grade" columnid="grade_attend"/>
