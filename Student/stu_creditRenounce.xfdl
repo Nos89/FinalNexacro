@@ -136,8 +136,8 @@
       </Dataset>
       <Dataset id="ds_condition">
         <ColumnInfo>
-          <Column id="year" type="INT" size="256"/>
-          <Column id="semester" type="INT" size="256"/>
+          <Column id="year" type="STRING" size="256"/>
+          <Column id="semester" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>

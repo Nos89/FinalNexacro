@@ -547,9 +547,12 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		var lecCode = this.ds_openClass.getColumn(0,"oc_code");
 		this.ds_crDetail.filter("lec_code=='"+lecCode+"'");
 		this.ds_grade.filter("lec_code=='"+lecCode+"'");
-		this.sta_searchTitle.set_text(this.ds_crDetail.getColumn(0,title));
+		this.sta_searchTitle.set_text(this.ds_crDetail.getColumn(0,"title"));
 		this.fn_gradeCheck();
 	}
+	this.sta_count00.set_text(this.ds_crDetail.getRowCount());
+	this.sta_count00_00.set_text(this.ds_grade.getRowCount());
+
 };
 this.fn_search = function(){
 	var str = "";
