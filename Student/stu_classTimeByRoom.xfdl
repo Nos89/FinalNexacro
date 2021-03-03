@@ -227,7 +227,7 @@ this.fn_callback_pop = function(id, sReturn)
 		this.transaction(
 			"getClassTime",
 			"/getClassTime.nex",
-			"in_conditionByRoom=ds_conditionByRoom:U",
+			"in_conditionByRoom=ds_conditionByRoom:A",
 			"ds_classTime=out_classTime",
 			"",  
 			"fn_callback"

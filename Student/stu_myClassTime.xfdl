@@ -279,7 +279,7 @@ this.btn_search2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.transaction(
 		"getMyClassTime",
 		"/getMyClassTime.nex",
-		"in_condition=ds_condition:U",
+		"in_condition=ds_condition:A",
 		"ds_classTime=out_classTime",
 		"",  
 		"fn_callback_re",
