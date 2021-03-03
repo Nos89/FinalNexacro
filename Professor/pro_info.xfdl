@@ -145,6 +145,29 @@ this.popupCallBack = function(sFormId, sArg)
 	}
 }
 
+this.gfn_isNull = function (pvVal)
+{
+	if (new String(pvVal).valueOf() == "undefined") 
+	{
+		return true;
+	}
+	if (pvVal == null) 
+	{
+		return true;
+	}
+	if (("x" + pvVal == "xNaN") && (new String(pvVal.length).valueOf() == "undefined")) 
+	{
+		return true;
+	}
+	if (pvVal.length == 0) 
+	{
+		return true;
+	}
+
+	return false;
+}
+
+
 //옵션 간소화 팝업
 this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, obj, nPopupLeft, nPopupTop, nPopupWidth, nPopupHeight)
 {
@@ -268,8 +291,6 @@ this.FileUpTransfer00_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.Fi
 	msg += "requesturi: "+e.requesturi+"\n";
 	msg += "locationuri: "+e.locationuri+"\n" ;
 	msg += "errormsg: "+e.errormsg+"\n";
-	
-	
 };
 
 //파일 확장자 체크
@@ -313,27 +334,7 @@ this.Tab00_Tabpage2_Button01_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 };
 
 
-this.gfn_isNull = function (pvVal)
-{
-	if (new String(pvVal).valueOf() == "undefined") 
-	{
-		return true;
-	}
-	if (pvVal == null) 
-	{
-		return true;
-	}
-	if (("x" + pvVal == "xNaN") && (new String(pvVal.length).valueOf() == "undefined")) 
-	{
-		return true;
-	}
-	if (pvVal.length == 0) 
-	{
-		return true;
-	}
-
-	return false;
-}]]></Script>
+]]></Script>
     <Objects>
       <Dataset id="ds_proInfo">
         <ColumnInfo>
