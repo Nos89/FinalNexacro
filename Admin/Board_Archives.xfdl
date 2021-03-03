@@ -72,32 +72,6 @@ this.totalRowCount = "";
 
 
 
-// 트랜잭션 콜백함수
-this.fn_callback = function(id, errMsg, errCode)
-{
-	if(id=="deleteBoard"){
-		this.ds_transaction.deleteAll();
-	}
-	this.div_page.form.initPages(this.totalRowCount,this.fv_pageRowCount);
-	this.div_page.form.setPage(1);
-}
-
-
-this.fn_callback_pop = function (code)
-{
-	if(code==1){
-		this.reload();
-	}
-};
-
-// 페이지 이동 콜백함수
-this.setPageAfter = function(startRowNum, endRowNum)
-{
-	this.ds_board.filter("rank>="+startRowNum+"&&rank<="+endRowNum);
-}
-
-
-
 this.Board_Archives_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 this.transaction(
@@ -111,6 +85,22 @@ this.transaction(
 };
 
 
+// 트랜잭션 콜백함수
+this.fn_callback = function(id, errMsg, errCode)
+{
+	if(id=="deleteBoard"){
+		this.ds_transaction.deleteAll();
+	}
+	this.div_page.form.initPages(this.totalRowCount,this.fv_pageRowCount);
+	this.div_page.form.setPage(1);
+}
+
+
+// 페이지 이동 콜백함수
+this.setPageAfter = function(startRowNum, endRowNum)
+{
+	this.ds_board.filter("rank>="+startRowNum+"&&rank<="+endRowNum);
+}
 
 
 // 일괄선택
@@ -220,7 +210,7 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="seq" type="STRING" size="256"/>
           <Column id="title" type="STRING" size="256"/>
           <Column id="contents" type="STRING" size="256"/>
-          <Column id="write" type="STRING" size="256"/>
+          <Column id="writer" type="STRING" size="256"/>
           <Column id="writeDate" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>

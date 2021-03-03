@@ -394,6 +394,14 @@
             <Col id="PGM_PATH">Webhard</Col>
             <Col id="PGM_ID">frmWebhard.xfdl</Col>
           </Row>
+          <Row>
+            <Col id="MENU_CD">0028</Col>
+            <Col id="UP_MENU_CD">0000</Col>
+            <Col id="MENU_NM">학사자료실</Col>
+            <Col id="PGM_PATH">Student</Col>
+            <Col id="PGM_ID">std_boardArchive.xfdl</Col>
+            <Col id="MENU_LVL">1</Col>
+          </Row>
         </Rows>
       </Dataset>
       <Dataset id="grd_admin">

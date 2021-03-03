@@ -128,30 +128,6 @@
             </ColumnInfo>
             <Rows>
               <Row>
-                <Col id="codecolumn">2010</Col>
-                <Col id="datacolumn">2010</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2011</Col>
-                <Col id="datacolumn">2011</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2012</Col>
-                <Col id="datacolumn">2012</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2013</Col>
-                <Col id="datacolumn">2013</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2014</Col>
-                <Col id="datacolumn">2014</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2015</Col>
-                <Col id="datacolumn">2015</Col>
-              </Row>
-              <Row>
                 <Col id="codecolumn">2016</Col>
                 <Col id="datacolumn">2016</Col>
               </Row>
@@ -191,70 +167,10 @@
                 <Col id="codecolumn">2025</Col>
                 <Col id="datacolumn">2025</Col>
               </Row>
-              <Row>
-                <Col id="codecolumn">2026</Col>
-                <Col id="datacolumn">2026</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2027</Col>
-                <Col id="datacolumn">2027</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2028</Col>
-                <Col id="datacolumn">2028</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2029</Col>
-                <Col id="datacolumn">2029</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2030</Col>
-                <Col id="datacolumn">2030</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2031</Col>
-                <Col id="datacolumn">2031</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2032</Col>
-                <Col id="datacolumn">2032</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2033</Col>
-                <Col id="datacolumn">2033</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2034</Col>
-                <Col id="datacolumn">2034</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2035</Col>
-                <Col id="datacolumn">2035</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2036</Col>
-                <Col id="datacolumn">2036</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2037</Col>
-                <Col id="datacolumn">2037</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2038</Col>
-                <Col id="datacolumn">2038</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2039</Col>
-                <Col id="datacolumn">2039</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">2040</Col>
-                <Col id="datacolumn">2040</Col>
-              </Row>
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="com_semester" taborder="5" left="110" top="50" width="80" height="20" displaynulltext="학기" onitemchanged="com_semester_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="com_semester" taborder="5" left="105" top="50" width="80" height="20" displaynulltext="학기" onitemchanged="com_semester_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -318,7 +234,14 @@ this.fn_setInitVal = function()
 }
 
 
-// 년도,학기 변경
+// 년도 변경
+this.com_year_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	this.fn_timeFilter();
+};
+
+
+// 학기 변경
 this.com_semester_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
 {
 	this.fn_timeFilter();
@@ -563,7 +486,6 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.reload();
 };
-
 
 ]]></Script>
     <Objects>
