@@ -140,7 +140,7 @@ this.btn_search2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.transaction(
 		"getMyClass",
 		"/getMyClass.nex",
-		"in_condition=ds_condition:U",
+		"in_condition=ds_condition:A",
 		"ds_classList=out_classList",
 		"",  
 		"fn_callback"
