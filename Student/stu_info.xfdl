@@ -154,7 +154,7 @@
                   <Static id="Static00_00_00" taborder="31" text="현거주지주소" left="-1" top="360" height="34" cssclass="sta_img_check01" right="-1"/>
                   <Static id="Static02_00_01_00_01_01_00_00_01" taborder="32" text="우편번호" left="-1" top="404" width="50" height="30" textAlign="right"/>
                   <Edit id="edtPostcode" taborder="33" left="54" top="404" width="150" height="30" enable="false"/>
-                  <Button id="btn_adrress" taborder="34" left="216" top="404" width="29" height="30" onclick="Tab00_Tabpage3_btn_adrress_onclick" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff"/>
+                  <Button id="btn_adrress" taborder="34" left="216" top="404" width="84" height="30" onclick="Tab00_Tabpage3_btn_adrress_onclick" cssclass="btn_WF_search02" text="주소검색"/>
                   <Edit id="edtAddress1" taborder="35" left="345" top="404" width="306" height="30" enable="false"/>
                   <Static id="Static02_00_01_00_01_01_00_00_01_00" taborder="36" text="주소" left="290" top="404" width="50" height="30" textAlign="right"/>
                   <Edit id="edtAddress2" taborder="37" left="657" top="404" width="306" height="30"/>
@@ -429,7 +429,7 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="Tabpage8" text="성적">
+            <Tabpage id="Tabpage8" text="성적(개발중)">
               <Layouts>
                 <Layout>
                   <Static id="Static00" taborder="0" text="총성적" left="5" top="0" height="34" cssclass="sta_img_schedule" right="-7"/>
@@ -919,12 +919,12 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
 	
 	//child frame 초기화
 	childFrame.init(sPopupId, nPopupLeft, nPopupTop, nPopupWidth, nPopupHeight, null, null, sPopupUrl);
-	
+	childFrame.set_openalign("center middle");
+	childFrame.set_titlebarheight("40px");
+	childFrame.set_cssclass("popup");
+	childFrame.set_titlebarbuttonsize("20px");
 	// Modal Dialog 추가 옵션
-	//autosize default true
-	childFrame.set_autosize(false);	
-	//statusbar default true
-	childFrame.set_showtitlebar(false);
+	
 	
 	// 동적으로 생성한 ChildFrame을 Modal Dialog로 보여줌.
 	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="_popup" width="570" height="450" titletext="New Form">
+  <Form id="_popup" width="570" height="450" titletext="주소 검색">
     <Layouts>
       <Layout height="450" mobileorientation="landscape" width="570">
-        <Edit id="edtSearch" taborder="0" left="70" top="40" width="344" height="35" autoselect="true" font="normal 15pt/normal &quot;Arial&quot;" imemode="hangul" onkeydown="edtSearch_onkeydown"/>
-        <Button id="btnSearch" taborder="1" text="검색" top="40" width="80" height="35" font="normal 15pt/normal &quot;Arial&quot;" right="70" onclick="btnSearch_onclick"/>
-        <Grid id="grdList" taborder="2" left="20" top="114" height="306" binddataset="dsJuso" right="20" oncelldblclick="grdList_oncelldblclick" autofittype="col">
+        <Edit id="edtSearch" taborder="0" left="70" top="17" width="344" height="35" autoselect="true" font="normal 15pt/normal &quot;Arial&quot;" imemode="hangul" onkeydown="edtSearch_onkeydown"/>
+        <Button id="btnSearch" taborder="1" text="검색" top="17" width="80" height="35" right="70" onclick="btnSearch_onclick" cssclass="btn_WF_search02" font="normal 15pt/normal &quot;Arial&quot;"/>
+        <Grid id="grdList" taborder="2" left="20" top="91" height="306" binddataset="dsJuso" right="20" oncelldblclick="grdList_oncelldblclick" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -30,8 +30,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="staTip" taborder="3" text="예시 : 도로명(반포대로 58), 건물명(독립기념관), 지번(삼성동 25)" left="70" top="80" width="430" height="33"/>
-        <Button id="btnClose" taborder="4" text="X" left="522" top="2" width="45" height="26" font="normal 17pt/normal &quot;Arial&quot;" onclick="btnClose_onclick"/>
+        <Static id="staTip" taborder="3" text="예시 : 도로명(반포대로 58), 건물명(독립기념관), 지번(삼성동 25)" left="70" top="57" width="430" height="33"/>
+        <Button id="btnClose" taborder="4" left="240" top="407" width="90" height="26" onclick="btnClose_onclick" cssclass="btn_close" text="닫기"/>
       </Layout>
     </Layouts>
     <Objects>

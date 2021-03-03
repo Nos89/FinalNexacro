@@ -227,12 +227,7 @@ this.stu_myClassTime_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 };
 
 this.fn_callback=function(id,errCode,errMsg)
-{
-	trace(id);
-	trace(errCode);
-	trace(errMsg);
-	trace(this.ds_classTime.saveXML());
-	
+{	
 	if(id == "stuInfoOnLoad"){
 		this.edt_num.set_value(this.ds_stuInfo.getColumn(0,"id"));
 		this.edt_name.set_value(this.ds_stuInfo.getColumn(0,"name"));

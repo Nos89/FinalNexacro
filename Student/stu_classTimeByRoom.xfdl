@@ -237,12 +237,7 @@ this.fn_callback_pop = function(id, sReturn)
 }
 
 this.fn_callback=function(id,errCode,errMsg)
-{	
-	trace(id);
-	trace(errCode);
-	trace(errMsg);
-	trace(this.ds_classTime.saveXML());
-	
+{		
 	for(var i = 0; i<16; i++){
 		this.ds_classTimebyRoom.setColumn(i,"일",null);
 		this.ds_classTimebyRoom.setColumn(i,"월",null);
