@@ -229,7 +229,7 @@
         <Button id="btn_refresh" taborder="63" left="920" top="56" width="25" height="25" cssclass="btn_WF_refresh" onclick="btn_refresh_onclick"/>
         <Static id="Static04_00" taborder="64" text="* 교번은 추후 수정이 불가능하니 신중하게 작성해주세요." left="775" top="384" width="305" height="32" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
         <Static id="Static04_01" taborder="65" text="*" left="414" top="424" width="42" height="32" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
-        <MaskEdit id="mae_id" taborder="66" left="465" top="428" width="140" height="24" type="string" format="P-####"/>
+        <MaskEdit id="mae_id" taborder="66" left="465" top="428" width="140" height="24" type="string" format="P-####" onchanged="mae_id_onchanged"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -325,6 +325,7 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 
 // 교수 정보 가져오기
+this.selectedRow = "";
 this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
 {	
 	// 학과 필터링
@@ -337,6 +338,7 @@ this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEve
 	}else {
 		this.cal_outdate.set_readonly("true");
 	}
+	this.selectedRow = e.row;
 };
 
 
@@ -412,7 +414,7 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 데이터 추가
 this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_professor.addRow();
+	this.selectedRow = this.ds_professor.addRow();
 	this.fn_comboDeptFilter();
 };
 
@@ -437,6 +439,12 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	);
 };
 
+
+
+this.mae_id_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
+{
+	this.Grid00.getBindDataset().setColumn( this.selectedRow, "id", "P-"+this.mae_id.value);
+};
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="edt_name" propid="value" datasetid="ds_professor" columnid="name"/>
