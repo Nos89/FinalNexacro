@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="0" text="웹하드 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Grid id="grd_cloudStorage" taborder="1" left="10" top="90" width="430" height="460" binddataset="ds_cloudStorage" autofittype="col" fillareatype="linerow">
+        <Grid id="grd_cloudStorage" taborder="1" left="11" top="85" width="509" height="410" binddataset="ds_cloudStorage" autofittype="col" fillareatype="linerow">
           <Formats>
             <Format id="default">
               <Columns>
@@ -22,15 +22,14 @@
                 <Cell col="2" text="저장용량(MB)"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:id" padding="0px 5px"/>
-                <Cell col="1" text="bind:name" padding="0px 5px"/>
+                <Cell text="bind:id" padding="0px 5px" textAlign="center"/>
+                <Cell col="1" text="bind:name" padding="0px 5px" textAlign="center"/>
                 <Cell col="2" text="bind:maxStorage" displaytype="combocontrol" edittype="combo" combodataset="ds_storage" combodatacol="mb" combocodecol="b" combopopuptype="normal"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_save" taborder="2" text="저장" left="178" top="580" width="80" height="25" cssclass="btn_WF_gantt01" onclick="btn_save_onclick"/>
-        <Combo id="cbo_searchTarget" taborder="3" text="학번/교번" left="10" top="57" width="100" height="25" value="id" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="cbo_searchTarget" taborder="2" text="학번/교번" left="11" top="50" width="100" height="25" value="id" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -48,9 +47,9 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_searchKeyword" taborder="4" left="113" top="57" width="105" height="25"/>
-        <Button id="btn_search" taborder="5" left="228" top="55" width="25" height="25" cssclass="btn_WF_search02" text="" onclick="btn_search_onclick"/>
-        <Radio id="rdo_filter" taborder="6" left="330" top="55" width="120" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" index="0" text="학생" value="S" onitemchanged="rdo_filter_onitemchanged">
+        <Edit id="edt_searchKeyword" taborder="3" left="114" top="50" width="105" height="25"/>
+        <Button id="btn_search" taborder="4" left="229" top="48" width="25" height="25" cssclass="btn_WF_search02" text="" onclick="btn_search_onclick"/>
+        <Radio id="rdo_filter" taborder="5" left="290" top="48" width="110" height="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" index="0" text="학생" value="S" onitemchanged="rdo_filter_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -68,7 +67,9 @@
             </Rows>
           </Dataset>
         </Radio>
-        <Static id="Static12" taborder="7" left="0" top="615" width="1090" height="35" text=""/>
+        <Static id="Static12" taborder="6" left="0" top="495" width="1090" height="35" text=""/>
+        <Button id="btn_refresh" taborder="7" left="425" top="51" width="25" height="25" cssclass="btn_WF_refresh" onclick="btn_refresh_onclick"/>
+        <Button id="btn_save" taborder="8" text="저장" left="460" top="50" width="60" height="25" onclick="btn_save_onclick" cssclass="btn_WF_save01"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -78,13 +79,6 @@
           <Column id="name" type="STRING" size="256"/>
           <Column id="maxStorage" type="INT" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="maxStorage">52428800</Col>
-            <Col id="name">김교수</Col>
-            <Col id="id">P-1001</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_storage">
         <ColumnInfo>
@@ -93,24 +87,16 @@
         </ColumnInfo>
         <Rows>
           <Row>
+            <Col id="b">20971520</Col>
+            <Col id="mb">20</Col>
+          </Row>
+          <Row>
             <Col id="mb">50</Col>
             <Col id="b">52428800</Col>
           </Row>
           <Row>
-            <Col id="mb">60</Col>
-            <Col id="b">62914560</Col>
-          </Row>
-          <Row>
             <Col id="mb">70</Col>
             <Col id="b">73400320</Col>
-          </Row>
-          <Row>
-            <Col id="mb">80</Col>
-            <Col id="b">83886080</Col>
-          </Row>
-          <Row>
-            <Col id="mb">90</Col>
-            <Col id="b">94371840</Col>
           </Row>
           <Row>
             <Col id="mb">100</Col>
@@ -140,9 +126,16 @@ this.fn_callback = function(id,errCD,errMSG)
 	if(id=="getCloudStorage"){
 		if(errCD<0){
 			this.alert("데이터를 가져오지 못했습니다.");
+		}else{
+			this.ds_cloudStorage.filter("String(id).indexOf('S')>=0");
 		}
-	}else{
-	
+	}else if(id=="modifyCloudStorage"){
+		if(errCD<0){
+			this.alert("변경하지 못했습니다.");
+		}else{
+			this.alert("변경되었습니다.");
+			this.reload();
+		}
 	}
 }
 
@@ -159,20 +152,34 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let sTarget = this.cbo_searchTarget.value;
 	let sKeyword = this.edt_searchKeyword.value;
+	let userType = this.rdo_filter.value;
 	
-	this.ds_cloudStorage.filter("String("+sTarget+").indexOf('"+sKeyword+"')>=0&&String(id).indexOf('"+e.postvalue+"')>=0");
+	this.ds_cloudStorage.filter("String("+sTarget+").indexOf('"+sKeyword+"')>=0&&String(id).indexOf('"+userType+"')>=0");
 };
 
 
 // 저장
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let check = this.confirm("저장하시겠습니까?");
+	let check = this.confirm("변경하시겠습니까?");
 	if(check){
-		
+		this.transaction(
+			"modifyCloudStorage"	// 1. strSvcID(string 형태의 id)
+			, "/modifyCloudStorage.nex"	// 2. strURL(string 형태의 url)
+			, "in_cloudStorage=ds_cloudStorage:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+			, ""	// 4. strOutDatasets -select Fds=Sds
+			, "" // 5. strArgument
+			, "fn_callback"	// 6. strCallbackFunc
+		);
 	}
 };
 
+
+// 새로고침
+this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
 ]]></Script>
   </Form>
 </FDL>
