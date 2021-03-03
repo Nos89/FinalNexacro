@@ -295,12 +295,19 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_cloudStorage">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="maxStorage" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.cnt = 0;
 this.parentID = 0;
 this.nameLoc = ""; // 디렉토리 내 폴더, 파일 이름 & 저장 위치
 this.storage = "";
-this.maxStorage = 52428800;
+this.maxStorage = "";
 
 this.maxItem = "";
 this.div_fileWidth = "";
@@ -390,7 +397,7 @@ this.fn_trCallback = function( pId, pErrCode, pErrMsg ){
 				this.alert("파일이 삭제됐습니다.");
 				this.fn_indirTran( location );
 			} else if( pErrCode == 2 ){
-				this.alert("폴더가 삭제 됐습니다.");
+				this.alert("폴더가 삭제됐습니다.");
 				this.div_left.form.gd_left.setBindDataset(this.ds_directory);
 				this.expandDir( this.div_file.form.st_dirID.text );
 				this.fn_indirTran( location );

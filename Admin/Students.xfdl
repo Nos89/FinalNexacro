@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="0" text="학생" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Combo id="com_searchTarget" taborder="27" left="11" top="56" width="80" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="학번" value="id" onitemchanged="com_searchTarget_onitemchanged">
+        <Combo id="com_searchTarget" taborder="26" left="11" top="56" width="80" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="학번" value="id" onitemchanged="com_searchTarget_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -32,8 +32,8 @@
         </Combo>
         <Edit id="edt_searchKeyword" taborder="1" left="101" top="56" width="140" height="24"/>
         <Button id="btn_search" taborder="2" left="251" top="56" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
-        <Button id="btn_save" taborder="8" text="저장" left="1016" top="55" width="60" height="25" onclick="btn_save_onclick" cssclass="btn_WF_save01"/>
-        <Grid id="Grid00" taborder="9" left="10" top="90" width="1070" height="280" binddataset="ds_student" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick" oncellposchanged="Grid00_oncellposchanged" autofittype="col">
+        <Button id="btn_save" taborder="7" text="저장" left="1016" top="55" width="60" height="25" onclick="btn_save_onclick" cssclass="btn_WF_save01"/>
+        <Grid id="Grid00" taborder="8" left="10" top="90" width="1070" height="280" binddataset="ds_student" onheadclick="Grid00_onheadclick" oncellclick="Grid00_oncellclick" oncellposchanged="Grid00_oncellposchanged" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -79,7 +79,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static02" taborder="28" text="학생 정보" left="10" top="390" height="34" cssclass="sta_WF_title02" right="941"/>
+        <Static id="Static02" taborder="27" text="학생 정보" left="10" top="390" height="34" cssclass="sta_WF_title02" right="941"/>
         <Button id="btn_reset" taborder="4" text="리셋" left="700" top="56" width="60" height="24" onclick="btn_reset_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Radio id="rdo_filter" taborder="3" left="295" top="56" width="400" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="7" onitemchanged="rdo_filter_onitemchanged" index="0" text="재학" value="재학">
           <Dataset id="innerdataset">
@@ -119,42 +119,42 @@
             </Rows>
           </Dataset>
         </Radio>
-        <Static id="Static12" taborder="29" left="0" top="617" width="1090" height="32" text=""/>
-        <Button id="btn_add" taborder="6" left="952" top="56" width="25" height="25" onclick="btn_add_onclick" cssclass="btn_WF_add01"/>
-        <Static id="sta_country" left="456" top="548" height="32" cssclass="sta_cm_box02L" width="250" taborder="34"/>
-        <Static id="sta_addr1" taborder="30" left="804" top="548" width="275" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static01" taborder="31" text="이름" left="9" top="424" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="sta_name" taborder="32" left="108" top="424" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static03" taborder="33" left="705" top="424" width="100" height="32" cssclass="sta_cm_box01R" text="학년"/>
-        <Static id="sta_std_year" taborder="35" left="804" top="424" width="275" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static05" taborder="36" text="학번" left="357" top="424" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="sta_id" taborder="37" left="456" top="424" height="32" cssclass="sta_cm_box02L" width="250"/>
-        <Static id="Static07" taborder="38" text="단과대" left="9" top="455" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="sta_college" taborder="39" left="108" top="455" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static10" taborder="40" text="학과" left="357" top="455" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="sta_department" taborder="41" left="456" top="455" height="32" cssclass="sta_cm_box02L" width="250"/>
-        <Static id="Static14" taborder="42" text="졸업년도" left="705" top="486" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="sta_outdate" taborder="43" left="804" top="486" width="275" height="32" cssclass="sta_cm_box02L" text=""/>
-        <Static id="Static16" taborder="44" left="357" top="486" width="100" height="32" cssclass="sta_cm_box01R" text="입학년도"/>
-        <Static id="sta_indate" taborder="45" left="456" top="486" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static18" taborder="46" left="9" top="486" width="100" height="32" cssclass="sta_cm_box01R" text="전화번호"/>
-        <Static id="sta_phone" taborder="47" left="108" top="486" height="32" cssclass="sta_cm_box02L" width="250"/>
-        <Static id="Static21" taborder="48" text="생년월일" left="9" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="sta_birth" taborder="49" left="108" top="517" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static23" taborder="50" text="우편번호" left="705" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="sta_zipcode" taborder="51" left="804" top="517" width="275" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static25" taborder="52" text="성별" left="357" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="sta_gender" taborder="53" left="456" top="517" height="32" cssclass="sta_cm_box02L" width="250"/>
-        <Static id="Static27" taborder="54" text="계좌" left="9" top="579" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="sta_bank" taborder="55" left="108" top="579" width="598" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static29" taborder="56" left="9" top="548" width="100" height="32" cssclass="sta_cm_box01R" text="이메일"/>
-        <Static id="sta_email" taborder="57" left="108" top="548" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Edit id="edt_name" taborder="10" left="117" top="428" width="140" height="24"/>
-        <Static id="Static03_00" taborder="58" left="705" top="455" width="100" height="32" cssclass="sta_cm_box01R" text="학적변동"/>
-        <Static id="sta_std_status" taborder="59" left="804" top="455" height="32" cssclass="sta_cm_box02L" width="275"/>
-        <Edit id="edt_email" taborder="23" left="117" top="552" width="200" height="24"/>
-        <Edit id="edt_phone" taborder="15" left="117" top="490" width="140" height="24"/>
-        <Radio id="rdo_gender" taborder="19" left="465" top="521" width="140" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
+        <Static id="Static12" taborder="28" left="0" top="617" width="1090" height="32" text=""/>
+        <Button id="btn_add" taborder="5" left="952" top="56" width="25" height="25" onclick="btn_add_onclick" cssclass="btn_WF_add01"/>
+        <Static id="sta_country" left="456" top="548" height="32" cssclass="sta_cm_box02L" width="250" taborder="33"/>
+        <Static id="sta_addr1" taborder="29" left="804" top="548" width="275" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static01" taborder="30" text="이름" left="9" top="424" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_name" taborder="31" left="108" top="424" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static03" taborder="32" left="705" top="424" width="100" height="32" cssclass="sta_cm_box01R" text="학년"/>
+        <Static id="sta_std_year" taborder="34" left="804" top="424" width="275" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static05" taborder="35" text="학번" left="357" top="424" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_id" taborder="36" left="456" top="424" height="32" cssclass="sta_cm_box02L" width="250"/>
+        <Static id="Static07" taborder="37" text="단과대" left="9" top="455" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_college" taborder="38" left="108" top="455" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static10" taborder="39" text="학과" left="357" top="455" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_department" taborder="40" left="456" top="455" height="32" cssclass="sta_cm_box02L" width="250"/>
+        <Static id="Static14" taborder="41" text="졸업년도" left="705" top="486" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_outdate" taborder="42" left="804" top="486" width="275" height="32" cssclass="sta_cm_box02L" text=""/>
+        <Static id="Static16" taborder="43" left="357" top="486" width="100" height="32" cssclass="sta_cm_box01R" text="입학년도"/>
+        <Static id="sta_indate" taborder="44" left="456" top="486" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static18" taborder="45" left="9" top="486" width="100" height="32" cssclass="sta_cm_box01R" text="전화번호"/>
+        <Static id="sta_phone" taborder="46" left="108" top="486" height="32" cssclass="sta_cm_box02L" width="250"/>
+        <Static id="Static21" taborder="47" text="생년월일" left="9" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_birth" taborder="48" left="108" top="517" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static23" taborder="49" text="우편번호" left="705" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_zipcode" taborder="50" left="804" top="517" width="275" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static25" taborder="51" text="성별" left="357" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_gender" taborder="52" left="456" top="517" height="32" cssclass="sta_cm_box02L" width="250"/>
+        <Static id="Static27" taborder="53" text="계좌" left="9" top="579" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_bank" taborder="54" left="108" top="579" width="598" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static29" taborder="55" left="9" top="548" width="100" height="32" cssclass="sta_cm_box01R" text="이메일"/>
+        <Static id="sta_email" taborder="56" left="108" top="548" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Edit id="edt_name" taborder="9" left="117" top="428" width="140" height="24"/>
+        <Static id="Static03_00" taborder="57" left="705" top="455" width="100" height="32" cssclass="sta_cm_box01R" text="학적변동"/>
+        <Static id="sta_std_status" taborder="58" left="804" top="455" height="32" cssclass="sta_cm_box02L" width="275"/>
+        <Edit id="edt_email" taborder="22" left="117" top="552" width="200" height="24"/>
+        <Edit id="edt_phone" taborder="14" left="117" top="490" width="140" height="24"/>
+        <Radio id="rdo_gender" taborder="18" left="465" top="521" width="140" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -172,10 +172,10 @@
             </Rows>
           </Dataset>
         </Radio>
-        <Calendar id="cal_indate" taborder="16" left="465" top="490" width="140" height="24" dateformat="yyyy-MM" editformat="yyyy-MM"/>
-        <Calendar id="cal_outdate" taborder="17" left="813" top="490" width="140" height="24" editformat="yyyy-MM" dateformat="yyyy-MM"/>
-        <Calendar id="cal_birth" taborder="18" left="117" top="521" width="140" height="24"/>
-        <Combo id="cbo_std_status" taborder="14" text="Combo00" left="813" top="459" width="100" height="24" index="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cbo_std_status_onitemchanged">
+        <Calendar id="cal_indate" taborder="15" left="465" top="490" width="140" height="24" dateformat="yyyy-MM" editformat="yyyy-MM"/>
+        <Calendar id="cal_outdate" taborder="16" left="813" top="490" width="140" height="24" editformat="yyyy-MM" dateformat="yyyy-MM"/>
+        <Calendar id="cal_birth" taborder="17" left="117" top="521" width="140" height="24"/>
+        <Combo id="cbo_std_status" taborder="13" text="Combo00" left="813" top="459" width="100" height="24" index="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cbo_std_status_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -209,10 +209,10 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="cbo_country" taborder="24" text="" left="465" top="552" width="150" height="24" value="" innerdataset="gdsCountries" codecolumn="name" datacolumn="name"/>
-        <Combo id="cbo_college" taborder="12" left="117" top="459" width="140" height="24" onitemchanged="cbo_college_onitemchanged" innerdataset="ds_college" codecolumn="col_code" datacolumn="col_title"/>
-        <Combo id="cbo_department" taborder="13" left="465" top="459" width="140" height="24" text="" innerdataset="ds_department" codecolumn="dept_code" datacolumn="dept_title"/>
-        <Combo id="cbo_std_year" taborder="11" left="813" top="428" width="100" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="cbo_country" taborder="23" text="" left="465" top="552" width="150" height="24" value="" innerdataset="gdsCountries" codecolumn="name" datacolumn="name"/>
+        <Combo id="cbo_college" taborder="11" left="117" top="459" width="140" height="24" onitemchanged="cbo_college_onitemchanged" innerdataset="ds_college" codecolumn="col_code" datacolumn="col_title"/>
+        <Combo id="cbo_department" taborder="12" left="465" top="459" width="140" height="24" text="" innerdataset="ds_department" codecolumn="dept_code" datacolumn="dept_title"/>
+        <Combo id="cbo_std_year" taborder="10" left="813" top="428" width="100" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -238,14 +238,14 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static31" taborder="60" text="국적" left="357" top="548" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static23_00" taborder="61" left="705" top="579" width="100" height="32" cssclass="sta_cm_box01R" text="상세주소"/>
-        <Static id="sta_addr2" taborder="62" left="804" top="579" width="275" height="32" cssclass="sta_cm_box02L"/>
-        <Edit id="edt_addr2" taborder="22" left="813" top="583" width="224" height="24"/>
-        <Edit id="edt_addr1" taborder="21" left="813" top="552" width="224" height="24" onchanged="Edit01_onchanged"/>
-        <Edit id="edt_zipcode" taborder="20" left="813" top="521" width="141" height="24"/>
-        <Static id="Static23_01" taborder="63" text="주소" left="705" top="548" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Combo id="cbo_bank" taborder="25" left="117" top="583" width="102" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Static id="Static31" taborder="59" text="국적" left="357" top="548" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static23_00" taborder="60" left="705" top="579" width="100" height="32" cssclass="sta_cm_box01R" text="상세주소"/>
+        <Static id="sta_addr2" taborder="61" left="804" top="579" width="275" height="32" cssclass="sta_cm_box02L"/>
+        <Edit id="edt_addr2" taborder="21" left="813" top="583" width="224" height="24"/>
+        <Edit id="edt_addr1" taborder="20" left="813" top="552" width="224" height="24" onchanged="Edit01_onchanged"/>
+        <Edit id="edt_zipcode" taborder="19" left="813" top="521" width="141" height="24"/>
+        <Static id="Static23_01" taborder="62" text="주소" left="705" top="548" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Combo id="cbo_bank" taborder="24" left="117" top="583" width="102" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -271,12 +271,12 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="Edit00" taborder="26" left="224" top="583" width="180" height="24"/>
-        <Button id="btn_delete" taborder="7" left="984" top="56" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick" text=""/>
-        <Button id="btn_refresh" taborder="5" left="920" top="56" width="25" height="25" cssclass="btn_WF_refresh" onclick="btn_refresh_onclick"/>
-        <Static id="Static04" taborder="64" text="*" left="414" top="424" width="42" height="32" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
-        <Static id="Static04_00" taborder="65" text="* 학번은 추후 수정이 불가능하니 신중하게 작성해주세요." left="775" top="384" width="305" height="32" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
-        <MaskEdit id="mae_id" taborder="66" left="465" top="428" width="140" height="24" type="string" format="S-####"/>
+        <Edit id="Edit00" taborder="25" left="224" top="583" width="180" height="24"/>
+        <Button id="btn_delete" taborder="6" left="984" top="56" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick" text=""/>
+        <Static id="Static04" taborder="63" text="*" left="414" top="424" width="42" height="32" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
+        <Static id="Static04_00" taborder="64" text="* 학번은 추후 수정이 불가능하니 신중하게 작성해주세요." left="775" top="384" width="305" height="32" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
+        <MaskEdit id="mae_id" taborder="65" left="465" top="428" width="140" height="24" type="string" format="S-####"/>
+        <Button id="btn_refresh" taborder="66" left="920" top="56" width="25" height="25" cssclass="btn_WF_refresh" onclick="btn_refresh_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
