@@ -276,7 +276,7 @@
         <Button id="btn_refresh" taborder="5" left="920" top="56" width="25" height="25" cssclass="btn_WF_refresh" onclick="btn_refresh_onclick"/>
         <Static id="Static04" taborder="64" text="*" left="414" top="424" width="42" height="32" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
         <Static id="Static04_00" taborder="65" text="* 학번은 추후 수정이 불가능하니 신중하게 작성해주세요." left="775" top="384" width="305" height="32" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
-        <MaskEdit id="mae_id" taborder="66" left="465" top="428" width="140" height="24" type="string" format="S-####"/>
+        <MaskEdit id="mae_id" taborder="66" left="465" top="428" width="140" height="24" type="string" format="S-####" onchanged="mae_id_onchanged"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -434,8 +434,10 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 
 // 학생 정보 가져오기
+this.selectedRow = "";
 this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
 {
+	this.selectedRow = e.row;
 	this.fn_comboDeptFilter();
 };
 
@@ -500,7 +502,7 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 추가
 this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_student.addRow();
+	this.selectedRow = this.ds_student.addRow();
 	this.fn_comboDeptFilter();
 };
 
@@ -526,7 +528,10 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	);
 };
 
-
+this.mae_id_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
+{
+	this.Grid00.getBindDataset().setColumn( this.selectedRow, "id", "S-"+this.mae_id.value);
+};
 
 ]]></Script>
     <Bind>

@@ -145,8 +145,7 @@ this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.objExcelExport.set_exportfilename("부/복수포기신청 리스트");
 	this.objExcelExport.exportData();  
-};
-]]></Script>
+};]]></Script>
     <Bind>
       <BindItem id="item0" compid="Edit00" propid="value" datasetid="ds_stuInfo" columnid="id"/>
       <BindItem id="item1" compid="Edit00_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
