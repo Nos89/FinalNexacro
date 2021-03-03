@@ -2,7 +2,7 @@
 <FDL version="2.1">
   <Form id="Syllabus" width="1090" height="650" titletext="New Form" onload="Syllubus_onload">
     <Layouts>
-      <Layout height="650" mobileorientation="landscape" width="1090">
+      <Layout height="650" mobileorientation="landscape" width="1090" stepcount="0">
         <Static id="Static00" taborder="0" text="강의계획서 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
         <Div id="Div01" taborder="1" left="460" top="80" width="620" height="550" text="" border="1px solid gray">
           <Layouts>
@@ -59,13 +59,13 @@
               <Static id="sta_lec_way_5" taborder="49" left="473" top="390" width="117" height="25" cssclass="sta_cm_box02L" textAlign="center"/>
               <Static id="sta_lec_approval" taborder="50" left="550" top="13" width="40" height="25" cssclass="sta_cm_box02L" text=""/>
               <Static id="sta_lec_book" taborder="51" left="9" top="589" width="581" height="70" cssclass="sta_cm_box02L" verticalAlign="top" padding="3px"/>
-              <Button id="btn_approval" taborder="52" text="승인" left="160" top="690" width="120" height="30" onclick="div_lecture_btn_approval_onclick" cssclass="btn_WF_gantt01"/>
-              <Button id="btn_reject" taborder="53" text="반려" left="320" top="690" width="120" height="30" onclick="div_lecture_btn_reject_onclick" cssclass="btn_WF_gantt01"/>
+              <Button id="btn_approval" taborder="52" text="승인" left="160" top="710" width="120" height="30" onclick="div_lecture_btn_approval_onclick" cssclass="btn_WF_gantt01"/>
+              <Button id="btn_reject" taborder="53" text="반려" left="320" top="710" width="120" height="30" onclick="div_lecture_btn_reject_onclick" cssclass="btn_WF_gantt01"/>
               <Button id="btn_cls" taborder="54" left="569" top="173" width="19" height="19" cssclass="btn_WF_search02" padding="1px" onclick="div_lecture_btn_cls_onclick"/>
               <Static id="Static00" taborder="55" text="강의계획서 조회" left="8" top="14" width="120" height="16" cssclass="sta_WF_title02"/>
               <Static id="Static04_00" taborder="56" text="년도" left="320" top="80" width="60" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
               <Static id="sta_oc_year" taborder="57" left="390" top="80" width="89" height="25" cssclass="sta_cm_box02L" text=""/>
-              <Button id="btn_reason" taborder="58" text="반려사유 작성" left="460" top="693" width="83" height="24" cssclass="btn_WF_gantt02" onclick="btn_reason_onclick" borderRadius="3px"/>
+              <Button id="btn_reason" taborder="58" text="반려사유 작성하기" left="9" top="675" width="110" height="24" cssclass="btn_WF_gantt02" onclick="btn_reason_onclick" borderRadius="3px"/>
               <Div id="div_bottom" taborder="59" left="0" top="770" width="600" height="30"/>
             </Layout>
           </Layouts>
@@ -551,6 +551,8 @@ this.fn_reject = function(id,objReturn)
 		if(reject.rtnType=="save"){
 			let nRow = this.ds_lecture.rowposition;
 			this.ds_lecture.setColumn(nRow,"lec_deny_reason",reject.reason);
+			this.Div01.form.btn_reason.set_text("반려사유 작성됨");
+			this.Div01.form.btn_reason.set_cssclass("btn_WF_gantt01");
 		}
 	}
 }
