@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="std_boardArchive" width="1090" height="650" titletext="New Form" onload="std_boardArchive_onload">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="1090">
+        <Static id="sta_title" taborder="0" text="학사자료실" left="5" top="0" height="34" cssclass="sta_img_circle01" width="1080"/>
+        <Combo id="com_searchTarget" taborder="1" left="11" top="46" width="90" height="24" innerdataset="innerdataset" datacolumn="datacolumn" codecolumn="codecolumn" index="0" value="title" text="제목">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">title</Col>
+                <Col id="datacolumn">제목</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">contents</Col>
+                <Col id="datacolumn">내용</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">title_contents</Col>
+                <Col id="datacolumn">제목+내용</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="edt_searchKeyword" taborder="2" left="104" top="46" width="166" height="24"/>
+        <Button id="btn_search" taborder="3" left="280" top="46" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
+        <Button id="btn_refresh" taborder="4" text="새로고침" left="1000" top="45" width="80" height="25" onclick="btn_refresh_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Div id="div_page" taborder="5" left="289" top="570" width="482" height="41" border="1px solid #c7c7c7" text="" url="Admin::paging.xfdl"/>
+        <Grid id="Grid00" taborder="6" left="11" top="80" width="1070" height="481" fillareatype="linerow" autofittype="col" binddataset="ds_board" onheadclick="Grid00_onheadclick" oncelldblclick="Grid00_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="280"/>
+                <Column size="50"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="28" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="번호"/>
+                <Cell col="1" text="제목"/>
+                <Cell col="2" text="작성자"/>
+                <Cell col="3" text="작성일" calendardateformat="yyyy.MM.dd"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:seq" padding="0px 5px"/>
+                <Cell col="1" text="bind:title" padding="0px 5px"/>
+                <Cell col="2" text="bind:write" padding="0px 5px"/>
+                <Cell col="3" text="bind:writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static12" taborder="7" left="0" top="610" width="1090" height="29" text=""/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.boardType = "archive";
+this.fv_pageRowCount = 15;
+this.totalRowCount = "";
+
+
+// 페이지 로딩
+this.std_boardArchive_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"boardOnLoad"	// 1. strSvcID(string 형태의 id)
+		, "/BoardOnLoad.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_board=out_board"	// 4. strOutDatasets -select Fds=Sds
+		, "boardType="+this.boardType // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+};
+
+
+// 트랜잭션 콜백함수
+this.fn_callback = function(id, errMsg, errCode)
+{
+	if(id=="deleteBoard"){
+		this.ds_transaction.deleteAll();
+	}
+	this.div_page.form.initPages(this.totalRowCount,this.fv_pageRowCount);
+	this.div_page.form.setPage(1);
+}
+
+
+// 페이지 이동 콜백함수
+this.setPageAfter = function(startRowNum, endRowNum)
+{
+	this.ds_board.filter("rank>="+startRowNum+"&&rank<="+endRowNum);
+}
+
+
+// 검색
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let sTarget = this.com_searchTarget.value;
+	let sKeyword = this.edt_searchKeyword.value;
+	
+	this.transaction(
+		"searchBoard"	// 1. strSvcID(string 형태의 id)
+		, "/SearchBoard.nex"	// 2. strURL(string 형태의 url)
+		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "ds_board=out_board"	// 4. strOutDatasets -select Fds=Sds
+		, "sTarget="+sTarget+" sKeyword="+sKeyword+" boardType="+this.boardType // 5. strArgument
+		, "fn_callback"	// 6. strCallbackFunc
+	);
+};
+
+
+// 게시글 팝업
+this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{	
+
+	let sCol = obj.getCellProperty("body",e.cell,"text").replace("bind:","");
+	let nSeq = this.ds_board.getColumn(e.row,"seq");
+	
+	if(sCol=="title"){
+		nexacro.open(
+			"bdarchive"+nSeq
+			, "Admin::Board_post.xfdl"
+			, this.getOwnerFrame()
+			, {seq:nSeq, type:this.boardType}
+		)
+	}
+};
+
+
+// 새로고침
+this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_board">
+        <ColumnInfo>
+          <Column id="rank" type="INT" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="writer" type="STRING" size="256"/>
+          <Column id="writeDate" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
