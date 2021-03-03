@@ -73,7 +73,7 @@ this.fm_top_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
 		
 		this.application.gv_setTime = this.application.gv_setTime - 1;
 		
-		if(this.timer <= 0)
+		if(this.application.gv_setTime <= 0)
 		{
 			this.killTimer(1);
 			this.sta_timer.set_text("세션만료");

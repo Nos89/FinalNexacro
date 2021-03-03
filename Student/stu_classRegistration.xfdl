@@ -109,7 +109,7 @@
 
 this.stu_classRegistration_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.transaction("stuInfoOnLoad","/stuInfoOnLoad.nex","","ds_stuInfo=out_stuInfo","","");
+	this.transaction("stuInfoOnLoad","/stuInfoOnLoad.nex","","ds_stuInfo=out_stuInfo","","fn_callback");
 	
 	this.transaction(
 		"getMyClass",
