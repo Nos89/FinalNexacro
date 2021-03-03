@@ -296,8 +296,6 @@ this.FileUpTransfer00_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.Fi
 	msg += "requesturi: "+e.requesturi+"\n";
 	msg += "locationuri: "+e.locationuri+"\n" ;
 	msg += "errormsg: "+e.errormsg+"\n";
-	
-	
 };
 
 //파일 확장자 체크
