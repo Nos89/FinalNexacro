@@ -101,7 +101,7 @@
         <Static id="Static32" taborder="31" left="108" top="579" height="32" cssclass="sta_cm_box02L" width="598"/>
         <Edit id="edt_name" taborder="32" left="117" top="428" width="140" height="24"/>
         <Button id="btn_reset" taborder="42" text="리셋" left="566" top="56" width="60" height="24" onclick="btn_reset_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Radio id="rdo_filter" taborder="47" left="310" top="56" width="251" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="4" onitemchanged="rdo_filter_onitemchanged" index="0" text="재직" value="재직">
+        <Radio id="rdo_filter" taborder="47" left="310" top="56" width="251" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="4" onitemchanged="rdo_filter_onitemchanged" index="3" text="전체" value="전체">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -188,7 +188,7 @@
         <Calendar id="cal_indate" taborder="38" left="465" top="490" width="140" height="24" dateformat="yyyy-MM-dd"/>
         <Calendar id="cal_outdate" taborder="39" left="813" top="490" width="140" height="24" dateformat="yyyy-MM-dd"/>
         <Calendar id="cal_birth" taborder="40" left="117" top="521" width="140" height="24"/>
-        <Combo id="cbo_pro_status" taborder="33" text="Combo00" left="813" top="428" width="130" height="24" index="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_pro_status_onitemchanged">
+        <Combo id="cbo_pro_status" taborder="33" text="재직" left="813" top="428" width="130" height="24" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="com_pro_status_onitemchanged" value="재직">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -228,8 +228,8 @@
         <Button id="btn_delete" taborder="62" left="984" top="56" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick"/>
         <Static id="Static04_00" taborder="63" text="* 교번은 추후 수정이 불가능하니 신중하게 작성해주세요." left="775" top="384" width="305" height="32" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
         <Static id="Static04_01" taborder="64" text="*" left="414" top="424" width="42" height="32" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
-        <MaskEdit id="mae_id" taborder="65" left="465" top="428" width="140" height="24" type="string" format="P-####"/>
-        <Button id="btn_refresh" taborder="66" left="920" top="56" width="25" height="25" cssclass="btn_WF_refresh" onclick="btn_refresh_onclick"/>
+        <Button id="btn_refresh" taborder="65" left="920" top="56" width="25" height="25" cssclass="btn_WF_refresh" onclick="btn_refresh_onclick"/>
+        <Edit id="edt_id" taborder="66" left="465" top="428" width="140" height="24"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -291,7 +291,7 @@ this.fn_callback = function(id, errCD, errMSG)
 			this.alert("데이터를 불러오지 못했습니다.");
 			return;
 		}else{
-			this.ds_professor.filter("pro_status=='재직'");
+			//this.ds_professor.filter("pro_status=='재직'");
 		}
 	}else if(id=="professorUpdate"){
 		if(errCD<0){
@@ -456,7 +456,7 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       <BindItem id="item16" compid="edt_addr2" propid="value" datasetid="ds_professor" columnid="addr2"/>
       <BindItem id="item17" compid="edt_zipcode" propid="value" datasetid="ds_professor" columnid="zipcode"/>
       <BindItem id="item18" compid="cal_outdate" propid="value" datasetid="ds_professor" columnid="outDate"/>
-      <BindItem id="item8" compid="mae_id" propid="value" datasetid="ds_professor" columnid="id"/>
+      <BindItem id="item1" compid="edt_id" propid="value" datasetid="ds_professor" columnid="id"/>
     </Bind>
   </Form>
 </FDL>

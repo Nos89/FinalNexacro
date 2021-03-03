@@ -79,13 +79,6 @@
           <Column id="name" type="STRING" size="256"/>
           <Column id="maxStorage" type="INT" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="maxStorage">52428800</Col>
-            <Col id="name">김교수</Col>
-            <Col id="id">P-1001</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_storage">
         <ColumnInfo>
@@ -138,9 +131,9 @@ this.fn_callback = function(id,errCD,errMSG)
 		}
 	}else if(id=="modifyCloudStorage"){
 		if(errCD<0){
-			this.alert("수정하지 못했습니다.");
+			this.alert("변경하지 못했습니다.");
 		}else{
-			this.alert("수정되었습니다.");
+			this.alert("변경되었습니다.");
 			this.reload();
 		}
 	}
@@ -168,7 +161,7 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 저장
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let check = this.confirm("저장하시겠습니까?");
+	let check = this.confirm("변경하시겠습니까?");
 	if(check){
 		this.transaction(
 			"modifyCloudStorage"	// 1. strSvcID(string 형태의 id)
