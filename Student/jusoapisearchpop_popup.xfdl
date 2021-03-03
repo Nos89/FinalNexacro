@@ -99,7 +99,7 @@ this.grdList_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEvent
 	var sJibunAddress = this.dsJuso.getColumn(e.row,"jibunaddress");
 	
 	//"우편번호,도로명주소,지번주소" 순으로 문자열 생성 (팝업API 화면과 동일한 문자열 구조 생성)
-	var strData = sPostcode + "," + sAddress + "," + sJibunAddress;
+	var strData = sPostcode + "|" + sAddress + "|" + sJibunAddress;
 	
 	//선택된 주소 결과 전달 및 검색화면 종료
 	this.close(strData);

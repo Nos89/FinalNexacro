@@ -49,8 +49,8 @@
                   <Static id="Static02" taborder="2" text="우편번호" left="11" top="336" width="60" height="23"/>
                   <Edit id="edtPostCode" taborder="3" left="69" top="335" width="127" height="25"/>
                   <Static id="Static02_00" taborder="4" text="주소" left="241" top="336" width="60" height="23"/>
-                  <Edit id="edtAddress1" taborder="5" left="299" top="335" width="241" height="25"/>
-                  <Edit id="edtAddress2" taborder="6" left="550" top="335" width="270" height="25"/>
+                  <Edit id="edtAddress1" taborder="5" left="299" top="335" width="298" height="25"/>
+                  <Edit id="edtAddress2" taborder="6" left="607" top="335" width="213" height="25"/>
                   <Edit id="Edit00_02_00" taborder="7" left="70" top="152" width="121" height="25"/>
                   <Edit id="Edit00_02_00_00" taborder="8" left="70" top="182" width="121" height="25"/>
                   <Edit id="Edit00_02_00_00_00" taborder="9" left="70" top="212" width="220" height="25"/>
@@ -77,7 +77,7 @@
                   <Static id="Static01_02_00_00_00_00_00" taborder="30" text="병역" left="-9" top="271" width="69" height="25" textAlign="right"/>
                   <Calendar id="Calendar00" taborder="31" left="69" top="244" width="169" height="25" readonly="true"/>
                   <Calendar id="Calendar01" taborder="32" left="69" top="122" width="122" height="27" popuptype="normal"/>
-                  <Button id="Button01" taborder="33" left="202" top="333" width="29" height="30" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center" text="" onclick="Tab00_Tabpage2_Button01_onclick"/>
+                  <Button id="Button01" taborder="33" left="202" top="333" width="29" height="30" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center" text="" onclick="Tab00_Tabpage2_Button01_onclick" cursor="pointer"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -138,12 +138,9 @@ this.popupCallBack = function(sFormId, sArg)
 	{
 		if(!this.gfn_isNull(sArg))
 		{
-			var addData = sArg.split(",");
+			var addData = sArg.split("|");
 			this.Tab00.Tabpage2.form.edtPostCode.set_value(addData[0]);
 			this.Tab00.Tabpage2.form.edtAddress1.set_value(addData[1]);
-			this.Tab00.Tabpage2.form.edtAddress2.set_value(addData[2]);
-			
-			this.edtAddressDetail.setFocus();
 		}		
 	}
 }
@@ -159,12 +156,10 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
 	
 	//child frame 초기화
 	childFrame.init(sPopupId, nPopupLeft, nPopupTop, nPopupWidth, nPopupHeight, null, null, sPopupUrl);
-	
-	// Modal Dialog 추가 옵션
-	//autosize default true
-	childFrame.set_autosize(false);	
-	//statusbar default true
-	childFrame.set_showtitlebar(false);
+	childFrame.set_openalign("center middle");
+	childFrame.set_titlebarheight("40px");
+	childFrame.set_cssclass("popup");
+	childFrame.set_titlebarbuttonsize("20px");
 	
 	// 동적으로 생성한 ChildFrame을 Modal Dialog로 보여줌.
 	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);
@@ -318,7 +313,27 @@ this.Tab00_Tabpage2_Button01_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 };
 
 
-]]></Script>
+this.gfn_isNull = function (pvVal)
+{
+	if (new String(pvVal).valueOf() == "undefined") 
+	{
+		return true;
+	}
+	if (pvVal == null) 
+	{
+		return true;
+	}
+	if (("x" + pvVal == "xNaN") && (new String(pvVal.length).valueOf() == "undefined")) 
+	{
+		return true;
+	}
+	if (pvVal.length == 0) 
+	{
+		return true;
+	}
+
+	return false;
+}]]></Script>
     <Objects>
       <Dataset id="ds_proInfo">
         <ColumnInfo>
