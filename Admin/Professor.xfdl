@@ -325,6 +325,7 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 
 // 교수 정보 가져오기
+this.selectedRow = "";
 this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
 {	
 	// 학과 필터링
@@ -337,6 +338,7 @@ this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEve
 	}else {
 		this.cal_outdate.set_readonly("true");
 	}
+	this.selectedRow = e.row;
 };
 
 
@@ -412,7 +414,7 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 데이터 추가
 this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_professor.addRow();
+	this.selectedRow = this.ds_professor.addRow();
 	this.fn_comboDeptFilter();
 };
 
@@ -437,6 +439,12 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	);
 };
 
+
+
+this.mae_id_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
+{
+	this.Grid00.getBindDataset().setColumn( this.selectedRow, "id", "P-"+this.mae_id.value);
+};
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="edt_name" propid="value" datasetid="ds_professor" columnid="name"/>

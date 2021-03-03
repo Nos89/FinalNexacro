@@ -372,8 +372,10 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 
 // 학생 정보 가져오기
+this.selectedRow = "";
 this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
 {
+	this.selectedRow = e.row;
 	this.fn_comboDeptFilter();
 };
 
@@ -438,7 +440,7 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 추가
 this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_student.addRow();
+	this.selectedRow = this.ds_student.addRow();
 	this.fn_comboDeptFilter();
 };
 
@@ -464,7 +466,10 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	);
 };
 
-
+this.mae_id_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
+{
+	this.Grid00.getBindDataset().setColumn( this.selectedRow, "id", "S-"+this.mae_id.value);
+};
 
 ]]></Script>
     <Bind>
