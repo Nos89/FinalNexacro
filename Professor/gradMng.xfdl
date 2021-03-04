@@ -166,6 +166,116 @@
         <Static id="Static02_00_00_00_00" taborder="94" text="건" left="475" top="384" width="11" height="26" verticalAlign="middle"/>
         <Static id="Static11" taborder="95" text="현재 입력 중인 강의 : " left="100" top="134" width="124" height="26" onclick="Static11_onclick"/>
         <Static id="sta_searchTitle" taborder="96" text="" left="225" top="132" width="137" height="28"/>
+        <Grid id="Grid00" taborder="97" left="36" top="310" width="545" height="63" binddataset="ds_transaction">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="grade_seq"/>
+                <Cell col="1" text="std_id"/>
+                <Cell col="2" text="lec_code"/>
+                <Cell col="3" text="grade_code"/>
+                <Cell col="4" text="grade_attend"/>
+                <Cell col="5" text="grade_repo"/>
+                <Cell col="6" text="grade_mid"/>
+                <Cell col="7" text="grade_pre"/>
+                <Cell col="8" text="grade_final"/>
+                <Cell col="9" text="grade_atti"/>
+                <Cell col="10" text="grade_quiz"/>
+                <Cell col="11" text="grade_etc"/>
+                <Cell col="12" text="grade_total"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:grade_seq"/>
+                <Cell col="1" text="bind:std_id"/>
+                <Cell col="2" text="bind:lec_code"/>
+                <Cell col="3" text="bind:grade_code"/>
+                <Cell col="4" text="bind:grade_attend"/>
+                <Cell col="5" text="bind:grade_repo"/>
+                <Cell col="6" text="bind:grade_mid"/>
+                <Cell col="7" text="bind:grade_pre"/>
+                <Cell col="8" text="bind:grade_final"/>
+                <Cell col="9" text="bind:grade_atti"/>
+                <Cell col="10" text="bind:grade_quiz"/>
+                <Cell col="11" text="bind:grade_etc"/>
+                <Cell col="12" text="bind:grade_total"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="98" left="43" top="229" width="510" height="72" binddataset="ds_grade">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="grade_seq"/>
+                <Cell col="1" text="std_id"/>
+                <Cell col="2" text="lec_code"/>
+                <Cell col="3" text="grade_code"/>
+                <Cell col="4" text="grade_attend"/>
+                <Cell col="5" text="grade_repo"/>
+                <Cell col="6" text="grade_mid"/>
+                <Cell col="7" text="grade_pre"/>
+                <Cell col="8" text="grade_final"/>
+                <Cell col="9" text="grade_atti"/>
+                <Cell col="10" text="grade_quiz"/>
+                <Cell col="11" text="grade_etc"/>
+                <Cell col="12" text="grade_total"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:grade_seq"/>
+                <Cell col="1" text="bind:std_id"/>
+                <Cell col="2" text="bind:lec_code"/>
+                <Cell col="3" text="bind:grade_code"/>
+                <Cell col="4" text="bind:grade_attend"/>
+                <Cell col="5" text="bind:grade_repo"/>
+                <Cell col="6" text="bind:grade_mid"/>
+                <Cell col="7" text="bind:grade_pre"/>
+                <Cell col="8" text="bind:grade_final"/>
+                <Cell col="9" text="bind:grade_atti"/>
+                <Cell col="10" text="bind:grade_quiz"/>
+                <Cell col="11" text="bind:grade_etc"/>
+                <Cell col="12" text="bind:grade_total"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Objects>
@@ -336,6 +446,9 @@
           <Column id="grade_etc" type="INT" size="256"/>
           <Column id="grade_total" type="INT" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
       </Dataset>
       <Dataset id="ds_gradeCard">
         <ColumnInfo>
@@ -624,7 +737,7 @@ this.fn_gradsIsExist = function(id){
 };
 
 this.fn_addGrade = function(stdId,lecCode){
-	var nRow = this.ds_transaction.addRow();
+	var nRow = 0;
 	
 	this.ds_transaction.setColumn(nRow,"grade_seq",0);
 	this.ds_transaction.setColumn(nRow,"std_id",stdId);
