@@ -327,7 +327,7 @@
     <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
 this.row =0;
 this.id = nexacro.Application.gvID;
-
+this.proName = nexacro.Application.gvProName;
 this.lecturePlan_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
   this.transaction(
@@ -365,7 +365,7 @@ this.btn_modify_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 this.fn_makeChildFrame = function(id){
 	var year = this.ds_openClass.getColumn(this.row,"oc_year");
-	var proName = this.Static07.text;
+	var proName = this.proName;
 	var lecCode = this.ds_openClass.getColumn(this.row,"oc_code");
 	var semester = this.ds_openClass.getColumn(this.row,"oc_semester");
 	var name = this.ds_openClass.getColumn(this.row,"name");
