@@ -84,6 +84,7 @@ this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.close();
 };
 
+
 this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(!this.confirm("삭제하시겠습니까?")){ 
