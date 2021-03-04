@@ -249,7 +249,7 @@ this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialog
 			
 			//파일중복체크
 			if(isExist){
-				alert("이미추가된 파일이 있습니다.");
+				alert("이미 추가된 파일이 있습니다.");
 				return;
 			}
 			

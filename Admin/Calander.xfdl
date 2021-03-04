@@ -579,18 +579,8 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
           <Column id="seq" type="INT" size="256"/>
           <Column id="title" type="STRING" size="256"/>
           <Column id="contents" type="STRING" size="256"/>
-          <Column id="sche_startDate" type="STRING" size="256"/>
-          <Column id="sche_endDate" type="STRING" size="256"/>
-          <Column id="type" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_temp">
-        <ColumnInfo>
-          <Column id="seq" type="INT" size="256"/>
-          <Column id="title" type="STRING" size="256"/>
-          <Column id="contents" type="STRING" size="256"/>
-          <Column id="sche_startDate" type="STRING" size="256"/>
-          <Column id="sche_endDate" type="STRING" size="256"/>
+          <Column id="sche_startDate" type="DATE" size="256"/>
+          <Column id="sche_endDate" type="DATE" size="256"/>
           <Column id="type" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
