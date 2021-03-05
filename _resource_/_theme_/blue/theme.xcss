@@ -3294,7 +3294,7 @@
 	-nexa-border : 1px solid #aaaaaa;
 }
 
-.Button.btn_WF_list01,.Button.btn_WF_list01[status=focused],.Button.btn_WF_list01[userstatus=selected]
+.Button.btn_WF_list01,.Button.btn_WF_list01[userstatus=selected]
 {
 	background : #e7e7e7;
 	color : #101010;
@@ -3311,19 +3311,6 @@
 	background : #e0e0e0;
 	-nexa-border : 1px solid #c7c7c7;
 }
-.Button.btn_WF_list01[userstatus=pushed]
-{
-	background : #d7d7d7;
-	-nexa-border : 1px solid #c7c7c7;
-	-nexa-text-decoration : underline;
-}
-.Button.btn_WF_list01[status=disabled]
-{
-	background : #dddddd;
-	color : #aaaaaa;
-	-nexa-border : 1px solid #aaaaaa;
-}
-
 .Button.btn_WF_cloud01,.Button.btn_WF_cloud01[status=focused],.Button.btn_WF_cloud01[userstatus=selected]
 {
 	background : #e7e7e7;
