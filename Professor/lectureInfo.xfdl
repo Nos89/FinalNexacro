@@ -50,7 +50,7 @@
                 <Cell col="4" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년" textAlign="center"/>
                 <Cell col="5" text="bind:oc_semester" displaytype="mask" maskedittype="string" maskeditformat="#학기" textAlign="center"/>
                 <Cell col="6" text="bind:oc_part" textAlign="center"/>
-                <Cell col="7" text="bind:oc_is_close" textAlign="center"/>
+                <Cell col="7" text="expr:dataset.getColumn(currow,&quot;oc_is_close&quot;)==&quot;N&quot;?&quot;개설&quot;:&quot;개설대기&quot;" textAlign="center"/>
                 <Cell col="8" displaytype="buttoncontrol" edittype="button" text="미리보기"/>
                 <Cell col="9" text="bind:oc_schedule" textAlign="center"/>
                 <Cell col="10" text="bind:isu" textAlign="center"/>
@@ -90,6 +90,7 @@ this.fn_callback = function(id, errCode, errMsg){
 	this.sta_count00.set_text(this.ds_openClass.getRowCount());
 	this.fn_setYear();
 };
+
 
 //combo에 연도 집어넣기
 this.fn_setYear = function(){
@@ -205,8 +206,7 @@ this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 	this.objExcelExport.set_exportfilename("강의정보 리스트");
 	this.objExcelExport.exportData();  
-};
-]]></Script>
+};]]></Script>
     <Objects>
       <Dataset id="ds_openClass">
         <ColumnInfo>
@@ -225,14 +225,6 @@ this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="reco_score" type="INT" size="256"/>
           <Column id="isu" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="oc_targetlevel">전체</Col>
-          </Row>
-          <Row>
-            <Col id="oc_targetlevel">3</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_lecture">
         <ColumnInfo>
