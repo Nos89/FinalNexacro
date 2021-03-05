@@ -131,7 +131,7 @@
         <Static id="Static11_00" taborder="57" left="804" top="455" height="32" cssclass="sta_cm_box02L" width="275"/>
         <Edit id="edt_pro_office" taborder="15" left="813" top="459" width="130" height="24"/>
         <Edit id="edt_email" taborder="24" left="117" top="552" width="200" height="24"/>
-        <Edit id="edt_phone" taborder="16" left="117" top="490" width="140" height="24"/>
+        <Edit id="edt_phone" taborder="16" left="117" top="490" width="140" height="24" onchanged="edt_phone_onchanged"/>
         <Combo id="cbo_bank" taborder="26" left="117" top="583" width="102" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -166,7 +166,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_accountNum" taborder="27" left="224" top="583" width="180" height="24"/>
+        <Edit id="edt_accountNum" taborder="27" left="224" top="583" width="180" height="24" onchanged="edt_accountNum_onchanged"/>
         <Radio id="rdo_gender" taborder="20" left="465" top="521" width="140" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -445,7 +445,63 @@ this.mae_id_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
 {
 	this.Grid00.getBindDataset().setColumn( this.selectedRow, "id", "P-"+this.mae_id.value);
 };
-]]></Script>
+
+this.edt_phone_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	var contact = obj.value.replaceAll("-", "");
+	contact = contact.replaceAll(" ", "");
+	var isNum = this.checkNum(contact);
+	
+	if( !isNum ){
+		this.alert("숫자만 입력 할 수 있습니다.");
+		obj.set_value("");
+		obj.setFocus();
+		return;
+	}
+	
+	if( contact.length > 11 || contact.length < 10){
+		this.alert("전화번호는 10~11자리 숫자입니다.");
+	} else {
+		if( contact.length == 10 ){
+			contact = contact.substring(0, 3) + "-" + contact.substring(3, 6) + "-" + contact.substr(6, contact.length);
+			this.ds_professor.setColumn(this.selectedRow, "phone", contact);
+		} else if ( obj.value.length == 11 ){
+			contact = contact.substring(0, 3) + "-" + contact.substring(3, 7) + "-" + contact.substr(7, contact.length);
+			this.ds_professor.setColumn(this.selectedRow, "phone", contact);
+		}
+	}
+};
+
+
+
+this.edt_accountNum_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	var accountNum = obj.value.replaceAll("-", "");
+	accountNum = accountNum.replaceAll(" ", "");
+	var isNum = this.checkNum(accountNum);
+	
+	if( !isNum ){
+		this.alert("숫자만 입력 할 수 있습니다.");
+		obj.set_value("");
+		obj.setFocus();
+		return;
+	}
+};
+
+this.checkNum = function( sNum ){
+	var sChar = "";
+	var isNum = false;
+	for( var i = 0; i < sNum.length; i++ ){
+		sChar = sNum.charAt(i);
+	if( sChar >= 0 || sChar <= 9 ){
+			isNum = true;
+		} else {
+			isNum = false;
+			break;
+		}
+	}
+	return isNum;
+}]]></Script>
     <Bind>
       <BindItem id="item0" compid="edt_name" propid="value" datasetid="ds_professor" columnid="name"/>
       <BindItem id="item2" compid="cbo_pro_status" propid="value" datasetid="ds_professor" columnid="pro_status"/>

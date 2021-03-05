@@ -48,6 +48,22 @@
           <Column id="busi_contents" type="STRING" size="256"/>
           <Column id="busi_date" type="STRING" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="check">0</Col>
+            <Col id="busi_seq">11</Col>
+            <Col id="busi_proId">4</Col>
+            <Col id="busi_proName">1</Col>
+            <Col id="busi_date">20110208</Col>
+          </Row>
+          <Row>
+            <Col id="check">0</Col>
+            <Col id="busi_seq">123</Col>
+            <Col id="busi_proId">3</Col>
+            <Col id="busi_proName">2</Col>
+            <Col id="busi_date">20210108</Col>
+          </Row>
+        </Rows>
       </Dataset>
       <Dataset id="delScheduler">
         <ColumnInfo>
@@ -61,6 +77,7 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
+
 this.diary_del_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.dsSchedule.copyData(this.parent.dataSet);
@@ -68,15 +85,16 @@ this.diary_del_pop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	var objDs = this.Grid00.getBindDataset();
-        if(objDs.getRowCount() < 1){ return;}
-        
+	if(objDs.getRowCount() < 1){ return;}
+	
+	if(obj.getCellProperty("head", e.cell, "displaytype")=="checkboxcontrol"){
         sText = obj.getCellProperty("head", e.cell, "text");
         sText = (sText == "1" ? "0" : "1");	
-        
 		for(var i=0; i < objDs.rowcount; i++){
 			objDs.setColumn(i, "check", sText);
 		}
 		obj.setCellProperty("Head", e.cell, "text", sText);	
+	}
 };
 
 this.btn_cancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -96,13 +114,13 @@ this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.delScheduler.copyRow(i,this.dsSchedule,arr[i]);
 	}
 	this.transaction(
-			"delProDiary",
-			"/professor/delProDiary.nex",		
-			"in_ds=delScheduler", 
-			"",
-			"", 
-			"fn_callback"
-		);
+		"delProDiary",
+		"/professor/delProDiary.nex",		
+		"in_ds=delScheduler", 
+		"",
+		"", 
+		"fn_callback"
+	);
 };
 this.fn_callback = function(id, errCode, errMsg){
 	if(errCode != 1){

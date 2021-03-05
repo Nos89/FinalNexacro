@@ -149,11 +149,24 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 
+// 버튼 가시/비가시 처리
+this.buttonStatus = function(btnStatus)
+{
+	this.div_application.form.btn_approval.set_visible(btnStatus);
+	this.div_application.form.btn_reject.set_visible(btnStatus);
+}
+
+
 // 처리여부 필터링
 this.rdo_approval_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
 {
-	let approval = this.rdo_approval.value;
-	this.ds_changeDeptApply.filter("apply_approve=='"+approval+"'");
+	this.ds_changeDeptApply.filter("apply_approve=='"+e.postvalue+"'");
+	
+	if(e.postvalue=="신청"){
+		this.buttonStatus("true");
+	}else{
+		this.buttonStatus("false");
+	}
 };
 
 
