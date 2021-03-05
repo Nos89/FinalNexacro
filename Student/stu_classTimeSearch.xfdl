@@ -100,9 +100,9 @@
         </Combo>
         <Static id="Static02_00_00_00_00_00" taborder="8" text="교과목코드" left="311" top="40" width="60" height="30"/>
         <Static id="Static02_00_00_00_00_00_00" taborder="9" text="대학" left="11" top="75" width="49" height="30" textAlign="right"/>
-        <Combo id="cmbCode01" taborder="10" text="--선택--" left="71" top="75" width="129" height="30" innerdataset="ds_code01" codecolumn="Code" datacolumn="Value" index="0" value="-1"/>
+        <Combo id="cmbCode01" taborder="10" text="--선택--" left="71" top="75" width="129" height="30" innerdataset="ds_code01" codecolumn="col_code" datacolumn="col_title" index="0" value="-1"/>
         <Static id="Static02_00_00_00_00_00_00_00" taborder="11" text="학부(과)" left="220" top="75" width="50" height="30"/>
-        <Combo id="cmbCode02" taborder="12" text="2021" left="280" top="75" width="148" height="30" innerdataset="ds_code02" codecolumn="Code" datacolumn="Value" index="0" value="2021"/>
+        <Combo id="cmbCode02" taborder="12" text="2021" left="280" top="75" width="148" height="30" innerdataset="ds_code02" codecolumn="col_code" datacolumn="col_title" index="0" value="2021"/>
         <Button id="btn_search" taborder="13" text="조회" left="1019" top="2" width="54" height="30" onclick="btn_search_onclick" cssclass="btn_WF_search02"/>
         <Edit id="edt_code" taborder="14" left="377" top="40" width="103" height="30"/>
         <Button id="Button00" taborder="15" left="486" top="40" width="29" height="30" onclick="Div00_Button00_onclick" cssclass="btn_WF_Search" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center #ffffff"/>
@@ -156,139 +156,15 @@
       </Dataset>
       <Dataset id="ds_code01">
         <ColumnInfo>
-          <Column id="Code" type="STRING" size="256"/>
-          <Column id="Value" type="STRING" size="256"/>
+          <Column id="col_code" type="STRING" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="Code">-1</Col>
-            <Col id="Value">--선택--</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c1</Col>
-            <Col id="Value">공과대학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c2</Col>
-            <Col id="Value">보건의료과학대학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c3</Col>
-            <Col id="Value">비즈니스대학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c4</Col>
-            <Col id="Value">사범대학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c5</Col>
-            <Col id="Value">예술대학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c6</Col>
-            <Col id="Value">인문사회대학</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_code02">
         <ColumnInfo>
-          <Column id="Code" type="STRING" size="256"/>
-          <Column id="Value" type="STRING" size="256"/>
+          <Column id="col_code" type="STRING" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="Code">-1</Col>
-            <Col id="Value">--선택--</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c1d01</Col>
-            <Col id="Value">소프트웨어융합</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c1d02</Col>
-            <Col id="Value">에너지광기술융합학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c1d03</Col>
-            <Col id="Value">융합전자공학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c1d04</Col>
-            <Col id="Value">휴먼환경디자인학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c1d05</Col>
-            <Col id="Value">BT융합학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c2d06</Col>
-            <Col id="Value">간호학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c2d07</Col>
-            <Col id="Value">치위생학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c2d08</Col>
-            <Col id="Value">방사선학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c2d09</Col>
-            <Col id="Value">물리치료학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c2d10</Col>
-            <Col id="Value">작업치료학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c2d11</Col>
-            <Col id="Value">임상병리학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c3d12</Col>
-            <Col id="Value">경영학</Col>
-          </Row>
-          <Row>
-            <Col id="Value">글로벌경제통상학</Col>
-            <Col id="Code">c3d13</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c3d14</Col>
-            <Col id="Value">관광호텔경영학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c4d15</Col>
-            <Col id="Value">국어교육과</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c4d16</Col>
-            <Col id="Value">수학교육과</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c4d17</Col>
-            <Col id="Value">교직과</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c5d18</Col>
-            <Col id="Value">디자인조형학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c5d19</Col>
-            <Col id="Value">연극영화학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c6d20</Col>
-            <Col id="Value">미디어콘텐츠학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c6d21</Col>
-            <Col id="Value">사회과학</Col>
-          </Row>
-          <Row>
-            <Col id="Code">c6d22</Col>
-            <Col id="Value">인문과학</Col>
-          </Row>
-        </Rows>
       </Dataset>
     </Objects>
     <InitValue>
@@ -298,20 +174,16 @@
 
 this.stu_classTimeSearch_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	
 	this.transaction("stuInfoOnLoad","/stuInfoOnLoad.nex","","ds_stuInfo=out_stuInfo","","");
 	
 	this.transaction(
 		"classTimeSearch",
 		"/classTimeSearch.nex",
 		"",
-		"ds_classList=out_classList",
+		"ds_classList=out_classList ds_code01=out_code01 ds_code02=out_code02",
 		"",  
 		"fn_callback"
 	);
-	
-	var arrComboList = [this.cmbCode01, this.cmbCode02];
-	this.gfnInitMultiCombo(arrComboList);
 	
 	var grid_id = this.Grid00;
 	this.gfn_export(grid_id,0);
@@ -321,6 +193,8 @@ this.stu_classTimeSearch_onload = function(obj:nexacro.Form,e:nexacro.LoadEventI
 this.fn_callback=function(id,errCode,errMsg)
 {
 	this.sta_count.set_text(this.ds_classList.getRowCount());
+	var arrComboList = [this.cmbCode01, this.cmbCode02];
+	this.gfnInitMultiCombo(arrComboList);
 };
 
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -342,6 +216,8 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			this.ds_classList.filter("oc_year.indexOf(" + this.cmb_year.text.substr(2,2) + ")>=0 && oc_semester.indexOf(" + this.cmb_semester.text.substr(0,1) + ")>=0 && oc_code.indexOf(" + this.edt_code.value + ")>=0 && dept_title.indexOf('" + this.cmbCode02.text + "')>=0");
 		}
 	}
+	
+	this.sta_count.set_text(this.ds_classList.getRowCount());
 };
 
 this.gfnInitMultiCombo = function(arrComboList)
@@ -381,7 +257,7 @@ this.gfnItemChangedMultiCombo = function(objCombo, sValue)
 		var objDs = objChildCombo.getInnerDataset();
 		
 		//상위콤보 값을 기준으로 하위콤보 필터링
-		objDs.filter("Code.toString().indexOf('"+sValue+"')==0||Code=='-1'");
+		objDs.filter("col_code.toString().indexOf('"+sValue+"')==0||col_code=='-1'");
 		
 		//콤보 아이템 변경 처리 함수 호출
 		this.gfnItemChangedMultiCombo(objChildCombo, "-1");
