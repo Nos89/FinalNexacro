@@ -102,21 +102,6 @@
           <Column id="apply_date" type="DATE" size="256"/>
           <Column id="apply_approve" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="seq">3</Col>
-            <Col id="id">S-1001</Col>
-            <Col id="name">박학생</Col>
-            <Col id="col_title">공과대학</Col>
-            <Col id="dept_title">에너지광기술융합학</Col>
-            <Col id="reason">2021</Col>
-            <Col id="takeOff_Year">2학기</Col>
-            <Col id="takeOff_Semester">2022</Col>
-            <Col id="expectedReturnYear">군휴학</Col>
-            <Col id="apply_date">20210128</Col>
-            <Col id="apply_approve">신청</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_mail">
         <ColumnInfo>
