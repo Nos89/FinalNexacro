@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="auto none">
+  <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="none none">
     <Layouts>
       <Layout height="700" mobileorientation="landscape" width="250">
         <Grid id="grdLeft" taborder="0" left="40" top="100" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" width="207" bottom="0">
@@ -23,7 +23,7 @@
         <Button id="btn_menu" taborder="3" left="108" top="4" width="35" height="30" onclick="btn_menu_onclick" tooltiptext="메뉴 목록" tooltiptype="hover" cursor="pointer" border="0px none" cssclass="btn_list01" borderRadius="20px"/>
         <Button id="btn_myMenu" taborder="4" left="175" top="4" width="30" height="30" onclick="btn_myMenu_onclick" tooltiptext="마이메뉴 목록" tooltiptype="hover" borderRadius="20px" border="0px none" cursor="pointer" cssclass="btn_bookmark"/>
         <Static id="sta_closedmenu" taborder="5" left="0" top="0" height="140" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="40" visible="false"/>
-        <Button id="btn_menu00" taborder="6" left="3" top="50" width="35" height="30" onclick="btn_menu_onclick" tooltiptext="메뉴 목록" tooltiptype="hover" cursor="pointer" border="0px none" cssclass="btn_list01" borderRadius="20px" visible="false"/>
+        <Button id="btn_menu00" taborder="6" left="3" top="50" width="35" height="30" onclick="btn_menu_onclick" tooltiptext="메뉴 목록" tooltiptype="hover" cssclass="btn_list01" visible="false" border="0px none" borderRadius="20px" cursor="pointer"/>
         <Button id="btn_myMenu00" taborder="7" left="5" top="95" width="30" height="30" onclick="btn_myMenu_onclick" tooltiptext="마이메뉴 목록" tooltiptype="hover" borderRadius="20px" border="0px none" cursor="pointer" cssclass="btn_bookmark" visible="false"/>
         <Button id="btn_menuopen" taborder="8" text="OPEN" left="0" top="0" width="40" height="40" onclick="btn_menuopen_onclick" cssclass="btn_menuopen" visible="false" border="0px none"/>
         <Button id="btn_menuclose" taborder="9" text="CLOSE" left="40" top="0" width="40" height="40" onclick="btn_menuclose_onclick" cssclass="btn_menuclose" textAlign="center" border="0px none"/>
