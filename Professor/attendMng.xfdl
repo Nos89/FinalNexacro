@@ -88,7 +88,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="grd_attend" taborder="11" left="390" top="350" width="682" height="290" binddataset="ds_proAttendMng" autofittype="col" onheadclick="grd_attend_onheadclick">
+        <Grid id="grd_attend" taborder="11" left="390" top="350" width="682" height="290" binddataset="ds_proAttendMng" autofittype="col" onheadclick="grd_attend_onheadclick" autoenter="select">
           <Formats>
             <Format id="default">
               <Columns>
