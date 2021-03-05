@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="0" text="웹하드 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Grid id="grd_cloudStorage" taborder="1" left="11" top="85" width="509" height="410" binddataset="ds_cloudStorage" autofittype="col" fillareatype="linerow">
+        <Grid id="grd_cloudStorage" taborder="1" left="11" top="85" width="509" height="410" binddataset="ds_cloudStorage" autofittype="col" fillareatype="linerow" autoenter="select">
           <Formats>
             <Format id="default">
               <Columns>
@@ -24,7 +24,7 @@
               <Band id="body">
                 <Cell text="bind:id" padding="0px 5px" textAlign="center"/>
                 <Cell col="1" text="bind:name" padding="0px 5px" textAlign="center"/>
-                <Cell col="2" text="bind:maxStorage" displaytype="combocontrol" edittype="combo" combodataset="ds_storage" combodatacol="mb" combocodecol="b" combopopuptype="normal"/>
+                <Cell col="2" text="bind:maxStorage" displaytype="combocontrol" edittype="combo" combodataset="ds_storage" combodatacol="mb" combocodecol="b" combopopuptype="normal" comboautoselect="false"/>
               </Band>
             </Format>
           </Formats>
@@ -79,6 +79,18 @@
           <Column id="name" type="STRING" size="256"/>
           <Column id="maxStorage" type="INT" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">S-1001</Col>
+            <Col id="name">김학생</Col>
+            <Col id="maxStorage">20</Col>
+          </Row>
+          <Row>
+            <Col id="id">S-1002</Col>
+            <Col id="name">서학생</Col>
+            <Col id="maxStorage">50</Col>
+          </Row>
+        </Rows>
       </Dataset>
       <Dataset id="ds_storage">
         <ColumnInfo>
