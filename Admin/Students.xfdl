@@ -153,7 +153,7 @@
         <Static id="Static03_00" taborder="59" left="705" top="455" width="100" height="32" cssclass="sta_cm_box01R" text="학적변동"/>
         <Static id="sta_std_status" taborder="60" left="804" top="455" height="32" cssclass="sta_cm_box02L" width="275"/>
         <Edit id="edt_email" taborder="24" left="117" top="552" width="200" height="24"/>
-        <Edit id="edt_phone" taborder="16" left="117" top="490" width="140" height="24"/>
+        <Edit id="edt_phone" taborder="16" left="117" top="490" width="140" height="24" onchanged="edt_phone_onchanged"/>
         <Radio id="rdo_gender" taborder="29" left="465" top="521" width="140" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -271,7 +271,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="Edit00" taborder="27" left="224" top="583" width="180" height="24"/>
+        <Edit id="Edit00" taborder="27" left="224" top="583" width="180" height="24" onchanged="Edit00_onchanged"/>
         <Button id="btn_delete" taborder="8" left="984" top="56" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick" text=""/>
         <Static id="Static04" taborder="65" text="*" left="414" top="424" width="42" height="32" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
         <Static id="sta_alert" taborder="66" text="* 학번은 추후 수정이 불가능하니 신중하게 작성해주세요." left="775" top="384" width="305" height="32" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
@@ -474,7 +474,60 @@ this.mae_id_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
 	this.Grid00.getBindDataset().setColumn( this.selectedRow, "id", "S-"+this.mae_id.value);
 };
 
-]]></Script>
+
+this.edt_phone_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	var contact = obj.value.replaceAll("-", "");
+	contact = contact.replaceAll(" ", "");
+	var isNum = this.checkNum(contact);
+	
+	if( !isNum ){
+		this.alert("숫자만 입력 할 수 있습니다.");
+		obj.set_value("");
+		obj.setFocus();
+		return;
+	}
+	
+	if( contact.length > 11 || contact.length < 10 ){
+		this.alert("전화번호는 10~11자리 숫자입니다.");
+	} else {
+		if( contact.length == 10 ){
+			contact = contact.substring(0, 3) + "-" + contact.substring(3, 6) + "-" + contact.substr(6, contact.length);
+			this.ds_student.setColumn(this.selectedRow, "phone", contact);
+		} else if ( obj.value.length == 11 ){
+			contact = contact.substring(0, 3) + "-" + contact.substring(3, 7) + "-" + contact.substr(7, contact.length);
+			this.ds_student.setColumn(this.selectedRow, "phone", contact);
+		}
+	}
+};
+
+this.Edit00_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	var accountNum = obj.value.replaceAll("-", "");
+	var isNum = this.checkNum(accountNum);
+	
+	if( !isNum ){
+		this.alert("숫자만 입력 할 수 있습니다.");
+		obj.set_value("");
+		obj.setFocus();
+		return;
+	}
+};
+
+this.checkNum = function( sNum ){
+	var sChar = "";
+	var isNum = false;
+	for( var i = 0; i < sNum.length; i++ ){
+		sChar = sNum.charAt(i);
+	if( sChar >= 0 || sChar <= 9 ){
+			isNum = true;
+		} else {
+			isNum = false;
+			break;
+		}
+	}
+	return isNum;
+}]]></Script>
     <Bind>
       <BindItem id="item0" compid="edt_name" propid="value" datasetid="ds_student" columnid="name"/>
       <BindItem id="item2" compid="edt_email" propid="value" datasetid="ds_student" columnid="email"/>
