@@ -4,6 +4,7 @@ this.url = "http://13.209.97.69/XExportImport.do";
 //Export에 사용할 ExcelExportObject 변수생성
 this.objExcelExport = null;
 
+
 // Sort Function Sample -  Grid Head Click
 this.CONST_NONE_MARK = "";
 this.CONST_ASC_MARK = "▲";
