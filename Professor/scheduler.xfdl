@@ -513,19 +513,18 @@ this.fnPopupCallBack = function(sFormId, sArg)
 			{
 				//신규 Row 추가
 				nRow = this.dsSchedule.addRow();
-
 				//일정 정보 등록
-				this.dsSchedule.setColumn(nRow, "sche_seq", nexacro.round(Math.random()*1000, 0));
-				this.dsSchedule.setColumn(nRow, "sche_title", objRtn.title);
-				this.dsSchedule.setColumn(nRow, "sche_date", objRtn.date);
-				this.dsSchedule.setColumn(nRow, "sche_type", objRtn.type);
-				this.dsSchedule.setColumn(nRow, "sche_contents", objRtn.content);
-				this.dsSchedule.setColumn(nRow, "sche_proId", this.id);
-				this.dsSchedule.setColumn(nRow, "sche_proName", this.name);
-				this.dsSchedule.setColumn(nRow, "check",0);
+
+				this.ds_transaction.setColumn(0, "sche_seq", nexacro.round(Math.random()*1000, 0));
+				this.ds_transaction.setColumn(0, "sche_title", objRtn.title);
+				this.ds_transaction.setColumn(0, "sche_date", objRtn.date);
+				this.ds_transaction.setColumn(0, "sche_type", objRtn.type);
+				this.ds_transaction.setColumn(0, "sche_contents", objRtn.content);
+				this.ds_transaction.setColumn(0, "sche_proId", this.id);
+				this.ds_transaction.setColumn(0, "sche_proName", this.name);
+				this.ds_transaction.setColumn(0, "check",0);
 				code ="insert";
 				
-				this.ds_transaction.copyRow(0,this.dsSchedule,nRow);
 				
 			}
 				this.transaction(
@@ -641,80 +640,6 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
           <Column id="sche_proName" type="STRING" size="256"/>
           <Column id="check" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="sche_seq">2</Col>
-            <Col id="sche_date">20200603</Col>
-            <Col id="sche_title">공지사항</Col>
-            <Col id="sche_contents">공지사항 내용</Col>
-            <Col id="sche_type">01</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">3</Col>
-            <Col id="sche_date">20200603</Col>
-            <Col id="sche_title">공지사항</Col>
-            <Col id="sche_contents">공지사항 내용</Col>
-            <Col id="sche_type">01</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">4</Col>
-            <Col id="sche_date">20200603</Col>
-            <Col id="sche_title">공지사항</Col>
-            <Col id="sche_contents">공지사항 내용</Col>
-            <Col id="sche_type">01</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">5</Col>
-            <Col id="sche_date">20200610</Col>
-            <Col id="sche_title">주간보고</Col>
-            <Col id="sche_contents">주간보고 내용</Col>
-            <Col id="sche_type">03</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">6</Col>
-            <Col id="sche_date">20200615</Col>
-            <Col id="sche_title">외부일정</Col>
-            <Col id="sche_contents">외부일정 내용</Col>
-            <Col id="sche_type">02</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">7</Col>
-            <Col id="sche_date">20200618</Col>
-            <Col id="sche_title">팀 내부 회의</Col>
-            <Col id="sche_contents">팀 내부 회의 내용</Col>
-            <Col id="sche_type">04</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">8</Col>
-            <Col id="sche_date">20200622</Col>
-            <Col id="sche_title">개인 스케줄</Col>
-            <Col id="sche_contents">개인 스케줄 내용</Col>
-            <Col id="sche_type">04</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-          <Row>
-            <Col id="sche_seq">9</Col>
-            <Col id="sche_date">20210126</Col>
-            <Col id="sche_title">ㅎㅎ</Col>
-            <Col id="sche_contents">ㄴㅇㄹㄴㅇ</Col>
-            <Col id="sche_type">04</Col>
-            <Col id="sche_proId">P-1001</Col>
-            <Col id="sche_proName">김교수</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_transaction">
         <ColumnInfo>

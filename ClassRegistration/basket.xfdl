@@ -346,7 +346,7 @@ this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.ds_transaction.setColumn(nRow,"id",this.id);
 		this.ds_transaction.setColumn(nRow,"lec_code",code);
 		this.ds_transaction.setColumn(nRow,"cr_divide","정기");
-		this.ds_transaction.setColumn(nRow,"cr_completediv","신청상태");
+		this.ds_transaction.setColumn(nRow,"cr_completediv","완료상태");
 	 }
 	 
 	 this.transaction(

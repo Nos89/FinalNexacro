@@ -336,6 +336,9 @@
           <Column id="grade_etc" type="INT" size="256"/>
           <Column id="grade_total" type="INT" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
       </Dataset>
       <Dataset id="ds_gradeCard">
         <ColumnInfo>
@@ -624,7 +627,7 @@ this.fn_gradsIsExist = function(id){
 };
 
 this.fn_addGrade = function(stdId,lecCode){
-	var nRow = this.ds_transaction.addRow();
+	var nRow = 0;
 	
 	this.ds_transaction.setColumn(nRow,"grade_seq",0);
 	this.ds_transaction.setColumn(nRow,"std_id",stdId);

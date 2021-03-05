@@ -85,6 +85,7 @@ this.lecturePlanWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo
 		this.edt_schedule.set_value(this.parent.schedule);
 		this.edt_targetLevel.set_value(this.parent.target);
 		this.edt_isu.set_value(this.parent.isu);
+		this.edt_Proname.set_value(this.parent.proName);
 		}
 	this.mask_year.set_value(this.parent.year);
 	this.edt_Proname.set_value(this.parent.proName);
