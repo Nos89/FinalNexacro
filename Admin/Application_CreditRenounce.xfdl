@@ -158,8 +158,8 @@ this.div_application_btn_approval_onclick = function(obj:nexacro.Button,e:nexacr
 	if(check){
 		this.ds_creditRenounce.setColumn(nRow,"apply_approve","완료");
 		this.transaction(
-			"returnApproval"	// 1. strSvcID(string 형태의 id)
-			, "/returnApproval.nex"	// 2. strURL(string 형태의 url)
+			"creditRenounceApproval"	// 1. strSvcID(string 형태의 id)
+			, "/creditRenounceApproval.nex"	// 2. strURL(string 형태의 url)
 			, "in_creditRenounce=ds_creditRenounce:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 			, ""	// 4. strOutDatasets -select Fds=Sds
 			, "" // 5. strArgument
