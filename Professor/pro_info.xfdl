@@ -54,7 +54,7 @@
                   <Edit id="Edit00_02_00" taborder="7" left="70" top="152" width="121" height="25"/>
                   <Edit id="Edit00_02_00_00" taborder="8" left="70" top="182" width="121" height="25"/>
                   <Edit id="Edit00_02_00_00_00" taborder="9" left="70" top="212" width="220" height="25"/>
-                  <Edit id="Edit00_02_00_00_00_00_00" taborder="10" left="70" top="272" width="121" height="25" readonly="true"/>
+                  <Edit id="edt_group" taborder="10" left="70" top="272" width="121" height="25" readonly="true"/>
                   <Static id="Static01_02_01" taborder="11" text="은행" left="241" top="149" width="69" height="25" textAlign="right"/>
                   <Edit id="Edit00_02_01" taborder="12" left="320" top="152" width="121" height="25"/>
                   <Static id="Static01_02_01_00" taborder="13" text="핸드폰" left="241" top="179" width="69" height="25" textAlign="right"/>
@@ -74,10 +74,12 @@
                   <Static id="Static01_02_00_00" taborder="27" text="전화번호" left="-9" top="181" width="69" height="25" textAlign="right"/>
                   <Static id="Static01_02_00_00_00" taborder="28" text="이메일" left="-9" top="211" width="69" height="25" textAlign="right"/>
                   <Static id="Static01_02_00_00_00_00" taborder="29" text="입대일자" left="-9" top="241" width="69" height="25" textAlign="right"/>
-                  <Static id="Static01_02_00_00_00_00_00" taborder="30" text="병역" left="-9" top="271" width="69" height="25" textAlign="right"/>
-                  <Calendar id="Calendar00" taborder="31" left="69" top="244" width="169" height="25" readonly="true"/>
+                  <Static id="Static01_02_00_00_00_00_00" taborder="30" text="군별" left="-9" top="271" width="69" height="25" textAlign="right"/>
+                  <Calendar id="cal_indate" taborder="31" left="69" top="244" width="169" height="25" readonly="true"/>
                   <Calendar id="Calendar01" taborder="32" left="69" top="122" width="122" height="27" popuptype="normal"/>
                   <Button id="Button01" taborder="33" left="202" top="333" width="29" height="30" background="url('theme://images/btn_WF_Grdexpand.png') no-repeat center center" text="" onclick="Tab00_Tabpage2_Button01_onclick" cursor="pointer"/>
+                  <Static id="Static01_02_00_00_00_00_01" taborder="34" text="전역일자" left="243" top="244" width="69" height="25" textAlign="right"/>
+                  <Calendar id="cal_outdate" taborder="35" left="319" top="244" width="169" height="25" readonly="true"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -114,7 +116,7 @@ this.Tab00_Tabpage2_Button00_onclick = function(obj:nexacro.Button,e:nexacro.Cli
 	this.transaction(
 		"proInfoSave",
 		"/professor/proInfoSave.nex",	
-		"in_proInfo=ds_proInfo", 
+		"in_proInfo=ds_proInfo in_proMil=ds_proMil", 
 		"", 
 		"", 
 		"fn_callback"
@@ -128,6 +130,12 @@ this.fn_callback=function(id,errCode,errMsg){
 		alert("수정완료");
 	}else if(id=="proInfoOnLoad"){
 		this.ImageViewer00.set_image("/resources/ProFile/"+this.ds_proFile.getColumn(0,"savedName")+"");
+		if(this.ds_proMil.getRowCount() >0){
+
+			this.Tab00.Tabpage2.form.cal_indate.set_readonly(false);
+			this.Tab00.Tabpage2.form.cal_outdate.set_readonly(false);
+			this.Tab00.Tabpage2.form.edt_group.set_readonly(false);
+		}
 	}
 };
 
@@ -416,19 +424,20 @@ this.Tab00_Tabpage2_Button01_onclick = function(obj:nexacro.Button,e:nexacro.Cli
       <BindItem id="item8" compid="Tab00.Tabpage1.form.Edit00_00" propid="value" datasetid="ds_proInfo" columnid="col_title"/>
       <BindItem id="item9" compid="Tab00.Tabpage1.form.Edit00_00_00" propid="value" datasetid="ds_proInfo" columnid="dept_title"/>
       <BindItem id="item10" compid="Tab00.Tabpage1.form.Edit00_00_00_00" propid="value" datasetid="ds_proInfo" columnid="dept_title"/>
-      <BindItem id="item12" compid="Tab00.Tabpage2.form.Calendar00" propid="value" datasetid="ds_proMil" columnid="mil_inDate"/>
+      <BindItem id="item12" compid="Tab00.Tabpage2.form.cal_indate" propid="value" datasetid="ds_proMil" columnid="mil_inDate"/>
       <BindItem id="item11" compid="Tab00.Tabpage2.form.Edit00_02_00" propid="value" datasetid="ds_proInfo" columnid="name"/>
       <BindItem id="item16" compid="Tab00.Tabpage2.form.Edit00_02_01" propid="value" datasetid="ds_proInfo" columnid="bank"/>
       <BindItem id="item17" compid="Tab00.Tabpage2.form.Edit00_02_01_01" propid="value" datasetid="ds_proInfo" columnid="accountnum"/>
       <BindItem id="item18" compid="Tab00.Tabpage2.form.Edit00_02_01_00" propid="value" datasetid="ds_proInfo" columnid="phone"/>
       <BindItem id="item19" compid="Tab00.Tabpage2.form.Edit00_02_00_00_00" propid="value" datasetid="ds_proInfo" columnid="email"/>
-      <BindItem id="item20" compid="Tab00.Tabpage2.form.Edit00_02_00_00_00_00_00" propid="value" datasetid="ds_proMil" columnid="mil_title"/>
+      <BindItem id="item20" compid="Tab00.Tabpage2.form.edt_group" propid="value" datasetid="ds_proMil" columnid="mil_title"/>
       <BindItem id="item22" compid="Tab00.Tabpage1.form.Calendar01" propid="value" datasetid="ds_proInfo" columnid="inDate"/>
       <BindItem id="item21" compid="Tab00.Tabpage2.form.Calendar01" propid="value" datasetid="ds_proInfo" columnid="birth"/>
       <BindItem id="item23" compid="Tab00.Tabpage1.form.MaskEdit00" propid="value" datasetid="ds_proInfo" columnid="inDate"/>
       <BindItem id="item2" compid="MaskEdit00" propid="value" datasetid="ds_proInfo" columnid="birth"/>
       <BindItem id="item6" compid="MaskEdit01" propid="value" datasetid="ds_proInfo" columnid="inDate"/>
       <BindItem id="item27" compid="Edit00_01_00" propid="value" datasetid="ds_proInfo" columnid="dept_title"/>
+      <BindItem id="item28" compid="Tab00.Tabpage2.form.cal_outdate" propid="value" datasetid="ds_proMil" columnid="mil_outDate"/>
     </Bind>
   </Form>
 </FDL>
