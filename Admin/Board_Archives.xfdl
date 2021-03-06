@@ -149,6 +149,11 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let sTarget = this.com_searchTarget.value;
 	let sKeyword = this.edt_searchKeyword.value;
 	
+	if(sKeyword.trim().length<2){
+		this.alert("검색어는 두 글자 이상이어야 합니다.");
+		return;
+	}
+	
 	this.transaction(
 		"searchBoard"	// 1. strSvcID(string 형태의 id)
 		, "/SearchBoard.nex"	// 2. strURL(string 형태의 url)
@@ -196,17 +201,6 @@ this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 ]]></Script>
     <Objects>
       <Dataset id="ds_board">
-        <ColumnInfo>
-          <Column id="chk" type="INT" size="256"/>
-          <Column id="rank" type="INT" size="256"/>
-          <Column id="seq" type="STRING" size="256"/>
-          <Column id="title" type="STRING" size="256"/>
-          <Column id="contents" type="STRING" size="256"/>
-          <Column id="writer" type="STRING" size="256"/>
-          <Column id="writeDate" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_transaction">
         <ColumnInfo>
           <Column id="chk" type="INT" size="256"/>
           <Column id="rank" type="INT" size="256"/>

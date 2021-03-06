@@ -20,9 +20,9 @@
               <Band id="head">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox" checkboxfalsevalue="0" checkboxtruevalue="1"/>
                 <Cell col="1" text="종류"/>
-                <Cell col="2" text="name"/>
-                <Cell col="3" text="size"/>
-                <Cell col="4" text="date"/>
+                <Cell col="2" text="이름"/>
+                <Cell col="3" text="크기"/>
+                <Cell col="4" text="작성일"/>
               </Band>
               <Band id="body">
                 <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk" checkboxfalsevalue="0" checkboxtruevalue="1"/>
