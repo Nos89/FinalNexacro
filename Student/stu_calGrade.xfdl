@@ -34,7 +34,7 @@
                 <Cell col="1" text="기준학점(A)"/>
                 <Cell col="2" text="이수(취득+인정)학점(B)"/>
                 <Cell col="3" text="수강신청학점(B)"/>
-                <Cell col="4" text="잔여학점(A-(B+C))"/>
+                <Cell col="4" text="잔여학점(A-(B or C))"/>
               </Band>
               <Band id="body">
                 <Cell textAlign="center" text="bind:section"/>
@@ -321,15 +321,28 @@ this.fn_callback=function(id,errCode,errMsg)
 
 this.fn_callback_credit=function(id,errCode,errMsg)
 {
-	this.ds_grade.setColumn(0,"got",this.totalGotCredit);
-	this.ds_grade.setColumn(0,"apply",this.totalGetCredit);
-	this.ds_grade.setColumn(1,"got",this.majorGotCredit);
-	this.ds_grade.setColumn(1,"apply",this.majorGetCredit);
-	this.ds_grade.setColumn(2,"got",this.electivesGotCredit);
-	this.ds_grade.setColumn(2,"apply",this.electivesGetCredit);
-	this.ds_grade.setColumn(3,"got",this.choiceGotCredit);
-	this.ds_grade.setColumn(3,"apply",this.choiceGetCredit);
+	//this.ds_grade.setColumn(0,"got",this.totalGotCredit);
+	//this.ds_grade.setColumn(0,"apply",this.totalGetCredit);
+	//this.ds_grade.setColumn(1,"got",this.majorGotCredit);
+	//this.ds_grade.setColumn(1,"apply",this.majorGetCredit);
+	//this.ds_grade.setColumn(2,"got",this.electivesGotCredit);
+	//this.ds_grade.setColumn(2,"apply",this.electivesGetCredit);
+	//this.ds_grade.setColumn(3,"got",this.choiceGotCredit);
+	//this.ds_grade.setColumn(3,"apply",this.choiceGetCredit);
+	this.fn_getGrade( 0, this.totalGotCredit, this.totalGetCredit );
+	this.fn_getGrade( 1, this.majorGotCredit, this.magorGetCredit );
+	this.fn_getGrade( 2, this.electivesGotCredit, this.electivesGetCredit );
+	this.fn_getGrade( 3, this.choiceGotCredit, this.choiceGetCredit );
 };
+
+this.fn_getGrade = function( row, got, apply ){
+	if( got >= apply ){
+		this.ds_grade.setColumn(row,"got",got);
+		this.ds_grade.setColumn(row,"apply",( got - apply));
+		return got - apply;
+	}
+
+}
 
 this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -370,6 +383,7 @@ this.btn_excel4_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.objExcelExport.set_exportfilename("졸업자격정보 리스트");
 	this.objExcelExport.exportData(); 
 };
+
 ]]></Script>
     <InitValue>
       <Grid id="Grid1" binddataset="ds_classList"/>
