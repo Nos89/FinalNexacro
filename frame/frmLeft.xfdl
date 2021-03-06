@@ -602,7 +602,7 @@
     <Script type="xscript5.1"><![CDATA[
 this.application = null;
 this.loginID = "";
-this.userType = "관리자";
+this.userType = "";
 this.userName ="";
 this.bindedDs = "";
 this.mainTitleText = "";
