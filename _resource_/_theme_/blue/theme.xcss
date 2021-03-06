@@ -4027,4 +4027,8 @@
 	cursor : pointer;
 	font : bold 10pt "Arial";
 }
+.Static.modalTitle
+{
+	font : normal 700 20pt/normal "Arial";
+}
 ]]></XCSS>
