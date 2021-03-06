@@ -144,14 +144,15 @@
       </Dataset>
       <Dataset id="ds_classList">
         <ColumnInfo>
-          <Column id="dept_title" type="STRING" size="256"/>
+          <Column id="cr_completeDiv" type="STRING" size="256"/>
+          <Column id="isu" type="STRING" size="256"/>
+          <Column id="oc_code" type="STRING" size="256"/>
           <Column id="oc_name" type="STRING" size="256"/>
           <Column id="oc_targetlevel" type="STRING" size="256"/>
           <Column id="pro_name" type="STRING" size="256"/>
           <Column id="oc_schedule" type="STRING" size="256"/>
-          <Column id="reason" type="INT" size="256"/>
-          <Column id="cancel_date" type="INT" size="256"/>
-          <Column id="extra_date" type="STRING" size="256"/>
+          <Column id="reco_score" type="INT" size="256"/>
+          <Column id="oc_part" type="INT" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -211,15 +212,12 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 			);
 		}
 		
-	}else if(e.cell == 9){
-		let target = this.ds_classList.rowposition;
-	};
-	
-	
+	}
 };
 
 this.fn_callback_withdraw=function(id,errCode,errMsg)
 {
+	this.alert("취소되었습니다.");
 	this.transaction(
 		"getMyClass",
 		"/getMyClass.nex",
