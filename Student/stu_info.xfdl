@@ -135,37 +135,62 @@
                   <Edit id="Edit00_00_01_00" taborder="12" left="54" top="174" width="150" height="30" enable="false"/>
                   <Static id="Static02_00_01_00" taborder="13" text="예금주" left="-1" top="174" width="50" height="30" textAlign="right"/>
                   <Static id="Static02_00_01_00_00" taborder="14" text="은행" left="231" top="174" width="50" height="30" textAlign="right"/>
-                  <Edit id="edt_bank" taborder="15" left="286" top="174" width="150" height="30" text="asd"/>
-                  <Static id="Static02_00_01_00_00_00" taborder="16" text="계좌번호" left="446" top="174" width="50" height="30" textAlign="right"/>
-                  <Edit id="edt_accountnum" taborder="17" left="501" top="174" width="150" height="30"/>
-                  <Static id="Static02_00_01_00_01" taborder="18" text="전화번호" left="-1" top="209" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00_01" taborder="19" left="54" top="209" width="150" height="30" enable="false"/>
-                  <Static id="Static02_00_01_00_01_00" taborder="20" text="핸드폰" left="230" top="209" width="50" height="30" textAlign="right"/>
-                  <Edit id="edt_phone" taborder="21" left="286" top="209" width="150" height="30"/>
-                  <Static id="Static02_00_01_00_01_01" taborder="22" text="이메일" left="0" top="244" width="50" height="30" textAlign="right"/>
-                  <Edit id="edt_email" taborder="23" left="55" top="244" width="381" height="30"/>
-                  <Static id="Static02_00_01_00_01_01_00" taborder="24" text="입대일자" left="0" top="280" width="50" height="30" textAlign="right"/>
-                  <Static id="Static02_00_01_00_01_01_00_00" taborder="25" text="병역" left="0" top="315" width="50" height="30" textAlign="right"/>
-                  <Static id="Static02_00_01_00_01_01_00_00_00" taborder="26" text="제대일자" left="230" top="280" width="50" height="30" textAlign="right"/>
-                  <Static id="Static02_00_01_00_01_01_00_00_00_00" taborder="27" text="군별" left="231" top="315" width="50" height="30" textAlign="right"/>
-                  <Static id="Static02_00_01_00_01_01_00_00_00_01" taborder="28" text="계급" left="446" top="315" width="50" height="30" textAlign="right"/>
-                  <Edit id="Edit00_00_01_00_01_01_00_00_00_01_00" taborder="29" left="725" top="315" width="245" height="30" enable="false"/>
-                  <Static id="Static02_00_01_00_01_01_00_00_00_01_00" taborder="30" text="군번" left="670" top="315" width="50" height="30" textAlign="right"/>
-                  <Static id="Static00_00_00" taborder="31" text="현거주지주소" left="-1" top="360" height="34" cssclass="sta_img_check01" right="-1"/>
-                  <Static id="Static02_00_01_00_01_01_00_00_01" taborder="32" text="우편번호" left="-1" top="404" width="50" height="30" textAlign="right"/>
-                  <Edit id="edtPostcode" taborder="33" left="54" top="404" width="150" height="30" enable="false"/>
-                  <Button id="btn_adrress" taborder="34" left="216" top="404" width="84" height="30" onclick="Tab00_Tabpage3_btn_adrress_onclick" cssclass="btn_WF_search02" text="주소검색"/>
-                  <Edit id="edtAddress1" taborder="35" left="345" top="404" width="375" height="30" enable="false"/>
-                  <Static id="Static02_00_01_00_01_01_00_00_01_00" taborder="36" text="주소" left="290" top="404" width="50" height="30" textAlign="right"/>
-                  <Edit id="edtAddress2" taborder="37" left="730" top="404" width="233" height="30"/>
-                  <Calendar id="Calendar00" taborder="38" left="55" top="139" width="150" height="30" enable="false"/>
-                  <Calendar id="Calendar00_00" taborder="39" left="54" top="280" width="150" height="30" enable="false"/>
-                  <Calendar id="Calendar00_00_00" taborder="40" left="285" top="280" width="150" height="30" enable="false"/>
-                  <Button id="btn_save" taborder="41" text="저장" left="969" top="11" width="74" height="28" onclick="Tab00_Tabpage3_btn_save_onclick"/>
-                  <Edit id="Edit00_00_01" taborder="42" left="54" top="69" width="150" height="30" enable="false"/>
-                  <Edit id="Edit00_00_01_01" taborder="43" left="54" top="315" width="150" height="30" enable="false"/>
-                  <Edit id="Edit00_00_01_01_00" taborder="44" left="285" top="315" width="150" height="30" enable="false"/>
-                  <Edit id="Edit00_00_01_01_00_00" taborder="45" left="496" top="315" width="150" height="30" enable="false"/>
+                  <Static id="Static02_00_01_00_00_00" taborder="15" text="계좌번호" left="446" top="174" width="50" height="30" textAlign="right"/>
+                  <Edit id="edt_accountnum" taborder="16" left="501" top="174" width="150" height="30"/>
+                  <Static id="Static02_00_01_00_01" taborder="17" text="전화번호" left="-1" top="209" width="50" height="30" textAlign="right"/>
+                  <Edit id="Edit00_00_01_00_01" taborder="18" left="54" top="209" width="150" height="30" enable="false"/>
+                  <Static id="Static02_00_01_00_01_00" taborder="19" text="핸드폰" left="230" top="209" width="50" height="30" textAlign="right"/>
+                  <Edit id="edt_phone" taborder="20" left="286" top="209" width="150" height="30"/>
+                  <Static id="Static02_00_01_00_01_01" taborder="21" text="이메일" left="0" top="244" width="50" height="30" textAlign="right"/>
+                  <Edit id="edt_email" taborder="22" left="55" top="244" width="381" height="30"/>
+                  <Static id="Static02_00_01_00_01_01_00" taborder="23" text="입대일자" left="0" top="280" width="50" height="30" textAlign="right"/>
+                  <Static id="Static02_00_01_00_01_01_00_00" taborder="24" text="병역" left="0" top="315" width="50" height="30" textAlign="right"/>
+                  <Static id="Static02_00_01_00_01_01_00_00_00" taborder="25" text="제대일자" left="230" top="280" width="50" height="30" textAlign="right"/>
+                  <Static id="Static02_00_01_00_01_01_00_00_00_00" taborder="26" text="군별" left="231" top="315" width="50" height="30" textAlign="right"/>
+                  <Static id="Static02_00_01_00_01_01_00_00_00_01" taborder="27" text="계급" left="446" top="315" width="50" height="30" textAlign="right"/>
+                  <Edit id="Edit00_00_01_00_01_01_00_00_00_01_00" taborder="28" left="725" top="315" width="245" height="30" enable="false"/>
+                  <Static id="Static02_00_01_00_01_01_00_00_00_01_00" taborder="29" text="군번" left="670" top="315" width="50" height="30" textAlign="right"/>
+                  <Static id="Static00_00_00" taborder="30" text="현거주지주소" left="-1" top="360" height="34" cssclass="sta_img_check01" right="-1"/>
+                  <Static id="Static02_00_01_00_01_01_00_00_01" taborder="31" text="우편번호" left="-1" top="404" width="50" height="30" textAlign="right"/>
+                  <Edit id="edtPostcode" taborder="32" left="54" top="404" width="150" height="30" enable="false"/>
+                  <Button id="btn_adrress" taborder="33" left="216" top="404" width="84" height="30" onclick="Tab00_Tabpage3_btn_adrress_onclick" cssclass="btn_WF_search02" text="주소검색"/>
+                  <Edit id="edtAddress1" taborder="34" left="345" top="404" width="375" height="30" enable="false"/>
+                  <Static id="Static02_00_01_00_01_01_00_00_01_00" taborder="35" text="주소" left="290" top="404" width="50" height="30" textAlign="right"/>
+                  <Edit id="edtAddress2" taborder="36" left="730" top="404" width="233" height="30"/>
+                  <Calendar id="Calendar00" taborder="37" left="55" top="139" width="150" height="30" enable="false"/>
+                  <Calendar id="Calendar00_00" taborder="38" left="54" top="280" width="150" height="30" enable="false"/>
+                  <Calendar id="Calendar00_00_00" taborder="39" left="285" top="280" width="150" height="30" enable="false"/>
+                  <Button id="btn_save" taborder="40" text="저장" left="969" top="11" width="74" height="28" onclick="Tab00_Tabpage3_btn_save_onclick" cursor="pointer" borderRadius="4px"/>
+                  <Edit id="Edit00_00_01" taborder="41" left="54" top="69" width="150" height="30" enable="false"/>
+                  <Edit id="Edit00_00_01_01" taborder="42" left="54" top="315" width="150" height="30" enable="false"/>
+                  <Edit id="Edit00_00_01_01_00" taborder="43" left="285" top="315" width="150" height="30" enable="false"/>
+                  <Edit id="Edit00_00_01_01_00_00" taborder="44" left="496" top="315" width="150" height="30" enable="false"/>
+                  <Combo id="edt_bank" taborder="45" left="286" top="174" width="150" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+                    <Dataset id="innerdataset">
+                      <ColumnInfo>
+                        <Column id="codecolumn" size="256"/>
+                        <Column id="datacolumn" size="256"/>
+                      </ColumnInfo>
+                      <Rows>
+                        <Row>
+                          <Col id="codecolumn">국민은행</Col>
+                          <Col id="datacolumn">국민은행</Col>
+                        </Row>
+                        <Row>
+                          <Col id="datacolumn">하나은행</Col>
+                          <Col id="codecolumn">하나은행</Col>
+                        </Row>
+                        <Row>
+                          <Col id="datacolumn">기업은행</Col>
+                          <Col id="codecolumn">기업은행</Col>
+                        </Row>
+                        <Row>
+                          <Col id="datacolumn">신한은행</Col>
+                          <Col id="codecolumn">신한은행</Col>
+                        </Row>
+                      </Rows>
+                    </Dataset>
+                  </Combo>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -951,7 +976,6 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
       <BindItem id="item51" compid="Tab00.Tabpage3.form.Edit00_00_00" propid="value" datasetid="ds_proInfo" columnid="name"/>
       <BindItem id="item54" compid="Tab00.Tabpage3.form.Edit00_00_00_01" propid="value" datasetid="ds_proInfo" columnid="name"/>
       <BindItem id="item50" compid="Tab00.Tabpage3.form.Calendar00" propid="value" datasetid="ds_stuInfo" columnid="birth"/>
-      <BindItem id="item49" compid="Tab00.Tabpage3.form.edt_bank" propid="value" datasetid="ds_stuInfo" columnid="bank"/>
       <BindItem id="item52" compid="Tab00.Tabpage3.form.edt_accountnum" propid="value" datasetid="ds_stuInfo" columnid="accountnum"/>
       <BindItem id="item53" compid="Tab00.Tabpage3.form.edt_phone" propid="value" datasetid="ds_stuInfo" columnid="phone"/>
       <BindItem id="item55" compid="Tab00.Tabpage3.form.edt_email" propid="value" datasetid="ds_stuInfo" columnid="email"/>
@@ -979,6 +1003,7 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
       <BindItem id="item27" compid="Tab00.Tabpage1.form.MaskEdit00_01" propid="value" datasetid="ds_stuInfo" columnid="outDate"/>
       <BindItem id="item28" compid="Tab00.Tabpage3.form.Edit00_00_01_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
       <BindItem id="item29" compid="Tab00.Tabpage3.form.edtPostcode" propid="value" datasetid="ds_stuInfo" columnid="zipcode"/>
+      <BindItem id="item7" compid="Tab00.Tabpage3.form.edt_bank" propid="value" datasetid="ds_student" columnid="bank"/>
     </Bind>
     <Objects>
       <Dataset id="ds_stuInfo">

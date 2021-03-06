@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="1" text="학생" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
-        <Combo id="com_searchTarget" taborder="2" left="11" top="56" width="80" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="학번" value="id" onitemchanged="com_searchTarget_onitemchanged">
+        <Combo id="cbo_searchTarget" taborder="2" left="11" top="56" width="80" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="학번" value="id" onitemchanged="com_searchTarget_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -369,8 +369,8 @@ this.rdo_filter_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeE
 // 필터링 리셋
 this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_student.filter("std_status=='재학'");
-	this.rdo_filter.set_value("재학");
+	//this.ds_student.filter("std_status=='재학'");
+	this.rdo_filter.set_value("전체");
 };
 
 
@@ -380,6 +380,26 @@ this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEve
 {
 	this.selectedRow = e.row;
 	this.fn_comboDeptFilter();
+	
+	// 졸업하지 않은 경우 졸업년도 작성X
+	let std_status = this.cbo_std_status.value;
+	if(std_status=="졸업"){
+		this.cal_outdate.set_readonly("false");
+	}else {
+		this.cal_outdate.set_readonly("true");
+	}
+};
+
+
+// 졸업할 경우 졸업년도 작성 가능하게 변경
+this.cbo_std_status_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	let std_status = this.cbo_std_status.value;
+	if(std_status=="졸업"){
+		this.cal_outdate.set_readonly("false");
+	}else {
+		this.cal_outdate.set_readonly("true");
+	}
 };
 
 
@@ -527,7 +547,8 @@ this.checkNum = function( sNum ){
 		}
 	}
 	return isNum;
-}]]></Script>
+}
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="edt_name" propid="value" datasetid="ds_student" columnid="name"/>
       <BindItem id="item2" compid="edt_email" propid="value" datasetid="ds_student" columnid="email"/>

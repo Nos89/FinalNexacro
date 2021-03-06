@@ -319,8 +319,8 @@ this.rdo_filter_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeE
 // 필터링 리셋
 this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_professor.filter("pro_status=='재직'");
-	this.rdo_filter.set_value("재직");
+	//this.ds_professor.filter("pro_status=='재직'");
+	this.rdo_filter.set_value("전체");
 };
 
 
