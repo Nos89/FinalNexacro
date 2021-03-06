@@ -10,12 +10,58 @@
         <Static id="Static02" taborder="4" text="학번/성명" left="10" top="37" width="60" height="30"/>
         <Static id="Static00_00" taborder="5" text="휴학신청정보" left="4" top="73" height="34" cssclass="sta_img_check01" right="6"/>
         <Static id="Static01_00" taborder="6" text="" left="4" top="110" height="86" background="#c8ddee" width="1080"/>
-        <Button id="btn_apply" taborder="7" text="신청" left="924" top="4" width="56" height="26" onclick="btn_apply_onclick" cssclass="btn_apply"/>
-        <Button id="btn_cancel" taborder="8" text="신청취소" left="990" top="4" width="70" height="26" cssclass="btn_apply"/>
+        <Button id="btn_apply" taborder="7" text="신청" left="924" top="4" width="56" height="26" onclick="btn_apply_onclick" cssclass="btn_apply" enable="false"/>
+        <Button id="btn_cancel" taborder="8" text="신청취소" left="990" top="4" width="70" height="26" cssclass="btn_apply" onclick="btn_cancel_onclick" enable="false"/>
         <Static id="Static02_00_00_00" taborder="9" text="복학년도" left="19" top="120" width="60" height="30"/>
-        <Combo id="cb_year" taborder="10" left="79" top="120" width="79" height="30" enable="false"/>
+        <Combo id="cb_year" taborder="10" left="79" top="120" width="79" height="30" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="2021" value="2021">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">2021</Col>
+                <Col id="datacolumn">2021</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2022</Col>
+                <Col id="datacolumn">2022</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2023</Col>
+                <Col id="datacolumn">2023</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2024</Col>
+                <Col id="datacolumn">2024</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2025</Col>
+                <Col id="datacolumn">2025</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
         <Static id="Static02_00_00_00_00" taborder="11" text="복학학기" left="168" top="120" width="60" height="30"/>
-        <Combo id="cb_semester" taborder="12" left="228" top="120" width="79" height="30" enable="false"/>
+        <Combo id="cb_semester" taborder="12" left="228" top="120" width="79" height="30" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="1학기" value="1학기">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1학기</Col>
+                <Col id="datacolumn">1학기</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2학기</Col>
+                <Col id="datacolumn">2학기</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
         <Static id="Static02_00_00_00_01" taborder="13" text="복학사유" left="19" top="160" width="60" height="30"/>
         <Combo id="cb_reason" taborder="14" left="79" top="160" width="146" height="30" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
@@ -123,14 +169,39 @@ this.fn_checkcallback=function(id,errCode,errMsg)
 		this.cb_year.set_enable(true);
 		this.cb_semester.set_enable(true);
 		this.cb_reason.set_enable(true);
+		this.btn_apply.set_enable(true);
+		this.btn_cancel.set_enable(true);
 	}else if(errCode == 0){
+		this.cb_year.set_enable(false);
+		this.cb_semester.set_enable(false);
+		this.cb_reason.set_enable(false);
+		this.btn_apply.set_enable(false);
+		this.btn_cancel.set_enable(false);
 		alert("휴학생만 신청 가능합니다.");
+		return;
 	}
 };
 
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	this.transaction(
+		"checkStatus",
+		"/checkStatus.nex",
+		"",
+		"",
+		"",  
+		"fn_checkcallback",
+		false
+	);
+	
+	if(this.cb_reason.text == ""){
+		this.alert("복학사유를 선택하세요.");
+		return;
+	}
 	var sDate = this.cal_applyDay.value;
+	this.ds_return.setColumn(0,"reason",this.cb_reason.text);
+	this.ds_return.setColumn(0,"returnYear",this.cb_year.value);
+	this.ds_return.setColumn(0,"returnSemester",this.cb_semester.value);
 	this.transaction(
 		"stuReturnApply",
 		"/stuReturnApply.nex",
@@ -151,6 +222,29 @@ this.fn_Applycallback=function(id,errCode,errMsg)
 };
 
 
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.confirm("신청을 취소하시겠습니까?")){
+		this.transaction(
+		"returnCancel",
+		"/returnCancel.nex",
+		"",
+		"",
+		"",  
+		"fn_cancel_callback"
+		);
+	}
+};
+
+this.fn_cancel_callback=function(id,errCode,errMsg)
+{
+	if(errCode == 1){
+		this.alert("취소되었습니다.");
+	}else if(errCode == 0){
+		this.alert("신청내역이 존재하지 않습니다.");
+	}
+};
 ]]></Script>
   </Form>
 </FDL>

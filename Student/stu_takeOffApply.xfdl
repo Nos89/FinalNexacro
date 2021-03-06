@@ -12,10 +12,10 @@
         <Static id="Static01_00" taborder="6" text="" left="4" top="110" height="86" background="#c8ddee" width="1080"/>
         <Calendar id="cal_applyDay" taborder="7" left="87" top="118" width="146" height="30" enable="false"/>
         <Static id="Static02_00" taborder="8" text="작성일자" left="19" top="120" width="60" height="30"/>
-        <Button id="btn_apply" taborder="9" text="신청" left="924" top="4" width="56" height="26" onclick="btn_apply_onclick" cssclass="btn_apply"/>
-        <Button id="btn_applyCancel" taborder="10" text="신청취소" left="990" top="4" width="70" height="26" cssclass="btn_apply"/>
+        <Button id="btn_apply" taborder="9" text="신청" left="924" top="4" width="56" height="26" onclick="btn_apply_onclick" cssclass="btn_apply" enable="false"/>
+        <Button id="btn_applyCancel" taborder="10" text="신청취소" left="990" top="4" width="70" height="26" cssclass="btn_apply" onclick="btn_applyCancel_onclick" enable="false"/>
         <Static id="Static02_00_00_00" taborder="11" text="휴학년도" left="243" top="120" width="60" height="30"/>
-        <Combo id="Combo00_00" taborder="12" text="2021" left="303" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="2021" index="0">
+        <Combo id="Combo00_00" taborder="12" text="2021" left="303" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" value="2021" index="0" enable="false">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -42,7 +42,7 @@
           </Dataset>
         </Combo>
         <Static id="Static02_00_00_00_00" taborder="13" text="휴학학기" left="392" top="120" width="60" height="30"/>
-        <Combo id="Combo00_00_00" taborder="14" text="1학기" left="452" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1학기">
+        <Combo id="Combo00_00_00" taborder="14" text="1학기" left="452" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="1학기" enable="false">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -61,7 +61,7 @@
           </Dataset>
         </Combo>
         <Static id="Static02_00_00_00_00_00" taborder="15" text="복학예정년도" left="544" top="120" width="76" height="30"/>
-        <Combo id="Combo00_00_00_00" taborder="16" text="2021" left="620" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021">
+        <Combo id="Combo00_00_00_00" taborder="16" text="2021" left="620" top="120" width="79" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2021" enable="false">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -88,7 +88,7 @@
           </Dataset>
         </Combo>
         <Static id="Static02_00_00_00_01" taborder="17" text="휴학사유" left="19" top="158" width="60" height="30"/>
-        <Combo id="Combo00_01" taborder="18" text="" left="87" top="158" width="146" height="30" value="" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="Combo00_01" taborder="18" text="" left="87" top="158" width="146" height="30" value="" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" enable="false">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -172,6 +172,15 @@ this.stu_takeOffApply_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo
 		"fn_callback"
 	);
 	
+	this.transaction(
+		"checkStatus2",
+		"/checkStatus2.nex",
+		"",
+		"",
+		"",  
+		"fn_checkcallback"
+	);
+	
 	var d = new Date();
 	this.cal_applyDay.set_value(d.getYear()+""+((d.getMonth()+1)+"").padLeft(2,'0')+""+(""+d.getDate()).padLeft(2,'0'));
 };
@@ -183,7 +192,25 @@ this.fn_callback=function(id,errCode,errMsg)
 
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	this.transaction(
+		"checkStatus2",
+		"/checkStatus2.nex",
+		"",
+		"",
+		"",  
+		"fn_checkcallback",
+		false
+	);
+	
+	if(this.Combo00_01.text == ""){
+		this.alert("휴학사유를 선택하세요.");
+		return;
+	}
 	var sDate = this.cal_applyDay.value;
+	this.ds_takeOff.setColumn(0,"reason",this.Combo00_01.value);
+	this.ds_takeOff.setColumn(0,"takeOff_Year",this.Combo00_00.value);
+	this.ds_takeOff.setColumn(0,"takeOff_Semester",this.Combo00_00_00_00.value);
+	this.ds_takeOff.setColumn(0,"expectedReturnYear",this.Combo00_00_00_00.value);
 	this.transaction(
 		"stuTakeOffApply",
 		"/stuTakeOffApply.nex",
@@ -203,10 +230,48 @@ this.fn_Applycallback=function(id,errCode,errMsg)
 	}
 };
 
-this.Div00_Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+this.fn_checkcallback=function(id,errCode,errMsg)
 {
-	
+	if(errCode == 1){
+		this.Combo00_00.set_enable(true);
+		this.Combo00_00_00.set_enable(true);
+		this.Combo00_00_00_00.set_enable(true);
+		this.Combo00_01.set_enable(true);
+		this.btn_apply.set_enable(true);
+		this.btn_applyCancel.set_enable(true);
+	}else if(errCode == 0){
+		this.Combo00_00.set_enable(false);
+		this.Combo00_00_00.set_enable(false);
+		this.Combo00_00_00_00.set_enable(false);
+		this.Combo00_01.set_enable(false);
+		this.btn_apply.set_enable(false);
+		this.btn_applyCancel.set_enable(false);
+		alert("재학생만 신청 가능합니다.");
+	}
 };
-]]></Script>
+
+
+this.btn_applyCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.confirm("신청을 취소하시겠습니까?")){
+		this.transaction(
+		"takeOffCancel",
+		"/takeOffCancel.nex",
+		"",
+		"",
+		"",  
+		"fn_cancel_callback"
+		);
+	}
+};
+
+this.fn_cancel_callback=function(id,errCode,errMsg)
+{
+	if(errCode == 1){
+		this.alert("취소되었습니다.");
+	}else if(errCode == 0){
+		this.alert("신청내역이 존재하지 않습니다.");
+	}
+};]]></Script>
   </Form>
 </FDL>

@@ -56,7 +56,7 @@
         <Static id="Static02_00_00_00" taborder="8" text="신청년도" left="15" top="42" width="50" height="30"/>
         <Static id="Static00" taborder="9" text="학점포기신청" left="5" top="0" height="34" cssclass="sta_img_circle01" width="1080"/>
         <Static id="Static00_00" taborder="10" text="성적리스트" left="5" top="82" height="36" cssclass="sta_img_schedule" width="1080"/>
-        <Grid id="Grid00" taborder="11" left="0" top="120" autofittype="col" binddataset="ds_gradeList" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="1085" height="520">
+        <Grid id="Grid00" taborder="11" left="0" top="120" autofittype="col" binddataset="ds_gradeList" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" width="1085" height="520" enable="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -182,6 +182,14 @@ this.stu_creditRenounce_onload = function(obj:nexacro.Form,e:nexacro.LoadEventIn
 		"fn_callback_grade"
 	);
 	
+	this.transaction(
+		"checkStatus2",
+		"/checkStatus2.nex",
+		"",
+		"",
+		"",  
+		"fn_checkcallback"
+	);
 	
 	
 	var grid_id = this.Grid00;
@@ -267,6 +275,15 @@ this.btn_search2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		"",  
 		"fn_callback_grade"
 	);
+};
+
+this.fn_checkcallback=function(id,errCode,errMsg)
+{
+	if(errCode == 1){
+		this.Grid00.set_enable(true);
+	}else if(errCode == 0){
+		this.alert("재학생만 이용 가능합니다.");
+	}
 };
 ]]></Script>
   </Form>
