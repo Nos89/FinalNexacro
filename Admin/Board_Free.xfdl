@@ -171,6 +171,11 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let sTarget = this.com_searchTarget.value;
 	let sKeyword = this.edt_searchKeyword.value;
 	
+	if(sKeyword.trim().length<2){
+		this.alert("검색어는 두 글자 이상이어야 합니다.");
+		return;
+	}
+	
 	this.transaction(
 		"searchBoard"	// 1. strSvcID(string 형태의 id)
 		, "/SearchBoard.nex"	// 2. strURL(string 형태의 url)

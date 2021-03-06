@@ -32,7 +32,7 @@
         </Combo>
         <Edit id="edt_searchKeyword" taborder="3" left="101" top="56" width="140" height="24"/>
         <Button id="btn_search" taborder="4" left="251" top="56" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
-        <Grid id="Grid00" taborder="0" left="10" top="90" width="1070" height="280" binddataset="ds_professor" oncellclick="Grid00_oncellclick" onheadclick="Grid00_onheadclick" autofittype="col" oncellposchanged="Grid00_oncellposchanged" createcellasync="true" fillareatype="linerow">
+        <Grid id="Grid00" taborder="0" left="10" top="90" width="1070" height="280" binddataset="ds_professor" oncellclick="Grid00_oncellclick" onheadclick="Grid00_onheadclick" autofittype="col" oncellposchanged="Grid00_oncellposchanged" createcellasync="true" fillareatype="linerow" tabstop="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -72,36 +72,36 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static01" taborder="29" text="이름" left="9" top="424" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static08" taborder="30" left="108" top="424" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static02" taborder="31" text="교수 정보" left="10" top="390" height="34" cssclass="sta_WF_title02" right="940"/>
-        <Static id="Static03" taborder="32" left="705" top="424" width="100" height="32" cssclass="sta_cm_box01R" text="교직상태"/>
-        <Static id="Static04" taborder="33" left="804" top="424" height="32" cssclass="sta_cm_box02L" width="275"/>
-        <Static id="Static05" taborder="34" text="교번" left="357" top="424" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static06" taborder="35" left="456" top="424" height="32" cssclass="sta_cm_box02L" width="250" text=""/>
-        <Static id="Static07" taborder="36" text="단과대" left="9" top="455" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static09" taborder="37" left="108" top="455" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static10" taborder="38" text="학과" left="357" top="455" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static11" taborder="39" left="456" top="455" height="32" cssclass="sta_cm_box02L" width="250"/>
-        <Static id="Static14" taborder="40" text="전화번호" left="9" top="486" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static15" taborder="41" left="108" top="486" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static16" taborder="42" left="705" top="486" width="100" height="32" cssclass="sta_cm_box01R" text="퇴사일"/>
-        <Static id="Static17" taborder="43" left="804" top="486" height="32" cssclass="sta_cm_box02L" width="275"/>
-        <Static id="Static18" taborder="44" left="357" top="486" width="100" height="32" cssclass="sta_cm_box01R" text="입사일"/>
-        <Static id="Static19" taborder="45" left="456" top="486" height="32" cssclass="sta_cm_box02L" width="250"/>
-        <Static id="Static21" taborder="46" text="생년월일" left="9" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static22" taborder="47" left="108" top="517" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static23" taborder="48" left="357" top="548" width="100" height="32" cssclass="sta_cm_box01R" text="국적"/>
-        <Static id="Static24" taborder="49" left="456" top="548" height="32" cssclass="sta_cm_box02L" width="250"/>
-        <Static id="Static25" taborder="50" text="성별" left="357" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static26" taborder="51" left="456" top="517" height="32" cssclass="sta_cm_box02L" width="250"/>
-        <Static id="Static27" taborder="52" text="이메일" left="9" top="548" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static28" taborder="53" left="108" top="548" width="250" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static31" taborder="54" text="계좌" left="9" top="579" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static32" taborder="55" left="108" top="579" height="32" cssclass="sta_cm_box02L" width="598"/>
+        <Static id="Static01" taborder="30" text="이름" left="9" top="424" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static08" taborder="31" left="108" top="424" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static02" taborder="32" text="교수 정보" left="10" top="390" height="34" cssclass="sta_WF_title02" right="940"/>
+        <Static id="Static03" taborder="33" left="705" top="424" width="100" height="32" cssclass="sta_cm_box01R" text="교직상태"/>
+        <Static id="Static04" taborder="34" left="804" top="424" height="32" cssclass="sta_cm_box02L" width="275"/>
+        <Static id="Static05" taborder="35" text="교번" left="357" top="424" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static06" taborder="36" left="456" top="424" height="32" cssclass="sta_cm_box02L" width="250" text=""/>
+        <Static id="Static07" taborder="37" text="단과대" left="9" top="455" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static09" taborder="38" left="108" top="455" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static10" taborder="39" text="학과" left="357" top="455" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static11" taborder="40" left="456" top="455" height="32" cssclass="sta_cm_box02L" width="250"/>
+        <Static id="Static14" taborder="41" text="전화번호" left="9" top="486" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static15" taborder="42" left="108" top="486" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static16" taborder="43" left="705" top="486" width="100" height="32" cssclass="sta_cm_box01R" text="퇴사일"/>
+        <Static id="Static17" taborder="44" left="804" top="486" height="32" cssclass="sta_cm_box02L" width="275"/>
+        <Static id="Static18" taborder="45" left="357" top="486" width="100" height="32" cssclass="sta_cm_box01R" text="입사일"/>
+        <Static id="Static19" taborder="46" left="456" top="486" height="32" cssclass="sta_cm_box02L" width="250"/>
+        <Static id="Static21" taborder="47" text="생년월일" left="9" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static22" taborder="48" left="108" top="517" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static23" taborder="49" left="357" top="548" width="100" height="32" cssclass="sta_cm_box01R" text="국적"/>
+        <Static id="Static24" taborder="50" left="456" top="548" height="32" cssclass="sta_cm_box02L" width="250"/>
+        <Static id="Static25" taborder="51" text="성별" left="357" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static26" taborder="52" left="456" top="517" height="32" cssclass="sta_cm_box02L" width="250"/>
+        <Static id="Static27" taborder="53" text="이메일" left="9" top="548" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static28" taborder="54" left="108" top="548" width="250" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static31" taborder="55" text="계좌" left="9" top="579" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static32" taborder="56" left="108" top="579" height="32" cssclass="sta_cm_box02L" width="598"/>
         <Edit id="edt_name" taborder="10" left="117" top="428" width="140" height="24"/>
         <Button id="btn_reset" taborder="6" text="리셋" left="566" top="56" width="60" height="24" onclick="btn_reset_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Radio id="rdo_filter" taborder="5" left="310" top="56" width="251" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="4" onitemchanged="rdo_filter_onitemchanged" index="3" text="전체" value="전체">
+        <Radio id="rdo_filter" taborder="5" left="310" top="56" width="251" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="4" onitemchanged="rdo_filter_onitemchanged" index="0" text="재직" value="재직">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -127,12 +127,12 @@
             </Rows>
           </Dataset>
         </Radio>
-        <Static id="Static03_00" taborder="56" left="705" top="455" width="100" height="32" cssclass="sta_cm_box01R" text="연구실"/>
-        <Static id="Static11_00" taborder="57" left="804" top="455" height="32" cssclass="sta_cm_box02L" width="275"/>
+        <Static id="Static03_00" taborder="57" left="705" top="455" width="100" height="32" cssclass="sta_cm_box01R" text="연구실"/>
+        <Static id="Static11_00" taborder="58" left="804" top="455" height="32" cssclass="sta_cm_box02L" width="275"/>
         <Edit id="edt_pro_office" taborder="15" left="813" top="459" width="130" height="24"/>
-        <Edit id="edt_email" taborder="24" left="117" top="552" width="200" height="24"/>
+        <Edit id="edt_email" taborder="25" left="117" top="552" width="200" height="24"/>
         <Edit id="edt_phone" taborder="16" left="117" top="490" width="140" height="24" onchanged="edt_phone_onchanged"/>
-        <Combo id="cbo_bank" taborder="26" left="117" top="583" width="102" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="cbo_bank" taborder="27" left="117" top="583" width="102" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -166,8 +166,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="edt_accountNum" taborder="27" left="224" top="583" width="180" height="24" onchanged="edt_accountNum_onchanged"/>
-        <Radio id="rdo_gender" taborder="20" left="465" top="521" width="140" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" onitemchanged="rdo_gender_onitemchanged">
+        <Edit id="edt_accountNum" taborder="28" left="224" top="583" width="180" height="24" onchanged="edt_accountNum_onchanged"/>
+        <Radio id="rdo_gender" taborder="20" left="465" top="521" width="140" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -210,25 +210,27 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="cbo_country" taborder="25" text="" left="465" top="552" width="150" height="24" innerdataset="gdsCountries" value="" codecolumn="name" datacolumn="name"/>
+        <Combo id="cbo_country" taborder="26" text="" left="465" top="552" width="150" height="24" innerdataset="gdsCountries" value="" codecolumn="name" datacolumn="name"/>
         <Combo id="cbo_college" taborder="13" left="117" top="459" width="140" height="24" onitemchanged="com_college_onitemchanged" innerdataset="ds_college" codecolumn="col_code" datacolumn="col_title"/>
         <Combo id="cbo_department" taborder="14" left="465" top="459" width="140" height="24" text="" innerdataset="ds_department" datacolumn="dept_title" codecolumn="dept_code"/>
-        <Static id="Static24_01" taborder="58" left="804" top="548" width="275" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static23_00" taborder="59" text="우편번호" left="705" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Static id="Static24_00" taborder="60" left="804" top="517" width="275" height="32" cssclass="sta_cm_box02L"/>
-        <Static id="Static23_00_00" taborder="61" left="705" top="579" width="100" height="32" cssclass="sta_cm_box01R" text="상세주소"/>
-        <Static id="Static24_00_00" taborder="62" left="804" top="579" width="275" height="32" cssclass="sta_cm_box02L"/>
-        <Edit id="edt_addr2" taborder="23" left="813" top="583" width="224" height="24"/>
-        <Edit id="edt_addr1" taborder="22" left="813" top="552" width="224" height="24" onchanged="Edit01_onchanged"/>
-        <Edit id="edt_zipcode" taborder="21" left="813" top="521" width="140" height="24"/>
-        <Static id="Static23_01" taborder="63" text="주소" left="705" top="548" width="100" height="32" cssclass="sta_cm_box01R"/>
-        <Button id="btn_save" taborder="28" text="저장" left="1016" top="55" width="60" height="25" onclick="btn_save_onclick" cssclass="btn_WF_save01"/>
+        <Static id="Static12" taborder="59" left="0" top="611" width="1090" height="39"/>
+        <Static id="Static24_01" taborder="60" left="804" top="548" width="275" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static23_00" taborder="61" text="우편번호" left="705" top="517" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="Static24_00" taborder="62" left="804" top="517" width="275" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="Static23_00_00" taborder="63" left="705" top="579" width="100" height="32" cssclass="sta_cm_box01R" text="상세주소"/>
+        <Static id="Static24_00_00" taborder="64" left="804" top="579" width="275" height="32" cssclass="sta_cm_box02L"/>
+        <Edit id="edt_addr2" taborder="24" left="813" top="583" width="224" height="24"/>
+        <Edit id="edt_addr1" taborder="23" left="813" top="552" width="224" height="24" onchanged="Edit01_onchanged"/>
+        <Edit id="edt_zipcode" taborder="22" left="813" top="521" width="140" height="24"/>
+        <Static id="Static23_01" taborder="65" text="주소" left="705" top="548" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Button id="btn_save" taborder="29" text="저장" left="1016" top="55" width="60" height="25" onclick="btn_save_onclick" cssclass="btn_WF_save01"/>
         <Button id="btn_add" taborder="8" left="952" top="56" width="25" height="25" onclick="btn_add_onclick" cssclass="btn_WF_add01"/>
         <Button id="btn_delete" taborder="9" left="984" top="56" width="25" height="25" cssclass="btn_WF_delete01" onclick="btn_delete_onclick"/>
-        <Static id="sta_alert" taborder="64" text="* 교번은 추후 수정이 불가능하니 신중하게 작성해주세요." left="775" top="384" width="305" height="32" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
-        <Static id="Static04_01" taborder="65" text="*" left="414" top="424" width="42" height="32" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
+        <Static id="sta_alert" taborder="66" text="* 교번은 추후 수정이 불가능하니 신중하게 작성해주세요." left="775" top="384" width="305" height="32" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
+        <Static id="Static04_01" taborder="67" text="*" left="414" top="424" width="42" height="32" font="bold 14px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;" color="#ff0a0a"/>
         <Button id="btn_refresh" taborder="7" left="920" top="56" width="25" height="25" cssclass="btn_WF_refresh" onclick="btn_refresh_onclick"/>
         <MaskEdit id="mae_id" taborder="11" left="465" top="428" width="140" height="24" type="string" format="P-####" onchanged="mae_id_onchanged"/>
+        <Button id="btn_military" taborder="21" text="병역정보" left="620" top="520" width="80" height="25" visible="false" onclick="btn_military_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -267,6 +269,16 @@
           <Column id="col_code" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_military">
+        <ColumnInfo>
+          <Column id="std_code" type="STRING" size="256"/>
+          <Column id="mil_inDate" type="DATE" size="256"/>
+          <Column id="mil_outDate" type="DATE" size="256"/>
+          <Column id="mil_groupCode" type="STRING" size="256"/>
+          <Column id="mil_rank" type="STRING" size="256"/>
+          <Column id="mil_code" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[ 
 
@@ -277,7 +289,7 @@ this.Professor_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		"professorOnLoad"	// 1. strSvcID(string 형태의 id)
 		, "/ProfessorOnLoad.nex"	// 2. strURL(string 형태의 url)
 		, ""	// 3. strInDatasets Sds=Fds:U, :A, :N
-		, "ds_professor=out_pro ds_college=out_col ds_department=out_dept"	// 4. strOutDatasets -select Fds=Sds
+		, "ds_professor=out_pro ds_college=out_col ds_department=out_dept ds_military=out_military"	// 4. strOutDatasets -select Fds=Sds
 		, "" // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
@@ -290,7 +302,7 @@ this.fn_callback = function(id, errCD, errMSG)
 			this.alert("데이터를 불러오지 못했습니다.");
 			return;
 		}else{
-			//this.ds_professor.filter("pro_status=='재직'");
+			this.ds_professor.filter("pro_status=='재직'");
 		}
 	}else if(id=="professorUpdate"){
 		if(errCD<0){
@@ -318,39 +330,43 @@ this.rdo_filter_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeE
 // 필터링 리셋
 this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	//this.ds_professor.filter("pro_status=='재직'");
-	this.rdo_filter.set_value("전체");
+	this.ds_professor.filter("pro_status=='재직'");
+	this.rdo_filter.set_value("재직");
 };
 
 
-// 교수 정보 가져오기
+// 셀 클릭 시
 this.selectedRow = "";
 this.Grid00_oncellposchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
 {	
-	// 학과 필터링
-	this.fn_comboDeptFilter();
-	
-	// 퇴직하지 않은 경우 퇴사일 작성X
-	let pro_status = this.cbo_pro_status.value;
-	if(pro_status=="퇴직"){
-		this.cal_outdate.set_readonly("false");
-	}else {
-		this.cal_outdate.set_readonly("true");
-	}
 	this.selectedRow = e.row;
+	this.fn_comboDeptFilter();
+	this.fn_outDateEnable();
+	if(this.rdo_gender.value=="남"){
+		this.btn_military.set_visible("true");
+	}else{
+		this.btn_military.set_visible("false");
+	}
+};
+
+
+// 교직상태 변경시
+this.com_pro_status_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	this.fn_outDateEnable();
 };
 
 
 // 퇴직할 경우 퇴사일 작성 가능하게 변경
-this.com_pro_status_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+this.fn_outDateEnable = function()
 {
 	let pro_status = this.cbo_pro_status.value;
 	if(pro_status=="퇴직"){
 		this.cal_outdate.set_readonly("false");
 	}else {
 		this.cal_outdate.set_readonly("true");
-	}	
-};
+	}
+}
 
 
 // 단과대 변경시
@@ -368,6 +384,65 @@ this.fn_comboDeptFilter = function(){
 	}else {
 		this.cbo_department.set_enable("true");
 		this.ds_department.filter("col_code=='"+colcode+"'");
+	}
+}
+
+
+// 성별 선택시
+this.rdo_gender_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	if(e.postvalue=="남"){
+		this.btn_military.set_visible("true");
+	}else{
+		this.btn_military.set_visible("false");
+	}
+};
+
+
+// 병역정보 입력
+this.btn_military_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let id = this.ds_professor.getColumn(this.ds_professor.rowposition,"id");
+	let indate = this.ds_military.lookup("std_code",id,"mil_inDate");
+	let outdate = this.ds_military.lookup("std_code",id,"mil_outDate");
+	let groupcode = this.ds_military.lookup("std_code",id,"mil_groupCode");
+	let rank = this.ds_military.lookup("std_code",id,"mil_rank");
+	let code = this.ds_military.lookup("std_code",id,"mil_code");
+	let type = "";
+	
+	if(indate!=null){
+		type="modify";
+	}else{
+		type="new";
+	}
+	
+	let objCF = new ChildFrame();
+	objCF.init("InputMilitary"+Math.random(),495,100,350,260,null,null,"Admin::InputMil.xfdl");
+	objCF.showModal(this.getOwnerFrame(),{indate:indate,outdate:outdate,groupcode:groupcode,rank:rank,code:code,id:id,type:type},this,"fn_inputMil");
+};
+
+
+this.fn_inputMil = function(id, sRtn)
+{
+	if(sRtn=="close"){return};
+	
+	let nRow = "";
+	let arrRtn = sRtn.split("|");
+	if(arrRtn[6]=="new"){
+		nRow = this.ds_military.addRow();
+		this.ds_military.setColumn(nRow,"std_code",arrRtn[5])
+		this.ds_military.setColumn(nRow,"mil_inDate",arrRtn[0]);
+		this.ds_military.setColumn(nRow,"mil_outDate",arrRtn[1]);
+		this.ds_military.setColumn(nRow,"mil_groupCode",arrRtn[2]);
+		this.ds_military.setColumn(nRow,"mil_rank",arrRtn[3]);
+		this.ds_military.setColumn(nRow,"mil_code",arrRtn[4]);
+	}else{
+		nRow = this.ds_military.findRow("std_code",arrRtn[5]);
+		this.ds_military.setColumn(nRow,"mil_inDate",arrRtn[0]);
+		this.ds_military.setColumn(nRow,"mil_outDate",arrRtn[1]);
+		this.ds_military.setColumn(nRow,"mil_groupCode",arrRtn[2]);
+		this.ds_military.setColumn(nRow,"mil_rank",arrRtn[3]);
+		this.ds_military.setColumn(nRow,"mil_code",arrRtn[4]);
 	}
 }
 
@@ -415,6 +490,7 @@ this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.selectedRow = this.ds_professor.addRow();
 	this.fn_comboDeptFilter();
+	this.btn_military.set_visible("false");
 };
 
 
@@ -431,13 +507,12 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.transaction(
 		"professorUpdate"	// 1. strSvcID(string 형태의 id)
 		, "/ProfessorUpdate.nex"	// 2. strURL(string 형태의 url)
-		, "in_pro=ds_professor:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
+		, "in_pro=ds_professor:U in_military=ds_military:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 		, ""	// 4. strOutDatasets -select Fds=Sds
 		, "user=professor" // 5. strArgument
 		, "fn_callback"	// 6. strCallbackFunc
 	);
 };
-
 
 
 this.mae_id_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
