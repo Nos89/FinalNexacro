@@ -575,7 +575,9 @@ this.checkNum = function( sNum ){
 		}
 	}
 	return isNum;
-}]]></Script>
+}
+
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="edt_name" propid="value" datasetid="ds_professor" columnid="name"/>
       <BindItem id="item2" compid="cbo_pro_status" propid="value" datasetid="ds_professor" columnid="pro_status"/>
