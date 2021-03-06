@@ -186,7 +186,7 @@ this.fn_sum = function(id){
 	var assign =parseInt(this.mask_assingment.value);
 	var presentation = parseInt(this.mask_presentation.value);
 	var attitude = parseInt(this.mask_attitude.value);
-	var other = parseInt(this.mask_other.value);
+	var other = parseInt(this.mask_other1.value);
 	sum  = attend+middle+finaltest+test+assign+presentation+attitude+other;
 	}
 	return sum;
@@ -212,6 +212,14 @@ this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fn_insertPercentage();
+	var sumWay = this.fn_sum("way");
+	var sumEval = this.fn_sum("eval");
+	if(sumWay != 100 || sumEval !=100){
+		alert("평가 기준 및 강의 방법의 총합은 100 이어야 합니다."); return;
+	}
+	if(this.edt_title.value == null ||this.TextArea00.value ==null ||this.TextArea01.value==null){
+		alert("모든 항목을 작성해 주세요"); return;
+	}
 	if(this.parent.lecture ==1){
 		if(this.confirm("작성을 끝내시겠습니까?","경고")){
 		this.transaction(
