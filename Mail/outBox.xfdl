@@ -39,14 +39,14 @@
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="5" left="0" top="0" height="110" border="1px solid #bababa, 0px none" right="0" text=""/>
-              <Static id="sta_sub_title" taborder="0" text="제목" left="20" top="15" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_sub_title00" taborder="1" text="수신일" left="20" top="75" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_title" taborder="2" left="100" top="15" width="409" height="25" background="#ffffff" border="0px none, 0px none, 1px solid #c7c7c7" textAlign="left" padding="0px 5px 0px 5px"/>
-              <Static id="sta_received_date" taborder="3" left="100" top="75" width="200" height="25" expr="comp.text.substr(0,4)+&quot;년 &quot;+comp.text.substr(4,2)+&quot;월 &quot;+comp.text.substr(6,2)+&quot;일&quot;" text="" padding="0px 5px 0px 5px" border="0px none, 0px none, 1px solid #c7c7c7" background="#ffffff" textAlign="left"/>
+              <Static id="sta_sub_title" taborder="0" text="제목" left="16" top="13" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_sub_title00" taborder="1" text="수신일" left="16" top="73" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_title" taborder="2" left="96" top="13" width="409" height="25" background="#ffffff" border="0px none, 0px none, 1px solid #c7c7c7" textAlign="left" padding="0px 5px 0px 5px"/>
+              <Static id="sta_received_date" taborder="3" left="96" top="73" width="200" height="25" expr="comp.text.substr(0,4)+&quot;년 &quot;+comp.text.substr(4,2)+&quot;월 &quot;+comp.text.substr(6,2)+&quot;일&quot;" text="" padding="0px 5px 0px 5px" border="0px none, 0px none, 1px solid #c7c7c7" background="#ffffff" textAlign="left"/>
               <Static id="sta_contents" taborder="4" left="19" top="125" width="490" height="405" cssclass="sta_cm_box02L" verticalAlign="top" padding="5px"/>
-              <Static id="sta_sub_title00_00" taborder="6" text="수신인" left="20" top="45" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-              <Static id="sta_receiver" taborder="7" left="100" top="45" width="100" height="25" text="" padding="0px 5px 0px 5px" border="0px none, 0px none, 1px solid #c7c7c7" background="#ffffff"/>
-              <Static id="sta_name" taborder="8" left="200" top="45" width="100" height="25" cssclass="sta_cm_box02L" padding="0px 5px 0px 5px" border="0px none, 0px none, 1px solid #c7c7c7" background="#ffffff" textAlign="left"/>
+              <Static id="sta_sub_title00_00" taborder="6" text="수신인" left="16" top="43" width="80" height="25" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+              <Static id="sta_receiver" taborder="7" left="96" top="45" width="100" height="25" text="" padding="0px 5px 0px 5px" border="0px none, 0px none, 1px solid #c7c7c7" background="#ffffff"/>
+              <Static id="sta_name" taborder="8" left="196" top="45" width="100" height="25" cssclass="sta_cm_box02L" padding="0px 5px 0px 5px" border="0px none, 0px none, 1px solid #c7c7c7" background="#ffffff" textAlign="left"/>
             </Layout>
           </Layouts>
         </Div>
@@ -78,6 +78,8 @@
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
+this.fv_loginID = "";
+
 this.outBox_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.transaction(
@@ -137,7 +139,7 @@ this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let objCF = new ChildFrame();
 	objCF.init("writeMail",395,15,550,600,null,null,"Mail::writeMail.xfdl");
-	objCF.showModal(this.getOwnerFrame(),{},this,"fn_mailSend");
+	objCF.showModal(this.getOwnerFrame(),{sender:this.fv_loginID},this,"fn_mailSend");
 };
 
 this.fn_mailSend = function(id,msg)
@@ -157,6 +159,7 @@ this.fn_mailSend = function(id,msg)
           <Column id="contents" type="STRING" size="256"/>
           <Column id="received_date" type="DATE" size="256"/>
           <Column id="read" type="INT" size="256"/>
+          <Column id="sender" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_name">
