@@ -336,7 +336,7 @@ this.fn_callback_credit=function(id,errCode,errMsg)
 };
 
 this.fn_getGrade = function( row, got, apply ){
-	if( got >= apply ){
+	if( got <= apply ){
 		this.ds_grade.setColumn(row,"got",got);
 		this.ds_grade.setColumn(row,"apply",( apply - got ));
 		return got - apply;
