@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="650" mobileorientation="landscape" width="1090">
         <Static id="Static00" taborder="1" text="교수 명단" left="11" top="22" width="120" height="24" cssclass="sta_WF_title01"/>
-        <Combo id="cbo_searchTarget" taborder="2" left="11" top="56" width="80" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="교번" value="id">
+        <Combo id="cbo_searchTarget" taborder="2" left="11" top="56" width="80" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="이름" value="name">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -12,19 +12,19 @@
             </ColumnInfo>
             <Rows>
               <Row>
-                <Col id="datacolumn">이름</Col>
-                <Col id="codecolumn">name</Col>
-              </Row>
-              <Row>
                 <Col id="datacolumn">교번</Col>
                 <Col id="codecolumn">id</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">단과대</Col>
-                <Col id="codecolumn">colcode</Col>
+                <Col id="codecolumn">name</Col>
+                <Col id="datacolumn">이름</Col>
               </Row>
               <Row>
-                <Col id="codecolumn">deptcode</Col>
+                <Col id="datacolumn">단과대</Col>
+                <Col id="codecolumn">col_title</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">dept_title</Col>
                 <Col id="datacolumn">학과</Col>
               </Row>
             </Rows>
@@ -245,6 +245,8 @@
           <Column id="outDate" type="DATE" size="20"/>
           <Column id="colcode" type="STRING" size="256"/>
           <Column id="deptcode" type="STRING" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
           <Column id="zipcode" type="STRING" size="256"/>
           <Column id="addr1" type="STRING" size="256"/>
           <Column id="addr2" type="STRING" size="256"/>
@@ -455,25 +457,9 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let pro_status = this.rdo_filter.value;
 	
 	if(pro_status=="전체"){
-		if(sTarget=="colcode"){
-			let sId = this.ds_college.lookup("title",sKeyword,"id");
-			this.ds_professor.filter("String(colcode).indexOf('"+sId+"')>=0");
-		}else if(sTarget=="deptcode"){
-			let sId = this.ds_department.lookup("title",sKeyword,"id");
-			this.ds_professor.filter("String(deptcode).indexOf('"+sId+"')>=0");
-		}else {
-			this.ds_professor.filter("String("+sTarget+").indexOf('"+sKeyword+"')>=0");
-		}
+		this.ds_professor.filter("String("+sTarget+").indexOf('"+sKeyword+"')>=0");
 	}else {
-		if(sTarget=="colcode"){
-			let sId = this.ds_college.lookup("title",sKeyword,"id");
-			this.ds_professor.filter("pro_status=='"+pro_status+"'&&String(colcode).indexOf('"+sId+"')>=0");
-		}else if(sTarget=="deptcode"){
-			let sId = this.ds_department.lookup("title",sKeyword,"id");
-			this.ds_professor.filter("pro_status=='"+pro_status+"'&&String(deptcode).indexOf('"+sId+"')>=0");
-		}else {
-			this.ds_professor.filter("pro_status=='"+pro_status+"'&&String("+sTarget+").indexOf('"+sKeyword+"')>=0");
-		}
+		this.ds_professor.filter("pro_status=='"+pro_status+"'&&String("+sTarget+").indexOf('"+sKeyword+"')>=0");
 	}
 };
 
