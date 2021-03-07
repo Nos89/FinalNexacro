@@ -218,6 +218,7 @@ this.StudentInfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		);
 };
 
+
 this.fn_callback = function(id, errMsg, errCode){
 	for(var i=0; i<this.ds_openClass.getRowCount(); i++){
 		var year = this.ds_openClass.getColumn(i,"oc_year");
