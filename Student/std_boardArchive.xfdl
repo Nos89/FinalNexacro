@@ -52,7 +52,7 @@
               <Band id="body">
                 <Cell text="bind:seq" padding="0px 5px"/>
                 <Cell col="1" text="bind:title" padding="0px 5px"/>
-                <Cell col="2" text="bind:write" padding="0px 5px"/>
+                <Cell col="2" text="bind:writer" padding="0px 5px"/>
                 <Cell col="3" text="bind:writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
               </Band>
             </Format>
@@ -118,16 +118,15 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 게시글 팝업
 this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {	
-
 	let sCol = obj.getCellProperty("body",e.cell,"text").replace("bind:","");
 	let nSeq = this.ds_board.getColumn(e.row,"seq");
 	
 	if(sCol=="title"){
 		nexacro.open(
 			"bdarchive"+nSeq
-			, "Admin::Board_post.xfdl"
+			, "Student::stu_boardPost.xfdl"
 			, this.getOwnerFrame()
-			, {seq:nSeq, type:this.boardType}
+			, {seq:nSeq}
 		)
 	}
 };
