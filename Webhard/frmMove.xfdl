@@ -27,6 +27,7 @@
 this.contentName = "";
 this.location = "";
 this.type = "";
+this.targetID = "";
 
 this.frmCopyAndMove_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -34,14 +35,38 @@ this.frmCopyAndMove_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	
 	this.contentName = this.parent.contentName;
 	this.location = this.parent.location;
-	trace( this.parent.type);
+	this.targetID = this.parent.targetID;
+	this.ds_childDir.copyData(this.parent.ds_dir);
+	this.grd_dir.set_binddataset(this.ds_childDir);
+	
 	if( this.parent.type == "true" ){
 		this.type = "folder";
+		var dsIndex = this.ds_childDir.findRow("dirID", this.targetID);
+	
+		var targetLv = this.ds_childDir.getColumn(dsIndex, "lv");
+		var flag = true;
+		var childIndex = new Array();
+		childIndex.push(dsIndex);
+		for( var i = 1; i < this.ds_childDir.getRowCount() ; i++ ){
+			var lv = this.ds_childDir.getColumn( dsIndex + i, "lv" );
+			var childID = this.ds_childDir.getColumn( dsIndex + i, "dirID" );
+			var childIdx = this.ds_childDir.findRow("dirID", childID);
+			if( targetLv == lv || childIdx < 0 ){
+				break;
+			} else {
+				childIndex.push( childIdx );
+			}
+		}
+		
+		for( var i = 0; i < childIndex.length; i++ ){
+			trace( "차일드 인덱스 : " + childIndex[i]);
+		}
+		
+		this.ds_childDir.deleteMultiRows(childIndex);
 	} else {
 		this.type = "file";
 	}
-	this.ds_childDir.copyData(this.parent.ds_dir);
-	this.grd_dir.set_binddataset("ds_childDir");
+
 	this.expandDir(this.location);
 };
 
@@ -58,7 +83,7 @@ this.btn_move_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	//this.alert( this.location + " : " + moveLocation );
 	if( this.location == moveLocation ){
 		this.alert("동일한 폴더입니다.");
-	} else {
+	}  else {
 		this.transaction(
 				"moveContents", // 1. strSVCID
 				"/webhard/moveContents", // 2. strURL
@@ -113,7 +138,7 @@ this.expandDir = function( location ){
 	//this.div_left.form.gd_left.setTreeStatus( ds.findRow( "dirID", location ), true );
 	var lv = ds.getColumn( ds.findRow( "dirID", location ), "lv" );
 	while( flag ){
-		trace(lv);
+		
 		if( lv != 0 ){
 			parentID = ds.getColumn( ds.findRow( "dirID", parentID ), "parentID" );
 			lv = ds.getColumn( ds.findRow( "dirID", parentID ), "lv" );
@@ -125,7 +150,7 @@ this.expandDir = function( location ){
 	}
 	arrEx.reverse();
 	for( var i = 0; i < arrEx.length; i++ ){
-		trace(arrEx[i]);
+		
 		//Grid.getTreeRow( nDSRowIndex ) 
 		this.grd_dir.setTreeStatus( this.grd_dir.getTreeRow(ds.findRow("dirID", arrEx[i])), true );
 	}
