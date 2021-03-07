@@ -129,61 +129,6 @@
         <Button id="btn_attRetrive" taborder="13" text="현재출결조회" left="711" top="314" width="109" height="27" onclick="btn_attRetrive_onclick" cssclass="btn_WF_gantt01"/>
         <Static id="Static05_00_00_00" taborder="14" text="수강학생 목록" left="5" top="317" width="128" height="34" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
         <Button id="Button00" taborder="15" text="전체출결조회" left="935" top="46" width="139" height="31" onclick="Button00_onclick" cssclass="btn_WF_gantt01"/>
-        <Grid id="Grid00" taborder="18" left="334" top="541" width="747" height="126" binddataset="ds_proAttendMng">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="att_seq"/>
-                <Cell col="1" text="att_lecCode"/>
-                <Cell col="2" text="att_year"/>
-                <Cell col="3" text="att_targetLevel"/>
-                <Cell col="4" text="att_semester"/>
-                <Cell col="5" text="att_lecTitle"/>
-                <Cell col="6" text="att_date"/>
-                <Cell col="7" text="att_attend"/>
-                <Cell col="8" text="att_stdId"/>
-                <Cell col="9" text="att_deptName"/>
-                <Cell col="10" text="att_stdName"/>
-                <Cell col="11" text="att_stdLevel"/>
-                <Cell col="12" text="att_week"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:att_seq"/>
-                <Cell col="1" text="bind:att_lecCode"/>
-                <Cell col="2" text="bind:att_year"/>
-                <Cell col="3" text="bind:att_targetLevel"/>
-                <Cell col="4" text="bind:att_semester"/>
-                <Cell col="5" text="bind:att_lecTitle"/>
-                <Cell col="6" text="bind:att_date"/>
-                <Cell col="7" text="bind:att_attend"/>
-                <Cell col="8" text="bind:att_stdId"/>
-                <Cell col="9" text="bind:att_deptName"/>
-                <Cell col="10" text="bind:att_stdName"/>
-                <Cell col="11" text="bind:att_stdLevel"/>
-                <Cell col="12" text="bind:att_week"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
       </Layout>
     </Layouts>
     <Objects>
