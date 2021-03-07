@@ -13,6 +13,7 @@
               <Edit id="edt_title" taborder="3" left="100" top="15" width="409" height="25"/>
               <Edit id="edt_receiver" taborder="4" left="100" top="50" width="200" height="25"/>
               <TextArea id="txt_contents" taborder="5" left="19" top="100" width="490" height="370"/>
+              <CheckBox id="chk_sendAdmin" taborder="6" text="관리자에게 쓰기" left="399" top="50" width="110" height="25" onchanged="div_mail_chk_sendAdmin_onchanged"/>
             </Layout>
           </Layouts>
         </Div>
@@ -38,6 +39,7 @@ this.fn_receiver = function(id,receiver)
 		return;
 	}else{
 		this.div_mail.form.edt_receiver.set_value(receiver);
+		this.div_mail.form.chk_sendAdmin.set_value(0);
 	}
 }
 
@@ -57,6 +59,7 @@ this.btn_send_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.ds_mail.setColumn(0,"title",sTitle);
 		this.ds_mail.setColumn(0,"receiver",sReceiver2);
 		this.ds_mail.setColumn(0,"contents",sContents);
+		this.ds_mail.setColumn(0,"sender",this.parent.sender);
 		
 		this.transaction(
 			"sendMail"	// 1. strSvcID(string 형태의 id)
@@ -87,6 +90,15 @@ this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.close("close");
 	}
 };
+
+this.div_mail_chk_sendAdmin_onchanged = function(obj:nexacro.CheckBox,e:nexacro.CheckBoxChangedEventInfo)
+{
+	if(e.postvalue==1){
+		this.div_mail.form.edt_receiver.set_value("A-1001 <관리자>");
+	}else{
+		this.div_mail.form.edt_receiver.set_value("");
+	}
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_mail">
@@ -94,6 +106,7 @@ this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="receiver" type="STRING" size="256"/>
           <Column id="title" type="STRING" size="256"/>
           <Column id="contents" type="STRING" size="256"/>
+          <Column id="sender" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
