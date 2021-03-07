@@ -219,12 +219,13 @@ this.div_application_btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.
 	
 	if(check){
 		this.ds_takeOffApply.setColumn(nRow,"apply_approve","반려");
+		var id = "noOne";
 		this.transaction(
 			"takeOffApproval"	// 1. strSvcID(string 형태의 id)
 			, "/takeOffApproval.nex"	// 2. strURL(string 형태의 url)
 			, "in_takeOffApply=ds_takeOffApply:U"	// 3. strInDatasets Sds=Fds:U, :A, :N
 			, ""	// 4. strOutDatasets -select Fds=Sds
-			, "" // 5. strArgument
+			, "id="+id // 5. strArgument
 			, "fn_rejected"	// 6. strCallbackFunc
 		);
 	}
