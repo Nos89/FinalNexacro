@@ -33,7 +33,7 @@
                 <Cell text="구분"/>
                 <Cell col="1" text="기준학점(A)"/>
                 <Cell col="2" text="이수(취득+인정)학점(B)"/>
-                <Cell col="3" text="수강신청학점(B)"/>
+                <Cell col="3" text="수강신청학점(C)"/>
                 <Cell col="4" text="잔여학점(A-(B or C))"/>
               </Band>
               <Band id="body">
