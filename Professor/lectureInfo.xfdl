@@ -9,7 +9,7 @@
         <Combo id="cbo_year" taborder="3" text="Combo00" left="133" top="48" width="150" height="29" innerdataset="ds_year" codecolumn="code" datacolumn="name" displaynulltext="--선택--"/>
         <Static id="Static00_00" taborder="0" text="강의정보" left="5" top="0" width="127" height="34" cssclass="sta_img_circle01"/>
         <Static id="Static01" taborder="1" left="5" top="34" width="1060" height="1" border="1px solid black,0px none,0px none" text="" onclick="Static01_onclick"/>
-        <Grid id="Grid00" taborder="2" left="5" top="131" width="1069" height="509" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick">
+        <Grid id="Grid00" taborder="2" left="5" top="131" width="1069" height="509" binddataset="ds_openClass" autofittype="col" oncellclick="Grid00_oncellclick" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -71,7 +71,9 @@
         <Static id="Static02_00_00_00" taborder="17" text="건" left="861" top="95" width="11" height="26" verticalAlign="middle"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+    <Script type="xscript5.1"><![CDATA[//===============================
+include "Lib::lib_grid.xjs";
+//================================
 
 this.id = nexacro.Application.gvID;
 this.lectureInfo_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -188,8 +190,6 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}else{ 
 	this.ds_openClass.filter("oc_semester=="+semester+"&&oc_year=='"+year+"'&&oc_targetlevel=='"+target+"'");
 	}
-	
-	this.sta_count00.set_text(this.ds_openClass.getRowCount());
 };
 
 this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -198,8 +198,6 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.cbo_semester.set_value(null);
 	this.cbo_target.set_value(null);
 	this.cbo_year.set_value(null);
-	
-	this.sta_count00.set_text(this.ds_openClass.getRowCount());
 };
 
 this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -210,7 +208,13 @@ this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 	this.objExcelExport.set_exportfilename("강의정보 리스트");
 	this.objExcelExport.exportData();  
-};]]></Script>
+};
+
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.gfn_gridSort(obj, e);
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_openClass">
         <ColumnInfo>
