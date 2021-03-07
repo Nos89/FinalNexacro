@@ -74,8 +74,8 @@
           </Formats>
         </Grid>
         <Static id="Static02" taborder="31" text="학생 정보" left="10" top="390" height="34" cssclass="sta_WF_title02" right="941"/>
-        <Button id="btn_reset" taborder="29" text="리셋" left="700" top="56" width="60" height="24" onclick="btn_reset_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
-        <Radio id="rdo_filter" taborder="5" left="295" top="56" width="400" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="7" onitemchanged="rdo_filter_onitemchanged" index="0" text="재학" value="재학">
+        <Button id="btn_reset" taborder="29" text="리셋" left="630" top="56" width="60" height="24" onclick="btn_reset_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Radio id="rdo_filter" taborder="5" left="295" top="56" width="325" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="7" onitemchanged="rdo_filter_onitemchanged" index="0" text="재학" value="재학">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -89,10 +89,6 @@
               <Row>
                 <Col id="datacolumn">휴학</Col>
                 <Col id="codecolumn">휴학</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">복학</Col>
-                <Col id="datacolumn">복학</Col>
               </Row>
               <Row>
                 <Col id="codecolumn">제적</Col>
@@ -183,10 +179,6 @@
               <Row>
                 <Col id="codecolumn">휴학</Col>
                 <Col id="datacolumn">휴학</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">복학</Col>
-                <Col id="datacolumn">복학</Col>
               </Row>
               <Row>
                 <Col id="codecolumn">제적</Col>
@@ -578,6 +570,13 @@ this.edt_phone_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
 	if( contact.length > 11 || contact.length < 10 ){
 		this.alert("전화번호는 10~11자리 숫자입니다.");
 	} else {
+		var isdup = this.ds_student.findRow("phone", contact);
+		if( isdup < 0 ){
+			this.alert("이미 등록된 번호입니다.");
+			obj.set_value("");
+			obj.setFocus();
+			return;
+		}
 		if( contact.length == 10 ){
 			contact = contact.substring(0, 3) + "-" + contact.substring(3, 6) + "-" + contact.substr(6, contact.length);
 			this.ds_student.setColumn(this.selectedRow, "phone", contact);

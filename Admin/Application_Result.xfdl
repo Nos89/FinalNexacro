@@ -21,6 +21,7 @@
           <Column id="title" type="STRING" size="256"/>
           <Column id="contents" type="STRING" size="256"/>
           <Column id="received_date" type="DATE" size="256"/>
+          <Column id="sender" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

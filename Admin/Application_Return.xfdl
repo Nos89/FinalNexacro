@@ -107,11 +107,13 @@
           <Column id="title" type="STRING" size="256"/>
           <Column id="contents" type="STRING" size="256"/>
           <Column id="received_date" type="DATE" size="256"/>
+          <Column id="sender" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
 this.applyType = "복학";
+this.fv_loginID = "";
 
 this.Application_Return_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -242,6 +244,7 @@ this.fn_sendResult = function(id, objReturn)
 		this.ds_mail.setColumn(0,"title",mail.title);
 		this.ds_mail.setColumn(0,"receiver",mail.receiver);
 		this.ds_mail.setColumn(0,"contents",mail.contents);
+		this.ds_mail.setColumn(0,"sender",this.fv_loginID);
 
 		this.transaction(
 			"sendMail"	// 1. strSvcID(string 형태의 id)

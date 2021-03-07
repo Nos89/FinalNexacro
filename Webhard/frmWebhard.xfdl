@@ -42,7 +42,7 @@
             <Layout>
               <Static id="st_dirName" taborder="0" left="20" top="11" width="170" height="29"/>
               <Static id="st_dirID" taborder="1" left="207" top="9" width="42" height="23" visible="false"/>
-              <Div id="div_inDir" taborder="2" left="10" top="80" border="1px solid #cccccc" bottom="5" right="5" url="Webhard::frmIconView.xfdl" text="" onsize="div_file_div_inDir_onsize" onrbuttondown="div_file_div_inDir_onrbuttondown" boxShadow="3px 3px 30px #cccccc" color="#ffffff" borderRadius="3px" formscrollbartype="none default"/>
+              <Div id="div_inDir" taborder="2" left="10" top="80" border="1px solid #cccccc" bottom="5" right="5" url="Webhard::frmIconView.xfdl" text="" onsize="div_file_div_inDir_onsize" onrbuttondown="rClick" boxShadow="3px 3px 30px #cccccc" color="#ffffff" borderRadius="3px" formscrollbartype="none default"/>
               <Button id="btnListView" taborder="3" top="50" width="26" height="25" cssclass="btnListView" onclick="div_file_btnListView_onclick" right="11"/>
               <Button id="btnIconView" taborder="4" top="50" height="25" cssclass="btnIconView" onclick="div_file_btnIconView_onclick" width="26" right="37"/>
             </Layout>
@@ -347,6 +347,9 @@ this.fn_indirTran = function( parentID ){
 
 this.fn_trCallback = function( pId, pErrCode, pErrMsg ){
 	//trace( pId + " : " + pErrCode );
+	if( !this.div_file.form.div_inDir.enableevent ){
+		this.div_file.form.div_inDir.set_enableevent(true);
+	}
 	if( pErrCode >= 1 ){
 		switch( pId ){
 		case "webhardOnload":
@@ -427,6 +430,10 @@ this.fn_trCallback = function( pId, pErrCode, pErrMsg ){
 			break;
 		case "popUpload":
 			trace( pErrCode + " : " + pErrMsg );
+			break;
+		case "popMove":
+			trace(1);
+			this.reload();
 			break;
 		default:	// 로그인 안됐거나, session 날아감
 			this.alert( pErrMsg );
@@ -618,7 +625,7 @@ this.rClick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
 {
 	var targetX = e.clientx;
 	var targetY = e.clienty;
-	
+	trace("rClick Event");
 	//trace(obj.id);
 	if( obj.id != "div_inDir" ){
 		this.pm_context.set_innerdataset(this.ds_context);
@@ -667,7 +674,12 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 	} else if ( contextID == "move" ){
 		// 이동
 		let objCF = new ChildFrame();
-		
+		var type = this.ds_indir.getColumn( this.ds_indir.findRow("savedName", name), "isFolder");
+		var targetDirID = "";
+		if( type == "true" ){
+			targetDirID = this.ds_directory.getColumn( this.ds_directory.findRow("directoryName", name), "dirID" );
+		}
+		trace(targetDirID);
 		objCF.init("popMove", 0, 0, 300, 400);
 		objCF.set_formurl("Webhard::frmMove.xfdl");
 		objCF.set_openalign("center middle");
@@ -676,7 +688,8 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 			this.getOwnerFrame(),
 			{ 	contentName : name,
 				location : location,
-				type : this.ds_indir.getColumn( this.ds_indir.findRow("savedName", name), "isFolder"),
+				targetID : targetDirID,
+				type : type,
 				ds_dir : this.ds_directory
 			},
 			this,
