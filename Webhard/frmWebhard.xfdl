@@ -540,9 +540,14 @@ this.fn_indir = function(){
 			
 			this.div_file.form.div_inDir.form.addChild("Div"+index, objDiv);
 			objDiv.show();
-			objDiv.addEventHandler("onrbuttondown", this.rClick, this);
-			objDiv.addEventHandler("onmouseenter", this.objDiv_onmouseenter, this);
-			objDiv.addEventHandler("onmouseleave", this.objDiv_onmouseleave, this);
+			
+			trace( objStatic.text );
+			if( objStatic.text != "..." ){
+				objDiv.addEventHandler("onrbuttondown", this.rClick, this);
+				objDiv.addEventHandler("onmouseenter", this.objDiv_onmouseenter, this);
+				objDiv.addEventHandler("onmouseleave", this.objDiv_onmouseleave, this);
+			}
+			
 			
 			index++;
 		}
@@ -654,6 +659,7 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 	
 	let name = this.nameLoc.split(":")[0];
 	let location = this.nameLoc.split(":")[1];
+
 	//this.alert(this.nameLoc);
 	let contextID = this.pm_context.getInnerDataset().getColumn(index, "idcolumn");
 	if( contextID == "download" ){
@@ -702,6 +708,7 @@ this.pm_context_onlbuttondown = function(obj:nexacro.PopupMenu,e:nexacro.MenuMou
 	} else if ( contextID == "delete" ){
 		// 파일 삭제
 		let flag = "";
+
 		if( this.ds_indir.getColumn( this.indirIndex, "isFolder") == "false" ){
 			flag = this.confirm("파일을 삭제하시겠습니까?");
 		} else {
@@ -826,6 +833,10 @@ this.PopupDiv00_btn_createFolder_onclick = function(obj:nexacro.Button,e:nexacro
 	if( isDup > 0 ){
 		this.alert("중복된 폴더명입니다.");
 		this.PopupDiv00.form.st_validateFolder.set_text("중복된 폴더명입니다.");
+		return;
+	}
+	if( nFolder == "..." ){
+		this.alert("폴더명으로 ...은 사용하실 수 없습니다.");
 		return;
 	}
 	this.PopupDiv00.form.st_validateFolder.set_text("");
