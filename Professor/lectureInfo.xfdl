@@ -190,8 +190,6 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}else{ 
 	this.ds_openClass.filter("oc_semester=="+semester+"&&oc_year=='"+year+"'&&oc_targetlevel=='"+target+"'");
 	}
-	
-	this.sta_count00.set_text(this.ds_openClass.getRowCount());
 };
 
 this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -200,8 +198,6 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.cbo_semester.set_value(null);
 	this.cbo_target.set_value(null);
 	this.cbo_year.set_value(null);
-	
-	this.sta_count00.set_text(this.ds_openClass.getRowCount());
 };
 
 this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
