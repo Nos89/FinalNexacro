@@ -1003,7 +1003,7 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
       <BindItem id="item27" compid="Tab00.Tabpage1.form.MaskEdit00_01" propid="value" datasetid="ds_stuInfo" columnid="outDate"/>
       <BindItem id="item28" compid="Tab00.Tabpage3.form.Edit00_00_01_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
       <BindItem id="item29" compid="Tab00.Tabpage3.form.edtPostcode" propid="value" datasetid="ds_stuInfo" columnid="zipcode"/>
-      <BindItem id="item7" compid="Tab00.Tabpage3.form.edt_bank" propid="value" datasetid="ds_student" columnid="bank"/>
+      <BindItem id="item7" compid="Tab00.Tabpage3.form.edt_bank" propid="value" datasetid="ds_stuInfo" columnid="bank"/>
       <BindItem id="item30" compid="Tab00.Tabpage3.form.Edit00_02_00" propid="value" datasetid="ds_stuInfo" columnid="country"/>
     </Bind>
     <Objects>
