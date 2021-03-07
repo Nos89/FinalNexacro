@@ -413,7 +413,7 @@
             <Col id="PGM_ID">frmWebhard.xfdl</Col>
           </Row>
           <Row>
-            <Col id="MENU_CD">0028</Col>
+            <Col id="MENU_CD">0029</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">학사자료실</Col>
             <Col id="PGM_PATH">Student</Col>

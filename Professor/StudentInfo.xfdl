@@ -321,6 +321,8 @@ this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.cbo_stdYear.set_value(null);
 	this.edt_name.set_value(null);
 	this.cbo_lecTitle.set_value(null);
+	
+	this.sta_count00.set_text(this.ds_crDetail.getRowCount());
 };
 
 
