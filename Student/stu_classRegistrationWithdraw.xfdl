@@ -157,6 +157,7 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[include "Lib::lib_grid.xjs";
+this.cancel = "";
 
 this.stu_classRegistrationWithdraw_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -217,6 +218,7 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 
 this.fn_callback_withdraw=function(id,errCode,errMsg)
 {
+	if(this.cancel == ""){
 	this.alert("취소되었습니다.");
 	this.transaction(
 		"getMyClass",
@@ -226,6 +228,9 @@ this.fn_callback_withdraw=function(id,errCode,errMsg)
 		"",  
 		"fn_callback"
 	);
+	}else {
+		this.alert(this.cancel);
+	}
 };
 
 this.btn_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
