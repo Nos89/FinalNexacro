@@ -87,7 +87,7 @@
         <MaskEdit id="MaskEdit00_00_00" taborder="54" left="830" top="223" width="138" height="25" cssclass="mask_cm_box01C" format="#학기" type="string" onchanged="MaskEdit00_00_onchanged" enable="false"/>
         <Static id="Static06_00_00_00_00_01_00" taborder="55" text="강의실" left="549" top="248" width="87" height="25"/>
         <Static id="Static07_03_00" taborder="56" left="613" top="251" width="138" height="25" cssclass="sta_cm_box01C"/>
-        <Grid id="grd_Lecture" taborder="57" left="5" top="411" width="430" height="229" binddataset="ds_lecture" autofittype="col" oncellclick="grd_Lecture_oncellclick">
+        <Grid id="grd_Lecture" taborder="57" left="5" top="411" height="229" binddataset="ds_lecture" autofittype="col" oncellclick="grd_Lecture_oncellclick" oncelldblclick="grd_Lecture_oncelldblclick" width="435">
           <Formats>
             <Format id="default">
               <Columns>
@@ -113,7 +113,7 @@
                 <Cell col="1" text="bind:lec_code" textAlign="center"/>
                 <Cell col="2" text="bind:lec_title" textAlign="center"/>
                 <Cell col="3" text="expr:dataset.getColumn(currow,&quot;lec_approval&quot;)==1?&quot;승인&quot;:dataset.getColumn(currow,&quot;lec_approval&quot;)==0?&quot;미승인&quot;:&quot;반려&quot;" displaytype="normal" textAlign="center"/>
-                <Cell col="4" text="bind:lec_deny_reason" textAlign="center"/>
+                <Cell col="4" text="bind:lec_deny_reason" textAlign="center" autosizerow="none" autosizecol="none"/>
               </Band>
             </Format>
           </Formats>
@@ -131,6 +131,13 @@
         <Static id="Static02_01_03_00" taborder="68" text="총" left="370" top="375" width="11" height="26" verticalAlign="middle"/>
         <Static id="sta_count00_00" taborder="69" left="390" top="375" width="40" height="26" color="#d02424" textAlign="right" verticalAlign="middle"/>
         <Static id="Static02_00_00_00_00" taborder="70" text="건" left="439" top="375" width="11" height="26" verticalAlign="middle"/>
+        <PopupDiv id="PopupDiv00" text="PopupDiv00" left="170" top="659" width="192" height="141" visible="false">
+          <Layouts>
+            <Layout>
+              <TextArea id="TextArea00" taborder="0" left="4" top="5" width="186" height="136" onchanged="PopupDiv00_TextArea00_onchanged" readonly="true" wordWrap="char"/>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
       </Layout>
     </Layouts>
     <Objects>
@@ -288,6 +295,7 @@
             <Col id="lec_way">100/0/0/0/0</Col>
             <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
             <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
+            <Col id="lec_deny_reason">물동물동</Col>
           </Row>
           <Row>
             <Col id="lec_code">126</Col>
@@ -304,6 +312,7 @@
             <Col id="lec_way">100/0/0/0/0</Col>
             <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
             <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
+            <Col id="lec_deny_reason">ㄴ아런어ㅏㅣ로니ㅏㅇ러ㅣ나ㅓ린러니ㅏ러</Col>
           </Row>
           <Row>
             <Col id="lec_code">127</Col>
@@ -320,6 +329,7 @@
             <Col id="lec_way">100/0/0/0/0</Col>
             <Col id="lec_eval">10/30/30/20/0/0/10/0</Col>
             <Col id="lec_book">양자역학의 이해 - 김교수,사다리출판사</Col>
+            <Col id="lec_deny_reason">ㄴㅇ린아런이러나ㅣㅇ렁나ㅣ러ㅣsdfsfdsfssfssfdfsdfㄴㅇㄹsdfsfㅇㄴㄹsfㄴㄹsf</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -505,6 +515,24 @@ this.btn_excel2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.objExcelExport.set_exportfilename("강의계획서 리스트");
 	this.objExcelExport.exportData();  
 };
+
+
+
+
+this.grd_Lecture_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(obj.getCellPos()==4){
+	trace(e.row);
+	var reason = this.ds_lecture.getColumn(e.row,"lec_deny_reason");
+	this.PopupDiv00.form.TextArea00.set_value(reason);
+	this.col = e.cell;
+    this.row = e.row;
+    var nX = system.screenToClientX(this, e.screenx);
+    var nY = system.screenToClientY(this, e.screeny);        
+    this.PopupDiv00.trackPopupByComponent(this, nX, nY, null, null, "call_back");
+	 }
+};
+
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="sta_title" propid="text" datasetid="ds_lecture" columnid="lec_title"/>

@@ -747,6 +747,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			"fn_callback" 
 		);
 	}
+	this.cbo_gradeCode.set_value(null);
 };
 
 this.mask_edit_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
