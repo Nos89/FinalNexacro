@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="fm_left" width="250" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="none none">
+  <Form id="fm_left" width="207" height="700" titletext="New Form" onload="fm_left_onload" scrollbartype="none none">
     <Layouts>
-      <Layout height="700" mobileorientation="landscape" width="250">
-        <Grid id="grdLeft" taborder="0" left="40" top="100" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" width="207" bottom="0">
+      <Layout height="700" mobileorientation="landscape" width="207">
+        <Grid id="grdLeft" taborder="0" left="0" top="100" autofittype="col" treeusecheckbox="false" oncellclick="divLeft_grdLeft_oncellclick" scrollbartype="none none" treeuseline="false" cssclass="tree_edit" treeusebutton="noclick" border="0px solid #c7c7c7,1px solid #c7c7c7" width="207" bottom="0">
           <Formats>
             <Format id="default">
               <Columns>
@@ -18,15 +18,15 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="1" left="40" top="40" height="60" color="#ffffff" background="#165ba1" cssclass="sta_LF_title01" border="0px none,0px none,0px none,1px solid #165ba1" width="207" textAlign="center" font="bold 11pt Dotum"/>
-        <Static id="sta_openmenu" taborder="2" left="40" top="0" height="40" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="207" text=""/>
-        <Button id="btn_menu" taborder="3" left="108" top="4" width="35" height="30" onclick="btn_menu_onclick" tooltiptext="메뉴 목록" tooltiptype="hover" cursor="pointer" border="0px none" cssclass="btn_list01" borderRadius="20px"/>
-        <Button id="btn_myMenu" taborder="4" left="175" top="4" width="30" height="30" onclick="btn_myMenu_onclick" tooltiptext="마이메뉴 목록" tooltiptype="hover" borderRadius="20px" border="0px none" cursor="pointer" cssclass="btn_bookmark"/>
+        <Static id="Static00" taborder="1" left="0" top="40" height="60" color="#ffffff" background="#165ba1" cssclass="sta_LF_title01" border="0px none,0px none,0px none,1px solid #165ba1" width="207" textAlign="center" font="bold 11pt Dotum"/>
+        <Static id="sta_openmenu" taborder="2" left="0" top="0" height="40" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="207" text=""/>
+        <Button id="btn_menu" taborder="3" left="78" top="4" width="35" height="30" onclick="btn_menu_onclick" tooltiptext="메뉴 목록" tooltiptype="hover" cursor="pointer" border="0px none" cssclass="btn_list01" borderRadius="20px"/>
+        <Button id="btn_myMenu" taborder="4" left="155" top="4" width="30" height="30" onclick="btn_myMenu_onclick" tooltiptext="마이메뉴 목록" tooltiptype="hover" borderRadius="20px" border="0px none" cursor="pointer" cssclass="btn_bookmark"/>
         <Static id="sta_closedmenu" taborder="5" left="0" top="0" height="140" color="#ffffff" background="#545454" border="0px none,1px solid #545454,1px solid #545454" width="40" visible="false"/>
         <Button id="btn_menu00" taborder="6" left="3" top="50" width="35" height="30" onclick="btn_menu_onclick" tooltiptext="메뉴 목록" tooltiptype="hover" cssclass="btn_list01" visible="false" border="0px none" borderRadius="20px" cursor="pointer"/>
         <Button id="btn_myMenu00" taborder="7" left="5" top="95" width="30" height="30" onclick="btn_myMenu_onclick" tooltiptext="마이메뉴 목록" tooltiptype="hover" borderRadius="20px" border="0px none" cursor="pointer" cssclass="btn_bookmark" visible="false"/>
         <Button id="btn_menuopen" taborder="8" text="OPEN" left="0" top="0" width="40" height="40" onclick="btn_menuopen_onclick" cssclass="btn_menuopen" visible="false" border="0px none"/>
-        <Button id="btn_menuclose" taborder="9" text="CLOSE" left="40" top="0" width="40" height="40" onclick="btn_menuclose_onclick" cssclass="btn_menuclose" textAlign="center" border="0px none"/>
+        <Button id="btn_menuclose" taborder="9" text="CLOSE" left="0" top="0" width="40" height="40" onclick="btn_menuclose_onclick" cssclass="btn_menuclose" textAlign="center" border="0px none"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -167,6 +167,8 @@
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">자료실</Col>
             <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH"> </Col>
+            <Col id="PGM_ID"> </Col>
           </Row>
           <Row>
             <Col id="MENU_CD">5001</Col>
@@ -399,7 +401,7 @@
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">자료실</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH"/>
+            <Col id="PGM_PATH"></Col>
             <Col id="PGM_ID"/>
           </Row>
           <Row>
@@ -695,7 +697,7 @@ this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'false');
 
 	}
-	if( this.grdLeft.getBindDataset().getColumn( this.grdLeft.getBindDataset().rowposition, "PGM_PATH" ) == "" ){
+	if( this.grdLeft.getBindDataset().getColumn( this.grdLeft.getBindDataset().rowposition, "MENU_LVL" ) != 0 ){
 		this.fn_tab();
 	}
 	//this.alert(this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"));
@@ -897,7 +899,7 @@ this.btn_myMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	if(this.btn_manage == null){
 		
 		var btn_manage = new Button();
-		btn_manage.init("btn_manage",190,60,42,22);
+		btn_manage.init("btn_manage",160,60,42,22);
 		this.addChild("btn_manage",btn_manage);
 		btn_manage.addEventHandler("onclick",this.btn_manage_onclick,this);
 		btn_manage.set_text("관리");
@@ -961,7 +963,7 @@ this.btn_menuopen_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 this.menu_unfold = function()
 {
 	var app = nexacro.getApplication();
-	app.mainframe.VFSet01.HFSet01.set_separatesize("0,250,*");
+	app.mainframe.VFSet01.HFSet01.set_separatesize("0,210,*");
 	this.sta_openmenu.set_visible(true);
 	this.btn_menu.set_visible(true);
 	this.btn_myMenu.set_visible(true);
