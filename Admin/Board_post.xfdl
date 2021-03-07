@@ -7,7 +7,7 @@
         <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
         <Button id="btn_close" taborder="3" text="닫기" height="35" cssclass="btn_WF_gantt01" onclick="btn_close_onclick" bottom="55" right="10" width="100"/>
         <Button id="btn_modify" taborder="2" text="수정" height="35" cssclass="btn_WF_gantt01" onclick="btn_modify_onclick" bottom="55" width="100" right="120"/>
-        <Grid id="grid_file" taborder="4" left="10" height="111" binddataset="ds_fileList" autofittype="col" visible="false" onexpandup="grid_file_onexpandup" width="550" bottom="49">
+        <Grid id="grid_file" taborder="4" left="10" height="111" binddataset="ds_fileList" autofittype="col" visible="false" onexpandup="grid_file_onexpandup" width="550" bottom="49" oncellclick="grid_file_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -444,13 +444,15 @@ this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.
    this.fn_buttonChangeToRead();
 };
 
+
 //파일정보 초기화
 this.fn_FileClear = function (){
    //FileUpTransfer 파일 모두삭제
    this.FileUpTransfer00.clearFileList();
    //파일정보 모두삭제
    this.ds_fileList.clearData();  
-}]]></Script>
+}
+]]></Script>
     <Objects>
       <Dataset id="ds_board">
         <ColumnInfo>
