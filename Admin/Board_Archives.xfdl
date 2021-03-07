@@ -55,7 +55,7 @@
                 <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
                 <Cell col="1" text="bind:seq" padding="0px 5px"/>
                 <Cell col="2" text="bind:title" padding="0px 5px"/>
-                <Cell col="3" text="bind:writer" padding="0px 5px"/>
+                <Cell col="3" text="bind:writer" padding="0px 5px" textAlign="center"/>
                 <Cell col="4" text="bind:writeDate" displaytype="date" calendardateformat="yyyy.MM.dd"/>
               </Band>
             </Format>
