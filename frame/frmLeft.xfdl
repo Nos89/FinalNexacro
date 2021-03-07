@@ -167,6 +167,8 @@
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">자료실</Col>
             <Col id="MENU_LVL">0</Col>
+            <Col id="PGM_PATH"> </Col>
+            <Col id="PGM_ID"> </Col>
           </Row>
           <Row>
             <Col id="MENU_CD">5001</Col>
@@ -399,7 +401,7 @@
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">자료실</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH"/>
+            <Col id="PGM_PATH"></Col>
             <Col id="PGM_ID"/>
           </Row>
           <Row>
@@ -695,7 +697,7 @@ this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 		this.grdLeft.setTreeStatus(this.grdLeft.getTreeRow(this.grdLeft.getBindDataset().rowposition),'false');
 
 	}
-	if( this.grdLeft.getBindDataset().getColumn( this.grdLeft.getBindDataset().rowposition, "PGM_PATH" ) == "" ){
+	if( this.grdLeft.getBindDataset().getColumn( this.grdLeft.getBindDataset().rowposition, "MENU_LVL" ) != 0 ){
 		this.fn_tab();
 	}
 	//this.alert(this.grdLeft.getBindDataset().getColumn(e.row, "MENU_CD"));
