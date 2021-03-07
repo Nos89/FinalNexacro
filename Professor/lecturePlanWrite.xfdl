@@ -86,7 +86,7 @@ this.lecturePlanWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo
 		this.edt_targetLevel.set_value(this.parent.target);
 		this.edt_isu.set_value(this.parent.isu);
 		this.edt_Proname.set_value(this.parent.proName);
-		}
+	}
 	this.mask_year.set_value(this.parent.year);
 	this.edt_Proname.set_value(this.parent.proName);
 };
@@ -172,37 +172,37 @@ this.fn_setText = function(id,sArr){
 this.fn_sum = function(id){
 	var sum
 	if(id=="way"){
-	var lecture =parseInt(this.mask_lecture.value);
-	var debate = parseInt(this.mask_debate.value);
-	var practice =parseInt( this.mask_practice.value);
-	var watching = parseInt(this.mask_watching.value);
-	var other = parseInt(this.mask_other.value);
-	sum = lecture + debate + practice + watching + other;
+		var lecture =parseInt(this.mask_lecture.value);
+		var debate = parseInt(this.mask_debate.value);
+		var practice =parseInt( this.mask_practice.value);
+		var watching = parseInt(this.mask_watching.value);
+		var other = parseInt(this.mask_other.value);
+		sum = lecture + debate + practice + watching + other;
 	}else if(id=="eval"){
-	var attend = parseInt(this.mask_attend.value);
-	var middle = parseInt(this.mask_middleTest.value);
-	var finaltest = parseInt(this.mask_finalTest.value);
-	var test = parseInt(this.mask_test.value);
-	var assign =parseInt(this.mask_assingment.value);
-	var presentation = parseInt(this.mask_presentation.value);
-	var attitude = parseInt(this.mask_attitude.value);
-	var other = parseInt(this.mask_other1.value);
-	sum  = attend+middle+finaltest+test+assign+presentation+attitude+other;
+		var attend = parseInt(this.mask_attend.value);
+		var middle = parseInt(this.mask_middleTest.value);
+		var finaltest = parseInt(this.mask_finalTest.value);
+		var test = parseInt(this.mask_test.value);
+		var assign =parseInt(this.mask_assingment.value);
+		var presentation = parseInt(this.mask_presentation.value);
+		var attitude = parseInt(this.mask_attitude.value);
+		var other = parseInt(this.mask_other1.value);
+		sum  = attend+middle+finaltest+test+assign+presentation+attitude+other;
 	}
 	return sum;
 };
 
 this.fn_insertPercentage = function(){
 	var way = (this.mask_lecture.value +"/"+this.mask_debate.value+"/"+this.mask_practice.value+"/"+
-			this.mask_watching.value+"/"+this.mask_other.value);
-			
+		this.mask_watching.value+"/"+this.mask_other.value);
+	
 	var eval = (this.mask_attend.value+"/"+this.mask_middleTest.value+"/"+this.mask_finalTest.value+"/"+
-				this.mask_test.value+"/"+this.mask_assingment.value+"/"+this.mask_presentation.value+"/"+
-				this.mask_attitude.value+"/"+this.mask_other1.value);
-				
+		this.mask_test.value+"/"+this.mask_assingment.value+"/"+this.mask_presentation.value+"/"+
+		this.mask_attitude.value+"/"+this.mask_other1.value);
+	
 	this.ds_lecture.setColumn(0,"lec_way",way);
 	this.ds_lecture.setColumn(0,"lec_eval",eval);
-
+	
 }
 this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -222,33 +222,37 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 	if(this.parent.lecture ==1){
 		if(this.confirm("작성을 끝내시겠습니까?","경고")){
-		this.transaction(
-			"insertLecturePlan",
-			"/lecture/insertLecturePlan",	
-			"in_lecture = ds_lecture", 
-			"",
-			"",
-			"fn_callback" 
-		);
+			this.transaction(
+				"insertLecturePlan",
+				"/lecture/insertLecturePlan",	
+				"in_lecture = ds_lecture", 
+				"",
+				"",
+				"fn_callback" 
+			);
 		}
 	}else{
-	if(this.confirm("수정을 끝내시겠습니까?","경고")){
-	this.ds_lecture.setColumn(0,"lec_approval",0);
-	this.transaction(
-			"updateLecturePlan",
-			"/lecture/updateLecturePlan",	
-			"in_lecture = ds_lecture", 
-			"",
-			"",
-			"fn_callback" 
-		);
-	}
+		
+		if(this.confirm("수정을 끝내시겠습니까?","경고")){
+			if(this.ds_lecture.getColumn(0,"lec_approval") == -1){
+				
+				this.ds_lecture.setColumn(0,"lec_approval",0);
+			}
+			this.transaction(
+				"updateLecturePlan",
+				"/lecture/updateLecturePlan",	
+				"in_lecture = ds_lecture", 
+				"",
+				"",
+				"fn_callback" 
+			);
+		}
 	}
 };
 this.fn_callback = function(id,errCode,errMsg){
-          this.alert("입력완료");
-		  this.close("ok");
-     }
+	this.alert("입력완료");
+	this.close("ok");
+}
 
 
 
