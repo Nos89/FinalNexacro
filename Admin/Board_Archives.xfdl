@@ -61,7 +61,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="7" text="자료게시판 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
+        <Static id="Static00" taborder="7" text="학사자료실 관리" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
         <Button id="btn_write" taborder="8" text="작성" left="915" top="55" width="80" height="25" onclick="btn_write_onclick" cssclass="btn_WF_gantt01" font="bold 12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Static id="Static12" taborder="9" left="0" top="621" width="1090" height="29" text=""/>
       </Layout>
