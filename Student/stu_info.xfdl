@@ -15,7 +15,7 @@
         <Static id="Static02_00" taborder="9" text="성명" left="136" top="113" width="50" height="30" textAlign="right"/>
         <Static id="Static02_01" taborder="10" text="생년월일" left="136" top="148" width="50" height="30" textAlign="right"/>
         <Static id="Static02_02" taborder="11" text="성별" left="136" top="183" width="50" height="30" textAlign="right"/>
-        <Edit id="Edit00_03" taborder="12" left="356" top="78" width="115" height="30" enable="false" value="대한민국" text="대한민국" font="12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
+        <Edit id="Edit00_03" taborder="12" left="356" top="78" width="115" height="30" enable="false" text="대한민국" font="12px/normal &quot;Arial&quot;,&quot;Malgun Gothic&quot;,&quot;Gulim&quot;"/>
         <Static id="Static02_03" taborder="13" text="국적" left="300" top="78" width="50" height="30" textAlign="right"/>
         <Edit id="Edit00_00_00" taborder="14" left="356" top="113" width="115" height="30" enable="false"/>
         <Static id="Static02_00_00" taborder="15" text="학적상태" left="300" top="113" width="50" height="30" textAlign="right"/>
@@ -954,7 +954,7 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
       <BindItem id="item0" compid="Edit00" propid="value" datasetid="ds_stuInfo" columnid="id"/>
       <BindItem id="item1" compid="Edit00_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
       <BindItem id="item2" compid="Edit00_02" propid="value" datasetid="ds_stuInfo" columnid="gender"/>
-      <BindItem id="item3" compid="Edit00_03" propid="value" datasetid="ds_proInfo" columnid="country"/>
+      <BindItem id="item3" compid="Edit00_03" propid="value" datasetid="ds_stuInfo" columnid="country"/>
       <BindItem id="item4" compid="Edit00_00_00" propid="value" datasetid="ds_stuDetail" columnid="std_status"/>
       <BindItem id="item8" compid="Edit00_04" propid="value" datasetid="ds_proInfo" columnid="id"/>
       <BindItem id="item9" compid="Edit00_00_01" propid="value" datasetid="ds_stuInfo" columnid="col_title"/>
@@ -1003,7 +1003,8 @@ this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback,
       <BindItem id="item27" compid="Tab00.Tabpage1.form.MaskEdit00_01" propid="value" datasetid="ds_stuInfo" columnid="outDate"/>
       <BindItem id="item28" compid="Tab00.Tabpage3.form.Edit00_00_01_00" propid="value" datasetid="ds_stuInfo" columnid="name"/>
       <BindItem id="item29" compid="Tab00.Tabpage3.form.edtPostcode" propid="value" datasetid="ds_stuInfo" columnid="zipcode"/>
-      <BindItem id="item7" compid="Tab00.Tabpage3.form.edt_bank" propid="value" datasetid="ds_student" columnid="bank"/>
+      <BindItem id="item7" compid="Tab00.Tabpage3.form.edt_bank" propid="value" datasetid="ds_stuInfo" columnid="bank"/>
+      <BindItem id="item30" compid="Tab00.Tabpage3.form.Edit00_02_00" propid="value" datasetid="ds_stuInfo" columnid="country"/>
     </Bind>
     <Objects>
       <Dataset id="ds_stuInfo">

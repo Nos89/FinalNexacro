@@ -469,6 +469,8 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 	this.ds_lecture.filter("");
 	this.ds_lecture.filter("lec_code =='"+code+"'");
 	this.fn_delText();
+	
+	this.sta_count00_00.set_text(this.ds_lecture.getRowCount());
 };
 
 

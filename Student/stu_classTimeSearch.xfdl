@@ -198,6 +198,7 @@ this.fn_callback=function(id,errCode,errMsg)
 
 this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+
 	if(this.edt_code.value == null){
 		if(this.cmbCode01.index == 0){
 			this.ds_classList.filter("oc_year.indexOf(" + this.cmb_year.text.substr(2,2) + ")>=0 && oc_semester.indexOf(" + this.cmb_semester.text.substr(0,1) + ")>=0");
