@@ -21,10 +21,10 @@
               </Row>
               <Row>
                 <Col id="datacolumn">단과대</Col>
-                <Col id="codecolumn">colcode</Col>
+                <Col id="codecolumn">col_title</Col>
               </Row>
               <Row>
-                <Col id="codecolumn">deptcode</Col>
+                <Col id="codecolumn">dept_title</Col>
                 <Col id="datacolumn">학과</Col>
               </Row>
             </Rows>
@@ -294,6 +294,8 @@
           <Column id="outDate" type="DATE" size="256"/>
           <Column id="colcode" type="STRING" size="256"/>
           <Column id="deptcode" type="STRING" size="256"/>
+          <Column id="col_title" type="STRING" size="256"/>
+          <Column id="dept_title" type="STRING" size="256"/>
           <Column id="zipcode" type="STRING" size="256"/>
           <Column id="addr1" type="STRING" size="256"/>
           <Column id="addr2" type="STRING" size="256"/>
@@ -510,25 +512,9 @@ this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let sKeyword = this.edt_searchKeyword.value;
 	
 	if(std_status=="전체"){
-		if(sTarget=="colcode"){
-			let sId = this.ds_college.lookup("title",sKeyword,"id");
-			this.ds_student.filter("String(colcode).indexOf('"+sId+"')>=0");
-		}else if(sTarget=="deptcode"){
-			let sId = this.ds_department.lookup("title",sKeyword,"id");
-			this.ds_student.filter("String(deptcode).indexOf('"+sId+"')>=0");
-		}else {
-			this.ds_student.filter("String("+sTarget+").indexOf('"+sKeyword+"')>=0");
-		}
+		this.ds_student.filter("String("+sTarget+").indexOf('"+sKeyword+"')>=0");
 	}else {
-		if(sTarget=="colcode"){
-			let sId = this.ds_college.lookup("title",sKeyword,"id");
-			this.ds_student.filter("std_status=='"+std_status+"'&&String(colcode).indexOf('"+sId+"')>=0");
-		}else if(sTarget=="deptcode"){
-			let sId = this.ds_department.lookup("title",sKeyword,"id");
-			this.ds_student.filter("std_status=='"+std_status+"'&&String(deptcode).indexOf('"+sId+"')>=0");
-		}else {
-			this.ds_student.filter("std_status=='"+std_status+"'&&String("+sTarget+").indexOf('"+sKeyword+"')>=0");
-		}
+		this.ds_student.filter("std_status=='"+std_status+"'&&String("+sTarget+").indexOf('"+sKeyword+"')>=0");
 	}
 };
 
