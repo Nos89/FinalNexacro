@@ -80,6 +80,7 @@
           </Dataset>
         </Combo>
         <Button id="btn_search" taborder="7" left="240" top="40" width="24" height="24" cssclass="btn_WF_search02" onclick="btn_search_onclick"/>
+        <Button id="btn_refresh" taborder="8" left="365" top="10" width="25" height="25" cssclass="btn_WF_refresh" onclick="btn_refresh_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -127,8 +128,8 @@ this.fn_callback = function(id,errCD,errMSG)
 	if(errCD<0){
 		this.alert("목록을 가져오지 못했습니다.");
 	}else{
-		let idType = this.rdo_filter.value;
-		this.ds_users.filter("String(id).indexOf('"+idType+"')>=0");
+		let userType = this.rdo_filter.value;
+		this.ds_users.filter("String(id).indexOf('"+userType+"')>=0");
 	}
 }
 
@@ -166,6 +167,14 @@ this.grd_userList_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 };
 
 
+// 새로고침
+this.btn_refresh_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let userType = this.rdo_filter.value;
+	this.ds_users.filter("String(id).indexOf('"+userType+"')>=0");
+};
+
+
 // 선택
 this.btn_choose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -179,9 +188,6 @@ this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close(null);
 };
-
-
-
 ]]></Script>
   </Form>
 </FDL>
