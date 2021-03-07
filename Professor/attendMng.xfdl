@@ -44,12 +44,12 @@
               <Band id="body">
                 <Cell text="bind:oc_code" textAlign="center"/>
                 <Cell col="1" text="bind:oc_year" displaytype="mask" maskedittype="string" maskeditformat="####년" textAlign="center"/>
-                <Cell col="2" text="bind:oc_semester"/>
+                <Cell col="2" text="bind:oc_semester" textAlign="center"/>
                 <Cell col="3" text="bind:oc_schedule"/>
                 <Cell col="4" text="bind:oc_part" textAlign="center"/>
-                <Cell col="5" text="bind:oc_targetlevel"/>
+                <Cell col="5" text="bind:oc_targetlevel" textAlign="center"/>
                 <Cell col="6" text="bind:name" textAlign="center"/>
-                <Cell col="7" text="bind:reco_score"/>
+                <Cell col="7" text="bind:reco_score" textAlign="center"/>
                 <Cell col="8" text="bind:isu" textAlign="center"/>
               </Band>
             </Format>
@@ -57,7 +57,7 @@
         </Grid>
         <Static id="Static05_00_00" taborder="8" text="학생출결관리" left="388" top="322" width="128" height="34" font="normal bold 10pt/normal &quot;Arial&quot;" cssclass="sta_img_schedule"/>
         <Button id="btn_save" taborder="9" text="저장" left="1001" top="315" width="71" height="26" onclick="btn_save_onclick" cssclass="btn_WF_save01"/>
-        <Grid id="grd_student" taborder="10" left="5" top="350" width="361" height="290" binddataset="ds_crDetail" autofittype="col" oncellclick="grd_student_oncellclick">
+        <Grid id="grd_student" taborder="10" left="5" top="350" width="361" height="290" binddataset="ds_crDetail" autofittype="col" oncellclick="grd_student_oncellclick" onheadclick="grd_attend_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -511,6 +511,8 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	nexacro.open("popupOpen","Professor::allAttendCheck.xfdl",parentFrame,proId,"",100,100);
 
 };
+
+
 ]]></Script>
   </Form>
 </FDL>

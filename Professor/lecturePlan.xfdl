@@ -109,7 +109,7 @@
                 <Cell col="4" text="비고"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:currow+1"/>
+                <Cell text="expr:currow+1" textAlign="center"/>
                 <Cell col="1" text="bind:lec_code" textAlign="center"/>
                 <Cell col="2" text="bind:lec_title" textAlign="center"/>
                 <Cell col="3" text="expr:dataset.getColumn(currow,&quot;lec_approval&quot;)==1?&quot;승인&quot;:dataset.getColumn(currow,&quot;lec_approval&quot;)==0?&quot;미승인&quot;:&quot;반려&quot;" displaytype="normal" textAlign="center"/>
@@ -469,8 +469,6 @@ this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 	this.ds_lecture.filter("");
 	this.ds_lecture.filter("lec_code =='"+code+"'");
 	this.fn_delText();
-	
-	this.sta_count00_00.set_text(this.ds_lecture.getRowCount());
 };
 
 
