@@ -402,6 +402,9 @@ this.cbo_week_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEve
 	};
 	this.selectId = null;
 	this.ds_proAttendMng.filter("att_lecCode=='"+this.lec_code+"'&&att_week=='"+this.week+"'")
+	
+	this.fn_reAttend();
+	
 };
 
 this.cbo_title_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
