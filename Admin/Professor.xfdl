@@ -167,7 +167,7 @@
           </Dataset>
         </Combo>
         <Edit id="edt_accountNum" taborder="28" left="224" top="583" width="180" height="24" onchanged="edt_accountNum_onchanged"/>
-        <Radio id="rdo_gender" taborder="20" left="465" top="521" width="140" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2">
+        <Radio id="rdo_gender" taborder="20" left="465" top="521" width="140" height="24" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" onitemchanged="rdo_gender_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
