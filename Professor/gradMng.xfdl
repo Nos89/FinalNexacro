@@ -388,6 +388,7 @@ this.fn_callback = function(id, errCode, errMsg){
 		this.fn_reload();
 	}
 	
+	this.sta_count00_00.set_text(this.ds_grade.getRowCount());
 }
 
 this.fn_reload = function(){
