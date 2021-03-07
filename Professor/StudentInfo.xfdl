@@ -14,7 +14,7 @@
         <Combo id="cbo_department" taborder="5" text="Combo00" left="182" top="102" width="169" height="30" codecolumn="code" datacolumn="name" innerdataset="ds_department" displaynulltext="--선택--" onitemchanged="cbo_department_onitemchanged"/>
         <Combo id="cbo_lecTitle" taborder="6" text="Combo00" left="532" top="60" width="192" height="30" codecolumn="code" datacolumn="name" innerdataset="ds_lecTitle" displaynulltext="--선택--"/>
         <Button id="btn_search" taborder="7" text="조회" left="860" top="51" width="99" height="29" onclick="btn_search_onclick" cssclass="btn_WF_gantt01"/>
-        <Grid id="Grid00" taborder="8" left="5" top="157" width="1073" height="543" binddataset="ds_crDetail" autofittype="col">
+        <Grid id="Grid00" taborder="8" left="5" top="157" width="1073" height="543" binddataset="ds_crDetail" autofittype="col" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -332,6 +332,11 @@ this.btn_excel1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 	this.objExcelExport.set_exportfilename("학생정보 리스트");
 	this.objExcelExport.exportData();  
+};
+
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.gfn_gridSort(obj, e);
 };
 ]]></Script>
   </Form>
