@@ -23,7 +23,7 @@
 this.fv_pageRowCount = 15;	// 페이지당 보여줄 row 개수
 this.fv_totalRowCount;	// 총 row 개수
 this.fv_totalPagesCount;	// 총 페이지 개수
-this.fv_pageIdx;	// 현재 페이지
+this.fv_pageIdx;	// 현재 페이지(0부터 시작함)
 this.fv_listIdx;	// 화면에 보여줄 페이지들의 단위(0~9는 0, 10~19는 1...)
 
 
@@ -77,29 +77,37 @@ this.setPage = function(sPage)
 	}
 	else if(sPage=="Last")	// 마지막 페이지
 	{
-		this.fv_pageIdx = this.fv_totalPagesCount;
+		this.fv_pageIdx = this.fv_totalPagesCount-1;
 		this.fv_listIdx = nexacro.floor(this.fv_pageIdx / this.fv_listCount);
 	}
 	else if(sPage=="Prev")	// 이전 페이지
 	{
-		this.fv_listIdx = nexacro.floor(this.fv_pageIdx / this.fv_listCount) - 1;
-		this.fv_pageIdx = this.fv_listIdx * this.fv_listCount;
-		
+		if(this.fv_listIdx <= 0){
+			this.fv_pageIdx = 0;
+			this.fv_listIdx = 0;
+		}else{
+			this.fv_listIdx = nexacro.floor(this.fv_pageIdx / this.fv_listCount) - 1;
+			this.fv_pageIdx = this.fv_listIdx * this.fv_listCount;
+		}
 //		this.alert("listIdx: "+this.fv_listIdx+" | pageIdx: " + this.fv_pageIdx);
 	}
 	else if(sPage=="Next")	// 다음 페이지
 	{
-		this.fv_listIdx = nexacro.floor(this.fv_pageIdx / this.fv_listCount) + 1;
-		this.fv_pageIdx = this.fv_listIdx * this.fv_listCount;
+		let totalListIdx = nexacro.floor((this.fv_totalPagesCount-1)/this.fv_listCount);
+		if(this.fv_listIdx == totalListIdx){
+			this.fv_pageIdx = this.fv_totalPagesCount-1;
+			this.fv_listIdx = totalListIdx;
+		}else{
+			this.fv_listIdx = nexacro.floor(this.fv_pageIdx / this.fv_listCount) + 1;
+			this.fv_pageIdx = this.fv_listIdx * this.fv_listCount;
+		}
+
 	}else	// 숫자 버튼
 	{
 		this.fv_pageIdx = nexacro.toNumber(sPage)-1;	// 0,1,2,3...
 		this.fv_listIdx = nexacro.floor(this.fv_pageIdx / this.fv_listCount);
 	}
 	
-	// 페이지 범위 지정(페이지가 0보다 작을 경우/마지막 페이지보다 클 경우)
-	if(this.fv_pageIdx < 0) {this.fv_pageIdx = 0;}
-	else if(this.fv_pageIdx > this.fv_totalPagesCount - 1) {this.fv_pageIdx = this.fv_totalPagesCount - 1;}
 	
 	// 네비 버튼 숫자 생성 및 가시 처리
 	for(let i=0; i<this.fv_listCount; i++)

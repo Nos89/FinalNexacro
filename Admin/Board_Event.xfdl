@@ -117,8 +117,8 @@ this.setPageAfter = function(startRowNum, endRowNum)
 // 일괄선택
 this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	let sCol = obj.getCellProperty("body",e.cell,"text").replace("bind:","");
-	let objDs = obj.binddataset;
+	let sCol = this.Grid00.getCellProperty("body",e.cell,"text").replace("bind:","");
+	let objDs = obj.getBindDataset();
 	
 	if(sCol=="chk"){
 		let headVal = obj.getCellProperty("head",e.cell,"text");

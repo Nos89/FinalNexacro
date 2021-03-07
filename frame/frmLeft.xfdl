@@ -401,7 +401,7 @@
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">자료실</Col>
             <Col id="MENU_LVL">0</Col>
-            <Col id="PGM_PATH"></Col>
+            <Col id="PGM_PATH"/>
             <Col id="PGM_ID"/>
           </Row>
           <Row>
@@ -531,7 +531,7 @@
             <Col id="PGM_ID">Syllabus.xfdl</Col>
           </Row>
           <Row>
-            <Col id="MENU_NM">학사 자료실 관리</Col>
+            <Col id="MENU_NM">학사자료실 관리</Col>
             <Col id="MENU_LVL">1</Col>
             <Col id="MENU_CD">0023</Col>
             <Col id="UP_MENU_CD">0020</Col>
