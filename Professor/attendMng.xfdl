@@ -312,7 +312,6 @@ this.fn_callback = function(id, errCode, errMsg){
 		this.alert("잠시후 다시 시도해 주세요");
 		return;
 	}
-	
 	if(id=="attendMngOnLoad"){
 	this.fn_setTitle();
 	this.selectId = null;

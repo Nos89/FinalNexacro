@@ -628,6 +628,9 @@ this.fn_gradsIsExist = function(id){
 
 this.fn_addGrade = function(stdId,lecCode){
 	var nRow = 0;
+	if(this.ds_transaction.getRowCount()==0){
+		nRow = this.ds_transaction.addRow();
+	}
 	
 	this.ds_transaction.setColumn(nRow,"grade_seq",0);
 	this.ds_transaction.setColumn(nRow,"std_id",stdId);
@@ -724,6 +727,11 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var lecCode = this.ds_grade.getColumn(this.ds_grade.rowposition,"lec_code");
 	var stdName = this.sta_stdName.text;
 	var stdId = this.sta_stdId.text;
+	
+	if(this.cbo_gradeCode.value == "all"){
+		alert("학점을 입력해주세요");
+		return;
+	}
 	if(stdName==null || lecCode==null|| stdId==null){
 		alert("성적정보를 클릭해주세요");
 		return;
@@ -744,43 +752,62 @@ this.mask_edit_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventIn
 {
 	var staId = obj.id.slice(5);
 	var num = obj.value;
+	var check = 1; 
 	if(num<0 ||num>100){
 		this.alert("0~100 까지의 점수를 입력해주세요.");
 		obj.set_value(0);
 		return;
 	}
-	this.fn_getStaText(staId, num);
+	check = this.fn_getStaText(staId, num);
+	if(check == 0 ){
+		obj.set_value(0);
+		return;
+	}
 	this.fn_plusScore();
 };
 this.fn_getStaText = function(id, num){
-	
+	var check = 0;
 	switch(id) {
 	case "attend" :
+		check = this.sta_attend.getDisplayText();
 		this.attend =parseFloat(num*(this.sta_attend.getDisplayText()/100)).toFixed(2);
 		break;
 	case "middleTest" :
+		check = this.sta_middleTest.getDisplayText();
 		this.middleTest = parseFloat(num*(this.sta_middleTest.getDisplayText()/100)).toFixed(2);
 		break;
 	case "finalTest" :
+		check = this.sta_finalTest.getDisplayText();
 		this.finalTest =parseFloat(num*(this.sta_finalTest.getDisplayText()/100)).toFixed(2);
 		break;
 	case "test" :
+		check = this.sta_test.getDisplayText();
 		this.test = parseFloat(num*(this.sta_test.getDisplayText()/100)).toFixed(2);
 		break;
 	case "assignment" :
+		check = this.sta_assignment.getDisplayText();
 		this.assignment = parseFloat(num*(this.sta_assignment.getDisplayText()/100)).toFixed(2);
 		break;
 	case "presentation" :
+		check = this.sta_presentation.getDisplayText();
 		this.presentation = parseFloat(num*(this.sta_presentation.getDisplayText()/100)).toFixed(2);
 		break;
 	case "attitude" :
+		check = this.sta_attitude.getDisplayText();
 		this.attitude = parseFloat(num*(this.sta_attitude.getDisplayText()/100)).toFixed(2);
 		break;
 	case "other1" : 
+		check = this.sta_other1.getDisplayText();
 		this.other1 =parseFloat(num*(this.sta_other1.getDisplayText()/100)).toFixed(2);
 		break;
 	}
+	if(check == 0 ){
+		return 0;
+	}else {
+		return 1;
+	}
 }
+
 
 this.fn_plusScore = function(){
 	var arr = new Array(this.attend,this.middleTest,this.finalTest,this.test,this.assignment,this.presentation,this.attitude,this.other1);
@@ -822,9 +849,10 @@ this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.fn_deleteGrade = function(lecCode, stdId){
 	var row  = this.ds_grade.extractRows("lec_code=='"+lecCode+"'&&std_id=='"+stdId+"'");
-	var nRow = this.ds_transaction.addRow();
-	
-	this.ds_transaction.copyRow(nRow,this.ds_grade,row);
+	if(this.ds_transaction.getRowCount()==0){
+		var nRow = this.ds_transaction.addRow();
+	}
+	this.ds_transaction.copyRow(0,this.ds_grade,row);
 	this.transaction(
 		"deleteGrade",
 		"/professor/deleteGrade.nex",	

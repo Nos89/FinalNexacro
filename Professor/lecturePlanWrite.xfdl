@@ -233,6 +233,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		}
 	}else{
 	if(this.confirm("수정을 끝내시겠습니까?","경고")){
+	this.ds_lecture.setColumn(0,"lec_approval",0);
 	this.transaction(
 			"updateLecturePlan",
 			"/lecture/updateLecturePlan",	
