@@ -3,7 +3,7 @@
   <Form id="Board_post" width="1000" height="730" titletext="New Form" onload="Board_post_onload" onsize="Board_post_onsize">
     <Layouts>
       <Layout height="730" mobileorientation="landscape" width="1000">
-        <WebBrowser id="web_post" taborder="0" left="10" top="50" right="10" bottom="170" onusernotify="web_post_onusernotify" onloadcompleted="web_post_onloadcompleted" border="none"/>
+        <WebBrowser id="web_post" taborder="0" left="10" top="50" right="10" bottom="170" onloadcompleted="web_post_onloadcompleted" border="none"/>
         <Static id="Static00" taborder="1" left="11" top="22" width="120" height="16" cssclass="sta_WF_title01"/>
         <Button id="btn_close" taborder="3" text="닫기" height="35" cssclass="btn_WF_gantt01" onclick="btn_close_onclick" bottom="55" right="10" width="100"/>
         <Button id="btn_modify" taborder="2" text="수정" height="35" cssclass="btn_WF_gantt01" onclick="btn_modify_onclick" bottom="55" width="100" right="120"/>
@@ -55,8 +55,8 @@ this.Board_post_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
       bdTitle = "홍보게시판";
    }else if(this.type=="report"){
       bdTitle = "건의게시판";
-   }else if(this.type=="Archive"){
-      bdTitle = "자료게시판";
+   }else if(this.type=="archive"){
+      bdTitle = "학사자료실";
    }else{
       bdTitle = "공지사항";;
    }
@@ -69,8 +69,8 @@ this.Board_post_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
    
    this.domain = document.location.href;
    this.domain = this.domain.replace("/nex","");
-    var arrdomain = this.domain.split('/');
-    var currentfile = arrdomain.pop();
+   var arrdomain = this.domain.split('/');
+   var currentfile = arrdomain.pop();
    this.fileDomain = this.domain.replace(currentfile,"uploadBoardFiles.nex");
    
    this.web_post.set_url(this.domain.replace(currentfile,"viewPost?pageGroup=community&type="+this.type+"&seq="+seq+"&purp=view"));
