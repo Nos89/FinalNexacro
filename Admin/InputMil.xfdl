@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="InputMil" width="350" height="260" titletext="New Form" onload="InputMil_onload">
+    <Layouts>
+      <Layout height="260" width="350">
+        <Static id="st_title" taborder="0" text="병역" left="-1" top="0" width="350" height="43" cssclass="modalTitle" textAlign="center"/>
+        <Static id="st_milInDateTitle" taborder="1" left="0" top="52" width="100" height="32" cssclass="sta_cm_box01R" text="입대날짜"/>
+        <Static id="sta_indate" taborder="2" left="99" top="52" width="251" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="st_milOutDateTitle" taborder="3" left="0" top="84" width="100" height="32" cssclass="sta_cm_box01R" text="제대날짜"/>
+        <Static id="sta_indate00" taborder="4" left="99" top="84" width="251" height="32" cssclass="sta_cm_box02L"/>
+        <Static id="st_milTypeTitle" taborder="5" left="0" top="115" width="100" height="32" cssclass="sta_cm_box01R" text="군별"/>
+        <Static id="sta_std_status" taborder="6" left="99" top="115" height="32" cssclass="sta_cm_box02L" width="251"/>
+        <Static id="st_milRankTitle" taborder="7" text="계급" left="0" top="146" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_name00" left="99" top="146" width="251" height="32" cssclass="sta_cm_box02L" taborder="8"/>
+        <Static id="st_milCodeTitle" taborder="9" text="군번" left="0" top="177" width="100" height="32" cssclass="sta_cm_box01R"/>
+        <Static id="sta_name00_00" left="99" top="177" width="251" height="32" cssclass="sta_cm_box02L" taborder="10"/>
+        <Edit id="edt_milCode" taborder="11" left="108" top="181" width="140" height="24"/>
+        <Edit id="edt_milRank" taborder="12" left="108" top="150" width="140" height="24"/>
+        <Combo id="cbo_milType" taborder="13" text="재학" left="108" top="119" width="100" height="24" onitemchanged="cbo_std_status_onitemchanged" value="재학" innerdataset="ds_milGroup" codecolumn="mil_groupCode" datacolumn="mil_title"/>
+        <Calendar id="cal_milOutdate" taborder="14" left="108" top="88" width="140" height="24" dateformat="yyyy-MM" editformat="yyyy-MM"/>
+        <Calendar id="cal_milIndate" taborder="15" left="108" top="56" width="140" height="24" dateformat="yyyy-MM" editformat="yyyy-MM"/>
+        <Button id="btn_send" taborder="16" text="전송" left="88" width="80" height="30" onclick="btn_send_onclick" cssclass="btn_WF_gantt01" top="219"/>
+        <Button id="btn_cancel" taborder="17" text="취소" left="178" width="80" height="30" onclick="btn_cancel_onclick" cssclass="btn_WF_gantt01" top="220"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item1" compid="cal_milIndate" propid="value" datasetid="ds_student" columnid="inDate"/>
+      <BindItem id="item2" compid="cal_milOutdate" propid="value" datasetid="ds_student" columnid="inDate"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+this.InputMil_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.cal_milIndate.set_value(this.parent.indate);
+	this.cal_milOutdate.set_value(this.parent.outdate);
+	this.cbo_milType.set_value(this.parent.groupcode);
+	this.edt_milRank.set_value(this.parent.rank);
+	this.edt_milCode.set_value(this.parent.code);
+};
+
+
+this.btn_send_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var milIndate = this.cal_milIndate.value;
+	var milOutdate = this.cal_milOutdate.value;
+	var milType = this.cbo_milType.value;
+	var milRank = this.edt_milRank.value;
+	var milCode = this.edt_milCode.value;
+	
+	if( milIndate > milOutdate || milIndate == null || milOutdate == null ){
+		this.alert("입대일과 제대일을 확인해주세요.");
+		return;
+	}
+	
+	if( milType == "재학" ){
+		this.alert("군별을 선택해주세요.");
+		return;
+	}
+	
+	if( milRank == "" || milRank == null){
+		this.alert("계급을 입력해주세요.");
+		return;
+	}
+	
+	if( milCode == "" || milCode == null){
+		this.alert("군번을 입력해주세요.");
+		return;
+	}
+	
+	trace( milIndate + " : " + milOutdate + " : " + milType + " : " + milRank + " : " + milCode );
+	var sRtn = milIndate + "|" + milOutdate + "|" + milType + "|" + milRank + "|" + milCode + "|" + this.parent.id +"|"+ this.parent.type;
+	this.close(sRtn);
+};
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close("close");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_milGroup">
+        <ColumnInfo>
+          <Column id="mil_groupCode" type="STRING" size="256"/>
+          <Column id="mil_title" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="mil_groupCode">m1</Col>
+            <Col id="mil_title">육군</Col>
+          </Row>
+          <Row>
+            <Col id="mil_groupCode">m2</Col>
+            <Col id="mil_title">공군</Col>
+          </Row>
+          <Row>
+            <Col id="mil_groupCode">m3</Col>
+            <Col id="mil_title">해군</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

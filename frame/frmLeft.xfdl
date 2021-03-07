@@ -155,6 +155,14 @@
             <Col id="UP_MENU_CD">0004</Col>
           </Row>
           <Row>
+            <Col id="MENU_CD">4002</Col>
+            <Col id="UP_MENU_CD">0004</Col>
+            <Col id="MENU_NM">발신메일함</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Mail</Col>
+            <Col id="PGM_ID">outBox.xfdl</Col>
+          </Row>
+          <Row>
             <Col id="MENU_CD">5000</Col>
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">자료실</Col>
@@ -380,6 +388,14 @@
           </Row>
           <Row>
             <Col id="MENU_CD">0026</Col>
+            <Col id="UP_MENU_CD">0000</Col>
+            <Col id="MENU_NM">발신메일함</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Mail</Col>
+            <Col id="PGM_ID">outBox.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">0027</Col>
             <Col id="UP_MENU_CD">0</Col>
             <Col id="MENU_NM">자료실</Col>
             <Col id="MENU_LVL">0</Col>
@@ -387,7 +403,7 @@
             <Col id="PGM_ID"/>
           </Row>
           <Row>
-            <Col id="MENU_CD">0027</Col>
+            <Col id="MENU_CD">0028</Col>
             <Col id="UP_MENU_CD">0000</Col>
             <Col id="MENU_NM">웹하드</Col>
             <Col id="MENU_LVL">1</Col>
@@ -566,6 +582,14 @@
           </Row>
           <Row>
             <Col id="MENU_CD">0041</Col>
+            <Col id="UP_MENU_CD">0040</Col>
+            <Col id="MENU_NM">수신메일함</Col>
+            <Col id="MENU_LVL">1</Col>
+            <Col id="PGM_PATH">Mail</Col>
+            <Col id="PGM_ID">inBox.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">0042</Col>
             <Col id="UP_MENU_CD">0040</Col>
             <Col id="MENU_NM">발신메일함</Col>
             <Col id="MENU_LVL">1</Col>
